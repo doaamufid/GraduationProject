@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/splash_background">
+
+    <!-- الدائرة الكبيرة خلفية -->
+    <View
+        android:layout_width="221dp"
+        android:layout_height="221dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/circle_outer"
+        android:alpha="0.15" />
+
+    <!-- الدائرة الوسطى -->
+    <View
+        android:layout_width="165dp"
+        android:layout_height="165dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/circle_outer"
+        android:alpha="0.2" />
+
+    <!-- الدائرة الداخلية -->
+    <View
+        android:layout_width="117dp"
+        android:layout_height="117dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:background="@drawable/ic_circle_bg" />
+
+    <!-- الشعار والنص -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginBottom="100dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/ic_drop" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SALAM"
+            android:textSize="42sp"
+            android:textColor="#1E4570"
+            android:fontFamily="sans-serif-light" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MENTAL HEALTH · PEACE OF MIND"
+            android:textSize="10sp"
+            android:textColor="#5A88B8"
+            android:letterSpacing="0.08"
+            android:layout_marginTop="4dp" />
+
+    </LinearLayout>
+
+    <!-- الأمواج SVG في الأسفل -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:layout_gravity="bottom"
+        android:src="@drawable/waves_bg"
+        android:scaleType="fitXY" />
+
+    <!-- Dots -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="18dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="4dp"
+            android:background="#1E4570"
+            android:layout_marginEnd="4dp" />
+
+        <View
+            android:layout_width="6dp"
+            android:layout_height="4dp"
+            android:background="#A8CDE0"
+            android:layout_marginEnd="4dp" />
+
+        <View
+            android:layout_width="6dp"
+            android:layout_height="4dp"
+            android:background="#A8CDE0" />
+
+    </LinearLayout>
+
+</FrameLayout>

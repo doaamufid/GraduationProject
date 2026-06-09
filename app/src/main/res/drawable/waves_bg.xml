@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="390dp"
+    android:height="220dp"
+    android:viewportWidth="390"
+    android:viewportHeight="220">
+
+    <!-- موجة خلفية فاتحة -->
+    <path
+        android:fillColor="#C5DFF0"
+        android:pathData="M0,80 C60,50 130,110 195,80 C260,50 330,100 390,70 L390,220 L0,220 Z" />
+
+    <!-- موجة وسطى -->
+    <path
+        android:fillColor="#A8CDE0"
+        android:pathData="M0,110 C70,80 140,140 210,110 C280,80 330,130 390,100 L390,220 L0,220 Z" />
+
+    <!-- موجة أمامية داكنة -->
+    <path
+        android:fillColor="#7BB8D4"
+        android:pathData="M0,150 C80,120 160,170 240,145 C310,120 355,160 390,140 L390,220 L0,220 Z" />
+
+</vector>
