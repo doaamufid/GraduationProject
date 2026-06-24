@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- ألوان تطبيق سلام الفعلي -->
     <color name="splash_bg">#E8F4FD</color>
     <color name="wave_dark">#7BB8D4</color>
     <color name="wave_mid">#A8CDE0</color>
@@ -7,5 +8,8 @@
     <color name="text_dark">#2C5F7A</color>
     <color name="text_subtitle">#7FA8BF</color>
     <color name="btn_outline">#2C5F7A</color>
-    <color name="white">#FFFFFF</color>
+
+    <!-- الألوان الأساسية القياسية -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
 </resources>
