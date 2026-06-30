@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="start"
+    android:orientation="horizontal"
+    android:paddingVertical="8dp">
+
+    <ImageView
+        android:id="@+id/imgBotAvatar"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/bg_mic_button"
+        android:padding="8dp"
+        android:src="@drawable/ic_drop" /> <LinearLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_bot_message"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tvBotMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="أهلاً، أنا هنا معك كيف تشعر اليوم؟"
+            android:textColor="#2C3E50"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvBotTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="4dp"
+            android:text="9:40 ص"
+            android:textColor="#7F8C8D"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/suggestionsScroll"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_suggestion_btn"
+                android:paddingHorizontal="16dp"
+                android:text="نعم، جرب معي"
+                android:textAllCaps="false"
+                android:textColor="#5B8DC7"
+                android:textSize="12sp" />
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:layout_width="wrap_content"
+                android:layout_height="36dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_suggestion_btn"
+                android:paddingHorizontal="16dp"
+                android:text="لاحقاً"
+                android:textColor="#5B8DC7"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </HorizontalScrollView>
+
+</LinearLayout>
+</LinearLayout>

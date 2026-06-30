@@ -12,11 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
         <activity
-            android:name=".ChatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".MoodTrackerActivity"
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -24,8 +21,31 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".SurvivalBoxActivity"
+            android:exported="true">
+
+        </activity>
+        <activity
+            android:name=".ArticlesActivity"
             android:exported="false"></activity>
+        <activity
+            android:name=".ReframingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BodyMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BreathingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="true" />
+        <activity
+            android:name=".SplashActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

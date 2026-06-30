@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F7FAFC"
+    android:layoutDirection="rtl"
+    tools:context=".BodyMapActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutHeader"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="#FFFFFF"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/btnBack"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/outline_arrow_forward_24"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="المشاعر في جسدك"
+            android:textColor="#3A6898"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/tvGuideText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="أين تشعر بالتوتر؟ حدد المنطقة بالضغط عليها"
+        android:textColor="#7F8C8D"
+        android:textSize="14sp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutHeader" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutBodyContainer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintBottom_toTopOf="@id/cardExerciseHint"
+        app:layout_constraintTop_toBottomOf="@id/tvGuideText">
+
+        <ImageView
+            android:id="@+id/imgBody"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:scaleType="fitCenter"
+            android:src="@drawable/home"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/layoutIndicators"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.55" />
+
+        <View
+            android:id="@+id/viewHeadDot"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/bg_mic_button"
+            android:layout_marginTop="45dp"
+            app:layout_constraintEnd_toEndOf="@id/imgBody"
+            app:layout_constraintStart_toStartOf="@id/imgBody"
+            app:layout_constraintTop_toTopOf="@id/imgBody" />
+
+        <View
+            android:id="@+id/viewShouldersDot"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/bg_mic_button"
+            android:layout_marginTop="110dp"
+            app:layout_constraintEnd_toEndOf="@id/imgBody"
+            app:layout_constraintStart_toStartOf="@id/imgBody"
+            app:layout_constraintTop_toTopOf="@id/imgBody" />
+
+        <View
+            android:id="@+id/viewChestDot"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/bg_mic_button"
+            android:layout_marginTop="150dp"
+            app:layout_constraintEnd_toEndOf="@id/imgBody"
+            app:layout_constraintStart_toStartOf="@id/imgBody"
+            app:layout_constraintTop_toTopOf="@id/imgBody" />
+
+        <View
+            android:id="@+id/viewStomachDot"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="@drawable/bg_mic_button"
+            android:layout_marginTop="210dp"
+            app:layout_constraintEnd_toEndOf="@id/imgBody"
+            app:layout_constraintStart_toStartOf="@id/imgBody"
+            app:layout_constraintTop_toTopOf="@id/imgBody" />
+
+
+        <LinearLayout
+            android:id="@+id/layoutIndicators"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintWidth_percent="0.42">
+
+            <LinearLayout
+                android:id="@+id/btnHeadIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_suggestion_btn"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginBottom="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="الرأس والرقبة"
+                    android:textColor="#3A6898"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="صداع • توتر"
+                    android:textColor="#2C3E50"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnShouldersIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_suggestion_btn"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginBottom="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="الأكتاف"
+                    android:textColor="#3A6898"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ثقل • تصلب"
+                    android:textColor="#2C3E50"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnChestIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_suggestion_btn"
+                android:orientation="vertical"
+                android:padding="10dp"
+                android:layout_marginBottom="12dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="الصدر"
+                    android:textColor="#3A6898"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ضيق • خفقان"
+                    android:textColor="#2C3E50"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btnStomachIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_suggestion_btn"
+                android:orientation="vertical"
+                android:padding="10dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="المعدة"
+                    android:textColor="#3A6898"
+                    android:textSize="11sp"
+                    android:textStyle="bold"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="غثيان • قلق"
+                    android:textColor="#2C3E50"
+                    android:textSize="13sp"
+                    android:layout_marginTop="2dp"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <LinearLayout
+        android:id="@+id/cardExerciseHint"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <TextView
+            android:id="@+id/tvExerciseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="تمرين للصدر - فك التوتر"
+            android:textColor="#3A6898"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvExerciseDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="ضع يدك على صدرك، خذ نفساً عميقاً، ركز على حرق وتبدد هذا الثقل مع خروج الزفير ببطء."
+            android:textColor="#566573"
+            android:textSize="16sp"
+            android:padding="16dp"
+            android:background="@drawable/bg_suggestion_btn"
+            android:layout_marginTop="6dp"
+            android:layout_marginBottom="16dp"
+            android:lineSpacingMultiplier="1.2"/>
+
+        <Button
+            android:id="@+id/btnStartExercise"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:backgroundTint="#3A6898"
+            android:text="ابدأ الآن"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:cornerRadius="25dp" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
