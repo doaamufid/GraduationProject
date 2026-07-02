@@ -17,6 +17,19 @@
 
 
         </activity>
+
+            android:name=".ReframingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BodyMapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BreathingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ChatActivity"
+            android:exported="false" />
+
         <activity
             android:name=".MoodDashboardActivity"
             android:exported="false">

@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="#F4F8FB"
     android:layoutDirection="rtl">
 
@@ -48,18 +53,108 @@
             android:orientation="vertical"
             android:paddingBottom="24dp">
 
+    android:background="#D6EEFA"
+    android:layoutDirection="rtl"
+    tools:context=".ReframingActivity">
+
+    <LinearLayout
+        android:id="@+id/layoutDarkHeader"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:background="#2A5080"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="20dp"
+        app:layout_constraintHeight_percent="0.50"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:id="@+id/btnBack"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/outline_arrow_forward_24"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="#E7E7E7" />
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="إعادة الصياغة"
+                android:textColor="#E7E7E7"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="35dp"
+            android:text="الفكرة الآن ORIGINAL"
+            android:textColor="#A0B2C6"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/tvOriginalThought"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="start"
+            android:lineSpacingMultiplier="1.2"
+            android:text="لا أحد يهتم بي ودائماً\nأنا اللي أعاني لوحدي"
+            android:textColor="#FFFFFF"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="20dp"
+            android:text="نقل الفكرة"
+            android:textColor="#A0B2C6"
+            android:textSize="14sp" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
                 android:text="المقالات • ARTICLES"
                 android:textColor="#3A74B8"
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:layout_marginHorizontal="16dp"/>
 
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_suggestion_btn"
+                android:backgroundTint="#3D6699"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
+                android:text="إضافة"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="مكتبة المقالات الذكية"
                 android:textColor="#1F3A60"
                 android:textSize="26sp"
@@ -67,9 +162,20 @@
                 android:layout_marginHorizontal="16dp"
                 android:layout_marginTop="2dp" />
 
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_suggestion_btn"
+                android:backgroundTint="#3D6699"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
+                android:text="ارهاق"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="مقترحة حسب حالتك"
                 android:textColor="#3A74B8"
                 android:textSize="14sp"
@@ -138,9 +244,36 @@
                 </LinearLayout>
             </HorizontalScrollView>
 
+                android:background="@drawable/bg_suggestion_btn"
+                android:backgroundTint="#3D6699"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
+                android:text="وحدة"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layoutDarkHeader">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp">
+
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+
                 android:text="مقترح لك الآن • RECOMMENDED"
                 android:textColor="#7F8C8D"
                 android:textSize="11sp"
@@ -240,5 +373,91 @@
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
+
+                android:text="نظرة أخرى REFRAMED"
+                android:textColor="#5B8DC7"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvReframedThought"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:lineSpacingMultiplier="1.3"
+                android:text="ربما اليوم كان صعباً وأحسست بالوحدة - هذا الشعور حقيقي.\nهل في شخص واحد تشعرين بالارتياح معه؟"
+                android:textColor="#1A3A5C"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="32dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/bg_suggestion_btn"
+                android:backgroundTint="#C4E5F7"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="تمرين EXERCISE"
+                    android:textColor="#5B8DC7"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvExerciseInstruction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.2"
+                    android:text="اكتبي ٢ أشخاص اهتموا بك في حياتك ولو مرة واحدة - اكتبي ٣ أشهر اهتموا بالارتياح معكِ."
+                    android:textColor="#1A3A5C"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnAcceptThought"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_marginEnd="12dp"
+                    android:layout_weight="1.3"
+                    android:backgroundTint="#2A5080"
+                    android:text="قبلت هذه الفكرة"
+                    android:textColor="#FFFFFF"
+                    android:textStyle="bold"
+                    app:cornerRadius="24dp" />
+
+                <Button
+                    android:id="@+id/btnRegenerate"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="#FFFFFF"
+                    android:text="صياغة أخرى"
+                    android:textColor="#2A5080"
+                    android:textStyle="bold"
+                    app:cornerRadius="24dp"
+                    app:strokeColor="#2A5080"
+                    app:strokeWidth="1dp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
