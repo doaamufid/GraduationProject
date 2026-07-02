@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.graduationproject.adapters.ArticlesAdapter;
 import com.example.graduationproject.databinding.ActivityArticlesBinding;
-import com.example.graduationproject.models.ArticleModel; // تأكدي من عمل import للموديل الجديد
+import com.example.graduationproject.models.ArticleModel;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -22,31 +22,26 @@ public class ArticlesActivity extends AppCompatActivity {
 
         binding.rvArticles.setLayoutManager(new LinearLayoutManager(this));
 
-        // إنشاء قائمة البيانات الديناميكية الجديدة المتوافقة مع الـ Adapter المطور
         List<ArticleModel> articlesList = new ArrayList<>();
 
-        // الكارت الأول: يحتوي على زر واحد (تمارين)
         articlesList.add(new ArticleModel(
                 "التنفس • BREATHING",
                 "٧ تقنيات للتنفس في الأزمات الأكثر قراءة",
-                Arrays.asList("تمارين") // زر واحد
+                Arrays.asList("تمارين")
         ));
 
-        // الكارت الثاني: يحتوي على زرين (عربي، CBT)
         articlesList.add(new ArticleModel(
                 "علاجي • CBT",
                 "كيف تتعاملين مع الحزن بدون قمعه؟",
-                Arrays.asList("عربي", "CBT") // زرين معاً
+                Arrays.asList("عربي", "CBT")
         ));
 
-        // الكارت الثالث: يحتوي على زرين (٦ دقائق قراءة، علم النفس)
         articlesList.add(new ArticleModel(
                 "التعلق • ATTACHMENT",
                 "لماذا يؤلمنا التعلق؟ دليل علمي بسيط",
-                Arrays.asList("٦ دقائق قراءة", "علم النفس") // زرين معاً
+                Arrays.asList("٦ دقائق قراءة", "علم النفس")
         ));
 
-        // تمرير القائمة الذكية الجديدة إلى الـ Adapter
         ArticlesAdapter adapter = new ArticlesAdapter(articlesList);
         binding.rvArticles.setAdapter(adapter);
     }

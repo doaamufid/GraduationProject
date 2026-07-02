@@ -12,7 +12,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
         <activity
+            android:name=".CbtChatActivity"
+            android:exported="false" >
+
+
+        </activity>
+        <activity
+            android:name=".MoodDashboardActivity"
+            android:exported="false">
+
+        </activity>
+        <activity
             android:name=".MoodTrackerActivity"
+            android:exported="false"></activity>
+        <activity
+            android:name=".SurvivalBoxActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,13 +35,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".SurvivalBoxActivity"
-            android:exported="true">
+            android:name=".ArticlesActivity"
+            android:exported="false" >
 
         </activity>
-        <activity
-            android:name=".ArticlesActivity"
-            android:exported="false"></activity>
         <activity
             android:name=".ReframingActivity"
             android:exported="false" />
