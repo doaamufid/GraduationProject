@@ -11,7 +11,6 @@ import com.example.graduationproject.databinding.ActivityHealingEnvironmentBindi
 
 public class HealingEnvironmentActivity extends AppCompatActivity {
 
-    // استخدام الـ Binding فقط وحذف المتغيرات القديمة المسببة للمشاكل
     private ActivityHealingEnvironmentBinding binding;
     private MediaPlayer mediaPlayer;
     private boolean isPlaying = false;
@@ -51,11 +50,11 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
             }
         });
 
-        // 2. التحكم بالـ SeekBar عبر الـ Binding مباشرة (هنا كان الخطأ وتم إصلاحه)
+        // 2. التحكم بالـ SeekBar عبر الـ Binding مباشرة
         binding.seekBarVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // تحديث نص النسبة المئوية ديناميكياً
+                // تحديث نص النسبة مئوية ديناميكياً
                 binding.tvVolumePercentage.setText(progress + "%");
 
                 // التحكم بمستوى الصوت الفعلي
