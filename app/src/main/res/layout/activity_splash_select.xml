@@ -2,11 +2,9 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/main"
-    android:padding="0dp"
-    android:clipToPadding="false"
     android:background="@drawable/splash_background">
 
     <ImageView
@@ -25,42 +23,29 @@
         android:id="@+id/cloud_right"
         android:layout_width="130dp"
         android:layout_height="55dp"
+        android:contentDescription="@null"
         android:layout_marginEnd="15dp"
         android:layout_marginTop="60dp"
         android:src="@drawable/cloud"
         android:alpha="0.9"
-        android:contentDescription="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <ImageView
-        android:id="@+id/cloud_center"
-        android:layout_width="80dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="130dp"
-        android:src="@drawable/cloud"
-        android:alpha="0.7"
-        android:contentDescription="@null"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/circle_large"
-        android:layout_width="230dp"
-        android:layout_height="230dp"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
         android:background="@drawable/circle_outer"
         android:alpha="0.2"
+        android:layout_marginTop="50dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintVertical_bias="0.35" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <View
         android:id="@+id/circle_mid"
-        android:layout_width="170dp"
-        android:layout_height="170dp"
+        android:layout_width="105dp"
+        android:layout_height="105dp"
         android:background="@drawable/circle_outer"
         android:alpha="0.25"
         app:layout_constraintStart_toStartOf="@id/circle_large"
@@ -70,8 +55,8 @@
 
     <View
         android:id="@+id/circle_small"
-        android:layout_width="115dp"
-        android:layout_height="115dp"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
         android:background="@drawable/ic_circle_bg"
         app:layout_constraintStart_toStartOf="@id/circle_large"
         app:layout_constraintEnd_toEndOf="@id/circle_large"
@@ -80,8 +65,8 @@
 
     <ImageView
         android:id="@+id/ic_drop"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
         android:src="@drawable/ic_drop"
         android:contentDescription="@null"
         app:layout_constraintStart_toStartOf="@id/circle_large"
@@ -95,7 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/salam_title"
-        android:textSize="44sp"
+        android:textSize="28sp"
         android:textColor="#1A3A5C"
         android:textStyle="bold"
         android:fontFamily="sans-serif"
@@ -107,7 +92,7 @@
         android:id="@+id/text_mental"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="4dp"
         android:text="@string/mental_health_subtitle"
         android:textSize="12sp"
         android:textColor="#5A88B8"
@@ -116,40 +101,115 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/text_salam" />
 
+    <TextView
+        android:id="@+id/text_question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/question_how_to_address"
+        android:textSize="16sp"
+        android:textColor="#1A3A5C"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_mental" />
+
+    <EditText
+        android:id="@+id/et_name"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:background="@drawable/input_bg"
+        android:hint="@string/name_hint"
+        android:textColorHint="#94B2CB"
+        android:inputType="textPersonName"
+        android:autofillHints="personName"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="#1A3A5C"
+        android:textSize="14sp"
+        android:textDirection="rtl"
+        android:gravity="center_vertical|start"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/text_question" />
+
+    <Button
+        android:id="@+id/btn_adults"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/btn_adults"
+        android:textSize="15sp"
+        android:textColor="#2C6E9E"
+        android:textAllCaps="false"
+        android:stateListAnimator="@null"
+        app:backgroundTint="#FFFFFF"
+        app:strokeColor="#74AECF"
+        app:strokeWidth="1.2dp"
+        app:cornerRadius="12dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/et_name" />
+
+    <Button
+        android:id="@+id/btn_kids"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/btn_kids"
+        android:textSize="15sp"
+        android:textColor="#2C6E9E"
+        android:textAllCaps="false"
+        android:stateListAnimator="@null"
+        app:backgroundTint="#FFFFFF"
+        app:strokeColor="#74AECF"
+        app:strokeWidth="1.2dp"
+        app:cornerRadius="12dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_adults" />
+
     <ImageView
         android:id="@+id/waves"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="220dp"
+        android:contentDescription="@null"
         android:scaleType="fitXY"
         android:src="@drawable/waves_bg"
-        android:contentDescription="@null"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/text_mental" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <LinearLayout
         android:id="@+id/dots"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="35dp"
+        android:layout_marginBottom="24dp"
         android:orientation="horizontal"
         android:gravity="center"
-        android:elevation="5dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <View
-            android:layout_width="22dp"
-            android:layout_height="4dp"
-            android:background="#2C5F7A"
-            android:layout_marginEnd="5dp" />
-
-        <View
             android:layout_width="7dp"
             android:layout_height="4dp"
             android:background="#A8CDE0"
+            android:layout_marginEnd="5dp" />
+
+        <View
+            android:layout_width="22dp"
+            android:layout_height="4dp"
+            android:background="#2C5F7A"
             android:layout_marginEnd="5dp" />
 
         <View

@@ -1,23 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="390dp"
-    android:height="220dp"
+    android:height="250dp"
     android:viewportWidth="390"
-    android:viewportHeight="220">
+    android:viewportHeight="250">
 
     <!-- موجة خلفية فاتحة -->
     <path
-        android:fillColor="#C5DFF0"
-        android:pathData="M0,80 C60,50 130,110 195,80 C260,50 330,100 390,70 L390,220 L0,220 Z" />
+        android:fillColor="#B8D8F0"
+        android:pathData="M0,0 C50,30 100,10 150,25 C200,40 250,15 300,30 C340,42 370,20 390,35 L390,250 L0,250 Z" />
 
-    <!-- موجة وسطى -->
+    <!-- موجة ثانية -->
     <path
-        android:fillColor="#A8CDE0"
-        android:pathData="M0,110 C70,80 140,140 210,110 C280,80 330,130 390,100 L390,220 L0,220 Z" />
+        android:fillColor="#A0C8E8"
+        android:pathData="M0,40 C60,20 120,55 180,38 C240,22 290,50 350,35 C368,28 382,42 390,38 L390,250 L0,250 Z" />
+
+    <!-- موجة ثالثة -->
+    <path
+        android:fillColor="#8ABCDF"
+        android:pathData="M0,80 C70,55 140,90 200,70 C260,50 310,85 370,65 C378,62 385,70 390,65 L390,250 L0,250 Z" />
 
     <!-- موجة أمامية داكنة -->
     <path
-        android:fillColor="#7BB8D4"
-        android:pathData="M0,150 C80,120 160,170 240,145 C310,120 355,160 390,140 L390,220 L0,220 Z" />
+        android:fillColor="#74AECF"
+        android:pathData="M0,120 C80,98 155,128 225,108 C295,88 345,122 390,105 L390,250 L0,250 Z" />
 
 </vector>

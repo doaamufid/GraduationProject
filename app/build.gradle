@@ -19,6 +19,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    buildToolsVersion "36.0.0"
 
     buildTypes {
         release {
@@ -40,6 +41,8 @@ dependencies {
     implementation libs.material
     implementation libs.activity
     implementation libs.constraintlayout
+    implementation libs.mpandroidchart
+    // احذفي القديم وضعي هذا بدقة:
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.0")
     testImplementation libs.junit

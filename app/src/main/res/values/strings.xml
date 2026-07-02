@@ -1,5 +1,11 @@
 <resources>
-    <string name="app_name">Graduation Project</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_name">salam</string>
+
+    <string name="salam_title">SALAM</string>
+    <string name="mental_health_subtitle">MENTAL HEALTH · PEACE OF MIND</string>
+
+    <string name="question_how_to_address">كيف يمكنني مخاطبتك؟</string>
+    <string name="name_hint">اكتب الاسم هنا...</string>
+    <string name="btn_adults">البالغون</string>
+    <string name="btn_kids">الأطفال</string>
 </resources>
