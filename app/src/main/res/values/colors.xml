@@ -15,4 +15,7 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+
+    <color name="onboarding_green_main">#51A285</color>
+    <color name="onboarding_green_inactive">#BDBEC5</color>
 </resources>
