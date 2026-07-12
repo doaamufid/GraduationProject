@@ -11,7 +11,6 @@ import com.example.graduationproject.databinding.ActivityHealingEnvironmentBindi
 
 public class HealingEnvironmentActivity extends AppCompatActivity {
 
-    // استخدام الـ Binding فقط وحذف المتغيرات القديمة المسببة للمشاكل
     private ActivityHealingEnvironmentBinding binding;
     private MediaPlayer mediaPlayer;
     private boolean isPlaying = false;
@@ -22,14 +21,11 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(binding.getRoot());
 
-        // تجهيز ملف الصوت
-        mediaPlayer = MediaPlayer.create(this, R.raw.tranquil_forest);
 
         if (mediaPlayer != null) {
             mediaPlayer.setLooping(true);
         }
 
-        // 1. برمجة زر التشغيل والإيقاف عبر الـ Binding
         binding.btnPlayPause.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -51,14 +47,11 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
             }
         });
 
-        // 2. التحكم بالـ SeekBar عبر الـ Binding مباشرة (هنا كان الخطأ وتم إصلاحه)
         binding.seekBarVolume.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                // تحديث نص النسبة المئوية ديناميكياً
                 binding.tvVolumePercentage.setText(progress + "%");
 
-                // التحكم بمستوى الصوت الفعلي
                 float volume = (float) progress / 100f;
                 if (mediaPlayer != null) {
                     mediaPlayer.setVolume(volume, volume);
@@ -72,7 +65,6 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
             public void onStopTrackingTouch(SeekBar seekBar) {}
         });
 
-        // 3. زر الرجوع عبر الـ Binding
         binding.btnBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

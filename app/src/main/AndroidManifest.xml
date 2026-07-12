@@ -12,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
         <activity
-            android:name=".HealingEnvironmentActivity"
+            android:name=".TaskQAActivity"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,40 +21,39 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".CbtChatActivity"
-            android:exported="false"></activity>
-        <activity
-            android:name=".ReframingActivity"
-            android:exported="false">
+            android:name=".HealingEnvironmentActivity"
+            android:exported="true">
 
         </activity>
         <activity
-            android:name=".BodyMapActivity"
+            android:name=".CbtChatActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ReframingActivity"
             android:exported="false"></activity>
         <activity
+            android:name=".BodyMapActivity"
+            android:exported="false" />
+        <activity
             android:name=".BreathingActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".ChatActivity"
             android:exported="false" />
         <activity
             android:name=".MoodDashboardActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MoodTrackerActivity"
             android:exported="false" />
         <activity
             android:name=".SurvivalBoxActivity"
             android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".ArticlesActivity"
-            android:exported="false"></activity>
+            android:exported="false" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
