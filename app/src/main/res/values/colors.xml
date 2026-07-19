@@ -18,4 +18,14 @@
 
     <color name="onboarding_green_main">#51A285</color>
     <color name="onboarding_green_inactive">#BDBEC5</color>
+
+    <!-- Grounding Exercise Colors -->
+    <color name="bg">#E8F4FD</color>
+    <color name="bg_alt">#C5DFF0</color>
+    <color name="border">#A8CDE0</color>
+    <color name="primary">#7BB8D4</color>
+    <color name="primary_dark">#2C5F7A</color>
+    <color name="text_main">#2C5F7A</color>
+    <color name="text_soft">#7FA8BF</color>
+    <color name="surface">#FFFFFF</color>
 </resources>
