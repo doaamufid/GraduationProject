@@ -18,4 +18,35 @@
 
     <color name="onboarding_green_main">#51A285</color>
     <color name="onboarding_green_inactive">#BDBEC5</color>
+
+
+
+    <!-- Gradient background -->
+    <color name="grad_top">#1F3A60</color>
+    <color name="grad_bottom">#2B2140</color>
+
+    <!-- Cards / surfaces -->
+    <color name="card">#0FFFFFFF</color>          <!-- rgba(255,255,255,0.06) -->
+    <color name="card_solid">#241F3A</color>
+    <color name="overlay_08">#14FFFFFF</color>     <!-- rgba(255,255,255,0.08) -->
+    <color name="overlay_10">#1AFFFFFF</color>     <!-- rgba(255,255,255,0.10) -->
+    <color name="overlay_12">#1FFFFFFF</color>     <!-- rgba(255,255,255,0.12) -->
+    <color name="overlay_03">#08FFFFFF</color>     <!-- rgba(255,255,255,0.03) -->
+    <color name="border">#1FFFFFFF</color>         <!-- rgba(255,255,255,0.12) -->
+    <color name="scrim">#99000000</color>          <!-- rgba(0,0,0,0.6) -->
+
+    <!-- Brand -->
+    <color name="primary">#3A74B8</color>
+    <color name="primary_light">#5B8FD1</color>
+    <color name="primary_33">#523A74B8</color>     <!-- rgba(primary,0.33) approx -->
+    <color name="purple_accent">#6B4A8A</color>
+
+    <!-- Text -->
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_soft">#A6FFFFFF</color>      <!-- rgba(255,255,255,0.65) -->
+
+    <!-- Accents -->
+    <color name="red_record">#C97575</color>
+    <color name="red_delete">#E39494</color>
+    <color name="gold_star">#FFC94A</color>
 </resources>

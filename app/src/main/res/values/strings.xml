@@ -9,4 +9,79 @@
     <string name="btn_adults">البالغون</string>
     <string name="btn_kids">الأطفال</string>
     <string name="title_select_kids">من سيلعب اليوم؟</string>
+
+    <string name="summary_title">صندوق الطوارئ</string>
+    <string name="summary_tag">SAFE SPACE · صندوق النجاة</string>
+    <string name="summary_headline">صندوق النجاة النفسي</string>
+    <string name="summary_sub">افتحه في لحظات الضيق الشديد</string>
+    <string name="open_box_title">افتح الصندوق الآن</string>
+    <string name="open_box_sub">عرض كل ما يريحك في ثانية واحدة</string>
+
+    <string name="cat_audio_tag">AUDIO · صوتي</string>
+    <string name="cat_audio_title">تسجيلات صوتية</string>
+    <string name="cat_photos_tag">PHOTOS · صور</string>
+    <string name="cat_photos_title">صور مريحة</string>
+    <string name="cat_love_tag">LOVE · محبة</string>
+    <string name="cat_love_title">رسائل محبة</string>
+    <string name="cat_dhikr_tag">DHIKR · ذكر</string>
+    <string name="cat_dhikr_title">أذكار مفضلة</string>
+    <string name="empty_category">لسا ما أضفت شي هنا</string>
+    <string name="count_messages">%1$d رسائل</string>
+    <string name="count_photos">%1$d صور</string>
+    <string name="count_dhikr">%1$d أذكار</string>
+
+    <!-- Browse -->
+    <string name="browse_audio_title">تسجيلات صوتية</string>
+    <string name="browse_photos_title">صور مريحة</string>
+    <string name="browse_love_title">رسائل محبة</string>
+    <string name="browse_dhikr_title">أذكار مفضلة</string>
+    <string name="empty_audio">لا تسجيلات بعد — اضغطي + لإضافة أول رسالة</string>
+    <string name="empty_photos">لا صور بعد — اضغطي + لإضافة أول صورة</string>
+    <string name="empty_love">لا رسائل بعد — اضغطي + لإضافة أول رسالة</string>
+    <string name="empty_dhikr">لا أذكار مفضلة بعد</string>
+    <string name="delete_action">حذف</string>
+    <string name="back_to_grid">رجوع للشبكة</string>
+    <string name="tag_self">من نفسي</string>
+    <string name="tag_other">من شخص أحبه</string>
+
+    <!-- Add audio dialog -->
+    <string name="add_audio_title">تسجيل رسالة صوتية</string>
+    <string name="tap_to_record">اضغط للبدء بالتسجيل</string>
+    <string name="recording_now_format">يسجل الآن... %1$s</string>
+    <string name="preview_recording_format">معاينة التسجيل · %1$s</string>
+    <string name="re_record">إعادة التسجيل</string>
+    <string name="audio_label_hint">عنوان الرسالة (مثال: من ماما)</string>
+    <string name="save_message">حفظ الرسالة</string>
+    <string name="default_audio_label">رسالة صوتية</string>
+
+    <!-- Add photo dialog -->
+    <string name="add_photo_title">إضافة صورة مريحة</string>
+    <string name="take_photo">التقط صورة</string>
+    <string name="from_gallery">من المعرض</string>
+    <string name="caption_hint">وصف قصير (اختياري)</string>
+    <string name="save_photo">حفظ الصورة</string>
+
+    <!-- Add love dialog -->
+    <string name="add_love_title">إضافة رسالة محبة</string>
+    <string name="love_text_hint">اكتب الرسالة هنا...</string>
+
+    <!-- Add dhikr dialog -->
+    <string name="add_dhikr_title">أذكار مفضلة</string>
+    <string name="custom_dhikr_hint">اكتب ذكرك الخاص</string>
+    <string name="write_custom">أو اكتب ذكرك الخاص</string>
+    <string name="back_to_list">رجوع للقائمة</string>
+    <string name="save_and_close">حفظ وإغلاق</string>
+
+    <!-- Crisis mode -->
+    <string name="crisis_calm_photo_fallback">خذ لحظة تتأمل هالصورة</string>
+    <string name="crisis_audio_playing">يتشغّل الآن...</string>
+    <string name="crisis_next">التالي ←</string>
+    <string name="crisis_done_title">أنت بخير الآن</string>
+    <string name="crisis_done_sub">خذ وقتك، أنت لست وحدك</string>
+    <string name="crisis_replay">أعد المرور</string>
+    <string name="crisis_close">إغلاق</string>
+    <string name="dhikr_emoji">📿</string>
+    <string name="emoji_dove_crisis">🕊️</string>
+
+    <string name="status_bar_time">٩:٤١</string>
 </resources>

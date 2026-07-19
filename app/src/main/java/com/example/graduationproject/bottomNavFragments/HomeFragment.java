@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.ChatActivity;
 import com.example.graduationproject.R;
+import com.example.graduationproject.SurvivalBoxActivity;
 import com.example.graduationproject.adapters.HomeAdapter;
 import com.example.graduationproject.models.HomeItem;
 
@@ -44,6 +45,11 @@ public class HomeFragment extends Fragment {
         items.add(new HomeItem(2, "سجل المزاج\nتتبع - MOOD", R.drawable.home));
         items.add(new HomeItem(3, "شجرة التعافي\nنمو - GROWTH", R.drawable.home));
         items.add(new HomeItem(4, "رسالة للمستقبل\nرسالة - FUTURE", R.drawable.home));
+        items.add(new HomeItem(
+                5,
+                "صندوق النجاة\nSURVIVAL BOX",
+                R.drawable.bg_open_box_gradient
+        ));
 
         // 2. إعداد الـ Adapter والتعامل مع التنقل عبر الـ Intent
         adapter = new HomeAdapter(items, item -> {
@@ -52,6 +58,11 @@ public class HomeFragment extends Fragment {
                 case 1:
                     // الانتقال إلى Activity المحادثة
                     intent = new Intent(requireActivity(), ChatActivity.class);
+                    startActivity(intent);
+                    break;
+                case 5:
+                    // الانتقال إلى Activity صندوق النجاة
+                    intent = new Intent(requireActivity(), SurvivalBoxActivity.class);
                     startActivity(intent);
                     break;
 //                case 2:
