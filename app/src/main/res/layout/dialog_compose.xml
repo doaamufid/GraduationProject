@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:background="@drawable/bg_sheet_top_rounded"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:layout_marginBottom="16dp">
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_close"
+            android:contentDescription="@null"/>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="8dp"
+            android:orientation="vertical"
+            android:gravity="end">
+
+            <TextView
+                android:id="@+id/tvDialogTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_main"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                tools:text="رسالة جديدة لنفسي"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/compose_subtitle"
+                android:textColor="@color/text_soft"
+                android:textSize="10sp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <EditText
+        android:id="@+id/edtText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:minLines="7"
+        android:gravity="top|end"
+        android:background="@drawable/bg_input"
+        android:padding="20dp"
+        android:hint="وش تحب تقول لنفسك في المستقبل؟"
+        android:textColor="@color/text_main"
+        android:textColorHint="@color/text_soft"
+        android:textSize="18sp"
+        android:inputType="textMultiLine"
+        android:layout_marginBottom="24dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="متى تحب تستلمها؟"
+        android:textColor="@color/text_main"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:gravity="end"
+        android:layout_marginBottom="12dp"/>
+
+    <com.google.android.flexbox.FlexboxLayout
+        android:id="@+id/flexOptions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:flexWrap="wrap"
+        app:justifyContent="flex_end"
+        android:layout_marginBottom="16dp"/>
+
+    <LinearLayout
+        android:id="@+id/edtCustomDateContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_input"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:layout_marginBottom="16dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_calendar"
+            app:tint="@color/text_soft"/>
+
+        <EditText
+            android:id="@+id/edtCustomDate"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:textColor="@color/text_main"
+            android:textColorHint="@color/text_soft"
+            android:textSize="16sp"
+            android:gravity="end"
+            android:focusable="false"
+            android:clickable="true"
+            tools:text="02 / 15 / 2027"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_pill_accent"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:padding="16dp"
+        android:drawableEnd="@drawable/ic_heart_filled_white"
+        android:drawablePadding="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:text="احفظ الرسالة وأغلقها"/>
+
+</LinearLayout>
