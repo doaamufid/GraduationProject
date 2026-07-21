@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.ChatActivity;
+import com.example.graduationproject.DailyHabitsActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.adapters.HomeAdapter;
 import com.example.graduationproject.models.HomeItem;
@@ -44,6 +45,7 @@ public class HomeFragment extends Fragment {
         items.add(new HomeItem(2, "سجل المزاج\nتتبع - MOOD", R.drawable.home));
         items.add(new HomeItem(3, "شجرة التعافي\nنمو - GROWTH", R.drawable.home));
         items.add(new HomeItem(4, "رسالة للمستقبل\nرسالة - FUTURE", R.drawable.home));
+        items.add(new HomeItem(8, "العادات اليومية\nDaily Habits", R.drawable.home));
 
         // 2. إعداد الـ Adapter والتعامل مع التنقل عبر الـ Intent
         adapter = new HomeAdapter(items, item -> {
@@ -52,6 +54,10 @@ public class HomeFragment extends Fragment {
                 case 1:
                     // الانتقال إلى Activity المحادثة
                     intent = new Intent(requireActivity(), ChatActivity.class);
+                    startActivity(intent);
+                    break;
+                    case 8:
+                    intent = new Intent(requireActivity(), DailyHabitsActivity.class);
                     startActivity(intent);
                     break;
 //                case 2:
