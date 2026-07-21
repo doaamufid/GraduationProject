@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <FrameLayout
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="10dp">
+
+        <ImageButton
+            android:id="@+id/btnBack"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:layout_gravity="start|center_vertical"
+            android:background="@drawable/bg_icon_circle_overlay"
+            android:src="@drawable/ic_arrow_right"
+            android:padding="9dp"
+            android:contentDescription="@null"/>
+
+        <TextView
+            android:id="@+id/tvTopBarTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            tools:text="صندوق الطوارئ"/>
+
+        <FrameLayout
+            android:id="@+id/topBarRight"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end|center_vertical"
+            android:minWidth="34dp"
+            android:minHeight="34dp"/>
+
+    </FrameLayout>
+</merge>

@@ -9,12 +9,19 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.graduationproject.bottomNavFragments.HomeFragment;
+import com.example.graduationproject.Fragments.CrisisModeFragment;
 import com.example.graduationproject.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
     private final int defaultBottomNavigationItem = R.id.nav_home;
 
     ActivityMainBinding binding;
+
+    /** Opens the full-screen crisis-mode overlay. */
+    public void openCrisisMode() {
+        CrisisModeFragment fragment = new CrisisModeFragment();
+        fragment.show(getSupportFragmentManager(), "crisis_mode");
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

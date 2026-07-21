@@ -43,7 +43,8 @@
             android:exported="false" />
         <activity
             android:name=".SurvivalBoxActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SurvivalBox" />
         <activity
             android:name=".ArticlesActivity"
             android:exported="false" />
