@@ -9,6 +9,27 @@
     <string name="btn_adults">البالغون</string>
     <string name="btn_kids">الأطفال</string>
     <string name="title_select_kids">من سيلعب اليوم؟</string>
+
+    <string name="top_bar_label">تمارين التأريض</string>
+    <string name="progress_title">١-٢-٣-٤-٥</string>
+    <string name="progress_sub">أوقف القلق بالتركيز على الحاضر</string>
+    <string name="step_counter_format">خطوة %1$d من %2$d</string>
+
+    <string name="tapped_count_format">%1$d/%2$d — بس اضغطي كل ما لاحظتي شي</string>
+
+    <string name="add_note_toggle">أضف ملاحظة (اختياري تماماً)</string>
+    <string name="note_hint">اكتبي أي شي إذا حبيتي...</string>
+
+    <string name="breathing_reminder">خذي نفساً بين كل خطوة — شهيق ٤ث · زفير ٤ث · توقف ٤ث</string>
+
+    <string name="btn_next">التالي</string>
+    <string name="btn_finish">أنهِ التمرين</string>
+
+    <string name="done_title">رجعت لحاضرك</string>
+    <string name="done_sub_format">لاحظت %1$d تفاصيل حواليك — بأقل من دقيقة</string>
+    <string name="btn_another_exercise">تمرين آخر</string>
+
+    <string name="emoji_leaf">🌿</string>
     <string name="title_activity_future">FutureActivity</string>
 
     <string name="main_title">رسالة إلى نفسي</string>

@@ -47,6 +47,8 @@ public class HomeFragment extends Fragment {
         items.add(new HomeItem(4, "رسالة للمستقبل\nرسالة - FUTURE", R.drawable.home));
         items.add(new HomeItem(8, "العادات اليومية\nDaily Habits", R.drawable.home));
 
+        items.add(new HomeItem(6, "تمارين التأريض\nGROUNDING", R.drawable.home));
+
         // 2. إعداد الـ Adapter والتعامل مع التنقل عبر الـ Intent
         adapter = new HomeAdapter(items, item -> {
             Intent intent;
