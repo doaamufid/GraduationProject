@@ -9,6 +9,51 @@
     <string name="btn_adults">البالغون</string>
     <string name="btn_kids">الأطفال</string>
     <string name="title_select_kids">من سيلعب اليوم؟</string>
+    <string name="title_activity_future">FutureActivity</string>
+
+    <string name="main_title">رسالة إلى نفسي</string>
+    <string name="main_subtitle">رسالتك اليوم تسبح نحو يومك القادم</string>
+    <string name="empty_timeline">ما كتبت أي رسالة لنفسك بعد — اضغط + وابدأ أول رسالة</string>
+    <string name="arrived_label">وصلت</string>
+    <string name="days_left_format">%1$s يوم</string>
+
+    <string name="prev_messages_title">رسائل سابقة</string>
+    <string name="view_all">عرض الكل</string>
+    <string name="no_arrived_yet">لسا ما وصلتك أي رسالة</string>
+
+    <!-- Compose dialog -->
+    <string name="compose_title_new">رسالة جديدة لنفسي</string>
+    <string name="compose_title_edit">تعديل الرسالة</string>
+    <string name="compose_subtitle">اكتب الآن، تصلك في الوقت اللي تختاره</string>
+    <string name="compose_hint">وش تحب تقول لنفسك في المستقبل؟</string>
+    <string name="when_label">متى تحب تستلمها؟</string>
+    <string name="option_custom_date">تاريخ محدد</string>
+    <string name="option_week">أسبوع</string>
+    <string name="option_month">شهر</string>
+    <string name="option_3m">٣ أشهر</string>
+    <string name="option_year">سنة</string>
+    <string name="save_new">احفظ الرسالة وأغلقها</string>
+    <string name="save_edit">احفظ التعديلات</string>
+
+    <!-- Message detail -->
+    <string name="arrived_from_format">رسالة أرسلتها لنفسك %1$s</string>
+    <string name="close">إغلاق</string>
+    <string name="locked_title">هذي الرسالة لسا مقفلة</string>
+    <string name="locked_sub_format">بتوصلك بتاريخ %1$s — باقي %2$s يوم</string>
+
+    <!-- All messages screen -->
+    <string name="all_messages_title">كل رسائلي</string>
+    <string name="no_messages_yet">ما كتبت أي رسالة بعد</string>
+    <string name="locked_row_label">رسالة مقفلة — لسا ما جا وقتها</string>
+    <string name="arrived_on_format">وصلت بتاريخ %1$s</string>
+    <string name="due_on_format">توصلك بتاريخ %1$s · باقي %2$s يوم</string>
+    <string name="delete_action">حذف</string>
+    <string name="delete_confirm_action">اضغط للتأكيد</string>
+    <string name="edit_action">تعديل</string>
+
+    <string name="created_now">الآن</string>
+    <string name="status_bar_time">٩:٤١</string>
+</resources>
 
     <string name="main_title">عاداتي اليومية</string>
     <string name="main_sub">التزامك اليومي البسيط يصنع فرقاً</string>

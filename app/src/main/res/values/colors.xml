@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splash_bg">#E8F4FD</color>
-    <color name="wave_dark">#7BB8D4</color>
-    <color name="wave_mid">#A8CDE0</color>
-    <color name="wave_light">#C5DFF0</color>
-    <color name="text_dark">#2C5F7A</color>
-    <color name="text_subtitle">#7FA8BF</color>
-    <color name="btn_outline">#2C5F7A</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <!-- Main Palette from Screenshots -->
+    <color name="bg">#F8EFE4</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="border">#E8DCD0</color>
 
+    <color name="accent">#D35D4B</color>
+    <color name="accent_soft">#F2D8D5</color>
+
+    <color name="text_main">#42342A</color>
+    <color name="text_soft">#7D6E65</color>
+
+    <!-- Timeline / River colors -->
+    <color name="path_color">#D0E4D9</color>
+    <color name="path_dark">#A8C4B8</color>
+
+    <!-- Dialog / Input -->
+    <color name="input_bg">#F2EAE0</color>
+    <color name="scrim">#733B3025</color>
+    <color name="scrim_detail">#803B3025</color>
+
+    <!-- Keep existing for other parts if needed -->
+    <color name="splash_bg">#E8F4FD</color>
     <color name="onboarding_green_main">#51A285</color>
     <color name="onboarding_green_inactive">#BDBEC5</color>
 

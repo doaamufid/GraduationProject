@@ -70,11 +70,11 @@ public class HomeFragment extends Fragment {
 //                    intent = new Intent(requireActivity(), GrowthActivity.class);
 //                    startActivity(intent);
 //                    break;
-//                case 4:
-//                    // الانتقال إلى Activity رسالة للمستقبل
-//                    intent = new Intent(requireActivity(), FutureActivity.class);
-//                    startActivity(intent);
-//                    break;
+                case 7:
+                    // الانتقال إلى Activity رسالة للمستقبل
+                    intent = new Intent(requireActivity(), FutureActivity.class);
+                    startActivity(intent);
+                    break;
             }
         });
 
