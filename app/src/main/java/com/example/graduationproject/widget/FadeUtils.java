@@ -23,26 +23,6 @@ public final class FadeUtils {
                 .setInterpolator(new DecelerateInterpolator()).start();
     }
 
-    /** Generic fade-in-up animation. Alias for dialogFade. */
-    public static void fadeInUp(View view) {
-        dialogFade(view);
-    }
-
-    /** Alias for dialogFade used in grounding exercise end screen. */
-    public static void doneFade(View view) {
-        dialogFade(view);
-    }
-
-    /** Alias for screenFade used in grounding exercise steps. */
-    public static void stepFade(View view) {
-        screenFade(view);
-    }
-
-    /** Alias for reminderFade used for the note field. */
-    public static void noteFade(View view) {
-        reminderFade(view);
-    }
-
     /** .reminder-fade: 200ms plain fade. */
     public static void reminderFade(View view) {
         view.setAlpha(0f);
@@ -57,5 +37,64 @@ public final class FadeUtils {
         view.setTranslationX(12 * density);
         view.animate().alpha(1f).translationX(0f).setDuration(300)
                 .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** Sequence fade: 400ms fade + 15dp slide up from bottom. */
+    public static void fadeInUp(View view) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationY(15 * density);
+        view.animate().alpha(1f).translationY(0f).setDuration(400)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** .done-fade (from GroundingEx): 400ms fade + 20dp slide up. */
+    public static void doneFade(View view) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationY(20 * density);
+        view.animate().alpha(1f).translationY(0f).setDuration(400)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** .step-fade (from GroundingEx): 300ms fade + 15dp slide up. */
+    public static void stepFade(View view) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationY(15 * density);
+        view.animate().alpha(1f).translationY(0f).setDuration(300)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** .note-fade (from GroundingEx): 200ms quick fade. */
+    public static void noteFade(View view) {
+        view.setAlpha(0f);
+        view.animate().alpha(1f).setDuration(200)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** .reason-fade: 200ms fade + 10dp slide up. */
+    public static void reasonFade(View view) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationY(10 * density);
+        view.animate().alpha(1f).translationY(0f).setDuration(200)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** toast-in: 300ms fade + 20dp slide up. */
+    public static void toastIn(View view) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationY(20 * density);
+        view.animate().alpha(1f).translationY(0f).setDuration(300)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** toast-out: 300ms fade out. */
+    public static void toastOut(View view, Runnable onEnd) {
+        view.animate().alpha(0f).setDuration(300)
+                .setInterpolator(new DecelerateInterpolator())
+                .withEndAction(onEnd).start();
     }
 }
