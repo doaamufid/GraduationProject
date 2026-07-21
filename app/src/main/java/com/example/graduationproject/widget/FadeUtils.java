@@ -4,45 +4,38 @@ import android.view.View;
 import android.view.animation.DecelerateInterpolator;
 
 /**
- * Equivalent of the shared CSS entrance animations:
- *   .step-fade { animation: sfade .3s ease; }   from{opacity:0;translateY(6px)}  to{opacity:1;translateY(0)}
- *   .note-fade { animation: nfade .2s ease; }   from{opacity:0}                  to{opacity:1}
- *   .done-fade { animation: dfade .5s ease; }   from{opacity:0;translateY(10px)} to{opacity:1;translateY(0)}
+ * Equivalent of the shared entrance animations:
+ *   .dialog-fade  { animation: dfade .3s ease; } from{opacity:0;translateY(20px)} to{opacity:1;translateY(0)}
+ *   .reminder-fade{ animation: rfade .2s ease; } from{opacity:0} to{opacity:1}
+ *   .screen-fade  { animation: sfade .3s ease; } from{opacity:0;translateX(12px)} to{opacity:1;translateX(0)}
  */
 public final class FadeUtils {
 
     private FadeUtils() {
     }
 
-    /** .step-fade: 300ms fade + 6dp slide up. Used when moving to a new sense step. */
-    public static void stepFade(View view) {
-        fadeUp(view, 6, 300);
-    }
-
-    /** .done-fade: 500ms fade + 10dp slide up. Used for the final "you're back" screen. */
-    public static void doneFade(View view) {
-        fadeUp(view, 10, 500);
-    }
-
-    /** .note-fade: 200ms plain fade, no movement. Used when the optional note field appears. */
-    public static void noteFade(View view) {
-        view.setAlpha(0f);
-        view.animate()
-                .alpha(1f)
-                .setDuration(200)
-                .setInterpolator(new DecelerateInterpolator())
-                .start();
-    }
-
-    private static void fadeUp(View view, int dp, long durationMs) {
+    /** .dialog-fade: 300ms fade + 20dp slide up. */
+    public static void dialogFade(View view) {
         float density = view.getResources().getDisplayMetrics().density;
         view.setAlpha(0f);
-        view.setTranslationY(dp * density);
-        view.animate()
-                .alpha(1f)
-                .translationY(0f)
-                .setDuration(durationMs)
-                .setInterpolator(new DecelerateInterpolator())
-                .start();
+        view.setTranslationY(20 * density);
+        view.animate().alpha(1f).translationY(0f).setDuration(300)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** .reminder-fade: 200ms plain fade. */
+    public static void reminderFade(View view) {
+        view.setAlpha(0f);
+        view.animate().alpha(1f).setDuration(200)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** .screen-fade: 300ms fade + 12dp slide in from the (start) side. */
+    public static void screenFade(View view) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationX(12 * density);
+        view.animate().alpha(1f).translationX(0f).setDuration(300)
+                .setInterpolator(new DecelerateInterpolator()).start();
     }
 }

@@ -4,28 +4,23 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * Equivalent of:
- *   .tap-bounce:active { transform: scale(0.88); }
- *
- * Android has no ":active" pseudo-state, so we reproduce the same
- * "press down, spring back" feel with a plain touch listener that
- * scales the view down on ACTION_DOWN and animates it back to 1.0 on
- * ACTION_UP / ACTION_CANCEL. The view's own OnClickListener still
- * fires normally - this only adds the visual bounce.
+ * Equivalent of the various `:active { transform: scale(x) }` CSS rules
+ * used throughout the original (.icon-tap:active, .check-tap:active at
+ * 0.85, .habit-row:active at 0.99). Parameterized by press scale so one
+ * helper covers all three.
  */
 public final class TapBounce {
 
-    private static final float PRESSED_SCALE = 0.88f;
     private static final long DURATION_MS = 100;
 
     private TapBounce() {
     }
 
-    public static void attach(View view) {
+    public static void attach(View view, float pressedScale) {
         view.setOnTouchListener((v, event) -> {
             switch (event.getActionMasked()) {
                 case MotionEvent.ACTION_DOWN:
-                    v.animate().scaleX(PRESSED_SCALE).scaleY(PRESSED_SCALE).setDuration(DURATION_MS).start();
+                    v.animate().scaleX(pressedScale).scaleY(pressedScale).setDuration(DURATION_MS).start();
                     break;
                 case MotionEvent.ACTION_UP:
                 case MotionEvent.ACTION_CANCEL:
@@ -34,9 +29,7 @@ public final class TapBounce {
                 default:
                     break;
             }
-            // Returning false lets the touch event continue to be processed
-            // normally, so the existing OnClickListener still fires.
-            return false;
+            return false; // let the click listener still fire
         });
     }
 }

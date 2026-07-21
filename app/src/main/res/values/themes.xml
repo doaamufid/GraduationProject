@@ -1,11 +1,11 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <style name="Theme.GraduationProject" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">#FFFFFF</item>
-        <item name="colorPrimaryVariant">#FFFFFF</item>
-        <item name="android:colorBackground">#E8F4FC</item>
-        <item name="colorOnPrimary">#1A3A5C</item>
+        <item name="colorPrimary">@color/white</item>
+        <item name="colorPrimaryVariant">@color/white</item>
+        <item name="android:colorBackground">@color/bg</item>
+        <item name="colorOnPrimary">@color/text_main</item>
         <item name="materialButtonStyle">@style/OutlinedButtonStyle</item>
-        <item name="android:statusBarColor">#E8F4FC</item>
+        <item name="android:statusBarColor">@color/bg</item>
     </style>
 
     <style name="OutlinedButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
@@ -15,5 +15,39 @@
         <item name="strokeWidth">1dp</item>
         <item name="cornerRadius">8dp</item>
         <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="ThemeOverlay.FutureSelf.BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/FutureSelf.BottomSheetStyle</item>
+    </style>
+    <style name="FutureSelf.BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.FutureSelf.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+</resources>
+    <style name="Theme.graduationproject" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
+        <item name="android:textColorHint">@color/text_soft</item>
+    </style>
+
+    <style name="ThemeOverlay.DailyHabits.BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/DailyHabits.BottomSheetStyle</item>
+    </style>
+    <style name="DailyHabits.BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
     </style>
 </resources>
