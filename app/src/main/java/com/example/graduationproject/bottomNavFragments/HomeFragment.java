@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.ChatActivity;
+import com.example.graduationproject.DailyHabitsActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.SurvivalBoxActivity;
 import com.example.graduationproject.adapters.HomeAdapter;
@@ -45,11 +46,9 @@ public class HomeFragment extends Fragment {
         items.add(new HomeItem(2, "سجل المزاج\nتتبع - MOOD", R.drawable.home));
         items.add(new HomeItem(3, "شجرة التعافي\nنمو - GROWTH", R.drawable.home));
         items.add(new HomeItem(4, "رسالة للمستقبل\nرسالة - FUTURE", R.drawable.home));
-        items.add(new HomeItem(
-                5,
-                "صندوق النجاة\nSURVIVAL BOX",
-                R.drawable.bg_open_box_gradient
-        ));
+        items.add(new HomeItem(8, "العادات اليومية\nDaily Habits", R.drawable.home));
+
+        items.add(new HomeItem(6, "تمارين التأريض\nGROUNDING", R.drawable.home));
 
         // 2. إعداد الـ Adapter والتعامل مع التنقل عبر الـ Intent
         adapter = new HomeAdapter(items, item -> {
@@ -60,9 +59,8 @@ public class HomeFragment extends Fragment {
                     intent = new Intent(requireActivity(), ChatActivity.class);
                     startActivity(intent);
                     break;
-                case 5:
-                    // الانتقال إلى Activity صندوق النجاة
-                    intent = new Intent(requireActivity(), SurvivalBoxActivity.class);
+                    case 8:
+                    intent = new Intent(requireActivity(), DailyHabitsActivity.class);
                     startActivity(intent);
                     break;
 //                case 2:
@@ -75,11 +73,11 @@ public class HomeFragment extends Fragment {
 //                    intent = new Intent(requireActivity(), GrowthActivity.class);
 //                    startActivity(intent);
 //                    break;
-//                case 4:
-//                    // الانتقال إلى Activity رسالة للمستقبل
-//                    intent = new Intent(requireActivity(), FutureActivity.class);
-//                    startActivity(intent);
-//                    break;
+                case 7:
+                    // الانتقال إلى Activity رسالة للمستقبل
+                    intent = new Intent(requireActivity(), FutureActivity.class);
+                    startActivity(intent);
+                    break;
             }
         });
 

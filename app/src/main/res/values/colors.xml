@@ -1,21 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="splash_bg">#E8F4FD</color>
-    <color name="wave_dark">#7BB8D4</color>
-    <color name="wave_mid">#A8CDE0</color>
-    <color name="wave_light">#C5DFF0</color>
-    <color name="text_dark">#2C5F7A</color>
-    <color name="text_subtitle">#7FA8BF</color>
-    <color name="btn_outline">#2C5F7A</color>
     <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
 
-    <color name="purple_200">#FFBB86FC</color>
-    <color name="purple_500">#FF6200EE</color>
-    <color name="purple_700">#FF3700B3</color>
-    <color name="teal_200">#FF03DAC5</color>
-    <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <!-- Main Palette from Screenshots -->
+    <color name="bg">#F8EFE4</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="border">#E8DCD0</color>
 
+    <color name="accent">#D35D4B</color>
+    <color name="accent_soft">#F2D8D5</color>
+
+    <color name="text_main">#42342A</color>
+    <color name="text_soft">#7D6E65</color>
+
+    <!-- Timeline / River colors -->
+    <color name="path_color">#D0E4D9</color>
+    <color name="path_dark">#A8C4B8</color>
+
+    <!-- Dialog / Input -->
+    <color name="input_bg">#F2EAE0</color>
+    <color name="scrim">#733B3025</color>
+    <color name="scrim_detail">#803B3025</color>
+
+    <!-- Keep existing for other parts if needed -->
+    <color name="splash_bg">#E8F4FD</color>
     <color name="onboarding_green_main">#51A285</color>
     <color name="onboarding_green_inactive">#BDBEC5</color>
 
@@ -49,4 +58,24 @@
     <color name="red_record">#C97575</color>
     <color name="red_delete">#E39494</color>
     <color name="gold_star">#FFC94A</color>
+    <color name="bg">#F4F7FA</color>
+    <color name="bg_alt">#EAF0F6</color>
+    <color name="surface">#FFFFFF</color>
+    <color name="primary">#3A74B8</color>
+    <color name="primary_dark">#1F3A60</color>
+    <color name="sage">#8FA998</color>
+    <color name="green">#4CAF7D</color>
+    <color name="text_main">#1F3A60</color>
+    <color name="text_soft">#5C7290</color>
+    <color name="border">#DCE6EF</color>
+
+    <color name="primary_soft_18">#2E3A74B8</color>   <!-- primary + "18" (~9%) -->
+    <color name="primary_soft_15">#263A74B8</color>   <!-- primary + "15" -->
+    <color name="primary_soft_12">#1F3A74B8</color>   <!-- primary + "12" -->
+    <color name="primary_soft_33">#523A74B8</color>   <!-- primary + "33" (~20%) -->
+    <color name="white_alpha_20">#33FFFFFF</color>     <!-- #ffffff33 progress track -->
+    <color name="scrim">#591F3A60</color>              <!-- rgba(31,58,96,0.35) -->
+    <color name="scrim_dialog">#661F3A60</color>       <!-- rgba(31,58,96,0.4) -->
+
+
 </resources>

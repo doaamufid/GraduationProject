@@ -85,3 +85,98 @@
 
     <string name="status_bar_time">٩:٤١</string>
 </resources>
+    <string name="top_bar_label">تمارين التأريض</string>
+    <string name="progress_title">١-٢-٣-٤-٥</string>
+    <string name="progress_sub">أوقف القلق بالتركيز على الحاضر</string>
+    <string name="step_counter_format">خطوة %1$d من %2$d</string>
+
+    <string name="tapped_count_format">%1$d/%2$d — بس اضغطي كل ما لاحظتي شي</string>
+
+    <string name="add_note_toggle">أضف ملاحظة (اختياري تماماً)</string>
+    <string name="note_hint">اكتبي أي شي إذا حبيتي...</string>
+
+    <string name="breathing_reminder">خذي نفساً بين كل خطوة — شهيق ٤ث · زفير ٤ث · توقف ٤ث</string>
+
+    <string name="btn_next">التالي</string>
+    <string name="btn_finish">أنهِ التمرين</string>
+
+    <string name="done_title">رجعت لحاضرك</string>
+    <string name="done_sub_format">لاحظت %1$d تفاصيل حواليك — بأقل من دقيقة</string>
+    <string name="btn_another_exercise">تمرين آخر</string>
+
+    <string name="emoji_leaf">🌿</string>
+    <string name="title_activity_future">FutureActivity</string>
+
+    <string name="main_title">رسالة إلى نفسي</string>
+    <string name="main_subtitle">رسالتك اليوم تسبح نحو يومك القادم</string>
+    <string name="empty_timeline">ما كتبت أي رسالة لنفسك بعد — اضغط + وابدأ أول رسالة</string>
+    <string name="arrived_label">وصلت</string>
+    <string name="days_left_format">%1$s يوم</string>
+
+    <string name="prev_messages_title">رسائل سابقة</string>
+    <string name="view_all">عرض الكل</string>
+    <string name="no_arrived_yet">لسا ما وصلتك أي رسالة</string>
+
+    <!-- Compose dialog -->
+    <string name="compose_title_new">رسالة جديدة لنفسي</string>
+    <string name="compose_title_edit">تعديل الرسالة</string>
+    <string name="compose_subtitle">اكتب الآن، تصلك في الوقت اللي تختاره</string>
+    <string name="compose_hint">وش تحب تقول لنفسك في المستقبل؟</string>
+    <string name="when_label">متى تحب تستلمها؟</string>
+    <string name="option_custom_date">تاريخ محدد</string>
+    <string name="option_week">أسبوع</string>
+    <string name="option_month">شهر</string>
+    <string name="option_3m">٣ أشهر</string>
+    <string name="option_year">سنة</string>
+    <string name="save_new">احفظ الرسالة وأغلقها</string>
+    <string name="save_edit">احفظ التعديلات</string>
+
+    <!-- Message detail -->
+    <string name="arrived_from_format">رسالة أرسلتها لنفسك %1$s</string>
+    <string name="close">إغلاق</string>
+    <string name="locked_title">هذي الرسالة لسا مقفلة</string>
+    <string name="locked_sub_format">بتوصلك بتاريخ %1$s — باقي %2$s يوم</string>
+
+    <!-- All messages screen -->
+    <string name="all_messages_title">كل رسائلي</string>
+    <string name="no_messages_yet">ما كتبت أي رسالة بعد</string>
+    <string name="locked_row_label">رسالة مقفلة — لسا ما جا وقتها</string>
+    <string name="arrived_on_format">وصلت بتاريخ %1$s</string>
+    <string name="due_on_format">توصلك بتاريخ %1$s · باقي %2$s يوم</string>
+    <string name="delete_action">حذف</string>
+    <string name="delete_confirm_action">اضغط للتأكيد</string>
+    <string name="edit_action">تعديل</string>
+
+    <string name="created_now">الآن</string>
+    <string name="status_bar_time">٩:٤١</string>
+</resources>
+
+    <string name="main_title">عاداتي اليومية</string>
+    <string name="main_sub">التزامك اليومي البسيط يصنع فرقاً</string>
+    <string name="done_today_format">%1$d/%2$d</string>
+    <string name="completed_today">أكملنا اليوم</string>
+    <string name="suggest_habits">اقترح لي عادات ✨</string>
+    <string name="add_manually">أضف عادة يدوياً</string>
+    <string name="streak_format">%1$d يوم متتالي</string>
+
+    <!-- Habit dialog -->
+    <string name="habit_new_title">عادة جديدة</string>
+    <string name="habit_edit_title">تعديل العادة</string>
+    <string name="habit_name_hint">اسم العادة (مثال: شرب ماء كافي)</string>
+    <string name="choose_icon">اختر أيقونة</string>
+    <string name="daily_reminder">تذكير يومي</string>
+    <string name="reminder_notice_format">راح توصلك إشعار بالوقت اللي تختاره: "اذكري تشربي ٦ أكواب ماء اليوم"</string>
+    <string name="save_edits">حفظ التعديلات</string>
+    <string name="add_habit_btn">أضف العادة</string>
+
+    <!-- Time wheel -->
+    <string name="choose_time">اختر الوقت</string>
+    <string name="time_done">تم</string>
+
+    <!-- AI suggestions -->
+    <string name="ai_suggestions_title">اقتراحات ذكية لعاداتك</string>
+    <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
+    <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
+
+    <string name="status_bar_time">٩:٤١</string>
+</resources>
