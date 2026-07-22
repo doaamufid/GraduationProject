@@ -35,6 +35,12 @@ import com.example.graduationproject.models.HomeFeature;
 // import com.example.graduationproject.SafeBoxActivity;
 // import com.example.graduationproject.CalmActivity;
 // import com.example.graduationproject.VentChatActivity;
+import com.example.graduationproject.ChatActivity;
+import com.example.graduationproject.DailyHabitsActivity;
+import com.example.graduationproject.R;
+import com.example.graduationproject.SurvivalBoxActivity;
+import com.example.graduationproject.adapters.HomeAdapter;
+import com.example.graduationproject.models.HomeItem;
 
 import java.util.ArrayList;
 import java.util.List;

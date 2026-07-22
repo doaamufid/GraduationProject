@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@drawable/bg_app_gradient">
+
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_gravity="top|start"
+        android:layout_margin="20dp"
+        android:background="@drawable/bg_icon_circle_overlay"
+        android:src="@drawable/ic_close"
+        android:padding="9dp"
+        android:contentDescription="@null"/>
+
+    <!-- ===================== SEQUENTIAL STEP CONTENT ===================== -->
+    <LinearLayout
+        android:id="@+id/groupStep"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:paddingStart="32dp"
+        android:paddingEnd="32dp">
+
+        <!-- Photo step -->
+        <ImageView
+            android:id="@+id/ivStepPhoto"
+            android:layout_width="224dp"
+            android:layout_height="224dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_tile_overlay"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone"
+            android:contentDescription="@null"/>
+
+        <!-- Audio step -->
+        <FrameLayout
+            android:id="@+id/groupStepAudio"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginBottom="20dp"
+            android:visibility="gone">
+
+            <View
+                android:id="@+id/pulseRingCrisis"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_pulse_ring"
+                android:visibility="gone"/>
+
+            <View
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:layout_gravity="center"
+                android:background="@drawable/bg_icon_circle_primary"/>
+
+            <ImageView
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_play"
+                android:contentDescription="@null"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvStepText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/text_white"
+            tools:text="أنتِ أقوى مما تتخيلين"
+            android:layout_marginBottom="6dp"/>
+
+        <TextView
+            android:id="@+id/tvStepCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/text_soft"
+            android:textSize="11sp"
+            android:visibility="gone"
+            tools:text="يتشغّل الآن..."/>
+
+        <TextView
+            android:id="@+id/btnNext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="@string/crisis_next"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            android:background="@drawable/bg_pill_overlay"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
+            android:paddingTop="14dp"
+            android:paddingBottom="14dp"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <!-- ===================== DONE SCREEN ===================== -->
+    <LinearLayout
+        android:id="@+id/groupDone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/emoji_dove_crisis"
+            android:textSize="48sp"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crisis_done_title"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:layout_marginBottom="8dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/crisis_done_sub"
+            android:textColor="@color/text_soft"
+            android:textSize="13sp"
+            android:layout_marginBottom="32dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btnReplay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/crisis_replay"
+                android:textColor="@color/text_white"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:background="@drawable/bg_pill_overlay"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:layout_marginEnd="12dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/btnCloseDone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/crisis_close"
+                android:textColor="@color/text_white"
+                android:textStyle="bold"
+                android:textSize="12sp"
+                android:background="@drawable/bg_pill_primary"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp"
+                android:paddingTop="11dp"
+                android:paddingBottom="11dp"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

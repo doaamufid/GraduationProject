@@ -13,10 +13,16 @@ import java.util.List;
 
 public class SurvivalAdapter extends RecyclerView.Adapter<SurvivalAdapter.SurvivalViewHolder> {
 
-    private List<SurvivalItemModel> itemList;
+    public interface OnItemClickListener {
+        void onItemClick(int position);
+    }
 
-    public SurvivalAdapter(List<SurvivalItemModel> itemList) {
+    private List<SurvivalItemModel> itemList;
+    private OnItemClickListener listener;
+
+    public SurvivalAdapter(List<SurvivalItemModel> itemList, OnItemClickListener listener) {
         this.itemList = itemList;
+        this.listener = listener;
     }
 
     @NonNull
@@ -33,9 +39,16 @@ public class SurvivalAdapter extends RecyclerView.Adapter<SurvivalAdapter.Surviv
         holder.tvTitle.setText(item.getTitle());
         holder.btnAction.setText(item.getButtonText());
 
-        // الأكشن الخاص بالزر التفاعلي عند النقر
         holder.btnAction.setOnClickListener(v -> {
-            // ضعي هنا الأكشن المناسب لكل كارد
+            if (listener != null) {
+                listener.onItemClick(position);
+            }
+        });
+
+        holder.itemView.setOnClickListener(v -> {
+            if (listener != null) {
+                listener.onItemClick(position);
+            }
         });
     }
 

@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:background="@drawable/bg_sheet_top_rounded"
+    android:padding="20dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="start"
+            android:background="@android:color/transparent"
+            android:src="@drawable/ic_close"
+            android:contentDescription="@null"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/add_dhikr_title"
+            android:textColor="@color/text_white"
+            android:textStyle="bold"
+            android:textSize="14sp"/>
+    </FrameLayout>
+
+    <!-- Preset list mode -->
+    <LinearLayout
+        android:id="@+id/llPresetList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="4dp"/>
+
+    <TextView
+        android:id="@+id/tvWriteCustom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/write_custom"
+        android:textColor="@color/text_soft"
+        android:textSize="11sp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_marginBottom="12dp"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <!-- Custom mode -->
+    <EditText
+        android:id="@+id/edtCustom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_input"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="14dp"
+        android:hint="@string/custom_dhikr_hint"
+        android:textColor="@color/text_white"
+        android:textColorHint="@color/text_soft"
+        android:textSize="13sp"
+        android:gravity="end"
+        android:singleLine="true"
+        android:layout_marginBottom="12dp"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/tvBackToList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/back_to_list"
+        android:textColor="@color/text_soft"
+        android:textSize="11sp"
+        android:gravity="center"
+        android:padding="8dp"
+        android:layout_marginBottom="4dp"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"/>
+
+    <TextView
+        android:id="@+id/btnSave"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_pill_primary"
+        android:text="@string/save_and_close"
+        android:textColor="@color/text_white"
+        android:textStyle="bold"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:padding="14dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        android:focusable="true"/>
+
+</LinearLayout>

@@ -11,3 +11,175 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
+    <string name="title_select_kids">من سيلعب اليوم؟</string>
+
+    <string name="summary_title">صندوق الطوارئ</string>
+    <string name="summary_tag">SAFE SPACE · صندوق النجاة</string>
+    <string name="summary_headline">صندوق النجاة النفسي</string>
+    <string name="summary_sub">افتحه في لحظات الضيق الشديد</string>
+    <string name="open_box_title">افتح الصندوق الآن</string>
+    <string name="open_box_sub">عرض كل ما يريحك في ثانية واحدة</string>
+
+    <string name="cat_audio_tag">AUDIO · صوتي</string>
+    <string name="cat_audio_title">تسجيلات صوتية</string>
+    <string name="cat_photos_tag">PHOTOS · صور</string>
+    <string name="cat_photos_title">صور مريحة</string>
+    <string name="cat_love_tag">LOVE · محبة</string>
+    <string name="cat_love_title">رسائل محبة</string>
+    <string name="cat_dhikr_tag">DHIKR · ذكر</string>
+    <string name="cat_dhikr_title">أذكار مفضلة</string>
+    <string name="empty_category">لسا ما أضفت شي هنا</string>
+    <string name="count_messages">%1$d رسائل</string>
+    <string name="count_photos">%1$d صور</string>
+    <string name="count_dhikr">%1$d أذكار</string>
+
+    <!-- Browse -->
+    <string name="browse_audio_title">تسجيلات صوتية</string>
+    <string name="browse_photos_title">صور مريحة</string>
+    <string name="browse_love_title">رسائل محبة</string>
+    <string name="browse_dhikr_title">أذكار مفضلة</string>
+    <string name="empty_audio">لا تسجيلات بعد — اضغطي + لإضافة أول رسالة</string>
+    <string name="empty_photos">لا صور بعد — اضغطي + لإضافة أول صورة</string>
+    <string name="empty_love">لا رسائل بعد — اضغطي + لإضافة أول رسالة</string>
+    <string name="empty_dhikr">لا أذكار مفضلة بعد</string>
+    <string name="delete_action">حذف</string>
+    <string name="back_to_grid">رجوع للشبكة</string>
+    <string name="tag_self">من نفسي</string>
+    <string name="tag_other">من شخص أحبه</string>
+
+    <!-- Add audio dialog -->
+    <string name="add_audio_title">تسجيل رسالة صوتية</string>
+    <string name="tap_to_record">اضغط للبدء بالتسجيل</string>
+    <string name="recording_now_format">يسجل الآن... %1$s</string>
+    <string name="preview_recording_format">معاينة التسجيل · %1$s</string>
+    <string name="re_record">إعادة التسجيل</string>
+    <string name="audio_label_hint">عنوان الرسالة (مثال: من ماما)</string>
+    <string name="save_message">حفظ الرسالة</string>
+    <string name="default_audio_label">رسالة صوتية</string>
+
+    <!-- Add photo dialog -->
+    <string name="add_photo_title">إضافة صورة مريحة</string>
+    <string name="take_photo">التقط صورة</string>
+    <string name="from_gallery">من المعرض</string>
+    <string name="caption_hint">وصف قصير (اختياري)</string>
+    <string name="save_photo">حفظ الصورة</string>
+
+    <!-- Add love dialog -->
+    <string name="add_love_title">إضافة رسالة محبة</string>
+    <string name="love_text_hint">اكتب الرسالة هنا...</string>
+
+    <!-- Add dhikr dialog -->
+    <string name="add_dhikr_title">أذكار مفضلة</string>
+    <string name="custom_dhikr_hint">اكتب ذكرك الخاص</string>
+    <string name="write_custom">أو اكتب ذكرك الخاص</string>
+    <string name="back_to_list">رجوع للقائمة</string>
+    <string name="save_and_close">حفظ وإغلاق</string>
+
+    <!-- Crisis mode -->
+    <string name="crisis_calm_photo_fallback">خذ لحظة تتأمل هالصورة</string>
+    <string name="crisis_audio_playing">يتشغّل الآن...</string>
+    <string name="crisis_next">التالي ←</string>
+    <string name="crisis_done_title">أنت بخير الآن</string>
+    <string name="crisis_done_sub">خذ وقتك، أنت لست وحدك</string>
+    <string name="crisis_replay">أعد المرور</string>
+    <string name="crisis_close">إغلاق</string>
+    <string name="dhikr_emoji">📿</string>
+    <string name="emoji_dove_crisis">🕊️</string>
+
+    <string name="status_bar_time">٩:٤١</string>
+</resources>
+    <string name="top_bar_label">تمارين التأريض</string>
+    <string name="progress_title">١-٢-٣-٤-٥</string>
+    <string name="progress_sub">أوقف القلق بالتركيز على الحاضر</string>
+    <string name="step_counter_format">خطوة %1$d من %2$d</string>
+
+    <string name="tapped_count_format">%1$d/%2$d — بس اضغطي كل ما لاحظتي شي</string>
+
+    <string name="add_note_toggle">أضف ملاحظة (اختياري تماماً)</string>
+    <string name="note_hint">اكتبي أي شي إذا حبيتي...</string>
+
+    <string name="breathing_reminder">خذي نفساً بين كل خطوة — شهيق ٤ث · زفير ٤ث · توقف ٤ث</string>
+
+    <string name="btn_next">التالي</string>
+    <string name="btn_finish">أنهِ التمرين</string>
+
+    <string name="done_title">رجعت لحاضرك</string>
+    <string name="done_sub_format">لاحظت %1$d تفاصيل حواليك — بأقل من دقيقة</string>
+    <string name="btn_another_exercise">تمرين آخر</string>
+
+    <string name="emoji_leaf">🌿</string>
+    <string name="title_activity_future">FutureActivity</string>
+
+    <string name="main_title">رسالة إلى نفسي</string>
+    <string name="main_subtitle">رسالتك اليوم تسبح نحو يومك القادم</string>
+    <string name="empty_timeline">ما كتبت أي رسالة لنفسك بعد — اضغط + وابدأ أول رسالة</string>
+    <string name="arrived_label">وصلت</string>
+    <string name="days_left_format">%1$s يوم</string>
+
+    <string name="prev_messages_title">رسائل سابقة</string>
+    <string name="view_all">عرض الكل</string>
+    <string name="no_arrived_yet">لسا ما وصلتك أي رسالة</string>
+
+    <!-- Compose dialog -->
+    <string name="compose_title_new">رسالة جديدة لنفسي</string>
+    <string name="compose_title_edit">تعديل الرسالة</string>
+    <string name="compose_subtitle">اكتب الآن، تصلك في الوقت اللي تختاره</string>
+    <string name="compose_hint">وش تحب تقول لنفسك في المستقبل؟</string>
+    <string name="when_label">متى تحب تستلمها؟</string>
+    <string name="option_custom_date">تاريخ محدد</string>
+    <string name="option_week">أسبوع</string>
+    <string name="option_month">شهر</string>
+    <string name="option_3m">٣ أشهر</string>
+    <string name="option_year">سنة</string>
+    <string name="save_new">احفظ الرسالة وأغلقها</string>
+    <string name="save_edit">احفظ التعديلات</string>
+
+    <!-- Message detail -->
+    <string name="arrived_from_format">رسالة أرسلتها لنفسك %1$s</string>
+    <string name="close">إغلاق</string>
+    <string name="locked_title">هذي الرسالة لسا مقفلة</string>
+    <string name="locked_sub_format">بتوصلك بتاريخ %1$s — باقي %2$s يوم</string>
+
+    <!-- All messages screen -->
+    <string name="all_messages_title">كل رسائلي</string>
+    <string name="no_messages_yet">ما كتبت أي رسالة بعد</string>
+    <string name="locked_row_label">رسالة مقفلة — لسا ما جا وقتها</string>
+    <string name="arrived_on_format">وصلت بتاريخ %1$s</string>
+    <string name="due_on_format">توصلك بتاريخ %1$s · باقي %2$s يوم</string>
+    <string name="delete_action">حذف</string>
+    <string name="delete_confirm_action">اضغط للتأكيد</string>
+    <string name="edit_action">تعديل</string>
+
+    <string name="created_now">الآن</string>
+    <string name="status_bar_time">٩:٤١</string>
+</resources>
+
+    <string name="main_title">عاداتي اليومية</string>
+    <string name="main_sub">التزامك اليومي البسيط يصنع فرقاً</string>
+    <string name="done_today_format">%1$d/%2$d</string>
+    <string name="completed_today">أكملنا اليوم</string>
+    <string name="suggest_habits">اقترح لي عادات ✨</string>
+    <string name="add_manually">أضف عادة يدوياً</string>
+    <string name="streak_format">%1$d يوم متتالي</string>
+
+    <!-- Habit dialog -->
+    <string name="habit_new_title">عادة جديدة</string>
+    <string name="habit_edit_title">تعديل العادة</string>
+    <string name="habit_name_hint">اسم العادة (مثال: شرب ماء كافي)</string>
+    <string name="choose_icon">اختر أيقونة</string>
+    <string name="daily_reminder">تذكير يومي</string>
+    <string name="reminder_notice_format">راح توصلك إشعار بالوقت اللي تختاره: "اذكري تشربي ٦ أكواب ماء اليوم"</string>
+    <string name="save_edits">حفظ التعديلات</string>
+    <string name="add_habit_btn">أضف العادة</string>
+
+    <!-- Time wheel -->
+    <string name="choose_time">اختر الوقت</string>
+    <string name="time_done">تم</string>
+
+    <!-- AI suggestions -->
+    <string name="ai_suggestions_title">اقتراحات ذكية لعاداتك</string>
+    <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
+    <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
+
+    <string name="status_bar_time">٩:٤١</string>
+</resources>
