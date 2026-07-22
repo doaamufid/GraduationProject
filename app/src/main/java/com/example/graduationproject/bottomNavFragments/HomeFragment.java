@@ -23,6 +23,19 @@ import com.example.graduationproject.adapters.HomeFeatureAdapter;
 import com.example.graduationproject.models.HomeAction;
 import com.example.graduationproject.models.HomeFeature;
 
+// TODO: replace these with your real Activities
+// import com.example.graduationproject.VideosActivity;
+// import com.example.graduationproject.AudioActivity;
+// import com.example.graduationproject.MoodActivity;
+// import com.example.graduationproject.VentActivity;
+// import com.example.graduationproject.HabitsActivity;
+// import com.example.graduationproject.AzkarActivity;
+// import com.example.graduationproject.ReportsActivity;
+// import com.example.graduationproject.ExercisesActivity;
+// import com.example.graduationproject.SafeBoxActivity;
+// import com.example.graduationproject.CalmActivity;
+// import com.example.graduationproject.VentChatActivity;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -49,7 +62,7 @@ public class HomeFragment extends Fragment {
 //        TextView tvGreeting = view.findViewById(R.id.tvGreeting);
 //        SharedPreferences prefs = requireContext().getSharedPreferences("UserPrefs", android.content.Context.MODE_PRIVATE);
 //
-//// قراءة الاسم المسجل، وإذا كان فارغاً نضع القيمة الافتراضية "صديقي" لحماية الواجهة
+    //// قراءة الاسم المسجل، وإذا كان فارغاً نضع القيمة الافتراضية "صديقي" لحماية الواجهة
 //        String userName = prefs.getString("user_name", "");
 //        if (userName.trim().isEmpty()) {
 //            userName = "صديقي";
@@ -62,31 +75,31 @@ public class HomeFragment extends Fragment {
 //        setupActions();
 //        setupFeatures();
 //    }
-@Override
-public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-    super.onViewCreated(view, savedInstanceState);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-    rvActions = view.findViewById(R.id.rvActions);
-    rvFeatures = view.findViewById(R.id.rvFeatures);
+        rvActions = view.findViewById(R.id.rvActions);
+        rvFeatures = view.findViewById(R.id.rvFeatures);
 
-    // 1. ربط نص الترحيب من الواجهة
-    TextView tvGreeting = view.findViewById(R.id.tvGreeting);
+        // 1. ربط نص الترحيب من الواجهة
+        TextView tvGreeting = view.findViewById(R.id.tvGreeting);
 
-    // 2. قراءة الاسم من ملف تفضيلات المستخدم
-    SharedPreferences prefs = requireContext().getSharedPreferences("UserPrefs", android.content.Context.MODE_PRIVATE);
-    String userName = prefs.getString("user_name", "");
+        // 2. قراءة الاسم من ملف تفضيلات المستخدم
+        SharedPreferences prefs = requireContext().getSharedPreferences("UserPrefs", android.content.Context.MODE_PRIVATE);
+        String userName = prefs.getString("user_name", "");
 
-    // 3. المنطق الذكي: إذا ترك الحقل فارغاً (لأنه اختياري) نرحب به بـ "صديقي"
-    if (userName.trim().isEmpty()) {
-        userName = "صديقي";
+        // 3. المنطق الذكي: إذا ترك الحقل فارغاً (لأنه اختياري) نرحب به بـ "صديقي"
+        if (userName.trim().isEmpty()) {
+            userName = "صديقي";
+        }
+
+        // 4. عرض النص كاملاً ومنسقاً
+        tvGreeting.setText("صباح الخير " + userName + " كيف تشعر الآن؟\nأنا هنا معك 🌊");
+
+        setupActions();
+        setupFeatures();
     }
-
-    // 4. عرض النص كاملاً ومنسقاً
-    tvGreeting.setText("صباح الخير " + userName + " كيف تشعر الآن؟\nأنا هنا معك 🌊");
-
-    setupActions();
-    setupFeatures();
-}
 
     private void setupActions() {
         // تم الإبقاء على كارد "لحظة هدوء" فقط وحذف كارد "فضفضة"
