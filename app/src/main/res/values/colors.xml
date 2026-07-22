@@ -28,6 +28,19 @@
     <color name="onboarding_green_main">#51A285</color>
     <color name="onboarding_green_inactive">#BDBEC5</color>
 
+    <!-- ألوان خلفيات الأيقونات (مأخوذة بالتقريب من ألوان الفيجما) -->
+    <color name="icon_bg_blue">#D1E8FF</color>
+    <color name="calm_icon_bg">#E1F1FF</color>
+    <color name="icon_bg_green">#D4EDDA</color>
+    <color name="icon_bg_orange">#FFE8D6</color>
+    <color name="icon_bg_pink">#F8D7DA</color>
+    <color name="icon_bg_purple">#E2D9F3</color>
+    <color name="icon_bg_yellow">#FFF3CD</color>
+
+    <!-- ألوان النصوص داخل الكاردز -->
+    <color name="card_title">#1D3557</color>
+    <color name="card_subtitle">#7A8B9B</color>
+</resources>
 
 
     <!-- Gradient background -->

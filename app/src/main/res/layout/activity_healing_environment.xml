@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEF6FC"
+    android:background="#EEF8FC"
     android:layoutDirection="rtl"
     tools:context=".HealingEnvironmentActivity">
 
@@ -13,6 +13,7 @@
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:background="#FFFFFF"
         android:paddingHorizontal="20dp"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -20,570 +21,260 @@
             android:id="@+id/btnBack"
             android:layout_width="24dp"
             android:layout_height="24dp"
-            android:src="@android:drawable/ic_menu_revert"
+            android:src="@drawable/outline_arrow_forward_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="#2C3E50" />
+            app:tint="#2D587B" />
 
         <TextView
-            android:id="@+id/tvToolbarTitle"
+            android:id="@+id/tvHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="مساحة الهدوء"
-            android:textColor="#7F8C8D"
-            android:textSize="14sp"
+            android:textColor="#2D587B"
+            android:textSize="18sp"
+            android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <androidx.core.widget.NestedScrollView
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardMainPlayer"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeader"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigation">
+        android:layout_margin="16dp"
+        app:cardCornerRadius="24dp"
+        app:cardElevation="4dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvSelectTitle"
+        app:layout_constraintTop_toBottomOf="@+id/layoutHeader">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal"
-            android:paddingHorizontal="20dp"
-            android:paddingBottom="30dp">
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/imgCurrentBg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/video" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="#66000000" />
 
             <TextView
-                android:id="@+id/tvSubtitle"
+                android:id="@+id/tvCurrentTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:text="HEALING ENVIRONMENT"
-                android:textColor="#5D9CEC"
-                android:textSize="12sp"
+                android:layout_marginTop="24dp"
+                android:text="غابة هادئة"
+                android:textColor="#FFFFFF"
+                android:textSize="22sp"
                 android:textStyle="bold"
-                android:letterSpacing="0.1"/>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
-                android:id="@+id/tvEnvironmentTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:text="الغابة الهادئة"
-                android:textColor="#1F3A60"
-                android:textSize="32sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tvEnvironmentStatus"
+                android:id="@+id/tvCurrentSub"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="يعزف الآن • TRANQUIL FOREST"
-                android:textColor="#7FB0E8"
-                android:textSize="13sp" />
+                android:text="FOREST"
+                android:textColor="#E0E0E0"
+                android:textSize="12sp"
+                app:layout_constraintEnd_toEndOf="@+id/tvCurrentTitle"
+                app:layout_constraintStart_toStartOf="@+id/tvCurrentTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentTitle" />
 
             <LinearLayout
-                android:id="@+id/btnStatusTag"
+                android:id="@+id/layoutControls"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:backgroundTint="#6593C7"
-                android:orientation="horizontal"
-                android:paddingHorizontal="12dp"
-                android:paddingVertical="4dp">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="يعزف"
-                    android:textColor="#FFFFFF"
-                    android:textSize="11sp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="35dp"
-                android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:paddingHorizontal="10dp">
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:src="@android:drawable/ic_lock_silent_mode_off"
-                    app:tint="#6593C7"/>
-
-                <SeekBar
-                    android:id="@+id/seekBarVolume"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:max="100"
-                    android:progress="65"
-                    android:progressTint="#5A8EC8"
-                    android:thumbTint="#5A8EC8"/>
-
-                <TextView
-                    android:id="@+id/tvVolumePercentage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="65%"
-                    android:textColor="#5A8EC8"
-                    android:textSize="12sp"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                app:layout_constraintBottom_toTopOf="@+id/tvTimer"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvCurrentSub">
 
                 <ImageView
                     android:id="@+id/btnPrevious"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginEnd="20dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@android:drawable/ic_media_previous"
-                    android:padding="10dp"
-                    app:tint="#6593C7"/>
+                    app:tint="#FFFFFF" />
 
-                <ImageView
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/btnPlayPause"
-                    android:layout_width="75dp"
-                    android:layout_height="75dp"
-                    android:layout_marginHorizontal="16dp"
-                    android:background="@android:drawable/presence_audio_online"
-                    android:backgroundTint="#4A90E2"
-                    android:src="@android:drawable/ic_media_pause"
-                    android:padding="20dp"
-                    app:tint="#FFFFFF"/>
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="#FFFFFF"
+                    android:src="@android:drawable/ic_media_play"
+                    app:fabSize="normal"
+                    app:tint="#2D587B" />
 
                 <ImageView
                     android:id="@+id/btnNext"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="@android:drawable/screen_background_light_transparent"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
                     android:src="@android:drawable/ic_media_next"
-                    android:padding="10dp"
-                    app:tint="#6593C7"/>
+                    app:tint="#FFFFFF" />
             </LinearLayout>
 
             <TextView
                 android:id="@+id/tvTimer"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:text="٣٠ د • TIMER"
-                android:textColor="#6593C7"
-                android:textSize="12sp" />
+                android:layout_marginBottom="24dp"
+                android:text="متبقي 20:00 د"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="30dp"
-                android:scrollbars="none">
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal">
+    <TextView
+        android:id="@+id/tvSelectTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="8dp"
+        android:text="اختر البيئة المفضلة:"
+        android:textColor="#2D587B"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/rvEnvironments"
+        app:layout_constraintStart_toStartOf="parent" />
 
-                    <LinearLayout
-                        android:id="@+id/cardForest"
-                        android:layout_width="85dp"
-                        android:layout_height="110dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@android:drawable/dialog_holo_light_frame"
-                        android:backgroundTint="#52BE80"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp">
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@android:drawable/ic_menu_compass"
-                            app:tint="#FFFFFF"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="غابة هادئة"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="FOREST"
-                            android:textColor="#E8F8F5"
-                            android:textSize="9sp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/cardRain"
-                        android:layout_width="85dp"
-                        android:layout_height="110dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@android:drawable/dialog_holo_light_frame"
-                        android:backgroundTint="#5D6D7E"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp">
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@android:drawable/ic_menu_report_image"
-                            app:tint="#FFFFFF"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="مطر ليلي"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="NIGHT RAIN"
-                            android:textColor="#EAECEE"
-                            android:textSize="9sp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/cardMountain"
-                        android:layout_width="85dp"
-                        android:layout_height="110dp"
-                        android:layout_marginEnd="10dp"
-                        android:background="@android:drawable/dialog_holo_light_frame"
-                        android:backgroundTint="#DC7633"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp">
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@android:drawable/ic_menu_directions"
-                            app:tint="#FFFFFF"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="جبال"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="MOUNTAIN"
-                            android:textColor="#FBEEE6"
-                            android:textSize="9sp"/>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/cardBeach"
-                        android:layout_width="85dp"
-                        android:layout_height="110dp"
-                        android:background="@android:drawable/dialog_holo_light_frame"
-                        android:backgroundTint="#2E4053"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="8dp">
-                        <ImageView
-                            android:layout_width="32dp"
-                            android:layout_height="32dp"
-                            android:src="@android:drawable/ic_menu_slideshow"
-                            app:tint="#FFFFFF"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="8dp"
-                            android:text="شاطئ"
-                            android:textColor="#FFFFFF"
-                            android:textSize="12sp"
-                            android:textStyle="bold"/>
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="BEACH"
-                            android:textColor="#EAECEE"
-                            android:textSize="9sp"/>
-                    </LinearLayout>
-
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <TextView
-                android:id="@+id/tvLayersTitle"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="25dp"
-                android:gravity="start"
-                android:text="طبقات الصوت • LAYERS"
-                android:textColor="#7A93B0"
-                android:textSize="11sp"
-                android:textStyle="bold" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layerTrees"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:layout_marginTop="10dp"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:backgroundTint="#5A8EC808"
-                android:paddingHorizontal="16dp">
-
-                <ImageView
-                    android:id="@+id/imgLayerTreesIcon"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_menu_gallery"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="#2E86C1" />
-
-                <TextView
-                    android:id="@+id/tvLayerTreesTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="أصوات أشجار"
-                    android:textColor="#2C3E50"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/tvLayerTreesSub"
-                    app:layout_constraintStart_toEndOf="@id/imgLayerTreesIcon"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvLayerTreesSub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="TREES"
-                    android:textColor="#7F8C8D"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/tvLayerTreesTitle"
-                    app:layout_constraintTop_toBottomOf="@id/tvLayerTreesTitle" />
-
-                <Switch
-                    android:id="@+id/switchTrees"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:thumbTint="#3A74B8"
-                    android:trackTint="#3A74B8"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layerStream"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:backgroundTint="#5A8EC808"
-                android:paddingHorizontal="16dp">
-
-                <ImageView
-                    android:id="@+id/imgLayerStreamIcon"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_menu_gallery"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="#2E86C1" />
-
-                <TextView
-                    android:id="@+id/tvLayerStreamTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="جدول ماء"
-                    android:textColor="#2C3E50"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/tvLayerStreamSub"
-                    app:layout_constraintStart_toEndOf="@id/imgLayerStreamIcon"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvLayerStreamSub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="STREAM"
-                    android:textColor="#7F8C8D"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/tvLayerStreamTitle"
-                    app:layout_constraintTop_toBottomOf="@id/tvLayerStreamTitle" />
-
-                <Switch
-                    android:id="@+id/switchStream"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="true"
-                    android:thumbTint="#3A74B8"
-                    android:trackTint="#3A74B8"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/layerBirds"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:layout_marginTop="8dp"
-                android:background="@android:drawable/dialog_holo_light_frame"
-                android:backgroundTint="#5A8EC808"
-                android:paddingHorizontal="16dp">
-
-                <ImageView
-                    android:id="@+id/imgLayerBirdsIcon"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
-                    android:src="@android:drawable/ic_menu_gallery"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="#7F8C8D" />
-
-                <TextView
-                    android:id="@+id/tvLayerBirdsTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="طيور"
-                    android:textColor="#2C3E50"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/tvLayerBirdsSub"
-                    app:layout_constraintStart_toEndOf="@id/imgLayerBirdsIcon"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvLayerBirdsSub"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="BIRDS"
-                    android:textColor="#7F8C8D"
-                    android:textSize="11sp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/tvLayerBirdsTitle"
-                    app:layout_constraintTop_toBottomOf="@id/tvLayerBirdsTitle" />
-
-                <Switch
-                    android:id="@+id/switchBirds"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:checked="false"
-                    android:thumbTint="#3A74B8"
-                    android:trackTint="#3A74B8"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </LinearLayout>
-    </androidx.core.widget.NestedScrollView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvEnvironments"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:clipToPadding="false"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:layout_marginBottom="10dp"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/layoutTimerSelector"
+        tools:listitem="@layout/item_environment_card" />
 
     <LinearLayout
-        android:id="@+id/bottomNavigation"
+        android:id="@+id/layoutTimerSelector"
         android:layout_width="match_parent"
-        android:layout_height="65dp"
-        android:background="#FFFFFF"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center_vertical"
+        android:gravity="center"
+        android:layout_marginVertical="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/layoutVolumeControl">
+
+        <TextView
+            android:id="@+id/btnTime10"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/bg_timer_chip"
+            android:text="10 د"
+            android:textColor="#2D587B"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/btnTime20"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/bg_timer_chip_selected"
+            android:text="20 د"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/btnTime40"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:background="@drawable/bg_timer_chip"
+            android:text="40 د"
+            android:textColor="#2D587B"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:paddingHorizontal="24dp"
+            android:paddingVertical="8dp"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layoutVolumeControl"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginBottom="16dp"
+        android:background="#FFFFFF"
+        android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent">
 
-        <LinearLayout
-            android:id="@+id/navHome"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@android:drawable/ic_menu_myplaces"
-                app:tint="#BDC3C7"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="HOME"
-                android:textColor="#BDC3C7"
-                android:textSize="10sp"/>
-        </LinearLayout>
+        <ImageView
+            android:id="@+id/imgVolumeIcon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_lock_silent_mode_off"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#2D587B" />
 
-        <LinearLayout
-            android:id="@+id/navExercises"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@android:drawable/ic_menu_sort_by_size"
-                app:tint="#BDC3C7"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="تمارين"
-                android:textColor="#BDC3C7"
-                android:textSize="10sp"/>
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tvVolumeLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="مستوى الصوت العام"
+            android:textColor="#2D587B"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/imgVolumeIcon"
+            app:layout_constraintStart_toEndOf="@+id/imgVolumeIcon"
+            app:layout_constraintTop_toTopOf="@+id/imgVolumeIcon" />
 
-        <LinearLayout
-            android:id="@+id/navEnvironments"
+        <com.google.android.material.slider.Slider
+            android:id="@+id/sliderVolume"
             android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@android:drawable/ic_menu_compass"
-                app:tint="#4A90E2"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="بيئات"
-                android:textColor="#4A90E2"
-                android:textSize="10sp"
-                android:textStyle="bold"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/navProfile"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="22dp"
-                android:layout_height="22dp"
-                android:src="@android:drawable/ic_menu_agenda"
-                app:tint="#BDC3C7"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="أنا"
-                android:textColor="#BDC3C7"
-                android:textSize="10sp"/>
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:value="70.0"
+            android:valueFrom="0.0"
+            android:valueTo="100.0"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/tvVolumeLabel"
+            app:layout_constraintTop_toTopOf="parent"
+            app:thumbColor="#2D587B"
+            app:trackColorActive="#2D587B"
+            app:trackColorInactive="#D1E8F2" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
