@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/white_rounded_card"
+    android:padding="24dp"
+    android:layoutDirection="rtl">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#D1DCE5"
+        android:layout_marginBottom="16dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:text="إعدادات الجلسة"
+            android:textColor="#2D5B7B"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="نمط التنفس"
+        android:textColor="#99AAB5"
+        android:textSize="12sp"
+        android:layout_marginBottom="8dp"/>
+
+    <RelativeLayout
+        android:id="@+id/optionClassic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/imgCheckClassic">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="الكلاسيكي"
+                android:textColor="#2D5B7B"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="شهيق زفير هادئ وتلقائي بدون تعقيد"
+                android:textColor="#99AAB5"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgCheckClassic"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/check_24dp_274483_fill0_wght400_grad0_opsz24"
+            android:visibility="visible"
+            app:tint="#4A7EBB"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E1F1FF"
+        android:layout_marginVertical="4dp"/>
+
+    <RelativeLayout
+        android:id="@+id/optionSquare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?attr/selectableItemBackground">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_alignParentStart="true"
+            android:layout_toStartOf="@id/imgCheckSquare">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="التنفس المربع"
+                android:textColor="#2D5B7B"
+                android:textSize="15sp"
+                android:textStyle="bold"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="4 ثوان شهيق، 4 توقف، 4 زفير، 4 توقف لزيادة التركيز"
+                android:textColor="#99AAB5"
+                android:textSize="12sp"/>
+        </LinearLayout>
+
+        <!-- تم تغيير الأيقونة هنا لتصبح أيقونة الصح الافتراضية المتناسقة مع التصميم -->
+        <ImageView
+            android:id="@+id/imgCheckSquare"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerInParent="true"
+            android:src="@drawable/check_24dp_274483_fill0_wght400_grad0_opsz24"
+            android:visibility="gone"
+            app:tint="#4A7EBB"/>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#E1F1FF"
+        android:layout_marginVertical="12dp"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="8dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_centerVertical="true"
+            android:text="📳 اهتزاز متزامن مع النفس"
+            android:textColor="#2D5B7B"
+            android:textSize="14sp"
+            android:textStyle="bold"/>
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/switchVibration"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:checked="true"
+            app:useMaterialThemeColors="true"/>
+    </RelativeLayout>
+</LinearLayout>

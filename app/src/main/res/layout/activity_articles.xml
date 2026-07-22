@@ -1,47 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://tools.android.com/tools"
+    xmlns:tools1="http://schemas.android.com/tools"
     android:id="@+id/layoutMainRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#EEF6FC"
-    android:layoutDirection="rtl">
+    android:layoutDirection="rtl"
+    tools1:context=".ArticlesActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/layoutHeader"
-        android:layout_width="match_parent"
+    <!-- 1. خلفية الهيدر الموحد الجديد باللون الأبيض وبطول 56dp -->
+    <View
+        android:id="@+id/headerBackground"
+        android:layout_width="0dp"
         android:layout_height="56dp"
-        android:paddingHorizontal="16dp"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="#FFFFFF"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
-        <ImageView
-            android:id="@+id/btnBack"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/outline_arrow_forward_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+    <!-- 2. زر الرجوع في أقصى اليمين متناسق تماماً مع نظام RTL -->
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/outline_arrow_forward_24"
+        android:padding="4dp"
+        android:layout_marginEnd="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/headerBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/headerBackground" />
 
-        <TextView
-            android:id="@+id/tvToolbarTitle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="مساحة الهدوء"
-            android:textColor="#3A74B8"
-            android:textSize="13sp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    <!-- 3. عنوان الصفحة "مساحة الهدوء" في منتصف الهيدر تماماً بالمقاس واللون الموحد -->
+    <TextView
+        android:id="@+id/tvToolbarTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="مساحة الهدوء"
+        android:textColor="#2D5B7B"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="@+id/headerBackground"
+        app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
+    <!-- محتوى الصفحة يبدأ الآن تحت الهيدر الجديد مباشرة -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/nestedScrollViewLibrary"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeader"
+        app:layout_constraintTop_toBottomOf="@id/headerBackground"
         app:layout_constraintBottom_toBottomOf="parent">
 
         <LinearLayout
@@ -60,7 +71,7 @@
                 android:textSize="11sp"
                 android:textStyle="bold"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="8dp"/>
+                android:layout_marginTop="16dp"/>
 
             <TextView
                 android:id="@+id/tvLibraryMainTitle"

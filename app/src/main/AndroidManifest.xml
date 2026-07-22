@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -13,7 +14,13 @@
         android:theme="@style/Theme.GraduationProject">
         <activity
             android:name=".HealingEnvironmentActivity"
-            android:exported="false" />
+            android:exported="false">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
         <activity
             android:name=".CbtChatActivity"
             android:exported="false" />
@@ -40,19 +47,27 @@
             android:exported="false" />
         <activity
             android:name=".ArticlesActivity"
-            android:exported="false" />
+            android:exported="true" >
+
+        </activity>
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
         <activity
             android:name=".SplashActivity"
-            android:exported="false" />
+            android:exported="true" />
         <activity
             android:name=".OnBoardingActivity1"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".OnBoardingActivity2"
             android:exported="false"
@@ -60,17 +75,54 @@
         <activity
             android:name=".OnBoardingActivity3"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
-
-        </activity>
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".OnBoardingActivity4"
             android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".SplashSelectActivity"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
 
         </activity>
         <activity
-            android:name=".SplashSelectActivity"
+            android:name=".ExerciseTimerActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".MindfulnessQuotesActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
+        </activity>
+        <activity
+            android:name=".VisualContentActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
@@ -78,9 +130,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
     </application>
 
 </manifest>

@@ -8,4 +8,6 @@
     <string name="name_hint">اسمك أو اسم مستعار (اختياري)</string>
     <string name="btn_adults">البالغون</string>
     <string name="btn_kids">الأطفال</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
