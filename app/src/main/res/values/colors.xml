@@ -86,4 +86,12 @@
     <color name="scrim_blue">#591F3A60</color>              <!-- rgba(31,58,96,0.35) -->
     <color name="scrim_dialog">#661F3A60</color>       <!-- rgba(31,58,96,0.4) -->
 
+    <!-- Missing colors causing build failure -->
+    <color name="duration_badge_bg">#99000000</color>
+    <color name="red_dislike">#C97575</color>
+    <color name="video_bg">#000000</color>
+    <color name="sage_soft_18">#2E8FA998</color>
+    <color name="sage_border_44">#708FA998</color>
+    <color name="text_soft_white">#B3FFFFFF</color>
+
 </resources>

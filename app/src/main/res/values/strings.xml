@@ -178,4 +178,17 @@
     <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
     <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
 
+    <string name="library_title">محتوى مرئي</string>
+    <string name="library_sub">Listen · استمع</string>
+
+    <string name="player_title">يشغّل الآن</string>
+    <string name="why_suggested">ليش اقترحنا هذا لك؟</string>
+    <string name="feedback_question">شو رأيك بهذا المحتوى؟</string>
+    <string name="dislike_reason_title">وش السبب؟ (اختياري)</string>
+    <string name="continue_watching">استمر بالمشاهدة</string>
+
+    <string name="toast_like">سجّلنا إعجابك — بنقترح لك محتوى مشابه أكثر</string>
+    <string name="toast_dislike_reason">شكراً! هذا يساعدنا نحسّن اقتراحاتك القادمة</string>
+
 </resources>
+
