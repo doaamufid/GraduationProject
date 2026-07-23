@@ -6,6 +6,9 @@
         <item name="colorOnPrimary">@color/text_main</item>
         <item name="materialButtonStyle">@style/OutlinedButtonStyle</item>
         <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
     </style>
 
     <style name="OutlinedButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
@@ -42,7 +45,7 @@
         <item name="android:windowIsFloating">true</item>
     </style>
 
-    <style name="Theme.graduationproject" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <style name="Theme.graduationproject_alt" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="colorPrimary">@color/primary</item>
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/primary</item>

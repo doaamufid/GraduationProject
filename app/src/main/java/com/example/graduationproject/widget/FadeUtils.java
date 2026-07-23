@@ -23,6 +23,26 @@ public final class FadeUtils {
                 .setInterpolator(new DecelerateInterpolator()).start();
     }
 
+    /** Generic fade-in-up animation. Alias for dialogFade. */
+    public static void fadeInUp(View view) {
+        dialogFade(view);
+    }
+
+    /** Alias for dialogFade used in grounding exercise end screen. */
+    public static void doneFade(View view) {
+        dialogFade(view);
+    }
+
+    /** Alias for screenFade used in grounding exercise steps. */
+    public static void stepFade(View view) {
+        screenFade(view);
+    }
+
+    /** Alias for reminderFade used for the note field. */
+    public static void noteFade(View view) {
+        reminderFade(view);
+    }
+
     /** .reminder-fade: 200ms plain fade. */
     public static void reminderFade(View view) {
         view.setAlpha(0f);

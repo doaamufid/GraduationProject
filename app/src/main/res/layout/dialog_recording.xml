@@ -33,10 +33,9 @@
         android:id="@+id/tv_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
         android:text="٠:٠٠"
-        android:textColor="#4B2D24"
-        android:textSize="20sp"
+        android:textColor="#3D291F"
+        android:textSize="18sp"
         android:textStyle="bold" />
 
     <TextView

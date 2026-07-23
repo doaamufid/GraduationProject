@@ -1,18 +1,43 @@
 package com.example.graduationproject.bottomNavFragments;
+
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
+
+import com.example.graduationproject.HealingEnvironmentActivity;
+import com.example.graduationproject.R;
+import com.example.graduationproject.VisualContentActivity;
+import com.example.graduationproject.adapters.HomeActionAdapter;
+import com.example.graduationproject.adapters.HomeFeatureAdapter;
+import com.example.graduationproject.models.HomeAction;
+import com.example.graduationproject.models.HomeFeature;
+
+// TODO: replace these with your real Activities
+// import com.example.graduationproject.VideosActivity;
+// import com.example.graduationproject.AudioActivity;
+// import com.example.graduationproject.MoodActivity;
+// import com.example.graduationproject.VentActivity;
+// import com.example.graduationproject.HabitsActivity;
+// import com.example.graduationproject.AzkarActivity;
+// import com.example.graduationproject.ReportsActivity;
+// import com.example.graduationproject.ExercisesActivity;
+// import com.example.graduationproject.SafeBoxActivity;
+// import com.example.graduationproject.CalmActivity;
+// import com.example.graduationproject.VentChatActivity;
+import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.ChatActivity;
 import com.example.graduationproject.DailyHabitsActivity;
-import com.example.graduationproject.FutureActivity;
-import com.example.graduationproject.R;
 import com.example.graduationproject.SurvivalBoxActivity;
 import com.example.graduationproject.adapters.HomeAdapter;
 import com.example.graduationproject.models.HomeItem;
@@ -20,134 +45,140 @@ import com.example.graduationproject.models.HomeItem;
 import java.util.ArrayList;
 import java.util.List;
 
-
-import android.content.Intent;
-
 public class HomeFragment extends Fragment {
 
-    private RecyclerView rvDashboard;
-    private HomeAdapter adapter;
+    private RecyclerView rvActions, rvFeatures;
+    private HomeActionAdapter actionAdapter;
+    private HomeFeatureAdapter featureAdapter;
+
+    private final List<HomeAction> actionList = new ArrayList<>();
+    private final List<HomeFeature> featureList = new ArrayList<>();
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        rvDashboard = view.findViewById(R.id.rvDashboard);
-
-        setupRecyclerView();
-
-        return view;
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
+                             @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_home, container, false);
     }
 
-    private void setupRecyclerView() {
-        // 1. تجهيز قائمة البيانات
-        List<HomeItem> items = new ArrayList<>();
-        items.add(new HomeItem(1, "رفيق سلام\nمحادثة - CHAT", R.drawable.ic_drop));
-        items.add(new HomeItem(2, "سجل المزاج\nتتبع - MOOD", R.drawable.home));
-        items.add(new HomeItem(3, "شجرة التعافي\nنمو - GROWTH", R.drawable.home));
-        items.add(new HomeItem(4, "رسالة للمستقبل\nرسالة - FUTURE", R.drawable.home));
-        items.add(new HomeItem(8, "العادات اليومية\nDaily Habits", R.drawable.home));
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//// داخل onViewCreated في HomeFragment.java
+//        TextView tvGreeting = view.findViewById(R.id.tvGreeting);
+//        SharedPreferences prefs = requireContext().getSharedPreferences("UserPrefs", android.content.Context.MODE_PRIVATE);
+//
+    //// قراءة الاسم المسجل، وإذا كان فارغاً نضع القيمة الافتراضية "صديقي" لحماية الواجهة
+//        String userName = prefs.getString("user_name", "");
+//        if (userName.trim().isEmpty()) {
+//            userName = "صديقي";
+//        }
+//
+//        tvGreeting.setText("صباح الخير " + userName + " كيف تشعر الآن؟\nأنا هنا معك 🌊");
+//        rvActions = view.findViewById(R.id.rvActions);
+//        rvFeatures = view.findViewById(R.id.rvFeatures);
+//
+//        setupActions();
+//        setupFeatures();
+//    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-        items.add(new HomeItem(6, "تمارين التأريض\nGROUNDING", R.drawable.home));
+        rvActions = view.findViewById(R.id.rvActions);
+        rvFeatures = view.findViewById(R.id.rvFeatures);
 
-        // 2. إعداد الـ Adapter والتعامل مع التنقل عبر الـ Intent
-        adapter = new HomeAdapter(items, item -> {
-            Intent intent;
-            switch (item.getId()) {
-                case 1:
-                    // الانتقال إلى Activity المحادثة
-                    intent = new Intent(requireActivity(), ChatActivity.class);
-                    startActivity(intent);
-                    break;
-                    case 8:
-                    intent = new Intent(requireActivity(), DailyHabitsActivity.class);
-                    startActivity(intent);
-                    break;
-//                case 2:
-//                    // الانتقال إلى Activity سجل المزاج
-//                    intent = new Intent(requireActivity(), MoodLogActivity.class);
-//                    startActivity(intent);
-//                    break;
-//                case 3:
-//                    // الانتقال إلى Activity شجرة التعافي
-//                    intent = new Intent(requireActivity(), GrowthActivity.class);
-//                    startActivity(intent);
-//                    break;
-                case 7:
-                    // الانتقال إلى Activity رسالة للمستقبل
-                    intent = new Intent(requireActivity(), FutureActivity.class);
-                    startActivity(intent);
+        // 1. ربط نص الترحيب من الواجهة
+        TextView tvGreeting = view.findViewById(R.id.tvGreeting);
+
+        // 2. قراءة الاسم من ملف تفضيلات المستخدم
+        SharedPreferences prefs = requireContext().getSharedPreferences("UserPrefs", android.content.Context.MODE_PRIVATE);
+        String userName = prefs.getString("user_name", "");
+
+        // 3. المنطق الذكي: إذا ترك الحقل فارغاً (لأنه اختياري) نرحب به بـ "صديقي"
+        if (userName.trim().isEmpty()) {
+            userName = "صديقي";
+        }
+
+        // 4. عرض النص كاملاً ومنسقاً
+        tvGreeting.setText("صباح الخير " + userName + " كيف تشعر الآن؟\nأنا هنا معك 🌊");
+
+        setupActions();
+        setupFeatures();
+    }
+
+    private void setupActions() {
+        actionList.clear();
+        // كارد "لحظة هدوء"
+        actionList.add(new HomeAction(
+                R.drawable.calm,
+                R.drawable.bg_icon_calm,
+                "لحظة هدوء - One-Click Calm",
+                "تنفس، تأريض، ذكر"
+        ));
+
+        actionAdapter = new HomeActionAdapter(requireContext(), actionList, position -> {
+            switch (position) {
+                case 0:
+                    startActivity(new Intent(getActivity(), BreathingActivity.class));
                     break;
             }
         });
 
-        // 3. ضبط الـ LayoutManager ليعرض العناصر كشبكة (Grid) من عمودين
-        rvDashboard.setLayoutManager(new GridLayoutManager(getContext(), 2));
-        rvDashboard.setAdapter(adapter);
+        rvActions.setLayoutManager(new LinearLayoutManager(requireContext()));
+        rvActions.setAdapter(actionAdapter);
     }
+
+    private void setupFeatures() {
+        // 1. مرئيات (Index 0)
+        featureList.add(new HomeFeature(R.drawable.video, R.drawable.bg_icon_purple,
+                "مرئيات", "VIDEOS"));
+
+        // 2. صوتيات (Index 1)
+        featureList.add(new HomeFeature(R.drawable.audio, R.drawable.bg_icon_green,
+                "صوتيات", "AUDIO"));
+
+        // 3. مزاجي (Index 2)
+        featureList.add(new HomeFeature(R.drawable.mood, R.drawable.bg_icon_pink,
+                "مزاجي", "MOOD"));
+
+        // 4. عاداتي (Index 3)
+        featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange,
+                "عاداتي", "HABITS"));
+
+        // 5. تقارير (Index 4)
+        featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue,
+                "تقارير", "REPORTS"));
+
+        // 6. صندوقي (Index 5)
+        featureList.add(new HomeFeature(R.drawable.box2, R.drawable.bg_icon_purple,
+                "صندوقي", "SAFE BOX"));
+
+        featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
+            switch (position) {
+                case 0: // مرئيات
+                    startActivity(new Intent(getActivity(), VisualContentActivity.class));
+                    break;
+                case 1: // صوتيات
+                    startActivity(new Intent(getActivity(), HealingEnvironmentActivity.class));
+                    break;
+                case 2: // مزاجي
+                    // startActivity(new Intent(getActivity(), MoodActivity.class));
+                    break;
+                case 3: // عاداتي
+                    startActivity(new Intent(getActivity(), DailyHabitsActivity.class));
+                    break;
+                case 4: // تقارير
+                    // startActivity(new Intent(getActivity(), ReportsActivity.class));
+                    break;
+                case 5: // صندوقي
+                    startActivity(new Intent(getActivity(), SurvivalBoxActivity.class));
+                    break;
+            }
+        });
+
+        rvFeatures.setLayoutManager(new GridLayoutManager(requireContext(), 3));
+        rvFeatures.setAdapter(featureAdapter);
+    }
+
 }
-//import android.os.Bundle;
-//
-//import androidx.fragment.app.Fragment;
-//
-//import android.view.LayoutInflater;
-//import android.view.View;
-//import android.view.ViewGroup;
-//
-//import com.example.graduationproject.R;
-//
-///**
-// * A simple {@link Fragment} subclass.
-// * Use the {@link HomeFragment#newInstance} factory method to
-// * create an instance of this fragment.
-// */
-//public class HomeFragment extends Fragment {
-//
-//    // TODO: Rename parameter arguments, choose names that match
-//    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-//    private static final String ARG_PARAM1 = "param1";
-//    private static final String ARG_PARAM2 = "param2";
-//
-//    // TODO: Rename and change types of parameters
-//    private String mParam1;
-//    private String mParam2;
-//
-//    public HomeFragment() {
-//        // Required empty public constructor
-//    }
-//
-//    /**
-//     * Use this factory method to create a new instance of
-//     * this fragment using the provided parameters.
-//     *
-//     * @param param1 Parameter 1.
-//     * @param param2 Parameter 2.
-//     * @return A new instance of fragment HomeFragment.
-//     */
-//    // TODO: Rename and change types and number of parameters
-//    public static HomeFragment newInstance(String param1, String param2) {
-//        HomeFragment fragment = new HomeFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
-//        return fragment;
-//    }
-//
-//    @Override
-//    public void onCreate(Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-//        }
-//    }
-//
-//    @Override
-//    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-//                             Bundle savedInstanceState) {
-//        // Inflate the layout for this fragment
-//        return inflater.inflate(R.layout.fragment_home, container, false);
-//    }
-//}

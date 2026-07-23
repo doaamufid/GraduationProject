@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ripple xmlns:android="http://schemas.android.com/apk/res/android"
+    android:color="#403A6898"> <!-- تأثير مائي خفيف عند النقر -->
+    <item>
+        <shape android:shape="oval">
+            <solid android:color="#263A6898" /> <!-- لون الدائرة الشفاف (نفس الفيجما) -->
+            <stroke
+                android:width="2dp"
+                android:color="#3A6898" /> <!-- إطار الدائرة الخارجي -->
+            <size android:width="24dp" android:height="24dp"/>
+        </shape>
+    </item>
+</ripple>

@@ -8,17 +8,17 @@
 
     <item
         android:id="@+id/nav_exercises"
-        android:icon="@drawable/circle_outer"
+        android:icon="@drawable/heartbeat_solid"
         android:title="تمارين" />
 
     <item
-        android:id="@+id/nav_stats"
-        android:icon="@drawable/input_bg"
-        android:title="إحصاء" />
+        android:id="@+id/nav_friend"
+        android:icon="@drawable/chat_circle_dots_fill"
+        android:title="رفيقي" />
 
     <item
         android:id="@+id/nav_profile"
-        android:icon="@drawable/wave_layer1"
+        android:icon="@drawable/user_circle_bold"
         android:title="أنا" />
 
 </menu>

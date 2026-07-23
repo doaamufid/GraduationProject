@@ -44,8 +44,9 @@ public class KidsAiChatActivity extends AppCompatActivity {
             int minutes = secondsRecorded / 60;
             int secs = secondsRecorded % 60;
             if (sheetBinding != null) {
-                Locale arLocale = new Locale("ar");
-                sheetBinding.tvTimer.setText(String.format(arLocale, "%d:%02d", minutes, secs));
+                // تعديل التحديث لربطه بالـ sheetBinding وتنسيق الوقت بالعربي
+                String formattedTime = String.format(new Locale("ar"), "%02d:%02d", minutes, secs);
+                sheetBinding.tvTimer.setText(formattedTime);
             }
             timerHandler.postDelayed(this, 1000);
         }
@@ -99,11 +100,6 @@ public class KidsAiChatActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onBackPressed() {
-        handleBackNavigation();
-    }
-
     private void checkPermissionAndShowRecordingSheet() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO_PERMISSION);
@@ -134,7 +130,13 @@ public class KidsAiChatActivity extends AppCompatActivity {
     }
 
     private void startAudioRecording() {
-        audioFilePath = getExternalCacheDir().getAbsolutePath() + "/kid_speech.3gp";
+        File cacheDir = getExternalCacheDir();
+        if (cacheDir != null) {
+            audioFilePath = cacheDir.getAbsolutePath() + "/kid_speech.3gp";
+        } else {
+            audioFilePath = getCacheDir().getAbsolutePath() + "/kid_speech.3gp";
+        }
+
         mediaRecorder = new MediaRecorder();
         mediaRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mediaRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
@@ -145,6 +147,9 @@ public class KidsAiChatActivity extends AppCompatActivity {
             mediaRecorder.prepare();
             mediaRecorder.start();
             secondsRecorded = 0;
+            if (sheetBinding != null) {
+                sheetBinding.tvTimer.setText("٠٠:٠٠");
+            }
             startTimer();
         } catch (IOException e) {
             e.printStackTrace();
@@ -165,7 +170,7 @@ public class KidsAiChatActivity extends AppCompatActivity {
             mediaRecorder.release();
             mediaRecorder = null;
 
-            if (processWithAi) {
+            if (processWithAi && audioFilePath != null) {
                 File audioFile = new File(audioFilePath);
                 sendAudioToAi(audioFile);
             }

@@ -12,20 +12,28 @@ import android.widget.TextView;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.graduationproject.R;
 import com.example.graduationproject.models.Sense;
 import com.example.graduationproject.models.SenseRepository;
+import com.example.graduationproject.widget.FadeUtils;
 import com.example.graduationproject.widget.ProgressBarAnimator;
+import com.example.graduationproject.widget.TapBounce;
 
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * Full Java/Android port of the "GroundingStandaloneScreen" React component
+ * (the 5-4-3-2-1 grounding exercise). State fields below map 1:1 to the
+ * useState hooks in the original file.
+ */
 public class GroundingExActivity extends AppCompatActivity {
 
     // ------- data -------
     private List<Sense> senses;
 
-    // ------- state -------
+    // ------- state (mirrors the React useState hooks) -------
     private int stepIdx = 0;
     private final Map<String, boolean[]> filled = new HashMap<>();
     private final Map<String, String> notes = new HashMap<>();
@@ -81,6 +89,7 @@ public class GroundingExActivity extends AppCompatActivity {
 
     private void setListeners() {
         btnNext.setOnClickListener(v -> goNext());
+        TapBounce.attach(btnNext);
 
         btnToggleNote.setOnClickListener(v -> {
             noteOpen = !noteOpen;
@@ -91,20 +100,21 @@ public class GroundingExActivity extends AppCompatActivity {
             resetState();
             renderAll(true);
         });
+        TapBounce.attach(btnAnother);
 
         edtNote.addTextChangedListener(new android.text.TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (stepIdx < senses.size()) {
-                    notes.put(currentSense().key, s.toString());
-                }
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
 
             @Override
-            public void afterTextChanged(android.text.Editable s) {}
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                notes.put(currentSense().key, s.toString());
+            }
+
+            @Override
+            public void afterTextChanged(android.text.Editable s) {
+            }
         });
     }
 
@@ -137,6 +147,12 @@ public class GroundingExActivity extends AppCompatActivity {
         return total;
     }
 
+    private int overallTotal() {
+        int total = 0;
+        for (boolean[] arr : filled.values()) total += arr.length;
+        return total;
+    }
+
     private void toggleTap(int i) {
         boolean[] arr = filled.get(currentSense().key);
         arr[i] = !arr[i];
@@ -159,8 +175,7 @@ public class GroundingExActivity extends AppCompatActivity {
 
         if (done) {
             tvDoneSub.setText(getString(R.string.done_sub_format, overallTapped()));
-            groupDone.setAlpha(0f);
-            groupDone.animate().alpha(1f).setDuration(300).start();
+            FadeUtils.doneFade(groupDone);
             return;
         }
 
@@ -180,12 +195,13 @@ public class GroundingExActivity extends AppCompatActivity {
         tvNextLabel.setText(stepIdx < senses.size() - 1
                 ? getString(R.string.btn_next) : getString(R.string.btn_finish));
 
+        // Note field always collapses back to closed when moving to a new step
+        // (matches `setNoteOpen(false)` inside `goNext()`).
         edtNote.setText(notes.get(step.key));
         renderNoteToggle();
 
         if (animateStep) {
-            groupStep.setAlpha(0f);
-            groupStep.animate().alpha(1f).setDuration(250).start();
+            FadeUtils.stepFade(groupStep);
         }
     }
 
@@ -212,6 +228,7 @@ public class GroundingExActivity extends AppCompatActivity {
         }
     }
 
+    /** (Re)builds the row of tap squares for the current step - count varies per sense. */
     private void buildTapCounter(Sense step) {
         llTapCounter.removeAllViews();
         int sizePx = dp(56);
@@ -233,11 +250,13 @@ public class GroundingExActivity extends AppCompatActivity {
             square.setTag(index);
 
             square.setOnClickListener(v -> toggleTap(index));
+            TapBounce.attach(square, 0.85f);
 
             llTapCounter.addView(square);
         }
     }
 
+    /** Refreshes the fill state + numbers of the already-built tap squares. */
     private void renderTapCounter() {
         Sense step = currentSense();
         boolean[] arr = filled.get(step.key);
@@ -250,7 +269,7 @@ public class GroundingExActivity extends AppCompatActivity {
 
             if (isFilled) {
                 square.setBackgroundResource(R.drawable.bg_tap_filled);
-                square.setText("\u2713");
+                square.setText("\u2713"); // checkmark glyph, matches the <Check/> icon state
                 square.setTextColor(getResources().getColor(R.color.surface));
             } else {
                 square.setBackgroundResource(R.drawable.bg_tap_unfilled);
@@ -268,8 +287,7 @@ public class GroundingExActivity extends AppCompatActivity {
 
         if (noteOpen) {
             edtNote.setVisibility(View.VISIBLE);
-            edtNote.setAlpha(0f);
-            edtNote.animate().alpha(1f).setDuration(200).start();
+            FadeUtils.noteFade(edtNote);
         } else {
             edtNote.setVisibility(View.GONE);
         }

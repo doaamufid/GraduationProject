@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">salam</string>
 
@@ -9,9 +8,11 @@
     <string name="name_hint">اسمك أو اسم مستعار (اختياري)</string>
     <string name="btn_adults">البالغون</string>
     <string name="btn_kids">الأطفال</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
     <string name="title_select_kids">من سيلعب اليوم؟</string>
 
-    <!-- صندوق الطوارئ والنجاة -->
     <string name="summary_title">صندوق الطوارئ</string>
     <string name="summary_tag">SAFE SPACE · صندوق النجاة</string>
     <string name="summary_headline">صندوق النجاة النفسي</string>
@@ -87,7 +88,6 @@
 
     <string name="status_bar_time">٩:٤١</string>
 
-    <!-- Grounding -->
     <string name="top_bar_label">تمارين التأريض</string>
     <string name="progress_title">١-٢-٣-٤-٥</string>
     <string name="progress_sub">أوقف القلق بالتركيز على الحاضر</string>
@@ -110,9 +110,8 @@
     <string name="emoji_leaf">🌿</string>
     <string name="title_activity_future">FutureActivity</string>
 
-    <!-- Future Self -->
-    <string name="main_title">رسالة إلى نفسي</string>
-    <string name="main_subtitle">رسالتك اليوم تسبح نحو يومك القادم</string>
+    <string name="main_title_future">رسالة إلى نفسي</string>
+    <string name="main_subtitle_future">رسالتك اليوم تسبح نحو يومك القادم</string>
     <string name="empty_timeline">ما كتبت أي رسالة لنفسك بعد — اضغط + وابدأ أول رسالة</string>
     <string name="arrived_label">وصلت</string>
     <string name="days_left_format">%1$s يوم</string>
@@ -137,7 +136,7 @@
 
     <!-- Message detail -->
     <string name="arrived_from_format">رسالة أرسلتها لنفسك %1$s</string>
-    <string name="close">إغلاق</string>
+    <string name="close_action">إغلاق</string>
     <string name="locked_title">هذي الرسالة لسا مقفلة</string>
     <string name="locked_sub_format">بتوصلك بتاريخ %1$s — باقي %2$s يوم</string>
 
@@ -152,9 +151,8 @@
 
     <string name="created_now">الآن</string>
 
-    <!-- Daily Habits -->
-    <string name="habits_main_title">عاداتي اليومية</string>
-    <string name="main_sub">التزامك اليومي البسيط يصنع فرقاً</string>
+    <string name="main_title_habits">عاداتي اليومية</string>
+    <string name="main_sub_habits">التزامك اليومي البسيط يصنع فرقاً</string>
     <string name="done_today_format">%1$d/%2$d</string>
     <string name="completed_today">أكملنا اليوم</string>
     <string name="suggest_habits">اقترح لي عادات ✨</string>
@@ -167,7 +165,7 @@
     <string name="habit_name_hint">اسم العادة (مثال: شرب ماء كافي)</string>
     <string name="choose_icon">اختر أيقونة</string>
     <string name="daily_reminder">تذكير يومي</string>
-    <string name="reminder_notice_format">راح توصلك إشعار بالوقت اللي تختاره: "اذكري تشربي ٦ أكواب ماء اليوم"</string>
+    <string name="reminder_notice_format">راح توصلك إشعار بالوقت اللي تختاره: \"اذكري تشربي ٦ أكواب ماء اليوم\"</string>
     <string name="save_edits">حفظ التعديلات</string>
     <string name="add_habit_btn">أضف العادة</string>
 
@@ -179,4 +177,5 @@
     <string name="ai_suggestions_title">اقتراحات ذكية لعاداتك</string>
     <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
     <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
+
 </resources>

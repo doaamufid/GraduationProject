@@ -16,6 +16,10 @@ public final class TapBounce {
     private TapBounce() {
     }
 
+    public static void attach(View view) {
+        attach(view, 0.95f);
+    }
+
     public static void attach(View view, float pressedScale) {
         view.setOnTouchListener((v, event) -> {
             switch (event.getActionMasked()) {

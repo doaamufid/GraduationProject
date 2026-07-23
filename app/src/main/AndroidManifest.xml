@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- إذن المايك لتسجيل الصوت في شات الأطفال -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -11,103 +14,132 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
+
+        <!-- إضافة الشاشة المفقودة هنا -->
+        <activity
+            android:name=".MindfulnessQuotesActivity"
+            android:exported="false" />
+
         <activity
             android:name=".Kids.KidsAiChatActivity"
-            android:exported="false" >
+            android:exported="false" />
 
-        </activity>
         <activity
             android:name=".Kids.KidsBubbleBreathingActivity"
             android:exported="false" />
+
         <activity
             android:name=".Kids.NewChildProfileActivity"
             android:exported="false" />
+
         <activity
             android:name=".Kids.ChildProfilesActivity"
             android:exported="false" />
+
         <activity
             android:name=".HealingEnvironmentActivity"
             android:exported="false" />
+
         <activity
             android:name=".CbtChatActivity"
             android:exported="false" />
+
         <activity
             android:name=".ReframingActivity"
             android:exported="false" />
+
         <activity
             android:name=".BodyMapActivity"
             android:exported="false" />
+
         <activity
             android:name=".BreathingActivity"
             android:exported="true" />
+
         <activity
             android:name=".ChatActivity"
             android:exported="false" />
+
         <activity
             android:name=".MoodDashboardActivity"
             android:exported="false" />
+
         <activity
             android:name=".MoodTrackerActivity"
             android:exported="false" />
+
         <activity
             android:name=".SurvivalBoxActivity"
             android:exported="false"
             android:theme="@style/Theme.SurvivalBox" />
+
         <activity
             android:name=".ArticlesActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".SplashActivity"
             android:exported="false" />
+
         <activity
             android:name=".OnBoardingActivity1"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".OnBoardingActivity2"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".OnBoardingActivity3"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".OnBoardingActivity4"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize" /> <!-- تم الفصل بين الشاشتين بشكل صحيح هنا -->
+            android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".GroundingExActivity"
             android:exported="false" />
+
         <activity
             android:name=".DailyHabitsActivity"
             android:exported="false" />
+
         <activity
             android:name=".ui.AISuggestionsActivity"
             android:exported="false" />
+
         <activity
             android:name=".SplashSelectActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".FutureActivity"
             android:exported="false"
             android:label="@string/title_activity_future"
             android:theme="@style/Theme.GraduationProject"
             android:windowSoftInputMode="adjustResize" />
+
         <activity
             android:name=".ui.AllMessagesActivity"
             android:exported="false"
             android:theme="@style/Theme.GraduationProject"
             android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>
