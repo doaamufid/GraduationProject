@@ -35,9 +35,9 @@ import com.example.graduationproject.models.HomeFeature;
 // import com.example.graduationproject.SafeBoxActivity;
 // import com.example.graduationproject.CalmActivity;
 // import com.example.graduationproject.VentChatActivity;
+import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.ChatActivity;
 import com.example.graduationproject.DailyHabitsActivity;
-import com.example.graduationproject.R;
 import com.example.graduationproject.SurvivalBoxActivity;
 import com.example.graduationproject.adapters.HomeAdapter;
 import com.example.graduationproject.models.HomeItem;
@@ -108,7 +108,8 @@ public class HomeFragment extends Fragment {
     }
 
     private void setupActions() {
-        // تم الإبقاء على كارد "لحظة هدوء" فقط وحذف كارد "فضفضة"
+        actionList.clear();
+        // كارد "لحظة هدوء"
         actionList.add(new HomeAction(
                 R.drawable.calm,
                 R.drawable.bg_icon_calm,
@@ -119,7 +120,7 @@ public class HomeFragment extends Fragment {
         actionAdapter = new HomeActionAdapter(requireContext(), actionList, position -> {
             switch (position) {
                 case 0:
-                    // startActivity(new Intent(getActivity(), CalmActivity.class));
+                    startActivity(new Intent(getActivity(), BreathingActivity.class));
                     break;
             }
         });
@@ -165,13 +166,13 @@ public class HomeFragment extends Fragment {
                     // startActivity(new Intent(getActivity(), MoodActivity.class));
                     break;
                 case 3: // عاداتي
-                    // startActivity(new Intent(getActivity(), HabitsActivity.class));
+                    startActivity(new Intent(getActivity(), DailyHabitsActivity.class));
                     break;
                 case 4: // تقارير
                     // startActivity(new Intent(getActivity(), ReportsActivity.class));
                     break;
                 case 5: // صندوقي
-                    // startActivity(new Intent(getActivity(), SafeBoxActivity.class));
+                    startActivity(new Intent(getActivity(), SurvivalBoxActivity.class));
                     break;
             }
         });

@@ -31,30 +31,23 @@ public class SplashActivity extends AppCompatActivity {
             return insets;
         });
 
-        // سطر مؤقت للتجريب: يمسح كل ملفات الشيرد في كل مرة يفتح التطبيق
-//      getSharedPreferences("AppPrefs", MODE_PRIVATE).edit().clear().apply();
-//      getSharedPreferences("UserPrefs", MODE_PRIVATE).edit().clear().apply();
-//
+        // سطر مؤقت للتجريب: يمسح نوع المستخدم في كل مرة يفتح التطبيق للتأكد من ظهور شاشة الاختيار
+        getSharedPreferences("UserPrefs", MODE_PRIVATE).edit().clear().apply();
 
-        // بعد 3 ثواني، نتخذ القرار الذكي بناءً على حالة التشغيل
+        // بعد 3 ثواني، نتخذ القرار بناءً على اختيار المستخدم المسبق
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
 
-            SharedPreferences appPrefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
             SharedPreferences userPrefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
 
-            boolean isFirstRun = appPrefs.getBoolean("isFirstRun", true);
             // قراءة نوع المستخدم الحالي (إذا كان فارغاً يعني أنه لم يحدد فئته بعد)
             String userType = userPrefs.getString("user_type", null);
 
             Intent intent;
-            if (isFirstRun) {
-                // 1. مستخدم جديد تماماً -> واجهات التعريف
-                intent = new Intent(SplashActivity.this, OnBoardingActivity1.class);
-            } else if (userType == null) {
-                // 2. أنهى التعريف لكن لم يحدد فئته (بالغ/طفل) -> واجهة تحديد الفئة
+            if (userType == null) {
+                // توجيه المستخدم لشاشة اختيار الفئة (بالغ/طفل) فوراً بعد السبلاش
                 intent = new Intent(SplashActivity.this, SplashSelectActivity.class);
             } else {
-                // 3. مستخدم مسجل سابقاً ومحدد فئته -> توجيهه فوراً للرئيسية دون حيرة
+                // مستخدم مسجل سابقاً ومحدد فئته -> توجيهه فوراً للرئيسية
                 intent = new Intent(SplashActivity.this, MainActivity.class);
             }
 

@@ -15,6 +15,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.BodyMapActivity;
 import com.example.graduationproject.BreathingActivity;
+import com.example.graduationproject.FutureActivity;
+import com.example.graduationproject.GroundingExActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.adapters.ExerciseFeatureAdapter;
 import com.example.graduationproject.models.ExerciseFeature;
@@ -66,11 +68,11 @@ public class ExercisesFragment extends Fragment {
                     break;
 
                 case 1: // رسالة لنفسي
-                    Toast.makeText(requireContext(), "تم الضغط على رسالة لنفسي", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(requireContext(), FutureActivity.class));
                     break;
 
                 case 2: // التأريض
-                    Toast.makeText(requireContext(), "تم الضغط على التأريض", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(requireContext(), GroundingExActivity.class));
                     break;
 
                 case 3: // بطاقة التهدئة الشخصية

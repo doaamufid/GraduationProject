@@ -40,8 +40,6 @@
     <!-- ألوان النصوص داخل الكاردز -->
     <color name="card_title">#1D3557</color>
     <color name="card_subtitle">#7A8B9B</color>
-</resources>
-
 
     <!-- Gradient background -->
     <color name="grad_top">#1F3A60</color>
@@ -50,12 +48,12 @@
     <!-- Cards / surfaces -->
     <color name="card">#0FFFFFFF</color>          <!-- rgba(255,255,255,0.06) -->
     <color name="card_solid">#241F3A</color>
-    <color name="overlay_08">#14FFFFFF</color>     <!-- rgba(255,255,255,0.08) -->
+    <color name="overlay_08">#14FFFFFF</color>     <!-- rgba(255,255,255,0.10) -->
     <color name="overlay_10">#1AFFFFFF</color>     <!-- rgba(255,255,255,0.10) -->
     <color name="overlay_12">#1FFFFFFF</color>     <!-- rgba(255,255,255,0.12) -->
     <color name="overlay_03">#08FFFFFF</color>     <!-- rgba(255,255,255,0.03) -->
-    <color name="border">#1FFFFFFF</color>         <!-- rgba(255,255,255,0.12) -->
-    <color name="scrim">#99000000</color>          <!-- rgba(0,0,0,0.6) -->
+    <color name="border_light">#1FFFFFFF</color>   <!-- rgba(255,255,255,0.12) -->
+    <color name="scrim_black">#99000000</color>    <!-- rgba(0,0,0,0.6) -->
 
     <!-- Brand -->
     <color name="primary">#3A74B8</color>
@@ -65,30 +63,27 @@
 
     <!-- Text -->
     <color name="text_white">#FFFFFF</color>
-    <color name="text_soft">#A6FFFFFF</color>      <!-- rgba(255,255,255,0.65) -->
+    <color name="text_soft_alt">#A6FFFFFF</color>  <!-- rgba(255,255,255,0.65) -->
 
     <!-- Accents -->
     <color name="red_record">#C97575</color>
     <color name="red_delete">#E39494</color>
     <color name="gold_star">#FFC94A</color>
-    <color name="bg">#F4F7FA</color>
-    <color name="bg_alt">#EAF0F6</color>
-    <color name="surface">#FFFFFF</color>
-    <color name="primary">#3A74B8</color>
+    <color name="bg_alt">#F4F7FA</color>
+    <color name="bg_alt2">#EAF0F6</color>
     <color name="primary_dark">#1F3A60</color>
     <color name="sage">#8FA998</color>
     <color name="green">#4CAF7D</color>
-    <color name="text_main">#1F3A60</color>
-    <color name="text_soft">#5C7290</color>
-    <color name="border">#DCE6EF</color>
+    <color name="text_main_alt">#1F3A60</color>
+    <color name="text_soft_alt2">#5C7290</color>
+    <color name="border_alt">#DCE6EF</color>
 
     <color name="primary_soft_18">#2E3A74B8</color>   <!-- primary + "18" (~9%) -->
     <color name="primary_soft_15">#263A74B8</color>   <!-- primary + "15" -->
     <color name="primary_soft_12">#1F3A74B8</color>   <!-- primary + "12" -->
     <color name="primary_soft_33">#523A74B8</color>   <!-- primary + "33" (~20%) -->
     <color name="white_alpha_20">#33FFFFFF</color>     <!-- #ffffff33 progress track -->
-    <color name="scrim">#591F3A60</color>              <!-- rgba(31,58,96,0.35) -->
+    <color name="scrim_blue">#591F3A60</color>              <!-- rgba(31,58,96,0.35) -->
     <color name="scrim_dialog">#661F3A60</color>       <!-- rgba(31,58,96,0.4) -->
-
 
 </resources>

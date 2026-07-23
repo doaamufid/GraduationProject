@@ -250,7 +250,7 @@ public class GroundingExActivity extends AppCompatActivity {
             square.setTag(index);
 
             square.setOnClickListener(v -> toggleTap(index));
-            TapBounce.attach(square);
+            TapBounce.attach(square, 0.85f);
 
             llTapCounter.addView(square);
         }
