@@ -1,7 +1,7 @@
 package com.example.graduationproject;
 
-import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PointF;
 import android.os.Bundle;
 import android.view.Gravity;
@@ -9,7 +9,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -18,9 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graduationproject.models.FutureMessage;
 import com.example.graduationproject.models.FutureSelfRepository;
-import com.example.graduationproject.util.DateUtils;
 import com.example.graduationproject.widget.CurvedTimelineView;
-import com.example.graduationproject.widget.FabPulseAnimator;
 import com.example.graduationproject.widget.TimelineGeometry;
 import com.example.graduationproject.ui.AllMessagesActivity;
 import com.example.graduationproject.ui.ComposeDialogFragment;
@@ -28,20 +25,14 @@ import com.example.graduationproject.ui.MessageDetailDialogFragment;
 
 import java.util.List;
 
-/**
- * Full Java/Android port of the "MessageToFutureSelfScreen" React
- * component's main timeline view.
- */
 public class FutureActivity extends AppCompatActivity {
 
     private final FutureSelfRepository repo = FutureSelfRepository.getInstance();
 
-    private ImageButton btnShowAll, btnCompose;
     private FrameLayout timelineContainer;
     private CurvedTimelineView curvedTimelineView;
-    private View groupEmpty, fabPulseRing;
-    private TextView tvFooterPreview, btnViewAll;
-    private ValueAnimator fabPulseAnimator;
+    private TextView tvFooterPreview, btnViewAll, tvTodayPreviewText;
+    private View cardTodayPreview;
 
     private float density;
 
@@ -62,32 +53,21 @@ public class FutureActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         renderAll();
-        fabPulseAnimator = FabPulseAnimator.start(fabPulseRing);
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        FabPulseAnimator.stop(fabPulseAnimator, fabPulseRing);
     }
 
     private void bindViews() {
-        btnShowAll = findViewById(R.id.btnShowAll);
-        btnCompose = findViewById(R.id.btnCompose);
         timelineContainer = findViewById(R.id.timelineContainer);
         curvedTimelineView = findViewById(R.id.curvedTimelineView);
-        groupEmpty = findViewById(R.id.groupEmpty);
-        fabPulseRing = findViewById(R.id.fabPulseRing);
         tvFooterPreview = findViewById(R.id.tvFooterPreview);
         btnViewAll = findViewById(R.id.btnViewAll);
+        tvTodayPreviewText = findViewById(R.id.tvTodayPreviewText);
+        cardTodayPreview = findViewById(R.id.cardTodayPreview);
+
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
     }
 
     private void setListeners() {
-        btnShowAll.setOnClickListener(v -> openAllMessages());
         btnViewAll.setOnClickListener(v -> openAllMessages());
-        btnCompose.setOnClickListener(v ->
-                ComposeDialogFragment.newInstanceForCreate()
-                        .show(getSupportFragmentManager(), "compose"));
     }
 
     private void openAllMessages() {
@@ -97,72 +77,110 @@ public class FutureActivity extends AppCompatActivity {
     private void renderAll() {
         renderTimeline();
         renderFooter();
+        // Today preview is now rendered inside the timeline context
     }
 
     private void renderTimeline() {
-        List<FutureMessage> messages = repo.getMessages();
-        boolean empty = messages.isEmpty();
-        groupEmpty.setVisibility(empty ? View.VISIBLE : View.GONE);
-
         // Remove previously-added node views, keep the CurvedTimelineView itself.
         for (int i = timelineContainer.getChildCount() - 1; i >= 0; i--) {
             View child = timelineContainer.getChildAt(i);
-            if (child != curvedTimelineView) {
+            if (child != curvedTimelineView && child != cardTodayPreview) {
                 timelineContainer.removeViewAt(i);
             }
         }
 
-        if (empty) {
-            ViewGroup.LayoutParams lp = timelineContainer.getLayoutParams();
-            lp.height = ViewGroup.LayoutParams.MATCH_PARENT;
-            timelineContainer.setLayoutParams(lp);
-            curvedTimelineView.setPoints(java.util.Collections.emptyList());
-            return;
-        }
-
-        List<PointF> points = TimelineGeometry.computePoints(messages.size());
+        List<PointF> points = TimelineGeometry.computePoints(0);
         curvedTimelineView.setPoints(points);
 
-        ViewGroup.LayoutParams lp = timelineContainer.getLayoutParams();
-        lp.height = Math.round(TimelineGeometry.totalHeightDp(messages.size()) * density);
-        timelineContainer.setLayoutParams(lp);
+        // Milestone Labels
+        String[] labels = {"اليوم", "أسبوع", "شهر", "3 أشهر", "سنة"};
 
-        for (int i = 0; i < messages.size(); i++) {
-            addMessageNode(messages.get(i), points.get(i));
+        for (int i = 0; i < 5; i++) {
+            addMilestoneNode(i, labels[i], points.get(i));
         }
+
+        // Add the large Send button at the last point
+        addSendButton(points.get(5));
+
+        // Position Today's Preview Bubble at the end of the road
+        positionTodayPreview(points.get(5));
     }
 
-    private void addMessageNode(FutureMessage message, PointF pointDp) {
-        View node = LayoutInflater.from(this).inflate(R.layout.item_message_node, timelineContainer, false);
-
+    private void addMilestoneNode(int index, String label, PointF pointDp) {
+        View node = LayoutInflater.from(this).inflate(R.layout.item_milestone_node, timelineContainer, false);
         View circleBg = node.findViewById(R.id.nodeCircleBg);
         ImageView ivIcon = node.findViewById(R.id.ivNodeIcon);
-        TextView tvLabel = node.findViewById(R.id.tvNodeLabel);
+        TextView tvLabelTop = node.findViewById(R.id.tvLabelTop);
+        TextView tvLabelBottom = node.findViewById(R.id.tvLabelBottom);
 
-        if (message.arrived) {
+        if (index == 0) {
+            circleBg.setBackgroundResource(R.drawable.bg_circle_white);
+            ivIcon.setImageResource(R.drawable.mail);
+            ivIcon.setVisibility(View.VISIBLE);
+            tvLabelTop.setText(label);
+            tvLabelTop.setVisibility(View.VISIBLE);
+        } else if (index == 2) {
             circleBg.setBackgroundResource(R.drawable.bg_node_arrived);
             ivIcon.setImageResource(R.drawable.ic_heart_filled_white);
-            tvLabel.setText(R.string.arrived_label);
+            ivIcon.setVisibility(View.VISIBLE);
+            tvLabelBottom.setText(label);
+            tvLabelBottom.setVisibility(View.VISIBLE);
+            tvLabelBottom.setTextColor(Color.parseColor("#E86E5E"));
         } else {
-            circleBg.setBackgroundResource(R.drawable.bg_node_locked);
-            ivIcon.setImageResource(R.drawable.ic_lock);
-            tvLabel.setText(getString(R.string.days_left_format,
-                    DateUtils.toAr(DateUtils.daysLeft(message.targetDate))));
+            circleBg.setBackgroundResource(R.drawable.bg_circle_white);
+            ivIcon.setVisibility(View.GONE);
+            tvLabelBottom.setText(label);
+            tvLabelBottom.setVisibility(View.VISIBLE);
         }
-
-        node.setOnClickListener(v ->
-                MessageDetailDialogFragment.newInstance(message.id)
-                        .show(getSupportFragmentManager(), "detail"));
 
         FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         flp.gravity = Gravity.TOP | Gravity.START;
-        // Matches `left: points[i].x - 22, top: points[i].y - 22` (22 = half of the 44dp circle).
-        flp.leftMargin = Math.round((pointDp.x - 22) * density);
-        flp.topMargin = Math.round((pointDp.y - 22) * density);
+        flp.leftMargin = Math.round((pointDp.x - 30) * density);
+        flp.topMargin = Math.round((pointDp.y - 30) * density);
         node.setLayoutParams(flp);
 
         timelineContainer.addView(node);
+    }
+
+    private void addSendButton(PointF pointDp) {
+        View btn = LayoutInflater.from(this).inflate(R.layout.item_send_button_node, timelineContainer, false);
+        btn.setOnClickListener(v ->
+                ComposeDialogFragment.newInstanceForCreate()
+                        .show(getSupportFragmentManager(), "compose"));
+
+        FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        flp.gravity = Gravity.TOP | Gravity.START;
+        flp.leftMargin = Math.round((pointDp.x - 80) * density);
+        flp.topMargin = Math.round((pointDp.y - 70) * density);
+        btn.setLayoutParams(flp);
+
+        timelineContainer.addView(btn);
+    }
+
+    private void positionTodayPreview(PointF sendPointDp) {
+        FutureMessage latestArrived = null;
+        for (FutureMessage m : repo.getMessages()) {
+            if (m.arrived) {
+                latestArrived = m;
+                break;
+            }
+        }
+
+        if (latestArrived != null) {
+            cardTodayPreview.setVisibility(View.VISIBLE);
+            tvTodayPreviewText.setText(latestArrived.text);
+
+            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) cardTodayPreview.getLayoutParams();
+            // Position the bubble at the bottom left, near the end of the road
+            lp.gravity = Gravity.TOP | Gravity.START;
+            lp.leftMargin = Math.round(20 * density);
+            lp.topMargin = Math.round((sendPointDp.y - 140) * density);
+            cardTodayPreview.setLayoutParams(lp);
+        } else {
+            cardTodayPreview.setVisibility(View.GONE);
+        }
     }
 
     private void renderFooter() {
@@ -175,13 +193,10 @@ public class FutureActivity extends AppCompatActivity {
         }
 
         if (latestArrived == null) {
-            tvFooterPreview.setText(R.string.no_arrived_yet);
-            tvFooterPreview.setOnClickListener(null);
-            tvFooterPreview.setClickable(false);
+            tvFooterPreview.setText("لا رسائل سابقة بعد");
         } else {
             tvFooterPreview.setText(latestArrived.text);
             final FutureMessage msg = latestArrived;
-            tvFooterPreview.setClickable(true);
             tvFooterPreview.setOnClickListener(v ->
                     MessageDetailDialogFragment.newInstance(msg.id)
                             .show(getSupportFragmentManager(), "detail"));
