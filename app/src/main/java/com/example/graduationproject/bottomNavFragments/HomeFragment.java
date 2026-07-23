@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.ChatActivity;
 import com.example.graduationproject.DailyHabitsActivity;
+import com.example.graduationproject.FutureActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.SurvivalBoxActivity;
 import com.example.graduationproject.adapters.HomeAdapter;

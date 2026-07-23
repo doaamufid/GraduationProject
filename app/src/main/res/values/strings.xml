@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">salam</string>
 
@@ -10,6 +11,7 @@
     <string name="btn_kids">الأطفال</string>
     <string name="title_select_kids">من سيلعب اليوم؟</string>
 
+    <!-- صندوق الطوارئ والنجاة -->
     <string name="summary_title">صندوق الطوارئ</string>
     <string name="summary_tag">SAFE SPACE · صندوق النجاة</string>
     <string name="summary_headline">صندوق النجاة النفسي</string>
@@ -84,7 +86,8 @@
     <string name="emoji_dove_crisis">🕊️</string>
 
     <string name="status_bar_time">٩:٤١</string>
-</resources>
+
+    <!-- Grounding -->
     <string name="top_bar_label">تمارين التأريض</string>
     <string name="progress_title">١-٢-٣-٤-٥</string>
     <string name="progress_sub">أوقف القلق بالتركيز على الحاضر</string>
@@ -107,6 +110,7 @@
     <string name="emoji_leaf">🌿</string>
     <string name="title_activity_future">FutureActivity</string>
 
+    <!-- Future Self -->
     <string name="main_title">رسالة إلى نفسي</string>
     <string name="main_subtitle">رسالتك اليوم تسبح نحو يومك القادم</string>
     <string name="empty_timeline">ما كتبت أي رسالة لنفسك بعد — اضغط + وابدأ أول رسالة</string>
@@ -143,15 +147,13 @@
     <string name="locked_row_label">رسالة مقفلة — لسا ما جا وقتها</string>
     <string name="arrived_on_format">وصلت بتاريخ %1$s</string>
     <string name="due_on_format">توصلك بتاريخ %1$s · باقي %2$s يوم</string>
-    <string name="delete_action">حذف</string>
     <string name="delete_confirm_action">اضغط للتأكيد</string>
     <string name="edit_action">تعديل</string>
 
     <string name="created_now">الآن</string>
-    <string name="status_bar_time">٩:٤١</string>
-</resources>
 
-    <string name="main_title">عاداتي اليومية</string>
+    <!-- Daily Habits -->
+    <string name="habits_main_title">عاداتي اليومية</string>
     <string name="main_sub">التزامك اليومي البسيط يصنع فرقاً</string>
     <string name="done_today_format">%1$d/%2$d</string>
     <string name="completed_today">أكملنا اليوم</string>
@@ -177,6 +179,4 @@
     <string name="ai_suggestions_title">اقتراحات ذكية لعاداتك</string>
     <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
     <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
-
-    <string name="status_bar_time">٩:٤١</string>
 </resources>

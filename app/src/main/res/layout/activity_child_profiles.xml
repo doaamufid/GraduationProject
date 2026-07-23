@@ -8,20 +8,8 @@
     android:background="@drawable/bg_child_profiles"
     android:layoutDirection="rtl"
     android:textDirection="rtl"
-    tools:context=".ChildProfilesActivity">
+    tools:context=".Kids.ChildProfilesActivity">
 
-    <TextView
-        android:id="@+id/tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="16dp"
-        android:text="٩:٤١"
-        android:textColor="#2D2722"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/btn_back"

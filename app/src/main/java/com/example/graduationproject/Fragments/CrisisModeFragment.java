@@ -22,19 +22,11 @@ import com.example.graduationproject.models.DhikrItem;
 import com.example.graduationproject.models.LoveItem;
 import com.example.graduationproject.models.PhotoItem;
 import com.example.graduationproject.models.SurvivalBoxRepository;
-import com.example.graduationproject.widget.FadeUtils;
 import com.example.graduationproject.widget.PulseAnimator;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Equivalent of <CrisisMode/>: builds a sequence from the FIRST item of
- * each non-empty category (photo, audio, love, dhikr - in that order,
- * exactly like the original `sequence.push(...)` calls), then walks
- * through it one step at a time with a cross-fade transition, ending on
- * a "you're okay now" screen with replay/close actions.
- */
 public class CrisisModeFragment extends DialogFragment {
 
     private static final String TYPE_PHOTO = "photo";
@@ -65,7 +57,6 @@ public class CrisisModeFragment extends DialogFragment {
     @Override
     public void onStart() {
         super.onStart();
-        // Full-screen, no dim insets - matches the original absolute-positioned overlay.
         if (getDialog() != null && getDialog().getWindow() != null) {
             Window window = getDialog().getWindow();
             window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
@@ -81,7 +72,7 @@ public class CrisisModeFragment extends DialogFragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                              @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_crisis_mode, container, false);
 
         buildSequence();
@@ -125,7 +116,6 @@ public class CrisisModeFragment extends DialogFragment {
         if (!dhikr.isEmpty()) sequence.add(new Step(TYPE_DHIKR, dhikr.get(0)));
     }
 
-    /** @param animate whether to cross-fade into the new state (skip on first render) */
     private void showDoneOrStep(boolean animate) {
         boolean done = idx >= sequence.size();
 
@@ -134,13 +124,24 @@ public class CrisisModeFragment extends DialogFragment {
         if (done) {
             groupStep.setVisibility(View.GONE);
             groupDone.setVisibility(View.VISIBLE);
-            if (animate) FadeUtils.fadeInUp(groupDone);
+            if (animate) fadeInUp(groupDone);
         } else {
             groupDone.setVisibility(View.GONE);
             groupStep.setVisibility(View.VISIBLE);
             bindStep(sequence.get(idx));
-            if (animate) FadeUtils.fadeInUp(groupStep);
+            if (animate) fadeInUp(groupStep);
         }
+    }
+
+    // دالة الأنيميشن الداخلية النظيفة والبديلة لتجنب المشاكل
+    private void fadeInUp(View view) {
+        view.setAlpha(0f);
+        view.setTranslationY(40f);
+        view.animate()
+                .alpha(1f)
+                .translationY(0f)
+                .setDuration(300)
+                .start();
     }
 
     private void bindStep(Step step) {
