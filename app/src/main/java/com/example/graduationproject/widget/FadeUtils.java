@@ -13,7 +13,18 @@ public final class FadeUtils {
 
     private FadeUtils() {
     }
-
+    /** .reason-fade: 250ms fade + 4dp slide DOWN into place (from above). */
+    public static void reasonFade(View view) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationY(-4 * density);
+        view.animate()
+                .alpha(1f)
+                .translationY(0f)
+                .setDuration(250)
+                .setInterpolator(new DecelerateInterpolator())
+                .start();
+    }
     /** .dialog-fade: 300ms fade + 20dp slide up. */
     public static void dialogFade(View view) {
         float density = view.getResources().getDisplayMetrics().density;
@@ -57,5 +68,18 @@ public final class FadeUtils {
         view.setTranslationX(12 * density);
         view.animate().alpha(1f).translationX(0f).setDuration(300)
                 .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** .toast-in: 300ms fade + 8dp slide up. */
+    public static void toastIn(View view) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationY(8 * density);
+        view.animate()
+                .alpha(1f)
+                .translationY(0f)
+                .setDuration(300)
+                .setInterpolator(new DecelerateInterpolator())
+                .start();
     }
 }

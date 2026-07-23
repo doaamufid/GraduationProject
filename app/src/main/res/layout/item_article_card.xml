@@ -1,64 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardRoot"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="6dp"
-    app:cardCornerRadius="24dp" app:cardElevation="0dp"
-    app:cardBackgroundColor="#FFFFFF">
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card"
+    android:clickable="true"
+    android:focusable="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/includeArt"
+            layout="@layout/view_article_art"/>
+
+        <ImageButton
+            android:id="@+id/btnBookmark"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="top|left"
+            android:layout_margin="8dp"
+            android:background="@drawable/bg_bookmark_overlay"
+            android:src="@drawable/ic_bookmark_outline"
+            android:padding="7dp"
+            android:contentDescription="@null"/>
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layoutDirection="rtl">
+        android:orientation="vertical"
+        android:padding="12dp">
 
-        <View
-            android:layout_width="4dp"
-            android:layout_height="match_parent"
-            android:background="#3A74B8" />
+        <TextView
+            android:id="@+id/tvCardTag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_badge_neutral"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"
+            android:paddingTop="2dp"
+            android:paddingBottom="2dp"
+            android:textSize="9sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp"
+            tools:text="CBT"/>
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
+            android:id="@+id/badgesContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="16dp"
-            android:layoutDirection="rtl">
+            android:orientation="horizontal"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:id="@+id/tvArticleTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="32dp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:gravity="end"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="12sp"
+            android:lineSpacingMultiplier="1.1"
+            android:layout_marginBottom="6dp"
+            tools:text="كيف تتعاملين مع الحزن بدون قمعه؟"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
             <TextView
-                android:id="@+id/tvCardTag"
+                android:id="@+id/tvTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="#3A74B8"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                android:textColor="@color/text_soft"
+                android:textSize="9sp"
+                android:layout_marginStart="4dp"
+                tools:text="٥ دقائق"/>
 
-            <TextView
-                android:id="@+id/tvArticleTitle"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textColor="#1F3A60"
-                android:textSize="16sp"
-                android:textStyle="bold"
-                android:layout_marginTop="8dp"
-                android:gravity="start"
-                app:layout_constraintTop_toBottomOf="@id/tvCardTag"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"/>
-
-            <LinearLayout
-                android:id="@+id/badgesContainer"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="12dp"
-                android:layoutDirection="rtl"
-                app:layout_constraintTop_toBottomOf="@id/tvArticleTitle"
-                app:layout_constraintStart_toStartOf="parent"/>
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:src="@drawable/ic_clock"
+                android:contentDescription="@null"/>
+        </LinearLayout>
     </LinearLayout>
-</androidx.cardview.widget.CardView>
+
+</LinearLayout>
