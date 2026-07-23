@@ -198,6 +198,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.HealingEnvironmentActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.VisualContentActivity;
@@ -270,7 +271,7 @@ public class HomeFragment extends Fragment {
     private void setupFeatures() {
         featureList.add(new HomeFeature(R.drawable.video, R.drawable.bg_icon_purple, "مرئيات", "VIDEOS"));
         featureList.add(new HomeFeature(R.drawable.audio, R.drawable.bg_icon_green, "صوتيات", "AUDIO"));
-        featureList.add(new HomeFeature(R.drawable.mood, R.drawable.bg_icon_pink, "مزاجي", "MOOD"));
+        featureList.add(new HomeFeature(R.drawable.ic_bookmark_outline, R.drawable.bg_icon_blue, "مقالات", "ARTICLES"));
         featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange, "عاداتي", "HABITS"));
         featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue, "تقارير", "REPORTS"));
         featureList.add(new HomeFeature(R.drawable.box2, R.drawable.bg_icon_purple, "صندوقي", "SAFE BOX"));
@@ -284,6 +285,7 @@ public class HomeFragment extends Fragment {
                     startActivity(new Intent(getActivity(), HealingEnvironmentActivity.class));
                     break;
                 case 2:
+                    startActivity(new Intent(getActivity(), ArticlesActivity.class));
                     break;
             }
         });

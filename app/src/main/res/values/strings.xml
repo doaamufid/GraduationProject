@@ -178,4 +178,24 @@
     <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
     <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
 
+    <!-- Library -->
+    <string name="library_title">مكتبة المقالات الذكية</string>
+    <string name="library_sub">ARTICLES · المقالات</string>
+    <string name="search_hint">ابحث في المكتبة...</string>
+    <string name="featured_badge">مقترح لك اليوم ✨</string>
+    <string name="section_this_week">هذا الأسبوع</string>
+    <string name="section_category_format">تصنيف: %1$s</string>
+
+    <!-- Reader -->
+    <string name="reader_title">المقالة</string>
+    <string name="by_author_format">بقلم %1$s</string>
+    <string name="try_it_label">جرّب الفكرة عملياً</string>
+    <string name="feedback_question">شو رأيك بهالمقالة؟</string>
+    <string name="reason_prompt">وش السبب؟ (اختياري)</string>
+    <string name="why_suggested">ليش اقترحنا هذي المقالة؟</string>
+    <string name="continue_reading">تابع القراءة</string>
+    <string name="toast_liked">سجّلنا إعجابك — بنقترح مقالات مشابهة أكثر</string>
+    <string name="toast_reason_thanks">شكراً! هذا يساعدنا نحسّن اقتراحاتك القادمة</string>
+
+    <string name="cat_all">الكل</string>
 </resources>
