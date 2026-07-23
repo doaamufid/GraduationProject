@@ -16,13 +16,11 @@ public class OnBoardingActivity2 extends AppCompatActivity {
         binding = ActivityOnBoarding2Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // زر التالي -> الشاشة الثالثة
         binding.btnNext.setOnClickListener(v -> {
             Intent intent = new Intent(OnBoardingActivity2.this, OnBoardingActivity3.class);
             startActivity(intent);
         });
 
-        // زر تخطي
         binding.tvSkip.setOnClickListener(v -> skipOnBoarding());
     }
 

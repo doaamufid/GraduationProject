@@ -16,30 +16,17 @@ public class OnBoardingActivity4 extends AppCompatActivity {
         binding = ActivityOnBoarding4Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // في الواجهة الرابعة، زر "التالي" يعني إنهاء الـ OnBoarding والبدء بالتطبيق
-//        binding.btnStart.setOnClickListener(v -> {
-//            // حفظ الحالة لعدم إظهار الواجهات مجدداً
-//            SharedPreferences preferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-//            preferences.edit().putBoolean("isFirstRun", false).apply();
-//
-//            // الانتقال لصفحة الاختيار
-//            Intent intent = new Intent(OnBoardingActivity4.this, SplashSelectActivity.class);
-//            startActivity(intent);
-//            finish();
-//        });
-        // داخل OnBoardingActivity4.java عند الضغط على زر البدء/التالي
         binding.btnStart.setOnClickListener(v -> {
             SharedPreferences preferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
             preferences.edit().putBoolean("isFirstRun", false).apply();
 
             Intent intent = new Intent(OnBoardingActivity4.this, SplashSelectActivity.class);
             startActivity(intent);
-            finish(); // <--- هذا السطر السحري يغلق الشاشة الرابعة ويحذفها من الذاكرة!
+            finish();
         });
 
-        // لو كان هناك زر تخطي في التصميم الرابع أيضاً (اختياري)
         if (binding.tvSkip != null) {
-            binding.tvSkip.setVisibility(android.view.View.GONE); // إخفاؤه لأنه لا معنى له في الشاشة الأخيرة
+            binding.tvSkip.setVisibility(android.view.View.GONE);
         }
     }
 }

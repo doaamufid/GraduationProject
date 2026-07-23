@@ -56,6 +56,8 @@ public class BreathingActivity extends AppCompatActivity {
     }
 
     private void updateSubtitleText() {
+        if (binding == null) return;
+
         if (isSessionRunning) {
             binding.tvSubTitle.setText("دورة " + currentCycle + " من " + totalCycles);
         } else {
@@ -64,6 +66,8 @@ public class BreathingActivity extends AppCompatActivity {
     }
 
     private void startBreathingSession() {
+        if (binding == null) return;
+
         isSessionRunning = true;
         currentCycle = 1;
         currentCycleStep = 0;
@@ -75,18 +79,17 @@ public class BreathingActivity extends AppCompatActivity {
         binding.layoutAnchor2.setVisibility(View.GONE);
         binding.tvDesc.setVisibility(View.GONE);
 
-        // تعديل الهوامش والـ Layout ديناميكياً لتقريب الزر ومنع الفراغ الكبير أثناء الجلسة
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) binding.btnStartBreathing.getLayoutParams();
         params.topToBottom = ConstraintLayout.LayoutParams.UNSET;
         params.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID;
-        params.bottomMargin = 80; // رفع الزر قليلاً عن الحافة ليكون بارزاً
+        params.bottomMargin = 80;
         binding.btnStartBreathing.setLayoutParams(params);
 
         runBreathingEngine();
     }
 
     private void runBreathingEngine() {
-        if (!isSessionRunning) return;
+        if (!isSessionRunning || binding == null) return;
 
         triggerVibration();
 
@@ -111,17 +114,19 @@ public class BreathingActivity extends AppCompatActivity {
             endScale = 1.0f;
         }
 
-        // العداد التنازلي الصحيح (4، 3، 2، 1)
+        // 1. إعداد العداد التنازلي
         if (counterAnimator != null) counterAnimator.cancel();
         counterAnimator = ValueAnimator.ofInt(4, 1);
         counterAnimator.setDuration(stepDuration);
         counterAnimator.setInterpolator(new LinearInterpolator());
-        counterAnimator.addUpdateListener(animation ->
-                binding.tvTimer.setText(String.valueOf(animation.getAnimatedValue()))
-        );
+        counterAnimator.addUpdateListener(animation -> {
+            // 🛡️ فحص الأمان لتفادي NullPointerException عند إغلاق الشاشة
+            if (binding == null || isFinishing() || isDestroyed()) return;
+            binding.tvTimer.setText(String.valueOf(animation.getAnimatedValue()));
+        });
         counterAnimator.start();
 
-        // الأنميشن الخاص بحجم الدائرة وتحديث الـ ProgressBar
+        // 2. إعداد أنيميشن التكبير والـ ProgressBar
         if (breathingAnimator != null) breathingAnimator.cancel();
 
         float finalStartScale = startScale;
@@ -131,6 +136,9 @@ public class BreathingActivity extends AppCompatActivity {
         breathingAnimator.setDuration(stepDuration);
         breathingAnimator.setInterpolator(new LinearInterpolator());
         breathingAnimator.addUpdateListener(animation -> {
+            // 🛡️ فحص الأمان لتفادي NullPointerException
+            if (binding == null || isFinishing() || isDestroyed()) return;
+
             float fraction = animation.getAnimatedFraction();
 
             float currentScale = finalStartScale + (finalEndScale - finalStartScale) * fraction;
@@ -152,7 +160,9 @@ public class BreathingActivity extends AppCompatActivity {
         breathingAnimator.addListener(new AnimatorListenerAdapter() {
             @Override
             public void onAnimationEnd(Animator animation) {
-                calculateNextStep();
+                if (isSessionRunning && binding != null && !isFinishing() && !isDestroyed()) {
+                    calculateNextStep();
+                }
             }
         });
 
@@ -160,7 +170,7 @@ public class BreathingActivity extends AppCompatActivity {
     }
 
     private void calculateNextStep() {
-        if (!isSessionRunning) return;
+        if (!isSessionRunning || binding == null) return;
 
         if (isSquareBreathing) {
             if (currentCycleStep == 3) {
@@ -194,8 +204,9 @@ public class BreathingActivity extends AppCompatActivity {
     private void stopBreathingSession(boolean isCompleted) {
         isSessionRunning = false;
 
-        if (breathingAnimator != null) breathingAnimator.cancel();
-        if (counterAnimator != null) counterAnimator.cancel();
+        cancelAnimators();
+
+        if (binding == null) return;
 
         binding.btnStartBreathing.setText("ابدأ");
         binding.tvTimer.setText("4");
@@ -209,7 +220,6 @@ public class BreathingActivity extends AppCompatActivity {
         binding.layoutAnchor2.setVisibility(View.VISIBLE);
         binding.tvDesc.setVisibility(View.VISIBLE);
 
-        // إرجاع القيود الافتراضية للزر ليعود مكانه الطبيعي أسفل الكروت
         ConstraintLayout.LayoutParams params = (ConstraintLayout.LayoutParams) binding.btnStartBreathing.getLayoutParams();
         params.topToBottom = ConstraintLayout.LayoutParams.UNSET;
         params.bottomToBottom = ConstraintLayout.LayoutParams.PARENT_ID;
@@ -219,15 +229,12 @@ public class BreathingActivity extends AppCompatActivity {
         updateSubtitleText();
 
         if (isCompleted) {
-//            Toast.makeText(this, "أحسنتِ جداً! جلسة رائعة، كيف تشعرين الآن؟", Toast.LENGTH_LONG).show();
             showSessionFeedbackDialog();
         }
     }
 
     private void triggerVibration() {
         if (isVibrationEnabled) {
-            android.util.Log.d("TEST_VIBRATION", "🎯 الاهتزاز يعمل الآن بنجاح مع النَّفَس!");
-
             Vibrator vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
             if (vibrator != null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
@@ -240,39 +247,36 @@ public class BreathingActivity extends AppCompatActivity {
     }
 
     private void showSessionFeedbackDialog() {
-        // 1. إنشاء الـ BottomSheetDialog
-        BottomSheetDialog feedbackDialog = new BottomSheetDialog(this);
+        if (isFinishing() || isDestroyed()) return;
 
-        // 2. عمل ViewBinding للملف الجديد الذي صممناه
+        BottomSheetDialog feedbackDialog = new BottomSheetDialog(this);
         com.example.graduationproject.databinding.DialogSessionFeedbackBinding dialogBinding =
                 com.example.graduationproject.databinding.DialogSessionFeedbackBinding.inflate(getLayoutInflater());
         feedbackDialog.setContentView(dialogBinding.getRoot());
 
-        // 3. برمجة الأحداث عند الضغط على الإيموجيز (مبدئياً سنظهر توست أو نغير تفاعل الزر)
-        dialogBinding.btnMoodHappy.setOnClickListener(v -> {
-            // يمكنكِ تمييز الزر بصرياً هنا
-            Toast.makeText(this, "رائع! دامت راحتكِ 🌸", Toast.LENGTH_SHORT).show();
-        });
+        dialogBinding.btnMoodHappy.setOnClickListener(v ->
+                Toast.makeText(this, "رائع! دامت راحتكِ 🌸", Toast.LENGTH_SHORT).show()
+        );
 
-        dialogBinding.btnMoodNeutral.setOnClickListener(v -> {
-            Toast.makeText(this, "الحمد لله، خطوة جيدة ☀️", Toast.LENGTH_SHORT).show();
-        });
+        dialogBinding.btnMoodNeutral.setOnClickListener(v ->
+                Toast.makeText(this, "الحمد لله، خطوة جيدة ☀️", Toast.LENGTH_SHORT).show()
+        );
 
-        dialogBinding.btnMoodSad.setOnClickListener(v -> {
-            Toast.makeText(this, "لا بأس، غداً سيكون أفضل 💪", Toast.LENGTH_SHORT).show();
-        });
+        dialogBinding.btnMoodSad.setOnClickListener(v ->
+                Toast.makeText(this, "لا بأس، غداً سيكون أفضل 💪", Toast.LENGTH_SHORT).show()
+        );
 
-        // 4. برمجة زر الحفظ والإغلاق
         dialogBinding.btnSaveMood.setOnClickListener(v -> {
-            // هنا مستقبلاً ستضعين كود حفظ البيانات في الـ Database
             Toast.makeText(this, "تم حفظ مزاجك بنجاح! 💾", Toast.LENGTH_SHORT).show();
-            feedbackDialog.dismiss(); // إغلاق الشاشة المنبثقة
+            feedbackDialog.dismiss();
         });
 
-        // 5. عرض الشاشة اللطيفة للمستخدم
         feedbackDialog.show();
     }
+
     private void showSettingsBottomSheet() {
+        if (isFinishing() || isDestroyed()) return;
+
         BottomSheetDialog bottomSheetDialog = new BottomSheetDialog(this);
         DialogBreathingSettingsBinding dialogBinding = DialogBreathingSettingsBinding.inflate(getLayoutInflater());
         bottomSheetDialog.setContentView(dialogBinding.getRoot());
@@ -289,14 +293,14 @@ public class BreathingActivity extends AppCompatActivity {
 
         dialogBinding.optionClassic.setOnClickListener(v -> {
             isSquareBreathing = false;
-            binding.tvDesc.setText("الكلاسيكي . بدون هدف إلزامي . استمر أينما ترتاح");
+            if (binding != null) binding.tvDesc.setText("الكلاسيكي . بدون هدف إلزامي . استمر أينما ترتاح");
             updateSubtitleText();
             bottomSheetDialog.dismiss();
         });
 
         dialogBinding.optionSquare.setOnClickListener(v -> {
             isSquareBreathing = true;
-            binding.tvDesc.setText("المربع . تركيز عالي . شهيق توقف زفير توقف");
+            if (binding != null) binding.tvDesc.setText("المربع . تركيز عالي . شهيق توقف زفير توقف");
             updateSubtitleText();
             bottomSheetDialog.dismiss();
         });
@@ -306,12 +310,35 @@ public class BreathingActivity extends AppCompatActivity {
         bottomSheetDialog.show();
     }
 
+    private void cancelAnimators() {
+        if (breathingAnimator != null) {
+            breathingAnimator.removeAllUpdateListeners();
+            breathingAnimator.removeAllListeners();
+            breathingAnimator.cancel();
+            breathingAnimator = null;
+        }
+        if (counterAnimator != null) {
+            counterAnimator.removeAllUpdateListeners();
+            counterAnimator.removeAllListeners();
+            counterAnimator.cancel();
+            counterAnimator = null;
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        // لإيقاف الجلسة في حال أغلقت الشاشات أو انتقل المستخدم لتطبيق آخر
+        if (isSessionRunning) {
+            stopBreathingSession(false);
+        }
+    }
 
     @Override
     protected void onDestroy() {
-        super.onDestroy();
-        if (breathingAnimator != null) breathingAnimator.cancel();
-        if (counterAnimator != null) counterAnimator.cancel();
+        isSessionRunning = false;
+        cancelAnimators();
         binding = null;
+        super.onDestroy();
     }
 }

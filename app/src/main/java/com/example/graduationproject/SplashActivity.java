@@ -31,28 +31,30 @@ public class SplashActivity extends AppCompatActivity {
             return insets;
         });
 
-        // سطر مؤقت للتجريب: يمسح نوع المستخدم في كل مرة يفتح التطبيق للتأكد من ظهور شاشة الاختيار
-        getSharedPreferences("UserPrefs", MODE_PRIVATE).edit().clear().apply();
+        // ملاحظة: احذف هذين السطرين قبل إطلاق التطبيق نهائياً
+        // للتجريب
+//        getSharedPreferences("AppPrefs", MODE_PRIVATE).edit().clear().apply();
+//        getSharedPreferences("UserPrefs", MODE_PRIVATE).edit().clear().apply();
 
-        // بعد 3 ثواني، نتخذ القرار بناءً على اختيار المستخدم المسبق
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
 
+            SharedPreferences appPrefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
             SharedPreferences userPrefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
 
-            // قراءة نوع المستخدم الحالي (إذا كان فارغاً يعني أنه لم يحدد فئته بعد)
+            boolean isFirstRun = appPrefs.getBoolean("isFirstRun", true);
             String userType = userPrefs.getString("user_type", null);
 
             Intent intent;
-            if (userType == null) {
-                // توجيه المستخدم لشاشة اختيار الفئة (بالغ/طفل) فوراً بعد السبلاش
+            if (isFirstRun) {
+                intent = new Intent(SplashActivity.this, OnBoardingActivity1.class);
+            } else if (userType == null) {
                 intent = new Intent(SplashActivity.this, SplashSelectActivity.class);
             } else {
-                // مستخدم مسجل سابقاً ومحدد فئته -> توجيهه فوراً للرئيسية
                 intent = new Intent(SplashActivity.this, MainActivity.class);
             }
 
             startActivity(intent);
-            finish(); // إغلاق شاشة الـ Splash نهائياً
+            finish();
 
         }, 3000);
     }
