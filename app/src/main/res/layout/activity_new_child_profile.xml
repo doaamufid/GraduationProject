@@ -7,20 +7,9 @@
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
     android:background="@drawable/bg_child_profiles"
-    tools:context=".NewChildProfileActivity">
+    tools:context=".Kids.NewChildProfileActivity">
 
-    <TextView
-        android:id="@+id/tv_time"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="20dp"
-        android:text="٩:٤١"
-        android:textColor="#4B2D24"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+
 
     <TextView
         android:id="@+id/btn_back"
@@ -165,18 +154,81 @@
             android:orientation="horizontal" />
     </HorizontalScrollView>
 
+    <TextView
+        android:id="@+id/tv_gender_label"
+        android:textDirection="rtl"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="right"
+        android:text="إنت ولد ولا بنت؟"
+        android:textColor="#5D4037"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/age_scroll" />
+
+    <LinearLayout
+        android:id="@+id/gender_container"
+        android:layout_width="0dp"
+        android:layout_height="110dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_gender_label">
+
+        <TextView
+            android:id="@+id/btn_gender_boy"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_child_age_default"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="👦\nولد"
+            android:contentDescription="اختيار ولد"
+            android:textColor="#5D4037"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/btn_gender_girl"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_child_age_default"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="👧\nبنت"
+            android:contentDescription="اختيار بنت"
+            android:textColor="#5D4037"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/world_card"
         android:layout_width="0dp"
-        android:layout_height="128dp"
+        android:layout_height="110dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/bg_child_world_card"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/age_scroll">
+        app:layout_constraintTop_toBottomOf="@id/gender_container">
 
         <TextView
             android:id="@+id/tv_world_fox"
