@@ -48,7 +48,7 @@ public class CurvedTimelineView extends View {
         density = context.getResources().getDisplayMetrics().density;
 
         thickPaint.setStyle(Paint.Style.STROKE);
-        thickPaint.setStrokeWidth(34 * density);
+        thickPaint.setStrokeWidth(60 * density);
         thickPaint.setStrokeCap(Paint.Cap.ROUND);
         thickPaint.setColor(context.getResources().getColor(R.color.path_color));
         thickPaint.setAlpha(255); // Full opacity for the river color, as it's already light

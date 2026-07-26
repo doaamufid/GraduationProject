@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
@@ -11,34 +13,23 @@
         android:orientation="vertical">
 
         <!-- ===================== TOP BAR ===================== -->
-        <RelativeLayout
+        <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
-            android:paddingTop="14dp"
-            android:paddingBottom="4dp">
+            android:paddingTop="14dp">
 
             <ImageButton
-                android:id="@+id/btnShowAll"
+                android:id="@+id/btnBack"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:layout_alignParentStart="true"
+                android:layout_gravity="start"
                 android:background="@drawable/bg_icon_button"
-                android:src="@drawable/ic_list"
+                android:src="@drawable/ic_arrow_right"
                 android:padding="9dp"
                 android:contentDescription="@null"/>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:text="9:41"
-                android:textColor="@color/text_main"
-                android:textStyle="bold"
-                android:textSize="14sp"/>
-        </RelativeLayout>
+        </FrameLayout>
 
         <!-- ===================== HEADER ===================== -->
         <LinearLayout
@@ -46,7 +37,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:gravity="center_horizontal"
-            android:paddingTop="16dp"
+            android:paddingTop="0dp"
             android:paddingBottom="4dp">
 
             <TextView
@@ -66,93 +57,62 @@
                 android:textSize="14sp"/>
         </LinearLayout>
 
-        <!-- ===================== SCROLLABLE TIMELINE ===================== -->
+        <!-- ===================== MAIN CONTENT ===================== -->
         <FrameLayout
+            android:id="@+id/timelineContainer"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="1">
+            android:layout_weight="1"
+            android:clipChildren="false"
+            android:clipToPadding="false">
 
-            <ScrollView
+            <com.example.graduationproject.widget.CurvedTimelineView
+                android:id="@+id/curvedTimelineView"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scrollbars="none"
-                android:overScrollMode="never">
+                android:layout_height="match_parent"/>
 
-                <FrameLayout
-                    android:id="@+id/timelineContainer"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="40dp"
-                    android:paddingBottom="100dp">
-
-                    <com.example.graduationproject.widget.CurvedTimelineView
-                        android:id="@+id/curvedTimelineView"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"/>
-
-                    <!-- Message node buttons are added programmatically here -->
-
-                </FrameLayout>
-            </ScrollView>
-
-            <!-- Empty state -->
-            <LinearLayout
-                android:id="@+id/groupEmpty"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:paddingStart="32dp"
-                android:paddingEnd="32dp"
+            <!-- Message Preview Bubble (Will be positioned programmatically near the end) -->
+            <FrameLayout
+                android:id="@+id/cardTodayPreview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:visibility="gone">
 
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:src="@drawable/ic_mail_large_soft"
-                    android:layout_marginBottom="12dp"
-                    android:contentDescription="@null"
-                    android:alpha="0.3"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="180dp"
                     android:layout_height="wrap_content"
-                    android:text="ابدأ برحلتك.. اكتب رسالة لنفسك بالمستقبل"
-                    android:textColor="@color/text_soft"
-                    android:textSize="14sp"
-                    android:gravity="center"/>
-            </LinearLayout>
+                    android:background="@drawable/white_rounded_card"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="12dp">
 
-            <!-- Floating compose button -->
-            <FrameLayout
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:layout_gravity="bottom|center_horizontal"
-                android:layout_marginBottom="24dp">
+                    <TextView
+                        android:id="@+id/tvTodayPreviewText"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_soft"
+                        android:textSize="12sp"
+                        android:lineSpacingExtra="3dp"/>
+                </LinearLayout>
 
-                <View
-                    android:id="@+id/fabPulseRing"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/bg_fab_ring"
-                    android:visibility="visible"/>
-
-                <ImageButton
-                    android:id="@+id/btnCompose"
-                    android:layout_width="72dp"
-                    android:layout_height="72dp"
-                    android:layout_gravity="center"
-                    android:background="@drawable/bg_fab"
-                    android:src="@drawable/ic_plus"
-                    android:padding="22dp"
-                    android:elevation="8dp"
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_gravity="top|start"
+                    android:layout_marginStart="-3dp"
+                    android:layout_marginTop="-3dp"
+                    android:background="@drawable/bg_icon_pink"
+                    android:padding="3dp"
+                    android:src="@drawable/heartbeat_solid"
+                    app:tint="@color/accent"
                     android:contentDescription="@null"/>
             </FrameLayout>
 
+            <!-- Message nodes and labels added programmatically -->
+
         </FrameLayout>
 
-        <!-- ===================== FOOTER: PREVIOUS MESSAGES ===================== -->
+        <!-- ===================== FOOTER ===================== -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -160,16 +120,16 @@
             android:background="@color/surface"
             android:paddingStart="24dp"
             android:paddingEnd="24dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="24dp"
-            android:elevation="4dp">
+            android:paddingTop="12dp"
+            android:paddingBottom="20dp"
+            android:elevation="12dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
-                android:layout_marginBottom="12dp">
+                android:layout_marginBottom="8dp">
 
                 <TextView
                     android:layout_width="0dp"
@@ -178,48 +138,67 @@
                     android:text="رسائل سابقة"
                     android:textColor="@color/text_main"
                     android:textStyle="bold"
-                    android:textSize="18sp"/>
+                    android:textSize="18sp"
+                    android:textAlignment="viewStart"/>
 
-                <LinearLayout
-                    android:id="@+id/btnViewAllContainer"
+                <TextView
+                    android:id="@+id/btnViewAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
+                    android:text="عرض الكل"
+                    android:textColor="@color/accent"
+                    android:textSize="13sp"
+                    android:textStyle="bold"
                     android:clickable="true"
-                    android:focusable="true">
-
-                    <TextView
-                        android:id="@+id/btnViewAll"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="عرض الكل"
-                        android:textColor="@color/accent"
-                        android:textSize="14sp"
-                        android:textStyle="bold"
-                        android:layout_marginEnd="6dp"/>
-
-                    <ImageView
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
-                        android:src="@drawable/ic_list"
-                        android:tint="@color/accent"/>
-                </LinearLayout>
+                    android:focusable="true"/>
             </LinearLayout>
 
-            <TextView
-                android:id="@+id/tvFooterPreview"
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="@color/text_soft"
-                android:textSize="15sp"
-                android:lineSpacingExtra="4dp"
-                android:maxLines="2"
-                android:ellipsize="end"
-                android:clickable="true"
-                android:focusable="true"
-                android:text="اليوم كان صعباً لكنك تجاوزته، وأنت أقوى مما تتخيل الآن. احتفظ به..." />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tvFooterPreview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:text="لا رسائل سابقة بعد"
+                    android:textColor="@color/text_soft"
+                    android:textSize="14sp"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:text="وصلت"
+                        android:textColor="@color/text_soft"
+                        android:textSize="11sp" />
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:src="@drawable/heartbeat_solid"
+                        app:tint="@color/accent_soft"
+                        android:contentDescription="@null"/>
+                </LinearLayout>
+            </RelativeLayout>
         </LinearLayout>
 
     </LinearLayout>
+
+    <!-- Hidden views to maintain code compatibility -->
+    <ImageButton android:id="@+id/btnShowAll" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" tools:ignore="MissingConstraints" />
+    <ImageButton android:id="@+id/btnCompose" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" tools:ignore="MissingConstraints" />
+    <View android:id="@+id/fabPulseRing" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" tools:ignore="MissingConstraints" />
+    <View android:id="@+id/groupEmpty" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone" tools:ignore="MissingConstraints" />
+
 </FrameLayout>

@@ -16,28 +16,26 @@ import java.util.List;
  */
 public final class TimelineGeometry {
 
-    public static final float CENTER_X_DP = 165f;
-    public static final float OFFSET_X_DP = 45f;
-    public static final float START_Y_DP = 60f;
-    public static final float STEP_Y_DP = 130f;
-    public static final float BASE_HEIGHT_DP = 120f;
+    public static final float CENTER_X_DP = 160f;
 
     private TimelineGeometry() {
     }
 
-    /** Equivalent of `messages.map((m, i) => ({ x: 165 + (i%2===0?-45:45), y: 60 + i*130 }))`. */
+    /** Returns fixed points scaled to fit within a typical screen height. */
     public static List<PointF> computePoints(int count) {
         List<PointF> points = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            float x = CENTER_X_DP + (i % 2 == 0 ? -OFFSET_X_DP : OFFSET_X_DP);
-            float y = START_Y_DP + i * STEP_Y_DP;
-            points.add(new PointF(x, y));
-        }
+        // Alternating X to distribute nodes around the road
+        points.add(new PointF(CENTER_X_DP, 40f));   // 0: Today (Top)
+        points.add(new PointF(250f, 130f));         // 1: Week (Right)
+        points.add(new PointF(70f, 225f));          // 2: Month (Left)
+        points.add(new PointF(250f, 320f));         // 3: 3 Months (Right)
+        points.add(new PointF(70f, 415f));          // 4: Year (Left)
+        points.add(new PointF(CENTER_X_DP, 530f));  // 5: Send Button (Bottom)
         return points;
     }
 
-    /** Equivalent of `svgHeight = 120 + messages.length * 130`. */
+    /** Total height of the road view itself. */
     public static float totalHeightDp(int count) {
-        return BASE_HEIGHT_DP + count * STEP_Y_DP;
+        return 600f;
     }
 }
