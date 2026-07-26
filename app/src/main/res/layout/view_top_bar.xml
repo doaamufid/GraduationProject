@@ -21,15 +21,32 @@
             android:padding="9dp"
             android:contentDescription="@null"/>
 
-        <TextView
-            android:id="@+id/tvTopBarTitle"
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textColor="@color/text_white"
-            android:textStyle="bold"
-            android:textSize="14sp"
-            tools:text="صندوق الطوارئ"/>
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvTopBarTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_white"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                tools:text="صندوق الطوارئ"/>
+
+            <TextView
+                android:id="@+id/tvTopBarSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_soft_white"
+                android:textSize="10sp"
+                android:visibility="gone"
+                tools:text="Listen · استمع"
+                tools:visibility="visible"/>
+        </LinearLayout>
 
         <FrameLayout
             android:id="@+id/topBarRight"

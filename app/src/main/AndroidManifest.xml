@@ -15,7 +15,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
 
-        <!-- إضافة الشاشة المفقودة هنا -->
+        <activity
+            android:name=".VideoLibraryActivity"
+            android:exported="false" />
+
         <activity
             android:name=".MindfulnessQuotesActivity"
             android:exported="false" />

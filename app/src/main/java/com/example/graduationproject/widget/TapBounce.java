@@ -16,10 +16,6 @@ public final class TapBounce {
     private TapBounce() {
     }
 
-    public static void attach(View view) {
-        attach(view, 0.95f);
-    }
-
     public static void attach(View view, float pressedScale) {
         view.setOnTouchListener((v, event) -> {
             switch (event.getActionMasked()) {
@@ -35,5 +31,10 @@ public final class TapBounce {
             }
             return false; // let the click listener still fire
         });
+    }
+
+    /** Default attach with a standard 0.95 scale. */
+    public static void attach(View view) {
+        attach(view, 0.95f);
     }
 }

@@ -200,6 +200,7 @@ import android.widget.TextView;
 
 import com.example.graduationproject.HealingEnvironmentActivity;
 import com.example.graduationproject.R;
+import com.example.graduationproject.VideoLibraryActivity;
 import com.example.graduationproject.VisualContentActivity;
 import com.example.graduationproject.adapters.HomeActionAdapter;
 import com.example.graduationproject.adapters.HomeFeatureAdapter;
@@ -278,7 +279,7 @@ public class HomeFragment extends Fragment {
         featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
             switch (position) {
                 case 0:
-                    startActivity(new Intent(getActivity(), VisualContentActivity.class));
+                    startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
                     break;
                 case 1:
                     startActivity(new Intent(getActivity(), HealingEnvironmentActivity.class));
