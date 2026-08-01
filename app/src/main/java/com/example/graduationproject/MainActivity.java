@@ -33,6 +33,7 @@ import android.widget.FrameLayout;
 import android.content.ClipboardManager;
 import android.content.ClipData;
 import android.content.Context;
+import com.example.graduationproject.ui.ProfileActivity;
 
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
@@ -48,9 +49,9 @@ public class MainActivity extends AppCompatActivity implements CardHost {
 
     @Override
     public FrameLayout getToastOverlay() {
-        // Return a FrameLayout that can be used for custom toasts if available, 
+        // Return a FrameLayout that can be used for custom toasts if available,
         // or just a container from your layout.
-        return findViewById(R.id.frameLayout); 
+        return findViewById(R.id.frameLayout);
     }
 
     @Override
@@ -119,10 +120,10 @@ public class MainActivity extends AppCompatActivity implements CardHost {
         System.loadLibrary("rive-android");
 
         // Enable Edge-to-Edge with explicit transparent styles
-        EdgeToEdge.enable(this, 
+        EdgeToEdge.enable(this,
                 SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
                 SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
-        
+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             getWindow().setNavigationBarContrastEnforced(false);
         }
@@ -135,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements CardHost {
             controller.setAppearanceLightStatusBars(true);
             controller.setAppearanceLightNavigationBars(true);
         }
-        
+
         binding.getRoot().setLayoutDirection(AppLanguageManager.getLayoutDirection(this));
 
         // Remove old BottomNavigationView setup and replace with custom one
@@ -153,9 +154,9 @@ public class MainActivity extends AppCompatActivity implements CardHost {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             // Apply top padding to frameLayout to avoid status bar overlap
             frameLayout.setPadding(0, systemBars.top, 0, 0);
-            
+
             // The container now covers the system navigation bar area
-            // We apply the systemBars.bottom as padding to the container 
+            // We apply the systemBars.bottom as padding to the container
             // so that the included layout (floating nav) stays above it
             navContainer.setPadding(0, 0, 0, systemBars.bottom);
 
@@ -243,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements CardHost {
     private void resetNavItems() {
         int[] ids = {R.id.nav_home, R.id.nav_exercises, R.id.nav_friend, R.id.nav_profile};
         int[] bgs = {R.id.nav_home_bg, R.id.nav_exercises_bg, R.id.nav_friend_bg, R.id.nav_profile_bg};
-        
+
         for (int i = 0; i < ids.length; i++) {
             findViewById(ids[i]).setSelected(false);
             findViewById(bgs[i]).setVisibility(View.INVISIBLE);
