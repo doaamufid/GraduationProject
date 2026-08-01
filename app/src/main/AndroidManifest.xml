@@ -10,6 +10,9 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-feature android:name="android.hardware.camera" android:required="false" />
 
+    <!-- إذن الاتصال بالإنترنت -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".GraduationProjectApplication"
         android:allowBackup="true"
@@ -253,6 +256,12 @@
         <activity
             android:name=".OneClickCalmActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".ui.ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JourneyProfile"
+            android:windowSoftInputMode="adjustResize" />
 
         <provider
             android:name="androidx.core.content.FileProvider"
