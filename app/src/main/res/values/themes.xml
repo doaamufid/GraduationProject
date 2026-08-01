@@ -94,4 +94,42 @@
         <item name="android:textDirection">rtl</item>
     </style>
 
+    <style name="Theme.JourneyProfile" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:windowBackground">@color/profile_bg</item>
+        <item name="android:statusBarColor">@color/profile_bg</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
+        <item name="android:textColorHint">@color/text_soft</item>
+    </style>
+
+    <style name="ThemeOverlay.JourneyProfile.BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/JourneyProfile.BottomSheetStyle</item>
+    </style>
+
+    <style name="ThemeOverlay.graduationprojectBottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/JourneyProfile.BottomSheetStyle</item>
+    </style>
+    <style name="JourneyProfile.BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+    <style name="Theme.JourneyProfile.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
+
+    <style name="Theme.graduationprojectDialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
 </resources>

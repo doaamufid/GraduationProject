@@ -5,7 +5,11 @@
     <!-- إذن المايك لتسجيل الصوت في شات الأطفال -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
+    <!-- إذن الاتصال بالإنترنت -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -142,6 +146,12 @@
             android:name=".ui.AllMessagesActivity"
             android:exported="false"
             android:theme="@style/Theme.GraduationProject"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.ProfileActivity"
+            android:exported="false"
+            android:theme="@style/Theme.JourneyProfile"
             android:windowSoftInputMode="adjustResize" />
 
     </application>

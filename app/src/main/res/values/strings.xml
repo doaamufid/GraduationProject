@@ -190,5 +190,58 @@
     <string name="toast_like">سجّلنا إعجابك — بنقترح لك محتوى مشابه أكثر</string>
     <string name="toast_dislike_reason">شكراً! هذا يساعدنا نحسّن اقتراحاتك القادمة</string>
 
+    <string name="header_title">بروفايل الرحلة</string>
+
+    <string name="join_date">معك منذ ١٢ مايو ٢٠٢٦</string>
+    <string name="privacy_notice">خصوصيتك محمية بالكامل — لا بيانات حقيقية مخزّنة</string>
+
+    <string name="stat_active_days_value">٤٧</string>
+    <string name="stat_active_days_label">يوم نشاط</string>
+    <string name="stat_streak_value">١٢</string>
+    <string name="stat_streak_label">يوم متتالي</string>
+    <string name="stat_sessions_value">٦٩</string>
+    <string name="stat_sessions_label">جلسة</string>
+
+    <string name="achievements_title">إنجازات رحلتك</string>
+    <string name="earned_count_format">%1$d/%2$d</string>
+
+    <string name="archive_title">أرشيفك الشخصي</string>
+    <string name="archive_thoughts_label">أفكاري المتوازنة</string>
+    <string name="archive_thoughts_sub">من إعادة الصياغة</string>
+    <string name="archive_strengths_label">بنك نقاط القوة</string>
+    <string name="archive_strengths_sub">الصفات المكتشفة فيك</string>
+    <string name="archive_messages_label">رسائلي لنفسي</string>
+    <string name="archive_messages_sub">رسائل مجدولة ووصلت</string>
+
+    <string name="parent_link_label">بروفايلات أطفالك</string>
+    <string name="parent_link_sub">٢ ملفات مسجّلة</string>
+
+    <!-- Avatar picker dialog -->
+    <string name="avatar_picker_title">اختر لون هويتك</string>
+    <string name="avatar_picker_note">لا صور حقيقية — هويتك تبقى مجهولة تماماً 🔒</string>
+
+    <!-- Name dialog -->
+    <string name="name_dialog_title">تعديل الاسم المستعار</string>
+    <string name="save_btn">حفظ</string>
+
+    <!-- Badge dialog -->
+    <string name="badge_earned_status">أنجزتها بالفعل 🎉</string>
+    <string name="badge_need_format">تحتاج: %1$s</string>
+    <string name="close_btn">إغلاق</string>
+
+    <!-- Badges -->
+    <string name="badge_week_label">أسبوع كامل</string>
+    <string name="badge_week_need">٧ أيام متتالية</string>
+    <string name="badge_ideas_label">١٠ أفكار متوازنة</string>
+    <string name="badge_ideas_need">١٠ إعادة صياغة محفوظة</string>
+    <string name="badge_strengths_label">٥ صفات قوة</string>
+    <string name="badge_strengths_need">٥ صفات مكتشفة</string>
+    <string name="badge_month_label">٣٠ يوم معنا</string>
+    <string name="badge_month_need">٣٠ يوم منذ الانضمام</string>
+    <string name="badge_message_label">رسالة للمستقبل</string>
+    <string name="badge_message_need">أول رسالة لنفسك</string>
+    <string name="badge_body_map_label">مستكشف الجسد</string>
+    <string name="badge_body_map_need">جرّب كل مناطق خريطة الجسد</string>
+
 </resources>
 

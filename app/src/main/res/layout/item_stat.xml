@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg_stat_card"
+    android:padding="12dp">
+
+    <TextView
+        android:id="@+id/tvStatValue"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_dark"
+        android:textStyle="bold"
+        android:textSize="20sp"
+        tools:text="٤٧"/>
+
+    <TextView
+        android:id="@+id/tvStatLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_soft"
+        android:textSize="12sp"
+        tools:text="يوم نشاط"/>
+
+</LinearLayout>

@@ -43,6 +43,7 @@ dependencies {
     implementation libs.activity.compose
     implementation libs.activity.ktx
     implementation libs.appcompat
+    implementation libs.engage.core
     implementation libs.lifecycle.runtime.ktx
     implementation libs.material
     implementation libs.activity
