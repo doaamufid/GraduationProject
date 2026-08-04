@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "581235281512",
+    "project_id": "graduation-project-salam",
+    "storage_bucket": "graduation-project-salam.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:581235281512:android:ca36b95b2a1eb6569e35dd",
+        "android_client_info": {
+          "package_name": "com.example.graduationproject"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxZlJiY3_kAjZArAx2tMEGHl3Uljrdz9Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

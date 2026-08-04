@@ -2,7 +2,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
     <application
+        android:name=".MyFirebaseApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -11,12 +17,65 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
+
+        <!-- Word of the Week feature (new) -->
+
+        <activity
+            android:name=".Kids.SoundsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.MyWordsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.CelebrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.PlaybackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.RecordingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Kids.WordOfWeekActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.VideosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.VideoDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Kids.MessagesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.MoodCheckInActivity"
+            android:exported="false" />
         <activity
             android:name=".Kids.NewChildProfileActivity"
             android:exported="false" />
         <activity
             android:name=".Kids.ChildProfilesActivity"
             android:exported="false" />
+
+        <!-- Draw-with-Noor feature (new) -->
+        <activity
+            android:name=".Kids.DrawInstructionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.UploadPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ConfirmPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ProcessingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ResultActivity"
+            android:exported="false" />
+
         <activity
             android:name=".HealingEnvironmentActivity"
             android:exported="false" />
@@ -79,6 +138,16 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>
