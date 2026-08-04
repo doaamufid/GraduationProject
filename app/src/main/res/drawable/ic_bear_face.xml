@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+
+    <!-- left ear -->
+    <path android:fillColor="#C98A4B" android:pathData="M9,20 a13,13 0 1,0 26,0 a13,13 0 1,0 -26,0 Z"/>
+    <!-- right ear -->
+    <path android:fillColor="#C98A4B" android:pathData="M65,20 a13,13 0 1,0 26,0 a13,13 0 1,0 -26,0 Z"/>
+    <!-- inner ears -->
+    <path android:fillColor="#E4A96B" android:pathData="M15,20 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 Z"/>
+    <path android:fillColor="#E4A96B" android:pathData="M71,20 a7,7 0 1,0 14,0 a7,7 0 1,0 -14,0 Z"/>
+
+    <!-- head -->
+    <path android:fillColor="#C98A4B" android:pathData="M18,48 a32,32 0 1,0 64,0 a32,32 0 1,0 -64,0 Z"/>
+
+    <!-- muzzle -->
+    <path android:fillColor="#F3D9AE" android:pathData="M33,58 a17,17 0 1,0 34,0 a17,17 0 1,0 -34,0 Z"/>
+
+    <!-- eyes -->
+    <path android:fillColor="#5A4632" android:pathData="M34.5,42 a3.5,3.5 0 1,0 7,0 a3.5,3.5 0 1,0 -7,0 Z"/>
+    <path android:fillColor="#5A4632" android:pathData="M58.5,42 a3.5,3.5 0 1,0 7,0 a3.5,3.5 0 1,0 -7,0 Z"/>
+
+    <!-- nose -->
+    <path android:fillColor="#5A4632" android:pathData="M46,52 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0 Z"/>
+
+    <!-- smile -->
+    <path
+        android:strokeColor="#5A4632"
+        android:strokeWidth="2.2"
+        android:strokeLineCap="round"
+        android:pathData="M42,63 Q50,69 58,63"/>
+</vector>

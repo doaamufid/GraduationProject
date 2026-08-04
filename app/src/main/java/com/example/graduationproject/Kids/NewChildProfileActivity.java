@@ -30,7 +30,7 @@ import java.util.List;
 public class NewChildProfileActivity extends AppCompatActivity {
 
     // ايموجيات مخصصة للأولاد وأخرى للبنات
-// أشكال مرحة ومناسبة للأطفال
+    // أشكال مرحة ومناسبة للأطفال
     private static final String[] BOY_AVATARS = {"🦁", "🦊", "🐻", "🐼", "🐵", "🐯", "🐨"};
     private static final String[] GIRL_AVATARS = {"🦄", "🐰", "🐱", "🐥", "🦋", "🌸", "👑"};
 
@@ -182,9 +182,12 @@ public class NewChildProfileActivity extends AppCompatActivity {
             return;
         }
 
-        childProfileStore.addProfile(name, selectedAge, selectedGender, selectedAvatar);
+        long newChildId = childProfileStore.addProfile(name, selectedAge, selectedGender, selectedAvatar);
 
-        Intent intent = new Intent(NewChildProfileActivity.this, KidsAiChatActivity.class);
+        setResult(RESULT_OK);
+
+        Intent intent = new Intent(this, MoodCheckInActivity.class);
+        intent.putExtra(MoodCheckInActivity.EXTRA_CHILD_ID, newChildId);
         intent.putExtra("CHILD_NAME", name);
         intent.putExtra("CHILD_AGE", selectedAge);
         intent.putExtra("CHILD_GENDER", selectedGender);

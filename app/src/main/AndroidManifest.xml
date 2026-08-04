@@ -5,6 +5,11 @@
     <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- Allow network image loading (Glide, Picasso, etc.) -->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+
     <application
         android:name=".GraduationProjectApplication"
         android:allowBackup="true"
@@ -15,6 +20,41 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
+
+        <!-- Word of the Week feature (new) -->
+
+        <activity
+            android:name=".Kids.SoundsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.MyWordsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.CelebrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.PlaybackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.RecordingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Kids.WordOfWeekActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.VideosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.VideoDetailActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".Kids.MessagesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.MoodCheckInActivity"
+            android:exported="false" />
         <activity
             android:name=".Kids.KidsAiResponseActivity"
             android:exported="false" />
@@ -45,6 +85,24 @@
         <activity
             android:name=".Kids.ChildProfilesActivity"
             android:exported="false" />
+
+        <!-- Draw-with-Noor feature (new) -->
+        <activity
+            android:name=".Kids.DrawInstructionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.UploadPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ConfirmPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ProcessingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ResultActivity"
+            android:exported="false" />
+
         <activity
             android:name=".VideoLibraryActivity"
             android:exported="false" />
@@ -195,6 +253,16 @@
         <activity
             android:name=".OneClickCalmActivity"
             android:exported="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
     </application>
 
 </manifest>

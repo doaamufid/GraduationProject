@@ -1,0 +1,26 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="72dp"
+    android:height="72dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- اللبدة (شعر الأسد) -->
+    <path android:fillColor="@color/orange_dark" android:pathData="M18,65 A42,42 0 1,0 102,65 A42,42 0 1,0 18,65 Z" />
+
+    <!-- الأذنين -->
+    <path android:fillColor="@color/orange_dark" android:pathData="M16,28 A12,12 0 1,0 40,28 A12,12 0 1,0 16,28 Z" />
+    <path android:fillColor="@color/orange_dark" android:pathData="M80,28 A12,12 0 1,0 104,28 A12,12 0 1,0 80,28 Z" />
+
+    <!-- الوجه -->
+    <path android:fillColor="@color/orange_primary" android:pathData="M30,68 A30,30 0 1,0 90,68 A30,30 0 1,0 30,68 Z" />
+
+    <!-- الكمامة -->
+    <path android:fillColor="@color/bg_card" android:pathData="M42,82 A18,13 0 1,0 78,82 A18,13 0 1,0 42,82 Z" />
+
+    <!-- العيون -->
+    <path android:fillColor="@color/text_dark" android:pathData="M46.8,60 A3.2,3.2 0 1,0 53.2,60 A3.2,3.2 0 1,0 46.8,60 Z" />
+    <path android:fillColor="@color/text_dark" android:pathData="M66.8,60 A3.2,3.2 0 1,0 73.2,60 A3.2,3.2 0 1,0 66.8,60 Z" />
+
+    <!-- الانف -->
+    <path android:fillColor="@color/text_dark" android:pathData="M57,72 L66,72 L61.5,79 Z" />
+</vector>

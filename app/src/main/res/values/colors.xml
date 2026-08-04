@@ -29,6 +29,77 @@
     <color name="onboarding_green_main">#51A285</color>
     <color name="onboarding_green_inactive">#BDBEC5</color>
 
+    <!-- أساسيات -->
+    <color name="bg_cream">#FBF6EC</color>
+    <color name="card_white">#FFFFFF</color>
+    <color name="text_primary">#3A3A3A</color>
+    <color name="text_secondary">#9A9A9A</color>
+    <color name="accent_orange">#F2984B</color>
+
+    <!-- بطاقة معاينة الصوت (شاشة أصوات نور) -->
+    <color name="sound_card_top">#6FBCAE</color>
+    <color name="sound_card_bottom">#E4D2A6</color>
+
+    <!-- الدوائر (ريح / ماء / طيور) -->
+    <color name="circle_selected">#3FA89A</color>
+    <color name="circle_unselected_bg">#FFFFFF</color>
+    <color name="circle_unselected_stroke">#E3DCC9</color>
+    <!--  خلفية كريمية دافئة زي التصميم  -->
+
+    <!--  برتقالي أساسي (الزر الرئيسي، المايك)  -->
+
+    <color name="orange_dark">#E07B39</color>
+
+    <!--  نفس اللون المستخدم بملفاتك الموجودة bg_button_outline.xml / bg_card_border.xml  -->
+
+    <!--  تركواز (زر التشغيل / الاستماع)  -->
+    <color name="teal_primary">#3FC1C0</color>
+    <color name="teal_dark">#2FA6A5</color>
+    <!--  وردي (زر التسجيل وهو شغال)  -->
+    <color name="pink_primary">#F2A6A6</color>
+    <color name="pink_dark">#E88888</color>
+    <!--  نصوص  -->
+
+    <color name="text_gray">#8A7A70</color>
+    <color name="star_gold">#F5C34C</color>
+    <color name="star_empty">#EAD9C4</color>
+    <color name="heart_red">#EF6C6C</color>
+    <!-- تصنيفات الفيديوهات -->
+    <color name="cat_favorites">#F7B36B</color>
+    <color name="cat_friendship">#A88FD1</color>
+    <color name="cat_sleep">#F2C94C</color>
+    <color name="cat_feelings">#F3D9A0</color>
+
+    <color name="bg_card">#FFFFFF</color>
+    <color name="orange_primary">#FF8A3D</color>
+    <color name="orange_primary_dark">#F17B2C</color>
+    <color name="orange_light">#FFE7D1</color>
+    <color name="orange_light_border">#FFD6AE</color>
+
+    <color name="text_brown">#8A6E52</color>
+    <color name="text_muted">#B0987F</color>
+    <color name="bear_body">#C98A4B</color>
+    <color name="bear_body_light">#E4A96B</color>
+    <color name="bear_muzzle">#F3D9AE</color>
+    <color name="star_yellow">#FFC94A</color>
+    <color name="dot_active">#FF8A3D</color>
+    <color name="dot_inactive">#F0DCC4</color>
+
+    <!-- ألوان بطاقات الفيديو -->
+    <color name="video_purple">#6C5B9E</color>
+    <color name="video_purple_dark">#58497E</color>
+    <color name="video_gold">#E7B73D</color>
+    <color name="video_gold_dark">#C79B2E</color>
+    <color name="video_pink">#E4849C</color>
+    <color name="video_pink_dark">#D06C86</color>
+    <color name="video_teal">#3FA89A</color>
+    <color name="video_teal_dark">#2F8579</color>
+    <color name="video_green">#8FB88E</color>
+    <color name="video_green_dark">#729873</color>
+    <color name="video_orange">#E68A4F</color>
+    <color name="video_orange_dark">#C96F39</color>
+
+
     <!-- ألوان خلفيات الأيقونات (مأخوذة بالتقريب من ألوان الفيجما) -->
     <color name="icon_bg_blue">#D1E8FF</color>
     <color name="calm_icon_bg">#E1F1FF</color>

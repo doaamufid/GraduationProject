@@ -32,11 +32,16 @@ public class GeminiService {
     }
 
     public GeminiService() {
+        // GenerativeBackend.googleAI() = نفس "Gemini Developer API" (الخطة المجانية)
+        // اللي فعّلناها من Firebase Console - بدون حاجة لمفتاح API يدوي
         GenerativeModel gm = FirebaseAI.getInstance(GenerativeBackend.googleAI())
                 .generativeModel(MODEL_NAME);
         this.model = GenerativeModelFutures.from(gm);
     }
 
+    /**
+     * يبعت المزاج المختار لـ Gemini، ويرجع رسالة تشجيعية قصيرة من "دبدوب نور"
+     */
     public void generateMoodMessage(String mood, GeminiCallback callback) {
         String prompt = buildPrompt(mood);
 
