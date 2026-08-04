@@ -130,7 +130,7 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_button_orange"
             android:elevation="0dp"
-            android:text="@string/btn_finish_result"
+            android:text="@string/btn_finish"
             android:textAllCaps="false"
             android:textColor="@color/white"
             android:textSize="15sp"

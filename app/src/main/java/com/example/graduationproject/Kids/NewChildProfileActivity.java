@@ -184,7 +184,6 @@ public class NewChildProfileActivity extends AppCompatActivity {
         }
 
         long newChildId = childProfileStore.addProfile(name, selectedAge, selectedGender, selectedAvatar);
-
         setResult(RESULT_OK);
 
         Intent intent = new Intent(this, KidsAdaptiveMainActivity.class);

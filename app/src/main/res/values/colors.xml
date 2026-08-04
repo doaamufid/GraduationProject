@@ -29,42 +29,30 @@
     <color name="onboarding_green_main">#51A285</color>
     <color name="onboarding_green_inactive">#BDBEC5</color>
 
-    <!-- أساسيات -->
     <color name="bg_cream">#FBF6EC</color>
     <color name="card_white">#FFFFFF</color>
     <color name="text_primary">#3A3A3A</color>
     <color name="text_secondary">#9A9A9A</color>
     <color name="accent_orange">#F2984B</color>
 
-    <!-- بطاقة معاينة الصوت (شاشة أصوات نور) -->
     <color name="sound_card_top">#6FBCAE</color>
     <color name="sound_card_bottom">#E4D2A6</color>
 
-    <!-- الدوائر (ريح / ماء / طيور) -->
     <color name="circle_selected">#3FA89A</color>
     <color name="circle_unselected_bg">#FFFFFF</color>
     <color name="circle_unselected_stroke">#E3DCC9</color>
-    <!--  خلفية كريمية دافئة زي التصميم  -->
-
-    <!--  برتقالي أساسي (الزر الرئيسي، المايك)  -->
 
     <color name="orange_dark">#E07B39</color>
 
-    <!--  نفس اللون المستخدم بملفاتك الموجودة bg_button_outline.xml / bg_card_border.xml  -->
-
-    <!--  تركواز (زر التشغيل / الاستماع)  -->
     <color name="teal_primary">#3FC1C0</color>
     <color name="teal_dark">#2FA6A5</color>
-    <!--  وردي (زر التسجيل وهو شغال)  -->
     <color name="pink_primary">#F2A6A6</color>
     <color name="pink_dark">#E88888</color>
-    <!--  نصوص  -->
 
     <color name="text_gray">#8A7A70</color>
     <color name="star_gold">#F5C34C</color>
     <color name="star_empty">#EAD9C4</color>
     <color name="heart_red">#EF6C6C</color>
-    <!-- تصنيفات الفيديوهات -->
     <color name="cat_favorites">#F7B36B</color>
     <color name="cat_friendship">#A88FD1</color>
     <color name="cat_sleep">#F2C94C</color>
@@ -85,7 +73,6 @@
     <color name="dot_active">#FF8A3D</color>
     <color name="dot_inactive">#F0DCC4</color>
 
-    <!-- ألوان بطاقات الفيديو -->
     <color name="video_purple">#6C5B9E</color>
     <color name="video_purple_dark">#58497E</color>
     <color name="video_gold">#E7B73D</color>
@@ -99,8 +86,6 @@
     <color name="video_orange">#E68A4F</color>
     <color name="video_orange_dark">#C96F39</color>
 
-
-    <!-- ألوان خلفيات الأيقونات (مأخوذة بالتقريب من ألوان الفيجما) -->
     <color name="icon_bg_blue">#D1E8FF</color>
     <color name="calm_icon_bg">#E1F1FF</color>
     <color name="profile_bg">#E1F1FF</color>
@@ -110,35 +95,29 @@
     <color name="icon_bg_purple">#E2D9F3</color>
     <color name="icon_bg_yellow">#FFF3CD</color>
 
-    <!-- ألوان النصوص داخل الكاردز -->
     <color name="card_title">#1D3557</color>
     <color name="card_subtitle">#7A8B9B</color>
 
-    <!-- Gradient background -->
     <color name="grad_top">#1F3A60</color>
     <color name="grad_bottom">#2B2140</color>
 
-    <!-- Cards / surfaces -->
-    <color name="card">#0FFFFFFF</color>          <!-- rgba(255,255,255,0.06) -->
+    <color name="card">#0FFFFFFF</color>
     <color name="card_solid">#241F3A</color>
-    <color name="overlay_08">#14FFFFFF</color>     <!-- rgba(255,255,255,0.10) -->
-    <color name="overlay_10">#1AFFFFFF</color>     <!-- rgba(255,255,255,0.10) -->
-    <color name="overlay_12">#1FFFFFFF</color>     <!-- rgba(255,255,255,0.12) -->
-    <color name="overlay_03">#08FFFFFF</color>     <!-- rgba(255,255,255,0.03) -->
-    <color name="border_light">#1FFFFFFF</color>   <!-- rgba(255,255,255,0.12) -->
-    <color name="scrim_black">#99000000</color>    <!-- rgba(0,0,0,0.6) -->
+    <color name="overlay_08">#14FFFFFF</color>
+    <color name="overlay_10">#1AFFFFFF</color>
+    <color name="overlay_12">#1FFFFFFF</color>
+    <color name="overlay_03">#08FFFFFF</color>
+    <color name="border_light">#1FFFFFFF</color>
+    <color name="scrim_black">#99000000</color>
 
-    <!-- Brand -->
     <color name="primary">#3A74B8</color>
     <color name="primary_light">#5B8FD1</color>
-    <color name="primary_33">#523A74B8</color>     <!-- rgba(primary,0.33) approx -->
+    <color name="primary_33">#523A74B8</color>
     <color name="purple_accent">#6B4A8A</color>
 
-    <!-- Text -->
     <color name="text_white">#FFFFFF</color>
-    <color name="text_soft_alt">#A6FFFFFF</color>  <!-- rgba(255,255,255,0.65) -->
+    <color name="text_soft_alt">#A6FFFFFF</color>
 
-    <!-- Accents -->
     <color name="red_record">#C97575</color>
     <color name="red_delete">#E39494</color>
     <color name="gold_star">#FFC94A</color>
@@ -151,49 +130,43 @@
     <color name="text_soft_alt2">#5C7290</color>
     <color name="border_alt">#DCE6EF</color>
 
-    <color name="primary_soft_18">#2E3A74B8</color>   <!-- primary + "18" (~9%) -->
-    <color name="primary_soft_15">#263A74B8</color>   <!-- primary + "15" -->
-    <color name="primary_soft_12">#1F3A74B8</color>   <!-- primary + "12" -->
-    <color name="primary_soft_33">#523A74B8</color>   <!-- primary + "33" (~20%) -->
-    <color name="white_alpha_20">#33FFFFFF</color>     <!-- #ffffff33 progress track -->
-    <color name="scrim_blue">#591F3A60</color>              <!-- rgba(31,58,96,0.35) -->
-    <color name="scrim_dialog">#661F3A60</color>       <!-- rgba(31,58,96,0.4) -->
+    <color name="primary_soft_18">#2E3A74B8</color>
+    <color name="primary_soft_15">#263A74B8</color>
+    <color name="primary_soft_12">#1F3A74B8</color>
+    <color name="primary_soft_33">#523A74B8</color>
+    <color name="white_alpha_20">#33FFFFFF</color>
+    <color name="scrim_blue">#591F3A60</color>
+    <color name="scrim_dialog">#661F3A60</color>
     <color name="red_dislike">#C97575</color>
 
-    <!-- Derived alpha colors -->
-    <color name="primary_12">#1F3A74B8</color>      <!-- primary + "12" -->
-    <color name="primary_22">#383A74B8</color>      <!-- primary + "22" -->
-    <color name="sage_18">#268FA998</color>         <!-- sage + "18" -->
-    <color name="sage_44">#448FA998</color>         <!-- sage + "44" -->
-    <color name="white_dd">#DDFFFFFF</color>        <!-- #ffffffdd -->
-    <color name="white_22">#22FFFFFF</color>        <!-- #ffffff22 -->
-    <color name="white_1a">#1AFFFFFF</color>        <!-- #ffffff1a -->
+    <color name="primary_12">#1F3A74B8</color>
+    <color name="primary_22">#383A74B8</color>
+    <color name="sage_18">#268FA998</color>
+    <color name="sage_44">#448FA998</color>
+    <color name="white_dd">#DDFFFFFF</color>
+    <color name="white_22">#22FFFFFF</color>
+    <color name="white_1a">#1AFFFFFF</color>
 
-    <!-- Category: الحزن (grief) -->
     <color name="cat_grief_start">#E8A3B0</color>
     <color name="cat_grief_end">#C97575</color>
     <color name="cat_grief_badge_bg">#22E8A3B0</color>
 
-    <!-- Category: القلق (anxiety) -->
     <color name="cat_anxiety_start">#F0C674</color>
     <color name="cat_anxiety_end">#D9A03C</color>
     <color name="cat_anxiety_badge_bg">#22F0C674</color>
 
-    <!-- Category: CBT -->
     <color name="cat_cbt_start">#7FA8D9</color>
     <color name="cat_cbt_end">#3A74B8</color>
     <color name="cat_cbt_badge_bg">#227FA8D9</color>
 
-    <!-- Category: التنفس (breathing) -->
     <color name="cat_breathing_start">#8FCFC4</color>
     <color name="cat_breathing_end">#3FA89A</color>
     <color name="cat_breathing_badge_bg">#228FCFC4</color>
 
-    <!-- Category: نوم (sleep) -->
     <color name="cat_sleep_start">#B0A0E0</color>
     <color name="cat_sleep_end">#7A5CC7</color>
     <color name="cat_sleep_badge_bg">#22B0A0E0</color>
-    <!-- Missing colors causing build failure -->
+
     <color name="duration_badge_bg">#99000000</color>
     <color name="video_bg">#000000</color>
     <color name="sage_soft_18">#2E8FA998</color>
@@ -204,18 +177,16 @@
     <color name="pink">#C97575</color>
     <color name="purple">#8A6BAE</color>
 
-    <!-- Derived alpha colors -->
-    <color name="sage_15">#268FA998</color>   <!-- sage + "15" -->
-    <color name="sage_33">#528FA998</color>   <!-- sage + "33" -->
-    <color name="white_aa">#AAFFFFFF</color>  <!-- #ffffffaa -->
+    <color name="sage_15">#268FA998</color>
+    <color name="sage_33">#528FA998</color>
+    <color name="white_aa">#AAFFFFFF</color>
 
-    <!-- Avatar pattern swatches -->
     <color name="avatar_1">#3A74B8</color>
     <color name="avatar_2">#8FA998</color>
     <color name="avatar_3">#D9A85C</color>
     <color name="avatar_4">#C97575</color>
     <color name="avatar_5">#8A6BAE</color>
-    <!-- Additional Missing Colors -->
+
     <color name="black_33">#54000000</color>
     <color name="danger">#E53935</color>
     <color name="primary_15">#263A74B8</color>
@@ -240,59 +211,49 @@
     <color name="white_e6">#E6FFFFFF</color>
     <color name="green_playing">#4CAF50</color>
 
-    <!-- Cognitive Pattern Colors -->
     <color name="pattern_overgeneralization">#B39DDB</color>
     <color name="pattern_all_or_nothing">#EF9A9A</color>
     <color name="pattern_catastrophizing">#FFCC80</color>
     <color name="pattern_discounting_positive">#C5E1A5</color>
 
-    <!-- Trait Colors -->
     <color name="trait_patience">#90CAF9</color>
     <color name="trait_courage">#CE93D8</color>
     <color name="trait_empathy">#F48FB1</color>
 
-    <!-- Utility Colors -->
     <color name="delete_armed_bg">#FFCDD2</color>
 
-    <!-- Cards / surfaces -->
-    <color name="overlay_05">#0DFFFFFF</color>    <!-- rgba(255,255,255,0.05) -->
-    <color name="overlay_06">#0FFFFFFF</color>    <!-- rgba(255,255,255,0.06) -->
-    <color name="overlay_07">#12FFFFFF</color>    <!-- rgba(255,255,255,0.07) -->
-    <color name="overlay_15">#26FFFFFF</color>    <!-- rgba(255,255,255,0.15) -->
-    <color name="black_25">#40000000</color>      <!-- rgba(0,0,0,0.25) -->
-    <color name="black_55">#8C000000</color>      <!-- rgba(0,0,0,0.55) -->
-    <color name="black_75">#BF000000</color>      <!-- rgba(0,0,0,0.75) -->
+    <color name="overlay_05">#0DFFFFFF</color>
+    <color name="overlay_06">#0FFFFFFF</color>
+    <color name="overlay_07">#12FFFFFF</color>
+    <color name="overlay_15">#26FFFFFF</color>
+    <color name="black_25">#40000000</color>
+    <color name="black_55">#8C000000</color>
+    <color name="black_75">#BF000000</color>
 
-    <!-- Brand -->
-    <color name="primary_light_55">#8D5B8FD1</color>  <!-- primaryLight + "55" -->
-    <color name="primary_light_33">#545B8FD1</color>  <!-- primaryLight + "33" -->
+    <color name="primary_light_55">#8D5B8FD1</color>
+    <color name="primary_light_33">#545B8FD1</color>
     <color name="trait_persistence">#8FA998</color>
     <color name="trait_discipline">#D9A85C</color>
     <color name="trait_confidence">#C97575</color>
     <color name="trait_resilience">#5B8FD1</color>
     <color name="trait_self_added">#8FA998</color>
 
-
-    <!-- Mountain scene (s1) -->
     <color name="mtn_top">#7A8A99</color>
     <color name="mtn_mid">#5B6E80</color>
     <color name="mtn_bottom">#2E3A45</color>
     <color name="mtn_layer1">#1E2933</color>
     <color name="mtn_layer2">#141C24</color>
 
-    <!-- Sea scene (s2) -->
     <color name="sea_top">#8FB0C7</color>
     <color name="sea_mid">#4E7691</color>
     <color name="sea_bottom">#1F3A4E</color>
     <color name="sea_sun">#FFF3D6</color>
 
-    <!-- Forest scene (s3) -->
     <color name="forest_top">#9AB09E</color>
     <color name="forest_mid">#57705E</color>
     <color name="forest_bottom">#22301F</color>
     <color name="forest_tree">#12180F</color>
 
-    <!-- Desert scene (s4) -->
     <color name="desert_top">#E6B98C</color>
     <color name="desert_mid">#B37B52</color>
     <color name="desert_bottom">#5C3B28</color>
@@ -304,10 +265,8 @@
 
     <color name="bg1">#DCEBF7</color>
     <color name="bg2">#F4F9FC</color>
-    <!-- primary + "22" alpha suffix (~13%) used for decorative ring strokes -->
     <color name="primary_ring_22">#223A74B8</color>
 
-    <!-- sage + "15" alpha suffix (~8%) used for the info note background -->
     <color name="sage_soft_15">#158FA998</color>
     <color name="black_bg">#111111</color>
     <color name="card_bg_04">#0AFFFFFF</color>
@@ -326,7 +285,6 @@
     <color name="white88">#E0FFFFFF</color>
     <color name="white_cc">#CCFFFFFF</color>
 
-    <!-- Card color palette (bg / fg pairs), cycled by index -->
     <color name="card0_bg">#E7EFF9</color>
     <color name="card0_fg">#3A74B8</color>
     <color name="card1_bg">#EAF1EC</color>
@@ -342,14 +300,12 @@
     <color name="rose">#D9748F</color>
     <color name="screenBg">#E9ECF3</color>
 
-    <!-- Highlight marker colors -->
     <color name="hl_yellow">#FFE066</color>
     <color name="hl_pink">#FF9EC4</color>
     <color name="hl_purple">#B69CE8</color>
     <color name="hl_blue">#7FC8F0</color>
     <color name="hl_green">#8FDDB0</color>
 
-    <!-- Category gradients -->
     <color name="cat_sadness_1">#E8A3B0</color>
     <color name="cat_sadness_2">#C97575</color>
     <color name="cat_anxiety_1">#F0C674</color>
@@ -362,7 +318,6 @@
     <color name="cat_sleep_1">#B0A0E0</color>
     <color name="cat_sleep_2">#7A5CC7</color>
 
-    <!-- Reader themes -->
     <color name="theme_classic_bg">#FFFFFF</color>
     <color name="theme_classic_text">#1F3A60</color>
     <color name="theme_traditional_bg">#F5ECD9</color>
