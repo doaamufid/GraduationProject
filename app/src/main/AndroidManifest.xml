@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    <!-- إذن المايك لتسجيل الصوت في شات الأطفال -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Allow network image loading (Glide, Picasso, etc.) -->
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
@@ -21,7 +23,6 @@
         android:theme="@style/Theme.GraduationProject">
 
         <!-- Word of the Week feature (new) -->
-
         <activity
             android:name=".Kids.SoundsActivity"
             android:exported="false" />
@@ -37,7 +38,6 @@
         <activity
             android:name=".Kids.RecordingActivity"
             android:exported="false" />
-
         <activity
             android:name=".Kids.WordOfWeekActivity"
             android:exported="false" />
@@ -59,13 +59,14 @@
             android:exported="false" />
         <activity
             android:name=".Kids.KidsAiCompanionActivity"
-            android:exported="false" /> <!-- شاشة البداية الرئيسية SplashActivity -->
+            android:exported="false" />
+
+        <!-- شاشة البداية الرئيسية SplashActivity -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

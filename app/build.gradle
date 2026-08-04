@@ -46,11 +46,15 @@ android {
         viewBinding true
         buildConfig true
         compose true
-
     }
 }
 
 dependencies {
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.11.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'androidx.activity:activity:1.8.2'
+    implementation 'androidx.core:core:1.12.0'
     implementation libs.core.ktx
     implementation libs.appcompat
     implementation libs.material
@@ -59,15 +63,24 @@ dependencies {
     implementation libs.activity.ktx
     implementation libs.cardview
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
+    implementation libs.mpandroidchart
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.0")
+
+    // ⬇️ إضافة جديدة: مكتبة للاتصال بالإنترنت (Gemini API)
+    implementation("com.squareup.okhttp3:okhttp:4.12.0")
+    // Firebase AI Logic (Gemini Developer API - free tier, no billing needed)
+    implementation platform(libs.firebase.bom)
+    implementation libs.firebase.ai
+    implementation "com.google.guava:guava:31.0.1-android"
+    implementation "com.google.firebase:firebase-appcheck-debug"
 
     implementation platform(libs.compose.bom)
     implementation libs.activity.compose
     implementation libs.engage.core
     implementation libs.lifecycle.runtime.ktx
     implementation libs.material3
-    implementation libs.mpandroidchart
 
     implementation libs.flexbox
     implementation libs.lottie
@@ -81,13 +94,6 @@ dependencies {
 
     // Glide (مكتبة الصور)
     annotationProcessor libs.glide.compiler
-
-    // Firebase & Gemini AI Logic
-    implementation platform(libs.firebase.bom)
-    implementation libs.firebase.ai
-    implementation "com.google.guava:guava:31.0.1-android"
-    implementation "com.google.firebase:firebase-appcheck-debug"
-    implementation("com.squareup.okhttp3:okhttp:4.12.0")
 
     // Testing
     testImplementation libs.junit

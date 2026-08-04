@@ -24,6 +24,7 @@
     <string name="got_star">حصلت على نجمة!</string>
     <string name="tell_family">احكيلك لأهلك عن رسمتك الحلوة، عشان يفهموك أكتر</string>
     <string name="btn_draw_more">ارسم كمان</string>
+    <string name="btn_finish">خلصت، شكراً نور</string>
     <string name="btn_finish_result">خلصت، شكراً نور</string>
     <string name="salam_title">SALAM</string>
     <string name="mental_health_subtitle">MENTAL HEALTH · PEACE OF MIND</string>
@@ -734,7 +735,7 @@
     <string name="followup_appendix">هل في شخص واحد تشعرين بالارتياح معه؟</string>
 
     <string name="completion_title">حُفظت فكرتك المتوازنة</string>
-    <string name="completion_subtitle">انضافت لأرشيف \"أفكاري المتوازنة\"</string>
+    <string name="completion_subtitle">انضافت لأرشيف "أفكاري المتوازنة"</string>
     <string name="your_exercise_label">تمرينك الآن</string>
     <string name="another_thought">فكرة ثانية</string>
 
@@ -1082,11 +1083,6 @@
     <string name="stage_bud">مرحلة البرعم المكتمل</string>
     <string name="stage_tree">مرحلة الشجرة</string>
     <string name="stage_fruit_tree">الشجرة المثمرة</string>
-    <!-- New Child Profile Strings (Arabic) -->
-    <!--    <string name="stage_sprout">برعم صغير</string>-->
-    <!--    <string name="stage_bud">نبتة نامية</string>-->
-    <!--    <string name="stage_tree">شجرة قوية</string>-->
-    <!--    <string name="stage_fruit_tree">شجرة مثمرة</string>-->
     <!-- Controls & Inputs -->
     <string name="kids_chat_press_and_talk">اضغط واحكيلي</string>
     <string name="kids_chat_switch_to_text">أو اكتب</string>
@@ -1862,4 +1858,6 @@
     <string name="kids_mood_calm">أنا منيح!</string>
     <string name="kids_mood_happy">أنا مبسوط!</string>
     <string name="kids_mood_overjoyed">أنا فرحان كتير كتير!</string>
+    <!--  شاشة كلمة الأسبوع  -->
+    <string name="header_title">كلماتي</string>
 </resources>

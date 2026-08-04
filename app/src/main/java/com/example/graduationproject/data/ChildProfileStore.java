@@ -162,6 +162,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                 + ")");
     }
 
+    /** بيانات ابتدائية تطابق التصميم — تتنفذ مرة وحدة بس عند إنشاء القاعدة */
     private void seedSoundsAndVideosData(SQLiteDatabase db) {
         // ---- أصوات على شكل مربعات (Box) ----
         insertSound(db, "غابة", "ic_forest", "forest_sound", "box", 1);
@@ -221,6 +222,26 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         return getSoundsByType("circle");
     }
 
+    private List<SoundItem> getSoundsByType(String type) {
+        List<SoundItem> list = new ArrayList<>();
+        try (Cursor cursor = getReadableDatabase().query(
+                TABLE_SOUNDS,
+                new String[]{COLUMN_ID, COLUMN_SOUND_TITLE, COLUMN_SOUND_ICON, COLUMN_SOUND_FILE},
+                COLUMN_SOUND_TYPE + " = ?",
+                new String[]{type},
+                null, null,
+                COLUMN_SOUND_ORDER + " ASC")) {
+            while (cursor.moveToNext()) {
+                list.add(new SoundItem(
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SOUND_TITLE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SOUND_ICON)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SOUND_FILE))));
+            }
+        }
+        return list;
+    }
+
     // --- ⭐ دوال حفظ واسترجاع المحادثات من SQLite ---
 
     public long addChatMessage(long childId, String messageText, boolean isUser) {
@@ -252,26 +273,6 @@ public class ChildProfileStore extends SQLiteOpenHelper {
             }
         }
         return messages;
-    }
-
-    private List<SoundItem> getSoundsByType(String type) {
-        List<SoundItem> list = new ArrayList<>();
-        try (Cursor cursor = getReadableDatabase().query(
-                TABLE_SOUNDS,
-                new String[]{COLUMN_ID, COLUMN_SOUND_TITLE, COLUMN_SOUND_ICON, COLUMN_SOUND_FILE},
-                COLUMN_SOUND_TYPE + " = ?",
-                new String[]{type},
-                null, null,
-                COLUMN_SOUND_ORDER + " ASC")) {
-            while (cursor.moveToNext()) {
-                list.add(new SoundItem(
-                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SOUND_TITLE)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SOUND_ICON)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SOUND_FILE))));
-            }
-        }
-        return list;
     }
 
     // ==================== دوال القراءة (DAO) للفيديوهات ====================
@@ -306,7 +307,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         return list;
     }
 
-    // ==================== الكود الأصلي ====================
+    // ==================== الكود الأصلي (بدون تغيير) ====================
 
     public void migrateFromSharedPreferencesIfNeeded(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(OLD_PREFS_NAME, Context.MODE_PRIVATE);
