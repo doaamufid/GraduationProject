@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="14dp"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_card">
+
+    <FrameLayout
+        android:id="@+id/btnCheck"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <View
+            android:id="@+id/checkBg"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/bg_checkbox_undone"/>
+
+        <ImageView
+            android:id="@+id/ivCheck"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_check"
+            android:visibility="gone"
+            android:contentDescription="@null"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:id="@+id/btnOpen"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical"
+        android:gravity="end"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:id="@+id/tvHabitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="13sp"
+            tools:text="شرب ماء كافي"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="2dp">
+
+            <ImageView
+                android:id="@+id/ivReminderBell"
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ic_bell_soft"
+                android:visibility="gone"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:id="@+id/tvHabitMeta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_soft"
+                android:textSize="10sp"
+                tools:text="٩ يوم متتالي"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="36dp"
+        android:layout_height="36dp">
+
+        <View
+            android:id="@+id/iconAvatarBg"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_icon_avatar"/>
+
+        <TextView
+            android:id="@+id/tvHabitIcon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:textSize="16sp"
+            tools:text="\uD83D\uDCA7"/>
+    </FrameLayout>
+
+</LinearLayout>

@@ -110,22 +110,12 @@ public class NewChildProfileActivity extends AppCompatActivity {
 
     private void saveProfileAndFinish() {
         String name = binding.etChildName.getText().toString().trim();
-        if (name.isEmpty() || selectedAge <= 0) {
-            Toast.makeText(this, "اكتب الاسم واختر العمر", Toast.LENGTH_SHORT).show();
+        if (name.isEmpty() || selectedAge <= 0 || selectedGender.isEmpty()) {
+            Toast.makeText(this, "اكتب الاسم واختر العمر والجنس", Toast.LENGTH_SHORT).show();
             return;
         }
-
-        long newChildId = childProfileStore.addProfile(name, selectedAge, AVATARS[selectedAge % AVATARS.length]);
-
+        childProfileStore.addProfile(name, selectedAge, selectedGender, AVATARS[selectedAge % AVATARS.length]);
         setResult(RESULT_OK);
-
-        android.content.Intent intent = new android.content.Intent(
-                this,
-                com.example.graduationproject.Kids.MoodCheckInActivity.class
-        );
-        intent.putExtra(com.example.graduationproject.Kids.MoodCheckInActivity.EXTRA_CHILD_ID, newChildId);
-        startActivity(intent);
-
         finish();
     }
 }

@@ -1,6 +1,7 @@
 package com.example.graduationproject;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -30,11 +31,31 @@ public class SplashActivity extends AppCompatActivity {
             return insets;
         });
 
-        // بعد 3 ثواني روح على SplashSelectActivity
+        // ملاحظة: احذف هذين السطرين قبل إطلاق التطبيق نهائياً
+        // للتجريب
+//        getSharedPreferences("AppPrefs", MODE_PRIVATE).edit().clear().apply();
+//        getSharedPreferences("UserPrefs", MODE_PRIVATE).edit().clear().apply();
+
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Intent intent = new Intent(SplashActivity.this, SplashSelectActivity.class);
+
+            SharedPreferences appPrefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+            SharedPreferences userPrefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+
+            boolean isFirstRun = appPrefs.getBoolean("isFirstRun", true);
+            String userType = userPrefs.getString("user_type", null);
+
+            Intent intent;
+            if (isFirstRun) {
+                intent = new Intent(SplashActivity.this, OnBoardingActivity1.class);
+            } else if (userType == null) {
+                intent = new Intent(SplashActivity.this, SplashSelectActivity.class);
+            } else {
+                intent = new Intent(SplashActivity.this, MainActivity.class);
+            }
+
             startActivity(intent);
             finish();
+
         }, 3000);
     }
 }

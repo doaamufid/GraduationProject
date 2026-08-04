@@ -48,7 +48,7 @@ public class ChildProfilesActivity extends AppCompatActivity {
         adapter = new ChildProfilesAdapter(profiles, new ChildProfilesAdapter.OnChildProfileClickListener() {
             @Override
             public void onProfileClick(ChildProfile profile) {
-                Intent intent = new Intent(ChildProfilesActivity.this, MainActivity.class);
+                Intent intent = new Intent(ChildProfilesActivity.this, KidsAiChatActivity.class);
                 intent.putExtra("child_id", profile.getId());
                 intent.putExtra("child_name", profile.getName());
                 startActivity(intent);
@@ -84,4 +84,5 @@ public class ChildProfilesActivity extends AppCompatActivity {
         profiles.addAll(childProfileStore.getProfiles());
         adapter.notifyDataSetChanged();
     }
+
 }

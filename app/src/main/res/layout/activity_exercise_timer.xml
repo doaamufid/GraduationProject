@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#F7FAFC"
+    android:padding="24dp">
+
+    <ImageView
+        android:id="@+id/btnBack"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_gravity="start"
+        android:src="@drawable/baseline_arrow_back_24"
+        android:contentDescription="رجوع" />
+
+    <TextView
+        android:id="@+id/tvExerciseTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="#3A6898"
+        android:layout_marginTop="24dp"/>
+
+    <TextView
+        android:id="@+id/tvExerciseDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="#566573"
+        android:layout_marginTop="12dp"/>
+
+    <FrameLayout
+        android:id="@+id/breathingCircleContainer"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/bg_breathing_circle"> <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:id="@+id/tvBreathingState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="استعد..."
+            android:textColor="#3A6898"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#2C3E50"
+            android:layout_marginTop="8dp"/>
+    </LinearLayout>
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btnCompleteExercise"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#3A6898"
+        android:textColor="#FFFFFF"
+        android:text="أكملت التمرين" />
+</LinearLayout>

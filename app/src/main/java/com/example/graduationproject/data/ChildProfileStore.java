@@ -23,6 +23,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "children_wellbeing.db";
     // ⚠️ رفعنا رقم النسخة من 1 إلى 2 عشان onUpgrade يشتغل ويضيف الجداول الجديدة
     private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     private static final String TABLE_BOT_MESSAGES = "bot_messages";
     private static final String COLUMN_TEXT = "text";
@@ -31,6 +32,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
     private static final String COLUMN_AGE = "age";
+    private static final String COLUMN_GENDER = "gender";
     private static final String COLUMN_AVATAR = "avatar";
     private static final String COLUMN_CREATED_AT = "created_at";
 
@@ -78,6 +80,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                 + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + COLUMN_NAME + " TEXT NOT NULL, "
                 + COLUMN_AGE + " INTEGER NOT NULL, "
+                + COLUMN_GENDER + " TEXT NOT NULL DEFAULT 'غير محدد', "
                 + COLUMN_AVATAR + " TEXT NOT NULL, "
                 + COLUMN_CREATED_AT + " INTEGER NOT NULL"
                 + ")");
@@ -193,6 +196,10 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     /** يرجع أصوات الدوائر (ريح، ماء، طيور...) */
     public List<SoundItem> getCircleSounds() {
         return getSoundsByType("circle");
+        if (oldVersion < 2) {
+            db.execSQL("ALTER TABLE " + TABLE_PROFILES
+                    + " ADD COLUMN " + COLUMN_GENDER + " TEXT NOT NULL DEFAULT 'غير محدد'");
+        }
     }
 
     private List<SoundItem> getSoundsByType(String type) {
@@ -263,6 +270,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                 addProfile(
                         profile.getString("name"),
                         profile.getInt("age"),
+                        profile.optString("gender", "غير محدد"),
                         profile.optString("avatar", "🦊"));
             }
             prefs.edit().remove(OLD_KEY_PROFILES).apply();
@@ -271,10 +279,11 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         }
     }
 
-    public long addProfile(String name, int age, String avatar) {
+  public long addProfile(String name, int age, String gender, String avatar) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, name);
         values.put(COLUMN_AGE, age);
+        values.put(COLUMN_GENDER, gender);
         values.put(COLUMN_AVATAR, avatar);
         values.put(COLUMN_CREATED_AT, System.currentTimeMillis());
         return getWritableDatabase().insert(TABLE_PROFILES, null, values);
@@ -286,12 +295,18 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                 TABLE_PROFILES,
                 new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_AVATAR},
                 null, null, null, null,
+                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_GENDER, COLUMN_AVATAR},
+                null,
+                null,
+                null,
+                null,
                 COLUMN_CREATED_AT + " ASC")) {
             while (cursor.moveToNext()) {
                 profiles.add(new ChildProfile(
                         cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
                         cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_AGE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR))));
             }
         }

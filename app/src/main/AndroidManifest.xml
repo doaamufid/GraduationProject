@@ -2,13 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
-    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <!-- إذن المايك لتسجيل الصوت في شات الأطفال -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
 
     <application
-        android:name=".MyFirebaseApp"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -18,136 +15,135 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
 
-        <!-- Word of the Week feature (new) -->
-
         <activity
-            android:name=".Kids.SoundsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.MyWordsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.CelebrationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.PlaybackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.RecordingActivity"
+            android:name=".VideoLibraryActivity"
             android:exported="false" />
 
         <activity
-            android:name=".Kids.WordOfWeekActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.VideosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.VideoDetailActivity"
+            android:name=".MindfulnessQuotesActivity"
             android:exported="false" />
 
         <activity
-            android:name=".Kids.MessagesActivity"
+            android:name=".Kids.KidsAiChatActivity"
             android:exported="false" />
+
         <activity
-            android:name=".Kids.MoodCheckInActivity"
+            android:name=".Kids.KidsBubbleBreathingActivity"
             android:exported="false" />
+
         <activity
             android:name=".Kids.NewChildProfileActivity"
             android:exported="false" />
+
         <activity
             android:name=".Kids.ChildProfilesActivity"
-            android:exported="false" />
-
-        <!-- Draw-with-Noor feature (new) -->
-        <activity
-            android:name=".Kids.DrawInstructionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.UploadPhotoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.ConfirmPhotoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.ProcessingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.ResultActivity"
             android:exported="false" />
 
         <activity
             android:name=".HealingEnvironmentActivity"
             android:exported="false" />
+
         <activity
             android:name=".CbtChatActivity"
             android:exported="false" />
+
         <activity
             android:name=".ReframingActivity"
             android:exported="false" />
+
         <activity
             android:name=".BodyMapActivity"
             android:exported="false" />
+
         <activity
             android:name=".BreathingActivity"
             android:exported="true" />
+
         <activity
             android:name=".ChatActivity"
             android:exported="false" />
+
         <activity
             android:name=".MoodDashboardActivity"
             android:exported="false" />
+
         <activity
             android:name=".MoodTrackerActivity"
             android:exported="false" />
+
         <activity
             android:name=".SurvivalBoxActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:theme="@style/Theme.SurvivalBox" />
+
         <activity
             android:name=".ArticlesActivity"
             android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="false" />
+
         <activity
             android:name=".SplashActivity"
-            android:exported="false" />
-        <activity
-            android:name=".OnBoardingActivity1"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".OnBoardingActivity2"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".OnBoardingActivity3"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".OnBoardingActivity4"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".SplashSelectActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize">
+            android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <provider
-            android:name="androidx.core.content.FileProvider"
-            android:authorities="${applicationId}.fileprovider"
+        <activity
+            android:name=".OnBoardingActivity1"
             android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/file_paths" />
-        </provider>
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".OnBoardingActivity2"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".OnBoardingActivity3"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".OnBoardingActivity4"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".GroundingExActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".DailyHabitsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.AISuggestionsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SplashSelectActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+        </activity>
+
+        <activity
+            android:name=".FutureActivity"
+            android:exported="false"
+            android:label="@string/title_activity_future"
+            android:theme="@style/Theme.GraduationProject"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ui.AllMessagesActivity"
+            android:exported="false"
+            android:theme="@style/Theme.GraduationProject"
+            android:windowSoftInputMode="adjustResize" />
+
     </application>
 
 </manifest>

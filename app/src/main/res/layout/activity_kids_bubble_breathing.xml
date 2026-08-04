@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAF1E6"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    tools:context=".Kids.KidsBubbleBreathingActivity">
+
+    <!-- Back Arrow (Now pinned to Left / End in RTL) -->
+    <TextView
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/bg_kids_bubble_circle"
+        android:gravity="center"
+        android:text="←"
+        android:textColor="#8B6F4D"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Quiet Exit Action (Now pinned to Right / Start in RTL) -->
+    <TextView
+        android:id="@+id/btn_quiet_exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:text="✕ خلص، أنا مرتاح"
+        android:textColor="#8B6F4D"
+        android:textSize="13sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="@id/btn_back"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@id/btn_back" />
+
+    <!-- Gameplay Indicators -->
+    <LinearLayout
+        android:id="@+id/layout_progress_info"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
+
+        <TextView
+            android:id="@+id/tv_stars"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="☆ ☆ ☆ ☆ ☆"
+            android:textColor="#FFC94A"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <TextView
+            android:id="@+id/tv_breath_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="استخدم الزر للنفخ"
+            android:textColor="#8B6F4D"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Canvas / Bear Drawing Area -->
+    <com.example.graduationproject.Kids.KidsBubbleView
+        android:id="@+id/bubble_view"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_container"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_progress_info" />
+
+    <!-- Bottom Container -->
+    <LinearLayout
+        android:id="@+id/bottom_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/tv_instruction_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginBottom="8dp"
+            android:gravity="center"
+            android:text="خلنا ننفخ فقاعات سوا!"
+            android:textColor="#F47C2B"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+        <!-- Subtitle Body -->
+        <TextView
+            android:id="@+id/tv_instruction_body"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginBottom="24dp"
+            android:gravity="center"
+            android:lineSpacingExtra="4dp"
+            android:text="انفخ بفمك قدام التلفون بهدوء، وشوف الفقاعة تكبر وتطير — كل نفخة، أي حجم، تصير فقاعة حلوة!"
+            android:textColor="#8B6F4D"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Welcome Primary Button -->
+        <TextView
+            android:id="@+id/btn_primary"
+            android:layout_width="190dp"
+            android:layout_height="52dp"
+            android:background="@drawable/bg_kids_bubble_primary"
+            android:gravity="center"
+            android:text="يلا نبدأ! 🫧"
+            android:textColor="#FFFFFF"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <!-- End Game Actions Row -->
+        <LinearLayout
+            android:id="@+id/actions_row"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginHorizontal="28dp"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/btn_bubbles_again"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_kids_bubble_primary"
+                android:gravity="center"
+                android:text="فقاعات ثانية 🫧"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btn_done"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_kids_bubble_secondary"
+                android:gravity="center"
+                android:text="خلص كذا"
+                android:textColor="#8B6F4D"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

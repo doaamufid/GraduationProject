@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:id="@+id/tv_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:padding="8dp"
+        android:text="إلغاء"
+        android:textColor="#A0A0A0"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/btn_mic_status"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/bg_kids_bubble_primary"
+        android:gravity="center"
+        android:text="🎙️"
+        android:textSize="32sp" />
+
+    <TextView
+        android:id="@+id/tv_timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="0:01"
+        android:textColor="#3D291F"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="قول اللي حاسس فيه، وأنا أسمعك 🧸"
+        android:textColor="#7A685D"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/btn_finish_recording"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_kids_bubble_circle"
+        android:paddingHorizontal="32dp"
+        android:paddingVertical="10dp"
+        android:text="خلصت! ✅"
+        android:textColor="#2E7D32"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+</LinearLayout>

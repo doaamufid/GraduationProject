@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:padding="14dp"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_card">
+
+    <ImageButton
+        android:id="@+id/btnStar"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:background="@android:color/transparent"
+        android:src="@drawable/ic_star_filled"
+        android:padding="5dp"
+        android:contentDescription="@null"/>
+
+    <TextView
+        android:id="@+id/tvText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="8dp"
+        android:gravity="end"
+        android:textColor="@color/text_white"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        tools:text="سبحان الله وبحمده"/>
+
+</LinearLayout>

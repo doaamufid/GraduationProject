@@ -8,37 +8,16 @@
     android:layoutDirection="rtl"
     tools:context=".BreathingActivity">
 
+    <!-- شريط الرأس المطور -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="65dp"
         android:background="#FFFFFF"
         android:paddingHorizontal="16dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/btnMore"
-            android:layout_width="32dp"
-            android:layout_height="32dp"
-            android:background="@drawable/bg_mic_button"
-            android:padding="6dp"
-            android:src="@drawable/baseline_more_vert_24"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="تمارين التنفس"
-            android:textColor="#3A6898"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+        <!-- زر العودة على اليمين -->
         <ImageView
             android:id="@+id/btnBack"
             android:layout_width="24dp"
@@ -47,41 +26,128 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- العنوان والترجمة في المنتصف -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="تمارين التنفس"
+                android:textColor="#2D5B7B"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="التنفس - BREATHING"
+                android:textColor="#99AAB5"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- زر الإعدادات المبتكر -->
+        <LinearLayout
+            android:id="@+id/btnSessionSettings"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/baseline_more_vert_24"
+                app:tint="#6A8CA3" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="اعدادات الجلسة"
+                android:textColor="#6A8CA3"
+                android:textSize="9sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
+    <!-- الـ ScrollView ينتهي الآن بمسافة ديناميكية آمنة فوق الزر السفلي -->
     <ScrollView
+        android:id="@+id/scrollView"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/btnStartBreathing"
         app:layout_constraintTop_toBottomOf="@id/layoutHeader">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/innerConstraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:padding="20dp">
+            android:padding="24dp">
 
             <TextView
+                android:id="@+id/tvMainTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
                 android:text="خذ نفساً معي"
-                android:textColor="#3A6898"
-                android:textSize="24sp" />
+                android:textColor="#2D5B7B"
+                android:textSize="22sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
+                android:id="@+id/tvSubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="30dp"
-                android:text="دورة من ٣ - ٥ دقائق"
-                android:textColor="#7F8C8D"
-                android:textSize="14sp" />
+                android:layout_marginTop="4dp"
+                android:text="دورة من ٣ - ٥ "
+                android:textColor="#6A8CA3"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="@id/tvMainTitle"
+                app:layout_constraintStart_toStartOf="@id/tvMainTitle"
+                app:layout_constraintTop_toBottomOf="@id/tvMainTitle" />
 
+            <TextView
+                android:id="@+id/tvDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:text="الكلاسيكي . بدون هدف إلزامي . استمر أينما ترتاح"
+                android:textColor="#99AAB5"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvSubTitle" />
+
+            <!-- الفريمProgress محاذاته مرنة ومريحة في منتصف الشاشة -->
             <FrameLayout
-                android:layout_width="220dp"
-                android:layout_height="220dp"
-                android:layout_marginBottom="30dp">
+                android:id="@+id/frameProgress"
+                android:layout_width="240dp"
+                android:layout_height="240dp"
+                android:layout_marginTop="40dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvDesc">
 
                 <ProgressBar
                     android:id="@+id/breathingProgress"
@@ -92,6 +158,7 @@
                     android:indeterminate="false"
                     android:max="100"
                     android:progress="40"
+                    android:layout_marginTop="10dp"
                     android:progressDrawable="@drawable/circle_outer" />
 
                 <LinearLayout
@@ -106,8 +173,8 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="4"
-                        android:textColor="#3A6898"
-                        android:textSize="60sp"
+                        android:textColor="#2D5B7B"
+                        android:textSize="64sp"
                         android:textStyle="bold" />
 
                     <TextView
@@ -115,140 +182,86 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="شهيق"
-                        android:textColor="#5B8DC7"
-                        android:textSize="18sp" />
+                        android:textColor="#6A8CA3"
+                        android:textSize="16sp" />
                 </LinearLayout>
             </FrameLayout>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="40dp"
-                android:background="@drawable/bg_suggestion_btn"
-                android:gravity="center"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/btnExhaleIndicator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/bg_suggestion_btn"
-                    android:gravity="center"
-                    android:paddingHorizontal="16dp"
-                    android:text="زفير"
-                    android:textColor="#5B8DC7"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/btnHoldIndicator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:background="@drawable/bg_suggestion_btn"
-                    android:gravity="center"
-                    android:paddingHorizontal="16dp"
-                    android:text="توقف ٢"
-                    android:textColor="#5B8DC7"
-                    android:textSize="14sp" />
-
-                <TextView
-                    android:id="@+id/btnInhaleIndicator"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/bg_suggestion_btn"
-                    android:backgroundTint="#3A74B8"
-                    android:gravity="center"
-                    android:paddingHorizontal="16dp"
-                    android:text="شهيق"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutGrounding"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_suggestion_btn"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="التأريض - GROUNDING"
-                    android:textColor="#3A6898"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="ماذا تَرى الآن؟ (تقنية ٥-٤-٣-٢-١)"
-                    android:textColor="#2C3E50"
-                    android:textSize="15sp" />
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutZikr"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_suggestion_btn"
-                android:backgroundTint="#DBE1F4"
-                android:orientation="vertical"
-                android:padding="16dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="الطمأنينة والذكر"
-                    android:textColor="#3A6898"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="حسبنا الله ونعم الوكيل (٣٠ مرة)"
-                    android:textColor="#2C3E50"
-                    android:textSize="15sp" />
-            </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/layoutAnchor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="20dp"
-                android:background="@drawable/bg_input_field"
+                android:layout_marginTop="32dp"
+                android:background="@drawable/white_rounded_card"
                 android:orientation="vertical"
-                android:padding="16dp">
+                android:padding="16dp"
+                app:layout_constraintTop_toBottomOf="@id/frameProgress">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="مرساة الأمان الشخصية"
-                    android:textColor="#3A6898"
-                    android:textSize="12sp"
+                    android:text="بطاقتك الشخصية"
+                    android:textColor="#99AAB5"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="&quot;خذ وقتك، ما فيه استعجال&quot;"
+                    android:textColor="#2D5B7B"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="10dp"
-                    android:text="&quot;أنت آمن، هذا سيمر&quot;"
-                    android:textColor="#5B8DC7"
-                    android:textSize="16sp"
-                    android:textStyle="italic" />
             </LinearLayout>
 
-        </LinearLayout>
+            <LinearLayout
+                android:id="@+id/layoutAnchor2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/white_rounded_card"
+                android:orientation="vertical"
+                android:padding="16dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/layoutAnchor">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="بطاقتك الشخصية"
+                    android:textColor="#99AAB5"
+                    android:textSize="11sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="&quot;أنت آمن، هذا سيمر&quot;"
+                    android:textColor="#2D5B7B"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
+
+    <!-- تم رفع الـ marginBottom لـ 32dp ليرتفع الزر عن حافة النظام السفلية ويكون مريحاً جداً -->
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnStartBreathing"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginHorizontal="60dp"
+        android:layout_marginBottom="32dp"
+        android:background="@drawable/white_rounded_card"
+        android:backgroundTint="#4A7EBB"
+        android:text="ابدأ الجلسة"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:elevation="4dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

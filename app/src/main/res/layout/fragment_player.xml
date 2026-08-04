@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootFrame"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:layoutDirection="rtl">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="28dp">
+
+            <include layout="@layout/view_top_bar"/>
+
+            <!-- Video container: 16:9 WebView showing the youtube-nocookie embed -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginBottom="16dp">
+
+                <View
+                    android:id="@+id/videoAspectSpacer"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"/>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_video_container">
+
+                    <WebView
+                        android:id="@+id/webViewPlayer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </FrameLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+
+                    <TextView
+                        android:id="@+id/tvTypePill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_type_pill"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:textColor="@color/text_soft"
+                        android:textSize="9sp"
+                        android:layout_marginStart="8dp"
+                        tools:text="فيديو"/>
+
+                    <ImageView
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:src="@drawable/ic_clock"
+                        android:layout_marginStart="4dp"
+                        android:contentDescription="@null"/>
+
+                    <TextView
+                        android:id="@+id/tvDuration"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/text_soft"
+                        android:textSize="10sp"
+                        tools:text="١٢:٣٤"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold"
+                    android:textSize="16sp"
+                    tools:text="كيف تتعامل مع القلق؟"/>
+
+                <TextView
+                    android:id="@+id/tvSrc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textColor="@color/text_soft"
+                    android:textSize="12sp"
+                    android:layout_marginBottom="16dp"
+                    tools:text="منهج الصحة النفسية"/>
+
+                <!-- Feedback row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_card_video"
+                    android:padding="14dp"
+                    android:layout_marginBottom="12dp">
+
+                    <TextView
+                        android:id="@+id/tvFeedbackQuestion"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/feedback_question"
+                        android:textColor="@color/text_soft"
+                        android:textStyle="bold"
+                        android:textSize="11sp"/>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/btnDislike"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:background="@drawable/bg_reaction_btn_neutral"
+                            android:src="@drawable/ic_thumb_down_outline"
+                            android:padding="14dp"
+                            android:contentDescription="@null"/>
+
+                        <ImageButton
+                            android:id="@+id/btnLike"
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:layout_marginStart="8dp"
+                            android:background="@drawable/bg_reaction_btn_neutral"
+                            android:src="@drawable/ic_thumb_up_outline"
+                            android:padding="14dp"
+                            android:contentDescription="@null"/>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Dislike reason chips panel (animated in/out) -->
+                <LinearLayout
+                    android:id="@+id/groupReasons"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:background="@drawable/bg_reason_panel"
+                    android:padding="14dp"
+                    android:layout_marginBottom="12dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/dislike_reason_title"
+                        android:textColor="@color/text_main"
+                        android:textStyle="bold"
+                        android:textSize="11sp"
+                        android:gravity="end"
+                        android:layout_marginBottom="8dp"/>
+
+                    <com.google.android.flexbox.FlexboxLayout
+                        android:id="@+id/flexReasons"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:flexWrap="wrap"
+                        app:justifyContent="flex_end"/>
+                </LinearLayout>
+
+                <!-- Why suggested toggle -->
+                <LinearLayout
+                    android:id="@+id/btnWhy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_why_panel"
+                    android:padding="14dp"
+                    android:layout_marginBottom="4dp"
+                    android:clickable="true"
+                    android:focusable="true">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/why_suggested"
+                        android:textColor="@color/sage"
+                        android:textStyle="bold"
+                        android:textSize="11sp"/>
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:src="@drawable/ic_sparkles"
+                        android:contentDescription="@null"/>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvWhyReason"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textColor="@color/text_soft"
+                    android:textSize="11sp"
+                    android:padding="4dp"
+                    android:layout_marginBottom="16dp"
+                    android:visibility="gone"
+                    tools:text="لأنك سجّلت مزاج &quot;قلق&quot; ٣ مرات هالأسبوع"/>
+
+                <!-- Continue watching -->
+                <TextView
+                    android:id="@+id/tvContinueWatchingLabel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/continue_watching"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold"
+                    android:textSize="11sp"
+                    android:gravity="end"
+                    android:layout_marginBottom="8dp"
+                    android:visibility="gone"/>
+
+                <LinearLayout
+                    android:id="@+id/llSuggestions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Toast host: absolute overlay pinned to bottom, toasts injected programmatically -->
+    <FrameLayout
+        android:id="@+id/toastHost"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clickable="false"
+        android:focusable="false"/>
+
+</FrameLayout>

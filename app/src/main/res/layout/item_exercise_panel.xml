@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_suggestion_btn"
+    android:layout_marginBottom="12dp"
+    android:padding="12dp">
+
+    <RelativeLayout
+        android:id="@+id/btnArea"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="?android:attr/selectableItemBackground">
+
+        <TextView
+            android:id="@+id/tvTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#3A6898"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_alignParentStart="true"/>
+
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#7F8C8D"
+            android:textSize="12sp"
+            android:layout_toEndOf="@id/tvTitle"
+            android:layout_marginStart="8dp"
+            android:layout_alignBaseline="@id/tvTitle"/>
+
+        <!-- شارة "جربتها X مرات" - تظهر فقط لو count > 0 -->
+        <TextView
+            android:id="@+id/tvTryCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:textSize="10sp"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/cardExercise"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone"
+        android:layout_marginTop="12dp">
+
+        <TextView
+            android:id="@+id/tvExerciseTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#3A6898"
+            android:textStyle="bold"
+            android:textSize="13sp"/>
+
+        <TextView
+            android:id="@+id/tvExerciseDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#566573"
+            android:textSize="14sp"
+            android:layout_marginTop="6dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="10dp"
+            android:background="#F8F9F9"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/tvOffline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="offline"
+                android:textColor="#7F8C8D"
+                android:textSize="11sp"/>
+
+            <View android:layout_width="1dp" android:layout_height="12dp"
+                android:background="#BDC3C7" android:layout_marginHorizontal="8dp"/>
+
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F8C8D"
+                android:textSize="11sp"/>
+
+            <View android:layout_width="1dp" android:layout_height="12dp"
+                android:background="#BDC3C7" android:layout_marginHorizontal="8dp"/>
+
+            <TextView
+                android:id="@+id/tvReps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F8C8D"
+                android:textSize="11sp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnStart"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
+            android:backgroundTint="#3A6898"
+            android:text="ابدأ التمرين الموجه ←"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+</LinearLayout>

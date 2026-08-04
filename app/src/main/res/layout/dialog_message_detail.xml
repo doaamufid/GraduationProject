@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_dialog_rounded"
+    android:paddingStart="32dp"
+    android:paddingEnd="32dp"
+    android:paddingTop="40dp"
+    android:paddingBottom="40dp">
+
+    <!-- Arrived state -->
+    <LinearLayout
+        android:id="@+id/groupArrived"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_mail"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@null"
+            app:tint="@color/accent"/>
+
+        <TextView
+            android:id="@+id/tvArrivedFrom"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_soft"
+            android:textSize="12sp"
+            android:layout_marginBottom="16dp"
+            tools:text="رسالة أرسلتها لنفسك قبل شهر"/>
+
+        <TextView
+            android:id="@+id/tvArrivedText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:lineSpacingExtra="8dp"
+            android:gravity="center"
+            android:layout_marginBottom="24dp"
+            tools:text="اليوم كان صعباً لكنك تجاوزته، وأنت أقوى مما تتخيل"/>
+
+        <TextView
+            android:id="@+id/btnCloseArrived"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="إغلاق"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:background="@drawable/bg_pill_accent"
+            android:paddingStart="48dp"
+            android:paddingEnd="48dp"
+            android:paddingTop="12dp"
+            android:paddingBottom="12dp"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <!-- Locked state -->
+    <LinearLayout
+        android:id="@+id/groupLocked"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/ic_lock"
+            android:layout_marginBottom="24dp"
+            android:contentDescription="@null"
+            app:tint="@color/text_soft"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="هذي الرسالة لسا مقفلة"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="22sp"
+            android:layout_marginBottom="12dp"/>
+
+        <TextView
+            android:id="@+id/tvLockedSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_soft"
+            android:textSize="14sp"
+            android:gravity="center"
+            android:lineSpacingExtra="6dp"
+            android:layout_marginBottom="32dp"
+            tools:text="بتوصلك بتاريخ ٢٣ أغسطس ٢٠٢٦ — باقي ٢٣ يوم"/>
+
+        <TextView
+            android:id="@+id/btnCloseLocked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="إغلاق"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="16sp"
+            android:background="@drawable/bg_input"
+            android:paddingStart="48dp"
+            android:paddingEnd="48dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+</LinearLayout>

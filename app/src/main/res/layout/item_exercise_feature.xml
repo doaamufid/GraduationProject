@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@drawable/white_rounded_card"
+    android:paddingVertical="20dp"
+    android:paddingHorizontal="12dp">
+
+    <View
+        android:id="@+id/viewIconBg"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:background="@drawable/emoji_selector"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/ivExerciseIcon"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        app:layout_constraintBottom_toBottomOf="@id/viewIconBg"
+        app:layout_constraintEnd_toEndOf="@id/viewIconBg"
+        app:layout_constraintStart_toStartOf="@id/viewIconBg"
+        app:layout_constraintTop_toTopOf="@id/viewIconBg"
+        tools:src="@drawable/home1" />
+
+    <TextView
+        android:id="@+id/tvExerciseTitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:textColor="#2D5B7B"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/viewIconBg"
+        tools:text="نقاط قوتي" />
+
+    <TextView
+        android:id="@+id/tvExerciseSubtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:textColor="#99AAB5"
+        android:textSize="10sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvExerciseTitle"
+        tools:text="STRENGTHS" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
