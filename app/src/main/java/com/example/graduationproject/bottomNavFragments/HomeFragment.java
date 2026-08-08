@@ -184,6 +184,8 @@
 //}
 package com.example.graduationproject.bottomNavFragments;
 
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -196,10 +198,20 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.graduationproject.ArticlesActivity;
+import com.example.graduationproject.BreathingActivity;
+import com.example.graduationproject.DailyHabitsActivity;
 import com.example.graduationproject.HealingEnvironmentActivity;
 import com.example.graduationproject.R;
+import com.example.graduationproject.SurvivalBoxActivity;
 import com.example.graduationproject.VideoLibraryActivity;
 import com.example.graduationproject.VisualContentActivity;
 import com.example.graduationproject.adapters.HomeActionAdapter;
@@ -244,22 +256,76 @@ public class HomeFragment extends Fragment {
 
         tvGreeting.setText("صباح الخير " + userName + " كيف تشعر الآن؟\nأنا هنا معك 🌊");
 
+        // --- إضافة التحريكات (Animations) ---
+        Animation fadeIn = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
+        tvGreeting.startAnimation(fadeIn);
+
+        LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fall_down);
+        rvActions.setLayoutAnimation(animationController);
+        rvFeatures.setLayoutAnimation(animationController);
+
+        // تحريك واجهة الرموز التعبيرية (Emojis)
+        View layoutEmojis = view.findViewById(R.id.layoutEmojis);
+        if (layoutEmojis != null) {
+            Animation emojiEnter = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
+            emojiEnter.setStartOffset(400); // زيادة التأخير ليظهر بوضوح بعد الترحيب
+            layoutEmojis.startAnimation(emojiEnter);
+
+            setupEmojiInteractions(view);
+        }
+
         setupActions();
         setupFeatures();
+
+        // تحريك الأمواج في الأسفل بشكل عائم (Floating Waves) - يطابق تصميم شاشة التمارين
+        View imgWaveBottom = view.findViewById(R.id.imgWaveBottom);
+        if (imgWaveBottom != null) {
+            imgWaveBottom.animate()
+                    .translationY(30)
+                    .setDuration(5000)
+                    .setInterpolator(new AccelerateDecelerateInterpolator())
+                    .withEndAction(() -> animateFloating(imgWaveBottom, -30))
+                    .start();
+        }
+    }
+
+    private void animateFloating(View view, float targetY) {
+        if (view == null || getContext() == null) return;
+        view.animate()
+                .translationY(targetY)
+                .setDuration(5000)
+                .setInterpolator(new AccelerateDecelerateInterpolator())
+                .withEndAction(() -> animateFloating(view, -targetY))
+                .start();
+    }
+
+    private void setupEmojiInteractions(View view) {
+        int[] emojiIds = {R.id.emoji1, R.id.emoji2, R.id.emoji3, R.id.emoji4, R.id.emoji5};
+        for (int id : emojiIds) {
+            View emoji = view.findViewById(id);
+            if (emoji != null) {
+                emoji.setOnClickListener(v -> {
+                    // تأثير نبض أبطأ عند الضغط
+                    v.animate().scaleX(1.2f).scaleY(1.2f).setDuration(250).withEndAction(() -> {
+                        v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(250).start();
+                    }).start();
+                });
+            }
+        }
     }
 
     private void setupActions() {
         actionList.add(new HomeAction(
-                R.drawable.calm,
+                R.drawable.body_map, // صورة تعبيرية تشبه الموجودة بالصورة
                 R.drawable.bg_icon_calm,
-                "لحظة هدوء - One-Click Calm",
-                "تنفس، تأريض، ذكر"
+                "جلسة استرخاء سريعة لمزاج اليوم",
+                "١٠ دقائق من الهدوء"
         ));
 
         actionAdapter = new HomeActionAdapter(requireContext(), actionList, position -> {
             switch (position) {
                 case 0:
-                    // startActivity(new Intent(getActivity(), CalmActivity.class));
+                    startActivity(new Intent(getActivity(), BreathingActivity.class));
                     break;
             }
         });
@@ -271,10 +337,10 @@ public class HomeFragment extends Fragment {
     private void setupFeatures() {
         featureList.add(new HomeFeature(R.drawable.video, R.drawable.bg_icon_purple, "مرئيات", "VIDEOS"));
         featureList.add(new HomeFeature(R.drawable.audio, R.drawable.bg_icon_green, "صوتيات", "AUDIO"));
-        featureList.add(new HomeFeature(R.drawable.mood, R.drawable.bg_icon_pink, "مزاجي", "MOOD"));
+        featureList.add(new HomeFeature(R.drawable.ic_heart_filled_red, R.drawable.bg_icon_pink, "مقالات", "ARTICLES"));
         featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange, "عاداتي", "HABITS"));
         featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue, "تقارير", "REPORTS"));
-        featureList.add(new HomeFeature(R.drawable.box2, R.drawable.bg_icon_purple, "صندوقي", "SAFE BOX"));
+        featureList.add(new HomeFeature(R.drawable.box2, R.drawable.bg_icon_purple, "صندوق النجاة", "SURVIVAL BOX"));
 
         featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
             switch (position) {
@@ -284,7 +350,16 @@ public class HomeFragment extends Fragment {
                 case 1:
                     startActivity(new Intent(getActivity(), HealingEnvironmentActivity.class));
                     break;
-                case 2:
+                case 2: // مقالات
+                    startActivity(new Intent(getActivity(), ArticlesActivity.class));
+                    break;
+                case 3: // عاداتي
+                    startActivity(new Intent(getActivity(), DailyHabitsActivity.class));
+                    break;
+                case 4: // تقارير
+                    break;
+                case 5: // صندوق النجاة
+                    startActivity(new Intent(getActivity(), SurvivalBoxActivity.class));
                     break;
             }
         });

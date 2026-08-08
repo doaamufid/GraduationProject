@@ -173,10 +173,10 @@ public class ComposeDialogFragment extends BottomSheetDialogFragment {
                     : chip.getTag() != null && chip.getTag().equals(selectedWhen);
 
             chip.setBackgroundResource(selected ? R.drawable.bg_chip_selected : R.drawable.bg_chip_unselected);
-            chip.setTextColor(getResources().getColor(selected ? R.color.white : R.color.text_soft));
+            chip.setTextColor(getResources().getColor(selected ? R.color.white : R.color.text_main));
             if (isCustomChip) {
                 chip.setCompoundDrawableTintList(android.content.res.ColorStateList.valueOf(
-                        getResources().getColor(selected ? R.color.white : R.color.text_soft)));
+                        getResources().getColor(selected ? R.color.white : R.color.text_main)));
             }
         }
     }

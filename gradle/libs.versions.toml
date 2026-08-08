@@ -15,8 +15,12 @@ activityCompose = "1.13.0"
 kotlin = "2.2.10"
 composeBom = "2024.12.01"
 flexbox = "3.0.0"
+lottie = "6.4.0"
+rive = "11.8.0"
 
 [libraries]
+rive-android = { group = "app.rive", name = "rive-android", version.ref = "rive" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }

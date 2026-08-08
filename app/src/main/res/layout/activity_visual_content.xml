@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F9FBFC"
+    android:background="@color/bg"
     android:layoutDirection="rtl"
     tools:context=".VisualContentActivity">
 
@@ -20,17 +20,19 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- زر العودة -->
-    <ImageView
+    <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
         android:src="@drawable/outline_arrow_forward_24"
-        android:padding="4dp"
-        android:layout_marginEnd="16dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:layout_marginStart="16dp"
+        app:tint="@color/text_main"
+        android:background="@drawable/bg_icon_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/headerBackground"
-        app:layout_constraintBottom_toBottomOf="@+id/headerBackground" />
+        app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
+        android:contentDescription="رجوع" />
 
     <!-- الحاوية الذكية للعنوان الرئيسي والنص الفرعي (استمع - Listen) -->
     <LinearLayout

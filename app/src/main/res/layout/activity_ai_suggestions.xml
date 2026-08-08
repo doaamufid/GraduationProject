@@ -8,6 +8,7 @@
 
     <!-- Top bar -->
     <LinearLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -35,7 +36,7 @@
             android:text="@string/ai_suggestions_title"
             android:textColor="@color/text_main"
             android:textStyle="bold"
-            android:textSize="15sp"/>
+            android:textSize="18sp"/>
 
         <ImageButton
             android:id="@+id/btnCloseTop"
@@ -49,6 +50,7 @@
 
     <!-- Banner -->
     <LinearLayout
+        android:id="@+id/banner"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -72,7 +74,7 @@
             android:layout_marginEnd="10dp"
             android:text="@string/ai_suggestions_banner"
             android:textColor="@color/text_main"
-            android:textSize="11sp"
+            android:textSize="13sp"
             android:lineSpacingMultiplier="1.2"
             android:gravity="end"/>
     </LinearLayout>
@@ -108,7 +110,7 @@
             android:background="@drawable/bg_pill_primary"
             android:textColor="@color/white"
             android:textStyle="bold"
-            android:textSize="14sp"
+            android:textSize="17sp"
             android:gravity="center"
             android:padding="15dp"
             android:alpha="0.4"

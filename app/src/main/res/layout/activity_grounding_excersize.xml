@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,35 +13,34 @@
         android:orientation="vertical">
 
         <!-- ===================== TOP BAR ===================== -->
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:paddingTop="12dp"
-            android:paddingBottom="10dp">
+            android:layout_height="65dp"
+            android:paddingHorizontal="20dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/top_bar_label"
+                android:textColor="@color/text_soft"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
                 android:id="@+id/btnBack"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:background="@drawable/bg_icon_button"
-                android:src="@drawable/ic_arrow_right"
+                android:contentDescription="@null"
                 android:padding="9dp"
-                android:contentDescription="@null"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="12dp"
-                android:text="@string/top_bar_label"
-                android:textColor="@color/text_soft"
-                android:textSize="11sp"
-                android:gravity="left"/>
-        </LinearLayout>
+                android:src="@drawable/outline_arrow_forward_24"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/text_main" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <!-- ===================== SCROLLABLE CONTENT ===================== -->
         <ScrollView
@@ -64,13 +64,12 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Progress header -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
                         android:gravity="center_horizontal"
-                        android:layout_marginBottom="8dp">
+                        android:layout_marginBottom="16dp">
 
                         <TextView
                             android:layout_width="wrap_content"
@@ -78,16 +77,16 @@
                             android:text="@string/progress_title"
                             android:textColor="@color/text_main"
                             android:textStyle="bold"
-                            android:textSize="15sp"
+                            android:textSize="24sp"
                             android:letterSpacing="0.15"/>
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
+                            android:layout_marginTop="2dp"
                             android:text="@string/progress_sub"
                             android:textColor="@color/text_soft"
-                            android:textSize="11sp"/>
+                            android:textSize="14sp"/>
                     </LinearLayout>
 
                     <!-- Progress bar -->
@@ -111,7 +110,7 @@
                         android:layout_height="wrap_content"
                         android:gravity="left"
                         android:textColor="@color/text_soft"
-                        android:textSize="10sp"
+                        android:textSize="13sp"
                         android:layout_marginBottom="24dp"
                         tools:text="خطوة ١ من ٥"/>
 
@@ -136,7 +135,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/text_soft"
-                            android:textSize="10sp"
+                            android:textSize="12sp"
                             tools:text="SEE · تشاهد"/>
 
                         <TextView
@@ -147,7 +146,7 @@
                             android:layout_marginBottom="6dp"
                             android:textColor="@color/text_main"
                             android:textStyle="bold"
-                            android:textSize="20sp"
+                            android:textSize="28sp"
                             tools:text="٥ أشياء تراها"/>
 
                         <TextView
@@ -156,7 +155,7 @@
                             android:layout_height="wrap_content"
                             android:gravity="center"
                             android:textColor="@color/text_soft"
-                            android:textSize="12sp"
+                            android:textSize="15sp"
                             android:layout_marginBottom="20dp"
                             tools:text="انظري حواليك والمسي بعينك ٥ أشياء"/>
 
@@ -174,7 +173,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/text_soft"
-                            android:textSize="10sp"
+                            android:textSize="13sp"
                             android:layout_marginBottom="20dp"
                             tools:text="٠/٥ — بس اضغطي كل ما لاحظتي شي"/>
                     </LinearLayout>
@@ -206,7 +205,7 @@
                             android:text="@string/add_note_toggle"
                             android:textColor="@color/text_soft"
                             android:textStyle="bold"
-                            android:textSize="11sp"/>
+                            android:textSize="14sp"/>
                     </LinearLayout>
 
                     <EditText
@@ -234,7 +233,7 @@
                         android:background="@drawable/bg_reminder_card"
                         android:text="@string/breathing_reminder"
                         android:textColor="@color/text_soft"
-                        android:textSize="10sp"
+                        android:textSize="13sp"
                         android:gravity="center"
                         android:paddingTop="10dp"
                         android:paddingBottom="10dp"
@@ -252,6 +251,7 @@
                         android:background="@drawable/bg_pill_dark"
                         android:paddingTop="14dp"
                         android:paddingBottom="14dp"
+                        android:layout_marginHorizontal="20dp"
                         android:clickable="true"
                         android:focusable="true">
 
@@ -259,9 +259,9 @@
                             android:id="@+id/tvNextLabel"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:textColor="@color/surface"
+                            android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:textSize="14sp"
+                            android:textSize="18sp"
                             tools:text="التالي"/>
 
                         <ImageView
@@ -269,6 +269,7 @@
                             android:layout_height="15dp"
                             android:layout_marginStart="8dp"
                             android:src="@drawable/ic_arrow_left"
+                            app:tint="@color/white"
                             android:contentDescription="@null"/>
                     </LinearLayout>
 

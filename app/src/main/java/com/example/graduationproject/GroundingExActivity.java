@@ -1,6 +1,7 @@
 package com.example.graduationproject;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.Sense;
@@ -242,10 +244,10 @@ public class GroundingExActivity extends AppCompatActivity {
             lp.setMarginEnd(marginPx);
             square.setLayoutParams(lp);
             square.setGravity(android.view.Gravity.CENTER);
-            square.setTextSize(15);
+            square.setTextSize(TypedValue.COMPLEX_UNIT_SP, 18);
             square.setTypeface(square.getTypeface(), android.graphics.Typeface.BOLD);
             square.setText(String.valueOf(i + 1));
-            square.setTextColor(getResources().getColor(R.color.text_soft));
+            square.setTextColor(ContextCompat.getColor(this, R.color.text_main));
             square.setBackgroundResource(R.drawable.bg_tap_unfilled);
             square.setTag(index);
 
@@ -270,11 +272,11 @@ public class GroundingExActivity extends AppCompatActivity {
             if (isFilled) {
                 square.setBackgroundResource(R.drawable.bg_tap_filled);
                 square.setText("\u2713"); // checkmark glyph, matches the <Check/> icon state
-                square.setTextColor(getResources().getColor(R.color.surface));
+                square.setTextColor(ContextCompat.getColor(this, R.color.white));
             } else {
                 square.setBackgroundResource(R.drawable.bg_tap_unfilled);
                 square.setText(String.valueOf(i + 1));
-                square.setTextColor(getResources().getColor(R.color.text_soft));
+                square.setTextColor(ContextCompat.getColor(this, R.color.text_main));
             }
         }
 

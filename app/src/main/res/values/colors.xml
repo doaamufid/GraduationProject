@@ -4,24 +4,24 @@
     <color name="black">#000000</color>
 
     <!-- Main Palette from Screenshots -->
-    <color name="bg">#F8EFE4</color>
+    <color name="bg">#E1F1FF</color>
     <color name="surface">#FFFFFF</color>
-    <color name="border">#E8DCD0</color>
+    <color name="border">#D1E8F2</color>
 
     <color name="accent">#D35D4B</color>
     <color name="accent_soft">#F2D8D5</color>
 
-    <color name="text_main">#42342A</color>
-    <color name="text_soft">#7D6E65</color>
+    <color name="text_main">#2D5B7B</color>
+    <color name="text_soft">#6A8CA3</color>
 
     <!-- Timeline / River colors -->
     <color name="path_color">#D0E4D9</color>
     <color name="path_dark">#A8C4B8</color>
 
     <!-- Dialog / Input -->
-    <color name="input_bg">#F2EAE0</color>
-    <color name="scrim">#733B3025</color>
-    <color name="scrim_detail">#803B3025</color>
+    <color name="input_bg">#F0F7FF</color>
+    <color name="scrim">#732D5B7B</color>
+    <color name="scrim_detail">#802D5B7B</color>
 
     <!-- Keep existing for other parts if needed -->
     <color name="splash_bg">#E8F4FD</color>

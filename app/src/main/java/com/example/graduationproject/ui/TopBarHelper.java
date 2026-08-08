@@ -11,6 +11,16 @@ public class TopBarHelper {
     }
 
     public static void bind(View root, String title, String subtitle, Runnable onBack, View rightView) {
+        View topBar = root.findViewById(R.id.topBar);
+        if (topBar != null) {
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(topBar, (v, insets) -> {
+                androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
+                v.setPadding(v.getPaddingLeft(), systemBars.top + (int)(14 * v.getResources().getDisplayMetrics().density), 
+                             v.getPaddingRight(), v.getPaddingBottom());
+                return insets;
+            });
+        }
+
         TextView tvTitle = root.findViewById(R.id.tvTopBarTitle);
         if (tvTitle != null) tvTitle.setText(title);
 

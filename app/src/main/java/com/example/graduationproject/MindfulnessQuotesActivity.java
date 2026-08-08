@@ -42,8 +42,16 @@ public class MindfulnessQuotesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        androidx.activity.EdgeToEdge.enable(this);
         binding = ActivityMindfulnessQuotesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
+            androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         SharedPreferences prefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
         String userType = prefs.getString("user_type", "adult");

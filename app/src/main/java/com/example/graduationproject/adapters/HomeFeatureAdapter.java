@@ -45,9 +45,13 @@ public class HomeFeatureAdapter extends RecyclerView.Adapter<HomeFeatureAdapter.
         holder.tvSubtitle.setText(feature.getSubtitle());
 
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onClick(holder.getAdapterPosition());
-            }
+            // تأثير ضغطة أبطأ (Scale Feedback)
+            v.animate().scaleX(0.9f).scaleY(0.9f).setDuration(200).withEndAction(() -> {
+                v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(200).start();
+                if (listener != null) {
+                    listener.onClick(holder.getAdapterPosition());
+                }
+            }).start();
         });
     }
 

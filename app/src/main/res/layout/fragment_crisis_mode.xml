@@ -96,7 +96,7 @@
             android:text="@string/crisis_next"
             android:textColor="@color/text_white"
             android:textStyle="bold"
-            android:textSize="13sp"
+            android:textSize="16sp"
             android:background="@drawable/bg_pill_overlay"
             android:paddingStart="32dp"
             android:paddingEnd="32dp"
@@ -129,7 +129,7 @@
             android:text="@string/crisis_done_title"
             android:textColor="@color/text_white"
             android:textStyle="bold"
-            android:textSize="18sp"
+            android:textSize="22sp"
             android:layout_marginBottom="8dp"/>
 
         <TextView
@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:text="@string/crisis_done_sub"
             android:textColor="@color/text_soft"
-            android:textSize="13sp"
+            android:textSize="16sp"
             android:layout_marginBottom="32dp"/>
 
         <LinearLayout
@@ -152,7 +152,7 @@
                 android:text="@string/crisis_replay"
                 android:textColor="@color/text_white"
                 android:textStyle="bold"
-                android:textSize="12sp"
+                android:textSize="15sp"
                 android:background="@drawable/bg_pill_overlay"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
@@ -169,7 +169,7 @@
                 android:text="@string/crisis_close"
                 android:textColor="@color/text_white"
                 android:textStyle="bold"
-                android:textSize="12sp"
+                android:textSize="15sp"
                 android:background="@drawable/bg_pill_primary"
                 android:paddingStart="20dp"
                 android:paddingEnd="20dp"
