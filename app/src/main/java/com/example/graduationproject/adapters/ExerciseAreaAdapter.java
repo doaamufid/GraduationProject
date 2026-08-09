@@ -1,16 +1,12 @@
 package com.example.graduationproject.adapters;
 
 import android.graphics.Color;
-import android.graphics.drawable.GradientDrawable;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.graduationproject.R;
 import com.example.graduationproject.data.ExercisePrefs;
 import com.example.graduationproject.databinding.ItemExercisePanelBinding;
 import com.example.graduationproject.models.ExerciseArea;
@@ -48,66 +44,28 @@ public class ExerciseAreaAdapter extends RecyclerView.Adapter<ExerciseAreaAdapte
         ExerciseArea area = items.get(position);
         ItemExercisePanelBinding b = holder.binding;
 
-        int areaColor = Color.parseColor(area.badgeTextColor);
-
         b.tvTitle.setText(area.title);
         b.tvSubtitle.setText(area.subtitle);
 
-        // Dot color
-        GradientDrawable dot = (GradientDrawable) ContextCompat.getDrawable(holder.itemView.getContext(), R.drawable.circle_outer);
-        if (dot != null) {
-            dot = (GradientDrawable) dot.mutate();
-            dot.setColor(areaColor);
-            b.viewAreaDot.setBackground(dot);
-        }
-
         int tryCount = prefs.getTryCount(area.key);
         if (tryCount > 0) {
-            b.tvTryCount.setVisibility(View.VISIBLE);
+            b.tvTryCount.setVisibility(android.view.View.VISIBLE);
             b.tvTryCount.setText("جربتها " + tryCount + " مرات");
-            b.tvTryCount.setTextColor(areaColor);
-            
-            GradientDrawable badgeBg = new GradientDrawable();
-            badgeBg.setCornerRadius(dpToPx(holder.itemView, 12));
-            badgeBg.setColor(adjustAlpha(areaColor, 0.1f));
-            b.tvTryCount.setBackground(badgeBg);
+            b.tvTryCount.setTextColor(Color.parseColor(area.badgeTextColor));
+            b.tvTryCount.setBackgroundColor(Color.parseColor(area.badgeBgColor));
         } else {
-            b.tvTryCount.setVisibility(View.GONE);
+            b.tvTryCount.setVisibility(android.view.View.GONE);
         }
 
         boolean isExpanded = position == expandedPosition;
-        b.cardExercise.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
-
-        // Outer Card Border
-        GradientDrawable rootBg = new GradientDrawable();
-        rootBg.setCornerRadius(dpToPx(holder.itemView, 18));
-        rootBg.setColor(Color.WHITE);
-        rootBg.setStroke(isExpanded ? dpToPx(holder.itemView, 2) : dpToPx(holder.itemView, 1), 
-                isExpanded ? areaColor : Color.parseColor("#D0E2F3"));
-        b.root.setBackground(rootBg);
+        b.cardExercise.setVisibility(isExpanded ? android.view.View.VISIBLE : android.view.View.GONE);
 
         if (isExpanded) {
-            b.tvExerciseTag.setText("تمرين • " + area.title);
-            b.tvExerciseTag.setTextColor(areaColor);
             b.tvExerciseTitle.setText(area.exerciseTitle);
             b.tvExerciseDesc.setText(area.exerciseDesc);
-            b.tvOffline.setText(area.isOffline ? "offline 🚫" : "online ✅");
-            b.tvDuration.setText(area.durationMinutes + " دقائق 🕒");
+            b.tvOffline.setText(area.isOffline ? "offline" : "online");
+            b.tvDuration.setText(area.durationMinutes + " دقائق");
             b.tvReps.setText(area.repsCount + " مرات");
-
-            // Expanded Container Color
-            GradientDrawable innerBg = new GradientDrawable();
-            innerBg.setCornerRadius(dpToPx(holder.itemView, 16));
-            innerBg.setColor(adjustAlpha(areaColor, 0.05f));
-            b.cardExercise.setBackground(innerBg);
-
-            // Action Button Color
-            b.btnStart.setBackgroundTintList(android.content.res.ColorStateList.valueOf(areaColor));
-            
-            // Animation for expanding
-            b.cardExercise.setAlpha(0f);
-            b.cardExercise.setTranslationY(-20f);
-            b.cardExercise.animate().alpha(1f).translationY(0f).setDuration(300).start();
         }
 
         b.btnArea.setOnClickListener(v -> {
@@ -117,23 +75,7 @@ public class ExerciseAreaAdapter extends RecyclerView.Adapter<ExerciseAreaAdapte
             notifyItemChanged(expandedPosition == -1 ? position : expandedPosition);
         });
 
-        // Set click listener on the whole root view as well
-        b.root.setOnClickListener(v -> b.btnArea.performClick());
-
         b.btnStart.setOnClickListener(v -> listener.onStart(area, position));
-    }
-
-    private int dpToPx(View view, int dp) {
-        float density = view.getResources().getDisplayMetrics().density;
-        return Math.round((float) dp * density);
-    }
-
-    private int adjustAlpha(int color, float factor) {
-        int alpha = Math.round(Color.alpha(color) * factor);
-        int red = Color.red(color);
-        int green = Color.green(color);
-        int blue = Color.blue(color);
-        return Color.argb(alpha, red, green, blue);
     }
 
     @Override

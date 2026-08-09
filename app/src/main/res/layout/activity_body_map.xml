@@ -2,7 +2,6 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F7FAFC"
@@ -12,54 +11,31 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/layoutHeader"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="60dp"
         android:background="#FFFFFF"
         android:paddingHorizontal="16dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:contentDescription="رجوع"
             android:src="@drawable/outline_arrow_forward_24"
-            android:padding="8dp"
-            app:tint="@color/text_main"
-            android:background="@drawable/bg_icon_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/btnNotSure"
-            android:layout_width="wrap_content"
-            android:layout_height="34dp"
-            android:background="@drawable/bg_pill_accent_round"
-            android:backgroundTint="#E1F1FF"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center"
-            android:paddingHorizontal="12dp"
-            android:text="غير متأكد؟ ❔"
-            android:textColor="#3A6898"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="خريطة الجسد"
+            android:text="المشاعر في جسدك"
             android:textColor="#3A6898"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btnBack"
-            app:layout_constraintStart_toEndOf="@id/btnNotSure"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -82,11 +58,15 @@
                 android:layout_height="wrap_content"
                 android:text="أين تشعر بالتوتر؟ حدد المنطقة بالضغط عليها أو من القائمة تحت"
                 android:textColor="#7F8C8D"
-                android:textSize="15sp"
+                android:textSize="13sp"
                 android:gravity="center"
                 android:layout_marginTop="12dp"
                 android:layout_marginHorizontal="24dp" />
 
+            <!-- حاوية خارطة الجسد بعد تكبيرها وإضافة مناطق النقر الذكية -->
+            <!-- حاوية خارطة الجسد مع الدوائر المرئية والخطوط المتقطعة مثل الفيجما -->
+            <!-- حاوية خارطة الجسد الكاملة المستوردة كصورة واحدة من الفيجما -->
+            <!-- حاوية خارطة الجسد - تم زيادة الارتفاع لـ 360dp لمنع التصاق البطاقات وإعطائها مساحة مريحة -->
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/layoutBodyContainer"
                 android:layout_width="match_parent"
@@ -98,15 +78,17 @@
                 <ImageView
                     android:id="@+id/imgBody"
                     android:layout_width="100dp"
-                    android:layout_height="320dp"
+                    android:layout_height="match_parent"
                     android:scaleType="fitCenter"
                     android:src="@drawable/body"
                     android:clickable="false"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.20"
+                    app:layout_constraintHorizontal_bias="0.80"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- ================= مناطق النقر الشفافة الموزعة بدقة ================= -->
 
                 <!-- نقرة الرأس والرقبة -->
                 <View
@@ -164,6 +146,8 @@
                     app:layout_constraintTop_toTopOf="@id/imgBody"
                     app:layout_constraintVertical_bias="0.66" />
 
+                <!-- ================= البطاقات التفاعلية الجانبية (يسار) ================= -->
+
                 <!-- بطاقة الرأس والرقبة -->
                 <LinearLayout
                     android:id="@+id/cardLeftHead"
@@ -173,7 +157,7 @@
                     android:background="@drawable/bg_suggestion_btn"
                     android:backgroundTint="#FFF9E7"
                     android:padding="6dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/dotHead"
                     app:layout_constraintBottom_toBottomOf="@id/dotHead">
                     <TextView
@@ -182,13 +166,13 @@
                         android:text="الرأس والرقبة"
                         android:textColor="#B7950B"
                         android:textStyle="bold"
-                        android:textSize="13sp"/>
+                        android:textSize="11sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="صداع • توتر"
                         android:textColor="#7F8C8D"
-                        android:textSize="12sp"
+                        android:textSize="10sp"
                         android:layout_marginTop="2dp"/>
                 </LinearLayout>
 
@@ -201,7 +185,7 @@
                     android:background="@drawable/bg_suggestion_btn"
                     android:backgroundTint="#EBF5FB"
                     android:padding="6dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/dotShoulders"
                     app:layout_constraintBottom_toBottomOf="@id/dotShoulders">
                     <TextView
@@ -210,13 +194,13 @@
                         android:text="الأكتاف"
                         android:textColor="#2980B9"
                         android:textStyle="bold"
-                        android:textSize="13sp"/>
+                        android:textSize="11sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ثقل • تصلب"
                         android:textColor="#7F8C8D"
-                        android:textSize="12sp"
+                        android:textSize="10sp"
                         android:layout_marginTop="2dp"/>
                 </LinearLayout>
 
@@ -229,7 +213,7 @@
                     android:background="@drawable/bg_suggestion_btn"
                     android:backgroundTint="#FDEDEC"
                     android:padding="6dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/dotChest"
                     app:layout_constraintBottom_toBottomOf="@id/dotChest">
                     <TextView
@@ -238,13 +222,13 @@
                         android:text="الصدر"
                         android:textColor="#CB4335"
                         android:textStyle="bold"
-                        android:textSize="13sp"/>
+                        android:textSize="11sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="ضيق • خفقان"
                         android:textColor="#7F8C8D"
-                        android:textSize="12sp"
+                        android:textSize="10sp"
                         android:layout_marginTop="2dp"/>
                 </LinearLayout>
 
@@ -257,7 +241,7 @@
                     android:background="@drawable/bg_suggestion_btn"
                     android:backgroundTint="#EAECEE"
                     android:padding="6dp"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="@id/dotStomach"
                     app:layout_constraintBottom_toBottomOf="@id/dotStomach">
                     <TextView
@@ -266,59 +250,63 @@
                         android:text="المعدة"
                         android:textColor="#5D6D7E"
                         android:textStyle="bold"
-                        android:textSize="13sp"/>
+                        android:textSize="11sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="غثيان • قلق"
                         android:textColor="#7F8C8D"
-                        android:textSize="12sp"
+                        android:textSize="10sp"
                         android:layout_marginTop="2dp"/>
                 </LinearLayout>
 
-                <!-- خطوط متقطعة -->
+                <!-- ================= الخطوط المتقطعة الرابطة ================= -->
+
+                <!-- خط الرأس -->
                 <View
                     android:layout_width="0dp"
                     android:layout_height="3dp"
                     android:layerType="software"
                     android:background="@drawable/dashed_line"
                     app:layout_constraintBottom_toBottomOf="@id/dotHead"
-                    app:layout_constraintEnd_toStartOf="@id/cardLeftHead"
-                    app:layout_constraintStart_toEndOf="@id/dotHead"
+                    app:layout_constraintEnd_toStartOf="@id/dotHead"
+                    app:layout_constraintStart_toEndOf="@id/cardLeftHead"
                     app:layout_constraintTop_toTopOf="@id/dotHead" />
 
+                <!-- خط الأكتاف -->
                 <View
                     android:layout_width="0dp"
                     android:layout_height="3dp"
                     android:layerType="software"
                     android:background="@drawable/dashed_line"
                     app:layout_constraintBottom_toBottomOf="@id/dotShoulders"
-                    app:layout_constraintEnd_toStartOf="@id/cardLeftShoulders"
-                    app:layout_constraintStart_toEndOf="@id/dotShoulders"
+                    app:layout_constraintEnd_toStartOf="@id/dotShoulders"
+                    app:layout_constraintStart_toEndOf="@id/cardLeftShoulders"
                     app:layout_constraintTop_toTopOf="@id/dotShoulders" />
 
+                <!-- خط الصدر -->
                 <View
                     android:layout_width="0dp"
                     android:layout_height="3dp"
                     android:layerType="software"
                     android:background="@drawable/dashed_line"
                     app:layout_constraintBottom_toBottomOf="@id/dotChest"
-                    app:layout_constraintEnd_toStartOf="@id/cardLeftChest"
-                    app:layout_constraintStart_toEndOf="@id/dotChest"
+                    app:layout_constraintEnd_toStartOf="@id/dotChest"
+                    app:layout_constraintStart_toEndOf="@id/cardLeftChest"
                     app:layout_constraintTop_toTopOf="@id/dotChest" />
 
+                <!-- خط المعدة -->
                 <View
                     android:layout_width="0dp"
                     android:layout_height="3dp"
                     android:layerType="software"
                     android:background="@drawable/dashed_line"
                     app:layout_constraintBottom_toBottomOf="@id/dotStomach"
-                    app:layout_constraintEnd_toStartOf="@id/cardLeftStomach"
-                    app:layout_constraintStart_toEndOf="@id/dotStomach"
+                    app:layout_constraintEnd_toStartOf="@id/dotStomach"
+                    app:layout_constraintStart_toEndOf="@id/cardLeftStomach"
                     app:layout_constraintTop_toTopOf="@id/dotStomach" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
-
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recyclerExercises"
                 android:layout_width="match_parent"

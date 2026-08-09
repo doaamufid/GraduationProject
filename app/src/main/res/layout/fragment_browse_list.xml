@@ -1,67 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    android:background="@color/bg"
+    android:background="@drawable/bg_app_gradient"
     android:orientation="vertical">
 
     <include layout="@layout/view_top_bar"/>
 
     <FrameLayout
-        android:id="@+id/mainContentFrame"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:paddingHorizontal="20dp"
-        android:paddingBottom="24dp">
+        android:layout_weight="1">
 
-        <!-- Empty State Container -->
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/layoutEmptyState"
+        <TextView
+            android:id="@+id/tvEmpty"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="24dp"
-            app:cardElevation="0dp"
-            android:visibility="gone">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
-                android:padding="40dp">
-
-                <ImageView
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:alpha="0.2"
-                    android:src="@drawable/box2"
-                    app:tint="@color/primary" />
-
-                <TextView
-                    android:id="@+id/tvEmpty"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:gravity="center"
-                    android:textColor="@color/primary_dark"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:text="لا توجد عناصر بعد — اضغطي + للإضافة" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:paddingTop="64dp"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:textColor="@color/text_soft"
+            android:textSize="12sp"
+            android:visibility="gone"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:clipToPadding="false"
-            android:paddingTop="12dp" />
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="24dp"
+            android:clipToPadding="false"/>
     </FrameLayout>
 
 </LinearLayout>

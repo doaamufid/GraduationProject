@@ -1,130 +1,103 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    android:background="@color/bg">
-
-    <!-- Header Section -->
-    <include
-        android:id="@+id/topBar"
-        layout="@layout/view_top_bar"
-        app:layout_constraintTop_toTopOf="parent" />
+    android:scrollbars="none"
+    android:background="@drawable/bg_app_gradient"
+    android:fillViewport="true">
 
     <LinearLayout
-        android:id="@+id/layoutHeaderContent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="24dp"
-        android:layout_marginTop="12dp"
-        android:gravity="center_horizontal"
         android:orientation="vertical"
-        app:layout_constraintTop_toBottomOf="@id/topBar">
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="28dp">
 
-        <TextView
-            android:id="@+id/tvSummaryTag"
-            android:layout_width="wrap_content"
+        <include layout="@layout/view_top_bar"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/summary_tag"
-            android:textColor="#3A74B8"
-            android:textSize="13sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="24dp">
 
-        <TextView
-            android:id="@+id/tvSummaryHeadline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/summary_headline"
-            android:textColor="#1F3A60"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/summary_tag"
+                android:textColor="@color/text_soft"
+                android:textSize="10sp"/>
 
-        <TextView
-            android:id="@+id/tvSummarySub"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/summary_sub"
-            android:textColor="#3A74B8"
-            android:textSize="14sp" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/summary_headline"
+                android:textColor="@color/text_white"
+                android:textStyle="bold"
+                android:textSize="20sp"
+                android:layout_marginTop="4dp"/>
 
-    <!-- Scrollable Categories -->
-    <androidx.core.widget.NestedScrollView
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="16dp"
-        android:clipToPadding="false"
-        android:paddingBottom="100dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeaderContent">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/summary_sub"
+                android:textColor="@color/text_soft"
+                android:textSize="11sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/llCategories"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="20dp"
-            android:orientation="vertical" />
-    </androidx.core.widget.NestedScrollView>
-
-    <!-- Bottom Button - Open Box -->
-    <LinearLayout
-        android:id="@+id/btnOpenBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="20dp"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/bg_open_box_gradient"
-        android:clickable="true"
-        android:elevation="8dp"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="18dp"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <ImageView
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:contentDescription="@null"
-            android:src="@drawable/ic_heart_filled_white" />
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp"/>
 
         <LinearLayout
-            android:layout_width="0dp"
+            android:id="@+id/btnOpenBox"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="12dp"
-            android:layout_weight="1"
-            android:gravity="start"
-            android:orientation="vertical">
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_open_box_gradient"
+            android:padding="16dp"
+            android:clickable="true"
+            android:focusable="true">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/open_box_title"
-                android:textColor="@color/white"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_heart_filled_white"
+                android:contentDescription="@null"/>
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:alpha="0.9"
-                android:text="@string/open_box_sub"
-                android:textColor="@color/white"
-                android:textSize="11sp" />
+                android:layout_weight="1"
+                android:layout_marginEnd="12dp"
+                android:orientation="vertical"
+                android:gravity="end">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/open_box_title"
+                    android:textColor="@color/text_white"
+                    android:textStyle="bold"
+                    android:textSize="14sp"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/open_box_sub"
+                    android:textColor="@color/text_white"
+                    android:alpha="0.8"
+                    android:textSize="10sp"/>
+            </LinearLayout>
         </LinearLayout>
 
-        <ImageView
-            android:layout_width="20dp"
-            android:layout_height="20dp"
-            android:alpha="0.8"
-            android:contentDescription="@null"
-            android:rotation="180"
-            android:src="@drawable/outline_arrow_forward_24"
-            app:tint="@color/white" />
     </LinearLayout>
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</ScrollView>

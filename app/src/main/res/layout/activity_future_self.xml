@@ -22,13 +22,12 @@
 
             <ImageButton
                 android:id="@+id/btnBack"
-                android:layout_width="34dp"
-                android:layout_height="34dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_gravity="start"
                 android:background="@drawable/bg_icon_button"
-                android:src="@drawable/outline_arrow_forward_24"
-                android:padding="8dp"
-                app:tint="@color/text_main"
+                android:src="@drawable/ic_arrow_right"
+                android:padding="9dp"
                 android:contentDescription="@null"/>
         </FrameLayout>
 

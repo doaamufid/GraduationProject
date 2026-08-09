@@ -1,14 +1,10 @@
 package com.example.graduationproject;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -50,8 +46,6 @@ public class DailyHabitsActivity extends AppCompatActivity {
         progressFill = findViewById(R.id.progressFill);
         llHabits = findViewById(R.id.llHabits);
 
-        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
-
         findViewById(R.id.btnSuggest).setOnClickListener(v ->
                 startActivity(new Intent(this, AISuggestionsActivity.class)));
 
@@ -61,30 +55,6 @@ public class DailyHabitsActivity extends AppCompatActivity {
 
         getSupportFragmentManager().setFragmentResultListener(
                 HabitDialogFragment.REQUEST_KEY, this, (key, bundle) -> renderHabits());
-        
-        // Initial entrance animations
-        animateEntrance();
-    }
-
-    private void animateEntrance() {
-        View topBar = findViewById(R.id.topBar);
-        View progressCard = (View) tvProgressCount.getParent().getParent();
-        View suggestCard = findViewById(R.id.btnSuggest);
-        View addBtn = findViewById(R.id.btnAddManually);
-
-        topBar.setAlpha(0f);
-        topBar.setTranslationY(-20f);
-        progressCard.setAlpha(0f);
-        progressCard.setTranslationY(50f);
-        suggestCard.setAlpha(0f);
-        suggestCard.setTranslationY(50f);
-        addBtn.setAlpha(0f);
-        addBtn.setTranslationY(50f);
-
-        topBar.animate().alpha(1f).translationY(0f).setDuration(400).start();
-        progressCard.animate().alpha(1f).translationY(0f).setDuration(500).setStartDelay(100).start();
-        suggestCard.animate().alpha(1f).translationY(0f).setDuration(500).setStartDelay(200).start();
-        addBtn.animate().alpha(1f).translationY(0f).setDuration(500).setStartDelay(600).start();
     }
 
     @Override
@@ -101,32 +71,15 @@ public class DailyHabitsActivity extends AppCompatActivity {
         float pct = habits.isEmpty() ? 0f : (float) doneCount / habits.size();
 
         tvProgressCount.setText(getString(R.string.done_today_format, doneCount, habits.size()));
-        
-        // Animated progress fill
         progressFill.post(() -> {
-            int targetWidth = Math.round(((View) progressFill.getParent()).getWidth() * pct);
-            ValueAnimator anim = ValueAnimator.ofInt(progressFill.getLayoutParams().width, targetWidth);
-            anim.addUpdateListener(animation -> {
-                ViewGroup.LayoutParams lp = progressFill.getLayoutParams();
-                lp.width = (int) animation.getAnimatedValue();
-                progressFill.setLayoutParams(lp);
-            });
-            anim.setDuration(800);
-            anim.setInterpolator(new AccelerateDecelerateInterpolator());
-            anim.start();
+            ViewGroup.LayoutParams lp = progressFill.getLayoutParams();
+            lp.width = Math.round(((View) progressFill.getParent()).getWidth() * pct);
+            progressFill.setLayoutParams(lp);
         });
 
         llHabits.removeAllViews();
-        for (int i = 0; i < habits.size(); i++) {
-            Habit habit = habits.get(i);
-            View row = buildHabitRow(habit);
-            
-            // Staggered entrance for items
-            row.setAlpha(0f);
-            row.setTranslationY(30f);
-            row.animate().alpha(1f).translationY(0f).setDuration(400).setStartDelay(300 + (i * 100L)).start();
-            
-            llHabits.addView(row);
+        for (Habit habit : habits) {
+            llHabits.addView(buildHabitRow(habit));
         }
     }
 

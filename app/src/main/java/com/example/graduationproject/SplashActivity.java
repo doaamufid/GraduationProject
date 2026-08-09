@@ -1,19 +1,10 @@
 package com.example.graduationproject;
 
-import android.animation.Animator;
-import android.animation.AnimatorListenerAdapter;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.AnticipateOvershootInterpolator;
-import android.view.animation.LinearInterpolator;
-import android.view.animation.OvershootInterpolator;
-import android.widget.ImageView;
+import android.os.Handler;
+import android.os.Looper;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -40,120 +31,31 @@ public class SplashActivity extends AppCompatActivity {
             return insets;
         });
 
-        startSplashAnimations();
+        // ملاحظة: احذف هذين السطرين قبل إطلاق التطبيق نهائياً
+        // للتجريب
+//        getSharedPreferences("AppPrefs", MODE_PRIVATE).edit().clear().apply();
+//        getSharedPreferences("UserPrefs", MODE_PRIVATE).edit().clear().apply();
 
-        // Delay navigation until animations are done
-        new android.os.Handler(android.os.Looper.getMainLooper()).postDelayed(this::navigateToNext, 4000);
-    }
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
 
-    private void startSplashAnimations() {
-        // 1. Initial State
-        binding.icDrop.setScaleX(0f);
-        binding.icDrop.setScaleY(0f);
-        binding.circleSmall.setScaleX(0f);
-        binding.circleSmall.setScaleY(0f);
-        binding.circleMid.setScaleX(0f);
-        binding.circleMid.setScaleY(0f);
-        binding.circleLarge.setScaleX(0f);
-        binding.circleLarge.setScaleY(0f);
-        binding.textSalam.setAlpha(0f);
-        binding.textSalam.setTranslationY(100f);
-        binding.textMental.setAlpha(0f);
-        binding.textMental.setTranslationY(70f);
+            SharedPreferences appPrefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+            SharedPreferences userPrefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
 
-        // 2. Animate Clouds (Floating)
-        float density = getResources().getDisplayMetrics().density;
-        animateCloud(binding.cloudLeft, 6000, 30 * density);
-        animateCloud(binding.cloudRight, 8000, -25 * density);
-        animateCloud(binding.cloudCenter, 10000, 20 * density);
+            boolean isFirstRun = appPrefs.getBoolean("isFirstRun", true);
+            String userType = userPrefs.getString("user_type", null);
 
-        // 3. Background "Breathe" Effect
-        ObjectAnimator bgAnim = ObjectAnimator.ofFloat(binding.main, "alpha", 0.8f, 1f);
-        bgAnim.setDuration(4000);
-        bgAnim.setRepeatCount(ValueAnimator.INFINITE);
-        bgAnim.setRepeatMode(ValueAnimator.REVERSE);
-        bgAnim.start();
-
-        // 4. Entrance Sequence
-        // Drop Pop with Rotation
-        ObjectAnimator dropScaleX = ObjectAnimator.ofFloat(binding.icDrop, "scaleX", 0f, 1.3f, 1f);
-        ObjectAnimator dropScaleY = ObjectAnimator.ofFloat(binding.icDrop, "scaleY", 0f, 1.3f, 1f);
-        ObjectAnimator dropRotate = ObjectAnimator.ofFloat(binding.icDrop, "rotation", 0f, 15f, -15f, 0f);
-        AnimatorSet dropPop = new AnimatorSet();
-        dropPop.playTogether(dropScaleX, dropScaleY, dropRotate);
-        dropPop.setDuration(1200);
-        dropPop.setInterpolator(new OvershootInterpolator());
-
-        // Pulsing Circles Entrance
-        AnimatorSet circlesEntrance = new AnimatorSet();
-        circlesEntrance.playTogether(
-                createPulseEntrance(binding.circleSmall, 200),
-                createPulseEntrance(binding.circleMid, 400),
-                createPulseEntrance(binding.circleLarge, 600)
-        );
-
-        // Text Appearance
-        ObjectAnimator textSalamFade = ObjectAnimator.ofFloat(binding.textSalam, "alpha", 0f, 1f);
-        ObjectAnimator textSalamMove = ObjectAnimator.ofFloat(binding.textSalam, "translationY", 100f, 0f);
-        ObjectAnimator textMentalFade = ObjectAnimator.ofFloat(binding.textMental, "alpha", 0f, 1f);
-        ObjectAnimator textMentalMove = ObjectAnimator.ofFloat(binding.textMental, "translationY", 70f, 0f);
-
-        AnimatorSet textSet = new AnimatorSet();
-        textSet.playTogether(textSalamFade, textSalamMove, textMentalFade, textMentalMove);
-        textSet.setDuration(1500);
-        textSet.setInterpolator(new AccelerateDecelerateInterpolator());
-
-        AnimatorSet fullSequence = new AnimatorSet();
-        fullSequence.playSequentially(dropPop, textSet);
-        fullSequence.start();
-        circlesEntrance.start();
-    }
-
-    private void animateCloud(View view, long duration, float moveX) {
-        ObjectAnimator cloudAnim = ObjectAnimator.ofFloat(view, "translationX", 0f, moveX);
-        cloudAnim.setDuration(duration);
-        cloudAnim.setRepeatCount(ValueAnimator.INFINITE);
-        cloudAnim.setRepeatMode(ValueAnimator.REVERSE);
-        cloudAnim.setInterpolator(new AccelerateDecelerateInterpolator());
-        cloudAnim.start();
-    }
-
-    private AnimatorSet createPulseEntrance(View view, long delay) {
-        ObjectAnimator scaleX = ObjectAnimator.ofFloat(view, "scaleX", 0f, 1f);
-        ObjectAnimator scaleY = ObjectAnimator.ofFloat(view, "scaleY", 0f, 1f);
-        ObjectAnimator alpha = ObjectAnimator.ofFloat(view, "alpha", 0f, view.getAlpha());
-
-        AnimatorSet pulse = new AnimatorSet();
-        pulse.playTogether(scaleX, scaleY, alpha);
-        pulse.setDuration(1500);
-        pulse.setStartDelay(delay);
-        pulse.setInterpolator(new AnticipateOvershootInterpolator());
-
-        pulse.addListener(new AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(Animator animation) {
-                // Subtle continuous pulse
-                ObjectAnimator loopX = ObjectAnimator.ofFloat(view, "scaleX", 1f, 1.05f);
-                ObjectAnimator loopY = ObjectAnimator.ofFloat(view, "scaleY", 1f, 1.05f);
-                loopX.setRepeatCount(ValueAnimator.INFINITE);
-                loopX.setRepeatMode(ValueAnimator.REVERSE);
-                loopY.setRepeatCount(ValueAnimator.INFINITE);
-                loopY.setRepeatMode(ValueAnimator.REVERSE);
-                loopX.setDuration(2500 + delay);
-                loopY.setDuration(2500 + delay);
-                loopX.start();
-                loopY.start();
+            Intent intent;
+            if (isFirstRun) {
+                intent = new Intent(SplashActivity.this, OnBoardingActivity1.class);
+            } else if (userType == null) {
+                intent = new Intent(SplashActivity.this, SplashSelectActivity.class);
+            } else {
+                intent = new Intent(SplashActivity.this, MainActivity.class);
             }
-        });
 
-        return pulse;
-    }
+            startActivity(intent);
+            finish();
 
-    private void navigateToNext() {
-        // Forcing onboarding to appear each time as requested
-        Intent intent = new Intent(SplashActivity.this, OnBoardingActivity1.class);
-        startActivity(intent);
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        finish();
+        }, 3000);
     }
 }

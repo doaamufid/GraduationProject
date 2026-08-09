@@ -59,7 +59,7 @@
         android:background="@drawable/bg_input"
         android:padding="20dp"
         android:hint="وش تحب تقول لنفسك في المستقبل؟"
-        android:textColor="@color/card_title"
+        android:textColor="@color/text_main"
         android:textColorHint="@color/text_soft"
         android:textSize="18sp"
         android:inputType="textMultiLine"

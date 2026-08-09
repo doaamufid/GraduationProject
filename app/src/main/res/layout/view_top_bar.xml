@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <merge xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <FrameLayout
@@ -17,10 +16,9 @@
             android:layout_width="34dp"
             android:layout_height="34dp"
             android:layout_gravity="start|center_vertical"
-            android:background="@drawable/bg_icon_button"
-            android:src="@drawable/outline_arrow_forward_24"
-            android:padding="8dp"
-            app:tint="@color/text_main"
+            android:background="@drawable/bg_icon_circle_overlay"
+            android:src="@drawable/ic_arrow_right"
+            android:padding="9dp"
             android:contentDescription="@null"/>
 
         <LinearLayout

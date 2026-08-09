@@ -20,10 +20,6 @@
             android:exported="false" />
 
         <activity
-            android:name=".ExerciseTimerActivity"
-            android:exported="false" />
-
-        <activity
             android:name=".MindfulnessQuotesActivity"
             android:exported="false" />
 

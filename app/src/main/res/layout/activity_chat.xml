@@ -38,18 +38,14 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageButton
+        <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/outline_arrow_forward_24"
-            android:padding="8dp"
-            app:tint="@color/text_main"
-            android:background="@drawable/bg_icon_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="رجوع" />
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView

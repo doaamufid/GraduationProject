@@ -1,183 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="12dp"
+    android:orientation="vertical"
     android:background="@drawable/bg_suggestion_btn"
+    android:layout_marginBottom="12dp"
     android:padding="12dp">
 
-    <!-- Header / Closed State -->
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:id="@+id/btnArea"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
-        android:background="?android:attr/selectableItemBackground"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <View
-            android:id="@+id/viewAreaDot"
-            android:layout_width="12dp"
-            android:layout_height="12dp"
-            android:layout_marginEnd="8dp"
-            android:background="@drawable/circle_outer"
-            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvTitle" />
+        android:background="?android:attr/selectableItemBackground">
 
         <TextView
             android:id="@+id/tvTitle"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            android:gravity="end"
-            android:textColor="#3A6898"
-            android:textSize="17sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toStartOf="@id/viewAreaDot"
-            app:layout_constraintStart_toEndOf="@id/leftHeaderContainer"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:text="الرأس والرقبة" />
-
-        <LinearLayout
-            android:id="@+id/leftHeaderContainer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            app:layout_constraintBottom_toBottomOf="@id/tvTitle"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@id/tvTitle">
+            android:textColor="#3A6898"
+            android:textStyle="bold"
+            android:textSize="14sp"
+            android:layout_alignParentStart="true"/>
 
-            <TextView
-                android:id="@+id/tvTryCount"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_pill_accent_round"
-                android:paddingHorizontal="8dp"
-                android:paddingVertical="3dp"
-                android:textColor="#3A6898"
-                android:textSize="11sp"
-                android:textStyle="bold"
-                android:visibility="gone"
-                tools:text="جربتها ٢ مرات"
-                tools:visibility="visible" />
+        <TextView
+            android:id="@+id/tvSubtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="#7F8C8D"
+            android:textSize="12sp"
+            android:layout_toEndOf="@id/tvTitle"
+            android:layout_marginStart="8dp"
+            android:layout_alignBaseline="@id/tvTitle"/>
 
-            <TextView
-                android:id="@+id/tvSubtitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:textColor="#7F8C8D"
-                android:textSize="14sp"
-                tools:text="صداع • توتر" />
-        </LinearLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <!-- شارة "جربتها X مرات" - تظهر فقط لو count > 0 -->
+        <TextView
+            android:id="@+id/tvTryCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:textSize="10sp"
+            android:layout_alignParentEnd="true"
+            android:visibility="gone"/>
+    </RelativeLayout>
 
-    <!-- Expanded State Details -->
     <LinearLayout
         android:id="@+id/cardExercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/bg_note_input"
         android:orientation="vertical"
-        android:padding="16dp"
         android:visibility="gone"
-        app:layout_constraintTop_toBottomOf="@id/btnArea"
-        tools:visibility="visible">
-
-        <TextView
-            android:id="@+id/tvExerciseTag"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:textColor="#B7950B"
-            android:textSize="12sp"
-            android:textStyle="bold"
-            tools:text="تمرين • الرأس والرقبة" />
+        android:layout_marginTop="12dp">
 
         <TextView
             android:id="@+id/tvExerciseTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginTop="4dp"
             android:textColor="#3A6898"
-            android:textSize="15sp"
             android:textStyle="bold"
-            tools:text="تمرين الرقبة - تحرير التوتر" />
+            android:textSize="13sp"/>
 
         <TextView
             android:id="@+id/tvExerciseDesc"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="end"
             android:textColor="#566573"
-            android:textSize="16sp"
-            tools:text="أدر رأسك ببطء لليمين ثم لليسار، وخذ نفساً عميقاً مع كل حركة. كرر ٣ مرات بلطف." />
+            android:textSize="14sp"
+            android:layout_marginTop="6dp"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="16dp"
+            android:orientation="horizontal"
             android:gravity="center"
-            android:orientation="horizontal">
-
-            <TextView
-                android:id="@+id/tvReps"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_pill_accent_round"
-                android:backgroundTint="#FFFFFF"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
-                android:textColor="#7F8C8D"
-                android:textSize="12sp"
-                tools:text="٣ مرات" />
-
-            <TextView
-                android:id="@+id/tvDuration"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="8dp"
-                android:background="@drawable/bg_pill_accent_round"
-                android:backgroundTint="#FFFFFF"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
-                android:textColor="#7F8C8D"
-                android:textSize="12sp"
-                tools:text="١ دقائق 🕒" />
+            android:layout_marginTop="10dp"
+            android:background="#F8F9F9"
+            android:padding="8dp">
 
             <TextView
                 android:id="@+id/tvOffline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_pill_accent_round"
-                android:backgroundTint="#FFFFFF"
-                android:paddingHorizontal="10dp"
-                android:paddingVertical="4dp"
+                android:text="offline"
                 android:textColor="#7F8C8D"
-                android:textSize="12sp"
-                tools:text="offline 🚫" />
+                android:textSize="11sp"/>
+
+            <View android:layout_width="1dp" android:layout_height="12dp"
+                android:background="#BDC3C7" android:layout_marginHorizontal="8dp"/>
+
+            <TextView
+                android:id="@+id/tvDuration"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F8C8D"
+                android:textSize="11sp"/>
+
+            <View android:layout_width="1dp" android:layout_height="12dp"
+                android:background="#BDC3C7" android:layout_marginHorizontal="8dp"/>
+
+            <TextView
+                android:id="@+id/tvReps"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#7F8C8D"
+                android:textSize="11sp"/>
         </LinearLayout>
 
-        <androidx.appcompat.widget.AppCompatButton
+        <Button
             android:id="@+id/btnStart"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/bg_pill_primary"
+            android:layout_height="44dp"
+            android:layout_marginTop="12dp"
             android:backgroundTint="#3A6898"
             android:text="ابدأ التمرين الموجه ←"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="bold" />
+            android:textColor="#FFFFFF" />
     </LinearLayout>
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

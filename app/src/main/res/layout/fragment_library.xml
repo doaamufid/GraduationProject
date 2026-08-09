@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="#E1F1FF"
     android:layoutDirection="rtl"
     android:scrollbars="none"
     android:fillViewport="true">
@@ -16,14 +16,6 @@
         android:paddingBottom="28dp">
 
         <include layout="@layout/view_top_bar"/>
-
-        <include
-            android:id="@+id/layoutSearchBarIncluded"
-            layout="@layout/view_search_bar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp" />
 
         <HorizontalScrollView
             android:layout_width="match_parent"

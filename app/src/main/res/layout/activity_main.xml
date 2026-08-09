@@ -6,7 +6,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="#F7FAFC"
     android:fitsSystemWindows="true"
     tools:context=".MainActivity">
 
@@ -20,7 +20,7 @@
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
+        android:layout_height="65dp"
         android:background="#FFFFFF"
         android:elevation="8dp"
 
@@ -29,9 +29,7 @@
         app:itemIconTint="@color/bottom_nav_colors"
         app:itemTextColor="@color/bottom_nav_colors"
 
-        app:itemIconSize="26dp"
-        app:itemTextAppearanceActive="@style/BottomNavLabelStyle"
-        app:itemTextAppearanceInactive="@style/BottomNavLabelStyle"
+        app:itemIconSize="22dp"
 
         app:itemRippleColor="@android:color/transparent"
 

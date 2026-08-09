@@ -8,19 +8,16 @@
     android:gravity="center_vertical"
     android:padding="12dp"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/white_rounded_card"
-    android:elevation="2dp">
+    android:background="@drawable/bg_card">
 
     <ImageButton
         android:id="@+id/btnPlay"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:background="@drawable/bg_icon_blue"
-        android:src="@drawable/ic_play"
-        app:tint="@color/text_main"
-        android:padding="12dp"
-        android:contentDescription="@null"
-        xmlns:app="http://schemas.android.com/apk/res-auto" />
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_icon_circle_primary_soft"
+        android:src="@drawable/ic_play_light"
+        android:padding="11dp"
+        android:contentDescription="@null"/>
 
     <LinearLayout
         android:layout_width="0dp"
@@ -34,9 +31,9 @@
             android:id="@+id/tvLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/text_main"
+            android:textColor="@color/text_white"
             android:textStyle="bold"
-            android:textSize="15sp"
+            android:textSize="12sp"
             tools:text="من ماما"/>
 
         <TextView
@@ -44,17 +41,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_soft"
-            android:textSize="11sp"
+            android:textSize="9sp"
             tools:text="00:34"/>
     </LinearLayout>
 
     <ImageButton
         android:id="@+id/btnDelete"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
         android:background="@android:color/transparent"
-        android:src="@drawable/ic_trash_red"
-        android:padding="6dp"
+        android:src="@drawable/ic_trash"
+        android:padding="7dp"
         android:contentDescription="@null"/>
 
 </LinearLayout>

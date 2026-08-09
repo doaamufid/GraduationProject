@@ -1,24 +1,14 @@
 package com.example.graduationproject;
 
-import android.animation.ObjectAnimator;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.OvershootInterpolator;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,55 +16,58 @@ import com.example.graduationproject.adapters.EnvironmentAdapter;
 import com.example.graduationproject.models.Environment;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.slider.Slider;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
 public class HealingEnvironmentActivity extends AppCompatActivity {
 
+    // 1. عناصر الواجهة الرئيسية
     private TextView tvTimer, tvCurrentTitle, tvCurrentSub;
     private TextView btnTime10, btnTime20, btnTime40;
     private FloatingActionButton btnPlayPause;
     private ImageView btnBack, btnPrevious, btnNext, imgCurrentBg;
     private Slider sliderVolume;
 
+    // 2. عناصر قائمة البيئات (RecyclerView)
     private RecyclerView rvEnvironments;
     private EnvironmentAdapter adapter;
     private List<Environment> environmentList;
-    private int currentPlayIndex = 0;
+    private int currentPlayIndex = 0; // لمتابعة البيئة الحالية عند الضغط على التالي والسابق
 
+    // 3. متغيرات العداد التنازلي (Timer)
     private CountDownTimer countDownTimer;
-    private long timeLeftInMillis = 1200000;
+    private long timeLeftInMillis = 1200000; // القيمة الافتراضية 20 دقيقة بالملي ثانية
     private boolean isTimerRunning = false;
 
+    // 4. متغيرات الصوت والـ MediaPlayer الفعلي
     private AudioManager audioManager;
     private MediaPlayer mediaPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_healing_environment);
 
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.layoutHeader).getRootView(), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom);
-            findViewById(R.id.layoutHeader).setPadding(0, systemBars.top, 0, 0);
-            return insets;
-        });
-
+        // تهيئة وتعريف جميع العناصر من ملف الـ XML
         initViews();
+
+        // إعداد قائمة البيئات الأفقية (RecyclerView)
         setupRecyclerView();
+
+        // إعداد التحكم بمستوى الصوت (Volume Slider)
         setupVolumeControl();
+
+        // إعداد مستمعات الضغط لأزرار المؤقت الثلاثة (10د - 20د - 40د)
         setupTimerButtons();
+
+        // إعداد أزرار التحكم بالمشغل (Play, Next, Prev, Back)
         setupPlayerControls();
 
+        // تحضير البيئة الافتراضية الأولى لتكون جاهزة للعمل فوراً
         if (!environmentList.isEmpty()) {
-            updateMainPlayer(environmentList.get(0));
+            prepareSoundOnly(environmentList.get(0).getSoundResId());
         }
-
-        startEntranceAnimations();
     }
 
     private void initViews() {
@@ -96,48 +89,19 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
         rvEnvironments = findViewById(R.id.rvEnvironments);
     }
 
-    private void startEntranceAnimations() {
-        View cardPlayer = findViewById(R.id.cardMainPlayer);
-        View tvSelectTitle = findViewById(R.id.tvSelectTitle);
-        View layoutTimerSelector = findViewById(R.id.layoutTimerSelector);
-        View layoutVolumeControl = findViewById(R.id.layoutVolumeControl);
-
-        cardPlayer.setAlpha(0f);
-        cardPlayer.setScaleX(0.8f);
-        cardPlayer.setScaleY(0.8f);
-        
-        tvSelectTitle.setAlpha(0f);
-        tvSelectTitle.setTranslationY(20f);
-        
-        rvEnvironments.setAlpha(0f);
-        rvEnvironments.setTranslationX(-100f);
-        
-        layoutTimerSelector.setAlpha(0f);
-        layoutTimerSelector.setTranslationY(30f);
-        
-        layoutVolumeControl.setAlpha(0f);
-        layoutVolumeControl.setTranslationY(50f);
-
-        cardPlayer.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(800).setInterpolator(new OvershootInterpolator()).start();
-        
-        tvSelectTitle.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(300).start();
-        
-        rvEnvironments.animate().alpha(1f).translationX(0f).setDuration(800).setStartDelay(400).setInterpolator(new DecelerateInterpolator()).start();
-        
-        layoutTimerSelector.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(600).start();
-        
-        layoutVolumeControl.animate().alpha(1f).translationY(0f).setDuration(700).setStartDelay(800).setInterpolator(new OvershootInterpolator()).start();
-    }
-
     private void setupRecyclerView() {
+        // تجهيز بيانات البيئات الافتراضية
+        // ⚠️ تأكدي من تسمية ملفات الـ mp3 المتبقية بأحرف صغيرة في مجلد raw لاحقاً
         environmentList = new ArrayList<>();
         environmentList.add(new Environment(1, "غابة هادئة", "FOREST", R.drawable.video, R.raw.tranquil_forest));
-        environmentList.add(new Environment(2, "صوت المطر", "RAIN", R.drawable.video, R.raw.tranquil_forest));
+        environmentList.add(new Environment(2, "صوت المطر", "RAIN", R.drawable.video, R.raw.tranquil_forest)); // مؤقتاً نفس الملف للتجربة
         environmentList.add(new Environment(3, "شاطئ البحر", "BEACH", R.drawable.video, R.raw.tranquil_forest));
         environmentList.add(new Environment(4, "نار دافئة", "FIREPLACE", R.drawable.video, R.raw.tranquil_forest));
 
+        // إعداد الأدابتر وتحديث الشاشة الرئيسية عند الضغط على أي كرت بيئة
         adapter = new EnvironmentAdapter(environmentList, environment -> {
             updateMainPlayer(environment);
+            // تحديث مؤشر العنصر الحالي لتسهيل التنقل عبر أزرار التالي والسابق
             for (int i = 0; i < environmentList.size(); i++) {
                 if (environmentList.get(i).getId() == environment.getId()) {
                     currentPlayIndex = i;
@@ -146,6 +110,7 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
             }
         });
 
+        // ضبط الـ RecyclerView ليعرض بشكل أفقي
         rvEnvironments.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
         rvEnvironments.setAdapter(adapter);
     }
@@ -155,10 +120,7 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
         tvCurrentSub.setText(environment.getSubtitle());
         imgCurrentBg.setImageResource(environment.getImageResId());
 
-        tvCurrentTitle.setAlpha(0f);
-        tvCurrentTitle.setTranslationY(20f);
-        tvCurrentTitle.animate().alpha(1f).translationY(0f).setDuration(400).start();
-
+        // إذا كان المشغل قيد العمل، نقوم بتشغيل الصوت الجديد فوراً، وإلا نكتفي بتهيئته
         if (isTimerRunning) {
             playNewSound(environment.getSoundResId());
         } else {
@@ -166,6 +128,7 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
         }
     }
 
+    // دالة لتشغيل الصوت بشكل فوري وتكراره تلقائياً
     private void playNewSound(int soundResId) {
         stopAndReleaseMediaPlayer();
         try {
@@ -181,6 +144,7 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
         }
     }
 
+    // دالة لتهيئة الصوت فقط بالخلفية دون تشغيله مباشرة
     private void prepareSoundOnly(int soundResId) {
         stopAndReleaseMediaPlayer();
         try {
@@ -195,6 +159,7 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
 
     private void setupVolumeControl() {
         audioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+
         int maxVolume = audioManager.getStreamMaxVolume(AudioManager.STREAM_MUSIC);
         int currentVolume = audioManager.getStreamVolume(AudioManager.STREAM_MUSIC);
 
@@ -214,10 +179,14 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
     }
 
     private void selectTimerButton(TextView selectedButton, int minutes) {
+        // 1. إعادة تعيين شكل جميع الأزرار لتصبح بيضاء غير محددة
         resetTimerButtonsStyle();
+
+        // 2. تطبيق التصميم الأزرق المحدد على الزر المضغوط
         selectedButton.setBackgroundResource(R.drawable.bg_timer_chip_selected);
         selectedButton.setTextColor(getResources().getColor(android.R.color.white));
 
+        // 3. تحديث الوقت وإيقاف المؤقت القديم إذا كان يعمل
         pauseTimer();
         if (mediaPlayer != null && mediaPlayer.isPlaying()) {
             mediaPlayer.pause();
@@ -228,17 +197,22 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
 
     private void resetTimerButtonsStyle() {
         int primaryColor = android.graphics.Color.parseColor("#2D587B");
+
         btnTime10.setBackgroundResource(R.drawable.bg_timer_chip);
         btnTime10.setTextColor(primaryColor);
+
         btnTime20.setBackgroundResource(R.drawable.bg_timer_chip);
         btnTime20.setTextColor(primaryColor);
+
         btnTime40.setBackgroundResource(R.drawable.bg_timer_chip);
         btnTime40.setTextColor(primaryColor);
     }
 
     private void setupPlayerControls() {
+        // زر الرجوع في الأعلى
         btnBack.setOnClickListener(v -> finish());
 
+        // زر التشغيل والإيقاف المؤقت
         btnPlayPause.setOnClickListener(v -> {
             if (isTimerRunning) {
                 pauseTimer();
@@ -247,6 +221,7 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
                 }
             } else {
                 startTimer();
+                // إذا لم يتم تهيئة الـ MediaPlayer بعد، نقوم بتهيئته
                 if (mediaPlayer == null) {
                     prepareSoundOnly(environmentList.get(currentPlayIndex).getSoundResId());
                 }
@@ -256,20 +231,22 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
             }
         });
 
+        // زر البيئة التالية
         btnNext.setOnClickListener(v -> {
             if (currentPlayIndex < environmentList.size() - 1) {
                 currentPlayIndex++;
             } else {
-                currentPlayIndex = 0;
+                currentPlayIndex = 0; // العودة لأول بيئة إذا وصلنا للنهاية
             }
             updateMainPlayer(environmentList.get(currentPlayIndex));
         });
 
+        // @@@ زر البيئة السابقة
         btnPrevious.setOnClickListener(v -> {
             if (currentPlayIndex > 0) {
                 currentPlayIndex--;
             } else {
-                currentPlayIndex = environmentList.size() - 1;
+                currentPlayIndex = environmentList.size() - 1; // الذهاب لآخر بيئة إذا كنا في البداية
             }
             updateMainPlayer(environmentList.get(currentPlayIndex));
         });
@@ -288,6 +265,8 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
                 isTimerRunning = false;
                 btnPlayPause.setImageResource(android.R.drawable.ic_media_play);
                 tvTimer.setText("انتهت جلستك بنجاح 🌸");
+
+                // إيقاف تشغيل الصوت فور انتهاء الوقت المحدد للجلسة
                 if (mediaPlayer != null && mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
                 }
@@ -313,6 +292,7 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
         tvTimer.setText(timeLeftFormatted);
     }
 
+    // دالة مهمة جداً لتحرير موارد مشغل الصوت ومنع استهلاك الذاكرة (Memory Leak)
     private void stopAndReleaseMediaPlayer() {
         if (mediaPlayer != null) {
             try {
@@ -330,6 +310,7 @@ public class HealingEnvironmentActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        // إيقاف العداد والمشغل فور الخروج من الشاشة
         if (countDownTimer != null) {
             countDownTimer.cancel();
         }

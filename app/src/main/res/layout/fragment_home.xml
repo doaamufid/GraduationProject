@@ -4,13 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="#E1F1FF"
     tools:context=".bottomNavFragments.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/imageLayout"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -18,9 +18,8 @@
         <ImageView
             android:id="@+id/imgWaveBottom"
             android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginBottom="-20dp"
-            android:scaleType="centerCrop"
+            android:layout_height="200dp"
+            android:scaleType="fitXY"
             android:src="@drawable/img_1"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

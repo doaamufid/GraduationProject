@@ -94,17 +94,4 @@
         <item name="android:textDirection">rtl</item>
     </style>
 
-    <style name="BottomNavLabelStyle">
-        <item name="android:textSize">14sp</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
-    <style name="ShapeAppearance.TopRounded" parent="">
-        <item name="cornerFamily">rounded</item>
-        <item name="cornerSizeTopLeft">24dp</item>
-        <item name="cornerSizeTopRight">24dp</item>
-        <item name="cornerSizeBottomLeft">0dp</item>
-        <item name="cornerSizeBottomRight">0dp</item>
-    </style>
-
 </resources>

@@ -119,57 +119,18 @@ public class PlayerFragment extends Fragment {
         renderWhy();
         renderSuggestions();
 
-        startEntranceAnimations(root);
-
         return root;
     }
 
-    private void startEntranceAnimations(View root) {
-        View videoContainer = root.findViewById(R.id.videoContainer);
-        View layoutInfo = root.findViewById(R.id.layoutInfo);
-        View layoutFeedback = root.findViewById(R.id.layoutFeedback);
-        View layoutWhy = root.findViewById(R.id.btnWhy);
-        View layoutSuggestions = root.findViewById(R.id.layoutSuggestions);
-        ViewGroup layoutContent = root.findViewById(R.id.layoutScrollContent);
-
-        if (layoutContent != null) {
-            layoutContent.setClipChildren(false);
-            layoutContent.setClipToPadding(false);
-        }
-
-        if (videoContainer != null) {
-            videoContainer.setAlpha(0f);
-            videoContainer.setTranslationY(-30f);
-            videoContainer.animate().alpha(1f).translationY(0f).setDuration(600).setInterpolator(new android.view.animation.DecelerateInterpolator()).start();
-        }
-
-        if (layoutInfo != null) {
-            layoutInfo.setAlpha(0f);
-            layoutInfo.setTranslationY(30f);
-            layoutInfo.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(200).start();
-        }
-
-        if (layoutFeedback != null) {
-            layoutFeedback.setAlpha(0f);
-            layoutFeedback.setTranslationY(30f);
-            layoutFeedback.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(400).start();
-        }
-
-        if (layoutWhy != null) {
-            layoutWhy.setAlpha(0f);
-            layoutWhy.setTranslationY(30f);
-            layoutWhy.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(500).start();
-        }
-
-        if (layoutSuggestions != null) {
-            layoutSuggestions.setAlpha(0f);
-            layoutSuggestions.setTranslationY(50f);
-            layoutSuggestions.animate().alpha(1f).translationY(0f).setDuration(800).setStartDelay(700).setInterpolator(new android.view.animation.OvershootInterpolator(0.8f)).start();
-        }
-    }
-
     private void setupVideoAspectRatio(View root) {
-        // No longer using dynamic aspect ratio since we set fixed height in XML for the card
+        // Equivalent of `paddingBottom: "56.25%"` (16:9 aspect ratio box).
+        View spacer = root.findViewById(R.id.videoAspectSpacer);
+        spacer.post(() -> {
+            int width = spacer.getWidth();
+            ViewGroup.LayoutParams parentLp = ((View) spacer.getParent()).getLayoutParams();
+            parentLp.height = (int) (width * 0.5625f);
+            ((View) spacer.getParent()).setLayoutParams(parentLp);
+        });
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -291,14 +252,10 @@ public class PlayerFragment extends Fragment {
             View thumbGradient = row.findViewById(R.id.thumbGradient);
             ImageView ivTypeIcon = row.findViewById(R.id.ivTypeIcon);
             TextView tvTitle = row.findViewById(R.id.tvTitle);
-            TextView tvSubtitle = row.findViewById(R.id.tvSubtitle);
 
             applyGradient(thumbGradient, suggestion.gradStart, suggestion.gradEnd);
             ivTypeIcon.setImageResource(suggestion.isVideo ? R.drawable.ic_play : R.drawable.ic_headphones);
             tvTitle.setText(suggestion.title);
-            if (tvSubtitle != null) {
-                tvSubtitle.setText(suggestion.duration + " • " + suggestion.src);
-            }
 
             row.setOnClickListener(v -> {
                 if (getActivity() instanceof VideoLibraryActivity) {

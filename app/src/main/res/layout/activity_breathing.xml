@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="#F7FAFC"
     android:layoutDirection="rtl"
     tools:context=".BreathingActivity">
 
@@ -18,18 +18,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <!-- زر العودة على اليمين -->
-        <ImageButton
+        <ImageView
             android:id="@+id/btnBack"
-            android:layout_width="34dp"
-            android:layout_height="34dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:src="@drawable/outline_arrow_forward_24"
-            android:padding="8dp"
-            app:tint="@color/text_main"
-            android:background="@drawable/bg_icon_button"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="رجوع" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- العنوان والترجمة في المنتصف -->
         <LinearLayout
@@ -69,7 +65,7 @@
             android:clickable="true"
             android:focusable="true"
             android:background="?attr/selectableItemBackground"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
 
@@ -112,7 +108,7 @@
                 android:layout_height="wrap_content"
                 android:text="خذ نفساً معي"
                 android:textColor="#2D5B7B"
-                android:textSize="26sp"
+                android:textSize="22sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -125,7 +121,7 @@
                 android:layout_marginTop="4dp"
                 android:text="دورة من ٣ - ٥ "
                 android:textColor="#6A8CA3"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@id/tvMainTitle"
                 app:layout_constraintStart_toStartOf="@id/tvMainTitle"
                 app:layout_constraintTop_toBottomOf="@id/tvMainTitle" />
@@ -138,7 +134,7 @@
                 android:gravity="center"
                 android:text="الكلاسيكي . بدون هدف إلزامي . استمر أينما ترتاح"
                 android:textColor="#99AAB5"
-                android:textSize="18sp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/tvSubTitle" />
@@ -187,7 +183,7 @@
                         android:layout_height="wrap_content"
                         android:text="شهيق"
                         android:textColor="#6A8CA3"
-                        android:textSize="20sp" />
+                        android:textSize="16sp" />
                 </LinearLayout>
             </FrameLayout>
 
@@ -209,13 +205,13 @@
                     android:textSize="11sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="&quot;خذ وقتك، ما فيه استعجال&quot;"
                     android:textColor="#2D5B7B"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="4dp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
             <LinearLayout
@@ -238,13 +234,13 @@
                     android:textSize="11sp" />
 
                 <TextView
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
                     android:text="&quot;أنت آمن، هذا سيمر&quot;"
                     android:textColor="#2D5B7B"
-                    android:textSize="18sp"
-                    android:textStyle="bold"
-                    android:layout_marginTop="4dp" />
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>

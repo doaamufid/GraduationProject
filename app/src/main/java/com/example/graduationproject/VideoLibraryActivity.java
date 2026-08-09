@@ -3,7 +3,6 @@ package com.example.graduationproject;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.graduationproject.models.ContentItem;
@@ -22,9 +21,9 @@ public class VideoLibraryActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        // ضبط لون شريط الحالة ليكون اللون الأزرق الفاتح (مثل الخلفية)
+        // ضبط لون شريط الحالة ليكون أزرق فاتح (مثل الخلفية)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg));
+            getWindow().setStatusBarColor(android.graphics.Color.parseColor("#E1F1FF"));
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
                 // شريط الحالة فاتح، لذا نجعل الأيقونات داكنة
                 getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);

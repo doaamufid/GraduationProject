@@ -149,7 +149,7 @@ public class CrisisModeFragment extends DialogFragment {
         groupStepAudio.setVisibility(View.GONE);
         tvStepCaption.setVisibility(View.GONE);
         tvStepText.setTypeface(Typeface.DEFAULT);
-        tvStepText.setTextSize(18);
+        tvStepText.setTextSize(15);
 
         switch (step.type) {
             case TYPE_PHOTO: {
@@ -158,7 +158,7 @@ public class CrisisModeFragment extends DialogFragment {
                 ivStepPhoto.setImageURI(Uri.parse(photo.uri));
                 boolean hasCaption = photo.caption != null && !photo.caption.trim().isEmpty();
                 tvStepText.setText(hasCaption ? photo.caption : getString(R.string.crisis_calm_photo_fallback));
-                tvStepText.setTextSize(16);
+                tvStepText.setTextSize(13);
                 break;
             }
             case TYPE_AUDIO: {
@@ -167,24 +167,23 @@ public class CrisisModeFragment extends DialogFragment {
                 pulseAnimator = PulseAnimator.start(pulseRingCrisis);
                 tvStepText.setText(audioItem.label);
                 tvStepText.setTypeface(Typeface.DEFAULT_BOLD);
-                tvStepText.setTextSize(18);
+                tvStepText.setTextSize(15);
                 tvStepCaption.setVisibility(View.VISIBLE);
                 tvStepCaption.setText(R.string.crisis_audio_playing);
-                tvStepCaption.setTextSize(14);
                 break;
             }
             case TYPE_LOVE: {
                 LoveItem love = (LoveItem) step.item;
                 tvStepText.setText(love.text);
                 tvStepText.setTypeface(Typeface.DEFAULT_BOLD);
-                tvStepText.setTextSize(20);
+                tvStepText.setTextSize(17);
                 break;
             }
             case TYPE_DHIKR: {
                 DhikrItem dhikr = (DhikrItem) step.item;
                 tvStepText.setText(getString(R.string.dhikr_emoji) + "\n\n" + dhikr.text);
                 tvStepText.setTypeface(Typeface.DEFAULT_BOLD);
-                tvStepText.setTextSize(22);
+                tvStepText.setTextSize(19);
                 break;
             }
             default:
