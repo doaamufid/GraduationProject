@@ -50,6 +50,8 @@ dependencies {
     implementation libs.material3
     implementation libs.mpandroidchart
     implementation libs.flexbox
+    implementation libs.lottie
+    implementation libs.rive.android
     // احذفي القديم وضعي هذا بدقة:
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.0")
