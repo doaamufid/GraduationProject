@@ -89,6 +89,11 @@
             android:exported="false" />
 
         <activity
+            android:name=".AnimationDemoActivity"
+            android:label="Animation Demo"
+            android:exported="false" />
+
+        <activity
             android:name=".SplashActivity"
             android:exported="true" >
             <intent-filter>
