@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="radius_lg">16dp</dimen>
+    <dimen name="radius_xl">24dp</dimen>
+    <dimen name="radius_chip">100dp</dimen>
+
+    <dimen name="text_tiny">11sp</dimen>
+    <dimen name="text_small">12sp</dimen>
+    <dimen name="text_body">14sp</dimen>
+    <dimen name="text_body2">15sp</dimen>
+    <dimen name="text_body3">16sp</dimen>
+    <dimen name="text_title">18sp</dimen>
+    <dimen name="text_title2">20sp</dimen>
+    <dimen name="text_h2">22sp</dimen>
+    <dimen name="text_h1">25sp</dimen>
+</resources>

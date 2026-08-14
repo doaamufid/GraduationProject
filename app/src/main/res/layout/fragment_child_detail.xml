@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="32dp">
+
+        <!-- Top bar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingTop="8dp"
+            android:paddingBottom="12dp">
+
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle_bordered"
+                android:src="@drawable/ic_arrow_right"
+                android:padding="10dp"
+                android:contentDescription="@null"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/txt_child_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_main"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_title2"
+                    tools:text="يوسف"/>
+
+                <TextView
+                    android:id="@+id/txt_child_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_main"
+                    android:alpha="0.6"
+                    android:textSize="@dimen/text_body"
+                    tools:text="١٠ سنوات"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Hero card -->
+        <LinearLayout
+            android:id="@+id/hero_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <FrameLayout
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:background="@drawable/bg_avatar_ring">
+
+                <TextView
+                    android:id="@+id/txt_hero_avatar"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:textSize="28sp"
+                    tools:text="🧒"/>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:orientation="vertical"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/txt_hero_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_title"
+                    tools:text="يوسف — ١٠ سنوات"/>
+
+                <TextView
+                    android:id="@+id/txt_hero_last_active"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:alpha="0.85"
+                    android:textSize="@dimen/text_small"
+                    tools:text="آخر نشاط: اليوم · ٣:٣٠ م"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Stats grid -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_stat_box"
+                android:padding="10dp"
+                android:layout_marginEnd="6dp">
+
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_check_circle" android:layout_marginBottom="4dp" android:contentDescription="@null"/>
+                <TextView android:id="@+id/txt_stat_exercises" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_main" android:textStyle="bold" android:textSize="@dimen/text_title" tools:text="١٢"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/stat_exercises_done" android:textColor="@color/text_soft" android:textSize="@dimen/text_tiny"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_stat_box"
+                android:padding="10dp"
+                android:layout_marginEnd="6dp">
+
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_activity" android:layout_marginBottom="4dp" android:contentDescription="@null"/>
+                <TextView android:id="@+id/txt_stat_sessions" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_main" android:textStyle="bold" android:textSize="@dimen/text_title" tools:text="١٨"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/stat_sessions_label" android:textColor="@color/text_soft" android:textSize="@dimen/text_tiny"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_stat_box"
+                android:padding="10dp">
+
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_flame" android:layout_marginBottom="4dp" android:contentDescription="@null"/>
+                <TextView android:id="@+id/txt_stat_inactive" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_main" android:textStyle="bold" android:textSize="@dimen/text_title" tools:text="٠"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/stat_inactive_days" android:textColor="@color/text_soft" android:textSize="@dimen/text_tiny"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Mood chart -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_bordered"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="8dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/week_mood_label"
+                    android:textColor="@color/text_soft"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_small"/>
+
+                <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:background="@drawable/bg_star_badge"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp"
+                    android:paddingTop="4dp"
+                    android:paddingBottom="4dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/week_peak_label"
+                        android:textColor="#A67B2E"
+                        android:textStyle="bold"
+                        android:textSize="@dimen/text_tiny"
+                        android:layout_marginEnd="4dp"/>
+
+                    <ImageView android:layout_width="11dp" android:layout_height="11dp" android:src="@drawable/ic_star_filled" android:contentDescription="@null"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <com.example.graduationproject.ui.profile.MoodArcView
+                android:id="@+id/mood_arc_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:id="@+id/mood_days_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <!-- Top features -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_bordered"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/most_used_features"
+                android:textColor="@color/text_main"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_body"
+                android:gravity="start"
+                android:layout_marginBottom="10dp"/>
+
+            <LinearLayout
+                android:id="@+id/features_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+        </LinearLayout>
+
+        <!-- Alert or OK box -->
+        <FrameLayout
+            android:id="@+id/alert_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"/>
+
+        <!-- Recommendations -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_recommend_box"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/recommendations_for_parents"
+                    android:textColor="@color/sage"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_small"
+                    android:layout_marginEnd="6dp"/>
+
+                <ImageView android:layout_width="15dp" android:layout_height="15dp" android:src="@drawable/ic_sparkles" app:tint="@color/sage" android:contentDescription="@null"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/recommendations_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"/>
+        </LinearLayout>
+
+        <!-- History -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/alerts_archive"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_body"
+            android:layout_gravity="start"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:id="@+id/history_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/disclaimer_note"
+            android:textColor="@color/text_soft"
+            android:textSize="@dimen/text_tiny"
+            android:gravity="center"/>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

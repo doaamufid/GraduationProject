@@ -190,5 +190,276 @@
     <string name="toast_like">سجّلنا إعجابك — بنقترح لك محتوى مشابه أكثر</string>
     <string name="toast_dislike_reason">شكراً! هذا يساعدنا نحسّن اقتراحاتك القادمة</string>
 
+    <string name="status_time">٩:٤١</string>
+
+    <!-- Profile home -->
+    <string name="profile_title">بروفايل الرحلة</string>
+    <string name="member_since">معك منذ ١٢ مايو ٢٠٢٦</string>
+    <string name="privacy_note">خصوصيتك محمية بالكامل — لا بيانات حقيقية مخزّنة</string>
+    <string name="stat_days_active">يوم نشاط</string>
+    <string name="stat_streak">يوم متتالي</string>
+    <string name="stat_sessions">جلسة</string>
+    <string name="achievements_title">إنجازات رحلتك</string>
+    <string name="archive_title">أرشيفك الشخصي</string>
+    <string name="children_label">بروفايلات أطفالك</string>
+    <string name="children_count_label">٢ ملفات مسجّلة</string>
+
+    <string name="link_thoughts_label">أفكاري المتوازنة</string>
+    <string name="link_thoughts_sub">من إعادة الصياغة</string>
+    <string name="link_strengths_label">بنك نقاط القوة</string>
+    <string name="link_strengths_sub">الصفات المكتشفة فيك</string>
+    <string name="link_messages_label">رسائلي لنفسي</string>
+    <string name="link_messages_sub">رسائل مجدولة ووصلت</string>
+
+    <string name="badge_week_label">أسبوع كامل</string>
+    <string name="badge_ideas_label">١٠ أفكار متوازنة</string>
+    <string name="badge_traits_label">٥ صفات قوة</string>
+    <string name="badge_month_label">٣٠ يوم معنا</string>
+    <string name="badge_message_label">رسالة للمستقبل</string>
+    <string name="badge_body_label">مستكشف الجسد</string>
+
+    <!-- Balanced thoughts -->
+    <string name="thoughts_title">أفكاري المتوازنة</string>
+    <string name="thoughts_subtitle">من إعادة الصياغة</string>
+    <string name="thoughts_count_fmt">%1$d فكرة محفوظة</string>
+    <string name="original_thought_label">الفكرة الأصلية</string>
+    <string name="linked_exercise_label">تمرين مرتبط</string>
+    <string name="start_button">ابدأ</string>
+    <string name="delete_from_archive">احذف من الأرشيف</string>
+    <string name="confirm_delete">اضغط مرة أخرى للتأكيد</string>
+    <string name="toast_started_exercise_fmt">بدأنا تمرين: %1$s...</string>
+
+    <!-- Strengths bank -->
+    <string name="strengths_title">بنكي</string>
+    <string name="strengths_bank_heading">بنك نقاط القوة</string>
+    <string name="strengths_bank_sub">يستخرجها الـ AI من كلامك</string>
+    <string name="traits_discovered_fmt">%1$d صفة اكتُشفت</string>
+    <string name="add_trait_button">أضف صفة</string>
+    <string name="best_this_month">أبرز هذا الشهر</string>
+    <string name="times_count_fmt">%1$d مرات</string>
+    <string name="self_added_badge">أضفتها بنفسك</string>
+    <string name="when_appeared_label">متى ظهرت هذه الصفة؟</string>
+    <string name="exercise_label">تمرين</string>
+    <string name="analyze_ready">حلل محادثة اليوم الآن</string>
+    <string name="analyze_loading">يحلل الآن...</string>
+    <string name="analyze_empty">لا محادثات جديدة لتحليلها الآن</string>
+
+    <!-- Add trait dialog -->
+    <string name="add_trait_dialog_title">أضف صفة لاحظتها بنفسك</string>
+    <string name="trait_name_hint">أو اكتب اسم الصفة</string>
+    <string name="trait_note_hint">ليش لاحظتها؟ (اختياري)</string>
+    <string name="save_trait_button">حفظ الصفة</string>
+    <string name="toast_trait_added">تمت إضافة الصفة!</string>
+    <string name="self_added_default_quote">لاحظتها بنفسك اليوم</string>
+    <string name="self_added_default_ctx">أضفتها يدوياً</string>
+    <string name="self_added_exercise">تأمل بموقف ثاني أظهرت فيه هذي الصفة</string>
+    <string name="today_label">اليوم</string>
+
+    <!-- Future messages -->
+    <string name="messages_title">كل رسائلي</string>
+    <string name="message_locked">رسالة مقفلة — لسا ما جا وقتها</string>
+    <string name="message_arrived_fmt">وصلت بتاريخ %1$s</string>
+    <string name="message_locked_fmt">توصلك بتاريخ %1$s · باقي %2$s يوم</string>
+    <string name="delete_button">حذف</string>
+    <string name="confirm_delete_short">اضغط للتأكيد</string>
+    <string name="message_locked_title">هذي الرسالة لسا مقفلة</string>
+    <string name="close_button">إغلاق</string>
+
+    <!-- Child profiles -->
+    <string name="child_profiles_title">بروفايلات الأطفال</string>
+    <string name="age_years_fmt">%1$d سنوات</string>
+    <string name="add_child_profile">إضافة ملف طفل جديد</string>
+    <string name="tap_to_view_stats">اضغط لعرض إحصائياته</string>
+
+    <!-- Child detail dashboard -->
+    <string name="last_active_fmt">آخر نشاط: %s</string>
+    <string name="child_name_age_fmt">%1$s — %2$d سنوات</string>
+    <string name="stat_exercises_done">تمرين اكتمل</string>
+    <string name="stat_sessions_label">جلسة</string>
+    <string name="stat_inactive_days">أيام غياب</string>
+    <string name="week_peak_label">ذروة الأسبوع</string>
+    <string name="week_mood_label">مزاج الأسبوع</string>
+    <string name="most_used_features">الميزات الأكثر استخداماً</string>
+    <string name="times_fmt2">%1$d مرة</string>
+    <string name="no_concerning_patterns">لا أنماط تستدعي القلق هذا الأسبوع 💚</string>
+    <string name="recommendations_for_parents">توصيات لكم كأهل</string>
+    <string name="alerts_archive">أرشيف التنبيهات</string>
+    <string name="disclaimer_note">هذي الملاحظات مبنية على أنماط استخدام فقط، وما تُعتبر تشخيصاً طبياً.</string>
+
+    <!-- Seed Data Strings -->
+    <string name="pattern_overgeneralization">التعميم المفرط</string>
+    <string name="pattern_all_or_nothing">الكل أو لا شيء</string>
+    <string name="pattern_catastrophizing">التنبؤ بالفشل</string>
+    <string name="pattern_discounting_positive">إهمال الإيجابيات</string>
+
+    <string name="thought_1_original">أنا فاشل دائماً ولا أحد يهتم بي</string>
+    <string name="thought_1_balanced">بعض الأشياء ما مشت زي ما توقعت، بس هذا ما يعني إن كل محاولاتي بلا فايدة.</string>
+    <string name="thought_1_exercise">اكتب موقفين نجحت فيهم هذا الأسبوع رغم الصعوبة</string>
+    <string name="thought_1_date">قبل يومين</string>
+
+    <string name="thought_2_original">أكيد راح تفشل المقابلة، ما فيه فايدة أحاول</string>
+    <string name="thought_2_balanced">أسوأ سيناريو نادراً ما يصير بالضبط زي ما نتخيله، وأنا تعاملت مع صعوبات قبل كذا ونجحت.</string>
+    <string name="thought_2_exercise">اكتب خطة بسيطة لو صار أسوأ سيناريو فعلاً</string>
+    <string name="thought_2_date">قبل ٤ أيام</string>
+
+    <string name="thought_3_original">اليوم كان سيء كله، ما صار فيه شي حلو</string>
+    <string name="thought_3_balanced">فيه إيجابيات صارت اليوم، بس عقلي كان مركز بس على السلبي.</string>
+    <string name="thought_3_exercise">اكتب ٣ أشياء إيجابية صارت اليوم، مهما كانت صغيرة</string>
+    <string name="thought_3_date">قبل أسبوع</string>
+
+    <string name="trait_patience_name">الصبر</string>
+    <string name="trait_patience_quote">رغم كل شيء واصلت</string>
+    <string name="trait_patience_exercise">اكتب عن موقف ثاني صبرت فيه رغم الصعوبة</string>
+    <string name="trait_courage_name">الشجاعة</string>
+    <string name="trait_courage_quote">تحدثت عن مشاعرك بشجاعة</string>
+    <string name="trait_courage_exercise">اكتب عن موقف ثاني كنت فيه شجاعاً</string>
+    <string name="trait_empathy_name">التعاطف</string>
+    <string name="trait_empathy_quote">اهتمامك للآخرين واضح</string>
+    <string name="trait_empathy_exercise">اكتب رسالة دعم قصيرة لشخص تهتم فيه</string>
+
+    <string name="evidence_last_tuesday">الثلاثاء الماضي</string>
+    <string name="evidence_work_pressure">في حديث عن ضغط العمل</string>
+    <string name="evidence_last_week">قبل أسبوع</string>
+    <string name="evidence_waiting_result">في محادثة عن انتظار نتيجة مهمة</string>
+    <string name="evidence_yesterday">أمس</string>
+    <string name="evidence_future_fears">في محادثة عن مخاوفك من المستقبل</string>
+    <string name="evidence_today">اليوم</string>
+    <string name="evidence_friend_distress">في حديث عن صديق يمر بضيق</string>
+
+    <string name="message_1_text">اليوم كان صعباً لكنك تجاوزته، وأنت أقوى مما تتخيل الآن.</string>
+    <string name="message_2_text">لا تنسى إنك وعدت نفسك تاخذ الأمور بروية أكثر — كيف الوضع الحين؟</string>
+    <string name="message_3_text">أتمنى تكون حققت الهدف اللي حطيته اليوم.</string>
+
+    <string name="child_youssef">يوسف</string>
+    <string name="child_sara">سارة</string>
+
+    <string name="child_detail_active_today">اليوم · ٣:٣٠ م</string>
+    <string name="child_detail_active_yesterday">أمس · ٧:١٠ م</string>
+    <string name="feature_safe_room">غرفة الأمان</string>
+    <string name="feature_breathing">تمارين التنفس</string>
+    <string name="feature_calm_env">البيئات الهادئة</string>
+    <string name="feature_recovery_tree">شجرة التعافي</string>
+    <string name="feature_dandelion">نفخ الهندباء</string>
+    <string name="feature_treasure_box">صندوق الكنز</string>
+
+    <string name="alert_youssef_title">تكرار دخول غرفة الأمان</string>
+    <string name="alert_youssef_body">دخل غرفة الأمان أكثر من ٣ مرات يومياً هذا الأسبوع.</string>
+    <string name="alert_youssef_note">مؤشر سلوكي فقط، ليس تشخيصاً. قد يرتبط بضغط مدرسي أو تغيير روتين.</string>
+
+    <string name="recommend_youssef_1">جربوا تحددون وقت هادئ ثابت قبل النوم — نلاحظ نشاطه يزيد مساءً.</string>
+    <string name="recommend_youssef_2">اسألوه بلطف كيف يومه بالمدرسة هالأسبوع.</string>
+    <string name="recommend_youssef_3">شجّعوه يجرب تمرين التنفس معكم مرة بالأسبوع.</string>
+    <string name="recommend_sara_1">روتينها مستقر هالأسبوع — استمروا بنفس التشجيع.</string>
+    <string name="recommend_sara_2">احتفلوا معها بشجرتها اللي كبرت مرحلة جديدة!</string>
+
+    <string name="history_3_days_ago">قبل ٣ أيام</string>
+    <string name="history_no_patterns">لا أنماط تستدعي الانتباه</string>
+    <string name="history_2_weeks_ago">قبل أسبوعين</string>
+    <string-array name="day_abbreviations">
+        <item>س</item>
+        <item>ح</item>
+        <item>ن</item>
+        <item>ث</item>
+        <item>ر</item>
+        <item>خ</item>
+        <item>ج</item>
+    </string-array>
+    <string-array name="trait_suggestions">
+        <item>الامتنان</item>
+        <item>المرونة</item>
+        <item>الإصرار</item>
+        <item>اللطف</item>
+    </string-array>
+    <string-array name="months_ar">
+        <item>يناير</item>
+        <item>فبراير</item>
+        <item>مارس</item>
+        <item>أبريل</item>
+        <item>مايو</item>
+        <item>يونيو</item>
+        <item>يوليو</item>
+        <item>أغسطس</item>
+        <item>سبتمبر</item>
+        <item>أكتوبر</item>
+        <item>نوفمبر</item>
+        <item>ديسمبر</item>
+    </string-array>
+
+    <string name="screen_title">الإعدادات</string>
+
+    <string name="section_privacy">الخصوصية والأمان</string>
+    <string name="section_notifications">الإشعارات</string>
+    <string name="section_customization">التخصيص</string>
+    <string name="section_ai">الذكاء الاصطناعي والمحتوى</string>
+    <string name="section_sound">الصوت والاهتزاز</string>
+    <string name="section_data">البيانات والتخزين</string>
+    <string name="section_accessibility">الوصول</string>
+    <string name="section_children">بروفايلات الأطفال</string>
+    <string name="section_support">الدعم</string>
+
+    <string name="disguise_title">وضع الإخفاء</string>
+    <string name="disguise_sub">يظهر التطبيق كآلة حاسبة</string>
+    <string name="auto_delete_title">حذف تلقائي بعد ٧ أيام</string>
+    <string name="auto_delete_sub">عند عدم الاستخدام — غير قابل للتراجع</string>
+    <string name="app_lock_title">قفل التطبيق</string>
+    <string name="app_lock_sub">رمز أو بصمة عند كل فتح</string>
+    <string name="encryption_notice">بياناتك مشفّرة بالكامل على جهازك — AES-256</string>
+
+    <string name="notifications_title">إعدادات الإشعارات</string>
+    <string name="notifications_sub">اللوك سكرين، الفئات، التوقيت</string>
+
+    <string name="theme_color_title">لون الثيم</string>
+    <string name="auto_dark_title">الوضع الداكن التلقائي</string>
+    <string name="auto_dark_sub">بعد الساعة ٩ مساءً</string>
+    <string name="dialect_title">لهجة الرفيق الذكي</string>
+
+    <string name="cloud_ai_title">الرفيق السحابي (عند الاتصال)</string>
+    <string name="cloud_ai_sub">إيقافه يخلي التطبيق يعمل محلياً بالكامل</string>
+    <string name="reset_recs_title">إعادة ضبط توصياتي</string>
+    <string name="reset_recs_sub">يمسح بيانات إعجابك/عدم إعجابك بالمحتوى</string>
+
+    <string name="breath_haptic_title">اهتزاز مع التنفس</string>
+    <string name="breath_haptic_sub">نبض خفيف متزامن مع الشهيق والزفير</string>
+
+    <string name="storage_size">١٤ MB</string>
+    <string name="storage_label">البيانات المخزّنة محلياً</string>
+    <string name="export_title">تصدير نسخة احتياطية</string>
+    <string name="export_sub">احفظها قبل تغيير جهازك</string>
+
+    <string name="reduce_motion_title">تقليل الحركة</string>
+    <string name="reduce_motion_sub">أنيميشن أبسط، مناسب لأجهزة أضعف</string>
+
+    <string name="manage_children_title">إدارة ملفات الأطفال</string>
+    <string name="children_count_format">%1$d ملفات مسجّلة</string>
+
+    <string name="faq_title">الأسئلة الشائعة</string>
+    <string name="about_title">عن سلام</string>
+    <string name="about_sub">الإصدار ١.٠.٠</string>
+
+    <string name="delete_everything_btn">حذف كل بياناتي نهائياً</string>
+
+    <string name="dialect_dialog_title">لهجة الرفيق الذكي</string>
+    <string name="dialect_standard">فصحى</string>
+    <string name="dialect_gulf">خليجي</string>
+    <string name="dialect_levantine">شامي</string>
+    <string name="dialect_egyptian">مصري</string>
+
+    <string name="delete_step1_title">حذف كل بياناتك نهائياً؟</string>
+    <string name="delete_step1_body">راح تُحذف كل محادثاتك، تقاريرك، صفاتك المكتشفة، ورسائلك — هذا الإجراء لا يمكن التراجع عنه إطلاقاً.</string>
+    <string name="delete_step1_confirm">متأكد، أريد الحذف</string>
+    <string name="delete_step1_cancel">إلغاء</string>
+    <string name="delete_step2_title">تأكيد أخير</string>
+    <string name="delete_step2_body">هذي فرصتك الأخيرة — بعد هذا ما فيه رجعة.</string>
+    <string name="delete_step2_confirm">احذف كل شي نهائياً</string>
+    <string name="delete_step2_cancel">لا، تراجع</string>
+
+    <string name="child_age_format">%1$d سنوات</string>
+    <string name="add_child_btn">إضافة ملف طفل جديد</string>
+
+    <string name="toast_reset_recs">تم إعادة ضبط توصياتك من الصفر</string>
+    <string name="toast_export_started">بدأ تصدير النسخة الاحتياطية&#8230;</string>
+    <string name="toast_deleted_everything">تم حذف كل بياناتك</string>
+    <string name="toast_coming_soon">هذه الميزة ستتوفر قريباً</string>
+
 </resources>
 

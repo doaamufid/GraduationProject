@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg_card_bordered"
+    android:padding="8dp">
+
+    <ImageView
+        android:id="@+id/img_badge_icon"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginBottom="6dp"
+        android:contentDescription="@null"
+        tools:src="@drawable/ic_flame"/>
+
+    <TextView
+        android:id="@+id/txt_badge_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_tiny"
+        android:gravity="center"
+        android:lineSpacingMultiplier="1.1"
+        tools:text="أسبوع كامل"/>
+</LinearLayout>

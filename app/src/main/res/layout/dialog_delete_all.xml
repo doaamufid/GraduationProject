@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_dialog_rounded"
+    android:padding="24dp">
+
+    <ImageView
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:src="@drawable/ic_alert_triangle"
+        android:layout_marginBottom="12dp"
+        android:contentDescription="@null"/>
+
+    <TextView
+        android:id="@+id/tvStepTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="start"
+        android:textColor="@color/text_main"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:layout_marginBottom="8dp"
+        tools:text="حذف كل بياناتك نهائياً؟"/>
+
+    <TextView
+        android:id="@+id/tvStepBody"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@color/text_soft"
+        android:textSize="14sp"
+        android:lineSpacingMultiplier="1.3"
+        android:layout_marginBottom="20dp"
+        tools:text="راح تُحذف كل محادثاتك..."/>
+
+    <TextView
+        android:id="@+id/btnConfirm"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_danger"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:gravity="center"
+        android:padding="13dp"
+        android:layout_marginBottom="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        tools:text="متأكد، أريد الحذف"/>
+
+    <TextView
+        android:id="@+id/btnCancel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_button_neutral"
+        android:textColor="@color/text_soft"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:gravity="center"
+        android:padding="13dp"
+        android:clickable="true"
+        android:focusable="true"
+        tools:text="إلغاء"/>
+
+</LinearLayout>

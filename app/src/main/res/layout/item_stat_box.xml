@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg_card_bordered"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/txt_stat_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/primary_dark"
+        android:textStyle="bold"
+        android:textSize="@dimen/text_h2"
+        tools:text="٤٧"/>
+
+    <TextView
+        android:id="@+id/txt_stat_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/text_soft"
+        android:textSize="@dimen/text_tiny"
+        android:layout_marginTop="2dp"
+        tools:text="يوم نشاط"/>
+</LinearLayout>

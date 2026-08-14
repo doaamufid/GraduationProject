@@ -97,4 +97,14 @@ public final class FadeUtils {
                 .setInterpolator(new DecelerateInterpolator())
                 .withEndAction(onEnd).start();
     }
+
+    public static void fadeIn(View view, int delay) {
+        view.setAlpha(0f);
+        view.animate().alpha(1f).setDuration(300).setStartDelay(delay)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    public static void dialogIn(View view) {
+        dialogFade(view);
+    }
 }

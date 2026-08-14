@@ -1,0 +1,254 @@
+package com.example.graduationproject;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import com.example.graduationproject.models.profile.settings.SettingsRepository;
+import com.example.graduationproject.models.profile.settings.ThemeOption;
+import com.example.graduationproject.Kids.ChildProfilesActivity;
+import com.example.graduationproject.ui.profile.settings.DeleteAllDialogFragment;
+import com.example.graduationproject.ui.profile.settings.DialectDialogFragment;
+import com.example.graduationproject.ui.profile.settings.SettingsRowHelper;
+import com.example.graduationproject.widget.FadeUtils;
+import com.example.graduationproject.widget.ToastController;
+import com.google.android.material.switchmaterial.SwitchMaterial;
+
+import java.util.List;
+
+public class SettingsActivity extends AppCompatActivity {
+
+    private final SettingsRepository repo = SettingsRepository.getInstance();
+
+    private ToastController toastController;
+    private LinearLayout llThemeSwatches;
+    private View rowDialect;
+    private List<ThemeOption> themeOptions;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        
+        // Full screen / Edge-to-edge
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        
+        setContentView(R.layout.activity_settings);
+
+        View rootLayout = findViewById(android.R.id.content);
+        ViewCompat.setOnApplyWindowInsetsListener(rootLayout, (v, insets) -> {
+            int top = insets.getInsets(WindowInsetsCompat.Type.systemBars()).top;
+            int bottom = insets.getInsets(WindowInsetsCompat.Type.systemBars()).bottom;
+            v.setPadding(0, top, 0, bottom);
+            return insets;
+        });
+
+        toastController = new ToastController(findViewById(R.id.toastHost));
+        themeOptions = SettingsRepository.themes(this);
+
+        bindHeaderActions();
+        bindPrivacySection();
+        bindNotificationsSection();
+        bindCustomizationSection();
+        bindAiSection();
+        bindSoundSection();
+        bindDataSection();
+        bindAccessibilitySection();
+        bindChildrenSection();
+        bindSupportSection();
+        bindDestructiveZone();
+
+        getSupportFragmentManager().setFragmentResultListener(
+                DialectDialogFragment.REQUEST_KEY, this, (key, bundle) -> {
+                    repo.dialect = bundle.getString(DialectDialogFragment.KEY_DIALECT);
+                    renderDialectRow();
+                });
+
+        getSupportFragmentManager().setFragmentResultListener(
+                DeleteAllDialogFragment.REQUEST_KEY, this, (key, bundle) -> {
+                    toastController.show(getString(R.string.toast_deleted_everything));
+                });
+
+        applyThemeColors();
+        animateElements();
+    }
+
+    private void animateElements() {
+        View header = findViewById(R.id.mainHeader);
+        if (header != null) {
+            FadeUtils.fadeIn(header, 0);
+        }
+
+        ViewGroup root = findViewById(R.id.mainScrollContent);
+        if (root == null) return;
+        
+        int delay = 150; // Start after header
+        for (int i = 0; i < root.getChildCount(); i++) {
+            View child = root.getChildAt(i);
+            FadeUtils.fadeIn(child, delay);
+            delay += 100; // Slower stagger
+        }
+    }
+
+    private void bindHeaderActions() {
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+    }
+
+    private void bindPrivacySection() {
+        SwitchMaterial swDisguise = SettingsRowHelper.bindToggleRow(
+                findViewById(R.id.rowDisguise), getString(R.string.disguise_title), getString(R.string.disguise_sub));
+        swDisguise.setChecked(repo.disguise);
+        swDisguise.setOnCheckedChangeListener((b, checked) -> repo.disguise = checked);
+
+        SwitchMaterial swAutoDelete = SettingsRowHelper.bindToggleRow(
+                findViewById(R.id.rowAutoDelete), getString(R.string.auto_delete_title), getString(R.string.auto_delete_sub));
+        swAutoDelete.setChecked(repo.autoDelete);
+        swAutoDelete.setOnCheckedChangeListener((b, checked) -> repo.autoDelete = checked);
+
+        SwitchMaterial swAppLock = SettingsRowHelper.bindToggleRow(
+                findViewById(R.id.rowAppLock), getString(R.string.app_lock_title), getString(R.string.app_lock_sub));
+        swAppLock.setChecked(repo.appLock);
+        swAppLock.setOnCheckedChangeListener((b, checked) -> repo.appLock = checked);
+    }
+
+    private void bindNotificationsSection() {
+        SettingsRowHelper.bindNavRow(findViewById(R.id.rowNotifications),
+                getString(R.string.notifications_title), getString(R.string.notifications_sub),
+                R.drawable.ic_bell, () -> {
+                });
+    }
+
+    private void bindCustomizationSection() {
+        llThemeSwatches = findViewById(R.id.llThemeSwatches);
+        buildThemeSwatches();
+
+        SwitchMaterial swAutoDark = SettingsRowHelper.bindToggleRow(
+                findViewById(R.id.rowAutoDark), getString(R.string.auto_dark_title), getString(R.string.auto_dark_sub));
+        swAutoDark.setChecked(repo.autoDark);
+        swAutoDark.setOnCheckedChangeListener((b, checked) -> repo.autoDark = checked);
+
+        rowDialect = findViewById(R.id.rowDialect);
+        SettingsRowHelper.bindNavRow(rowDialect, getString(R.string.dialect_title), 
+                SettingsRepository.getDialectName(this, repo.dialect),
+                R.drawable.ic_palette, () ->
+                        DialectDialogFragment.newInstance(repo.dialect).show(getSupportFragmentManager(), "dialect"));
+    }
+
+    private void buildThemeSwatches() {
+        llThemeSwatches.removeAllViews();
+        for (ThemeOption option : themeOptions) {
+            View swatch = LayoutInflater.from(this).inflate(R.layout.item_theme_swatch, llThemeSwatches, false);
+            View swatchBg = swatch.findViewById(R.id.swatchBg);
+            ImageView ivCheck = swatch.findViewById(R.id.ivSwatchCheck);
+
+            swatchBg.getBackground().mutate().setTint(option.colorInt);
+            ivCheck.setVisibility(option.key.equals(repo.theme) ? View.VISIBLE : View.INVISIBLE);
+
+            swatch.setOnClickListener(v -> {
+                repo.theme = option.key;
+                buildThemeSwatches();
+                applyThemeColors();
+            });
+
+            llThemeSwatches.addView(swatch);
+        }
+    }
+
+    private void applyThemeColors() {
+        int colorInt = 0;
+        for (ThemeOption opt : themeOptions) {
+            if (opt.key.equals(repo.theme)) {
+                colorInt = opt.colorInt;
+                break;
+            }
+        }
+        if (colorInt == 0) return;
+
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowDisguise), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowAutoDelete), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowAppLock), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowNotifications), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowAutoDark), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowDialect), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowCloudAI), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowBreathHaptic), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowReduceMotion), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowManageChildren), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowFaq), colorInt);
+
+        findViewById(R.id.resetRecsIconBg).getBackground().mutate().setTint(colorInt);
+        findViewById(R.id.exportIconBg).getBackground().mutate().setTint(colorInt);
+    }
+
+    private void renderDialectRow() {
+        TextView tvSub = rowDialect.findViewById(R.id.tvRowSub);
+        tvSub.setText(SettingsRepository.getDialectName(this, repo.dialect));
+        tvSub.setVisibility(View.VISIBLE);
+    }
+
+    private void bindAiSection() {
+        SwitchMaterial swCloudAI = SettingsRowHelper.bindToggleRow(
+                findViewById(R.id.rowCloudAI), getString(R.string.cloud_ai_title), getString(R.string.cloud_ai_sub));
+        swCloudAI.setChecked(repo.cloudAI);
+        swCloudAI.setOnCheckedChangeListener((b, checked) -> repo.cloudAI = checked);
+
+        findViewById(R.id.btnResetRecs).setOnClickListener(v ->
+                toastController.show(getString(R.string.toast_reset_recs)));
+    }
+
+    private void bindSoundSection() {
+        SwitchMaterial swBreathHaptic = SettingsRowHelper.bindToggleRow(
+                findViewById(R.id.rowBreathHaptic), getString(R.string.breath_haptic_title), getString(R.string.breath_haptic_sub));
+        swBreathHaptic.setChecked(repo.breathHaptic);
+        swBreathHaptic.setOnCheckedChangeListener((b, checked) -> repo.breathHaptic = checked);
+    }
+
+    private void bindDataSection() {
+        findViewById(R.id.btnExport).setOnClickListener(v ->
+                toastController.show(getString(R.string.toast_export_started)));
+    }
+
+    private void bindAccessibilitySection() {
+        SwitchMaterial swReduceMotion = SettingsRowHelper.bindToggleRow(
+                findViewById(R.id.rowReduceMotion), getString(R.string.reduce_motion_title), getString(R.string.reduce_motion_sub));
+        swReduceMotion.setChecked(repo.reduceMotion);
+        swReduceMotion.setOnCheckedChangeListener((b, checked) -> repo.reduceMotion = checked);
+    }
+
+    private void bindChildrenSection() {
+        int count = repo.children.size();
+        SettingsRowHelper.bindNavRow(findViewById(R.id.rowManageChildren),
+                getString(R.string.manage_children_title), getString(R.string.children_count_format, count),
+                R.drawable.ic_users, () -> startActivity(new Intent(this, ChildProfilesActivity.class)));
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bindChildrenSection();
+    }
+
+    private void bindSupportSection() {
+        SettingsRowHelper.bindNavRow(findViewById(R.id.rowFaq), getString(R.string.faq_title), null,
+                R.drawable.ic_help_circle, () -> {
+                });
+
+        SettingsRowHelper.bindNavRowNoIcon(findViewById(R.id.rowAbout),
+                getString(R.string.about_title), getString(R.string.about_sub), () -> {
+                });
+    }
+
+    private void bindDestructiveZone() {
+        findViewById(R.id.btnDeleteAll).setOnClickListener(v ->
+                DeleteAllDialogFragment.newInstance().show(getSupportFragmentManager(), "delete_all"));
+    }
+}

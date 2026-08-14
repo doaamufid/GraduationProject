@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card_bordered"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:id="@+id/card_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginBottom="8dp">
+
+            <TextView
+                android:id="@+id/txt_pattern_tag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
+                android:paddingTop="2dp"
+                android:paddingBottom="2dp"
+                android:background="@drawable/bg_tag_pill"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_tiny"
+                tools:text="التعميم المفرط"/>
+
+            <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
+
+            <TextView
+                android:id="@+id/txt_saved_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_soft"
+                android:textSize="@dimen/text_tiny"
+                android:layout_marginEnd="6dp"
+                tools:text="قبل يومين"/>
+
+            <ImageView
+                android:id="@+id/img_chevron"
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:src="@drawable/ic_chevron_down"
+                android:contentDescription="@null"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txt_reframed"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_body3"
+            android:lineSpacingMultiplier="1.3"
+            android:gravity="start"
+            tools:text="نص الفكرة المعاد صياغتها"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/card_expanded"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="16dp"
+        android:visibility="gone"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_flat"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/original_thought_label"
+                android:textColor="@color/text_soft"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_tiny"
+                android:gravity="start"
+                android:layout_marginBottom="4dp"/>
+
+            <TextView
+                android:id="@+id/txt_original"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_main"
+                android:alpha="0.7"
+                android:textSize="@dimen/text_body2"
+                android:gravity="start"
+                tools:text="&quot;الفكرة الأصلية هنا&quot;"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/exercise_box"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:layout_marginBottom="12dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical"
+                android:gravity="start">
+
+                <TextView
+                    android:id="@+id/txt_exercise_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/linked_exercise_label"
+                    android:textStyle="bold"
+                    android:textSize="@dimen/text_tiny"
+                    android:layout_marginBottom="2dp"/>
+
+                <TextView
+                    android:id="@+id/txt_exercise_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_main"
+                    android:textSize="@dimen/text_body"
+                    android:gravity="start"
+                    tools:text="نص التمرين المرتبط"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/btn_start_exercise"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:paddingTop="6dp"
+                android:paddingBottom="6dp"
+                android:background="@drawable/bg_button_primary"
+                android:text="@string/start_button"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_tiny"
+                android:layout_marginStart="10dp"
+                android:clickable="true"
+                android:focusable="true"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btn_delete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/txt_delete_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/delete_from_archive"
+                android:textColor="@color/text_soft"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_body"
+                android:layout_marginEnd="6dp"/>
+
+            <ImageView
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:src="@drawable/ic_trash"
+                android:contentDescription="@null"/>
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
