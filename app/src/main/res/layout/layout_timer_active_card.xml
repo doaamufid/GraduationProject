@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cvActiveTimer"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="16dp"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="8dp"
+    android:visibility="gone">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <!-- Animated Liquid Gradient Background -->
+        <com.example.graduationproject.ui.LiquidGradientView
+            android:id="@+id/liquidBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <!-- Glassmorphism Overlay -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#25FFFFFF" />
+
+        <!-- Content -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="16dp">
+
+            <LinearLayout
+                android:id="@+id/llActiveInfo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentEnd="true">
+
+                <TextView
+                    android:id="@+id/tvActiveEnvName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:layout_gravity="end"
+                    tools:text="غابة هادئة"/>
+
+                <TextView
+                    android:id="@+id/tvTimerRange"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#CCFFFFFF"
+                    android:textSize="10sp"
+                    android:layout_marginTop="2dp"
+                    android:layout_gravity="end"
+                    tools:text="بدأ ٩:٤١ · ينتهي ١٠:١١"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:gravity="center_vertical">
+
+                <ImageButton
+                    android:id="@+id/btnPlayPauseActiveTimer"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:background="@drawable/bg_badge_overlay"
+                    android:src="@drawable/ic_pause"
+                    android:padding="8dp"
+                    app:tint="@color/white"
+                    android:contentDescription="تشغيل/إيقاف مؤقت"/>
+
+                <ImageButton
+                    android:id="@+id/btnStopActiveTimer"
+                    android:layout_width="28dp"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="12dp"
+                    android:background="@drawable/bg_badge_overlay"
+                    android:src="@drawable/ic_close_small"
+                    android:padding="8dp"
+                    app:tint="@color/white"
+                    android:contentDescription="إلغاء المؤقت"/>
+            </LinearLayout>
+
+        </RelativeLayout>
+    </FrameLayout>
+</androidx.cardview.widget.CardView>
