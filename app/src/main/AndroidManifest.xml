@@ -149,6 +149,14 @@
             android:theme="@style/Theme.GraduationProject"
             android:windowSoftInputMode="adjustResize" />
 
+        <activity
+            android:name=".AdultProfileActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="36dp"
+    android:layout_height="36dp"
+    android:layout_marginStart="10dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <View
+        android:id="@+id/swatchBg"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:background="@drawable/bg_theme_swatch"/>
+
+    <ImageView
+        android:id="@+id/ivSwatchCheck"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_gravity="center"
+        android:src="@drawable/ic_check"
+        android:visibility="invisible"
+        android:contentDescription="@null"/>
+
+</FrameLayout>

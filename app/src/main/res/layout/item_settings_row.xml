@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="horizontal"
+    android:gravity="center_vertical"
+    android:background="@drawable/bg_card"
+    android:padding="14dp"
+    android:layout_marginBottom="10dp"
+    android:clickable="true"
+    android:focusable="true">
+
+    <!-- Icon on the Right (Start of RTL) -->
+    <FrameLayout
+        android:id="@+id/iconBox"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:visibility="gone">
+
+        <View
+            android:id="@+id/iconBoxBg"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/bg_icon_box_primary"/>
+
+        <ImageView
+            android:id="@+id/ivRowIcon"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_gravity="center"
+            tools:src="@drawable/ic_bell"
+            android:contentDescription="@null"/>
+    </FrameLayout>
+
+    <!-- Text in the Middle -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="12dp"
+        android:orientation="vertical"
+        android:gravity="start">
+
+        <TextView
+            android:id="@+id/tvRowTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            tools:text="وضع الإخفاء"/>
+
+        <TextView
+            android:id="@+id/tvRowSub"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/text_soft"
+            android:textSize="12sp"
+            android:visibility="gone"
+            tools:text="يظهر التطبيق كآلة حاسبة"/>
+    </LinearLayout>
+
+    <!-- Switch/Chevron on the Left (End of RTL) -->
+    <FrameLayout
+        android:id="@+id/rightSlot"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
