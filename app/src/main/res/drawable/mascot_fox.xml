@@ -1,0 +1,27 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- الأذن اليسرى -->
+    <path android:fillColor="@color/orange_primary" android:pathData="M10,48 L18,6 L40,44 Z" />
+    <path android:fillColor="@color/bg_card" android:pathData="M16,42 L20,16 L34,38 Z" />
+
+    <!-- الأذن اليمنى -->
+    <path android:fillColor="@color/orange_primary" android:pathData="M110,48 L102,6 L80,44 Z" />
+    <path android:fillColor="@color/bg_card" android:pathData="M104,42 L100,16 L86,38 Z" />
+
+    <!-- الراس -->
+    <path android:fillColor="@color/orange_primary" android:pathData="M24,68 A36,36 0 1,0 96,68 A36,36 0 1,0 24,68 Z" />
+
+    <!-- الخد/الكمامة -->
+    <path android:fillColor="@color/bg_card" android:pathData="M36,82 A24,18 0 1,0 84,82 A24,18 0 1,0 36,82 Z" />
+
+    <!-- العيون -->
+    <path android:fillColor="@color/text_dark" android:pathData="M44.5,58 A3.5,3.5 0 1,0 51.5,58 A3.5,3.5 0 1,0 44.5,58 Z" />
+    <path android:fillColor="@color/text_dark" android:pathData="M68.5,58 A3.5,3.5 0 1,0 75.5,58 A3.5,3.5 0 1,0 68.5,58 Z" />
+
+    <!-- الانف -->
+    <path android:fillColor="@color/text_dark" android:pathData="M54,70 L66,70 L60,78 Z" />
+</vector>

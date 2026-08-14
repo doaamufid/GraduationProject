@@ -1,6 +1,5 @@
 package com.example.graduationproject.Kids;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -8,7 +7,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.graphics.Color;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,18 +22,11 @@ import com.example.graduationproject.databinding.ActivityNewChildProfileBinding;
 public class NewChildProfileActivity extends AppCompatActivity {
     private static final String[] AVATARS = {"🦊", "🐻", "🐰", "🐼", "🐨"};
     private static final int[] AGES = {4, 5, 6, 7, 8, 9};
-    private static final String GENDER_BOY = "ولد";
-    private static final String GENDER_GIRL = "بنت";
-    private static final int GENDER_DEFAULT_TEXT_COLOR = Color.rgb(93, 64, 55);
-
 
     private ActivityNewChildProfileBinding binding;
     private ChildProfileStore childProfileStore;
     private TextView selectedAgeView;
-    private TextView selectedGenderView;
     private int selectedAge = -1;
-    private String selectedGender = "";
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,10 +58,7 @@ public class NewChildProfileActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s) {
             }
         });
-
-
         setupAgeButtons();
-        setupGenderButtons();
     }
 
     private void setupAgeButtons() {
@@ -98,7 +86,6 @@ public class NewChildProfileActivity extends AppCompatActivity {
             selectedAgeView.setBackgroundResource(R.drawable.bg_child_age_default);
             selectedAgeView.setTextColor(ContextCompat.getColor(this, android.R.color.black));
         }
-
         selectedAge = age;
         selectedAgeView = ageView;
         selectedAgeView.setBackgroundResource(R.drawable.bg_child_age_selected);
@@ -107,29 +94,8 @@ public class NewChildProfileActivity extends AppCompatActivity {
         updateStartState();
     }
 
-    private void setupGenderButtons() {
-        binding.btnGenderBoy.setOnClickListener(v -> selectGender(binding.btnGenderBoy, GENDER_BOY));
-        binding.btnGenderGirl.setOnClickListener(v -> selectGender(binding.btnGenderGirl, GENDER_GIRL));
-    }
-
-    private void selectGender(TextView genderView, String gender) {
-        if (selectedGenderView != null) {
-            selectedGenderView.setBackgroundResource(R.drawable.bg_child_age_default);
-            selectedGenderView.setTextColor(GENDER_DEFAULT_TEXT_COLOR);
-        }
-
-        selectedGender = gender;
-        selectedGenderView = genderView;
-        selectedGenderView.setBackgroundResource(R.drawable.bg_child_age_selected);
-        selectedGenderView.setTextColor(ContextCompat.getColor(this, android.R.color.white));
-        updateStartState();
-    }
-
     private void updateStartState() {
-        boolean canStart = selectedAge > 0
-                && !selectedGender.isEmpty()
-                && !binding.etChildName.getText().toString().trim().isEmpty();
-
+        boolean canStart = selectedAge > 0 && !binding.etChildName.getText().toString().trim().isEmpty();
         binding.btnStart.setEnabled(canStart);
         binding.btnStart.setBackgroundResource(canStart
                 ? R.drawable.bg_child_start_enabled

@@ -4,32 +4,45 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.R;
-import com.example.graduationproject.VideoLibraryActivity;
-import com.example.graduationproject.models.ContentItem;
-import com.example.graduationproject.models.ContentRepository;
+import com.example.graduationproject.models.Article;
+import com.example.graduationproject.models.ArticleRepository;
+import com.example.graduationproject.models.CategoryStyle;
+import com.example.graduationproject.widget.ArticleArtBinder;
+import com.example.graduationproject.widget.TapBounce;
 
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
- * Equivalent of <Library/>: category filter chips + the list of content
- * cards, filtered by the currently-selected category (mirrors the
- * `const [cat, setCat] = useState("الكل")` state).
+ * Equivalent of <Library/>: search bar (visual only, matching the
+ * original's non-functional input), category filter chips, a featured
+ * hero card (shown only on the "الكل" tab), and a 2-column grid of
+ * <ArticleCard/> items.
  */
 public class LibraryFragment extends Fragment {
 
-    private String selectedCategory = "الكل";
-    private LinearLayout llCategories;
-    private LinearLayout llItems;
+    private String currentCategory = ArticleRepository.CAT_ALL;
+    private final Set<Integer> savedIds = new HashSet<>();
+
+    private RecyclerView recyclerCategories, recyclerArticles;
+    private CategoryAdapter categoryAdapter;
+    private ArticleGridAdapter gridAdapter;
+
+    private View groupFeatured;
+    private TextView tvSectionLabel;
 
     @Nullable
     @Override
@@ -37,101 +50,168 @@ public class LibraryFragment extends Fragment {
                               @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_library, container, false);
 
-        TopBarHelper.bind(root, getString(R.string.library_title), getString(R.string.library_sub),
+        TopBarHelper.bind(root, getString(R.string.library_title),
                 () -> {
-                    if (getActivity() != null) getActivity().onBackPressed();
+                    // matches `onBack` not being wired in the original Library screen (root level, no-op)
                 }, null);
 
-        // ضبط ألوان الـ TopBar لتناسب الخلفية الفاتحة
-        TextView tvTitle = root.findViewById(R.id.tvTopBarTitle);
-        if (tvTitle != null) tvTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary_dark));
-        TextView tvSubtitle = root.findViewById(R.id.tvTopBarSubtitle);
-        if (tvSubtitle != null) tvSubtitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_soft_alt2));
-        View btnBack = root.findViewById(R.id.btnBack);
-        if (btnBack != null) {
-            btnBack.setBackgroundResource(R.drawable.bg_fav_circle); // استخدام نفس شكل الدائرة البيضاء
-        }
+        recyclerCategories = root.findViewById(R.id.recyclerCategories);
+        recyclerArticles = root.findViewById(R.id.recyclerArticles);
+        groupFeatured = root.findViewById(R.id.groupFeatured);
+        tvSectionLabel = root.findViewById(R.id.tvSectionLabel);
 
-        llCategories = root.findViewById(R.id.llCategories);
-        llItems = root.findViewById(R.id.llItems);
+        recyclerCategories.setLayoutManager(
+                new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        categoryAdapter = new CategoryAdapter();
+        recyclerCategories.setAdapter(categoryAdapter);
 
-        buildCategoryChips();
-        renderItems();
+        recyclerArticles.setLayoutManager(new GridLayoutManager(requireContext(), 2));
+        gridAdapter = new ArticleGridAdapter();
+        recyclerArticles.setAdapter(gridAdapter);
 
+        bindFeaturedCard(root);
+        groupFeatured.setOnClickListener(v -> {
+            Article featured = ArticleRepository.getFeatured();
+            if (featured != null) openArticle(featured);
+        });
+        TapBounce.attach(groupFeatured);
+
+        render();
         return root;
     }
 
-    private void buildCategoryChips() {
-        llCategories.removeAllViews();
-        for (String category : ContentRepository.CATEGORIES) {
-            TextView chip = (TextView) LayoutInflater.from(requireContext())
-                    .inflate(R.layout.item_category_chip, llCategories, false);
-            chip.setText(category);
-            chip.setOnClickListener(v -> {
-                selectedCategory = category;
-                renderCategoryChips();
-                renderItems();
-            });
-            llCategories.addView(chip);
+    private void bindFeaturedCard(View root) {
+        Article featured = ArticleRepository.getFeatured();
+        if (featured == null) {
+            groupFeatured.setVisibility(View.GONE);
+            return;
         }
-        renderCategoryChips();
+        CategoryStyle style = ArticleRepository.styleFor(featured.category);
+
+        View includeArt = root.findViewById(R.id.includeFeaturedArt);
+        ArticleArtBinder.bind(includeArt, featured.category, 130);
+
+        TextView tvTag = root.findViewById(R.id.tvFeaturedTag);
+        TextView tvTime = root.findViewById(R.id.tvFeaturedTime);
+        TextView tvTitle = root.findViewById(R.id.tvFeaturedTitle);
+        TextView tvAuthor = root.findViewById(R.id.tvFeaturedAuthor);
+
+        tvTag.setText(featured.tagEn);
+        tvTime.setText(featured.time);
+        tvTitle.setText(featured.title);
+        tvAuthor.setText(featured.author);
     }
 
-    private void renderCategoryChips() {
-        for (int i = 0; i < llCategories.getChildCount(); i++) {
-            TextView chip = (TextView) llCategories.getChildAt(i);
-            boolean selected = chip.getText().toString().equals(selectedCategory);
-            chip.setBackgroundResource(selected ? R.drawable.bg_chip_selected : R.drawable.bg_chip_unselected);
-            int textColor = ContextCompat.getColor(requireContext(),
-                    selected ? R.color.white : R.color.text_soft_alt2);
-            chip.setTextColor(textColor);
-        }
+    private void render() {
+        boolean showFeatured = currentCategory.equals(ArticleRepository.CAT_ALL);
+        groupFeatured.setVisibility(showFeatured ? View.VISIBLE : View.GONE);
+
+        tvSectionLabel.setText(showFeatured
+                ? getString(R.string.section_this_week)
+                : getString(R.string.section_category_format, currentCategory));
+
+        categoryAdapter.notifyDataSetChanged();
+        gridAdapter.submit(ArticleRepository.getGridArticles(currentCategory));
     }
 
-    private void renderItems() {
-        llItems.removeAllViews();
-        List<ContentItem> filtered = ContentRepository.filterByCategory(selectedCategory);
-
-        for (ContentItem item : filtered) {
-            View card = LayoutInflater.from(requireContext())
-                    .inflate(R.layout.item_content_card, llItems, false);
-
-            View thumbGradient = card.findViewById(R.id.thumbGradient);
-            ImageView ivTypeIcon = card.findViewById(R.id.ivTypeIcon);
-            TextView tvDuration = card.findViewById(R.id.tvDuration);
-            TextView tvTitle = card.findViewById(R.id.tvTitle);
-            TextView tvSrc = card.findViewById(R.id.tvSrc);
-            TextView tvTypePill = card.findViewById(R.id.tvTypePill);
-            ImageView ivFavorite = card.findViewById(R.id.ivFavorite);
-
-            applyGradient(thumbGradient, item.gradStart, item.gradEnd);
-            ivTypeIcon.setImageResource(item.isVideo ? R.drawable.ic_play : R.drawable.ic_headphones);
-            tvDuration.setText(item.duration);
-            tvTitle.setText(item.title);
-            tvSrc.setText(item.src);
-            tvTypePill.setText(item.type);
-
-            ivFavorite.setOnClickListener(v -> {
-                // تبديل أيقونة المفضلة (شكل بسيط للتفاعل)
-                v.setSelected(!v.isSelected());
-                ((ImageView)v).setImageResource(v.isSelected() ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
-            });
-
-            card.setOnClickListener(v -> {
-                if (getActivity() instanceof VideoLibraryActivity) {
-                    ((VideoLibraryActivity) getActivity()).openPlayer(item);
-                }
-            });
-
-            llItems.addView(card);
+    private void openArticle(Article article) {
+        if (getActivity() instanceof ArticlesActivity) {
+            ((ArticlesActivity) getActivity()).openReader(article);
         }
     }
 
-    private void applyGradient(View view, int startColor, int endColor) {
-        android.graphics.drawable.GradientDrawable gradient = new android.graphics.drawable.GradientDrawable(
-                android.graphics.drawable.GradientDrawable.Orientation.TL_BR,
-                new int[]{startColor, endColor});
-        gradient.setCornerRadius(12 * getResources().getDisplayMetrics().density);
-        view.setBackground(gradient);
+    private boolean toggleSave(int articleId) {
+        boolean nowSaved;
+        if (savedIds.contains(articleId)) {
+            savedIds.remove(articleId);
+            nowSaved = false;
+        } else {
+            savedIds.add(articleId);
+            nowSaved = true;
+        }
+        return nowSaved;
+    }
+
+    // ===================== Category chips adapter =====================
+
+    private class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.VH> {
+        @NonNull
+        @Override
+        public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            TextView chip = (TextView) LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_category_chip, parent, false);
+            return new VH(chip);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull VH holder, int position) {
+            String category = ArticleRepository.CATEGORIES.get(position);
+            holder.chip.setText(category);
+
+            boolean selected = category.equals(currentCategory);
+            holder.chip.setBackgroundResource(selected ? R.drawable.bg_chip_selected : R.drawable.bg_chip_unselected);
+            holder.chip.setTextColor(getResources().getColor(selected ? R.color.white : R.color.text_soft));
+
+            holder.chip.setOnClickListener(v -> {
+                currentCategory = category;
+                render();
+            });
+        }
+
+        @Override
+        public int getItemCount() {
+            return ArticleRepository.CATEGORIES.size();
+        }
+
+        class VH extends RecyclerView.ViewHolder {
+            TextView chip;
+
+            VH(@NonNull View itemView) {
+                super(itemView);
+                chip = (TextView) itemView;
+            }
+        }
+    }
+
+    // ===================== Article grid adapter =====================
+
+    private class ArticleGridAdapter extends RecyclerView.Adapter<ArticleGridAdapter.VH> {
+        private List<Article> items = new ArrayList<>();
+
+        void submit(List<Article> newItems) {
+            items = newItems;
+            notifyDataSetChanged();
+        }
+
+        @NonNull
+        @Override
+        public VH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+            View card = ArticleCardBinder.create(LayoutInflater.from(parent.getContext()), parent);
+            // Half-width column with a small gutter, matching `grid grid-cols-2 gap-3`.
+            GridLayoutManager.LayoutParams lp = new GridLayoutManager.LayoutParams(
+                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            int gutter = (int) (6 * getResources().getDisplayMetrics().density);
+            lp.setMargins(gutter, gutter, gutter, gutter);
+            card.setLayoutParams(lp);
+            return new VH(card);
+        }
+
+        @Override
+        public void onBindViewHolder(@NonNull VH holder, int position) {
+            Article article = items.get(position);
+            ArticleCardBinder.bind(holder.itemView, article, savedIds.contains(article.id),
+                    LibraryFragment.this::openArticle, LibraryFragment.this::toggleSave);
+        }
+
+        @Override
+        public int getItemCount() {
+            return items.size();
+        }
+
+        class VH extends RecyclerView.ViewHolder {
+            VH(@NonNull View itemView) {
+                super(itemView);
+            }
+        }
     }
 }

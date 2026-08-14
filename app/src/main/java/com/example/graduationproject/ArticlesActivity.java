@@ -1,48 +1,59 @@
 package com.example.graduationproject;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
+
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import com.example.graduationproject.adapters.ArticlesAdapter;
-import com.example.graduationproject.databinding.ActivityArticlesBinding;
-import com.example.graduationproject.models.ArticleModel;
+import androidx.fragment.app.FragmentManager;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import com.example.graduationproject.R;
+import com.example.graduationproject.models.Article;
+import com.example.graduationproject.ui.LibraryFragment;
+import com.example.graduationproject.ui.ReaderFragment;
 
+/**
+ * Hosts both screens of the app inside a single fragment container,
+ * mirroring the `stage` state switch ("library" | "reader") in the
+ * original root component. Navigation uses the FragmentManager back
+ * stack instead of a `stage` string.
+ */
 public class ArticlesActivity extends AppCompatActivity {
-    ActivityArticlesBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ActivityArticlesBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
 
-        binding.rvArticles.setLayoutManager(new LinearLayoutManager(this));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            getWindow().setStatusBarColor(Color.parseColor("#E1F1FF"));
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+            }
+        }
 
-        List<ArticleModel> articlesList = new ArrayList<>();
+        setContentView(R.layout.activity_articles);
 
-        articlesList.add(new ArticleModel(
-                "التنفس • BREATHING",
-                "٧ تقنيات للتنفس في الأزمات الأكثر قراءة",
-                Arrays.asList("تمارين")
-        ));
-
-        articlesList.add(new ArticleModel(
-                "علاجي • CBT",
-                "كيف تتعاملين مع الحزن بدون قمعه؟",
-                Arrays.asList("عربي", "CBT")
-        ));
-
-        articlesList.add(new ArticleModel(
-                "التعلق • ATTACHMENT",
-                "لماذا يؤلمنا التعلق؟ دليل علمي بسيط",
-                Arrays.asList("٦ دقائق قراءة", "علم النفس")
-        ));
-
-        ArticlesAdapter adapter = new ArticlesAdapter(articlesList);
-        binding.rvArticles.setAdapter(adapter);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, new LibraryFragment())
+                    .commit();
+        }
     }
+    public void openReader(Article article) {
+        FragmentManager fm = getSupportFragmentManager();
+        androidx.fragment.app.FragmentTransaction tx = fm.beginTransaction()
+                .setCustomAnimations(
+                        android.R.anim.fade_in, android.R.anim.fade_out,
+                        android.R.anim.fade_in, android.R.anim.fade_out)
+                .replace(R.id.fragmentContainer, ReaderFragment.newInstance(article.id));
+
+        if (fm.getBackStackEntryCount() == 0) {
+            tx.addToBackStack(null);
+        }
+        tx.commit();
+    }
+
+
 }

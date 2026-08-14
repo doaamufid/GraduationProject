@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/bg_cream"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- الهيدر -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/header_title"
+                android:textColor="@color/orange_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="09:41"
+                android:textColor="@color/text_gray"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- شارة كلمة الأسبوع + نجوم -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/bg_pill_light"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="6dp"
+            android:gravity="center_vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:text="كلمات قوة هالأسبوع"
+                android:textColor="@color/orange_dark"
+                android:textSize="12sp" />
+
+            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:layout_marginStart="1dp" android:src="@drawable/ic_star_filled" />
+            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:layout_marginStart="1dp" android:src="@drawable/ic_star_filled" />
+            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:layout_marginStart="1dp" android:src="@drawable/ic_star_filled" />
+            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:layout_marginStart="1dp" android:src="@drawable/ic_star_empty" />
+            <ImageView android:layout_width="12dp" android:layout_height="12dp" android:src="@drawable/ic_star_empty" />
+        </LinearLayout>
+
+        <!-- شخصية الثعلب -->
+        <ImageView
+            android:id="@+id/mascotFox"
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:src="@drawable/mascot_fox" />
+        <!-- لو توصلك صورة PNG/SVG حقيقية للثعلب لاحقاً، بس بدّل قيمة android:src
+             هون بمسار الصورة الجديدة (بعد ما تضيفها لمجلد drawable) -->
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="@string/say_and_record"
+            android:textColor="@color/orange_dark"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <!-- كرت الجملة -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/bg_card_border"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <ImageView
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:src="@drawable/mascot_lion" />
+
+            <TextView
+                android:id="@+id/phraseText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:text="@string/default_phrase"
+                android:textColor="@color/text_dark"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/listenFirstVoiceButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_pill_light"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:text="@string/listen_first_voice"
+                android:textColor="@color/orange_dark"
+                android:textSize="13sp"
+                android:clickable="true"
+                android:focusable="true" />
+        </LinearLayout>
+
+        <!-- زر المايك -->
+        <ImageButton
+            android:id="@+id/micButton"
+            android:layout_width="76dp"
+            android:layout_height="76dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/circle_orange"
+            android:contentDescription="@string/press_and_record"
+            android:padding="22dp"
+            android:src="@drawable/ic_mic" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:text="@string/press_and_record"
+            android:textColor="@color/text_gray"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+</ScrollView>
