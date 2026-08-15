@@ -25,8 +25,8 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/primary</item>
         <item name="android:windowBackground">@color/bg2</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/bg1</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:statusBarColor" tools:targetApi="21">@color/bg1</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
         <!-- See res/font/README.txt to swap this for the exact "Cairo" font -->
         <item name="android:fontFamily">sans-serif</item>
     </style>

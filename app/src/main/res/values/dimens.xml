@@ -22,4 +22,11 @@
     <dimen name="spacing_md">12dp</dimen>
     <dimen name="spacing_lg">16dp</dimen>
     <dimen name="spacing_xl">24dp</dimen>
+
+    <dimen name="text_tag">16sp</dimen>
+    <dimen name="text_chip">16sp</dimen>
+    <dimen name="text_note_label">14sp</dimen>
+
+    <dimen name="dot_size_small">6dp</dimen>
+    <dimen name="dot_size_large">20dp</dimen>
 </resources>

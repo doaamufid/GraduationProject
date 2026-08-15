@@ -592,5 +592,37 @@
     </string-array>
 
 
+    <string name="next_button">التالي</string>
+    <string name="enter_button">ادخل مساحتك</string>
+    <string name="note_prefix">ملاحظة اليوم</string>
+
+    <!-- Card 1 -->
+    <string name="c1_title">سكون القمة</string>
+    <string name="c1_tag">لحظة تأمل</string>
+    <string name="c1_chip">🌫️ هادئ</string>
+    <string name="c1_date">٨ أبريل</string>
+    <string name="c1_note">أحياناً أقوى شعور هو إنك تحس بصغرك أمام شي أكبر منك. خذ نفساً، وأنت مسموح لك تكون هادئ الآن.</string>
+
+    <!-- Card 2 -->
+    <string name="c2_title">أفق بعيد</string>
+    <string name="c2_tag">لحظة اتساع</string>
+    <string name="c2_chip">🌊 هدوء</string>
+    <string name="c2_date">٧ أبريل</string>
+    <string name="c2_note">العالم يحس أوسع من مشكلة اليوم. أعطِ نفسك مساحة، حتى لو صغيرة، تتنفس فيها بحرية.</string>
+
+    <!-- Card 3 -->
+    <string name="c3_title">ظل الغابة</string>
+    <string name="c3_tag">لحظة حضور</string>
+    <string name="c3_chip">🌿 سكينة</string>
+    <string name="c3_date">٦ أبريل</string>
+    <string name="c3_note">ما يلزم تحل كل شي اليوم. يكفي إنك حاضر بهالثانية، تسمع، وتحس.</string>
+
+    <!-- Card 4 -->
+    <string name="c4_title">دفء الرمال</string>
+    <string name="c4_tag">لحظة صبر</string>
+    <string name="c4_chip">☀️ صبر</string>
+    <string name="c4_date">٥ أبريل</string>
+    <string name="c4_note">بعض الأشياء تحتاج وقت تتكشف، زي الصحراء اللي تبان فاضية بس فيها حياة تحت السطح.</string>
+
 </resources>
 

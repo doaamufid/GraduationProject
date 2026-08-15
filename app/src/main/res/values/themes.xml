@@ -99,7 +99,15 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-    <style name="ShapeAppearance.TopRounded" parent="">
+    <style name="ShapeAppearance">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">24dp</item>
+        <item name="cornerSizeTopRight">24dp</item>
+        <item name="cornerSizeBottomLeft">0dp</item>
+        <item name="cornerSizeBottomRight">0dp</item>
+    </style>
+
+    <style name="ShapeAppearance.TopRounded">
         <item name="cornerFamily">rounded</item>
         <item name="cornerSizeTopLeft">24dp</item>
         <item name="cornerSizeTopRight">24dp</item>
@@ -148,4 +156,12 @@
         <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
     </style>
 
+    <style name="Theme.Reflection" parent="Theme.MaterialComponents.NoActionBar">
+        <item name="colorPrimary">@color/design_default_color_primary</item>
+        <item name="android:windowBackground">@color/screen_bg</item>
+        <item name="android:statusBarColor" tools:targetApi="21">@color/screen_bg</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
+        <!-- See res/font/README.txt to swap this for the exact "Cairo" font -->
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
 </resources>

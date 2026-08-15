@@ -135,6 +135,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".ReflectionActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ui.AISuggestionsActivity"
             android:exported="false" />
 

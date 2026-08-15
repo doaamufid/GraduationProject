@@ -5,6 +5,7 @@
 
     <!-- Main Palette from Screenshots -->
     <color name="bg">#E1F1FF</color>
+    <color name="screen_bg">#1F3A60</color>
     <color name="surface">#FFFFFF</color>
     <color name="border">#D1E8F2</color>
 
@@ -156,6 +157,39 @@
     <color name="trait_self_added">#8FA998</color>
 
 
+    <!-- Mountain scene (s1) -->
+    <color name="mtn_top">#7A8A99</color>
+    <color name="mtn_mid">#5B6E80</color>
+    <color name="mtn_bottom">#2E3A45</color>
+    <color name="mtn_layer1">#1E2933</color>
+    <color name="mtn_layer2">#141C24</color>
+
+    <!-- Sea scene (s2) -->
+    <color name="sea_top">#8FB0C7</color>
+    <color name="sea_mid">#4E7691</color>
+    <color name="sea_bottom">#1F3A4E</color>
+    <color name="sea_sun">#FFF3D6</color>
+
+    <!-- Forest scene (s3) -->
+    <color name="forest_top">#9AB09E</color>
+    <color name="forest_mid">#57705E</color>
+    <color name="forest_bottom">#22301F</color>
+    <color name="forest_tree">#12180F</color>
+
+    <!-- Desert scene (s4) -->
+    <color name="desert_top">#E6B98C</color>
+    <color name="desert_mid">#B37B52</color>
+    <color name="desert_bottom">#5C3B28</color>
+    <color name="desert_sun">#FFF3D6</color>
+    <color name="desert_dune">#3A2418</color>
+
+    <!-- UI overlay colors (with alpha, matching #ffffffXX / #000000XX suffixes) -->
+    <color name="white_22">#22FFFFFF</color>
+    <color name="white_33">#33FFFFFF</color>
+    <color name="white_55">#55FFFFFF</color>
+    <color name="white_e6">#E6FFFFFF</color>
+    <color name="white_11">#11FFFFFF</color>
+    <color name="black_1a">#1A1A1A</color>
 
     <color name="bg1">#DCEBF7</color>
     <color name="bg2">#F4F9FC</color>
