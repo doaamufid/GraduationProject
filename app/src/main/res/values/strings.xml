@@ -233,6 +233,7 @@
     <string name="strengths_title">بنكي</string>
     <string name="strengths_bank_heading">بنك نقاط القوة</string>
     <string name="strengths_bank_sub">يستخرجها الـ AI من كلامك</string>
+    <string name="header_title">بنكي</string>
     <string name="traits_discovered_fmt">%1$d صفة اكتُشفت</string>
     <string name="add_trait_button">أضف صفة</string>
     <string name="best_this_month">أبرز هذا الشهر</string>
@@ -473,5 +474,95 @@
 
     <string name="layers_section_title">طبقات الصوت · LAYERS</string>
     <string name="layer_percent_format">%1$d٪</string>
+
+    <string name="discovered_count_format">%1$d</string>
+    <string name="discovered_label">صفة اكتُشفت</string>
+    <string name="bank_title">مخزون قواك</string>
+    <string name="bank_sub">نورٌ اكتشفناه في كلماتك وتفاصيلك</string>
+    <string name="last_analysis">آخر تأمل في شخصيتك: قبل يومين</string>
+
+    <string name="add_trait_btn">أضف لمسة منك</string>
+    <string name="highlight_this_month">أجمل ما فيك هذا الشهر</string>
+
+    <string name="count_times_format">%1$d مرات</string>
+    <string name="badge_self_added">أضفتها بنفسك</string>
+    <string name="badge_new">جديدة</string>
+    <string name="evidence_title">متى ظهرت هذه الصفة؟</string>
+    <string name="start_btn">ابدأ</string>
+    <string name="exercise_tag">تمرين</string>
+
+
+
+    <!-- Add trait dialog -->
+    <string name="add_trait_title">أضف صفة لاحظتها بنفسك</string>
+
+    <string name="save_trait_btn">حفظ الصفة</string>
+    <string name="default_self_note">لاحظتها بنفسك اليوم</string>
+    <string name="default_self_ctx">أضفتها يدوياً</string>
+    <string name="default_self_when">اليوم</string>
+    <string name="default_self_exercise">تأمل بموقف ثاني أظهرت فيه هذي الصفة</string>
+
+    <!-- Analysis result screen -->
+    <string name="source_format">من محادثة %1$s · %2$s (%3$s)</string>
+    <string name="discovered_new_trait">✨ اكتشفنا صفة جديدة!</string>
+    <string name="secondary_update_format">كمان لاحظنا: %1$s تكررت مرة إضافية</string>
+    <string name="related_toggle_format">🌱 صفات تانية ممكن تطورها بما إن عندك "%1$s"</string>
+    <string name="view_in_bank">شوفها في بنكي</string>
+    <string name="later_btn">لاحقاً</string>
+
+    <!-- Toasts -->
+    <string name="toast_no_new_conversations">لا محادثات جديدة لتحليلها الآن</string>
+
+    <string name="toast_started_exercise_format">بدأنا تمرين: %1$s...</string>
+    <!-- Traits -->
+    <string name="trait_patience">الصبر</string>
+    <string name="trait_courage">الشجاعة</string>
+    <string name="trait_empathy">التعاطف</string>
+    <string name="trait_persistence">الإصرار</string>
+    <string name="trait_discipline">الانضباط</string>
+    <string name="trait_confidence">الثقة بالنفس</string>
+    <string name="trait_resilience">المرونة</string>
+
+    <!-- Content -->
+    <string name="patience_quote">رغم كل شيء واصلت</string>
+    <string name="patience_exercise">اكتب عن موقف ثاني صبرت فيه رغم الصعوبة</string>
+    <string name="patience_evidence_1">في حديث عن ضغط العمل</string>
+    <string name="patience_evidence_2">في محادثة عن انتظار نتيجة مهمة</string>
+    <string name="patience_evidence_3">في حديث عن خلاف عائلي</string>
+
+    <string name="courage_quote">تحدثت عن مشاعرك بشجاعة</string>
+    <string name="courage_exercise">اكتب عن موقف ثاني كنت فيه شجاعاً</string>
+    <string name="courage_evidence_1">في محادثة عن مخاوفك من المستقبل</string>
+    <string name="courage_evidence_2">في حديث عن قرار صعب اتخذته</string>
+
+    <string name="empathy_quote">اهتمامك للآخرين واضح</string>
+    <string name="empathy_exercise">اكتب رسالة دعم قصيرة لشخص تهتم فيه</string>
+    <string name="empathy_evidence_1">في حديث عن صديق يمر بضيق</string>
+    <string name="empathy_evidence_2">في محادثة عن عائلتك</string>
+
+    <string name="persistence_paraphrase">قلت إنك قررت تكمل رغم التعب، وهذي أول مرة نلاحظ فيها هذا النمط بوضوح.</string>
+    <string name="persistence_exercise">اكتب عن موقف ثاني أصررت فيه على شي رغم الصعوبة</string>
+
+    <string name="discipline_reason">الإصرار غالباً يرافقه الانضباط — قدرتك على الالتزام بروتين حتى لو ما حسيت بالحافز.</string>
+    <string name="discipline_suggestion">حدد هدف صغير كل يوم وتابعه لمدة أسبوع كامل</string>
+
+    <string name="confidence_reason">كل مرة تصر وتكمل، تبني دليل ملموس إنك قادر — وهذا يغذي ثقتك بنفسك مع الوقت.</string>
+    <string name="confidence_suggestion">اكتب ٣ إنجازات صغيرة حققتها بإصرارك هذا الأسبوع</string>
+
+    <string name="resilience_reason">الإصرار السليم يحتاج مرونة تعرف فيها متى تعدّل خطتك بدل ما تكرر نفس الطريقة الفاشلة.</string>
+    <string name="resilience_suggestion">فكر بموقف عدّلت فيه خطتك بدل ما تستسلم</string>
+
+    <string name="empathy_note">تكررت الإشارة لاهتمامك بصديقك</string>
+
+    <string name="last_week">الثلاثاء الماضي</string>
+    <string name="one_week_ago">قبل أسبوع</string>
+    <string name="two_weeks_ago">قبل أسبوعين</string>
+    <string name="yesterday">أمس</string>
+    <string name="four_days_ago">قبل ٤ أيام</string>
+    <string name="today">اليوم</string>
+    <string name="three_days_ago">قبل ٣ أيام</string>
+    <string name="sunday_date">الأحد ٥ يوليو</string>
+    <string name="pm_time">١١:٤٠ م</string>
+
 </resources>
 

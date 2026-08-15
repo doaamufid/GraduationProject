@@ -7,20 +7,20 @@
     android:layout_marginBottom="6dp">
 
     <TextView
-        android:id="@+id/txt_evidence_ctx"
+        android:id="@+id/tvCtx"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:textColor="@color/text_main"
-        android:textSize="@dimen/text_body"
+        android:textSize="14sp"
         android:gravity="start"
         tools:text="في حديث عن ضغط العمل"/>
 
     <TextView
-        android:id="@+id/txt_evidence_when"
+        android:id="@+id/tvWhen"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/text_soft"
-        android:textSize="@dimen/text_body"
+        android:textSize="14sp"
         tools:text="الثلاثاء الماضي"/>
 </LinearLayout>

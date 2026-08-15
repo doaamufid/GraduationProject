@@ -123,4 +123,36 @@ public final class FadeUtils {
         view.animate().alpha(1f).translationY(0f).setDuration(500)
                 .setInterpolator(new DecelerateInterpolator()).start();
     }
+
+    public static void slideInUp(View view, int translationYdp, int duration, long delay) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationY(translationYdp * density);
+        view.animate().alpha(1f).translationY(0f).setDuration(duration).setStartDelay(delay)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    public static void scaleIn(View view, int duration, long delay) {
+        view.setAlpha(0f);
+        view.setScaleX(0.8f);
+        view.setScaleY(0.8f);
+        view.animate().alpha(1f).scaleX(1f).scaleY(1f).setDuration(duration).setStartDelay(delay)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    public static void evidenceFade(android.widget.LinearLayout container) {
+        for (int i = 0; i < container.getChildCount(); i++) {
+            fadeInUp(container.getChildAt(i));
+        }
+    }
+
+    public static void resultFade(View view) {
+        fadeInUp(view);
+    }
+
+    public static void relatedFade(android.widget.LinearLayout container) {
+        for (int i = 0; i < container.getChildCount(); i++) {
+            fadeInUp(container.getChildAt(i));
+        }
+    }
 }

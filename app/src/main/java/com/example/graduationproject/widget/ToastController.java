@@ -30,6 +30,10 @@ public final class ToastController {
     }
 
     public void show(String message) {
+        show(message, (int) AUTO_DISMISS_MS);
+    }
+
+    public void show(String message, int durationMs) {
         // Cancel any pending dismissal from a previous toast.
         if (dismissRunnable != null) {
             handler.removeCallbacks(dismissRunnable);
@@ -67,7 +71,7 @@ public final class ToastController {
                 });
             }
         };
-        handler.postDelayed(dismissRunnable, AUTO_DISMISS_MS);
+        handler.postDelayed(dismissRunnable, durationMs);
     }
 
     public void cancel() {
