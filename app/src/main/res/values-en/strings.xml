@@ -462,4 +462,17 @@
     <string name="toast_export_started">Backup export started&#8230;</string>
     <string name="toast_deleted_everything">All your data has been deleted</string>
     <string name="toast_coming_soon">This feature will be available soon</string>
-    </resources>
+
+    <string name="env_badge_format">%1$s · %2$s</string>
+    <string name="status_playing">Playing</string>
+    <string name="status_paused">Paused</string>
+
+    <string name="timer_label_sleep">Sleep Mode</string>
+    <string name="timer_label_remaining_format">%1$d min remaining</string>
+    <string name="timer_prefix">TIMER · %1$s</string>
+
+    <string name="ended_message">🌙 Your calm session has ended — wishing you a restful time</string>
+
+    <string name="layers_section_title">Sound Layers · LAYERS</string>
+    <string name="layer_percent_format">%1$d%%</string>
+</resources>

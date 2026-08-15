@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingBottom="8dp">
+
+    <FrameLayout
+        android:id="@+id/layerContainer"
+        android:layout_width="44dp"
+        android:layout_height="240dp"
+        android:layout_marginHorizontal="6dp"
+        android:clipChildren="false">
+
+        <!-- The Pill Background -->
+        <View
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/bg_layer_pill_dark" />
+
+        <!-- The Colorful Progress Fill (Level managed in code) -->
+        <ImageView
+            android:id="@+id/ivProgressFill"
+            android:layout_width="30dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:scaleType="fitXY"
+            tools:src="@drawable/grad_layer_1" />
+
+        <!-- Content Overlay -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="12dp">
+
+            <TextView
+                android:id="@+id/tvLayerPercent"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="-2dp"
+                android:alpha="0.9"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="normal"
+                tools:text="100" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/ivLayerIcon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_waves_primary"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+
+        <!-- Invisible Interaction Layer - Rotated 90 for RTL fix (Bottom 0, Top 100) -->
+        <SeekBar
+            android:id="@+id/seekLayer"
+            android:layout_width="240dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:rotation="90"
+            android:splitTrack="false"
+            android:progressDrawable="@android:color/transparent"
+            android:thumb="@android:color/transparent"
+            android:alpha="0"/>
+
+        <!-- Used for layout logic -->
+        <View
+            android:id="@+id/vNeonShadow"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="gone" />
+
+    </FrameLayout>
+
+    <!-- Sound Name Label -->
+    <TextView
+        android:id="@+id/tvLayerLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/text_soft"
+        android:textSize="10sp"
+        android:textStyle="bold"
+        tools:text="أمواج" />
+
+</LinearLayout>

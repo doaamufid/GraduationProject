@@ -107,4 +107,20 @@ public final class FadeUtils {
     public static void dialogIn(View view) {
         dialogFade(view);
     }
+
+    /** .env-fade: 400ms fade. */
+    public static void envFade(View view) {
+        view.setAlpha(0f);
+        view.animate().alpha(1f).setDuration(400)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
+
+    /** .layers-fade: 500ms fade + 10dp slide up. */
+    public static void layersFade(View view) {
+        float density = view.getResources().getDisplayMetrics().density;
+        view.setAlpha(0f);
+        view.setTranslationY(10 * density);
+        view.animate().alpha(1f).translationY(0f).setDuration(500)
+                .setInterpolator(new DecelerateInterpolator()).start();
+    }
 }

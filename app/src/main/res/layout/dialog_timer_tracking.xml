@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="@drawable/bg_hero_card_overlay"
+    android:gravity="center">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="مؤقت النوم النشط"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:layout_marginBottom="24dp"/>
+
+    <!-- Large Time Display -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="bottom"
+        android:layout_marginBottom="32dp">
+
+        <TextView
+            android:id="@+id/tvTrackingTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="00:00"
+            android:textColor="#FFA726"
+            android:textSize="64sp"
+            android:textStyle="bold"
+            android:fontFamily="monospace"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" د"
+            android:textColor="#FFA726"
+            android:textSize="24sp"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="12dp"/>
+    </LinearLayout>
+
+    <!-- Controls -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="32dp">
+
+        <!-- Add Time Button -->
+        <ImageButton
+            android:id="@+id/btnTrackingAdd"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_timer_selected"
+            android:src="@drawable/ic_play"
+            android:rotation="45"
+            app:tint="@color/white"
+            android:padding="16dp"
+            android:layout_marginEnd="20dp"
+            android:contentDescription="@null"/>
+
+        <!-- Pause/Resume Button -->
+        <ImageButton
+            android:id="@+id/btnTrackingPlayPause"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/bg_timer_selected"
+            android:src="@drawable/ic_pause"
+            app:tint="@color/white"
+            android:padding="24dp"
+            android:contentDescription="@null"/>
+
+        <!-- Stop Button -->
+        <ImageButton
+            android:id="@+id/btnTrackingStop"
+            android:layout_width="56dp"
+            android:layout_height="56dp"
+            android:background="@drawable/bg_timer_selected"
+            android:src="@drawable/ic_arrow_right"
+            android:rotation="45"
+            app:tint="@color/white"
+            android:padding="16dp"
+            android:layout_marginStart="20dp"
+            android:contentDescription="@null"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnTrackingClose"
+        android:layout_width="match_parent"
+        android:layout_height="54dp"
+        android:text="إغلاق"
+        android:backgroundTint="#40FFFFFF"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        app:cornerRadius="27dp"/>
+
+</LinearLayout>

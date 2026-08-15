@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="80dp"
+    android:layout_height="80dp"
+    android:layout_marginStart="6dp"
+    android:layout_marginEnd="6dp"
+    android:layout_marginBottom="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="40dp"
+    app:cardElevation="6dp"
+    app:cardBackgroundColor="@android:color/transparent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <View
+            android:id="@+id/envBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_env_beach"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="8dp">
+
+            <ImageView
+                android:id="@+id/ivEnvIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginBottom="4dp"
+                tools:src="@drawable/ic_waves"
+                android:contentDescription="@null"/>
+
+            <TextView
+                android:id="@+id/tvEnvLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="11sp"
+                android:layout_marginBottom="1dp"
+                tools:text="شاطئ"/>
+
+            <TextView
+                android:id="@+id/tvEnvTag"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:alpha="0.8"
+                android:textStyle="bold"
+                android:textSize="8sp"
+                android:letterSpacing="0.05"
+                tools:text="BEACH"/>
+        </LinearLayout>
+
+        <View
+            android:id="@+id/envSelectedBorder"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/bg_env_picker_selected"
+            android:visibility="invisible"/>
+
+    </FrameLayout>
+
+</androidx.cardview.widget.CardView>

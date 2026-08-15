@@ -40,10 +40,6 @@
             android:exported="false" />
 
         <activity
-            android:name=".HealingEnvironmentActivity"
-            android:exported="false" />
-
-        <activity
             android:name=".CbtChatActivity"
             android:exported="false" />
 
@@ -155,6 +151,10 @@
 
         <activity
             android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".HealingEnvActivity"
             android:exported="false" />
 
     </application>

@@ -198,10 +198,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.graduationproject.HealingEnvironmentActivity;
+import com.example.graduationproject.HealingEnvActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.VideoLibraryActivity;
-import com.example.graduationproject.VisualContentActivity;
 import com.example.graduationproject.adapters.HomeActionAdapter;
 import com.example.graduationproject.adapters.HomeFeatureAdapter;
 import com.example.graduationproject.models.HomeAction;
@@ -282,7 +281,7 @@ public class HomeFragment extends Fragment {
                     startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
                     break;
                 case 1:
-                    startActivity(new Intent(getActivity(), HealingEnvironmentActivity.class));
+                    startActivity(new Intent(getActivity(), HealingEnvActivity.class));
                     break;
                 case 2:
                     break;

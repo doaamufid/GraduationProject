@@ -461,5 +461,17 @@
     <string name="toast_deleted_everything">تم حذف كل بياناتك</string>
     <string name="toast_coming_soon">هذه الميزة ستتوفر قريباً</string>
 
+    <string name="env_badge_format">%1$s · %2$s</string>
+    <string name="status_playing">يشتغل الآن</string>
+    <string name="status_paused">متوقف</string>
+
+    <string name="timer_label_sleep">وضع النوم</string>
+    <string name="timer_label_remaining_format">%1$d د متبقية</string>
+    <string name="timer_prefix">TIMER · %1$s</string>
+
+    <string name="ended_message">🌙 انتهت جلستك الهادئة — أتمنى لك راحة طيبة</string>
+
+    <string name="layers_section_title">طبقات الصوت · LAYERS</string>
+    <string name="layer_percent_format">%1$d٪</string>
 </resources>
 
