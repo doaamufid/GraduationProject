@@ -624,5 +624,54 @@
     <string name="c4_date">٥ أبريل</string>
     <string name="c4_note">بعض الأشياء تحتاج وقت تتكشف، زي الصحراء اللي تبان فاضية بس فيها حياة تحت السطح.</string>
 
+
+    <string name="entry_title">إعادة الصياغة</string>
+    <string name="entry_subtitle">شاركني فكرة مزعجة تراودك الآن، وخلنا نشوفها من زاوية ثانية سوا</string>
+    <string name="entry_from_chat">استخدم فكرة من محادثتك الأخيرة</string>
+    <string name="entry_write_new">اكتب فكرتك الآن</string>
+
+    <string name="write_title">اكتب فكرتك</string>
+    <string name="mode_text">اكتب</string>
+    <string name="mode_voice">سجّل صوتك</string>
+    <string name="write_hint">وش الفكرة اللي مزعجتك؟</string>
+    <string name="voice_hint">اضغط وسجّل، بنحولها لنص تلقائياً</string>
+    <string name="voice_alt_hint">(أو اكتبها هنا كبديل)</string>
+    <string name="emotions_label">وش تحس فيه؟ (اختياري)</string>
+    <string name="analyze_button">حلّل هذه الفكرة</string>
+
+    <string name="painful_thought_label">الفكرة المؤلمة</string>
+    <string name="pattern_question">ما النمط المعرفي هنا؟</string>
+    <string name="why_pattern_label">ليش هذا النمط؟</string>
+    <string name="badge_detected">🤖 اكتشفه رفيقك</string>
+
+    <string name="examine_intro">سؤال بسيط قبل ما نعيد الصياغة</string>
+    <string name="answer_yes">نعم</string>
+    <string name="answer_no">لا</string>
+    <string name="answer_unsure">مو متأكد</string>
+    <string name="followup_hint">شنو هذي اللحظة؟ (اختياري)</string>
+    <string name="skip_question">تخطي هذا السؤال</string>
+
+    <string name="original_label">ORIGINAL · فكرتك الآن</string>
+    <string name="mirror_label">MIRROR · نظرة أخرى</string>
+    <string name="reword_button">صياغة أخرى</string>
+    <string name="save_button">احفظ وابدأ التمرين</string>
+    <string name="back_to_chat">ارجع للمحادثة لاحقاً</string>
+    <string name="followup_appendix">هل في شخص واحد تشعرين بالارتياح معه؟</string>
+
+    <string name="completion_title">حُفظت فكرتك المتوازنة</string>
+    <string name="completion_subtitle">انضافت لأرشيف \"أفكاري المتوازنة\"</string>
+    <string name="your_exercise_label">تمرينك الآن</string>
+    <string name="another_thought">فكرة ثانية</string>
+
+    <string name="clock_time">٩:٤١</string>
+
+    <string name="step_identify">تحديد</string>
+    <string name="step_examine">فحص</string>
+    <string name="step_reframe">إعادة صياغة</string>
+
+    <string name="source_from_chat">من فضفضتك · قبل ١٠ دقائق</string>
+    <string name="source_written">كُتبت الآن</string>
+    <string name="thought_from_chat">لا أحد يهتم بي وداءماً أنا اللي أعاني لوحدي</string>
+
 </resources>
 

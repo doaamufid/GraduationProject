@@ -198,5 +198,15 @@
 
     <!-- sage + "15" alpha suffix (~8%) used for the info note background -->
     <color name="sage_soft_15">#158FA998</color>
+    <color name="black_bg">#111111</color>
+    <color name="card_bg_04">#0AFFFFFF</color>
+    <color name="card_bg_05">#0DFFFFFF</color>
+    <color name="card_bg_06">#0FFFFFFF</color>
+    <color name="card_bg_08">#14FFFFFF</color>
+    <color name="card_bg_10">#1AFFFFFF</color>
+    <color name="dot_inactive">#40FFFFFF</color>
+
+    <color name="overlay_dark">#8C000000</color>
+    <color name="badge_text">#0D1F33</color>
 
 </resources>
