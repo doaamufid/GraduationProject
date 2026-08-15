@@ -155,4 +155,14 @@
     <color name="trait_resilience">#5B8FD1</color>
     <color name="trait_self_added">#8FA998</color>
 
+
+
+    <color name="bg1">#DCEBF7</color>
+    <color name="bg2">#F4F9FC</color>
+    <!-- primary + "22" alpha suffix (~13%) used for decorative ring strokes -->
+    <color name="primary_ring_22">#223A74B8</color>
+
+    <!-- sage + "15" alpha suffix (~8%) used for the info note background -->
+    <color name="sage_soft_15">#158FA998</color>
+
 </resources>

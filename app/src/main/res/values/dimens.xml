@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="radius_md">12dp</dimen>
     <dimen name="radius_lg">16dp</dimen>
     <dimen name="radius_xl">24dp</dimen>
     <dimen name="radius_chip">100dp</dimen>
@@ -13,4 +14,12 @@
     <dimen name="text_title2">20sp</dimen>
     <dimen name="text_h2">22sp</dimen>
     <dimen name="text_h1">25sp</dimen>
+    <dimen name="text_label">13sp</dimen>
+    <dimen name="text_button">15sp</dimen>
+    <dimen name="text_note">11sp</dimen>
+
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">12dp</dimen>
+    <dimen name="spacing_lg">16dp</dimen>
+    <dimen name="spacing_xl">24dp</dimen>
 </resources>

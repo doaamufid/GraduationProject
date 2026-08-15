@@ -565,4 +565,29 @@
     <string name="three_days_ago">3 days ago</string>
     <string name="sunday_date">Sunday, July 5</string>
     <string name="pm_time">11:40 PM</string>
+    <string name="welcome_title">Welcome to Salam</string>
+    <string name="welcome_subtitle">Let\'s get to know you a bit before we start your journey</string>
+
+    <string name="name_label">Your name or a nickname</string>
+    <string name="name_hint_sign_up">Optional — your secret is safe with Salam</string>
+
+    <string name="age_label">Age group</string>
+
+    <string name="gender_label">Gender</string>
+    <string name="gender_female">Female</string>
+    <string name="gender_male">Male</string>
+    <string name="gender_female_symbol">♀️</string>
+    <string name="gender_male_symbol">♂️</string>
+
+    <string name="privacy_note_sign_up">This information is requested only once, and helps us customize your experience 🔒</string>
+
+    <string name="continue_button">Continue</string>
+
+    <string-array name="age_ranges">
+        <item>18-24</item>
+        <item>25-34</item>
+        <item>35-44</item>
+        <item>45-54</item>
+        <item>55+</item>
+    </string-array>
 </resources>
