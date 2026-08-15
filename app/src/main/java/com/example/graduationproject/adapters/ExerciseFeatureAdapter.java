@@ -43,9 +43,18 @@ public class ExerciseFeatureAdapter extends RecyclerView.Adapter<ExerciseFeature
         holder.tvTitle.setText(item.getTitle());
         holder.tvSubtitle.setText(item.getSubtitle());
         holder.ivIcon.setImageResource(item.getIconResId());
+        
+        // تعيين الخلفية الملونة للأيقونة
+        holder.viewIconBg.setBackgroundResource(item.getIconBackgroundResId());
 
         holder.itemView.setOnClickListener(v -> {
-            if (listener != null) listener.onItemClick(position);
+            // تأثير ضغطة أبطأ (Scale Feedback)
+            v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(200).withEndAction(() -> {
+                v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(200).start();
+                if (listener != null) {
+                    listener.onItemClick(position);
+                }
+            }).start();
         });
     }
 
@@ -56,11 +65,13 @@ public class ExerciseFeatureAdapter extends RecyclerView.Adapter<ExerciseFeature
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView ivIcon;
+        View viewIconBg;
         TextView tvTitle, tvSubtitle;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             ivIcon = itemView.findViewById(R.id.ivExerciseIcon);
+            viewIconBg = itemView.findViewById(R.id.viewIconBg);
             tvTitle = itemView.findViewById(R.id.tvExerciseTitle);
             tvSubtitle = itemView.findViewById(R.id.tvExerciseSubtitle);
         }

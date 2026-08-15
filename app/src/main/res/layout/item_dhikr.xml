@@ -8,15 +8,16 @@
     android:gravity="center_vertical"
     android:padding="14dp"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/bg_card">
+    android:background="@drawable/white_rounded_card"
+    android:elevation="2dp">
 
     <ImageButton
         android:id="@+id/btnStar"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:background="@android:color/transparent"
         android:src="@drawable/ic_star_filled"
-        android:padding="5dp"
+        android:padding="6dp"
         android:contentDescription="@null"/>
 
     <TextView
@@ -26,9 +27,9 @@
         android:layout_weight="1"
         android:layout_marginStart="8dp"
         android:gravity="end"
-        android:textColor="@color/text_white"
+        android:textColor="@color/text_main"
         android:textStyle="bold"
-        android:textSize="13sp"
+        android:textSize="15sp"
         tools:text="سبحان الله وبحمده"/>
 
 </LinearLayout>

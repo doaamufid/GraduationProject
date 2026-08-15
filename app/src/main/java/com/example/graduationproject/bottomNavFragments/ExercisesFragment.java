@@ -5,6 +5,10 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LayoutAnimationController;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -42,20 +46,55 @@ public class ExercisesFragment extends Fragment {
         // 1. ربط الـ RecyclerView من الـ XML
         rvExercises = view.findViewById(R.id.rvExercises);
 
+        // --- إضافة التحريكات (Animations) ---
+        TextView tvTitle = view.findViewById(R.id.tvExercisesTitle);
+        TextView tvSubtitle = view.findViewById(R.id.tvExercisesSubtitle);
+
+        Animation fadeInUp = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
+        if (tvTitle != null) tvTitle.startAnimation(fadeInUp);
+        if (tvSubtitle != null) {
+            Animation subtitleFade = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
+            subtitleFade.setStartOffset(200);
+            tvSubtitle.startAnimation(subtitleFade);
+        }
+
+        LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fall_down);
+        rvExercises.setLayoutAnimation(animationController);
+
+        // تحريك الأمواج في الأسفل بشكل عائم (Floating Waves)
+        View imgWaveBottom = view.findViewById(R.id.imgWaveBottom);
+        if (imgWaveBottom != null) {
+            imgWaveBottom.animate()
+                    .translationY(30)
+                    .setDuration(5000)
+                    .setInterpolator(new android.view.animation.AccelerateDecelerateInterpolator())
+                    .withEndAction(() -> animateFloating(imgWaveBottom, -30))
+                    .start();
+        }
+
         // 2. ملء القائمة بالبيانات الستة للتمارين
         setupExercisesData();
+    }
+
+    private void animateFloating(View view, float targetY) {
+        view.animate()
+                .translationY(targetY)
+                .setDuration(5000)
+                .setInterpolator(new android.view.animation.AccelerateDecelerateInterpolator())
+                .withEndAction(() -> animateFloating(view, -targetY))
+                .start();
     }
 
     private void setupExercisesData() {
         exerciseList.clear();
 
-        // البيانات مأخوذة من الفيجما مباشرة
-        exerciseList.add(new ExerciseFeature(R.drawable.license, "نقاط قوتي", "STRENGTHS"));
-        exerciseList.add(new ExerciseFeature(R.drawable.mail, "رسالة لنفسي", "FUTURE SELF"));
-        exerciseList.add(new ExerciseFeature(R.drawable.center, "التأريض", "GROUNDING"));
-        exerciseList.add(new ExerciseFeature(R.drawable.style, "بطاقة التهدئة الشخصية", "CALM CARD"));
-        exerciseList.add(new ExerciseFeature(R.drawable.air, "التنفس", "BREATHING"));
-        exerciseList.add(new ExerciseFeature(R.drawable.pin, "خريطة الجسد", "BODY MAP"));
+        // البيانات مأخوذة من الفيجما مباشرة مع إضافة خلفيات ملونة للأيقونات لتطابق تصميم الصفحة الرئيسية
+        exerciseList.add(new ExerciseFeature(R.drawable.license, R.drawable.bg_icon_blue, "نقاط قوتي", "STRENGTHS"));
+        exerciseList.add(new ExerciseFeature(R.drawable.mail, R.drawable.bg_icon_purple, "رسالة لنفسي", "FUTURE SELF"));
+        exerciseList.add(new ExerciseFeature(R.drawable.center, R.drawable.bg_icon_orange, "التأريض", "GROUNDING"));
+        exerciseList.add(new ExerciseFeature(R.drawable.style, R.drawable.bg_icon_pink, "بطاقة التهدئة الشخصية", "CALM CARD"));
+        exerciseList.add(new ExerciseFeature(R.drawable.air, R.drawable.bg_icon_green, "التنفس", "BREATHING"));
+        exerciseList.add(new ExerciseFeature(R.drawable.pin, R.drawable.bg_icon_yellow, "خريطة الجسد", "BODY MAP"));
 
         // 3. تهيئة الـ Adapter وتمرير مستمع النقرات لاحقاً
         adapter = new ExerciseFeatureAdapter(requireContext(), exerciseList, position -> {

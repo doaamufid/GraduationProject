@@ -20,6 +20,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".ExerciseTimerActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".MindfulnessQuotesActivity"
             android:exported="false" />
 
@@ -37,6 +41,10 @@
 
         <activity
             android:name=".Kids.ChildProfilesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".HealingEnvironmentActivity"
             android:exported="false" />
 
         <activity
@@ -144,18 +152,6 @@
             android:exported="false"
             android:theme="@style/Theme.GraduationProject"
             android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name=".AdultProfileActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".SettingsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".HealingEnvActivity"
-            android:exported="false" />
 
     </application>
 

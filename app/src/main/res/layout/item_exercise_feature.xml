@@ -14,15 +14,15 @@
         android:id="@+id/viewIconBg"
         android:layout_width="48dp"
         android:layout_height="48dp"
-        android:background="@drawable/emoji_selector"
+        android:background="@drawable/bg_icon_blue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
         android:id="@+id/ivExerciseIcon"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
         app:layout_constraintBottom_toBottomOf="@id/viewIconBg"
         app:layout_constraintEnd_toEndOf="@id/viewIconBg"
         app:layout_constraintStart_toStartOf="@id/viewIconBg"

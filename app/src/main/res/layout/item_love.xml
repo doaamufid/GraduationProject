@@ -7,22 +7,23 @@
     android:orientation="vertical"
     android:padding="12dp"
     android:layout_marginBottom="8dp"
-    android:background="@drawable/bg_card">
+    android:background="@drawable/white_rounded_card"
+    android:elevation="2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center_vertical"
-        android:layout_marginBottom="6dp">
+        android:layout_marginBottom="10dp">
 
         <ImageButton
             android:id="@+id/btnDelete"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="@android:color/transparent"
-            android:src="@drawable/ic_trash"
-            android:padding="5dp"
+            android:src="@drawable/ic_trash_red"
+            android:padding="6dp"
             android:contentDescription="@null"/>
 
         <View
@@ -34,13 +35,13 @@
             android:id="@+id/tvSourceBadge"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_badge"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
-            android:textColor="@color/text_white"
-            android:textSize="9sp"
+            android:background="@drawable/bg_pill_accent_round"
+            android:paddingStart="12dp"
+            android:paddingEnd="12dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:textColor="@color/text_main"
+            android:textSize="11sp"
             android:textStyle="bold"
             tools:text="من نفسي"/>
     </LinearLayout>
@@ -49,8 +50,8 @@
         android:id="@+id/tvText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/text_white"
-        android:textSize="12sp"
+        android:textColor="@color/card_title"
+        android:textSize="15sp"
         android:gravity="end"
         tools:text="أنتِ أقوى مما تتخيلين"/>
 

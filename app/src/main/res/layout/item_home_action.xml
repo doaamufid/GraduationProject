@@ -1,50 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="14dp"
-    android:background="@drawable/white_rounded_card"
-    android:padding="16dp">
+    app:cardBackgroundColor="#F0F4FF"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="0dp">
 
-    <ImageView xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/ivActionIcon"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:padding="10dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:src="@drawable/home1" />
-
-    <TextView xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/tvActionTitle"
-        android:layout_width="0dp"
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmerView"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="14dp"
-        android:layout_marginEnd="8dp"
-        android:textColor="@color/card_title"
-        android:textSize="14sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/tvActionSubtitle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@id/ivActionIcon"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed"
-        tools:text="لحظة هدوء - One-Click Calm" />
+        app:shimmer_auto_start="true"
+        app:shimmer_duration="1500"
+        app:shimmer_base_alpha="1.0"
+        app:shimmer_highlight_alpha="0.3">
 
-    <TextView xmlns:tools="http://schemas.android.com/tools"
-        android:id="@+id/tvActionSubtitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="2dp"
-        android:textColor="@color/card_subtitle"
-        android:textSize="11sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@id/tvActionTitle"
-        app:layout_constraintStart_toStartOf="@id/tvActionTitle"
-        app:layout_constraintTop_toBottomOf="@id/tvActionTitle"
-        tools:text="تنفس، استرخِ، توازن" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:layoutDirection="locale">
 
+            <!-- Leading Texts (Start) -->
+            <LinearLayout
+                android:id="@+id/layoutTextContainer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="start"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@+id/ivActionIcon"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <TextView
+                    android:id="@+id/tvActionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:lineSpacingExtra="2dp"
+                    android:textColor="#2D5B7B"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:gravity="start"
+                    tools:text="جلسة استرخاء سريعة لمزاج اليوم" />
+
+                <TextView
+                    android:id="@+id/tvActionSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="#6A8CA3"
+                    android:textSize="15sp"
+                    android:gravity="start"
+                    tools:text="١٠ دقائق من الهدوء" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnStartAction"
+                    style="@style/Widget.MaterialComponents.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="16dp"
+                    android:backgroundTint="#FFE4E9"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:paddingHorizontal="20dp"
+                    android:text="ابدأ الآن"
+                    android:textAllCaps="false"
+                    android:textColor="#D35D4B"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="20dp"
+                    app:icon="@drawable/ic_play"
+                    app:iconGravity="textStart"
+                    app:iconPadding="6dp"
+                    app:iconSize="16dp"
+                    app:iconTint="#D35D4B" />
+
+            </LinearLayout>
+
+            <!-- Trailing Illustration (End) -->
+            <ImageView
+                android:id="@+id/ivActionIcon"
+                android:layout_width="130dp"
+                android:layout_height="130dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/body_map"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+</com.google.android.material.card.MaterialCardView>
