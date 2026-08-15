@@ -30,4 +30,43 @@
         <!-- See res/font/README.txt to swap this for the exact "Cairo" font -->
         <item name="android:fontFamily">sans-serif</item>
     </style>
+    <!-- Reusable text appearances mirroring the React design's type scale -->
+    <style name="Text.Title" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Soft" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/text_soft</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Text.Body" parent="android:Widget.TextView">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="Button.Primary" parent="android:Widget.Button">
+        <item name="android:background">@drawable/bg_button_primary</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
+    <style name="Button.Soft" parent="android:Widget.Button">
+        <item name="android:background">@drawable/bg_button_soft</item>
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:elevation">0dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+
 </resources>

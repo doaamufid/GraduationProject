@@ -164,4 +164,15 @@
         <!-- See res/font/README.txt to swap this for the exact "Cairo" font -->
         <item name="android:fontFamily">sans-serif</item>
     </style>
+    <style name="Theme.CBTReframing" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/black_bg</item>
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/grad_top</item>
+        <item name="colorAccent">@color/primary_light</item>
+        <item name="android:statusBarColor">@color/grad_top</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
+    </style>
 </resources>

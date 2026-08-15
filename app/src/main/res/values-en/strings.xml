@@ -621,4 +621,55 @@
     <string name="c4_chip">☀️ Patience</string>
     <string name="c4_date">April 5</string>
     <string name="c4_note">Some things need time to reveal themselves, like a desert that looks empty but holds life beneath the surface.</string>
+
+
+    <string name="entry_title">Reframing</string>
+    <string name="entry_subtitle">Share an annoying thought you have now, and let\'s see it from another angle together</string>
+    <string name="entry_from_chat">Use a thought from your last chat</string>
+    <string name="entry_write_new">Write your thought now</string>
+
+    <string name="write_title">Write your thought</string>
+    <string name="mode_text">Write</string>
+    <string name="mode_voice">Record your voice</string>
+    <string name="write_hint">What thought is bothering you?</string>
+    <string name="voice_hint">Press and record, we\'ll convert it to text automatically</string>
+    <string name="voice_alt_hint">(Or write it here as an alternative)</string>
+    <string name="emotions_label">How do you feel? (Optional)</string>
+    <string name="analyze_button">Analyze this thought</string>
+
+    <string name="painful_thought_label">Painful Thought</string>
+    <string name="pattern_question">What is the cognitive pattern here?</string>
+    <string name="why_pattern_label">Why this pattern?</string>
+    <string name="badge_detected">🤖 Detected by your companion</string>
+
+
+    <string name="examine_intro">A simple question before we reframe</string>
+    <string name="answer_yes">Yes</string>
+    <string name="answer_no">No</string>
+    <string name="answer_unsure">Not sure</string>
+    <string name="followup_hint">What was this moment? (Optional)</string>
+    <string name="skip_question">Skip this question</string>
+
+    <string name="original_label">ORIGINAL · Your thought now</string>
+    <string name="mirror_label">MIRROR · Another look</string>
+    <string name="reword_button">Another reframe</string>
+    <string name="save_button">Save and start exercise</string>
+    <string name="back_to_chat">Back to chat later</string>
+    <string name="followup_appendix">Is there one person you feel comfortable with?</string>
+
+    <string name="completion_title">Your balanced thought saved</string>
+    <string name="completion_subtitle">Added to your \"Balanced Thoughts\" archive</string>
+    <string name="your_exercise_label">Your exercise now</string>
+    <string name="another_thought">Another thought</string>
+
+    <string name="clock_time">9:41</string>
+
+    <string name="step_identify">Identify</string>
+    <string name="step_examine">Examine</string>
+    <string name="step_reframe">Reframe</string>
+
+    <string name="source_from_chat">From your venting · 10 minutes ago</string>
+    <string name="source_written">Written now</string>
+    <string name="thought_from_chat">No one cares about me and I\'m always the one suffering alone</string>
+
 </resources>
