@@ -107,4 +107,20 @@
         <item name="cornerSizeBottomRight">0dp</item>
     </style>
 
+    <!-- Settings App Styles -->
+    <style name="Theme_SettingsApp_Dialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:layoutDirection">rtl</item>
+        <item name="android:textDirection">rtl</item>
+    </style>
+
+    <style name="ThemeOverlay_SettingsApp_BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/SettingsApp.BottomSheetStyle</item>
+    </style>
+
+    <style name="SettingsApp.BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
 </resources>
