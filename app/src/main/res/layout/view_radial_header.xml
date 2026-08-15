@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/radialRoot"
+    android:layout_width="240dp"
+    android:layout_height="240dp"
+    android:layoutDirection="rtl">
+
+    <View
+        android:id="@+id/dashedRing"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_dashed_ring"/>
+
+    <FrameLayout
+        android:id="@+id/traitDotsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <FrameLayout
+        android:id="@+id/center_circle"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_center_circle">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <TextView
+                android:id="@+id/tvDiscoveredCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_white"
+                android:textStyle="bold"
+                android:textSize="32sp"
+                tools:text="12"
+                xmlns:tools="http://schemas.android.com/tools"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/discovered_label"
+                android:textColor="@color/text_soft"
+                android:textSize="12sp"/>
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

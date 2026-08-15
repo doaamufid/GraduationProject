@@ -135,4 +135,24 @@
     <color name="purple">#CE93D8</color>
     <color name="delete_armed_bg">#FFCDD2</color>
 
+    <!-- Cards / surfaces -->
+    <color name="overlay_05">#0DFFFFFF</color>    <!-- rgba(255,255,255,0.05) -->
+    <color name="overlay_06">#0FFFFFFF</color>    <!-- rgba(255,255,255,0.06) -->
+    <color name="overlay_07">#12FFFFFF</color>    <!-- rgba(255,255,255,0.07) -->
+    <color name="overlay_15">#26FFFFFF</color>    <!-- rgba(255,255,255,0.15) -->
+    <color name="black_25">#40000000</color>      <!-- rgba(0,0,0,0.25) -->
+    <color name="black_55">#8C000000</color>      <!-- rgba(0,0,0,0.55) -->
+    <color name="black_75">#BF000000</color>      <!-- rgba(0,0,0,0.75) -->
+
+    <!-- Brand -->
+    <color name="primary_light_55">#8D5B8FD1</color>  <!-- primaryLight + "55" -->
+    <color name="primary_light_33">#545B8FD1</color>  <!-- primaryLight + "33" -->
+    <color name="primary_22">#383A74B8</color>        <!-- primary + "22" -->
+
+    <color name="trait_persistence">#8FA998</color>
+    <color name="trait_discipline">#D9A85C</color>
+    <color name="trait_confidence">#C97575</color>
+    <color name="trait_resilience">#5B8FD1</color>
+    <color name="trait_self_added">#8FA998</color>
+
 </resources>

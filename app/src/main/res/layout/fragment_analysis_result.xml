@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:background="@drawable/bg_app_gradient">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="24dp">
+
+        <ImageButton
+            android:id="@+id/btnClose"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_gravity="end"
+            android:background="@drawable/bg_icon_circle_overlay_10"
+            android:src="@drawable/ic_close"
+            android:padding="10dp"
+            android:contentDescription="@null"/>
+    </FrameLayout>
+
+    <ScrollView
+        android:id="@+id/scrollContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="32dp">
+
+            <!-- Source line -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="24dp">
+
+                <TextView
+                    android:id="@+id/tvSource"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_soft"
+                    android:textSize="13sp"
+                    android:drawableStart="@drawable/ic_message_circle"
+                    android:drawablePadding="6dp"
+                    tools:text="من محادثة الأحد ٥ يوليو · ١١:٤٠ م (قبل ٣ أيام)"/>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/discovered_new_trait"
+                android:textColor="@color/primary_light"
+                android:textStyle="bold"
+                android:textSize="14sp"
+                android:layout_marginBottom="8dp"/>
+
+            <!-- Primary reveal card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:background="@drawable/bg_reveal_card"
+                android:padding="24dp"
+                android:layout_marginBottom="16dp">
+
+                <FrameLayout
+                    android:id="@+id/revealIconCircle"
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:layout_marginBottom="12dp">
+
+                    <View
+                        android:id="@+id/revealIconBg"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/bg_dot_solid"/>
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_sparkles"
+                        android:contentDescription="@null"/>
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/tvRevealLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/text_white"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:layout_marginBottom="12dp"
+                    tools:text="الإصرار"/>
+
+                <TextView
+                    android:id="@+id/tvRevealParaphrase"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:textColor="@color/text_soft"
+                    android:textSize="14sp"
+                    android:lineSpacingMultiplier="1.3"
+                    tools:text="قلت إنك قررت تكمل رغم التعب..."/>
+            </LinearLayout>
+
+            <!-- Secondary update card -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_related_card"
+                android:padding="14dp"
+                android:layout_marginBottom="16dp">
+
+                <TextView
+                    android:id="@+id/tvSecondaryDelta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/primary_light"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    tools:text="+1"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:orientation="vertical"
+                    android:gravity="end">
+
+                    <TextView
+                        android:id="@+id/tvSecondaryTitle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:textColor="@color/text_white"
+                        android:textStyle="bold"
+                        android:textSize="14sp"
+                        tools:text="كمان لاحظنا: التعاطف تكررت مرة إضافية"/>
+
+                    <TextView
+                        android:id="@+id/tvSecondaryNote"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="end"
+                        android:textColor="@color/text_soft"
+                        android:textSize="11sp"
+                        tools:text="تكررت الإشارة لاهتمامك بصديقك"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Related traits toggle -->
+            <LinearLayout
+                android:id="@+id/btnToggleRelated"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:background="@drawable/bg_related_card"
+                android:padding="14dp"
+                android:layout_marginBottom="16dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/ivRelatedChevron"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:src="@drawable/ic_chevron_down"
+                    android:contentDescription="@null"/>
+
+                <TextView
+                    android:id="@+id/tvRelatedToggleLabel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="12dp"
+                    android:gravity="end"
+                    android:textColor="@color/text_white"
+                    android:textStyle="bold"
+                    android:textSize="14sp"
+                    tools:text="🌱 صفات تانية ممكن تطورها بما إن عندك &quot;الإصرار&quot;"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llRelatedTraits"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"/>
+
+            <TextView
+                android:id="@+id/btnViewInBank"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_button_primary_16"
+                android:text="@string/view_in_bank"
+                android:textColor="@color/text_white"
+                android:textStyle="bold"
+                android:textSize="16sp"
+                android:gravity="center"
+                android:padding="14dp"
+                android:layout_marginBottom="10dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/btnLater"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/later_btn"
+                android:textColor="@color/text_soft"
+                android:textSize="11sp"
+                android:padding="8dp"
+                android:clickable="true"
+                android:focusable="true"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

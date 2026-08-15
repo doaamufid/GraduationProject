@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center">
+
+    <View
+        android:id="@+id/dotColor"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:background="@drawable/bg_dot_solid"
+        tools:background="#5B8FD1"/>
+
+    <TextView
+        android:id="@+id/tvDotLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:textColor="@color/text_white"
+        android:textStyle="bold"
+        android:textSize="28sp"
+        android:visibility="gone"
+        tools:text="الصبر"/>
+
+</LinearLayout>

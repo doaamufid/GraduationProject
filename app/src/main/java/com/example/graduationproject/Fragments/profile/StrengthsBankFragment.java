@@ -168,20 +168,20 @@ public class StrengthsBankFragment extends Fragment {
     private void bindTraitCard(View card, Trait trait, ProfileNavigator activity) {
         boolean expanded = trait.id.equals(expandedId);
 
-        LinearLayout header = card.findViewById(R.id.card_header);
-        ImageView chevron = card.findViewById(R.id.img_chevron);
-        TextView selfAdded = card.findViewById(R.id.txt_self_added);
-        TextView label = card.findViewById(R.id.txt_trait_label);
-        View colorDot = card.findViewById(R.id.dot_trait_color);
-        TextView quote = card.findViewById(R.id.txt_trait_quote);
-        TextView count = card.findViewById(R.id.txt_trait_count);
-        LinearLayout dotsContainer = card.findViewById(R.id.progress_dots_container);
-        View expandedBox = card.findViewById(R.id.card_expanded);
-        LinearLayout evidenceList = card.findViewById(R.id.evidence_list);
+        LinearLayout header = card.findViewById(R.id.btnHeader);
+        ImageView chevron = card.findViewById(R.id.ivChevron);
+        TextView selfAdded = card.findViewById(R.id.tvSelfAddedBadge);
+        TextView label = card.findViewById(R.id.tvTraitLabel);
+        View colorDot = card.findViewById(R.id.dotColor);
+        TextView quote = card.findViewById(R.id.tvQuote);
+        TextView count = card.findViewById(R.id.tvCount);
+        LinearLayout dotsContainer = card.findViewById(R.id.llProgressDots);
+        View expandedBox = card.findViewById(R.id.groupExpanded);
+        LinearLayout evidenceList = card.findViewById(R.id.llEvidence);
         View exerciseBox = card.findViewById(R.id.exercise_box);
         TextView exerciseLabel = card.findViewById(R.id.txt_exercise_label);
-        TextView exerciseText = card.findViewById(R.id.txt_exercise_text);
-        TextView btnStart = card.findViewById(R.id.btn_start_exercise);
+        TextView exerciseText = card.findViewById(R.id.tvExerciseText);
+        TextView btnStart = card.findViewById(R.id.btnStartExercise);
 
         chevron.setRotation(expanded ? 180f : 0f);
         selfAdded.setVisibility(trait.selfAdded ? View.VISIBLE : View.GONE);
@@ -200,8 +200,8 @@ public class StrengthsBankFragment extends Fragment {
             evidenceList.removeAllViews();
             for (TraitEvidence e : trait.evidence) {
                 View row = LayoutInflater.from(requireContext()).inflate(R.layout.item_evidence_row, evidenceList, false);
-                ((TextView) row.findViewById(R.id.txt_evidence_ctx)).setText(e.ctx);
-                ((TextView) row.findViewById(R.id.txt_evidence_when)).setText(e.when);
+                ((TextView) row.findViewById(R.id.tvCtx)).setText(e.ctx);
+                ((TextView) row.findViewById(R.id.tvWhen)).setText(e.when);
                 evidenceList.addView(row);
             }
 

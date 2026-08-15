@@ -233,6 +233,7 @@
     <string name="strengths_title">My Bank</string>
     <string name="strengths_bank_heading">Strengths Bank</string>
     <string name="strengths_bank_sub">Extracted by AI from your conversations</string>
+    <string name="header_title">My Bank</string>
     <string name="traits_discovered_fmt">%1$d traits discovered</string>
     <string name="add_trait_button">Add Trait</string>
     <string name="best_this_month">Highlights This Month</string>
@@ -475,4 +476,93 @@
 
     <string name="layers_section_title">Sound Layers · LAYERS</string>
     <string name="layer_percent_format">%1$d%%</string>
+    <string name="discovered_count_format">%1$d</string>
+    <string name="discovered_label">Trait discovered</string>
+    <string name="bank_title">Your Strength Bank</string>
+    <string name="bank_sub">The light we discovered in your words and details</string>
+    <string name="last_analysis">Last personality reflection: 2 days ago</string>
+
+    <string name="add_trait_btn">Add Your Own Touch</string>
+    <string name="highlight_this_month">The Best of You This Month</string>
+
+    <string name="count_times_format">%1$d times</string>
+    <string name="badge_self_added">Added by you</string>
+    <string name="badge_new">New</string>
+    <string name="evidence_title">When did this trait appear?</string>
+    <string name="start_btn">Start</string>
+    <string name="exercise_tag">Exercise</string>
+
+
+
+    <!-- Add trait dialog -->
+    <string name="add_trait_title">Add a trait you noticed in yourself</string>
+
+    <string name="save_trait_btn">Save Trait</string>
+    <string name="default_self_note">You noticed it in yourself today</string>
+    <string name="default_self_ctx">Added manually</string>
+    <string name="default_self_when">Today</string>
+    <string name="default_self_exercise">Reflect on another situation where you showed this trait</string>
+
+    <!-- Analysis result screen -->
+    <string name="source_format">From %1$s conversation · %2$s (%3$s)</string>
+    <string name="discovered_new_trait">✨ We discovered a new trait!</string>
+    <string name="secondary_update_format">We also noticed: %1$s appeared one more time</string>
+    <string name="related_toggle_format">🌱 Other traits you could develop since you have "%1$s"</string>
+    <string name="view_in_bank">View in My Bank</string>
+    <string name="later_btn">Later</string>
+
+    <!-- Toasts -->
+    <string name="toast_no_new_conversations">No new conversations to analyze right now</string>
+
+    <string name="toast_started_exercise_format">Exercise started: %1$s...</string>
+
+    <!-- Traits -->
+    <string name="trait_patience">Patience</string>
+    <string name="trait_courage">Courage</string>
+    <string name="trait_empathy">Empathy</string>
+    <string name="trait_persistence">Persistence</string>
+    <string name="trait_discipline">Discipline</string>
+    <string name="trait_confidence">Self-Confidence</string>
+    <string name="trait_resilience">Resilience</string>
+
+    <!-- Content -->
+    <string name="patience_quote">Despite everything, you kept going</string>
+    <string name="patience_exercise">Write about another situation where you were patient despite the difficulty</string>
+    <string name="patience_evidence_1">In a conversation about work pressure</string>
+    <string name="patience_evidence_2">In a conversation about waiting for an important result</string>
+    <string name="patience_evidence_3">In a conversation about a family conflict</string>
+
+    <string name="courage_quote">You spoke about your feelings with courage</string>
+    <string name="courage_exercise">Write about another situation where you were brave</string>
+    <string name="courage_evidence_1">In a conversation about your fears for the future</string>
+    <string name="courage_evidence_2">In a conversation about a difficult decision you made</string>
+
+    <string name="empathy_quote">Your care for others is clear</string>
+    <string name="empathy_exercise">Write a short message of support to someone you care about</string>
+    <string name="empathy_evidence_1">In a conversation about a friend going through a difficult time</string>
+    <string name="empathy_evidence_2">In a conversation about your family</string>
+
+    <string name="persistence_paraphrase">You said you decided to keep going despite being tired, and this is the first time we\'ve clearly noticed this pattern.</string>
+    <string name="persistence_exercise">Write about another situation where you persisted despite the difficulty</string>
+
+    <string name="discipline_reason">Persistence is often accompanied by discipline — your ability to stick to a routine even when you don\'t feel motivated.</string>
+    <string name="discipline_suggestion">Set a small goal each day and stick with it for a full week</string>
+
+    <string name="confidence_reason">Every time you persist and keep going, you build tangible evidence that you\'re capable — and that strengthens your self-confidence over time.</string>
+    <string name="confidence_suggestion">Write down 3 small achievements you accomplished through persistence this week</string>
+
+    <string name="resilience_reason">Healthy persistence requires flexibility — knowing when to adjust your plan instead of repeating the same approach that isn\'t working.</string>
+    <string name="resilience_suggestion">Think of a situation where you changed your plan instead of giving up</string>
+
+    <string name="empathy_note">Your care for your friend came up repeatedly</string>
+
+    <string name="last_week">Last Tuesday</string>
+    <string name="one_week_ago">A week ago</string>
+    <string name="two_weeks_ago">Two weeks ago</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="four_days_ago">4 days ago</string>
+    <string name="today">Today</string>
+    <string name="three_days_ago">3 days ago</string>
+    <string name="sunday_date">Sunday, July 5</string>
+    <string name="pm_time">11:40 PM</string>
 </resources>
