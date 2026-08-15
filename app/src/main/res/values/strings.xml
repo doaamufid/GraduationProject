@@ -564,5 +564,33 @@
     <string name="sunday_date">الأحد ٥ يوليو</string>
     <string name="pm_time">١١:٤٠ م</string>
 
+
+    <string name="welcome_title">أهلاً بك في سلام</string>
+    <string name="welcome_subtitle">خلنا نتعرف عليك شوي قبل ما نبدأ رحلتك</string>
+
+    <string name="name_label">اسمك أو اسم مستعار</string>
+    <string name="name_hint_sign_up">اختياري — سرّك بينك وبين سلام</string>
+
+    <string name="age_label">الفئة العمرية</string>
+
+    <string name="gender_label">الجنس</string>
+    <string name="gender_female">أنثى</string>
+    <string name="gender_male">ذكر</string>
+    <string name="gender_female_symbol">♀️</string>
+    <string name="gender_male_symbol">♂️</string>
+
+    <string name="privacy_note_sign_up">هذي المعلومات تُطلب مرة وحدة بس، وتساعدنا نخصص تجربتك 🔒</string>
+
+    <string name="continue_button">متابعة</string>
+
+    <string-array name="age_ranges">
+        <item>١٨-٢٤</item>
+        <item>٢٥-٣٤</item>
+        <item>٣٥-٤٤</item>
+        <item>٤٥-٥٤</item>
+        <item>٥٥+</item>
+    </string-array>
+
+
 </resources>
 

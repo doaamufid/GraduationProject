@@ -131,6 +131,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".AdultSignupActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ui.AISuggestionsActivity"
             android:exported="false" />
 
