@@ -21,17 +21,19 @@
         app:layout_constraintEnd_toEndOf="parent" />
 
     <!-- 2. زر الرجوع في أقصى اليمين متناسق تماماً مع نظام RTL -->
-    <ImageView
+    <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
+        android:layout_width="34dp"
+        android:layout_height="34dp"
         android:src="@drawable/outline_arrow_forward_24"
-        android:padding="4dp"
-        android:layout_marginEnd="16dp"
-        android:background="?attr/selectableItemBackgroundBorderless"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:padding="8dp"
+        android:layout_marginStart="16dp"
+        app:tint="@color/text_main"
+        android:background="@drawable/bg_icon_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/headerBackground"
-        app:layout_constraintBottom_toBottomOf="@+id/headerBackground" />
+        app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
+        android:contentDescription="رجوع" />
 
     <!-- 3. عنوان الصفحة "مساحة الهدوء" في منتصف الهيدر تماماً بالمقاس واللون الموحد -->
     <TextView
@@ -94,16 +96,14 @@
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="2dp" />
 
-            <EditText
-                android:id="@+id/etSearch"
+            <!-- Search Bar Redesign -->
+            <include
+                android:id="@+id/layoutSearchBarIncluded"
+                layout="@layout/view_search_bar"
                 android:layout_width="match_parent"
-                android:layout_height="48dp"
+                android:layout_height="wrap_content"
                 android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
-                android:background="@android:drawable/editbox_background_normal"
-                android:hint="ابحث في المكتبة..."
-                android:paddingHorizontal="16dp"
-                android:textSize="14sp" />
+                android:layout_marginTop="16dp" />
 
             <HorizontalScrollView
                 android:id="@+id/horizontalScrollCategories"
@@ -120,44 +120,60 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal">
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnFilterAll"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="38dp"
                         android:text="الكل"
-                        android:backgroundTint="#3A74B8"
-                        android:textColor="#FFFFFF"
+                        app:backgroundTint="#1A3A74B8"
+                        android:textColor="#3A74B8"
                         android:textSize="13sp"
+                        app:cornerRadius="19dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
                         android:layout_marginEnd="8dp"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnFilterSleep"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="38dp"
                         android:text="النوم"
-                        android:backgroundTint="#1A3A74B8"
+                        app:backgroundTint="#1A3A74B8"
                         android:textColor="#3A74B8"
                         android:textSize="13sp"
+                        app:cornerRadius="19dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
                         android:layout_marginEnd="8dp"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnFilterBreathing"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="38dp"
                         android:text="التنفس"
-                        android:backgroundTint="#1A3A74B8"
+                        app:backgroundTint="#1A3A74B8"
                         android:textColor="#3A74B8"
                         android:textSize="13sp"
+                        app:cornerRadius="19dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
                         android:layout_marginEnd="8dp"/>
 
-                    <Button
+                    <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnFilterCbt"
+                        style="@style/Widget.MaterialComponents.Button.UnelevatedButton"
                         android:layout_width="wrap_content"
                         android:layout_height="38dp"
                         android:text="CBT"
-                        android:backgroundTint="#1A3A74B8"
+                        app:backgroundTint="#1A3A74B8"
                         android:textColor="#3A74B8"
                         android:textSize="13sp"
+                        app:cornerRadius="19dp"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
                         android:layout_marginEnd="8dp"/>
                 </LinearLayout>
             </HorizontalScrollView>

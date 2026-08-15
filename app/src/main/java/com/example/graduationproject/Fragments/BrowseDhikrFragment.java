@@ -23,7 +23,7 @@ public class BrowseDhikrFragment extends Fragment {
 
     private final SurvivalBoxRepository repo = SurvivalBoxRepository.getInstance();
     private RecyclerView recyclerView;
-    private TextView tvEmpty;
+    private View layoutEmptyState;
     private DhikrAdapter adapter;
 
     @Nullable
@@ -33,7 +33,7 @@ public class BrowseDhikrFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_browse_list, container, false);
 
         ImageButton btnAdd = new ImageButton(requireContext());
-        btnAdd.setBackgroundResource(R.drawable.bg_icon_circle_primary);
+        btnAdd.setBackgroundResource(R.drawable.bg_icon_button);
         btnAdd.setImageResource(R.drawable.ic_plus);
         int pad = (int) (8 * getResources().getDisplayMetrics().density);
         btnAdd.setPadding(pad, pad, pad, pad);
@@ -47,7 +47,8 @@ public class BrowseDhikrFragment extends Fragment {
                 () -> requireActivity().getSupportFragmentManager().popBackStack(), btnAdd);
 
         recyclerView = root.findViewById(R.id.recyclerView);
-        tvEmpty = root.findViewById(R.id.tvEmpty);
+        layoutEmptyState = root.findViewById(R.id.layoutEmptyState);
+        TextView tvEmpty = root.findViewById(R.id.tvEmpty);
         tvEmpty.setText(getString(R.string.empty_dhikr));
 
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
@@ -61,12 +62,19 @@ public class BrowseDhikrFragment extends Fragment {
                 });
 
         render();
+
+        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
+            v.setPadding(0, 0, 0, systemBars.bottom);
+            return insets;
+        });
+
         return root;
     }
 
     private void render() {
         boolean empty = repo.getDhikr().isEmpty();
-        tvEmpty.setVisibility(empty ? View.VISIBLE : View.GONE);
+        layoutEmptyState.setVisibility(empty ? View.VISIBLE : View.GONE);
         recyclerView.setVisibility(empty ? View.GONE : View.VISIBLE);
         adapter.notifyDataSetChanged();
     }

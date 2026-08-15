@@ -93,8 +93,12 @@ public class AddLoveDialogFragment extends BottomSheetDialogFragment {
     }
 
     private void renderSourceToggle() {
-        btnSourceSelf.setSelected(LoveItem.SOURCE_SELF.equals(source));
-        btnSourceOther.setSelected(LoveItem.SOURCE_OTHER.equals(source));
+        boolean self = LoveItem.SOURCE_SELF.equals(source);
+        btnSourceSelf.setSelected(self);
+        btnSourceOther.setSelected(!self);
+
+        btnSourceSelf.setTextColor(getResources().getColor(self ? R.color.white : R.color.text_main));
+        btnSourceOther.setTextColor(getResources().getColor(!self ? R.color.white : R.color.text_main));
     }
 
     private void renderSaveEnabled() {

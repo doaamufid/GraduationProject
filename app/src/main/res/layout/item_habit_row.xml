@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:textColor="@color/text_main"
             android:textStyle="bold"
-            android:textSize="13sp"
+            android:textSize="16sp"
             tools:text="شرب ماء كافي"/>
 
         <LinearLayout
@@ -74,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_soft"
-                android:textSize="10sp"
+                android:textSize="12sp"
                 tools:text="٩ يوم متتالي"/>
         </LinearLayout>
     </LinearLayout>
@@ -95,7 +95,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="20sp"
             tools:text="\uD83D\uDCA7"/>
     </FrameLayout>
 

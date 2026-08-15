@@ -19,6 +19,8 @@ lottie = "6.4.0"
 rive = "11.8.0"
 
 [libraries]
+rive-android = { group = "app.rive", name = "rive-android", version.ref = "rive" }
+lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -40,9 +42,7 @@ ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
 material3 = { group = "androidx.compose.material3", name = "material3" }
 flexbox = { group = "com.google.android.flexbox", name = "flexbox", version.ref = "flexbox" }
-lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
-rive-android = { group = "app.rive", name = "rive-android", version.ref = "rive" }
-
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+

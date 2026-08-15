@@ -3,6 +3,7 @@ package com.example.graduationproject.ui;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -44,6 +45,7 @@ public class AISuggestionsActivity extends AppCompatActivity {
         View root = findViewById(android.R.id.content);
         FadeUtils.screenFade(root);
 
+        animateHeader();
         renderList();
 
         btnAddSelected.setOnClickListener(v -> {
@@ -57,10 +59,35 @@ public class AISuggestionsActivity extends AppCompatActivity {
         });
     }
 
+    private void animateHeader() {
+        View topBar = findViewById(R.id.topBar);
+        View banner = findViewById(R.id.banner);
+        
+        topBar.setAlpha(0f);
+        topBar.setTranslationY(-20f);
+        banner.setAlpha(0f);
+        banner.setTranslationY(20f);
+        btnAddSelected.setAlpha(0f);
+        btnAddSelected.setTranslationY(50f);
+
+        topBar.animate().alpha(1f).translationY(0f).setDuration(400).start();
+        banner.animate().alpha(1f).translationY(0f).setDuration(500).setStartDelay(100).start();
+        btnAddSelected.animate().alpha(1f).translationY(0f).setDuration(500).setStartDelay(400).start();
+    }
+
     private void renderList() {
         llSuggestions.removeAllViews();
-        for (Suggestion s : repo.getSuggestions()) {
-            llSuggestions.addView(buildSuggestionRow(s));
+        List<Suggestion> suggestions = repo.getSuggestions();
+        for (int i = 0; i < suggestions.size(); i++) {
+            Suggestion s = suggestions.get(i);
+            View row = buildSuggestionRow(s);
+            
+            // Staggered entrance for items
+            row.setAlpha(0f);
+            row.setTranslationY(30f);
+            row.animate().alpha(1f).translationY(0f).setDuration(400).setStartDelay(200 + (i * 100L)).start();
+            
+            llSuggestions.addView(row);
         }
         renderFooter();
     }

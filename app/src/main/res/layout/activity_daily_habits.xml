@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
@@ -12,6 +13,7 @@
 
         <!-- ===================== TOP BAR ===================== -->
         <LinearLayout
+            android:id="@+id/topBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -21,10 +23,21 @@
             android:paddingTop="14dp"
             android:paddingBottom="10dp">
 
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@drawable/bg_icon_button"
+                android:src="@drawable/outline_arrow_forward_24"
+                android:padding="8dp"
+                app:tint="@color/text_main"
+                android:contentDescription="رجوع" />
+
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:layout_marginStart="12dp"
                 android:orientation="vertical"
                 android:gravity="end">
 
@@ -34,7 +47,7 @@
                     android:text="@string/main_title_habits"
                     android:textColor="@color/text_main"
                     android:textStyle="bold"
-                    android:textSize="15sp"/>
+                    android:textSize="18sp"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -42,7 +55,7 @@
                     android:text="@string/main_sub_habits"
                     android:textColor="@color/text_soft"
                     android:alpha="0.6"
-                    android:textSize="11sp"/>
+                    android:textSize="13sp"/>
             </LinearLayout>
         </LinearLayout>
 
@@ -84,7 +97,7 @@
                             android:layout_weight="1"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:textSize="14sp"
+                            android:textSize="17sp"
                             tools:text="١/٣"
                             xmlns:tools="http://schemas.android.com/tools"/>
 
@@ -94,7 +107,7 @@
                             android:text="@string/completed_today"
                             android:textColor="@color/white"
                             android:textStyle="bold"
-                            android:textSize="13sp"/>
+                            android:textSize="16sp"/>
                     </LinearLayout>
 
                     <FrameLayout
@@ -137,7 +150,7 @@
                         android:text="@string/suggest_habits"
                         android:textColor="@color/text_main"
                         android:textStyle="bold"
-                        android:textSize="13sp"/>
+                        android:textSize="16sp"/>
 
                     <ImageView
                         android:layout_width="16dp"
@@ -180,7 +193,7 @@
                         android:text="@string/add_manually"
                         android:textColor="@color/text_soft"
                         android:textStyle="bold"
-                        android:textSize="13sp"/>
+                        android:textSize="16sp"/>
                 </LinearLayout>
 
             </LinearLayout>

@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.graduationproject.OnHomeItemClickListener;
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.HomeAction;
+import com.facebook.shimmer.ShimmerFrameLayout;
 
 import java.util.List;
 
@@ -40,15 +41,27 @@ public class HomeActionAdapter extends RecyclerView.Adapter<HomeActionAdapter.Ac
         HomeAction action = actionList.get(position);
 
         holder.ivIcon.setImageResource(action.getIcon());
-        holder.ivIcon.setBackgroundResource(action.getIconBackground());
         holder.tvTitle.setText(action.getTitle());
         holder.tvSubtitle.setText(action.getSubtitle());
 
-        holder.itemView.setOnClickListener(v -> {
-            if (listener != null) {
-                listener.onClick(holder.getAdapterPosition());
-            }
-        });
+        // Shimmer library handles animation automatically if auto-start is true in XML
+        if (holder.shimmerView != null) {
+            holder.shimmerView.startShimmer();
+        }
+
+        View.OnClickListener clickListener = v -> {
+            v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(150).withEndAction(() -> {
+                v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(150).start();
+                if (listener != null) {
+                    listener.onClick(holder.getAdapterPosition());
+                }
+            }).start();
+        };
+
+        holder.itemView.setOnClickListener(clickListener);
+        if (holder.btnStart != null) {
+            holder.btnStart.setOnClickListener(clickListener);
+        }
     }
 
     @Override
@@ -61,12 +74,16 @@ public class HomeActionAdapter extends RecyclerView.Adapter<HomeActionAdapter.Ac
         ImageView ivIcon;
         TextView tvTitle;
         TextView tvSubtitle;
+        ShimmerFrameLayout shimmerView;
+        View btnStart;
 
         public ActionViewHolder(@NonNull View itemView) {
             super(itemView);
             ivIcon = itemView.findViewById(R.id.ivActionIcon);
             tvTitle = itemView.findViewById(R.id.tvActionTitle);
             tvSubtitle = itemView.findViewById(R.id.tvActionSubtitle);
+            shimmerView = itemView.findViewById(R.id.shimmerView);
+            btnStart = itemView.findViewById(R.id.btnStartAction);
         }
     }
 }

@@ -2,30 +2,23 @@ package com.example.graduationproject;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
-import androidx.fragment.app.Fragment;
 
-import com.example.graduationproject.Fragments.profile.BalancedThoughtsFragment;
-import com.example.graduationproject.Fragments.profile.ChildDetailFragment;
-import com.example.graduationproject.Fragments.profile.ChildProfilesFragment;
-import com.example.graduationproject.Fragments.profile.FutureMessagesFragment;
-import com.example.graduationproject.Fragments.profile.ProfileHomeFragment;
-import com.example.graduationproject.Fragments.profile.StrengthsBankFragment;
 import com.example.graduationproject.bottomNavFragments.ExercisesFragment;
 import com.example.graduationproject.bottomNavFragments.HomeFragment;
 import com.example.graduationproject.Fragments.CrisisModeFragment;
 import com.example.graduationproject.databinding.ActivityMainBinding;
 
-public class MainActivity extends AppCompatActivity implements ProfileNavigator {
+public class MainActivity extends AppCompatActivity {
     private final int defaultBottomNavigationItem = R.id.nav_home;
     ActivityMainBinding binding;
 
@@ -35,54 +28,13 @@ public class MainActivity extends AppCompatActivity implements ProfileNavigator 
         fragment.show(getSupportFragmentManager(), "crisis_mode");
     }
 
-    public void showToast(String message) {
-        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
-    }
-
-    public void showHome() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frameLayout, new ProfileHomeFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-
-    public void showChildren() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frameLayout, new ChildProfilesFragment())
-                .addToBackStack(null)
-                .commit();
-    }
-
-    public void showChildDetail(long id) {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frameLayout, ChildDetailFragment.newInstance(id))
-                .addToBackStack(null)
-                .commit();
-    }
-
-    public void navigate(String key) {
-        Fragment fragment = null;
-        switch (key) {
-            case "children": fragment = new ChildProfilesFragment(); break;
-            case "thoughts": fragment = new BalancedThoughtsFragment(); break;
-            case "strengths": fragment = new StrengthsBankFragment(); break;
-            case "messages": fragment = new FutureMessagesFragment(); break;
-        }
-        if (fragment != null) {
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frameLayout, fragment)
-                    .addToBackStack(null)
-                    .commit();
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // ضبط لون شريط الحالة ليتناسق مع واجهة الرئيسية (أزرق فاتح)
+        // ضبط لون شريط الحالة ليتناسق مع واجهة الرئيسية (اللون الأزرق الفاتح)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(Color.parseColor("#E1F1FF"));
+            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg));
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
             }
@@ -147,9 +99,6 @@ public class MainActivity extends AppCompatActivity implements ProfileNavigator 
                 // فتح صفحة رفيقي (ChatActivity) كـ Activity منفصلة
                 startActivity(new Intent(this, ChatActivity.class));
                 return false; // نرجع false لكي لا يتم اختيار العنصر بصرياً في الشريط السفلي إذا كنت تفضل ذلك، أو true إذا أردت بقاء الاختيار عليه
-            } else if (itemId == R.id.nav_profile) {
-                startActivity(new Intent(this, AdultProfileActivity.class));
-                return false;
             }
             return true;
         });
