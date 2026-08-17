@@ -673,5 +673,63 @@
     <string name="source_written">كُتبت الآن</string>
     <string name="thought_from_chat">لا أحد يهتم بي وداءماً أنا اللي أعاني لوحدي</string>
 
+    <string name="wall_title">رسائل من قلوب طيبة</string>
+    <string name="wall_sub">كلام كتبه ناس زيك لبعض</string>
+    <string name="top_impact">الأكثر أثراً</string>
+    <string name="fab_share">شارك كلمة تشجيع</string>
+    <string name="community_person">شخص من المجتمع</string>
+
+    <string name="compose_title">شارك كلمة تشجيع</string>
+    <string name="compose_hint_top">اكتب كلمة ممكن تخفف عن حد ثاني اليوم — كلامك بيوصل بدون اسمك.</string>
+    <string name="compose_placeholder">اكتب رسالتك هنا...</string>
+    <string name="compose_category_label">التصنيف</string>
+    <string name="compose_add_image">أضف صورة (اختياري)</string>
+    <string name="compose_emoji_added">رمز مضاف لرسالتك</string>
+    <string name="compose_emoji_add">ضيف رمز لطيف لرسالتك (اختياري)</string>
+    <string name="compose_submit">أرسل للمراجعة</string>
+
+    <string name="analyzing_title">نتأكد إن رسالتك تناسب المجتمع...</string>
+    <string name="analyzing_sub">هذي خطوة تلقائية بسيطة، بتاخذ لحظات بس</string>
+
+    <string name="approved_title">نُشرت رسالتك!</string>
+    <string name="approved_sub">الآن ممكن كلامك يخفف عن حد ثاني اليوم</string>
+    <string name="approved_cta">شوف رسائل ثانية</string>
+
+    <string name="rejected_title_crisis">نحس إن هالكلام يستاهل اهتمام أكثر</string>
+    <string name="rejected_title_normal">ما قدرنا ننشر رسالتك</string>
+    <string name="rejected_cta_crisis">تكلم مع رفيق سلام الآن</string>
+    <string name="rejected_cta_edit">عدّل الرسالة</string>
+    <string name="rejected_back">رجوع</string>
+
+    <string name="reason_crisis">لاحظنا كلامك يعبّر عن ألم كبير — هذا يستاهل دعم مباشر لك أنت، مو نشره للعموم.</string>
+    <string name="reason_contact">رسالتك فيها معلومة تواصل شخصية (رقم أو حساب) — لحماية خصوصيتك وخصوصية الكل، ما ننشر هذي التفاصيل.</string>
+    <string name="reason_negative">رسالتك فيها كلام قاسي ما يتماشى مع روح المجتمع الداعمة هنا.</string>
+    <string name="reason_short">رسالتك قصيرة شوي — جربي تفصّلين أكثر عشان تأثيرها يكون أقوى.</string>
+
+    <string name="mine_title">رسائلي</string>
+    <string name="mine_empty_title">لسا ما شاركت شي</string>
+    <string name="mine_empty_body">أول كلمة تشجيع تكتبها بتظهر هنا بعد ما توافق عليها المراجعة</string>
+
+    <string name="pinned_title">المحفوظات</string>
+    <string name="pinned_empty_title">ما حفظت شي بعد</string>
+    <string name="pinned_empty_body">اضغط أيقونة الحفظ على أي رسالة عجبتك عشان ترجع لها بسهولة</string>
+
+    <string name="toast_pinned">انحفظت — بتلقاها في المحفوظات</string>
+    <string name="toast_unpinned">انحذفت من المحفوظات</string>
+    <string name="toast_copied">تم نسخ الرسالة، جاهزة ترسلها لصديق</string>
+    <string name="toast_copy_fail">ما قدرنا ننسخ الرسالة، جرب مرة ثانية</string>
+
+    <string name="cat_all">الكل</string>
+    <string name="milestone_reached">لمست</string>
+
+    <string name="posted_time_ago">منذ يومين</string>
+    <string name="posted_just_now">منذ قليل</string>
+
+    <string name="cd_back">رجوع</string>
+    <string name="cd_pin">احفظ الرسالة</string>
+    <string name="cd_share">شارك الرسالة</string>
+    <string name="cd_remove_image">إزالة الصورة</string>
+    <string name="choose_card_color">اختر لون البطاقة</string>
+
 </resources>
 
