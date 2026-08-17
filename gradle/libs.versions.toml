@@ -18,10 +18,12 @@ flexbox = "3.0.0"
 lottie = "6.4.0"
 rive = "11.8.0"
 androidx-core-ktx = "1.15.0"
+glide = "4.16.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidx-core-ktx" }
 rive-android = { group = "app.rive", name = "rive-android", version.ref = "rive" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
 lottie = { group = "com.airbnb.android", name = "lottie", version.ref = "lottie" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }

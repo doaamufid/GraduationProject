@@ -9,12 +9,14 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.Category;
+import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
 
     private List<Category> categories;
     private OnCategoryClickListener listener;
+    private String selectedCategoryName;
 
     public interface OnCategoryClickListener {
         void onCategoryClick(Category category);
@@ -23,6 +25,23 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     public CategoryAdapter(List<Category> categories, OnCategoryClickListener listener) {
         this.categories = categories;
         this.listener = listener;
+    }
+
+    public CategoryAdapter(String[] categoryNames, String selected, OnCategoryClickListener listener) {
+        this.categories = new ArrayList<>();
+        for (int i = 0; i < categoryNames.length; i++) {
+            this.categories.add(new Category(i, categoryNames[i], categoryNames[i].equals(selected)));
+        }
+        this.selectedCategoryName = selected;
+        this.listener = listener;
+    }
+
+    public void setSelected(String categoryName) {
+        this.selectedCategoryName = categoryName;
+        for (Category cat : categories) {
+            cat.setSelected(cat.getName().equals(categoryName));
+        }
+        notifyDataSetChanged();
     }
 
     @NonNull
@@ -37,7 +56,6 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         Category category = categories.get(position);
         holder.tvCategoryName.setText(category.getName());
 
-        // تغيير مظهر التبويب بناءً على حالته (محدد أم لا)
         if (category.isSelected()) {
             holder.tvCategoryName.setBackgroundResource(R.drawable.bg_timer_chip_selected);
             holder.tvCategoryName.setTextColor(Color.WHITE);
@@ -47,11 +65,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         }
 
         holder.itemView.setOnClickListener(v -> {
-            // إلغاء تحديد العنصر القديم وتحديد الجديد
             for (Category cat : categories) {
                 cat.setSelected(false);
             }
             category.setSelected(true);
+            selectedCategoryName = category.getName();
             notifyDataSetChanged();
 
             if (listener != null) {
