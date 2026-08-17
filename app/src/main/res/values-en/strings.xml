@@ -925,5 +925,64 @@
     <string name="language_title">Language</string>
     <string name="continue_label">Continue</string>
     <string name="chat_item_voice_message_android_text_0">00:00</string>
-</resources>
+    <!-- Voice Sheet -->
+    <string name="kids_chat_sheet_cancel">Cancel</string>
+    <string name="kids_chat_sheet_speak_hint">Say what you feel, I am listening 🧸</string>
+    <string name="kids_chat_sheet_done">Done</string>
+    <string name="kids_chat_toast_sending">Sending audio to AI for analysis...</string>
+    <!-- Tree Screens Texts (English) -->
+    <string name="tree_back">Back</string>
+    <string name="tree_title">Recovery Tree</string>
+    <string name="tree_today_points">Today: %d points</string>
+    <string name="tree_points_subtitle">Breathing • Chat • Journal</string>
+    <string name="tree_stage_tree_title">Your tree is in the tree stage</string>
+    <string name="tree_stage_3_of_4">Stage 3 of 4</string>
+    <string name="tree_progress_percent">🌱 68% growth in tree stage</string>
+    <string name="tree_btn_daily_actions">What did you achieve today 🌱</string>
+    <string name="tree_achievements">Achievements</string>
+    <string name="badge_meditator">Meditator</string>
+    <string name="badge_daily">Daily</string>
+    <string name="badge_consistent">Consistent</string>
 
+    <string name="tree_intro_title">This is your tree! 🌱</string>
+    <string name="tree_intro_description">Every time you breathe, remember, or write your feelings,\nyour tree grows little by little — come see how far\nit has grown!</string>
+    <string name="tree_intro_btn">Let\'s check it out! 🌳</string>
+
+    <string name="tree_level_up_growth">🌱 68% growth in tree stage</string>
+    <string name="tree_level_up_subtitle">Your tree grew because of every exercise you did 💚</string>
+    <string name="tree_level_up_btn">Great job! 🌟</string>
+    <string name="tree_points_added">You added + %d points!</string>
+    <string name="see_your_tree">See how your tree has grown! 🌳</string>
+    <!-- Bottom Sheet النصوص الخاصة بـ -->
+    <string name="what_did_you_achieve_today">What did you achieve today? 🌱</string>
+    <string name="breathing_exercise">Breathing exercise 💨 (+10 points)</string>
+    <string name="chat_with_friend">Chat with your friend 💬 (+10 points)</string>
+    <string name="write_journal">Write a journal 📝 (+10 points)</string>
+
+    <!-- Dialog النصوص الخاصة بـ -->
+    <string name="daily_badge_title">Daily</string>
+    <string name="daily_badge_desc">Logged in every day</string>
+    <string name="badge_unlocked_message">⭐ Nour is proud of you! You earned it today</string>
+    <string name="close">Close</string>
+    <string name="badge_meditator_title">Meditator</string>
+    <string name="badge_meditator_desc">Completed meditation and breathing exercises</string>
+
+    <string name="badge_consistent_title">Consistent</string>
+    <string name="badge_consistent_desc">Keep logging your daily activities</string>
+    <string name="badge_consistent_locked_status">🔒 Complete 7 consecutive days to unlock!</string>
+
+    <string name="stage_seed_title">Seed</string>
+    <string name="stage_seed_desc">Beginning of the growth journey</string>
+    <string name="stage_achieved_status">Achieved with your effort!</string>
+
+    <string name="stage_sprout_title">Sprout</string>
+    <string name="stage_sprout_desc">Your tree is starting to branch out</string>
+
+    <string name="stage_tree_title">Tree</string>
+    <string name="stage_tree_desc">A big tree for everyone to see!</string>
+    <string name="stage_current_status">You are currently in this stage!</string>
+
+    <string name="stage_fruit_tree_title">Fruit Tree</string>
+    <string name="stage_fruit_tree_desc">Highest growth stage of the recovery tree</string>
+    <string name="stage_fruit_tree_locked_status">🔒 Needs 50 points to reach!</string>
+</resources>

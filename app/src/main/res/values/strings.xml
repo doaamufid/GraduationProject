@@ -993,5 +993,60 @@
     <string name="kids_chat_sheet_speak_hint">قول اللي حاسس فيه، وأنا أسمعك 🧸</string>
     <string name="kids_chat_sheet_done">خلصت</string>
     <string name="kids_chat_toast_sending">جاري إرسال الصوت للتحليل بواسطة الـ AI...</string>
+    <!-- Tree Screens Texts -->
+    <string name="tree_back">رجوع</string>
+    <string name="tree_title">شجرة التعافي</string>
+    <string name="tree_today_points">اليوم: %d نقطة</string>
+    <string name="tree_points_subtitle">تنفس • محادثة • يوميات</string>
+    <string name="tree_stage_tree_title">شجرتك في مرحلة شجرة</string>
+    <string name="tree_stage_3_of_4">المرحلة 3 من 4</string>
+    <string name="tree_progress_percent">🌱 68% نمو مرحلة شجرة</string>
+    <string name="tree_btn_daily_actions">شو انجزت اليوم؟ 🌱</string>
+    <string name="tree_achievements">الإنجازات المحققة</string>
+    <string name="badge_meditator">مُتأمل</string>
+    <string name="badge_daily">يومي</string>
+    <string name="badge_consistent">مستمر</string>
+
+    <string name="tree_intro_title">هذي شجرتك! 🌱</string>
+    <string name="tree_intro_description">كل مرة تتنفس، تتذكر، أو تكتب مشاعرك،\nشجرتك تكبر شوي شوي — تعالي شوفي وين\nوصلت!</string>
+    <string name="tree_intro_btn">يلا نشوفها! 🌳</string>
+
+    <string name="tree_level_up_growth">🌱 68% نمو مرحلة شجرة</string>
+    <string name="tree_level_up_subtitle">شجرتك كبرت بسبب كل تمرين سويته 💚</string>
+    <string name="tree_level_up_btn">يعطيك العافية! 🌟</string>
+    <string name="tree_points_added">أضفت + %d نقاط!</string>
+    <string name="see_your_tree">شوف شجرتك كيف كبرت! 🌳</string>
+    <!-- النصوص الخاصة بـ Bottom Sheet -->
+    <string name="what_did_you_achieve_today">شو أنجزت اليوم؟ 🌱</string>
+    <string name="breathing_exercise">تمرين تنفس 💨 (+10 نقاط)</string>
+    <string name="chat_with_friend">محادثة مع صديقك 💬 (+10 نقاط)</string>
+    <string name="write_journal">كتابة يوميات 📝 (+10 نقاط)</string>
+
+    <!-- النصوص الخاصة بـ Dialog -->
+    <string name="daily_badge_title">يومي</string>
+    <string name="daily_badge_desc">دخلت كل يوم</string>
+    <string name="badge_unlocked_message">⭐ نور فخور فيك! حصلتها اليوم</string>
+    <string name="close">إغلاق</string>
+    <string name="badge_meditator_title">مُتأمل</string>
+    <string name="badge_meditator_desc">أكملت تمارين التأمل والتنفس</string>
+
+    <string name="badge_consistent_title">مستمر</string>
+    <string name="badge_consistent_desc">استمر في تسجيل الأنشطة يومياً</string>
+    <string name="badge_consistent_locked_status">🔒 كَمِّل 7 أيام متتالية لفتحها!</string>
+
+    <string name="stage_seed_title">بذرة</string>
+    <string name="stage_seed_desc">بداية رحلة النمو والتعافي</string>
+    <string name="stage_achieved_status">تحققت بجميل إنجازاتك!</string>
+
+    <string name="stage_sprout_title">برعم</string>
+    <string name="stage_sprout_desc">شجرتك بدأت تتفرع وتكبر</string>
+
+    <string name="stage_tree_title">شجرة</string>
+    <string name="stage_tree_desc">شجرة كبيرة يشوفها الكل!</string>
+    <string name="stage_current_status">أنت في هذه المرحلة حالياً!</string>
+
+    <string name="stage_fruit_tree_title">شجرة مثمرة</string>
+    <string name="stage_fruit_tree_desc">أعلى مراحل نمو شجرة التعافي</string>
+    <string name="stage_fruit_tree_locked_status">🔒 تحتاج 50 نقطة لوصولها!</string>
 </resources>
 

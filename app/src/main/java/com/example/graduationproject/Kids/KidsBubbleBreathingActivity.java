@@ -60,12 +60,23 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
-
-        binding.btnDone.setOnClickListener(v -> {
-            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsAiChatActivity.class);
+        binding.btnGoToTree.setOnClickListener(v -> {
+            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeIntroActivity.class);
             startActivity(intent);
             finish();
         });
+// عند الضغط على زر "خلص، أنا أحسن الحين"
+        binding.btnDone.setOnClickListener(v -> {
+            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeIntroActivity.class);
+            startActivity(intent);
+            finish(); // لإغلاق شاشة التنفس بعد الانتقال
+        });
+
+//        binding.btnDone.setOnClickListener(v -> {
+//            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsAiChatActivity.class);
+//            startActivity(intent);
+//            finish();
+//        });
 
         binding.btnBack.setOnClickListener(v -> finish());
 
@@ -191,6 +202,7 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         binding.btnPrimary.setVisibility(View.GONE);
         binding.actionsRow.setVisibility(View.VISIBLE);
     }
+
 
     private void resetExercise() {
         showWelcomeState();

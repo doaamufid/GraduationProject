@@ -27,17 +27,17 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="🌱 68% نمو مرحلة شجرة"
-    android:textColor="#FFFFFF"
-    android:textSize="24sp"
-    android:textStyle="bold" />
+        android:text="@string/tree_level_up_growth"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="شجرتك كبرت بسبب كل تمرين سويته 💚"
+        android:text="@string/tree_level_up_subtitle"
         android:textColor="#A3B18A"
         android:textSize="15sp" />
 
@@ -47,7 +47,7 @@
         android:layout_height="56dp"
         android:layout_marginTop="50dp"
         android:backgroundTint="#FFFFFF"
-        android:text="يعطيك العافية! 🌟"
+        android:text="@string/tree_level_up_btn"
         android:textColor="#3A5A40"
         android:textSize="16sp"
         android:textStyle="bold"

@@ -16,21 +16,23 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <!-- زر الرجوع الموحد لشاشات الأطفال -->
             <ImageButton
                 android:id="@+id/btnBack"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
-                android:background="?attr/selectableItemBackgroundBorderless"
-                android:contentDescription="رجوع"
-                android:src="@android:drawable/ic_menu_close_clear_cancel"
+                android:background="@drawable/bg_icon_button"
+                android:contentDescription="@string/tree_back"
+                android:padding="10dp"
+                android:src="@drawable/outline_arrow_forward_24"
                 app:tint="#3A5A40" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerInParent="true"
-                android:text="شجرة التعافي"
+                android:text="@string/tree_title"
                 android:textColor="#3A5A40"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -54,7 +56,7 @@
                     android:id="@+id/tvPointsCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="اليوم: 30 نقطة"
+                    android:text="@string/tree_today_points"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -63,7 +65,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="تنفس • محادثة • يوميات"
+                    android:text="@string/tree_points_subtitle"
                     android:textColor="#E0E0E0"
                     android:textSize="12sp" />
             </LinearLayout>
@@ -96,7 +98,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="شجرتك في مرحلة شجرة"
+                    android:text="@string/tree_stage_tree_title"
                     android:textColor="#3A5A40"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -105,7 +107,7 @@
                     android:id="@+id/tvStageSubtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="المرحلة 3 من 4"
+                    android:text="@string/tree_stage_3_of_4"
                     android:textColor="#888888"
                     android:textSize="11sp" />
 
@@ -173,7 +175,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="🌱 68% نمو مرحلة شجرة"
+                    android:text="@string/tree_progress_percent"
                     android:textColor="#588157"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -187,7 +189,7 @@
             android:layout_height="54dp"
             android:layout_marginTop="16dp"
             android:backgroundTint="#3A5A40"
-            android:text="شو انجزت اليوم؟ 🌱"
+            android:text="@string/tree_btn_daily_actions"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold"
@@ -197,7 +199,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
-            android:text="الإنجازات المحققة"
+            android:text="@string/tree_achievements"
             android:textColor="#3A5A40"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -229,7 +231,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="مُتأمل"
+                    android:text="@string/badge_meditator"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -253,7 +255,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="يومي"
+                    android:text="@string/badge_daily"
                     android:textSize="12sp" />
             </LinearLayout>
 
@@ -277,7 +279,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="مستمر"
+                    android:text="@string/badge_consistent"
                     android:textSize="12sp" />
             </LinearLayout>
         </LinearLayout>

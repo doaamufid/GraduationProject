@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="24dp"
+    android:background="#FFFFFF">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="شو انجزت اليوم؟ 🌱"
+        android:textColor="#3A5A40"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
+        android:id="@+id/btnActionBreath"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="تمرين تنفس 🫁 (+10 نقاط)"
+        android:backgroundTint="#E8F5E9"
+        android:textColor="#2E7D32"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnActionChat"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="محادثة مع صديقك 💬 (+10 نقاط)"
+        android:backgroundTint="#E8F5E9"
+        android:textColor="#2E7D32"
+        android:layout_marginBottom="10dp"/>
+
+    <Button
+        android:id="@+id/btnActionJournal"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="كتابة يوميات 📖 (+10 نقاط)"
+        android:backgroundTint="#E8F5E9"
+        android:textColor="#2E7D32"/>
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/what_did_you_achieve_today" />
+</LinearLayout>

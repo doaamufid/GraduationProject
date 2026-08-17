@@ -44,15 +44,12 @@
 
         <activity
             android:name=".Kids.ChildProfilesActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:exported="false" >
+
         </activity>
 
         <activity
-            android:name=".HealingEnvActivity"
+            android:name=".HealingEnvironmentActivity"
             android:exported="false" />
 
         <activity
@@ -108,7 +105,10 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true" >
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
 
         <activity
@@ -210,6 +210,15 @@
             android:name=".ui.MainActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".Kids.KidsTreeIntroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsTreeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsTreeLevelUpActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

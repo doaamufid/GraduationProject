@@ -26,6 +26,8 @@ public class KidsTreeActivity extends AppCompatActivity {
         binding = ActivityKidsTreeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        updatePointsDisplay();
+
         binding.btnBack.setOnClickListener(v -> finish());
         binding.btnOpenDailyActions.setOnClickListener(v -> showActionsBottomSheet());
 
@@ -33,35 +35,88 @@ public class KidsTreeActivity extends AppCompatActivity {
         setupStageClickListeners();
     }
 
+    private void updatePointsDisplay() {
+        binding.tvPointsCount.setText(getString(R.string.tree_today_points, currentPoints));
+    }
+
     private void setupBadgeClickListeners() {
         binding.badgeYawmi.setOnClickListener(v ->
-                showDetailDialog("⭐", "يومي", "دخلت كل يوم", "⭐ نور فخور فيك! حصلتها اليوم", "#FFF9C4", "#F57F17")
+                showDetailDialog(
+                        "⭐",
+                        getString(R.string.daily_badge_title),
+                        getString(R.string.daily_badge_desc),
+                        getString(R.string.badge_unlocked_message),
+                        "#FFF9C4",
+                        "#F57F17"
+                )
         );
 
         binding.badgeMotamel.setOnClickListener(v ->
-                showDetailDialog("🧠", "مُتأمل", "أكملت تمارين التأمل والتنفس", "⭐ نور فخور فيك! حصلتها اليوم", "#E8F5E9", "#2E7D32")
+                showDetailDialog(
+                        "🧠",
+                        getString(R.string.badge_meditator_title),
+                        getString(R.string.badge_meditator_desc),
+                        getString(R.string.badge_unlocked_message),
+                        "#E8F5E9",
+                        "#2E7D32"
+                )
         );
 
         binding.badgeMostamer.setOnClickListener(v ->
-                showDetailDialog("🔒", "مستمر", "استمر في تسجيل الأنشطة يومياً", "🔒 كَمِّل 7 أيام متتالية لفتحها!", "#E0E0E0", "#616161")
+                showDetailDialog(
+                        "🔒",
+                        getString(R.string.badge_consistent_title),
+                        getString(R.string.badge_consistent_desc),
+                        getString(R.string.badge_consistent_locked_status),
+                        "#E0E0E0",
+                        "#616161"
+                )
         );
     }
 
     private void setupStageClickListeners() {
         binding.stage1Icon.setOnClickListener(v ->
-                showDetailDialog("🌱", "بذرة", "بداية رحلة النمو والتعافي", "تحققت بجميل إنجازاتك!", "#E8F5E9", "#2E7D32")
+                showDetailDialog(
+                        "🌱",
+                        getString(R.string.stage_seed_title),
+                        getString(R.string.stage_seed_desc),
+                        getString(R.string.stage_achieved_status),
+                        "#E8F5E9",
+                        "#2E7D32"
+                )
         );
 
         binding.stage2Icon.setOnClickListener(v ->
-                showDetailDialog("🌿", "برعم", "شجرتك بدأت تتفرع وتكبر", "تحققت بجميل إنجازاتك!", "#E8F5E9", "#2E7D32")
+                showDetailDialog(
+                        "🌿",
+                        getString(R.string.stage_sprout_title),
+                        getString(R.string.stage_sprout_desc),
+                        getString(R.string.stage_achieved_status),
+                        "#E8F5E9",
+                        "#2E7D32"
+                )
         );
 
         binding.stage3Icon.setOnClickListener(v ->
-                showDetailDialog("🌳", "شجرة", "شجرة كبيرة يشوفها الكل!", "أنت في هذه المرحلة حالياً!", "#E8F5E9", "#2E7D32")
+                showDetailDialog(
+                        "🌳",
+                        getString(R.string.stage_tree_title),
+                        getString(R.string.stage_tree_desc),
+                        getString(R.string.stage_current_status),
+                        "#E8F5E9",
+                        "#2E7D32"
+                )
         );
 
         binding.stage4Icon.setOnClickListener(v ->
-                showDetailDialog("🔒", "شجرة مثمرة", "أعلى مراحل نمو شجرة التعافي", "🔒 تحتاج 50 نقطة لوصولها!", "#E0E0E0", "#616161")
+                showDetailDialog(
+                        "🔒",
+                        getString(R.string.stage_fruit_tree_title),
+                        getString(R.string.stage_fruit_tree_desc),
+                        getString(R.string.stage_fruit_tree_locked_status),
+                        "#E0E0E0",
+                        "#616161"
+                )
         );
     }
 
@@ -88,6 +143,8 @@ public class KidsTreeActivity extends AppCompatActivity {
         statusBox.setBackgroundColor(Color.parseColor(bgColorHex));
         tvStatus.setTextColor(Color.parseColor(textColorHex));
 
+        btnClose.setText(R.string.close);
+
         btnClose.setOnClickListener(v -> dialog.dismiss());
         dialog.show();
     }
@@ -96,6 +153,11 @@ public class KidsTreeActivity extends AppCompatActivity {
         BottomSheetDialog dialog = new BottomSheetDialog(this);
         BottomSheetKidsActionsBinding sheetBinding = BottomSheetKidsActionsBinding.inflate(getLayoutInflater());
         dialog.setContentView(sheetBinding.getRoot());
+
+        sheetBinding.tvTitle.setText(R.string.what_did_you_achieve_today);
+        sheetBinding.btnActionBreath.setText(R.string.breathing_exercise);
+        sheetBinding.btnActionChat.setText(R.string.chat_with_friend);
+        sheetBinding.btnActionJournal.setText(R.string.write_journal);
 
         sheetBinding.btnActionBreath.setOnClickListener(v -> {
             addPoints(10);
@@ -117,8 +179,8 @@ public class KidsTreeActivity extends AppCompatActivity {
 
     private void addPoints(int points) {
         currentPoints += points;
-        binding.tvPointsCount.setText("اليوم: " + currentPoints + " نقطة");
-        Toast.makeText(this, "أضفت + " + points + " نقاط!", Toast.LENGTH_SHORT).show();
+        updatePointsDisplay();
+        Toast.makeText(this, getString(R.string.tree_points_added, points), Toast.LENGTH_SHORT).show();
 
         if (currentPoints >= 50) {
             Intent intent = new Intent(KidsTreeActivity.this, KidsTreeLevelUpActivity.class);

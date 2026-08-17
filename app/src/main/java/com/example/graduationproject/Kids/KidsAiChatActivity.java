@@ -70,7 +70,6 @@ public class KidsAiChatActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
 
-
         ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -82,14 +81,13 @@ public class KidsAiChatActivity extends AppCompatActivity {
     }
 
     private void startEntranceAnimations() {
-        // Initial State
         binding.tvBearAvatar.setScaleX(0f);
         binding.tvBearAvatar.setScaleY(0f);
         binding.tvNourBadge.setAlpha(0f);
         binding.tvNourBadge.setTranslationY(20f);
         binding.tvQuestionTitle.setAlpha(0f);
         binding.tvQuestionTitle.setTranslationY(30f);
-        
+
         for (int i = 0; i < binding.gridMoods.getChildCount(); i++) {
             View child = binding.gridMoods.getChildAt(i);
             child.setAlpha(0f);
@@ -102,7 +100,6 @@ public class KidsAiChatActivity extends AppCompatActivity {
         binding.btnTalkNour.setAlpha(0f);
         binding.btnTalkNour.setTranslationY(80f);
 
-        // Sequence
         AnimatorSet mascotPop = new AnimatorSet();
         mascotPop.playTogether(
                 ObjectAnimator.ofFloat(binding.tvBearAvatar, "scaleX", 0f, 1f),
@@ -179,19 +176,30 @@ public class KidsAiChatActivity extends AppCompatActivity {
         binding.btnRecordMic.setOnClickListener(v -> checkPermissionAndShowRecordingSheet());
         binding.btnTalkNour.setOnClickListener(v -> processAiRequest());
 
+        // خيار 1: خذ نفس معي
         binding.btnActionBreath.setOnClickListener(v -> {
             Intent intent = new Intent(KidsAiChatActivity.this, KidsBubbleBreathingActivity.class);
             startActivity(intent);
         });
 
-        binding.btnActionBetter.setOnClickListener(v -> finish());
-        
+        // خيار 2: خلص، أنا أحسن الحين -> الانتقال إلى شاشة الشجرة
+        binding.btnActionBetter.setOnClickListener(v -> navigateToTreeScreen());
+
+        // خيار 3: شوف شجرتك كيف كبرت! 🌳 -> الانتقال المباشر للشجرة
+        binding.btnGoToTree.setOnClickListener(v -> navigateToTreeScreen());
+
         for (int i = 0; i < binding.gridMoods.getChildCount(); i++) {
             View child = binding.gridMoods.getChildAt(i);
             child.setOnClickListener(v -> {
                 v.animate().scaleX(0.9f).scaleY(0.9f).setDuration(100).withEndAction(() -> v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(100).start()).start();
             });
         }
+    }
+
+    private void navigateToTreeScreen() {
+        Intent intent = new Intent(KidsAiChatActivity.this, KidsTreeIntroActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     private void animateStateTransition(View outView, View inView) {
@@ -218,7 +226,7 @@ public class KidsAiChatActivity extends AppCompatActivity {
             binding.groupInputState.setVisibility(View.VISIBLE);
             binding.tvNourBadge.setVisibility(View.VISIBLE);
             binding.btnTalkNour.setVisibility(View.VISIBLE);
-            
+
             binding.groupInputState.setAlpha(0f);
             binding.groupInputState.setTranslationX(-200f);
             binding.groupInputState.animate().alpha(1f).translationX(0f).setDuration(300).start();

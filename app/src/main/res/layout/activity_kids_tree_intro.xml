@@ -13,14 +13,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="🦊\n🌱"
         android:gravity="center"
+        android:text="🦊\n🌱"
         android:textSize="70sp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="هذي شجرتك! 🌱"
+        android:text="@string/tree_intro_title"
         android:textColor="#3A5A40"
         android:textSize="22sp"
         android:textStyle="bold" />
@@ -31,7 +31,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:lineSpacingExtra="4dp"
-        android:text="كل مرة تتنفس، تتذكر، أو تكتب مشاعرك،\nشجرتك تكبر شوي شوي — تعالي شوفي وين\nوصلت!"
+        android:text="@string/tree_intro_description"
         android:textColor="#588157"
         android:textSize="15sp" />
 
@@ -41,7 +41,7 @@
         android:layout_height="54dp"
         android:layout_marginTop="36dp"
         android:backgroundTint="#3A5A40"
-        android:text="يلا نشوفها! 🌳"
+        android:text="@string/tree_intro_btn"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"
