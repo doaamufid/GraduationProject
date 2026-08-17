@@ -17,10 +17,86 @@ import com.example.graduationproject.bottomNavFragments.ExercisesFragment;
 import com.example.graduationproject.bottomNavFragments.HomeFragment;
 import com.example.graduationproject.Fragments.CrisisModeFragment;
 import com.example.graduationproject.databinding.ActivityMainBinding;
+import com.example.graduationproject.models.Message;
+import com.example.graduationproject.ui.AnalyzingFragment;
+import com.example.graduationproject.ui.ApprovedFragment;
+import com.example.graduationproject.ui.ComposeFragment;
+import com.example.graduationproject.ui.ListFragment;
+import com.example.graduationproject.ui.RejectedFragment;
+import com.example.graduationproject.ui.WallFragment;
+import com.example.graduationproject.util.CardHost;
+import android.widget.FrameLayout;
+import android.content.ClipboardManager;
+import android.content.ClipData;
+import android.content.Context;
 
-public class MainActivity extends AppCompatActivity {
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
+
+public class MainActivity extends AppCompatActivity implements CardHost {
     private final int defaultBottomNavigationItem = R.id.nav_home;
     ActivityMainBinding binding;
+
+    @Override
+    public FrameLayout getToastOverlay() {
+        // Return a FrameLayout that can be used for custom toasts if available, 
+        // or just a container from your layout.
+        return findViewById(R.id.frameLayout); 
+    }
+
+    @Override
+    public void copyToClipboard(String text) {
+        ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+        ClipData clip = ClipData.newPlainText("Copied Text", text);
+        clipboard.setPrimaryClip(clip);
+        Toast.makeText(this, "تم النسخ!", Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onPinnedCountChanged() {
+        // Update UI if needed when pinned count changes
+    }
+
+    public void showAnalyzing() {
+        replaceFragment(new AnalyzingFragment());
+    }
+
+    public void showApproved(Message msg) {
+        replaceFragment(ApprovedFragment.newInstance(msg.id));
+    }
+
+    public void showRejected(String reason, boolean crisis) {
+        replaceFragment(RejectedFragment.newInstance(reason, crisis));
+    }
+
+    public void showWall(boolean addToBackstack) {
+        replaceFragment(new WallFragment(), addToBackstack);
+    }
+
+    public void showCompose() {
+        replaceFragment(new ComposeFragment());
+    }
+
+    public void showPinned() {
+        replaceFragment(ListFragment.newInstance(ListFragment.MODE_PINNED));
+    }
+
+    public void showMine() {
+        replaceFragment(ListFragment.newInstance(ListFragment.MODE_MINE));
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        replaceFragment(fragment, true);
+    }
+
+    private void replaceFragment(Fragment fragment, boolean addToBackstack) {
+        FragmentTransaction ft = getSupportFragmentManager().beginTransaction()
+                .replace(R.id.frameLayout, fragment);
+        if (addToBackstack) {
+            ft.addToBackStack(null);
+        }
+        ft.commit();
+    }
 
     /** Opens the full-screen crisis-mode overlay. */
     public void openCrisisMode() {

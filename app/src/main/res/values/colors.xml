@@ -209,4 +209,25 @@
     <color name="overlay_dark">#8C000000</color>
     <color name="badge_text">#0D1F33</color>
 
+    <color name="bgAlt">#EAF0F6</color>
+    <color name="primaryDark">#1F3A60</color>
+    <color name="text">#1F3A60</color>
+    <color name="textSoft">#5C7290</color>
+    <color name="outerBg">#E9ECF3</color>
+    <color name="white88">#E0FFFFFF</color>
+    <color name="white_cc">#CCFFFFFF</color>
+
+    <!-- Card color palette (bg / fg pairs), cycled by index -->
+    <color name="card0_bg">#E7EFF9</color>
+    <color name="card0_fg">#3A74B8</color>
+    <color name="card1_bg">#EAF1EC</color>
+    <color name="card1_fg">#8FA998</color>
+    <color name="card2_bg">#FBF0DA</color>
+    <color name="card2_fg">#A67B2E</color>
+    <color name="card3_bg">#F6E4E4</color>
+    <color name="card3_fg">#C97575</color>
+    <color name="card4_bg">#EEE6F5</color>
+    <color name="card4_fg">#8A6BAE</color>
+
+
 </resources>

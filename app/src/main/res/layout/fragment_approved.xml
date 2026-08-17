@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingHorizontal="32dp"
+    android:background="@color/bg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🎉"
+        android:textSize="46sp"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/approved_title"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="@color/text"
+        android:layout_marginBottom="4dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/approved_sub"
+        android:textSize="12sp"
+        android:textColor="@color/textSoft"
+        android:gravity="center"
+        android:layout_marginBottom="24dp" />
+
+    <FrameLayout
+        android:id="@+id/approvedCardHolder"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp" />
+
+    <Button
+        android:id="@+id/backToWallBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingVertical="15dp"
+        android:background="@drawable/bg_pill_primary"
+        android:text="@string/approved_cta"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="13sp"
+        android:stateListAnimator="@null" />
+
+</LinearLayout>

@@ -672,4 +672,62 @@
     <string name="source_written">Written now</string>
     <string name="thought_from_chat">No one cares about me and I\'m always the one suffering alone</string>
 
+    <string name="wall_title">Messages from kind hearts</string>
+    <string name="wall_sub">Words written by people like you for each other</string>
+    <string name="top_impact">Top Impact</string>
+    <string name="fab_share">Share a word of encouragement</string>
+    <string name="community_person">Community Member</string>
+
+    <string name="compose_title">Share a word of encouragement</string>
+    <string name="compose_hint_top">Write a word that might ease someone\'s day — your message will arrive without your name.</string>
+    <string name="compose_placeholder">Write your message here...</string>
+    <string name="compose_category_label">Category</string>
+    <string name="compose_add_image">Add image (optional)</string>
+    <string name="compose_emoji_added">Emoji added to your message</string>
+    <string name="compose_emoji_add">Add a cute emoji to your message (optional)</string>
+    <string name="compose_submit">Send for review</string>
+
+    <string name="analyzing_title">Ensuring your message fits the community...</string>
+    <string name="analyzing_sub">This is a simple automatic step, will only take moments</string>
+
+    <string name="approved_title">Your message is published!</string>
+    <string name="approved_sub">Now your words might ease someone else\'s day</string>
+    <string name="approved_cta">See other messages</string>
+
+    <string name="rejected_title_crisis">We feel this content needs more attention</string>
+    <string name="rejected_title_normal">We couldn\'t publish your message</string>
+    <string name="rejected_cta_crisis">Talk to a Salam companion now</string>
+    <string name="rejected_cta_edit">Edit message</string>
+    <string name="rejected_back">Back</string>
+
+    <string name="reason_crisis">We noticed your words express deep pain — this deserves direct support for you, not public sharing.</string>
+    <string name="reason_contact">Your message contains personal contact info (number or account) — to protect your privacy and everyone\'s, we don\'t publish these details.</string>
+    <string name="reason_negative">Your message contains harsh words that don\'t align with the community\'s supportive spirit here.</string>
+    <string name="reason_short">Your message is a bit short — try detailing more for a stronger impact.</string>
+
+    <string name="mine_title">My Messages</string>
+    <string name="mine_empty_title">Haven\'t shared anything yet</string>
+    <string name="mine_empty_body">Your first word of encouragement will appear here after it\'s approved by review</string>
+
+    <string name="pinned_title">Bookmarks</string>
+    <string name="pinned_empty_title">Nothing saved yet</string>
+    <string name="pinned_empty_body">Press the save icon on any message you like to return to it easily</string>
+
+    <string name="toast_pinned">Saved — find it in Bookmarks</string>
+    <string name="toast_unpinned">Removed from Bookmarks</string>
+    <string name="toast_copied">Message copied, ready to send to a friend</string>
+    <string name="toast_copy_fail">Couldn\'t copy message, try again</string>
+
+    <string name="cat_all">All</string>
+    <string name="milestone_reached">Reached</string>
+
+    <string name="posted_time_ago">Posted - 2h ago</string>
+    <string name="posted_just_now">Posted - Just now</string>
+
+    <string name="cd_back">Back</string>
+    <string name="cd_pin">Save message</string>
+    <string name="cd_share">Share message</string>
+    <string name="cd_remove_image">Remove image</string>
+    <string name="choose_card_color">Choose Card Color</string>
+
 </resources>

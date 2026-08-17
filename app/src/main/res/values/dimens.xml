@@ -29,4 +29,11 @@
 
     <dimen name="dot_size_small">6dp</dimen>
     <dimen name="dot_size_large">20dp</dimen>
+
+
+    <dimen name="radius_card">24dp</dimen>
+    <dimen name="radius_pill">999dp</dimen>
+    <dimen name="radius_medium">18dp</dimen>
+    <dimen name="spacing_screen">20dp</dimen>
+
 </resources>
