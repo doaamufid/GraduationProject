@@ -11,6 +11,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 
+import com.example.graduationproject.R;
+
 public class KidsBubbleView extends View {
     public enum Mode {
         WELCOME,
@@ -92,14 +94,20 @@ public class KidsBubbleView extends View {
     private void drawReady(Canvas canvas, float centerX, float centerY) {
         drawBubble(canvas, centerX, centerY - dp(26), dp(18));
         drawText(canvas, "🧸", centerX, centerY + dp(48), 34, "#9B6A3A");
-        drawText(canvas, "اضغط وانفخ...", centerX, centerY + dp(92), 17, "#F47C2B");
+
+        // استدعاء النص من ملف strings بدلاً من كتابته ثابتاً
+        String pressAndBlow = getContext().getString(R.string.bubble_canvas_press_blow);
+        drawText(canvas, pressAndBlow, centerX, centerY + dp(92), 17, "#F47C2B");
     }
 
     private void drawInflating(Canvas canvas, float centerX, float centerY) {
         float radius = dp(20) + progress * dp(54);
         drawBubble(canvas, centerX, centerY - dp(28), radius);
         drawText(canvas, progress > 0.55f ? "😤" : "😌", centerX, centerY + radius + dp(34), 34, "#5D4037");
-        drawText(canvas, "استمر فقاعتك تكبر! 🫧", centerX, centerY + radius + dp(72), 16, "#F47C2B");
+
+        // استدعاء النص من ملف strings
+        String keepGoing = getContext().getString(R.string.bubble_canvas_keep_going);
+        drawText(canvas, keepGoing, centerX, centerY + radius + dp(72), 16, "#F47C2B");
     }
 
     private void drawReleased(Canvas canvas, float centerX, float centerY) {
@@ -113,7 +121,10 @@ public class KidsBubbleView extends View {
     private void drawCelebration(Canvas canvas, float centerX, float centerY) {
         drawText(canvas, "✨", centerX - dp(44), centerY - dp(40), 42, "#FFC94A");
         drawText(canvas, "🧸", centerX, centerY + dp(6), 42, "#9B6A3A");
-        drawText(canvas, "طارت الفقاعة! 🌟", centerX, centerY + dp(62), 17, "#F47C2B");
+
+        // استدعاء النص من ملف strings
+        String flewAway = getContext().getString(R.string.bubble_canvas_flew_away);
+        drawText(canvas, flewAway, centerX, centerY + dp(62), 17, "#F47C2B");
     }
 
     private void drawDone(Canvas canvas, float centerX, float centerY) {

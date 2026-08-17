@@ -14,6 +14,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.graduationproject.R;
 import com.example.graduationproject.databinding.ActivityKidsBubbleBreathingBinding;
 
 public class KidsBubbleBreathingActivity extends AppCompatActivity {
@@ -50,6 +51,7 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
         binding = ActivityKidsBubbleBreathingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -84,7 +86,6 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         showWelcomeState();
     }
 
-
     private boolean handlePrimaryTouch(MotionEvent event) {
         if (completedBubbles >= TARGET_BUBBLES) {
             return false;
@@ -116,9 +117,9 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         binding.actionsRow.setVisibility(View.GONE);
         binding.btnPrimary.setVisibility(View.VISIBLE);
         binding.btnPrimary.setSelected(false);
-        binding.btnPrimary.setText("يلا نبدأ! 🫧");
-        binding.tvInstructionTitle.setText("خلنا ننفخ فقاعات سوا!");
-        binding.tvInstructionBody.setText("انفخ بفمك قدام التلفون بهدوء، وشوف الفقاعة تكبر وتطير — كل نفخة، أي حجم، تصير فقاعة حلوة!");
+        binding.btnPrimary.setText(R.string.bubble_btn_start);
+        binding.tvInstructionTitle.setText(R.string.bubble_welcome_title);
+        binding.tvInstructionBody.setText(R.string.bubble_welcome_body);
     }
 
     private void showReadyState() {
@@ -129,7 +130,7 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         binding.tvBreathHint.setVisibility(View.VISIBLE);
         binding.tvInstructionTitle.setVisibility(View.GONE);
         binding.tvInstructionBody.setVisibility(View.GONE);
-        binding.btnPrimary.setText("اضغط هنا وانفخ");
+        binding.btnPrimary.setText(R.string.bubble_btn_hold);
         updateStars();
     }
 
@@ -138,7 +139,7 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         breathProgress = 0f;
         binding.bubbleView.setProgress(breathProgress);
         binding.bubbleView.showMode(KidsBubbleView.Mode.INFLATING);
-        binding.btnPrimary.setText("استمر بالضغط...");
+        binding.btnPrimary.setText(R.string.bubble_btn_holding);
         handler.removeCallbacks(breathRunnable);
         handler.post(breathRunnable);
     }
@@ -152,7 +153,7 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         handler.removeCallbacks(breathRunnable);
         if (breathProgress < 1f) {
             binding.bubbleView.showMode(KidsBubbleView.Mode.READY);
-            binding.btnPrimary.setText("اضغط هنا وانفخ");
+            binding.btnPrimary.setText(R.string.bubble_btn_hold);
         }
     }
 
@@ -168,7 +169,7 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
             breathProgress = 0f;
             binding.bubbleView.setProgress(0f);
             binding.bubbleView.showMode(KidsBubbleView.Mode.READY);
-            binding.btnPrimary.setText("اضغط هنا وانفخ");
+            binding.btnPrimary.setText(R.string.bubble_btn_hold);
         }
     }
 
@@ -184,8 +185,8 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         binding.tvInstructionTitle.setVisibility(View.VISIBLE);
         binding.tvInstructionBody.setVisibility(View.VISIBLE);
 
-        binding.tvInstructionTitle.setText("يلا! نفخنا " + completedBubbles + " فقاعات 🎉");
-        binding.tvInstructionBody.setText("خمس نفسات هادئة، وأنت الحين أهدأ شوي");
+        binding.tvInstructionTitle.setText(getString(R.string.bubble_done_title, completedBubbles));
+        binding.tvInstructionBody.setText(R.string.bubble_done_body);
 
         binding.btnPrimary.setVisibility(View.GONE);
         binding.actionsRow.setVisibility(View.VISIBLE);

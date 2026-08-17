@@ -1,7 +1,7 @@
 package com.example.graduationproject.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -69,13 +69,29 @@ public class ChildProfilesAdapter extends RecyclerView.Adapter<RecyclerView.View
         }
 
         void bind(ChildProfile profile, int position, OnChildProfileClickListener listener) {
+            Context context = binding.getRoot().getContext();
             binding.tvChildName.setText(profile.getName());
-            binding.tvChildAge.setText(profile.getAge() + " سنوات • " + profile.getGender());
+
+            // تحويل قيمة الجنس المسجلة إلى نص مترجم تلقائياً
+            String rawGender = profile.getGender() != null ? profile.getGender().trim() : "";
+            String genderText;
+            if ("boy".equalsIgnoreCase(rawGender) || "ولد".equalsIgnoreCase(rawGender)) {
+                genderText = context.getString(R.string.gender_boy);
+            } else if ("girl".equalsIgnoreCase(rawGender) || "بنت".equalsIgnoreCase(rawGender)) {
+                genderText = context.getString(R.string.gender_girl);
+            } else {
+                genderText = rawGender;
+            }
+
+            // جلب صيغة النص المترجمة حسب لغة الجهاز (تستبدل العمر والجنس)
+            String ageAndGender = context.getString(R.string.kids_age_gender_format, profile.getAge(), genderText);
+            binding.tvChildAge.setText(ageAndGender);
+
             binding.tvAvatar.setText(profile.getAvatar());
-            binding.tvChildAge.setText(profile.getAge() + " سنوات • " + profile.getGender());
             binding.tvAvatar.setBackgroundResource(position % 2 == 0
                     ? R.drawable.bg_child_avatar_mint
                     : R.drawable.bg_child_avatar_pink);
+
             binding.cardRoot.setOnClickListener(v -> listener.onProfileClick(profile));
         }
     }

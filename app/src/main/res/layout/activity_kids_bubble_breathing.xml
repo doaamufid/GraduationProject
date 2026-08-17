@@ -6,42 +6,38 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FAF1E6"
-    android:layoutDirection="rtl"
-    android:textDirection="rtl"
     tools:context=".Kids.KidsBubbleBreathingActivity">
 
-    <!-- Back Arrow (Now pinned to Left / End in RTL) -->
-    <TextView
+    <!-- Back Arrow (جهة اليمين دائماً) -->
+    <ImageButton
         android:id="@+id/btn_back"
         android:layout_width="40dp"
         android:layout_height="40dp"
-        android:layout_marginEnd="20dp"
-        android:layout_marginTop="28dp"
-        android:background="@drawable/bg_kids_bubble_circle"
-        android:gravity="center"
-        android:text="←"
-        android:textColor="#8B6F4D"
-        android:textSize="20sp"
-        android:textStyle="bold"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/bg_icon_button"
+        android:contentDescription="@string/kids_back_btn"
+        android:padding="10dp"
+        android:src="@drawable/outline_arrow_forward_24"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#8B6F4D" />
 
-    <!-- Quiet Exit Action (Now pinned to Right / Start in RTL) -->
     <TextView
         android:id="@+id/btn_quiet_exit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:text="✕ خلص، أنا مرتاح"
+        android:layout_marginRight="20dp"
+
+        android:text="@string/bubble_quiet_exit"
         android:textColor="#8B6F4D"
         android:textSize="13sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/btn_back" />
 
-    <!-- Gameplay Indicators -->
     <LinearLayout
         android:id="@+id/layout_progress_info"
         android:layout_width="wrap_content"
@@ -68,7 +64,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
-            android:text="استخدم الزر للنفخ"
+            android:text="@string/bubble_breath_hint"
             android:textColor="#8B6F4D"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -105,7 +101,7 @@
             android:layout_marginHorizontal="20dp"
             android:layout_marginBottom="8dp"
             android:gravity="center"
-            android:text="خلنا ننفخ فقاعات سوا!"
+            android:text="@string/bubble_welcome_title"
             android:textColor="#F47C2B"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -119,7 +115,7 @@
             android:layout_marginBottom="24dp"
             android:gravity="center"
             android:lineSpacingExtra="4dp"
-            android:text="انفخ بفمك قدام التلفون بهدوء، وشوف الفقاعة تكبر وتطير — كل نفخة، أي حجم، تصير فقاعة حلوة!"
+            android:text="@string/bubble_welcome_body"
             android:textColor="#8B6F4D"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -131,7 +127,7 @@
             android:layout_height="52dp"
             android:background="@drawable/bg_kids_bubble_primary"
             android:gravity="center"
-            android:text="يلا نبدأ! 🫧"
+            android:text="@string/bubble_btn_start"
             android:textColor="#FFFFFF"
             android:textSize="17sp"
             android:textStyle="bold" />
@@ -154,7 +150,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_kids_bubble_primary"
                 android:gravity="center"
-                android:text="فقاعات ثانية 🫧"
+                android:text="@string/bubble_btn_again"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold" />
@@ -167,7 +163,7 @@
                 android:layout_weight="1"
                 android:background="@drawable/bg_kids_bubble_secondary"
                 android:gravity="center"
-                android:text="خلص كذا"
+                android:text="@string/bubble_btn_done"
                 android:textColor="#8B6F4D"
                 android:textSize="14sp"
                 android:textStyle="bold" />

@@ -55,7 +55,7 @@ public class KidsAiChatActivity extends AppCompatActivity {
             int minutes = secondsRecorded / 60;
             int secs = secondsRecorded % 60;
             if (sheetBinding != null) {
-                String formattedTime = String.format(new Locale("ar"), "%02d:%02d", minutes, secs);
+                String formattedTime = String.format(Locale.getDefault(), "%02d:%02d", minutes, secs);
                 sheetBinding.tvTimer.setText(formattedTime);
             }
             timerHandler.postDelayed(this, 1000);
@@ -68,11 +68,12 @@ public class KidsAiChatActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         binding = ActivityKidsAiChatBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
+
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom);
-            binding.btnBack.setPadding(0, systemBars.top, 0, 0);
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
@@ -270,7 +271,7 @@ public class KidsAiChatActivity extends AppCompatActivity {
             mediaRecorder.prepare();
             mediaRecorder.start();
             secondsRecorded = 0;
-            if (sheetBinding != null) sheetBinding.tvTimer.setText("٠٠:٠٠");
+            if (sheetBinding != null) sheetBinding.tvTimer.setText(String.format(Locale.getDefault(), "%02d:%02d", 0, 0));
             startTimer();
         } catch (IOException e) {
             e.printStackTrace();
@@ -297,7 +298,7 @@ public class KidsAiChatActivity extends AppCompatActivity {
     }
 
     private void sendAudioToAi(File audioFile) {
-        Toast.makeText(this, "جاري إرسال الصوت للتحليل بواسطة الـ AI...", Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, getString(R.string.kids_chat_toast_sending), Toast.LENGTH_SHORT).show();
         processAiRequest();
     }
 
@@ -343,8 +344,7 @@ public class KidsAiChatActivity extends AppCompatActivity {
                 .setDuration(600)
                 .setInterpolator(new OvershootInterpolator())
                 .start();
-
-        binding.tvAiResponseText.setText("تعبك مسموع، خذ راحتك شوي.");
+        binding.tvAiResponseText.setText(getString(R.string.kids_chat_ai_default_response));
     }
 
     @Override

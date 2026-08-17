@@ -2,6 +2,7 @@ package com.example.graduationproject.Kids;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,6 +32,7 @@ public class ChildProfilesActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         binding = ActivityChildProfilesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
         childProfileStore = new ChildProfileStore(this);
         childProfileStore.migrateFromSharedPreferencesIfNeeded(this);
 

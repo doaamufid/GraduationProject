@@ -673,6 +673,52 @@
     <string name="source_from_chat">من فضفضتك · قبل ١٠ دقائق</string>
     <string name="source_written">كُتبت الآن</string>
     <string name="thought_from_chat">لا أحد يهتم بي وداءماً أنا اللي أعاني لوحدي</string>
+    <!-- Kids Screen Translation -->
+    <string name="kids_title_select" translatable="false">مين يلعب اليوم؟</string>
+    <string name="kids_subtitle_select" translatable="false">اختر اسمك عشان نفتح شجرتك أنت</string>
+    <string name="kids_privacy_banner" translatable="false">🔒 كل طفل له شجرته ونقاطه الخاصة، ما تختلط ببعض 🔐</string>
+    <string name="kids_age_gender_format">%2$s • %1$d سنوات</string>
+    <string name="kids_back_btn" translatable="false">رجوع</string>
+    <string name="gender_boy">ولد</string>
+    <string name="gender_girl">بنت</string>
+    <string name="new_child_welcome_title">أهلاً فيك!</string>
+    <string name="new_child_welcome_subtitle">على أليُف، حابب نتعرّف عليك شوية قبل ما نبدأ</string>
+    <string name="new_child_label_name">شو تحب نناديك؟</string>
+    <string name="new_child_hint_name">اكتب اسمك أو اللقب المفضل</string>
+    <string name="new_child_label_age">كم عمرك؟</string>
+    <string name="new_child_label_gender">إنت ولد ولا بنت؟</string>
+    <string name="new_child_info_banner">راح ندخل عالم نور\nمضمون والمحادثة مناسبة لعمرك بالضبط</string>
+    <string name="new_child_btn_submit">يلا نبدأ!</string>
+    <string name="new_child_banner_subtitle">محتوى وأنشطة مناسبة لعمرك بالضبط</string>
+    <string name="new_child_banner_title">راح تدخل: عالم نور </string>
+    <string name="fill_all_fields_toast">الرجاء تعبئة كافة البيانات</string>
+    <string name="new_child_secret_note">سرك بينك وبين نور — ما نطلب اسمك الحقيقي 💛</string>
+    <string name="bubble_quiet_exit">✕ خلص، أنا مرتاح</string>
+    <string name="bubble_breath_hint">استخدم الزر للنفخ</string>
+    <string name="bubble_welcome_title">خلنا ننفخ فقاعات سوا!</string>
+    <string name="bubble_welcome_body">انفخ بفمك قدام التلفون بهدوء، وشوف الفقاعة تكبر وتطير — كل نفخة، أي حجم، تصير فقاعة حلوة!</string>
+    <string name="bubble_btn_start">يلا نبدأ! 🫧</string>
+    <string name="bubble_btn_hold">اضغط هنا وانفخ</string>
+    <string name="bubble_btn_holding">استمر بالضغط...</string>
+    <string name="bubble_btn_again">فقاعات ثانية 🫧</string>
+    <string name="bubble_btn_done">خلص كذا</string>
+    <string name="bubble_done_title">يلا! نفخنا %1$d فقاعات 🎉</string>
+    <string name="bubble_done_body">خمس نفسات هادئة، وأنت الحين أهدأ شوي</string>
+    <string name="bubble_canvas_press_blow">اضغط وانفخ...</string>
+    <string name="bubble_canvas_keep_going">استمر فقاعتك تكبر! 🫧</string>
+    <string name="bubble_canvas_flew_away">طارت الفقاعة! 🌟</string>
+    <!-- Kids AI Chat Activity -->
+    <string name="kids_chat_back_desc">رجوع</string>
+    <string name="kids_chat_nour_badge">أنا هنا أسمعك 💙</string>
+    <string name="kids_chat_question_title">كيف حالك الحين؟</string>
+
+    <!-- Moods -->
+    <string name="kids_mood_scared">خايف</string>
+    <string name="kids_mood_sad">حزين</string>
+    <string name="kids_mood_angry">زعلان</string>
+    <string name="kids_mood_confused">مش عارف</string>
+    <string name="kids_mood_tired">تعبان</string>
+    <string name="kids_mood_happy">مبسوط</string>
 
     <string name="wall_title">رسائل من قلوب طيبة</string>
     <string name="wall_sub">كلام كتبه ناس زيك لبعض</string>
@@ -926,5 +972,26 @@
     <string name="language_title">اللغة</string>
     <string name="continue_label">متابعة</string>
     <string name="chat_item_voice_message_android_text_0">00:00</string>
+    <!-- Controls & Inputs -->
+    <string name="kids_chat_press_and_talk">اضغط واحكيلي</string>
+    <string name="kids_chat_switch_to_text">أو اكتب</string>
+    <string name="kids_chat_hint_input">اكتب اللي حاسس فيه هنا...</string>
+    <string name="kids_chat_switch_to_voice">أو سجل صوتك</string>
+    <string name="kids_chat_btn_talk_nour">حكيت نور! ⭐</string>
+
+    <!-- States & Bottom Sheet -->
+    <string name="kids_chat_loading">نور يستمع لك...</string>
+    <string name="kids_chat_ai_default_response">تعبك مسموع، خذ راحتك شوي.</string>
+    <string name="kids_chat_listen_response">اسمع رد نور 🔊</string>
+    <string name="kids_chat_what_next">وش تحب تسوي الحين؟</string>
+    <string name="kids_chat_action_breath">خذ نفس معي 🫧</string>
+    <string name="kids_chat_action_draw">ارسم كيف حاسس 🎨</string>
+    <string name="kids_chat_action_better">خلص، أنا أحسن الحين 💛</string>
+
+    <!-- Voice Sheet -->
+    <string name="kids_chat_sheet_cancel">إلغاء</string>
+    <string name="kids_chat_sheet_speak_hint">قول اللي حاسس فيه، وأنا أسمعك 🧸</string>
+    <string name="kids_chat_sheet_done">خلصت</string>
+    <string name="kids_chat_toast_sending">جاري إرسال الصوت للتحليل بواسطة الـ AI...</string>
 </resources>
 

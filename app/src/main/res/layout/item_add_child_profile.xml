@@ -8,7 +8,7 @@
     android:clickable="true"
     android:focusable="true"
     android:gravity="center"
-    android:text="＋   ملف طفل جديد"
+    android:text="@string/add_child_profile"
     android:textColor="#8B6F4D"
     android:textSize="17sp"
     android:textStyle="bold" />
