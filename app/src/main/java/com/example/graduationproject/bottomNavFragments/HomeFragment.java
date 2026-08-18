@@ -27,6 +27,7 @@ import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.DailyHabitsActivity;
 import com.example.graduationproject.HealingEnvActivity;
 import com.example.graduationproject.R;
+import com.example.graduationproject.SalamCommunityActivity;
 import com.example.graduationproject.SurvivalBoxActivity;
 import com.example.graduationproject.VideoLibraryActivity;
 import com.example.graduationproject.VisualContentActivity;
@@ -158,7 +159,7 @@ public class HomeFragment extends Fragment {
         featureList.add(new HomeFeature(R.drawable.ic_heart_filled_red, R.drawable.bg_icon_pink, "مقالات", "ARTICLES"));
         featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange, "عاداتي", "HABITS"));
         featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue, "تقارير", "REPORTS"));
-        featureList.add(new HomeFeature(R.drawable.box2, R.drawable.bg_icon_purple, "صندوق النجاة", "SURVIVAL BOX"));
+        featureList.add(new HomeFeature(R.drawable.ic_users, R.drawable.bg_icon_purple, "مجتمع سلام", "COMMUNITY"));
 
         featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
             switch (position) {
@@ -177,8 +178,8 @@ public class HomeFragment extends Fragment {
                 case 4: // تقارير
                     // TODO: Implement ReportsActivity connection when ready
                     break;
-                case 5: // صندوق النجاة
-                    startActivity(new Intent(getActivity(), SurvivalBoxActivity.class));
+                case 5: // مجتمع سلام
+                    startActivity(new Intent(getActivity(), SalamCommunityActivity.class));
                     break;
             }
         });
