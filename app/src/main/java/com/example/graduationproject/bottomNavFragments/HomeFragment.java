@@ -25,7 +25,7 @@ import android.widget.TextView;
 import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.DailyHabitsActivity;
-import com.example.graduationproject.HealingEnvironmentActivity;
+import com.example.graduationproject.HealingEnvActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.SurvivalBoxActivity;
 import com.example.graduationproject.VideoLibraryActivity;
@@ -166,7 +166,7 @@ public class HomeFragment extends Fragment {
                     startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
                     break;
                 case 1:
-                    startActivity(new Intent(getActivity(), HealingEnvironmentActivity.class));
+                    startActivity(new Intent(getActivity(), HealingEnvActivity.class));
                     break;
                 case 2: // مقالات (ARTICLES)
                     startActivity(new Intent(getActivity(), ArticlesActivity.class));

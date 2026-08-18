@@ -44,7 +44,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".HealingEnvironmentActivity"
+            android:name=".HealingEnvActivity"
             android:exported="false" />
 
         <activity
