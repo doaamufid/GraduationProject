@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layoutDirection="ltr"
+    android:background="@drawable/bg_pill_dark"
+    android:elevation="8dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="6dp">
+
+    <!-- X / dismiss -->
+    <ImageButton
+        android:id="@+id/btnDismiss"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:background="@drawable/bg_circle_toolbar_btn"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="3dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_close"
+        app:tint="@color/white" />
+
+    <!-- Heart / favorite -->
+    <ImageButton
+        android:id="@+id/btnFav"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_circle_toolbar_btn"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="3dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_heart_outline"
+        app:tint="@color/white" />
+
+    <!-- Pen / note -->
+    <ImageButton
+        android:id="@+id/btnNote"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="8dp"
+        android:background="@drawable/bg_circle_toolbar_btn"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:padding="3dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_pen"
+        app:tint="@color/white" />
+
+    <!-- vertical separator -->
+    <View
+        android:layout_width="1dp"
+        android:layout_height="16dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="9dp"
+        android:background="@color/toolbar_divider" />
+
+    <!-- color dots -->
+    <ImageView
+        android:id="@+id/dotGreen"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:scaleType="fitCenter" 
+        android:src="@drawable/ic_dot_green" />
+
+    <ImageView
+        android:id="@+id/dotBlue"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="4dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_dot_blue" />
+
+    <ImageView
+        android:id="@+id/dotPurple"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="4dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_dot_purple" />
+
+    <ImageView
+        android:id="@+id/dotPink"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="4dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_dot_pink" />
+
+    <ImageView
+        android:id="@+id/dotYellow"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginHorizontal="4dp"
+        android:scaleType="fitCenter"
+        android:src="@drawable/ic_dot_yellow" />
+
+</LinearLayout>

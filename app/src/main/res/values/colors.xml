@@ -229,5 +229,45 @@
     <color name="card4_bg">#EEE6F5</color>
     <color name="card4_fg">#8A6BAE</color>
 
+    <color name="gold">#D9A85C</color>
+    <color name="rose">#D9748F</color>
+    <color name="screenBg">#E9ECF3</color>
 
+    <!-- Highlight marker colors -->
+    <color name="hl_yellow">#FFE066</color>
+    <color name="hl_pink">#FF9EC4</color>
+    <color name="hl_purple">#B69CE8</color>
+    <color name="hl_blue">#7FC8F0</color>
+    <color name="hl_green">#8FDDB0</color>
+
+    <!-- Category gradients -->
+    <color name="cat_sadness_1">#E8A3B0</color>
+    <color name="cat_sadness_2">#C97575</color>
+    <color name="cat_anxiety_1">#F0C674</color>
+    <color name="cat_anxiety_2">#D9A03C</color>
+    <color name="cat_cbt_1">#7FA8D9</color>
+    <color name="cat_cbt_2">#3A74B8</color>
+    <color name="cat_breathing_1">#A9D8EA</color>
+    <color name="cat_breathing_2">#3E86B5</color>
+    <color name="cat_breathing_3">#1F5C88</color>
+    <color name="cat_sleep_1">#B0A0E0</color>
+    <color name="cat_sleep_2">#7A5CC7</color>
+
+    <!-- Reader themes -->
+    <color name="theme_classic_bg">#FFFFFF</color>
+    <color name="theme_classic_text">#1F3A60</color>
+    <color name="theme_traditional_bg">#F5ECD9</color>
+    <color name="theme_traditional_text">#3B2E1E</color>
+    <color name="theme_night_bg">#1B1F27</color>
+    <color name="theme_night_text">#E4E7EC</color>
+    <color name="theme_night_surface">#2A2E38</color>
+    <color name="theme_typewriter_bg">#EDEAE2</color>
+    <color name="theme_typewriter_text">#2A2A2A</color>
+
+    <color name="toolbar_bg">#1F1F1F</color>
+    <color name="fav_panel_bg">#FBF1F3</color>
+    <color name="fav_panel_border">#F0D9DF</color>
+    <color name="toolbar_divider">#40FFFFFF</color>
+    <color name="white_88">#E0FFFFFF</color>
+    <color name="white_dd">#DDFFFFFF</color>
 </resources>

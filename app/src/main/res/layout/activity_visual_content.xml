@@ -51,7 +51,7 @@
             android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="محتوى مرئي"
+            android:text="@string/visual_content_title"
             android:textColor="#2D5B7B"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -61,7 +61,7 @@
             android:id="@+id/tvSubTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="استمع - Listen"
+            android:text="@string/visual_content_sub"
             android:textColor="#6F8AA8"
             android:textSize="12sp"
             android:layout_marginTop="2dp" />

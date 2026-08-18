@@ -1,186 +1,147 @@
 package com.example.graduationproject.ui;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.animation.DecelerateInterpolator;
-import android.view.animation.OvershootInterpolator;
-import android.widget.ImageView;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.R;
-import com.example.graduationproject.VideoLibraryActivity;
-import com.example.graduationproject.models.ContentItem;
-import com.example.graduationproject.models.ContentRepository;
+import com.example.graduationproject.data.AppState;
+import com.example.graduationproject.data.ArticleRepository;
+import com.example.graduationproject.models.Article;
+import com.example.graduationproject.models.ArticleCategory;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Enhanced LibraryFragment with high-fidelity cards and staggered animations.
+ * Java port of the <Library/> component: category filter chips + search + article feed.
  */
-public class LibraryFragment extends Fragment {
+public class LibraryFragment extends Fragment implements ArticleAdapter.Listener {
 
-    private String selectedCategory = "الكل";
-    private String searchQuery = "";
-    private LinearLayout llCategories;
-    private LinearLayout llItems;
+    private String activeCategory = ArticleCategory.ALL;
+    private String query = "";
+
+    private LinearLayout chipContainer;
+    private RecyclerView recyclerArticles;
+    private ArticleAdapter adapter;
+
+    public static LibraryFragment newInstance() {
+        return new LibraryFragment();
+    }
 
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
-                              @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_library, container, false);
-
-        TopBarHelper.bind(root, getString(R.string.library_title), getString(R.string.library_sub),
-                () -> {
-                    if (getActivity() != null) getActivity().onBackPressed();
-                }, null);
-
-        // Adjust TopBar colors for light background
-        TextView tvTitle = root.findViewById(R.id.tvTopBarTitle);
-        if (tvTitle != null) {
-            tvTitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.primary_dark));
-            tvTitle.setTextSize(20); // Make header slightly bigger
-        }
-        TextView tvSubtitle = root.findViewById(R.id.tvTopBarSubtitle);
-        if (tvSubtitle != null) tvSubtitle.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_soft_alt2));
-        View btnBack = root.findViewById(R.id.btnBack);
-        if (btnBack != null) {
-            btnBack.setBackgroundResource(R.drawable.bg_icon_button);
-        }
-
-        llCategories = root.findViewById(R.id.llCategories);
-        llItems = root.findViewById(R.id.llItems);
-
-        // Setup Search Bar
-        View searchLayout = root.findViewById(R.id.layoutSearchBarIncluded);
-        if (searchLayout != null) {
-            android.widget.EditText etSearch = searchLayout.findViewById(R.id.etSearch);
-            etSearch.addTextChangedListener(new android.text.TextWatcher() {
-                @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-                @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    searchQuery = s.toString();
-                    renderItems();
-                }
-                @Override public void afterTextChanged(android.text.Editable s) {}
-            });
-        }
-
-        animateEntrance();
-        buildCategoryChips();
-        renderItems();
-
-        return root;
+    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.articles_fragment_library, container, false);
     }
 
-    private void animateEntrance() {
-        llCategories.setAlpha(0f);
-        llCategories.setTranslationX(-50f);
-        llCategories.animate().alpha(1f).translationX(0f).setDuration(600).setStartDelay(200).setInterpolator(new DecelerateInterpolator()).start();
-        
-        View searchLayout = getView() != null ? getView().findViewById(R.id.layoutSearchBarIncluded) : null;
-        if (searchLayout != null) {
-            searchLayout.setAlpha(0f);
-            searchLayout.setScaleX(0.9f);
-            searchLayout.animate().alpha(1f).scaleX(1f).setDuration(600).setStartDelay(100).start();
-        }
-    }
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
 
-    private void buildCategoryChips() {
-        llCategories.removeAllViews();
-        for (String category : ContentRepository.CATEGORIES) {
-            TextView chip = (TextView) LayoutInflater.from(requireContext())
-                    .inflate(R.layout.item_category_chip, llCategories, false);
-            chip.setText(category);
-            chip.setOnClickListener(v -> {
-                selectedCategory = category;
-                renderCategoryChips();
-                renderItems();
-            });
-            llCategories.addView(chip);
-        }
-        renderCategoryChips();
-    }
+        chipContainer = view.findViewById(R.id.chipContainer);
+        recyclerArticles = view.findViewById(R.id.recyclerArticles);
+        EditText etSearch = view.findViewById(R.id.etSearch);
 
-    private void renderCategoryChips() {
-        for (int i = 0; i < llCategories.getChildCount(); i++) {
-            TextView chip = (TextView) llCategories.getChildAt(i);
-            boolean selected = chip.getText().toString().equals(selectedCategory);
-            chip.setBackgroundResource(selected ? R.drawable.bg_chip_selected : R.drawable.bg_chip_unselected);
-            int textColor = ContextCompat.getColor(requireContext(),
-                    selected ? R.color.white : R.color.text_soft_alt2);
-            chip.setTextColor(textColor);
-        }
-    }
+        recyclerArticles.setLayoutManager(new LinearLayoutManager(getContext()));
+        adapter = new ArticleAdapter(this);
+        recyclerArticles.setAdapter(adapter);
 
-    private void renderItems() {
-        llItems.removeAllViews();
-        List<ContentItem> filtered = ContentRepository.filterByCategory(selectedCategory);
-        
-        // Secondary filtering by search query
-        List<ContentItem> finalFiltered = new java.util.ArrayList<>();
-        for (ContentItem item : filtered) {
-            if (searchQuery.isEmpty() || item.title.toLowerCase().contains(searchQuery.toLowerCase())
-                    || item.src.toLowerCase().contains(searchQuery.toLowerCase())) {
-                finalFiltered.add(item);
+        buildChips();
+        refreshList();
+
+        view.findViewById(R.id.btnNotes).setOnClickListener(v -> activity().openNotes());
+        view.findViewById(R.id.btnFavArticles).setOnClickListener(v -> activity().openFavoriteArticles());
+        view.findViewById(R.id.btnBookmarkArticles).setOnClickListener(v -> activity().openBookmarkedArticles());
+
+        etSearch.addTextChangedListener(new TextWatcher() {
+            @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            @Override public void onTextChanged(CharSequence s, int start, int before, int count) {
+                query = s.toString().trim();
+                refreshList();
             }
-        }
+            @Override public void afterTextChanged(Editable s) {}
+        });
+    }
 
-        for (int i = 0; i < finalFiltered.size(); i++) {
-            ContentItem item = finalFiltered.get(i);
-            View card = LayoutInflater.from(requireContext())
-                    .inflate(R.layout.item_content_card, llItems, false);
-
-            View thumbGradient = card.findViewById(R.id.thumbGradient);
-            ImageView ivTypeIcon = card.findViewById(R.id.ivTypeIcon);
-            TextView tvDuration = card.findViewById(R.id.tvDuration);
-            TextView tvTitle = card.findViewById(R.id.tvTitle);
-            TextView tvSrc = card.findViewById(R.id.tvSrc);
-            View btnWatch = card.findViewById(R.id.btnWatch);
-
-            applyGradient(thumbGradient, item.gradStart, item.gradEnd);
-            ivTypeIcon.setImageResource(item.isVideo ? R.drawable.ic_play : R.drawable.ic_headphones);
-            tvDuration.setText(item.duration);
-            tvTitle.setText(item.title);
-            tvSrc.setText(item.src + " | " + item.type);
-
-            card.setOnClickListener(v -> {
-                if (getActivity() instanceof VideoLibraryActivity) {
-                    ((VideoLibraryActivity) getActivity()).openPlayer(item);
-                }
-            });
+    private void buildChips() {
+        chipContainer.removeAllViews();
+        for (String cat : ArticleCategory.ALL_TABS) {
+            View chipView = LayoutInflater.from(getContext())
+                    .inflate(R.layout.articles_item_category_chip, chipContainer, false);
             
-            if (btnWatch != null) {
-                btnWatch.setOnClickListener(v -> card.performClick());
-            }
+            TextView tvLabel = chipView.findViewById(R.id.txt_chip);
+            TextView tvIcon = chipView.findViewById(R.id.txt_category_icon);
+            View ring = chipView.findViewById(R.id.category_ring);
+            View container = chipView.findViewById(R.id.category_icon_container);
 
-            // Staggered Entrance Animation
-            card.setAlpha(0f);
-            card.setTranslationY(60f);
-            card.animate()
-                    .alpha(1f)
-                    .translationY(0f)
-                    .setDuration(500)
-                    .setStartDelay(300 + (i * 120L))
-                    .setInterpolator(new OvershootInterpolator(0.8f))
-                    .start();
+            tvLabel.setText(ArticleCategory.getLabel(cat));
+            tvIcon.setText(ArticleCategory.getIcon(cat));
+            
+            boolean isSelected = cat.equals(activeCategory);
+            ring.setVisibility(isSelected ? View.VISIBLE : View.GONE);
+            container.setBackgroundResource(isSelected ? 0 : R.drawable.bg_category_border);
+            tvLabel.setAlpha(isSelected ? 1.0f : 0.6f);
+            tvIcon.setAlpha(isSelected ? 1.0f : 0.8f);
 
-            llItems.addView(card);
+            chipView.setOnClickListener(v -> {
+                activeCategory = cat;
+                buildChips();
+                refreshList();
+            });
+            chipContainer.addView(chipView);
         }
     }
 
-    private void applyGradient(View view, int startColor, int endColor) {
-        android.graphics.drawable.GradientDrawable gradient = new android.graphics.drawable.GradientDrawable(
-                android.graphics.drawable.GradientDrawable.Orientation.TL_BR,
-                new int[]{startColor, endColor});
-        gradient.setCornerRadius(12 * getResources().getDisplayMetrics().density);
-        view.setBackground(gradient);
+    private void refreshList() {
+        List<Article> base = ArticleRepository.getByCategory(activeCategory);
+        if (query.isEmpty()) {
+            adapter.submitList(base);
+            return;
+        }
+        List<Article> filtered = new ArrayList<>();
+        for (Article a : base) {
+            if (a.title.contains(query) || a.author.contains(query)) filtered.add(a);
+        }
+        adapter.submitList(filtered);
+    }
+
+    private ArticlesActivity activity() {
+        return (ArticlesActivity) requireActivity();
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        // reflect any favorite/bookmark changes made from the reader while this list was backgrounded
+        if (adapter != null) adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onOpen(Article article) {
+        activity().openReader(article);
+    }
+
+    @Override
+    public void onToggleFavorite(Article article) {
+        AppState.get().toggleSaved(article.id);
+    }
+
+    @Override
+    public void onToggleBookmark(Article article) {
+        AppState.get().toggleBookmarked(article.id);
     }
 }

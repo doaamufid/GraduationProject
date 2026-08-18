@@ -96,7 +96,8 @@
     <string name="tapped_count_format">%1$d/%2$d — بس اضغطي كل ما لاحظتي شي</string>
 
     <string name="add_note_toggle">أضف ملاحظة (اختياري تماماً)</string>
-    <string name="note_hint">اكتبي أي شي إذا حبيتي...</string>
+    <string name="grounding_note_hint">اكتبي أي شي إذا حبيتي...</string>
+    <string name="note_hint">اكتب ملاحظتك هنا...</string>
 
     <string name="breathing_reminder">خذي نفساً بين كل خطوة — شهيق ٤ث · زفير ٤ث · توقف ٤ث</string>
 
@@ -178,8 +179,8 @@
     <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
     <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
 
-    <string name="library_title">محتوى مرئي</string>
-    <string name="library_sub">Listen · استمع</string>
+    <string name="visual_content_title">محتوى مرئي</string>
+    <string name="visual_content_sub">Listen · استمع</string>
 
     <string name="player_title">يشغّل الآن</string>
     <string name="why_suggested">ليش اقترحنا هذا لك؟</string>
@@ -719,7 +720,7 @@
     <string name="toast_copied">تم نسخ الرسالة، جاهزة ترسلها لصديق</string>
     <string name="toast_copy_fail">ما قدرنا ننسخ الرسالة، جرب مرة ثانية</string>
 
-    <string name="cat_all">الكل</string>
+    <string name="community_cat_all">الكل</string>
     <string name="milestone_reached">لمست</string>
 
     <string name="posted_time_ago">منذ يومين</string>
@@ -730,6 +731,78 @@
     <string name="cd_share">شارك الرسالة</string>
     <string name="cd_remove_image">إزالة الصورة</string>
     <string name="choose_card_color">اختر لون البطاقة</string>
+
+    <string name="library_title">مكتبة المقالات الذكية</string>
+    <string name="library_sub">المقالات · ARTICLES</string>
+    <string name="search_hint">ابحث في المكتبة...</string>
+    <string name="read_now">قراءة الآن</string>
+
+    <string name="library_cat_all">الكل</string>
+    <string name="cat_sadness">الحزن</string>
+    <string name="cat_anxiety">القلق</string>
+    <string name="cat_cbt">CBT</string>
+    <string name="cat_breathing">التنفس</string>
+    <string name="cat_sleep">نوم</string>
+
+    <string name="my_notes_title">قائمة ملاحظاتي</string>
+    <string name="fav_articles_title">المقالات المفضلة</string>
+    <string name="bookmark_articles_title">المقالات المحفوظة</string>
+
+    <string name="tab_favorites">المفضلة</string>
+    <string name="tab_notes">الملاحظات</string>
+    <string name="tab_highlights">التمييزات</string>
+
+    <string name="empty_fav_quotes">ما أضفتِ أي اقتباس للمفضلة بعد — علّمي نص داخل المقال واضغطي القلب</string>
+    <string name="empty_generic">ما فيه عناصر هنا بعد</string>
+    <string name="empty_fav_articles">ما أضفتِ أي مقالة للمفضلة بعد — اضغطي أيقونة القلب على أي مقالة</string>
+    <string name="empty_bookmark_articles">ما حفظتِ أي مقالة بعد — اضغطي أيقونة البوكمارك على أي مقالة</string>
+
+    <string name="fav_quotes_header">الاقتباسات المفضلة</string>
+
+    <string name="reading_hint">علّمي على أي جملة تلمسك لتظليلها أو كتابة ملاحظة عليها أو حفظها</string>
+    <string name="feedback_prompt">شو رأيك بهالمقالة؟</string>
+    <string name="by_author">بقلم %1$s</string>
+
+    <string name="reading_settings_title">إعدادات القراءة</string>
+    <string name="page_appearance">مظهر الصفحة</string>
+    <string name="font_size">حجم الخط</string>
+    <string name="font_weight">سماكة الخط</string>
+    <string name="normal_weight">عادي</string>
+    <string name="bold_weight">عريض</string>
+    <string name="brightness">سطوع الشاشة</string>
+
+    <string name="theme_classic">كلاسيكي</string>
+    <string name="theme_traditional">تقليدي</string>
+    <string name="theme_night">ليلي</string>
+    <string name="theme_typewriter">آلة كاتبة</string>
+
+    <string name="articles_note_hint">اكتبي خاطرة، سبب التظليل، أو أي شي يفيدك لاحقاً...</string>
+    <string name="save_note">حفظ الملاحظة</string>
+    <string name="highlight_color">لون التظليل</string>
+    <string name="saving">جارِ الحفظ...</string>
+    <string name="saved_check">تم الحفظ ✓</string>
+    <string name="your_note">ملاحظتك</string>
+    <string name="highlight_on">مفعّل</string>
+    <string name="highlight_off">غير مفعّل</string>
+    <string name="highlight_prefix">التظليل %1$s</string>
+
+    <string name="toast_liked">سجّلنا إعجابك — بنقترح مقالات مشابهة أكثر</string>
+    <string name="toast_highlighted">تم التظليل ✨</string>
+    <string name="toast_saved_fav">تمت الإضافة للمفضلة ❤️</string>
+    <string name="toast_highlight_deleted">تم حذف التظليل</string>
+
+    <string name="menu_highlight_yellow">تظليل أصفر</string>
+    <string name="menu_highlight_pink">تظليل وردي</string>
+    <string name="menu_highlight_purple">تظليل بنفسجي</string>
+    <string name="menu_highlight_blue">تظليل أزرق</string>
+    <string name="menu_highlight_green">تظليل أخضر</string>
+    <string name="menu_write_note">أضف ملاحظة</string>
+    <string name="menu_save_quote">أضف إلى المفضلة</string>
+
+    <string name="rate_label">التقييم</string>
+    <string name="duration_label">المدة</string>
+    <string name="rating_label">التقييم</string>
+    <string name="exercises_label">تمارين</string>
 
 </resources>
 
