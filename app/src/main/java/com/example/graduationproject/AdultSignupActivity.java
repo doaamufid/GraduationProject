@@ -59,7 +59,7 @@ public class AdultSignupActivity extends AppCompatActivity {
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         getWindow().setNavigationBarColor(Color.TRANSPARENT);
         
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_adult_sign_up);
 
         ageRanges = getResources().getStringArray(R.array.age_ranges);
 

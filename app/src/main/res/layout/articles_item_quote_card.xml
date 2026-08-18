@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bg_card_shape"
+    android:paddingStart="4dp"
+    android:paddingEnd="14dp"
+    android:paddingVertical="14dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <!-- rose accent bar -->
+        <View
+            android:layout_width="4dp"
+            android:layout_height="match_parent"
+            android:background="@color/rose" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="10dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="6dp">
+
+                <ImageButton
+                    android:id="@+id/btnDelete"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:padding="6dp"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:src="@drawable/ic_trash"
+                    android:contentDescription="@android:string/cancel" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:gravity="start"
+                    android:textColor="@color/textSoft"
+                    android:textSize="9sp"
+                    android:id="@+id/tvDate"
+                    tools:text="الآن"
+                    xmlns:tools="http://schemas.android.com/tools" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvArticleTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:textColor="@color/textSoft"
+                android:textSize="9sp"
+                android:textStyle="bold"
+                tools:text="كيف تتعاملين مع الحزن بدون قمعه؟"
+                xmlns:tools="http://schemas.android.com/tools" />
+
+            <TextView
+                android:id="@+id/tvQuoteText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text"
+                android:textSize="12sp"
+                android:textStyle="bold"
+                tools:text="&quot;نص الاقتباس المحفوظ هنا&quot;"
+                xmlns:tools="http://schemas.android.com/tools" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

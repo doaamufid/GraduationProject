@@ -35,5 +35,5 @@
     <dimen name="radius_pill">999dp</dimen>
     <dimen name="radius_medium">18dp</dimen>
     <dimen name="spacing_screen">20dp</dimen>
-
+    <dimen name="radius_full">999dp</dimen>
 </resources>

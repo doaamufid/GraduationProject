@@ -95,7 +95,8 @@
     <string name="tapped_count_format">%1$d/%2$d — just tap whenever you notice something</string>
 
     <string name="add_note_toggle">Add a note (completely optional)</string>
-    <string name="note_hint">Write anything if you like...</string>
+    <string name="grounding_note_hint">Write anything if you like...</string>
+    <string name="note_hint">Write your note here...</string>
 
     <string name="breathing_reminder">Take a breath between each step — Inhale 4s · Exhale 4s · Stop 4s</string>
 
@@ -177,8 +178,8 @@
     <string name="ai_suggestions_banner">Based on your mood and recent conversations, these are habits that might help you — choose what suits you</string>
     <string name="add_selected_format">Add selected habits (%1$d)</string>
 
-    <string name="library_title">Visual Content</string>
-    <string name="library_sub">Listen · Listen</string>
+    <string name="visual_content_title">Visual Content</string>
+    <string name="visual_content_sub">Listen · Listen</string>
 
     <string name="player_title">Now Playing</string>
     <string name="why_suggested">Why did we suggest this to you?</string>
@@ -718,7 +719,7 @@
     <string name="toast_copied">Message copied, ready to send to a friend</string>
     <string name="toast_copy_fail">Couldn\'t copy message, try again</string>
 
-    <string name="cat_all">All</string>
+    <string name="community_cat_all">All</string>
     <string name="milestone_reached">Reached</string>
 
     <string name="posted_time_ago">Posted - 2h ago</string>
@@ -730,4 +731,75 @@
     <string name="cd_remove_image">Remove image</string>
     <string name="choose_card_color">Choose Card Color</string>
 
+    <string name="library_title">Smart Articles Library</string>
+    <string name="library_sub">ARTICLES</string>
+    <string name="search_hint">Search in library...</string>
+    <string name="read_now">Read Now</string>
+
+    <string name="library_cat_all">All</string>
+    <string name="cat_sadness">Sadness</string>
+    <string name="cat_anxiety">Anxiety</string>
+    <string name="cat_cbt">CBT</string>
+    <string name="cat_breathing">Breathing</string>
+    <string name="cat_sleep">Sleep</string>
+
+    <string name="my_notes_title">My Notes</string>
+    <string name="fav_articles_title">Favorite Articles</string>
+    <string name="bookmark_articles_title">Saved Articles</string>
+
+    <string name="tab_favorites">Favorites</string>
+    <string name="tab_notes">Notes</string>
+    <string name="tab_highlights">Highlights</string>
+
+    <string name="empty_fav_quotes">You haven\'t added any quotes to favorites yet — highlight text inside an article and tap the heart icon.</string>
+    <string name="empty_generic">No items here yet.</string>
+    <string name="empty_fav_articles">You haven\'t added any articles to favorites yet — tap the heart icon on any article.</string>
+    <string name="empty_bookmark_articles">You haven\'t saved any articles yet — tap the bookmark icon on any article.</string>
+
+    <string name="fav_quotes_header">Favorite Quotes</string>
+
+    <string name="reading_hint">Highlight any sentence that touches you to mark it, write a note, or save it.</string>
+    <string name="feedback_prompt">What do you think of this article?</string>
+    <string name="by_author">By %1$s</string>
+
+    <string name="reading_settings_title">Reading Settings</string>
+    <string name="page_appearance">Page Appearance</string>
+    <string name="font_size">Font Size</string>
+    <string name="font_weight">Font Weight</string>
+    <string name="normal_weight">Normal</string>
+    <string name="bold_weight">Bold</string>
+    <string name="brightness">Brightness</string>
+
+    <string name="theme_classic">Classic</string>
+    <string name="theme_traditional">Traditional</string>
+    <string name="theme_night">Night</string>
+    <string name="theme_typewriter">Typewriter</string>
+
+    <string name="articles_note_hint">Write a thought, reason for highlighting, or anything that helps you later...</string>
+    <string name="save_note">Save Note</string>
+    <string name="highlight_color">Highlight Color</string>
+    <string name="saving">Saving...</string>
+    <string name="saved_check">Saved ✓</string>
+    <string name="your_note">Your Note</string>
+    <string name="highlight_on">Enabled</string>
+    <string name="highlight_off">Disabled</string>
+    <string name="highlight_prefix">Highlight %1$s</string>
+
+    <string name="toast_liked">Liked — we\'ll suggest more articles like this.</string>
+    <string name="toast_highlighted">Highlighted ✨</string>
+    <string name="toast_saved_fav">Added to favorites ❤️</string>
+    <string name="toast_highlight_deleted">Highlight deleted</string>
+
+    <string name="menu_highlight_yellow">Highlight Yellow</string>
+    <string name="menu_highlight_pink">Highlight Pink</string>
+    <string name="menu_highlight_purple">Highlight Purple</string>
+    <string name="menu_highlight_blue">Highlight Blue</string>
+    <string name="menu_highlight_green">Highlight Green</string>
+    <string name="menu_write_note">Add Note</string>
+    <string name="menu_save_quote">Add to Favorites</string>
+
+    <string name="rate_label">rate</string>
+    <string name="duration_label">duration</string>
+    <string name="rating_label">rating</string>
+    <string name="exercises_label">Exercises</string>
 </resources>
