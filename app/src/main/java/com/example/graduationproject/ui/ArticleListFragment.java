@@ -98,13 +98,11 @@ public class ArticleListFragment extends Fragment implements ArticleAdapter.List
         recyclerArticles.setVisibility(empty ? View.GONE : View.VISIBLE);
     }
 
-    private ArticlesActivity activity() {
-        return (ArticlesActivity) requireActivity();
-    }
-
     @Override
     public void onOpen(Article article) {
-        activity().openReader(article);
+        if (getActivity() instanceof ArticlesActivity) {
+            ((ArticlesActivity) getActivity()).openReader(article);
+        }
     }
 
     @Override

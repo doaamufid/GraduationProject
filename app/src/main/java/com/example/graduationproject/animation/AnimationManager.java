@@ -77,6 +77,10 @@ public class AnimationManager {
         RiveHelper.loadAndPlay(view, rawResId);
     }
 
+    public static void playRive(RiveAnimationView view, int rawResId, String stateMachineName) {
+        RiveHelper.loadAndPlay(view, rawResId, stateMachineName);
+    }
+
     public static void playRive(RiveAnimationView view) {
         RiveHelper.play(view);
     }

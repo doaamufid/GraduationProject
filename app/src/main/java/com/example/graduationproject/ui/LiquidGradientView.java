@@ -11,26 +11,37 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.LinearInterpolator;
 
+/**
+ * A smooth, baby-blue liquid gradient background that moves slowly.
+ */
 public class LiquidGradientView extends View {
-    private Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    private final Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private float offset = 0f;
     private ValueAnimator animator;
 
-    private int[] colors = {
-            Color.parseColor("#EC407A"), // Pink
-            Color.parseColor("#AB47BC"), // Purple
-            Color.parseColor("#42A5F5"), // Blue
-            Color.parseColor("#26A69A")  // Teal
-    };
+    // Baby blue palette
+    private static final int COLOR_BASE = Color.parseColor("#E1F1FF");   // @color/bg
+    private static final int COLOR_BLOB1 = Color.parseColor("#D1E8FF");  // Light blue
+    private static final int COLOR_BLOB2 = Color.parseColor("#B3E5FC");  // Slightly darker baby blue
+    private static final int COLOR_BLOB3 = Color.parseColor("#E3F2FD");  // Very light blue
+
+    public LiquidGradientView(Context context) {
+        super(context);
+        init();
+    }
 
     public LiquidGradientView(Context context, AttributeSet attrs) {
         super(context, attrs);
+        init();
+    }
+
+    private void init() {
         startAnimation();
     }
 
     private void startAnimation() {
         animator = ValueAnimator.ofFloat(0f, 1f);
-        animator.setDuration(8000);
+        animator.setDuration(15000); // Slow movement
         animator.setRepeatCount(ValueAnimator.INFINITE);
         animator.setRepeatMode(ValueAnimator.REVERSE);
         animator.setInterpolator(new LinearInterpolator());
@@ -46,29 +57,30 @@ public class LiquidGradientView extends View {
         super.onDraw(canvas);
         int w = getWidth();
         int h = getHeight();
+        if (w == 0 || h == 0) return;
 
-        // Layer 1: Base Purple
-        canvas.drawColor(Color.parseColor("#8E24AA"));
+        // Base Layer
+        canvas.drawColor(COLOR_BASE);
 
-        // Layer 2: Moving Pink Blob
-        float pinkX = w * (0.2f + 0.6f * offset);
-        float pinkY = h * (0.3f + 0.4f * (1 - offset));
-        paint.setShader(new RadialGradient(pinkX, pinkY, w * 0.8f, 
-                Color.parseColor("#D81B60"), Color.TRANSPARENT, Shader.TileMode.CLAMP));
+        // Blob 1: Top Right-ish
+        float b1X = w * (0.7f + 0.2f * (float)Math.sin(offset * Math.PI));
+        float b1Y = h * (0.2f + 0.2f * (float)Math.cos(offset * Math.PI));
+        paint.setShader(new RadialGradient(b1X, b1Y, w * 1.2f,
+                COLOR_BLOB1, Color.TRANSPARENT, Shader.TileMode.CLAMP));
         canvas.drawRect(0, 0, w, h, paint);
 
-        // Layer 3: Moving Blue Blob
-        float blueX = w * (0.8f - 0.5f * offset);
-        float blueY = h * (0.7f - 0.3f * offset);
-        paint.setShader(new RadialGradient(blueX, blueY, w * 0.7f, 
-                Color.parseColor("#1E88E5"), Color.TRANSPARENT, Shader.TileMode.CLAMP));
+        // Blob 2: Bottom Left-ish
+        float b2X = w * (0.2f - 0.1f * (float)Math.cos(offset * Math.PI));
+        float b2Y = h * (0.8f - 0.2f * (float)Math.sin(offset * Math.PI));
+        paint.setShader(new RadialGradient(b2X, b2Y, w * 1.0f,
+                COLOR_BLOB2, Color.TRANSPARENT, Shader.TileMode.CLAMP));
         canvas.drawRect(0, 0, w, h, paint);
-        
-        // Layer 4: Subtle Teal highlight
-        float tealX = w * offset;
-        float tealY = h * 0.5f;
-        paint.setShader(new RadialGradient(tealX, tealY, w * 0.5f, 
-                Color.parseColor("#00897B"), Color.TRANSPARENT, Shader.TileMode.CLAMP));
+
+        // Blob 3: Center focus
+        float b3X = w * (0.5f + 0.1f * (float)Math.cos(offset * 2 * Math.PI));
+        float b3Y = h * (0.5f + 0.1f * (float)Math.sin(offset * 2 * Math.PI));
+        paint.setShader(new RadialGradient(b3X, b3Y, w * 0.8f,
+                COLOR_BLOB3, Color.TRANSPARENT, Shader.TileMode.CLAMP));
         canvas.drawRect(0, 0, w, h, paint);
     }
 

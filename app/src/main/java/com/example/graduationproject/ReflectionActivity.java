@@ -1,58 +1,81 @@
 package com.example.graduationproject;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
+import android.view.animation.AlphaAnimation;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.graduationproject.models.ReflectionCard;
 import com.example.graduationproject.ui.SceneView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-/**
- * Java/XML port of PreHomeReflectionScreen (JSX).
- *
- * State mirrored from the original useState hook:
- *   idx -> the currently shown card index
- *
- * isLast = idx === CARDS.length - 1   -> swaps the button label/behavior
- * Clicking "next" on the last card is a no-op, exactly like the JSX's
- * `onClick={() => (isLast ? null : setIdx(i => i + 1))}`.
- */
 public class ReflectionActivity extends AppCompatActivity {
 
     private List<ReflectionCard> cards;
-    private int idx = 0;
-
     private SceneView sceneView;
     private TextView txtTitle, txtTag, txtChip, txtNoteDate, txtNote, txtNext;
+    private LinearLayout btnNext;
 
-    private static final int SCENE_FADE_MS = 1000; // matches @keyframes sfade (1s)
+    private final Handler handler = new Handler(Looper.getMainLooper());
+    private Runnable showNextButtonRunnable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_reflection);
+
+        // تطبيق حواف الشاشة على محتوى الواجهة الأمامية فقط لتستمر الخلفية بالظهور تحت الـ Status Bar
+        View contentContainer = findViewById(R.id.content_container);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.reflection_root), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            if (contentContainer != null) {
+                contentContainer.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            }
+            return insets;
+        });
 
         buildCards();
         bindViews();
-        buildDots();
 
-        // Initial render (no fade-in animation needed on first paint)
-        renderCardInitial();
+        // 1. اختيار بطاقة عشوائية في كل مرة
+        int randomIdx = new Random().nextInt(cards.size());
+        renderCardInitial(randomIdx);
 
-        LinearLayout btnNext = findViewById(R.id.btn_next);
+        // 2. إخفاء زر التالي في البداية
+        btnNext.setVisibility(View.INVISIBLE);
+        btnNext.setAlpha(0f);
+
+        // إظهار زر التالي بعد 4 ثوانٍ لضمان القراءة
+        showNextButtonRunnable = () -> {
+            btnNext.setVisibility(View.VISIBLE);
+            AlphaAnimation fadeIn = new AlphaAnimation(0f, 1f);
+            fadeIn.setDuration(500);
+            fadeIn.setFillAfter(true);
+            btnNext.startAnimation(fadeIn);
+        };
+        handler.postDelayed(showNextButtonRunnable, 4000);
+
+        // 4. الانتقال المباشر للـ Home بعد الضغط
         btnNext.setOnClickListener(v -> {
-            boolean isLast = idx == cards.size() - 1;
-            if (isLast) return; // mirrors: isLast ? null : setIdx(i => i + 1)
-            int oldIdx = idx;
-            idx++;
-            renderCardAnimated(idx, oldIdx);
+            cleanupHandler();
+            Intent intent = new Intent(ReflectionActivity.this, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+            finish();
         });
     }
 
@@ -72,97 +95,29 @@ public class ReflectionActivity extends AppCompatActivity {
         txtNoteDate = findViewById(R.id.txt_note_date);
         txtNote = findViewById(R.id.txt_note);
         txtNext = findViewById(R.id.txt_next);
+        btnNext = findViewById(R.id.btn_next);
     }
 
-    // ---------------------------------------------------------------
-    // Dots (mirrors CARDS.map(...) progress indicator row)
-    // ---------------------------------------------------------------
-    private void buildDots() {
-        // Progress dots removed as per request
-    }
-
-    private void updateDots(int newIdx, int oldIdx) {
-        // Progress dots removed as per request
-    }
-
-    // ---------------------------------------------------------------
-    // Card rendering + animations
-    // ---------------------------------------------------------------
-    private void renderCardInitial() {
+    private void renderCardInitial(int idx) {
         ReflectionCard card = cards.get(idx);
         sceneView.setSceneType(card.sceneType);
-        bindTextContent(card);
-        txtNote.setText(card.noteRes);
-        updateNextLabel();
-    }
-
-    private void renderCardAnimated(int newIdx, int oldIdx) {
-        ReflectionCard card = cards.get(newIdx);
-        updateNextLabel();
-        crossFadeScene(card.sceneType);
-        animateContentChange(card);
-        updateDots(newIdx, oldIdx);
-    }
-
-    private void bindTextContent(ReflectionCard card) {
         txtTitle.setText(card.titleRes);
         txtTag.setText(getString(card.tagRes).toUpperCase());
         txtChip.setText(card.chipRes);
         txtNoteDate.setText(getString(R.string.note_prefix) + " · " + getString(card.dateRes));
+        txtNote.setText(card.noteRes);
+        txtNext.setText(R.string.enter_button);
     }
 
-    private void updateNextLabel() {
-        boolean isLast = idx == cards.size() - 1;
-        txtNext.setText(isLast ? getString(R.string.enter_button) : getString(R.string.next_button));
-    }
-
-    /** Enhanced content animation for title, tag, chip and note */
-    private void animateContentChange(ReflectionCard card) {
-        float density = getResources().getDisplayMetrics().density;
-        float shiftY = 12 * density;
-
-        // Animate title, tag, chip with a slight slide and fade
-        View[] topContent = {txtTitle, txtTag, txtChip, txtNoteDate};
-        for (View v : topContent) {
-            v.animate().alpha(0f).translationY(-shiftY).setDuration(200).withEndAction(() -> {
-                if (v == txtTitle) txtTitle.setText(card.titleRes);
-                if (v == txtTag) txtTag.setText(getString(card.tagRes).toUpperCase());
-                if (v == txtChip) txtChip.setText(card.chipRes);
-                if (v == txtNoteDate) txtNoteDate.setText(getString(R.string.note_prefix) + " · " + getString(card.dateRes));
-                
-                v.setTranslationY(shiftY);
-                v.animate().alpha(1f).translationY(0f).setDuration(400).setInterpolator(new AccelerateDecelerateInterpolator()).start();
-            }).start();
+    private void cleanupHandler() {
+        if (handler != null && showNextButtonRunnable != null) {
+            handler.removeCallbacks(showNextButtonRunnable);
         }
-
-        // Animate note card
-        txtNote.animate().alpha(0f).translationY(shiftY).setDuration(300).withEndAction(() -> {
-            txtNote.setText(card.noteRes);
-            txtNote.animate().alpha(1f).translationY(0f).setDuration(500).setInterpolator(new AccelerateDecelerateInterpolator()).start();
-        }).start();
     }
 
-    /** Mirrors .scene-fade { animation: sfade 1s ease }, triggered by the `key={idx}` remount.
-     * Enhanced with a subtle zoom effect. */
-    private void crossFadeScene(int newSceneType) {
-        sceneView.animate()
-                .alpha(0f)
-                .scaleX(1.05f)
-                .scaleY(1.05f)
-                .setDuration(SCENE_FADE_MS / 2)
-                .setInterpolator(new AccelerateDecelerateInterpolator())
-                .withEndAction(() -> {
-                    sceneView.setSceneType(newSceneType);
-                    sceneView.setScaleX(1.1f);
-                    sceneView.setScaleY(1.1f);
-                    sceneView.animate()
-                            .alpha(1f)
-                            .scaleX(1f)
-                            .scaleY(1f)
-                            .setDuration(SCENE_FADE_MS / 2)
-                            .setInterpolator(new AccelerateDecelerateInterpolator())
-                            .start();
-                })
-                .start();
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        cleanupHandler();
     }
 }

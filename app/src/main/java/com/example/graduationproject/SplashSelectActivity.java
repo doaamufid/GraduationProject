@@ -228,7 +228,7 @@ public class SplashSelectActivity extends AppCompatActivity {
     }
 
     private void navigateToQuotes() {
-        Intent intent = new Intent(SplashSelectActivity.this, MindfulnessQuotesActivity.class);
+        Intent intent = new Intent(SplashSelectActivity.this, ReflectionActivity.class);
         startActivity(intent);
         finish();
     }

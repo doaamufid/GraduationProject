@@ -19,6 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.BodyMapActivity;
 import com.example.graduationproject.BreathingActivity;
+import com.example.graduationproject.CBTRReframingActivity;
 import com.example.graduationproject.FutureActivity;
 import com.example.graduationproject.GroundingExActivity;
 import com.example.graduationproject.R;
@@ -95,6 +96,7 @@ public class ExercisesFragment extends Fragment {
         exerciseList.add(new ExerciseFeature(R.drawable.center, R.drawable.bg_icon_orange, "التأريض", "GROUNDING"));
         exerciseList.add(new ExerciseFeature(R.drawable.style, R.drawable.bg_icon_pink, "بطاقة التهدئة الشخصية", "CALM CARD"));
         exerciseList.add(new ExerciseFeature(R.drawable.air, R.drawable.bg_icon_green, "التنفس", "BREATHING"));
+        exerciseList.add(new ExerciseFeature(R.drawable.center, R.drawable.bg_icon_purple, "إعادة صياغة الأفكار", "CBT REFRAMING"));
         exerciseList.add(new ExerciseFeature(R.drawable.pin, R.drawable.bg_icon_yellow, "خريطة الجسد", "BODY MAP"));
         exerciseList.add(new ExerciseFeature(R.drawable.box2, R.drawable.bg_icon_purple, "صندوق النجاة", "SURVIVAL BOX"));
 
@@ -125,12 +127,16 @@ public class ExercisesFragment extends Fragment {
                     startActivity(breathingIntent);
                     break;
 
-                case 5: // خريطة الجسد (Body Map)
+                case 5: // إعادة صياغة الأفكار (CBT Reframing)
+                    startActivity(new Intent(requireContext(), CBTRReframingActivity.class));
+                    break;
+
+                case 6: // خريطة الجسد (Body Map)
                     Intent bodyMapIntent = new Intent(requireContext(), BodyMapActivity.class);
                     startActivity(bodyMapIntent);
                     break;
 
-                case 6: // صندوق النجاة (Survival Box)
+                case 7: // صندوق النجاة (Survival Box)
                     startActivity(new Intent(requireContext(), SurvivalBoxActivity.class));
                     break;
             }

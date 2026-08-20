@@ -63,9 +63,21 @@ public class LibraryFragment extends Fragment implements ArticleAdapter.Listener
         buildChips();
         refreshList();
 
-        view.findViewById(R.id.btnNotes).setOnClickListener(v -> activity().openNotes());
-        view.findViewById(R.id.btnFavArticles).setOnClickListener(v -> activity().openFavoriteArticles());
-        view.findViewById(R.id.btnBookmarkArticles).setOnClickListener(v -> activity().openBookmarkedArticles());
+        view.findViewById(R.id.btnNotes).setOnClickListener(v -> {
+            if (getActivity() instanceof ArticlesActivity) {
+                ((ArticlesActivity) getActivity()).openNotes();
+            }
+        });
+        view.findViewById(R.id.btnFavArticles).setOnClickListener(v -> {
+            if (getActivity() instanceof ArticlesActivity) {
+                ((ArticlesActivity) getActivity()).openFavoriteArticles();
+            }
+        });
+        view.findViewById(R.id.btnBookmarkArticles).setOnClickListener(v -> {
+            if (getActivity() instanceof ArticlesActivity) {
+                ((ArticlesActivity) getActivity()).openBookmarkedArticles();
+            }
+        });
 
         etSearch.addTextChangedListener(new TextWatcher() {
             @Override public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
@@ -119,10 +131,6 @@ public class LibraryFragment extends Fragment implements ArticleAdapter.Listener
         adapter.submitList(filtered);
     }
 
-    private ArticlesActivity activity() {
-        return (ArticlesActivity) requireActivity();
-    }
-
     @Override
     public void onResume() {
         super.onResume();
@@ -132,7 +140,9 @@ public class LibraryFragment extends Fragment implements ArticleAdapter.Listener
 
     @Override
     public void onOpen(Article article) {
-        activity().openReader(article);
+        if (getActivity() instanceof ArticlesActivity) {
+            ((ArticlesActivity) getActivity()).openReader(article);
+        }
     }
 
     @Override

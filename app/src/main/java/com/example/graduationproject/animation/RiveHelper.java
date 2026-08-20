@@ -15,15 +15,18 @@ import app.rive.runtime.kotlin.core.Loop;
 class RiveHelper {
 
     static void loadAndPlay(RiveAnimationView view, int rawResId) {
+        loadAndPlay(view, rawResId, "State Machine 1");
+    }
+
+    static void loadAndPlay(RiveAnimationView view, int rawResId, String stateMachineName) {
         if (view == null) return;
-        // setRiveResource(resId, artboard, animation, stateMachine, autoplay, autoBind, fit, alignment, loop)
         view.setRiveResource(
             rawResId,
-            null,       // artboardName
-            null,       // animationName
-            null,       // stateMachineName
-            true,       // autoplay
-            false,      // autoBind
+            null,               // artboardName
+            null,               // animationName
+            stateMachineName,    // stateMachineName
+            true,               // autoplay
+            false,              // autoBind
             Fit.CONTAIN,
             Alignment.CENTER,
             Loop.AUTO
