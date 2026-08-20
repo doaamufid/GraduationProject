@@ -83,9 +83,6 @@ public class HomeFragment extends Fragment {
             Animation emojiEnter = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
             emojiEnter.setStartOffset(400); 
             riveMood.startAnimation(emojiEnter);
-            
-            // Start the Rive animation with resource and state machine
-            AnimationManager.playRive(riveMood, R.raw.interactive_card, "State Machine 1");
         }
 
         setupActions();
