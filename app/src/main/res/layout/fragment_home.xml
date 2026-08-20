@@ -7,6 +7,10 @@
     android:background="@color/bg"
     tools:context=".bottomNavFragments.HomeFragment">
 
+    <com.example.graduationproject.ui.LiquidGradientView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/imageLayout"
         android:layout_width="match_parent"
@@ -69,76 +73,15 @@
                 app:layout_constraintStart_toStartOf="@id/tvGreeting"
                 app:layout_constraintTop_toBottomOf="@id/tvGreeting" />
 
-            <LinearLayout
-                android:id="@+id/layoutEmojis"
+            <app.rive.runtime.kotlin.RiveAnimationView
+                android:id="@+id/riveMood"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="180dp"
                 android:layout_marginHorizontal="24dp"
                 android:layout_marginTop="12dp"
-                android:background="@drawable/white_rounded_card"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingVertical="10dp"
-                android:paddingHorizontal="8dp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvMoodTitle">
-
-                <ImageView
-                    android:id="@+id/emoji1"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_weight="1"
-                    android:padding="6dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="@drawable/emoji_selector"
-                    android:src="@drawable/avatar" />
-
-                <ImageView
-                    android:id="@+id/emoji2"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_weight="1"
-                    android:padding="6dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="@drawable/emoji_selector"
-                    android:src="@drawable/sad" />
-
-                <ImageView
-                    android:id="@+id/emoji3"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_weight="1"
-                    android:padding="6dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="@drawable/emoji_selector"
-                    android:src="@drawable/smiley" />
-
-                <ImageView
-                    android:id="@+id/emoji4"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_weight="1"
-                    android:padding="6dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="@drawable/emoji_selector"
-                    android:src="@drawable/bored" />
-
-                <ImageView
-                    android:id="@+id/emoji5"
-                    android:layout_width="0dp"
-                    android:layout_height="44dp"
-                    android:layout_weight="1"
-                    android:padding="6dp"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:background="@drawable/emoji_selector"
-                    android:src="@drawable/happiness" />
-            </LinearLayout>
+                app:layout_constraintTop_toBottomOf="@id/tvMoodTitle" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvActions"
@@ -149,7 +92,7 @@
                 android:nestedScrollingEnabled="false"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/layoutEmojis"
+                app:layout_constraintTop_toBottomOf="@id/riveMood"
                 tools:itemCount="2"
                 tools:listitem="@layout/item_home_action" />
 

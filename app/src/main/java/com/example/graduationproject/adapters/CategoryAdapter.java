@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.graduationproject.R;
+import com.example.graduationproject.data.SeedData;
 import com.example.graduationproject.models.Category;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +25,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     public CategoryAdapter(List<Category> categories, OnCategoryClickListener listener) {
         this.categories = categories;
+        this.listener = listener;
+        // detect selected if present
+        for (Category c : categories) {
+            if (c.isSelected()) {
+                this.selectedCategoryName = c.getName();
+                break;
+            }
+        }
+    }
+
+    public CategoryAdapter(List<Category> categories, String selected, OnCategoryClickListener listener) {
+        this.categories = categories;
+        this.selectedCategoryName = selected;
         this.listener = listener;
     }
 
@@ -56,12 +70,20 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         Category category = categories.get(position);
         holder.tvCategoryName.setText(category.getName());
 
+        // emoji from SeedData
+        String emoji = SeedData.getCategoryEmoji(category.getName());
+        holder.tvCategoryEmoji.setText(emoji);
+
+        // set selected state on the emoji view so selector drawable shows ring
+        holder.tvCategoryEmoji.setSelected(category.isSelected());
+
         if (category.isSelected()) {
-            holder.tvCategoryName.setBackgroundResource(R.drawable.bg_timer_chip_selected);
-            holder.tvCategoryName.setTextColor(Color.WHITE);
+            // label uses accent color when selected
+            holder.tvCategoryName.setTextColor(holder.itemView.getResources().getColor(R.color.accent));
+            holder.tvCategoryName.setAlpha(1f);
         } else {
-            holder.tvCategoryName.setBackgroundResource(R.drawable.bg_timer_chip);
             holder.tvCategoryName.setTextColor(Color.parseColor("#2D587B"));
+            holder.tvCategoryName.setAlpha(0.85f);
         }
 
         holder.itemView.setOnClickListener(v -> {
@@ -85,9 +107,11 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     static class CategoryViewHolder extends RecyclerView.ViewHolder {
         TextView tvCategoryName;
+        TextView tvCategoryEmoji;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
+            tvCategoryEmoji = itemView.findViewById(R.id.tvCategoryEmoji);
             tvCategoryName = itemView.findViewById(R.id.tvCategoryName);
         }
     }

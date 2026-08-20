@@ -4,8 +4,11 @@
 
     <!-- إذن المايك لتسجيل الصوت في شات الأطفال -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Allow network image loading (Glide, Picasso, etc.) -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".GraduationProjectApplication"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"
@@ -44,7 +47,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".HealingEnvironmentActivity"
+            android:name=".HealingEnvActivity"
             android:exported="false" />
 
         <activity
@@ -160,6 +163,46 @@
             android:exported="false"
             android:theme="@style/Theme.GraduationProject"
             android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".SalamCommunityActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AdultProfileActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".CBTRReframingActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".StrenghtBankActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".VisualContentActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.StrengthsBankActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.profile.settings.ChildProfilesActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
 
     </application>
 

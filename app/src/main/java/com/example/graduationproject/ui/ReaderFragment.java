@@ -141,7 +141,11 @@ public class ReaderFragment extends Fragment {
             refreshFavBookmarkIcons();
         });
 
-        view.findViewById(R.id.btnNotes).setOnClickListener(v -> ((ArticlesActivity) requireActivity()).openNotes());
+        view.findViewById(R.id.btnNotes).setOnClickListener(v -> {
+            if (getActivity() instanceof ArticlesActivity) {
+                ((ArticlesActivity) getActivity()).openNotes();
+            }
+        });
         view.findViewById(R.id.btnSettings).setOnClickListener(v -> 
                 ReadingSettingsSheet.newInstance(settings, this::onSettingsChanged)
                         .show(getChildFragmentManager(), "reading_settings"));

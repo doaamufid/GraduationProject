@@ -1,7 +1,5 @@
 package com.example.graduationproject.bottomNavFragments;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -18,18 +16,17 @@ import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
-import android.view.animation.LinearInterpolator;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.DailyHabitsActivity;
-import com.example.graduationproject.HealingEnvironmentActivity;
+import com.example.graduationproject.HealingEnvActivity;
 import com.example.graduationproject.R;
-import com.example.graduationproject.SurvivalBoxActivity;
+import com.example.graduationproject.SalamCommunityActivity;
 import com.example.graduationproject.VideoLibraryActivity;
-import com.example.graduationproject.VisualContentActivity;
+import com.example.graduationproject.animation.AnimationManager;
+import app.rive.runtime.kotlin.RiveAnimationView;
 import com.example.graduationproject.adapters.HomeActionAdapter;
 import com.example.graduationproject.adapters.HomeFeatureAdapter;
 import com.example.graduationproject.models.HomeAction;
@@ -80,14 +77,12 @@ public class HomeFragment extends Fragment {
         rvActions.setLayoutAnimation(animationController);
         rvFeatures.setLayoutAnimation(animationController);
 
-        // تحريك واجهة الرموز التعبيرية (Emojis)
-        View layoutEmojis = view.findViewById(R.id.layoutEmojis);
-        if (layoutEmojis != null) {
+        // تحريك واجهة الرموز التعبيرية (Rive)
+        RiveAnimationView riveMood = view.findViewById(R.id.riveMood);
+        if (riveMood != null) {
             Animation emojiEnter = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
-            emojiEnter.setStartOffset(400); // زيادة التأخير ليظهر بوضوح بعد الترحيب
-            layoutEmojis.startAnimation(emojiEnter);
-
-            setupEmojiInteractions(view);
+            emojiEnter.setStartOffset(400); 
+            riveMood.startAnimation(emojiEnter);
         }
 
         setupActions();
@@ -113,21 +108,6 @@ public class HomeFragment extends Fragment {
                 .setInterpolator(new AccelerateDecelerateInterpolator())
                 .withEndAction(() -> animateFloating(view, -targetY))
                 .start();
-    }
-
-    private void setupEmojiInteractions(View view) {
-        int[] emojiIds = {R.id.emoji1, R.id.emoji2, R.id.emoji3, R.id.emoji4, R.id.emoji5};
-        for (int id : emojiIds) {
-            View emoji = view.findViewById(id);
-            if (emoji != null) {
-                emoji.setOnClickListener(v -> {
-                    // تأثير نبض أبطأ عند الضغط
-                    v.animate().scaleX(1.2f).scaleY(1.2f).setDuration(250).withEndAction(() -> {
-                        v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(250).start();
-                    }).start();
-                });
-            }
-        }
     }
 
     private void setupActions() {
@@ -158,7 +138,7 @@ public class HomeFragment extends Fragment {
         featureList.add(new HomeFeature(R.drawable.ic_heart_filled_red, R.drawable.bg_icon_pink, "مقالات", "ARTICLES"));
         featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange, "عاداتي", "HABITS"));
         featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue, "تقارير", "REPORTS"));
-        featureList.add(new HomeFeature(R.drawable.box2, R.drawable.bg_icon_purple, "صندوق النجاة", "SURVIVAL BOX"));
+        featureList.add(new HomeFeature(R.drawable.ic_users, R.drawable.bg_icon_purple, "مجتمع سلام", "COMMUNITY"));
 
         featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
             switch (position) {
@@ -166,7 +146,7 @@ public class HomeFragment extends Fragment {
                     startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
                     break;
                 case 1:
-                    startActivity(new Intent(getActivity(), HealingEnvironmentActivity.class));
+                    startActivity(new Intent(getActivity(), HealingEnvActivity.class));
                     break;
                 case 2: // مقالات (ARTICLES)
                     startActivity(new Intent(getActivity(), ArticlesActivity.class));
@@ -177,8 +157,8 @@ public class HomeFragment extends Fragment {
                 case 4: // تقارير
                     // TODO: Implement ReportsActivity connection when ready
                     break;
-                case 5: // صندوق النجاة
-                    startActivity(new Intent(getActivity(), SurvivalBoxActivity.class));
+                case 5: // مجتمع سلام
+                    startActivity(new Intent(getActivity(), SalamCommunityActivity.class));
                     break;
             }
         });

@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reflection_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
     android:background="@color/screen_bg">
 
-    <!-- Full-bleed illustrated scene (mountain / sea / forest / desert) + scrim -->
+    <!-- Full-bleed illustrated scene -->
     <com.example.graduationproject.ui.SceneView
         android:id="@+id/scene_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent" />
 
     <!-- Foreground content -->
     <LinearLayout
+        android:id="@+id/content_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <!-- Top bar: next/enter pill -->
+        <!-- Top bar -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +33,7 @@
             <View
                 android:layout_width="0dp"
                 android:layout_height="1dp"
-                android:layout_weight="1"/>
+                android:layout_weight="1" />
 
             <LinearLayout
                 android:id="@+id/btn_next"
@@ -54,7 +56,8 @@
                     android:text="@string/next_button"
                     android:textColor="@color/black_1a"
                     android:textStyle="bold"
-                    android:textSize="@dimen/text_button"/>
+                    android:textSize="@dimen/text_button" />
+
             </LinearLayout>
         </LinearLayout>
 
@@ -75,8 +78,7 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/text_title"
                 android:layout_marginBottom="4dp"
-                tools:text="سكون القمة"
-                xmlns:tools="http://schemas.android.com/tools"/>
+                tools:text="سكون القمة" />
 
             <TextView
                 android:id="@+id/txt_tag"
@@ -87,14 +89,15 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/text_tag"
                 android:letterSpacing="0.12"
-                tools:text="لحظة تأمل"/>
+                tools:text="لحظة تأمل" />
+
         </LinearLayout>
 
-        <!-- Spacer pushes chip + note card + dots to the bottom (mirrors mt-auto) -->
+        <!-- Spacer -->
         <View
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_weight="1"/>
+            android:layout_weight="1" />
 
         <!-- Ambiance chip -->
         <LinearLayout
@@ -117,8 +120,8 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_chip"
-                tools:text="🌫️ هادئ"
-                xmlns:tools="http://schemas.android.com/tools"/>
+                tools:text="🌫️ هادئ" />
+
         </LinearLayout>
 
         <!-- Diary note card -->
@@ -154,8 +157,7 @@
                         android:textSize="@dimen/text_note_label"
                         android:letterSpacing="0.05"
                         android:layout_marginEnd="8dp"
-                        tools:text="ملاحظة اليوم · ٨ أبريل"
-                        xmlns:tools="http://schemas.android.com/tools"/>
+                        tools:text="ملاحظة اليوم · ٨ أبريل" />
 
                     <TextView
                         android:layout_width="28dp"
@@ -163,8 +165,10 @@
                         android:gravity="center"
                         android:text="💧"
                         android:textSize="13sp"
-                        android:background="@drawable/bg_circle_translucent_33"/>
+                        android:background="@drawable/bg_circle_translucent_33" />
+
                 </LinearLayout>
+
             </LinearLayout>
 
             <TextView
@@ -175,12 +179,11 @@
                 android:textStyle="bold"
                 android:textSize="@dimen/text_note"
                 android:lineSpacingMultiplier="1.3"
-                android:gravity="end"
-                tools:text="نص الملاحظة هنا"
-                xmlns:tools="http://schemas.android.com/tools"/>
+                android:gravity="start"
+                tools:text="نص الملاحظة هنا" />
+
         </LinearLayout>
 
-
-
     </LinearLayout>
+
 </FrameLayout>
