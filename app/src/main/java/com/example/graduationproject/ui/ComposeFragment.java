@@ -82,7 +82,8 @@ public class ComposeFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MainActivity activity = (MainActivity) requireActivity();
+        // Host activity may be MainActivity or SalamCommunityActivity; avoid unsafe casts
+        final android.app.Activity hostActivity = requireActivity();
 
         // Intro animations
         view.findViewById(R.id.backBtn).startAnimation(android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.scale_in));
@@ -146,7 +147,15 @@ public class ComposeFragment extends Fragment {
         submitBtn.setOnClickListener(v -> {
             String text = messageInput.getText().toString();
             if (text.trim().isEmpty()) return;
-            activity.showAnalyzing();
+            // Safely call host's showAnalyzing() if available
+            if (hostActivity instanceof MainActivity) {
+                ((MainActivity) hostActivity).showAnalyzing();
+            } else if (hostActivity instanceof com.example.graduationproject.SalamCommunityActivity) {
+                ((com.example.graduationproject.SalamCommunityActivity) hostActivity).showAnalyzing();
+            } else {
+                // Unknown host - cannot navigate to analyzing; fail gracefully
+                return;
+            }
             // hand the draft off via a static holder so AnalyzingFragment can moderate it
             DraftHolder.text = text;
             DraftHolder.cat = selectedCategory;

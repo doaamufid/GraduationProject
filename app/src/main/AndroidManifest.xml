@@ -4,6 +4,8 @@
 
     <!-- إذن المايك لتسجيل الصوت في شات الأطفال -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <!-- Allow network image loading (Glide, Picasso, etc.) -->
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".GraduationProjectApplication"

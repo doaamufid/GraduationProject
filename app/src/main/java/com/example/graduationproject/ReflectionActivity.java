@@ -1,6 +1,7 @@
 package com.example.graduationproject;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -20,6 +21,7 @@ import com.example.graduationproject.ui.SceneView;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Random;
 
 public class ReflectionActivity extends AppCompatActivity {
@@ -61,11 +63,11 @@ public class ReflectionActivity extends AppCompatActivity {
 
         // إظهار زر التالي بعد 4 ثوانٍ لضمان القراءة
         showNextButtonRunnable = () -> {
+            // ensure the button is on top and visible, then animate its alpha using ViewPropertyAnimator
+            btnNext.bringToFront();
             btnNext.setVisibility(View.VISIBLE);
-            AlphaAnimation fadeIn = new AlphaAnimation(0f, 1f);
-            fadeIn.setDuration(500);
-            fadeIn.setFillAfter(true);
-            btnNext.startAnimation(fadeIn);
+            btnNext.setAlpha(0f);
+            btnNext.animate().alpha(1f).setDuration(500).start();
         };
         handler.postDelayed(showNextButtonRunnable, 4000);
 
@@ -98,15 +100,32 @@ public class ReflectionActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btn_next);
     }
 
+    private String getArabicString(int resId) {
+        // load the string from an Arabic-configured context to force Arabic text regardless of device locale
+        try {
+            Configuration conf = new Configuration(getResources().getConfiguration());
+            Locale ar = new Locale("ar");
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                conf.setLocale(ar);
+            } else {
+                conf.locale = ar;
+            }
+            return createConfigurationContext(conf).getResources().getString(resId);
+        } catch (Exception e) {
+            return getString(resId);
+        }
+    }
+
     private void renderCardInitial(int idx) {
         ReflectionCard card = cards.get(idx);
         sceneView.setSceneType(card.sceneType);
-        txtTitle.setText(card.titleRes);
-        txtTag.setText(getString(card.tagRes).toUpperCase());
-        txtChip.setText(card.chipRes);
-        txtNoteDate.setText(getString(R.string.note_prefix) + " · " + getString(card.dateRes));
-        txtNote.setText(card.noteRes);
-        txtNext.setText(R.string.enter_button);
+        txtTitle.setText(getArabicString(card.titleRes));
+        txtTag.setText(getArabicString(card.tagRes).toUpperCase());
+        txtChip.setText(getArabicString(card.chipRes));
+        String noteDate = getArabicString(R.string.note_prefix) + " · " + getArabicString(card.dateRes);
+        txtNoteDate.setText(noteDate);
+        txtNote.setText(getArabicString(card.noteRes));
+        txtNext.setText(getArabicString(R.string.enter_button));
     }
 
     private void cleanupHandler() {
