@@ -57,12 +57,13 @@ public class SplashSelectActivity extends AppCompatActivity {
 
         // 1. اختيار البالغين
         binding.btnAdultsCard.setOnClickListener(v -> {
-            String inputName = binding.etName.getText().toString().trim();
-            userPrefs.edit().putString("user_name", inputName).apply();
             userPrefs.edit().putString("user_type", "adult").apply();
             appPrefs.edit().putBoolean("isFirstRun", false).apply();
 
-            navigateToQuotes();
+            // Open the adult signup screen after selection
+            Intent intent = new Intent(SplashSelectActivity.this, AdultSignupActivity.class);
+            startActivity(intent);
+            finish();
         });
 
         // Effect for Long Press
@@ -73,8 +74,6 @@ public class SplashSelectActivity extends AppCompatActivity {
 
         // 2. اختيار الأطفال
         binding.btnKidsCard.setOnClickListener(v -> {
-            String inputName = binding.etName.getText().toString().trim();
-            userPrefs.edit().putString("user_name", inputName).apply();
             userPrefs.edit().putString("user_type", "kid").apply();
             appPrefs.edit().putBoolean("isFirstRun", false).apply();
 
@@ -109,9 +108,6 @@ public class SplashSelectActivity extends AppCompatActivity {
         binding.textQuestion.setTranslationY(30f);
         binding.textSubQuestion.setAlpha(0f);
         binding.textSubQuestion.setTranslationY(30f);
-
-        binding.etName.setAlpha(0f);
-        binding.etName.setTranslationY(50f);
 
         binding.btnAdultsCard.setAlpha(0f);
         binding.btnAdultsCard.setTranslationY(100f);
@@ -162,8 +158,6 @@ public class SplashSelectActivity extends AppCompatActivity {
 
         AnimatorSet footerSet = new AnimatorSet();
         footerSet.playTogether(
-                ObjectAnimator.ofFloat(binding.etName, "alpha", 0f, 1f),
-                ObjectAnimator.ofFloat(binding.etName, "translationY", 50f, 0f),
                 ObjectAnimator.ofFloat(binding.btnAdultsCard, "alpha", 0f, 1f),
                 ObjectAnimator.ofFloat(binding.btnAdultsCard, "translationY", 100f, 0f),
                 ObjectAnimator.ofFloat(binding.btnKidsCard, "alpha", 0f, 1f),

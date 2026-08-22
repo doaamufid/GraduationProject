@@ -353,7 +353,7 @@
         android:paddingBottom="16dp"
         android:background="@drawable/bg_button_gradient"
         android:text="@string/continue_button"
-        android:textColor="@color/white"
+        android:textColor="@color/text_main"
         android:textAllCaps="false"
         android:textStyle="bold"
         android:textSize="@dimen/text_button"

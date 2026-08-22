@@ -175,6 +175,9 @@ public class MainActivity extends AppCompatActivity implements CardHost {
                 // فتح صفحة رفيقي (ChatActivity) كـ Activity منفصلة
                 startActivity(new Intent(this, ChatActivity.class));
                 return false; // نرجع false لكي لا يتم اختيار العنصر بصرياً في الشريط السفلي إذا كنت تفضل ذلك، أو true إذا أردت بقاء الاختيار عليه
+            } else if (itemId == R.id.nav_profile) {
+                startActivity(new Intent(this, AdultProfileActivity.class));
+                return true;
             }
             return true;
         });
