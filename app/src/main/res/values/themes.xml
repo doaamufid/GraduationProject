@@ -175,4 +175,13 @@
         <item name="android:layoutDirection">rtl</item>
         <item name="android:textDirection">rtl</item>
     </style>
+    <style name="Theme.CompanionChat" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
+        <item name="colorAccent">@color/primary</item>
+        <item name="android:windowBackground">@color/outer_bg</item>
+        <item name="android:statusBarColor" tools:targetApi="l">@color/outer_bg</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
 </resources>

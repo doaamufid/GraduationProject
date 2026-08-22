@@ -64,10 +64,10 @@ public class HomeFragment extends Fragment {
         String userName = prefs.getString("user_name", "");
 
         if (userName.trim().isEmpty()) {
-            userName = "صديقي";
+            userName = getString(R.string.home_friend);
         }
 
-        tvGreeting.setText("صباح الخير " + userName + " كيف تشعر الآن؟\nأنا هنا معك 🌊");
+        tvGreeting.setText(getString(R.string.home_greeting_format, userName));
 
         // --- إضافة التحريكات (Animations) ---
         Animation fadeIn = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
@@ -115,8 +115,8 @@ public class HomeFragment extends Fragment {
         actionList.add(new HomeAction(
                 R.drawable.body_map, // صورة تعبيرية تشبه الموجودة بالصورة
                 R.drawable.bg_icon_calm,
-                "جلسة استرخاء سريعة لمزاج اليوم",
-                "١٠ دقائق من الهدوء"
+                getString(R.string.home_relax_title),
+                getString(R.string.home_relax_subtitle)
         ));
 
         actionAdapter = new HomeActionAdapter(requireContext(), actionList, position -> {
@@ -133,12 +133,12 @@ public class HomeFragment extends Fragment {
 
     private void setupFeatures() {
         featureList.clear();
-        featureList.add(new HomeFeature(R.drawable.video, R.drawable.bg_icon_purple, "مرئيات", "VIDEOS"));
-        featureList.add(new HomeFeature(R.drawable.audio, R.drawable.bg_icon_green, "صوتيات", "AUDIO"));
-        featureList.add(new HomeFeature(R.drawable.ic_heart_filled_red, R.drawable.bg_icon_pink, "مقالات", "ARTICLES"));
-        featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange, "عاداتي", "HABITS"));
-        featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue, "تقارير", "REPORTS"));
-        featureList.add(new HomeFeature(R.drawable.ic_users, R.drawable.bg_icon_purple, "مجتمع سلام", "COMMUNITY"));
+        featureList.add(new HomeFeature(R.drawable.video, R.drawable.bg_icon_purple, getString(R.string.home_feature_videos), getString(R.string.home_feature_videos_sub)));
+        featureList.add(new HomeFeature(R.drawable.audio, R.drawable.bg_icon_green, getString(R.string.home_feature_audio), getString(R.string.home_feature_audio_sub)));
+        featureList.add(new HomeFeature(R.drawable.ic_heart_filled_red, R.drawable.bg_icon_pink, getString(R.string.home_feature_articles), getString(R.string.home_feature_articles_sub)));
+        featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange, getString(R.string.home_feature_habits), getString(R.string.home_feature_habits_sub)));
+        featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue, getString(R.string.home_feature_reports), getString(R.string.home_feature_reports_sub)));
+        featureList.add(new HomeFeature(R.drawable.ic_users, R.drawable.bg_icon_purple, getString(R.string.home_feature_community), getString(R.string.home_feature_community_sub)));
 
         featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
             switch (position) {
