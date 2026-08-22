@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.content.Intent;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.view.animation.DecelerateInterpolator;
@@ -234,6 +235,7 @@ public class AdultSignupActivity extends AppCompatActivity {
                 boolean hasText = s.toString().trim().length() > 0;
                 nameFieldContainer.setBackgroundResource(
                         hasText ? R.drawable.bg_input_field_active : R.drawable.bg_input_field);
+                updateContinueState();
             }
             @Override public void afterTextChanged(android.text.Editable s) {}
         });
@@ -246,7 +248,7 @@ public class AdultSignupActivity extends AppCompatActivity {
         for (String range : ageRanges) {
             TextView chip = (TextView) inflater.inflate(R.layout.item_age_chip, ageChipContainer, false);
             chip.setText(range);
-            styleAgeChip(chip, range.equals(selectedAge));
+            styleAgeChip(chip, range.equals(selectedAge), false);
 
             chip.setOnClickListener(v -> {
                 selectedAge = range;
@@ -256,12 +258,21 @@ public class AdultSignupActivity extends AppCompatActivity {
 
             ageChipContainer.addView(chip);
         }
+
+        if (selectedAge == null) {
+            ageChipContainer.setBackgroundResource(R.drawable.bg_input_field);
+        } else {
+            ageChipContainer.setBackgroundResource(R.drawable.bg_input_field_active);
+        }
     }
 
-    private void styleAgeChip(TextView chip, boolean selected) {
+    private void styleAgeChip(TextView chip, boolean selected, boolean showError) {
         if (selected) {
             chip.setBackgroundResource(R.drawable.bg_age_chip_selected);
             chip.setTextColor(ContextCompat.getColor(this, R.color.white));
+        } else if (showError) {
+            chip.setBackgroundResource(R.drawable.bg_age_chip_error);
+            chip.setTextColor(ContextCompat.getColor(this, R.color.danger));
         } else {
             chip.setBackgroundResource(R.drawable.bg_age_chip);
             chip.setTextColor(ContextCompat.getColor(this, R.color.text_main));
@@ -286,29 +297,98 @@ public class AdultSignupActivity extends AppCompatActivity {
         boolean femaleSelected = GENDER_FEMALE.equals(selectedGender);
         boolean maleSelected = GENDER_MALE.equals(selectedGender);
 
-        cardFemale.setBackgroundResource(femaleSelected ? R.drawable.bg_gender_card_selected : R.drawable.bg_gender_card);
+        cardFemale.setBackgroundResource(femaleSelected ? R.drawable.bg_gender_card_selected : (selectedGender == null ? R.drawable.bg_gender_card : R.drawable.bg_gender_card));
         txtFemaleLabel.setTextColor(ContextCompat.getColor(this, femaleSelected ? R.color.primary : R.color.text_main));
 
-        cardMale.setBackgroundResource(maleSelected ? R.drawable.bg_gender_card_selected : R.drawable.bg_gender_card);
+        cardMale.setBackgroundResource(maleSelected ? R.drawable.bg_gender_card_selected : (selectedGender == null ? R.drawable.bg_gender_card : R.drawable.bg_gender_card));
         txtMaleLabel.setTextColor(ContextCompat.getColor(this, maleSelected ? R.color.primary : R.color.text_main));
     }
 
     private void setupContinueButton() {
         btnContinue.setOnClickListener(v -> {
-            if (!btnContinue.isEnabled()) return;
+            if (!validateForm(true)) {
+                return;
+            }
+
+            String name = editName.getText() != null ? editName.getText().toString().trim() : "";
+
+            android.content.SharedPreferences userPrefs = getSharedPreferences("UserPrefs", MODE_PRIVATE);
+            android.content.SharedPreferences appPrefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+            userPrefs.edit().putString("user_name", name).apply();
+            userPrefs.edit().putString("user_type", "adult").apply();
+            userPrefs.edit().putString("user_age_range", selectedAge).apply();
+            userPrefs.edit().putString("user_gender", selectedGender).apply();
+            appPrefs.edit().putBoolean("isFirstRun", false).apply();
+
+            Intent intent = new Intent(AdultSignupActivity.this, ReflectionActivity.class);
+            startActivity(intent);
+            finish();
         });
     }
 
+    private boolean validateForm(boolean showErrors) {
+        String name = editName.getText() != null ? editName.getText().toString().trim() : "";
+        boolean nameValid = !name.isEmpty();
+        boolean ageValid = selectedAge != null;
+        boolean genderValid = selectedGender != null;
+
+        if (showErrors) {
+            nameFieldContainer.setBackgroundResource(nameValid ? R.drawable.bg_input_field_active : R.drawable.bg_input_field_error);
+
+            if (!ageValid) {
+                ageChipContainer.setBackgroundResource(R.drawable.bg_age_chip_error_container);
+            } else {
+                ageChipContainer.setBackgroundResource(R.drawable.bg_input_field_active);
+            }
+
+            if (!genderValid) {
+                cardFemale.setBackgroundResource(R.drawable.bg_gender_card_error);
+                cardMale.setBackgroundResource(R.drawable.bg_gender_card_error);
+            } else {
+                renderGenderCards();
+            }
+
+            if (!nameValid) {
+                android.widget.Toast.makeText(this, "الرجاء إدخال الاسم", android.widget.Toast.LENGTH_SHORT).show();
+            } else if (!ageValid) {
+                android.widget.Toast.makeText(this, "الرجاء اختيار الفئة العمرية", android.widget.Toast.LENGTH_SHORT).show();
+            } else if (!genderValid) {
+                android.widget.Toast.makeText(this, "الرجاء اختيار النوع", android.widget.Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        return nameValid && ageValid && genderValid;
+    }
+
     private void updateContinueState() {
-        boolean canContinue = selectedAge != null && selectedGender != null;
+        boolean canContinue = validateForm(false) && !editName.getText().toString().trim().isEmpty();
         btnContinue.setEnabled(canContinue);
 
         float target = canContinue ? 1f : 0.4f;
-        
+
         if (btnContinue.getAlpha() > 0 && btnContinue.getAlpha() != target) {
             ObjectAnimator.ofFloat(btnContinue, View.ALPHA, btnContinue.getAlpha(), target)
                     .setDuration(300)
                     .start();
+        }
+
+        if (editName.getText().toString().trim().isEmpty()) {
+            nameFieldContainer.setBackgroundResource(R.drawable.bg_input_field);
+        } else {
+            nameFieldContainer.setBackgroundResource(R.drawable.bg_input_field_active);
+        }
+
+        if (selectedAge == null) {
+            ageChipContainer.setBackgroundResource(R.drawable.bg_input_field);
+        } else {
+            ageChipContainer.setBackgroundResource(R.drawable.bg_input_field_active);
+        }
+
+        if (selectedGender == null) {
+            cardFemale.setBackgroundResource(R.drawable.bg_gender_card);
+            cardMale.setBackgroundResource(R.drawable.bg_gender_card);
+        } else {
+            renderGenderCards();
         }
     }
 }

@@ -172,11 +172,14 @@ public class ComposeFragment extends Fragment {
     private void setupCategoryPicker(View view) {
         RecyclerView rv = view.findViewById(R.id.categoryRecyclerCompose);
         rv.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
-        
-        // Remove "الكل" for composing
+        rv.setNestedScrollingEnabled(false);
+        rv.setClipToPadding(false);
+        rv.setHasFixedSize(false);
+
+        // Remove "الكل" for composing and keep the same category chip design as SalamCommunityActivity
         String[] cats = new String[SeedData.CATEGORIES.length - 1];
         System.arraycopy(SeedData.CATEGORIES, 1, cats, 0, cats.length);
-        
+
         CategoryAdapter adapter = new CategoryAdapter(cats, selectedCategory, cat -> {
             selectedCategory = cat.getName();
             refreshCategoryToggle();
@@ -191,8 +194,8 @@ public class ComposeFragment extends Fragment {
     private void toggleCategoryFold() {
         categoryOpen = !categoryOpen;
         categoryChevron.animate().rotation(categoryOpen ? 180f : 0f).setDuration(300).start();
-        
-        int targetHeight = categoryOpen ? dpToPx(100) : 0;
+
+        int targetHeight = categoryOpen ? dpToPx(132) : 0;
         if (categoryOpen) {
             categoryFold.getChildAt(0).startAnimation(android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in_right));
         }
