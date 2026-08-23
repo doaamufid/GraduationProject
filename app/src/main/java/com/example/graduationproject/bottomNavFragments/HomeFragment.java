@@ -141,25 +141,21 @@ public class HomeFragment extends Fragment {
         featureList.add(new HomeFeature(R.drawable.ic_users, R.drawable.bg_icon_purple, getString(R.string.home_feature_community), getString(R.string.home_feature_community_sub)));
 
         featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
-            switch (position) {
-                case 0:
-                    startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
-                    break;
-                case 1:
-                    startActivity(new Intent(getActivity(), HealingEnvActivity.class));
-                    break;
-                case 2: // مقالات (ARTICLES)
-                    startActivity(new Intent(getActivity(), ArticlesActivity.class));
-                    break;
-                case 3: // عاداتي
-                    startActivity(new Intent(getActivity(), DailyHabitsActivity.class));
-                    break;
-                case 4: // تقارير
-                    // TODO: Implement ReportsActivity connection when ready
-                    break;
-                case 5: // مجتمع سلام
-                    startActivity(new Intent(getActivity(), SalamCommunityActivity.class));
-                    break;
+            // Resolve by feature title to avoid index mismatches
+            HomeFeature feature = featureList.get(position);
+            String title = feature.getTitle();
+            if (title.equals(getString(R.string.home_feature_videos))) {
+                startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
+            } else if (title.equals(getString(R.string.home_feature_audio))) {
+                startActivity(new Intent(getActivity(), HealingEnvActivity.class));
+            } else if (title.equals(getString(R.string.home_feature_articles))) {
+                startActivity(new Intent(getActivity(), ArticlesActivity.class));
+            } else if (title.equals(getString(R.string.home_feature_habits))) {
+                startActivity(new Intent(getActivity(), DailyHabitsActivity.class));
+            } else if (title.equals(getString(R.string.home_feature_reports))) {
+                // TODO: Implement ReportsActivity connection when ready
+            } else if (title.equals(getString(R.string.home_feature_community))) {
+                startActivity(new Intent(getActivity(), SalamCommunityActivity.class));
             }
         });
 

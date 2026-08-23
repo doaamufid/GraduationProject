@@ -21,10 +21,10 @@
             android:paddingBottom="4dp">
 
                 <TextView
+                android:id="@+id/tvStatusClock"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/status_bar_time"
                 android:textColor="@color/text_main"
                 android:textStyle="bold"
                 android:textSize="14sp"/>

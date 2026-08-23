@@ -34,6 +34,8 @@ import com.example.graduationproject.widget.HeroPulseAnimator;
 import com.example.graduationproject.widget.TapBounce;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -67,8 +69,18 @@ public class HealingEnvActivity extends AppCompatActivity {
     // ------- views -------
     private FrameLayout heroCard;
     private ImageView heroScene;
-    private TextView tvEnvBadge, tvStatusLabel, tvElapsed, tvTotal, tvTimerStatus, tvEndedMessage;
+    private TextView tvEnvBadge, tvStatusLabel, tvElapsed, tvTotal, tvTimerStatus, tvEndedMessage, tvStatusClock;
     private View statusDot, heroPulseRing, scrubberTrack, scrubberFill;
+    private final Handler clockHandler = new Handler(Looper.getMainLooper());
+    private final Runnable clockRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (tvStatusClock != null) {
+                tvStatusClock.setText(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date()));
+            }
+            clockHandler.postDelayed(this, 60000L);
+        }
+    };
     private ImageButton btnHeroPlayPause, btnPlayPause, btnPrev, btnNext;
     private LinearLayout llEnvPicker, llLayers, llTimerChips;
     private androidx.cardview.widget.CardView cvActiveTimer;
@@ -79,6 +91,9 @@ public class HealingEnvActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_healing_env);
+
+        tvStatusClock = findViewById(R.id.tvStatusClock);
+        clockRunnable.run();
 
         initLayerLevels();
         bindViews();
@@ -700,6 +715,7 @@ public class HealingEnvActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        clockHandler.removeCallbacks(clockRunnable);
         handler.removeCallbacksAndMessages(null);
         HeroPulseAnimator.stop(heroPulseAnimator, heroPulseRing);
         if (scrubberAnimator != null) scrubberAnimator.cancel();

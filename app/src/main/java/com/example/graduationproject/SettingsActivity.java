@@ -2,12 +2,18 @@ package com.example.graduationproject;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -34,6 +40,17 @@ public class SettingsActivity extends AppCompatActivity {
     private LinearLayout llThemeSwatches;
     private View rowDialect;
     private List<ThemeOption> themeOptions;
+    private TextView tvStatusClock;
+    private final Handler clockHandler = new Handler(Looper.getMainLooper());
+    private final Runnable clockRunnable = new Runnable() {
+        @Override
+        public void run() {
+            if (tvStatusClock != null) {
+                tvStatusClock.setText(new SimpleDateFormat("HH:mm", Locale.getDefault()).format(new Date()));
+            }
+            clockHandler.postDelayed(this, 60000L);
+        }
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +60,9 @@ public class SettingsActivity extends AppCompatActivity {
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         
         setContentView(R.layout.activity_settings);
+
+        tvStatusClock = findViewById(R.id.tvStatusClock);
+        clockRunnable.run();
 
         View rootLayout = findViewById(android.R.id.content);
         ViewCompat.setOnApplyWindowInsetsListener(rootLayout, (v, insets) -> {
@@ -80,6 +100,12 @@ public class SettingsActivity extends AppCompatActivity {
 
         applyThemeColors();
         animateElements();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        clockHandler.removeCallbacks(clockRunnable);
     }
 
     private void animateElements() {

@@ -10,13 +10,13 @@
 
     <!-- Status row -->
     <TextView
+        android:id="@+id/tvStatusClock"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingStart="24dp"
         android:paddingEnd="24dp"
         android:paddingTop="14dp"
         android:paddingBottom="4dp"
-        android:text="@string/status_bar_time"
         android:textColor="@color/text_main"
         android:textStyle="bold"
         android:textSize="12sp"/>
@@ -40,16 +40,6 @@
             android:padding="11dp"
             android:contentDescription="@null"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_marginStart="12dp"
-            android:gravity="end"
-            android:text="@string/screen_title"
-            android:textColor="@color/text_main"
-            android:textStyle="bold"
-            android:textSize="15sp"/>
     </LinearLayout>
 
     <ScrollView

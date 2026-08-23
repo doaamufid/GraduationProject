@@ -44,12 +44,13 @@ public class HomeFeatureAdapter extends RecyclerView.Adapter<HomeFeatureAdapter.
         holder.tvTitle.setText(feature.getTitle());
         holder.tvSubtitle.setText(feature.getSubtitle());
 
+        final int adapterPos = position;
         holder.itemView.setOnClickListener(v -> {
             // تأثير ضغطة أبطأ (Scale Feedback)
             v.animate().scaleX(0.9f).scaleY(0.9f).setDuration(200).withEndAction(() -> {
                 v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(200).start();
                 if (listener != null) {
-                    listener.onClick(holder.getAdapterPosition());
+                    listener.onClick(adapterPos);
                 }
             }).start();
         });

@@ -11,11 +11,11 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.example.graduationproject.MainActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.data.Repository;
 import com.example.graduationproject.models.Message;
 import com.example.graduationproject.util.CardBinder;
+import com.example.graduationproject.util.CardHost;
 
 import java.util.List;
 
@@ -46,7 +46,7 @@ public class ListFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        MainActivity activity = (MainActivity) requireActivity();
+        CardHost activity = (CardHost) requireActivity();
 
         String mode = getArguments() != null ? getArguments().getString(ARG_MODE) : MODE_MINE;
         boolean isMine = MODE_MINE.equals(mode);

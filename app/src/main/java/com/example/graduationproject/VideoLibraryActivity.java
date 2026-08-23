@@ -1,5 +1,6 @@
 package com.example.graduationproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -31,13 +32,10 @@ public class VideoLibraryActivity extends AppCompatActivity {
             }
         }
 
-        setContentView(R.layout.activity_video_library);
-
         if (savedInstanceState == null) {
-            getSupportFragmentManager()
-                    .beginTransaction()
-                    .replace(R.id.fragmentContainer, new LibraryFragment())
-                    .commit();
+            startActivity(new Intent(this, VisualContentActivity.class));
+            finish();
+            return;
         }
     }
 
