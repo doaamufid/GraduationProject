@@ -2,100 +2,61 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFFFFF"
     android:orientation="vertical"
-    android:padding="20dp">
+    android:padding="24dp"
+    android:background="#FFFFFF">
 
+    <!-- العنوان التفاعلي الجديد -->
     <TextView
+        android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="وش سويت اليوم؟ 🌱"
+        android:text="يلا نكبر الشجرة مع بعض! 🚀⭐"
         android:textColor="#3A5A40"
         android:textSize="18sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginBottom="4dp"/>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/tvSubTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="اختر تحدي واكسب نقاط إضافية:"
+        android:textColor="#666666"
+        android:textSize="13sp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="20dp"/>
+
+    <Button
         android:id="@+id/btnActionBreath"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:background="#F4F8F3"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
+        android:layout_height="52dp"
+        android:text="تمرين التنفس السحري 🫁 (+10 نقاط)"
+        android:backgroundTint="#E8F5E9"
+        android:textColor="#2E7D32"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="تمرين التنفس 🫁"
-            android:textColor="#3A5A40"
-            android:textSize="15sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+10 نقاط"
-            android:textColor="#588157"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
+    <Button
         android:id="@+id/btnActionChat"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#F4F8F3"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
+        android:layout_height="52dp"
+        android:text="تحدث مع صديقك الذكي 💬 (+10 نقاط)"
+        android:backgroundTint="#E8F5E9"
+        android:textColor="#2E7D32"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
 
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="تحدثت مع نور 🧸"
-            android:textColor="#3A5A40"
-            android:textSize="15sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+10 نقاط"
-            android:textColor="#588157"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
+    <Button
         android:id="@+id/btnActionJournal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:background="#F4F8F3"
-        android:clickable="true"
-        android:focusable="true"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp">
-
-        <TextView
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="سجلت مشاعري 📝"
-            android:textColor="#3A5A40"
-            android:textSize="15sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="+10 نقاط"
-            android:textColor="#588157"
-            android:textStyle="bold" />
-    </LinearLayout>
-
+        android:layout_height="52dp"
+        android:text="اكتب يومياتك ورسوماتك 📖 (+10 نقاط)"
+        android:backgroundTint="#E8F5E9"
+        android:textColor="#2E7D32"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
 </LinearLayout>
