@@ -25,8 +25,7 @@ import com.example.graduationproject.HealingEnvActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.SalamCommunityActivity;
 import com.example.graduationproject.VideoLibraryActivity;
-import com.example.graduationproject.animation.AnimationManager;
-import app.rive.runtime.kotlin.RiveAnimationView;
+import com.example.graduationproject.VisualContentActivity;
 import com.example.graduationproject.adapters.HomeActionAdapter;
 import com.example.graduationproject.adapters.HomeFeatureAdapter;
 import com.example.graduationproject.models.HomeAction;
@@ -77,13 +76,6 @@ public class HomeFragment extends Fragment {
         rvActions.setLayoutAnimation(animationController);
         rvFeatures.setLayoutAnimation(animationController);
 
-        // تحريك واجهة الرموز التعبيرية (Rive)
-        RiveAnimationView riveMood = view.findViewById(R.id.riveMood);
-        if (riveMood != null) {
-            Animation emojiEnter = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
-            emojiEnter.setStartOffset(400); 
-            riveMood.startAnimation(emojiEnter);
-        }
 
         setupActions();
         setupFeatures();
