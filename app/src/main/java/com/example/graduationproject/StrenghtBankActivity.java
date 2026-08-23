@@ -213,7 +213,9 @@ public class StrenghtBankActivity extends AppCompatActivity {
         tvNewBadge.setVisibility(trait.isNew ? View.VISIBLE : View.GONE);
         tvTraitLabel.setText(trait.label);
         dotColor.setVisibility(trait.selfAdded ? View.GONE : View.VISIBLE);
-        dotColor.getBackground().mutate().setTint(trait.colorInt);
+        if (dotColor.getBackground() != null) {
+            dotColor.getBackground().mutate().setTint(trait.colorInt);
+        }
         tvCount.setText(getString(R.string.count_times_format, trait.count));
         tvQuote.setText("\u201C" + trait.quote + "\u201D");
         tvExerciseText.setText(trait.exercise);

@@ -23,6 +23,7 @@ import com.example.graduationproject.CBTRReframingActivity;
 import com.example.graduationproject.FutureActivity;
 import com.example.graduationproject.GroundingExActivity;
 import com.example.graduationproject.R;
+import com.example.graduationproject.StrenghtBankActivity;
 import com.example.graduationproject.SurvivalBoxActivity;
 import com.example.graduationproject.adapters.ExerciseFeatureAdapter;
 import com.example.graduationproject.models.ExerciseFeature;
@@ -105,9 +106,7 @@ public class ExercisesFragment extends Fragment {
             // هنا ستضعين الأكشن لكل تمرين عند الضغط عليه لاحقاً
             switch (position) {
                 case 0: // نقاط قوتي
-                    // مثال للانتقال إلى Activity:
-                    // startActivity(new Intent(requireContext(), StrengthsActivity.class));
-                    Toast.makeText(requireContext(), "تم الضغط على نقاط قوتي", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(requireContext(), StrenghtBankActivity.class));
                     break;
 
                 case 1: // رسالة لنفسي

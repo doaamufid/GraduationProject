@@ -918,5 +918,13 @@
     <string name="home_feature_reports_sub">REPORTS</string>
     <string name="home_feature_community">مجتمع سلام</string>
     <string name="home_feature_community_sub">COMMUNITY</string>
+<!-- Language selection -->
+    <string name="language_selection_title">اختر لغتك</string>
+    <string name="language_selection_subtitle">اختر اللغة التي تناسبك أكثر</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_english">الإنجليزية</string>
+    <string name="language_title">اللغة</string>
+    <string name="continue_label">متابعة</string>
+    <string name="chat_item_voice_message_android_text_0">00:00</string>
 </resources>
 

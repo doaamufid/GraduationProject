@@ -917,5 +917,13 @@
     <string name="home_feature_reports_sub">REPORTS</string>
     <string name="home_feature_community">Salam Community</string>
     <string name="home_feature_community_sub">COMMUNITY</string>
+<!-- Language selection -->
+    <string name="language_selection_title">Choose your language</string>
+    <string name="language_selection_subtitle">Select the language you are most comfortable with.</string>
+    <string name="language_arabic">Arabic</string>
+    <string name="language_english">English</string>
+    <string name="language_title">Language</string>
+    <string name="continue_label">Continue</string>
+    <string name="chat_item_voice_message_android_text_0">00:00</string>
 </resources>
 

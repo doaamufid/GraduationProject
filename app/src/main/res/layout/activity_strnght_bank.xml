@@ -50,7 +50,8 @@
                         android:text="@string/header_title"
                         android:textColor="@color/text_white"
                         android:textStyle="bold"
-                        android:textSize="14sp"/>
+                        android:letterSpacing="0.03"
+                        android:textSize="13sp"/>
                 </LinearLayout>
 
                 <!-- Add Trait Button -->
@@ -63,7 +64,7 @@
                     android:text="@string/add_trait_btn"
                     android:textColor="@color/text_white"
                     android:textStyle="bold"
-                    android:textSize="14sp"
+                    android:textSize="13sp"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     android:paddingTop="6dp"
@@ -98,13 +99,13 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
                     android:gravity="center_horizontal"
-                    android:paddingTop="16dp"
-                    android:paddingBottom="16dp">
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp">
 
                     <FrameLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
+                        android:layout_marginBottom="14dp">
 
                         <include
                             android:id="@+id/includeRadialHeader"
@@ -117,16 +118,17 @@
                         android:text="@string/bank_title"
                         android:textColor="@color/text_white"
                         android:textStyle="bold"
-                        android:textSize="18sp"
-                        android:layout_marginBottom="4dp"/>
+                        android:letterSpacing="0.12"
+                        android:textSize="17sp"
+                        android:layout_marginBottom="3dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/bank_sub"
                         android:textColor="@color/text_soft"
-                        android:textSize="13sp"
-                        android:layout_marginBottom="4dp"/>
+                        android:textSize="12sp"
+                        android:layout_marginBottom="3dp"/>
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -142,15 +144,30 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
+                    android:background="@drawable/bg_info_pill"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp"
+                    android:paddingTop="9dp"
+                    android:paddingBottom="9dp"
                     android:layout_marginBottom="16dp">
 
+                    <ImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginEnd="7dp"
+                        android:src="@drawable/ic_sparkles_small"
+                        android:contentDescription="@null"
+                        app:tint="@color/primary_light"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"/>
+
                     <TextView
-                        android:layout_width="match_parent"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_weight="1"
                         android:gravity="start"
                         android:text="@string/highlight_this_month"
                         android:textColor="@color/text_soft"
-                        android:textSize="13sp"/>
+                        android:textSize="12sp"/>
                 </LinearLayout>
 
                 <!-- Trait cards -->
@@ -169,15 +186,15 @@
                     android:orientation="horizontal"
                     android:gravity="center"
                     android:background="@drawable/bg_analyze_btn_ready"
-                    android:paddingTop="14dp"
-                    android:paddingBottom="14dp"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="12dp"
                     android:clickable="true"
                     android:focusable="true">
 
                     <ImageView
                         android:id="@+id/ivAnalyzeSpinner"
-                        android:layout_width="16dp"
-                        android:layout_height="16dp"
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_loader_spin"
                         android:visibility="gone"
@@ -185,8 +202,8 @@
 
                     <ImageView
                         android:id="@+id/ivAnalyzeSparkle"
-                        android:layout_width="15dp"
-                        android:layout_height="15dp"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
                         android:layout_marginEnd="8dp"
                         android:src="@drawable/ic_sparkles_small"
                         android:contentDescription="@null"/>
@@ -197,7 +214,8 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/text_white"
                         android:textStyle="bold"
-                        android:textSize="14sp"
+                        android:letterSpacing="0.03"
+                        android:textSize="13sp"
                         tools:text="حلل محادثة اليوم الآن"/>
                 </LinearLayout>
 
