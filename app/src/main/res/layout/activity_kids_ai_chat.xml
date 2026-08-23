@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
+    android:layout_gravity="center_horizontal"
     android:layout_height="match_parent"
     android:background="#FAF1E6"
     tools:context=".Kids.KidsAiChatActivity">
@@ -278,113 +279,121 @@
             android:layout_marginTop="12dp"
             android:indeterminateTint="#F47C2B" />
     </LinearLayout>
-
-    <!-- STATE 3: AI RESPONSE STATE -->
-    <LinearLayout
+    <!-- STATE 3: AI RESPONSE STATE (مع ScrollView لمنع تداخل التنسيق) -->
+    <ScrollView
         android:id="@+id/group_response_state"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingHorizontal="24dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_bear_avatar">
 
-        <!-- Speech Bubble Card -->
-        <TextView
-            android:id="@+id/tv_ai_response_text"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_kids_mood_card"
-            android:gravity="center"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="18dp"
-            android:text="@string/kids_chat_ai_default_response"
-            android:textColor="#3D291F"
-            android:textSize="18sp"
-            android:textStyle="bold" />
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="24dp">
 
-        <!-- Listen Button Pill -->
-        <TextView
-            android:id="@+id/btn_listen_voice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:background="#D8EBE4"
-            android:gravity="center"
-            android:paddingHorizontal="22dp"
-            android:paddingVertical="8dp"
-            android:text="@string/kids_chat_listen_response"
-            android:textColor="#598F7A"
-            android:textSize="14sp"
-            android:textStyle="bold" />
+            <!-- Speech Bubble Card -->
+            <TextView
+                android:id="@+id/tv_ai_response_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_kids_mood_card"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:paddingVertical="18dp"
+                android:text="@string/kids_chat_ai_default_response"
+                android:textColor="#3D291F"
+                android:textSize="17sp"
+                android:textStyle="bold" />
 
-        <!-- Title Question -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:text="@string/kids_chat_what_next"
-            android:textColor="#8B6F4D"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <!-- Listen Button Pill -->
+            <TextView
+                android:id="@+id/btn_listen_voice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#D8EBE4"
+                android:gravity="center"
+                android:paddingHorizontal="22dp"
+                android:paddingVertical="8dp"
+                android:text="@string/kids_chat_listen_response"
+                android:textColor="#598F7A"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
-        <!-- Option 1: Take a breath -->
-        <TextView
-            android:id="@+id/btn_action_breath"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="10dp"
-            android:background="#FDE8D7"
-            android:gravity="center"
-            android:text="@string/kids_chat_action_breath"
-            android:textColor="#E07026"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <!-- Title Question -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="@string/kids_chat_what_next"
+                android:textColor="#8B6F4D"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <!-- Option 2: Draw how you feel -->
-        <TextView
-            android:id="@+id/btn_action_draw"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="#E3EFE9"
-            android:gravity="center"
-            android:text="@string/kids_chat_action_draw"
-            android:textColor="#427A65"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <!-- Option 1: Take a breath -->
+            <TextView
+                android:id="@+id/btn_action_breath"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:background="#FDE8D7"
+                android:gravity="center"
+                android:text="@string/kids_chat_action_breath"
+                android:textColor="#E07026"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <!-- Option 3: Tree Button (زر الشجرة المضاف) -->
-        <TextView
-            android:id="@+id/btn_go_to_tree"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="#E2F0D9"
-            android:gravity="center"
-            android:text="@string/see_your_tree"
-            android:textColor="#388E3C"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <!-- Option 2: Draw how you feel -->
+            <TextView
+                android:id="@+id/btn_action_draw"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="#E3EFE9"
+                android:gravity="center"
+                android:text="@string/kids_chat_action_draw"
+                android:textColor="#427A65"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-        <!-- Option 4: Done -->
-        <TextView
-            android:id="@+id/btn_action_better"
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:layout_marginTop="8dp"
-            android:background="@drawable/bg_kids_mood_card"
-            android:gravity="center"
-            android:text="@string/kids_chat_action_better"
-            android:textColor="#8B6F4D"
-            android:textSize="15sp"
-            android:textStyle="bold" />
+            <!-- Option 3: Tree Button -->
+            <TextView
+                android:id="@+id/btn_go_to_tree"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="#E2F0D9"
+                android:gravity="center"
+                android:text="@string/see_your_tree"
+                android:textColor="#388E3C"
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
-    </LinearLayout>
+            <!-- Option 4: Done -->
+            <TextView
+                android:id="@+id/btn_action_better"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/bg_kids_mood_card"
+                android:gravity="center"
+                android:text="@string/kids_chat_action_better"
+                android:textColor="#8B6F4D"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+    </ScrollView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

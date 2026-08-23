@@ -18,7 +18,7 @@ import java.util.List;
 
 public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "children_wellbeing.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
 
     private static final String TABLE_PROFILES = "child_profiles";
     private static final String COLUMN_ID = "id";
@@ -101,7 +101,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         }
     }
 
-  public long addProfile(String name, int age, String gender, String avatar) {
+    public long addProfile(String name, int age, String gender, String avatar) {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, name);
         values.put(COLUMN_AGE, age);
@@ -143,9 +143,36 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         return getWritableDatabase().insert(TABLE_EVENTS, null, values);
     }
 
+    // ⭐ إضافة الدالة المفقودة لتسجيل الأحداث المكتملة بسهولة
+    public long addCompletedEvent(long childId, String eventType) {
+        return addBehaviorEvent(childId, eventType, "COMPLETED", "تم إنجاز التحدي اليومي", System.currentTimeMillis());
+    }
+
     private int getProfilesCount() {
         try (Cursor cursor = getReadableDatabase().rawQuery("SELECT COUNT(*) FROM " + TABLE_PROFILES, null)) {
             return cursor.moveToFirst() ? cursor.getInt(0) : 0;
+        }
+    }
+
+    public boolean hasCompletedEventToday(long childId, String eventType) {
+        SQLiteDatabase db = getReadableDatabase();
+
+        // تحديد بداية اليوم الحالي (00:00:00)
+        java.util.Calendar calendar = java.util.Calendar.getInstance();
+        calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);
+        calendar.set(java.util.Calendar.MINUTE, 0);
+        calendar.set(java.util.Calendar.SECOND, 0);
+        calendar.set(java.util.Calendar.MILLISECOND, 0);
+        long startOfDay = calendar.getTimeInMillis();
+
+        String selection = COLUMN_CHILD_ID + " = ? AND " + COLUMN_EVENT_TYPE + " = ? AND " + COLUMN_OCCURRED_AT + " >= ?";
+        String[] selectionArgs = new String[]{String.valueOf(childId), eventType, String.valueOf(startOfDay)};
+
+        try (Cursor cursor = db.query(TABLE_EVENTS, new String[]{COLUMN_ID}, selection, selectionArgs, null, null, null)) {
+            return cursor != null && cursor.getCount() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
         }
     }
 }

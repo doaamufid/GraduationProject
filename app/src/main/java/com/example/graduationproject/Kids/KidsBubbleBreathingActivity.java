@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.graduationproject.R;
+import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityKidsBubbleBreathingBinding;
 
 public class KidsBubbleBreathingActivity extends AppCompatActivity {
@@ -60,23 +61,18 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
         binding.btnGoToTree.setOnClickListener(v -> {
             Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeIntroActivity.class);
             startActivity(intent);
             finish();
         });
-// عند الضغط على زر "خلص، أنا أحسن الحين"
+
         binding.btnDone.setOnClickListener(v -> {
             Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeIntroActivity.class);
             startActivity(intent);
-            finish(); // لإغلاق شاشة التنفس بعد الانتقال
+            finish();
         });
-
-//        binding.btnDone.setOnClickListener(v -> {
-//            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsAiChatActivity.class);
-//            startActivity(intent);
-//            finish();
-//        });
 
         binding.btnBack.setOnClickListener(v -> finish());
 
@@ -184,6 +180,7 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         }
     }
 
+    // المكان الصحيح لحفظ الإنجاز والنقاط
     private void showDoneState() {
         isHolding = false;
         handler.removeCallbacks(breathRunnable);
@@ -201,8 +198,32 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
 
         binding.btnPrimary.setVisibility(View.GONE);
         binding.actionsRow.setVisibility(View.VISIBLE);
+
+        // --- حفظ الإنجاز وإضافة النقاط رسمياً ---
+        saveBreathingAchievement();
     }
 
+    private void saveBreathingAchievement() {
+        ChildProfileStore store = new ChildProfileStore(this);
+        long currentChildId = getCurrentChildId();
+
+        // إضافة الحدث مباشرة للجدول في SQLite
+        store.addBehaviorEvent(
+                currentChildId,
+                "BREATHING_EXERCISE",
+                "COMPLETED",
+                "أتم الطفل تمرين التنفس بنجاح",
+                System.currentTimeMillis()
+        );
+    }
+
+    private long getCurrentChildId() {
+        long id = getIntent().getLongExtra("CHILD_ID", -1L);
+        if (id == -1L) {
+            id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
+        }
+        return id;
+    }
 
     private void resetExercise() {
         showWelcomeState();

@@ -22,15 +22,14 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="#8B6F4D" />
 
-
     <TextView
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/new_child_welcome_title"
         android:textColor="#E65100"
-        android:textSize="26sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -40,10 +39,10 @@
         android:id="@+id/tv_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="2dp"
         android:text="@string/new_child_welcome_subtitle"
         android:textColor="#7E654D"
-        android:textSize="14sp"
+        android:textSize="13sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_title" />
@@ -52,10 +51,10 @@
         android:id="@+id/lbl_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="16dp"
         android:text="@string/new_child_label_name"
         android:textColor="#4B2D24"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -64,9 +63,9 @@
     <EditText
         android:id="@+id/et_child_name"
         android:layout_width="0dp"
-        android:layout_height="48dp"
+        android:layout_height="44dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/bg_edit_text_rounded"
         android:gravity="center"
@@ -83,7 +82,7 @@
         android:id="@+id/tv_secret_note"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="6dp"
+        android:layout_marginTop="4dp"
         android:text="@string/new_child_secret_note"
         android:textColor="#A1887F"
         android:textSize="11sp"
@@ -95,10 +94,10 @@
         android:id="@+id/lbl_age"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="18dp"
+        android:layout_marginTop="12dp"
         android:text="@string/new_child_label_age"
         android:textColor="#4B2D24"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +108,7 @@
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
         android:orientation="horizontal"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
@@ -122,10 +121,10 @@
         android:id="@+id/lbl_gender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:text="@string/new_child_label_gender"
         android:textColor="#4B2D24"
-        android:textSize="16sp"
+        android:textSize="15sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -134,9 +133,9 @@
     <LinearLayout
         android:id="@+id/layout_gender"
         android:layout_width="0dp"
-        android:layout_height="56dp"
+        android:layout_height="48dp"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="24dp"
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
@@ -149,7 +148,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:layout_marginEnd="8dp"
-            android:background="@drawable/bg_gender_selected"
+            android:background="@drawable/bg_gender_unselected"
             android:gravity="center"
             android:orientation="horizontal">
 
@@ -157,14 +156,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="👦 "
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gender_boy"
                 android:textColor="#4B2D24"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
@@ -182,34 +181,65 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="👧 "
-                android:textSize="18sp" />
+                android:textSize="16sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/gender_girl"
                 android:textColor="#8B6F4D"
-                android:textSize="15sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 
-    <!-- Banner أخضر ينعرض عند الاكتمال -->
+
+    <TextView
+        android:id="@+id/lbl_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:text="اختر شكل شخصيتك المفضل ✨"
+        android:textColor="#4B2D24"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/layout_gender"
+        tools:visibility="visible" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_avatars"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
+        android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/lbl_avatar"
+        tools:listitem="@layout/item_age_selector"
+        tools:visibility="visible" />
+
     <LinearLayout
         android:id="@+id/card_info_banner"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="24dp"
         android:background="@drawable/bg_child_lock_banner"
         android:gravity="center"
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="12dp"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_gender"
+        app:layout_constraintTop_toBottomOf="@id/rv_avatars"
         tools:visibility="visible">
 
         <TextView
@@ -217,15 +247,15 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="🦊"
-            android:textSize="36sp" />
+            android:textSize="32sp" />
 
         <TextView
             android:id="@+id/tv_banner_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="4dp"
             android:textColor="#388E3C"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             tools:text="راح تدخل: عالم نور" />
 
@@ -242,14 +272,14 @@
     <Button
         android:id="@+id/btn_start"
         android:layout_width="0dp"
-        android:layout_height="52dp"
+        android:layout_height="50dp"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="24dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="#F47C2B"
         android:text="@string/new_child_btn_submit"
         android:textColor="#FFFFFF"
-        android:textSize="17sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
