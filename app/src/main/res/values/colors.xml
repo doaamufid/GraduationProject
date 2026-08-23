@@ -270,4 +270,9 @@
     <color name="toolbar_divider">#40FFFFFF</color>
     <color name="white_88">#E0FFFFFF</color>
     <color name="white_dd">#DDFFFFFF</color>
+    <color name="outer_bg">#E9ECF3</color>
+
+    <color name="dhikr_gold">#D9A85C</color>
+    <color name="online_green">#4CAF7D</color>
+
 </resources>

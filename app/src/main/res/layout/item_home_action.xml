@@ -57,7 +57,7 @@
                     android:textSize="18sp"
                     android:textStyle="bold"
                     android:gravity="start"
-                    tools:text="جلسة استرخاء سريعة لمزاج اليوم" />
+                    tools:text="@string/home_relax_title" />
 
                 <TextView
                     android:id="@+id/tvActionSubtitle"
@@ -67,7 +67,7 @@
                     android:textColor="#6A8CA3"
                     android:textSize="13sp"
                     android:gravity="start"
-                    tools:text="١٠ دقائق من الهدوء" />
+                    tools:text="@string/home_relax_subtitle" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnStartAction"
@@ -79,7 +79,7 @@
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
                     android:paddingHorizontal="16dp"
-                    android:text="ابدأ الآن"
+                    android:text="@string/home_start_now"
                     android:textAllCaps="false"
                     android:textColor="#D35D4B"
                     android:textSize="12sp"

@@ -7,12 +7,16 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.AnticipateOvershootInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
+
+import java.util.Locale;
 
 import androidx.activity.EdgeToEdge;
 import androidx.activity.OnBackPressedCallback;
@@ -26,14 +30,22 @@ import com.example.graduationproject.databinding.ActivitySplashSelectBinding;
 public class SplashSelectActivity extends AppCompatActivity {
 
     private ActivitySplashSelectBinding binding;
+    private String currentLanguage = "ar"; // Arabic is the app's default setting
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Apply locale + layout direction: RTL for Arabic (default), LTR for English
+        applyLocale(getAppLanguage());
+
         EdgeToEdge.enable(this);
 
         binding = ActivitySplashSelectBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Explicitly enforce the direction on this screen (RTL for Arabic, LTR for English)
+        binding.getRoot().setLayoutDirection(isRtl() ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR);
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -84,6 +96,37 @@ public class SplashSelectActivity extends AppCompatActivity {
             v.animate().scaleX(1.05f).scaleY(1.05f).setDuration(200).start();
             return false;
         });
+    }
+
+    /**
+     * Returns the active app language.
+     * Arabic ("ar") is ALWAYS the default regardless of the device locale,
+     * unless the user explicitly chose English ("en") in AppPrefs.
+     */
+    private String getAppLanguage() {
+        SharedPreferences appPrefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        String lang = appPrefs.getString("language", "ar"); // default: Arabic
+        if (!"ar".equals(lang) && !"en".equals(lang)) {
+            lang = "ar"; // Arabic is the default setting for the app
+        }
+        return lang;
+    }
+
+    private boolean isRtl() {
+        return "ar".equals(currentLanguage);
+    }
+
+    /** Applies the language and its layout direction (RTL for Arabic, LTR for English). */
+    private void applyLocale(String lang) {
+        currentLanguage = lang;
+        Locale locale = new Locale(lang);
+        Locale.setDefault(locale);
+
+        Resources res = getResources();
+        Configuration config = new Configuration(res.getConfiguration());
+        config.setLocale(locale);
+        config.setLayoutDirection(locale);
+        res.updateConfiguration(config, res.getDisplayMetrics());
     }
 
     private void startEntranceAnimations() {

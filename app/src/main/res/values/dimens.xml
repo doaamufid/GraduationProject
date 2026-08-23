@@ -36,4 +36,24 @@
     <dimen name="radius_medium">18dp</dimen>
     <dimen name="spacing_screen">20dp</dimen>
     <dimen name="radius_full">999dp</dimen>
+
+    <dimen name="chat_radius_bubble">18dp</dimen>
+    <dimen name="chat_radius_bubble_tail">4dp</dimen>
+    <dimen name="chat_radius_card">16dp</dimen>
+    <dimen name="chat_radius_chip">100dp</dimen>
+
+    <dimen name="chat_text_body">13sp</dimen>
+    <dimen name="chat_text_meta">9sp</dimen>
+    <dimen name="chat_text_title">13sp</dimen>
+    <dimen name="chat_text_subtitle">10sp</dimen>
+    <dimen name="chat_text_chip">11sp</dimen>
+    <dimen name="chat_text_nav">9sp</dimen>
+
+    <dimen name="chat_avatar_size">36dp</dimen>
+    <dimen name="chat_icon_btn_size">40dp</dimen>
+
+    <!-- Approximates the JSX's max-w-[78%] / max-w-[80%] bubble & card widths -->
+    <dimen name="chat_bubble_max_width">270dp</dimen>
+    <dimen name="chat_card_max_width">280dp</dimen>
+
 </resources>

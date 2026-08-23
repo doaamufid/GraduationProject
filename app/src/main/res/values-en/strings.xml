@@ -802,4 +802,120 @@
     <string name="duration_label">duration</string>
     <string name="rating_label">rating</string>
     <string name="exercises_label">Exercises</string>
+    <string name="chat_app_name">Companion Chat</string>
+    <string name="chat_status_time">9:41</string>
+
+    <string name="chat_header_title">Companion Chat</string>
+    <string name="chat_header_subtitle">SALAM · Online</string>
+
+    <string name="chat_input_hint">Type your message...</string>
+
+    <string name="chat_nav_home">Home</string>
+    <string name="chat_nav_exercises">Exercises</string>
+    <string name="chat_nav_stats">Stats</string>
+    <string name="chat_nav_me">Me</string>
+    <string name="chat_now">9:40 AM</string>
+
+    <!-- Breathing card -->
+    <string name="chat_breathing_kicker">BREATHING EXERCISE</string>
+    <string name="chat_breathing_title">Box Breathing 🫁</string>
+    <string name="chat_breathing_desc">4-minute exercise to calm the nervous system</string>
+    <string name="chat_breathing_button">Start Exercise</string>
+    <string name="chat_breathing_toast">Taking you to breathing exercise...</string>
+
+    <!-- Dhikr card -->
+    <string name="chat_dhikr_kicker">DHIKR</string>
+    <string name="chat_dhikr_title">Calming Dhikr 🌙</string>
+    <string name="chat_dhikr_desc">"SubhanAllah wa bihamdihi" — repeat slowly with each exhale</string>
+    <string name="chat_dhikr_button">Open my Dhikr</string>
+    <string name="chat_dhikr_toast">Opening your Dhikr...</string>
+
+    <!-- Article card -->
+    <string name="chat_article_tag">CBT</string>
+    <string name="chat_article_title">How to deal with sadness without suppressing it?</string>
+    <string name="chat_article_button">Read now →</string>
+    <string name="chat_article_toast">Opening the article...</string>
+
+    <!-- Conversation Nodes -->
+    <string name="chat_node_start_bot">Hello, I\'m here with you. How are you feeling today?</string>
+    <string name="chat_reply_start_anxious">I feel some anxiety today</string>
+    <string name="chat_reply_start_distress">I feel very distressed and can\'t breathe well</string>
+    <string name="chat_reply_start_fine">Fine, thank God</string>
+
+    <string name="chat_node_anxious_bot">I understand, anxiety is a natural feeling. Would you like to try a quick breathing exercise to calm your thoughts?</string>
+    <string name="chat_reply_anxious_breathing">Yes, try with me</string>
+    <string name="chat_reply_anxious_later">Later</string>
+    <string name="chat_reply_anxious_elaborate">Talk to me more</string>
+
+    <string name="chat_node_breathingOffer_bot">Okay, this is a simple exercise to calm your nervous system in minutes 💙</string>
+    <string name="chat_reply_breathingOffer_article">I\'d also like to read a short article</string>
+    <string name="chat_reply_breathingOffer_closing">Thanks, that\'s enough</string>
+
+    <string name="chat_node_article_bot">Sure, here\'s a short article that might help you understand your feelings more:</string>
+    <string name="chat_reply_article_closing">Thank you</string>
+
+    <string name="chat_node_later_bot">Okay, I\'m here whenever you need 💙</string>
+    <string name="chat_reply_later_closing">I\'ll see to myself later</string>
+
+    <string name="chat_node_elaborate_bot">Sure, tell me more about what\'s on your mind?</string>
+
+    <string name="chat_node_distress_bot">I hear you very well — it\'s very natural to feel this way. You are not alone, I\'m here. Shall we try a simple breathing exercise together?</string>
+    <string name="chat_reply_distress_yes">Yes</string>
+    <string name="chat_reply_distress_maybe">I don\'t know yet</string>
+    <string name="chat_reply_distress_no">No, thanks</string>
+
+    <string name="chat_node_dhikrOffer_bot">No worries, take your time. Try this simple dhikr, it helps calm your breathing with every exhale:</string>
+    <string name="chat_reply_dhikrOffer_closing">Thanks, I tried</string>
+
+    <string name="chat_node_fine_bot">Happy to hear that! 😊 Would you like to share something good that happened today?</string>
+
+    <string name="chat_node_closing_bot">I\'m proud of you for talking. I\'m always here whenever you need me 💙</string>
+
+    <string name="chat_node_freeReply_bot">I hear you, and this is important. Take your time, I\'m here with you step by step.</string>
+    <string name="chat_reply_freeReply_breathing">Try a breathing exercise</string>
+    <string name="chat_reply_freeReply_closing">Just wanted to talk</string>
+<!-- Splash select screen -->
+    <string name="splash_back">Back</string>
+    <string name="splash_salam">Hello</string>
+    <string name="splash_question">Who is this place for?</string>
+    <string name="splash_sub_question">Choose the category that fits you</string>
+    <string name="splash_adults_title">For Adults</string>
+    <string name="splash_adults_subtitle">A calm space for reflection and mental support</string>
+    <string name="splash_kids_title">For Kids</string>
+    <string name="splash_kids_subtitle">A fun and safe world for you!</string>
+<!-- Chat screen -->
+    <string name="chat_back">Back</string>
+    <string name="chat_send">Send</string>
+    <string name="chat_voice_record">Record a voice message</string>
+    <string name="chat_voice_play">Play voice message</string>
+    <string name="chat_voice_title">Record your voice message</string>
+    <string name="chat_voice_timer_zero">00:00</string>
+    <string name="chat_voice_hint">Tap Send when done, or Cancel to discard</string>
+    <string name="chat_voice_cancel">Cancel</string>
+    <string name="chat_voice_send">Send</string>
+    <string name="chat_voice_perm_title">Microphone Permission</string>
+    <string name="chat_voice_perm_msg">We need the microphone permission so you can record voice messages with your companion.</string>
+    <string name="chat_voice_perm_denied">Microphone permission was denied. You can grant it from Settings to continue.</string>
+    <string name="chat_voice_sent_toast">Voice message sent 🎙️</string>
+<!-- Home screen -->
+    <string name="home_friend">friend</string>
+    <string name="home_greeting_format">Good morning %1$s, how do you feel now?\nI\'m here with you 🌊</string>
+    <string name="home_greeting_default">Good morning, how do you feel now?\nI\'m here with you 🌊</string>
+    <string name="home_mood_title">Today\'s Mood</string>
+    <string name="home_relax_title">Quick relaxation session for today\'s mood</string>
+    <string name="home_relax_subtitle">10 minutes of calm</string>
+    <string name="home_start_now">Start Now</string>
+    <string name="home_feature_videos">Videos</string>
+    <string name="home_feature_videos_sub">VIDEOS</string>
+    <string name="home_feature_audio">Audio</string>
+    <string name="home_feature_audio_sub">AUDIO</string>
+    <string name="home_feature_articles">Articles</string>
+    <string name="home_feature_articles_sub">ARTICLES</string>
+    <string name="home_feature_habits">My Habits</string>
+    <string name="home_feature_habits_sub">HABITS</string>
+    <string name="home_feature_reports">Reports</string>
+    <string name="home_feature_reports_sub">REPORTS</string>
+    <string name="home_feature_community">Salam Community</string>
+    <string name="home_feature_community_sub">COMMUNITY</string>
 </resources>
+

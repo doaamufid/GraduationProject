@@ -30,7 +30,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/ivFeatureIcon"
-        tools:text="مرئيات"
+        tools:text="@string/home_feature_videos"
         xmlns:tools="http://schemas.android.com/tools" />
 
     <TextView
@@ -43,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvFeatureTitle"
-        tools:text="VIDEOS"
+        tools:text="@string/home_feature_videos_sub"
         xmlns:tools="http://schemas.android.com/tools" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

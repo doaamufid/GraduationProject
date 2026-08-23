@@ -803,6 +803,120 @@
     <string name="duration_label">المدة</string>
     <string name="rating_label">التقييم</string>
     <string name="exercises_label">تمارين</string>
+    <string name="chat_app_name">مساعدك النفسي</string>
+    <string name="chat_status_time">٩:٤١</string>
 
+    <string name="chat_header_title">مساعدك النفسي</string>
+    <string name="chat_header_subtitle">سلام · متصل الآن</string>
+
+    <string name="chat_input_hint">اكتب رسالتك...</string>
+
+    <string name="chat_nav_home">الرئيسية</string>
+    <string name="chat_nav_exercises">تمارين</string>
+    <string name="chat_nav_stats">إحصاء</string>
+    <string name="chat_nav_me">أنا</string>
+    <string name="chat_now">٩:٤٠ ص</string>
+
+    <!-- Breathing card -->
+    <string name="chat_breathing_kicker">تمرين التنفس</string>
+    <string name="chat_breathing_title">تنفس الصندوق 🫁</string>
+    <string name="chat_breathing_desc">تمرين ٤ دقائق لتهدئة الجهاز العصبي</string>
+    <string name="chat_breathing_button">ابدأ التمرين</string>
+    <string name="chat_breathing_toast">ينقلك لتمرين التنفس...</string>
+
+    <!-- Dhikr card -->
+    <string name="chat_dhikr_kicker">ذكر</string>
+    <string name="chat_dhikr_title">ذكر مهدئ 🌙</string>
+    <string name="chat_dhikr_desc">"سبحان الله وبحمده" — كررها ببطء مع كل زفير</string>
+    <string name="chat_dhikr_button">فتح أذكاري</string>
+    <string name="chat_dhikr_toast">يفتح أذكارك...</string>
+
+    <!-- Article card -->
+    <string name="chat_article_tag">العلاج السلوكي المعرفي</string>
+    <string name="chat_article_title">كيف تتعاملين مع الحزن بدون قمعه؟</string>
+    <string name="chat_article_button">اقرأي الآن ←</string>
+    <string name="chat_article_toast">يفتح المقالة...</string>
+
+    <!-- Conversation Nodes -->
+    <string name="chat_node_start_bot">أهلاً، أنا هنا معك. كيف تشعر اليوم؟</string>
+    <string name="chat_reply_start_anxious">أشعر بعض القلق اليوم</string>
+    <string name="chat_reply_start_distress">أشعر بضيق شديد ولا أستطيع التنفس جيداً</string>
+    <string name="chat_reply_start_fine">بخير الحمدلله</string>
+
+    <string name="chat_node_anxious_bot">أفهمك، القلق شعور طبيعي. هل تريد تجربة تمرين تنفس سريع لتهدئة الأفكار؟</string>
+    <string name="chat_reply_anxious_breathing">نعم، جرب معي</string>
+    <string name="chat_reply_anxious_later">لاحقاً</string>
+    <string name="chat_reply_anxious_elaborate">تحدث معي أكثر</string>
+
+    <string name="chat_node_breathingOffer_bot">تمام، هذا تمرين بسيط يهدي جهازك العصبي خلال دقائق 💙</string>
+    <string name="chat_reply_breathingOffer_article">حاب كمان أقرأ مقالة قصيرة</string>
+    <string name="chat_reply_breathingOffer_closing">شكراً، هذا يكفي</string>
+
+    <string name="chat_node_article_bot">أكيد، هذي مقالة قصيرة ممكن تساعدك تفهم مشاعرك أكثر:</string>
+    <string name="chat_reply_article_closing">شكراً لك</string>
+
+    <string name="chat_node_later_bot">تمام، أنا هنا وقت ما احتجت 💙</string>
+    <string name="chat_reply_later_closing">بروحي أشوف حالي لاحقاً</string>
+
+    <string name="chat_node_elaborate_bot">أكيد، خبرني أكثر عن اللي يشغل بالك؟</string>
+
+    <string name="chat_node_distress_bot">أنا أسمعك جداً — من الطبيعي جداً أن تشعر بهذا. أنت لست وحدك، أنا هنا. هل تجرب تمرين بسيط للتنفس معاً؟</string>
+    <string name="chat_reply_distress_yes">نعم</string>
+    <string name="chat_reply_distress_maybe">لا أدري بعد</string>
+    <string name="chat_reply_distress_no">لا، شكراً</string>
+
+    <string name="chat_node_dhikrOffer_bot">ولا يهمك، خذ وقتك. جربي هذا الذكر البسيط، يساعد يهدي التنفس مع كل زفير:</string>
+    <string name="chat_reply_dhikrOffer_closing">شكراً، حاولت</string>
+
+    <string name="chat_node_fine_bot">يسعدني أسمع هذا! 😊 حاب تشارك شي حلو صار اليوم؟</string>
+
+    <string name="chat_node_closing_bot">أنا فخور فيك إنك حكيت. أنا هنا دايماً وقت ما احتجتني 💙</string>
+
+    <string name="chat_node_freeReply_bot">أسمعك، وهذا الكلام مهم. خذ وقتك، أنا هنا معك خطوة بخطوة.</string>
+    <string name="chat_reply_freeReply_breathing">جرب تمرين تنفس</string>
+    <string name="chat_reply_freeReply_closing">بس حبيت أحكي</string>
+<!-- Splash select screen -->
+    <string name="splash_back">رجوع</string>
+    <string name="splash_salam">سلام</string>
+    <string name="splash_question">لمن هذا المكان؟</string>
+    <string name="splash_sub_question">اختر الفئة المناسبة لك</string>
+    <string name="splash_adults_title">للبالغين</string>
+    <string name="splash_adults_subtitle">مساحة هادئة للتأمل والدعم النفسي</string>
+    <string name="splash_kids_title">للأطفال</string>
+    <string name="splash_kids_subtitle">عالم ممتع وآمن لك!</string>
+<!-- Chat screen -->
+    <string name="chat_back">رجوع</string>
+    <string name="chat_send">إرسال</string>
+    <string name="chat_voice_record">اسجل رسالة صوتية</string>
+    <string name="chat_voice_play">تشغيل الرسالة الصوتية</string>
+    <string name="chat_voice_title">سجّل رسالتك الصوتية</string>
+    <string name="chat_voice_timer_zero">00:00</string>
+    <string name="chat_voice_hint">اضغط إرسال عند الانتهاء، أو إلغاء للمسح</string>
+    <string name="chat_voice_cancel">إلغاء</string>
+    <string name="chat_voice_send">إرسال</string>
+    <string name="chat_voice_perm_title">إذن الميكروفون</string>
+    <string name="chat_voice_perm_msg">نحتاج إذن الميكروفون لتتمكن من تسجيل رسائل صوتية مع رفيقك.</string>
+    <string name="chat_voice_perm_denied">تم رفض إذن الميكروفون. يمكنك منحه من الإعدادات للمتابعة.</string>
+    <string name="chat_voice_sent_toast">تم إرسال الرسالة الصوتية 🎙️</string>
+<!-- Home screen -->
+    <string name="home_friend">صديقي</string>
+    <string name="home_greeting_format">صباح الخير %1$s كيف تشعر الآن؟\nأنا هنا معك 🌊</string>
+    <string name="home_greeting_default">صباح الخير كيف تشعر الآن؟\nأنا هنا معك 🌊</string>
+    <string name="home_mood_title">مزاج اليوم - TODAY\'S MOOD</string>
+    <string name="home_relax_title">جلسة استرخاء سريعة لمزاج اليوم</string>
+    <string name="home_relax_subtitle">١٠ دقائق من الهدوء</string>
+    <string name="home_start_now">ابدأ الآن</string>
+    <string name="home_feature_videos">مرئيات</string>
+    <string name="home_feature_videos_sub">VIDEOS</string>
+    <string name="home_feature_audio">صوتيات</string>
+    <string name="home_feature_audio_sub">AUDIO</string>
+    <string name="home_feature_articles">مقالات</string>
+    <string name="home_feature_articles_sub">ARTICLES</string>
+    <string name="home_feature_habits">عاداتي</string>
+    <string name="home_feature_habits_sub">HABITS</string>
+    <string name="home_feature_reports">تقارير</string>
+    <string name="home_feature_reports_sub">REPORTS</string>
+    <string name="home_feature_community">مجتمع سلام</string>
+    <string name="home_feature_community_sub">COMMUNITY</string>
 </resources>
 
