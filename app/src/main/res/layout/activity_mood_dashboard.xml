@@ -33,7 +33,7 @@
             android:id="@+id/tvWelcome"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="مرحباً في مساحتك"
+            android:text="@string/activity_mood_dashboard_android_text_0_1"
             android:textColor="#557597"
             android:textSize="14sp" />
 
@@ -41,7 +41,7 @@
             android:id="@+id/tvMainHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="هنا فقط\nأنتَ"
+            android:text="@string/activity_mood_dashboard_android_text_1_1"
             android:textColor="#1F3A60"
             android:textSize="36sp"
             android:textStyle="bold"
@@ -51,7 +51,7 @@
             android:id="@+id/tvStatus"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="آمن • هادئ"
+            android:text="@string/activity_mood_dashboard_android_text_2_1"
             android:textColor="#3A74B8"
             android:textSize="16sp"
             android:layout_marginTop="4dp"/>
@@ -60,7 +60,7 @@
             android:id="@+id/tvMoodThisWeekLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="مزاجك هذا الأسبوع"
+            android:text="@string/activity_mood_dashboard_android_text_3_1"
             android:textColor="#3A74B8"
             android:textSize="12sp"
             android:layout_marginTop="16dp"/>
@@ -106,7 +106,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="٥\nمن ٧ أيام"
+                    android:text="@string/activity_mood_dashboard_android_text_4_1"
                     android:textColor="#1F3A60"
                     android:textSize="16sp"
                     android:textStyle="bold"
@@ -125,7 +125,7 @@
                 android:background="@android:color/white"
                 android:paddingHorizontal="16dp"
                 android:paddingVertical="6dp"
-                android:text="✦ ٧ أيام متتالية"
+                android:text="@string/activity_mood_dashboard_android_text_5_1"
                 android:textColor="#1D9E75"
                 android:textSize="12sp"
                 android:textStyle="bold"/>
@@ -135,7 +135,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="start"
                 android:layout_marginTop="20dp"
-                android:text="اليوم"
+                android:text="@string/activity_mood_dashboard_android_text_6_1"
                 android:textColor="#557597"
                 android:textSize="13sp" />
 
@@ -156,8 +156,8 @@
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical" android:padding="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="إعادة صياغة الكوابيس" android:textColor="#1F3A60" android:textStyle="bold" android:textSize="12sp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="اكتب نهاية جديدة" android:textColor="#557597" android:textSize="11sp" android:layout_marginTop="2dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_7_1" android:textColor="#1F3A60" android:textStyle="bold" android:textSize="12sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_8_1" android:textColor="#557597" android:textSize="11sp" android:layout_marginTop="2dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -171,8 +171,8 @@
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical" android:padding="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="يوميات مشفرة" android:textColor="#1F3A60" android:textStyle="bold" android:textSize="12sp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="خاصة بك فقط" android:textColor="#557597" android:textSize="11sp" android:layout_marginTop="2dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_9_1" android:textColor="#1F3A60" android:textStyle="bold" android:textSize="12sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_10_1" android:textColor="#557597" android:textSize="11sp" android:layout_marginTop="2dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -186,8 +186,8 @@
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical" android:padding="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="تمرين التوازن" android:textColor="#1F3A60" android:textStyle="bold" android:textSize="12sp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="بحر بشيء يطمئنني" android:textColor="#557597" android:textSize="11sp" android:layout_marginTop="2dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_11_1" android:textColor="#1F3A60" android:textStyle="bold" android:textSize="12sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_12_1" android:textColor="#557597" android:textSize="11sp" android:layout_marginTop="2dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -201,8 +201,8 @@
                     app:cardCornerRadius="16dp"
                     app:cardElevation="0dp">
                     <LinearLayout android:layout_width="match_parent" android:layout_height="match_parent" android:gravity="center" android:orientation="vertical" android:padding="8dp">
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="شجرة ذاكرتي" android:textColor="#1F3A60" android:textStyle="bold" android:textSize="12sp"/>
-                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="اجمع ما يستحق البقاء" android:textColor="#557597" android:textSize="11sp" android:layout_marginTop="2dp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_13_1" android:textColor="#1F3A60" android:textStyle="bold" android:textSize="12sp"/>
+                        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_14_1" android:textColor="#557597" android:textSize="11sp" android:layout_marginTop="2dp"/>
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
             </GridLayout>
@@ -221,7 +221,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center"
-                        android:text="اليوم كان صعباً لكنني\nشعرت بشيء أجمل بعد..."
+                        android:text="@string/activity_mood_dashboard_android_text_15_1"
                         android:textColor="#1F3A60"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -234,7 +234,7 @@
                         android:layout_centerHorizontal="true"
                         android:layout_marginTop="16dp"
                         android:backgroundTint="#378ADD"
-                        android:text="اقرأ الأسبوع كله ←"
+                        android:text="@string/activity_mood_dashboard_android_text_16_1"
                         android:textAllCaps="false"
                         android:textColor="#FFFFFF"
                         android:textSize="12sp"
@@ -260,7 +260,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="تمرين التوازن الآن"
+                        android:text="@string/activity_mood_dashboard_android_text_17_1"
                         android:textColor="#1F3A60"
                         android:textStyle="bold"
                         android:textSize="16sp"/>
@@ -268,7 +268,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="٥ دقائق للهدنة"
+                        android:text="@string/activity_mood_dashboard_android_text_18_1"
                         android:textColor="#557597"
                         android:textSize="12sp"
                         android:layout_marginTop="4dp"/>
@@ -289,22 +289,22 @@
 
         <LinearLayout android:id="@+id/navHome" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_today" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="الرئيسية" android:textSize="10sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_19_1" android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout android:id="@+id/navMood" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_compass" app:tint="#378ADD" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="المزاج" android:textColor="#378ADD" android:textSize="10sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_20_1" android:textColor="#378ADD" android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout android:id="@+id/navReminders" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_popup_reminder" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="أذكار" android:textSize="10sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_21_1" android:textSize="10sp" />
         </LinearLayout>
 
         <LinearLayout android:id="@+id/navProfile" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:orientation="vertical">
             <ImageView android:layout_width="24dp" android:layout_height="24dp" android:src="@android:drawable/ic_menu_myplaces" />
-            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="أنا" android:textSize="10sp" />
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_dashboard_android_text_22_1" android:textSize="10sp" />
         </LinearLayout>
     </LinearLayout>
 

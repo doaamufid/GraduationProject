@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="40dp"
         android:gravity="center"
-        android:text="Aa"
+        android:text="@string/articles_item_theme_swatch_android_text_0"
         android:textSize="14sp"
         android:textStyle="bold" />
 

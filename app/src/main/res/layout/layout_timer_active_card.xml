@@ -78,7 +78,7 @@
                     android:src="@drawable/ic_pause"
                     android:padding="8dp"
                     app:tint="@color/white"
-                    android:contentDescription="تشغيل/إيقاف مؤقت"/>
+                    android:contentDescription="@string/layout_timer_active_card_android_contentdescription_0"/>
 
                 <ImageButton
                     android:id="@+id/btnStopActiveTimer"
@@ -89,7 +89,7 @@
                     android:src="@drawable/ic_close_small"
                     android:padding="8dp"
                     app:tint="@color/white"
-                    android:contentDescription="إلغاء المؤقت"/>
+                    android:contentDescription="@string/layout_timer_active_card_android_contentdescription_1"/>
             </LinearLayout>
 
         </RelativeLayout>

@@ -44,7 +44,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="رسالة إلى نفسي"
+                android:text="@string/activity_future_self_android_text_0_1"
                 android:textColor="@color/text_main"
                 android:textStyle="bold"
                 android:textSize="32sp"/>
@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="رسالتك اليوم تسبح نحو يومك القادم"
+                android:text="@string/activity_future_self_android_text_1_1"
                 android:textColor="@color/text_soft"
                 android:textSize="14sp"/>
         </LinearLayout>
@@ -136,7 +136,7 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="رسائل سابقة"
+                    android:text="@string/activity_future_self_android_text_2_1"
                     android:textColor="@color/text_main"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -146,7 +146,7 @@
                     android:id="@+id/btnViewAll"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="عرض الكل"
+                    android:text="@string/activity_future_self_android_text_3_1"
                     android:textColor="@color/accent"
                     android:textSize="13sp"
                     android:textStyle="bold"
@@ -163,7 +163,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:text="لا رسائل سابقة بعد"
+                    android:text="@string/activity_future_self_android_text_4_1"
                     android:textColor="@color/text_soft"
                     android:textSize="14sp"
                     android:clickable="true"
@@ -180,7 +180,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="6dp"
-                        android:text="وصلت"
+                        android:text="@string/activity_future_self_android_text_5_1"
                         android:textColor="@color/text_soft"
                         android:textSize="11sp" />
 

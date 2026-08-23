@@ -100,7 +100,7 @@
                             style="@style/Text.Body"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="التعميم المفرط"
+                            android:text="@string/step_identify_android_text_0"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -147,7 +147,7 @@
                             style="@style/Text.Body"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="الكل أو لا شيء"
+                            android:text="@string/step_identify_android_text_1"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -203,7 +203,7 @@
                             style="@style/Text.Body"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="التنبؤ بالفشل"
+                            android:text="@string/step_identify_android_text_2"
                             android:textStyle="bold" />
                     </LinearLayout>
 
@@ -250,7 +250,7 @@
                             style="@style/Text.Body"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="إهمال الإيجابيات"
+                            android:text="@string/step_identify_android_text_3"
                             android:textStyle="bold" />
                     </LinearLayout>
 

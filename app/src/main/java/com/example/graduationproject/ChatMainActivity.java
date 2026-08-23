@@ -99,7 +99,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        updateLocale();
+        AppLanguageManager.applySavedLanguage(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.chat_activity_main);
 
@@ -112,14 +112,6 @@ public class ChatMainActivity extends AppCompatActivity {
         messages.add(ChatMessage.bot(nextId(), getString(startNode.botResId), now(), startNode.cardType));
         adapter.notifyItemInserted(0);
         renderQuickReplies();
-    }
-
-    private void updateLocale() {
-        java.util.Locale locale = new java.util.Locale("ar");
-        java.util.Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
     }
 
     private void bindViews() {

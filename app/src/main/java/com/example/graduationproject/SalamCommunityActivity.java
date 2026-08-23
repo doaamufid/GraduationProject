@@ -36,13 +36,7 @@ public class SalamCommunityActivity extends AppCompatActivity implements CardHos
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        // Force Arabic locale
-        Locale locale = new Locale("ar");
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        Context context = newBase.createConfigurationContext(config);
-        super.attachBaseContext(context);
+        super.attachBaseContext(newBase);
     }
 
     @Override

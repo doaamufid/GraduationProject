@@ -5,7 +5,7 @@
     android:id="@+id/readerRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
+    android:layoutDirection="locale"
     android:background="@color/bg">
 
     <!-- Hero Banner Header -->
@@ -233,7 +233,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="جرب الفكرة عملياً"
+                        android:text="@string/articles_fragment_reader_android_text_0"
                         android:textColor="@color/primary"
                         android:textSize="10sp"
                         android:textStyle="bold" />
@@ -286,7 +286,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="start"
-                        android:text="شو رأيك بهالمقالة؟"
+                        android:text="@string/articles_fragment_reader_android_text_1"
                         android:textColor="@color/text"
                         android:textSize="13sp"
                         android:textStyle="bold" />
@@ -336,7 +336,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
                     android:gravity="start"
-                    android:text="وش السبب؟ (اختياري)"
+                    android:text="@string/articles_fragment_reader_android_text_2"
                     android:textColor="@color/text"
                     android:textSize="13sp"
                     android:textStyle="bold" />
@@ -347,7 +347,7 @@
                     android:layout_height="wrap_content"
                     app:chipSpacingHorizontal="8dp"
                     app:chipSpacingVertical="8dp"
-                    android:layoutDirection="rtl" />
+                    android:layoutDirection="locale" />
             </LinearLayout>
 
         </LinearLayout>

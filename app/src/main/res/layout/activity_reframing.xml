@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#D6EEFA"
-    android:layoutDirection="rtl"
+    android:layoutDirection="locale"
     tools:context=".ReframingActivity">
 
     <LinearLayout
@@ -36,7 +36,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="إعادة الصياغة"
+                android:text="@string/activity_reframing_android_text_0"
                 android:textColor="#E7E7E7"
                 android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -49,7 +49,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginTop="35dp"
-            android:text="الفكرة الآن ORIGINAL"
+            android:text="@string/activity_reframing_android_text_1"
             android:textColor="#A0B2C6"
             android:textSize="14sp" />
 
@@ -60,7 +60,7 @@
             android:layout_marginTop="8dp"
             android:gravity="start"
             android:lineSpacingMultiplier="1.2"
-            android:text="لا أحد يهتم بي ودائماً\nأنا اللي أعاني لوحدي"
+            android:text="@string/activity_reframing_android_text_2"
             android:textColor="#FFFFFF"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -70,7 +70,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginTop="20dp"
-            android:text="نقل الفكرة"
+            android:text="@string/activity_reframing_android_text_3"
             android:textColor="#A0B2C6"
             android:textSize="14sp" />
 
@@ -89,7 +89,7 @@
                 android:backgroundTint="#3D6699"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="6dp"
-                android:text="إضافة"
+                android:text="@string/activity_reframing_android_text_4"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
 
@@ -101,7 +101,7 @@
                 android:backgroundTint="#3D6699"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="6dp"
-                android:text="ارهاق"
+                android:text="@string/activity_reframing_android_text_5"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
 
@@ -112,7 +112,7 @@
                 android:backgroundTint="#3D6699"
                 android:paddingHorizontal="14dp"
                 android:paddingVertical="6dp"
-                android:text="وحدة"
+                android:text="@string/activity_reframing_android_text_6"
                 android:textColor="#FFFFFF"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -136,7 +136,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="نظرة أخرى REFRAMED"
+                android:text="@string/activity_reframing_android_text_7"
                 android:textColor="#5B8DC7"
                 android:textSize="11sp"
                 android:textStyle="bold" />
@@ -147,7 +147,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:lineSpacingMultiplier="1.3"
-                android:text="ربما اليوم كان صعباً وأحسست بالوحدة - هذا الشعور حقيقي.\nهل في شخص واحد تشعرين بالارتياح معه؟"
+                android:text="@string/activity_reframing_android_text_8"
                 android:textColor="#1A3A5C"
                 android:textSize="15sp"
                 android:textStyle="bold" />
@@ -170,7 +170,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="تمرين EXERCISE"
+                    android:text="@string/activity_reframing_android_text_9"
                     android:textColor="#5B8DC7"
                     android:textSize="11sp"
                     android:textStyle="bold" />
@@ -180,7 +180,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:lineSpacingMultiplier="1.2"
-                    android:text="اكتبي ٢ أشخاص اهتموا بك في حياتك ولو مرة واحدة - اكتبي ٣ أشهر اهتموا بالارتياح معكِ."
+                    android:text="@string/activity_reframing_android_text_10"
                     android:textColor="#1A3A5C"
                     android:textSize="14sp" />
             </LinearLayout>
@@ -198,7 +198,7 @@
                     android:layout_marginEnd="12dp"
                     android:layout_weight="1.3"
                     android:backgroundTint="#2A5080"
-                    android:text="قبلت هذه الفكرة"
+                    android:text="@string/activity_reframing_android_text_11"
                     android:textColor="#FFFFFF"
                     android:textStyle="bold"
                     app:cornerRadius="24dp" />
@@ -209,7 +209,7 @@
                     android:layout_height="48dp"
                     android:layout_weight="1"
                     android:backgroundTint="#FFFFFF"
-                    android:text="صياغة أخرى"
+                    android:text="@string/activity_reframing_android_text_12"
                     android:textColor="#2A5080"
                     android:textStyle="bold"
                     app:cornerRadius="24dp"

@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:gravity="right"
+    android:gravity="end"
     android:paddingVertical="8dp">
 
     <androidx.cardview.widget.CardView
@@ -28,7 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxWidth="260dp"
-                android:text="&quot;بعد كل ليلة ثقيلة فجرٌ ينتظر. أنتِ لستِ وحدكِ - سلام هنا معكِ.&quot;"
+                android:text="@string/item_ai_response_with_emojis_android_text_0"
                 android:textColor="#FFFFFF"
                 android:textSize="14sp" />
 
@@ -36,9 +36,9 @@
                 android:id="@+id/tvUserMsgTime"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="left"
+                android:layout_gravity="end"
                 android:layout_marginTop="4dp"
-                android:text="9:40 ص ✓✓"
+                android:text="@string/time_marker_example"
                 android:textColor="#D0E3F7"
                 android:textSize="10sp" />
         </LinearLayout>
@@ -57,17 +57,17 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="كيف أشعرتك؟"
+            android:text="@string/item_ai_response_with_emojis_android_text_1"
             android:textColor="#557597"
             android:textSize="11sp"
-            android:layout_marginLeft="8dp"/>
+            android:layout_marginStart="8dp"/>
 
         <ImageButton
             android:id="@+id/btnEmoji_Angry"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@android:color/transparent"
-            android:text="😡"
+            android:text="@string/item_ai_response_with_emojis_android_text_2"
             android:textSize="14sp"/>
 
         <ImageButton
@@ -75,7 +75,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@android:color/transparent"
-            android:text="😢"
+            android:text="@string/item_ai_response_with_emojis_android_text_3"
             android:textSize="14sp"
             android:layout_marginHorizontal="4dp"/>
 
@@ -84,7 +84,7 @@
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:background="@android:color/transparent"
-            android:text="😌"
+            android:text="@string/item_ai_response_with_emojis_android_text_4"
             android:textSize="14sp"/>
     </LinearLayout>
 </LinearLayout>

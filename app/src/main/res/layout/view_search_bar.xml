@@ -31,7 +31,7 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
-        android:hint="ابحث..."
+        android:hint="@string/view_search_bar_android_hint_0"
         android:textSize="14sp"
         android:gravity="start|center_vertical"
         app:layout_constraintStart_toEndOf="@+id/cardSearchBtn"

@@ -51,11 +51,8 @@ public class AdultSignupActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        AppLanguageManager.applySavedLanguage(this);
         super.onCreate(savedInstanceState);
-        
-        // Force Arabic as the default language and RTL
-        setLocale("ar");
-        
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         getWindow().setStatusBarColor(Color.TRANSPARENT);
         getWindow().setNavigationBarColor(Color.TRANSPARENT);
@@ -73,16 +70,6 @@ public class AdultSignupActivity extends AppCompatActivity {
 
         // Start animations with a slightly longer initial delay
         new Handler().postDelayed(this::startEntranceAnimations, 500);
-    }
-
-    private void setLocale(String lang) {
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-        android.content.res.Resources res = getResources();
-        android.content.res.Configuration config = new android.content.res.Configuration(res.getConfiguration());
-        config.setLocale(locale);
-        config.setLayoutDirection(locale);
-        res.updateConfiguration(config, res.getDisplayMetrics());
     }
 
     private void applyWindowInsets() {

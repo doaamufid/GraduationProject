@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    android:layoutDirection="rtl">
+    android:layoutDirection="locale">
 
     <ImageButton
         android:id="@+id/btnClose"
@@ -43,7 +43,7 @@
             android:textColor="@color/text_main"
             android:textSize="20sp"
             android:textStyle="bold"
-            android:text="خُذ نفساً عميقاً وأغلق عينيك لو تقدر." />
+            android:text="@string/dialog_body_map_guide_android_text_0" />
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnNext"
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
             android:paddingHorizontal="40dp"
-            android:text="التالي"
+            android:text="@string/dialog_body_map_guide_android_text_1"
             app:cornerRadius="24dp" />
 
         <GridLayout
@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_margin="4dp"
-                android:text="الرأس والرقبة"
+                android:text="@string/dialog_body_map_guide_android_text_2"
                 app:cornerRadius="12dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -79,7 +79,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_margin="4dp"
-                android:text="الصدر"
+                android:text="@string/dialog_body_map_guide_android_text_3"
                 app:cornerRadius="12dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -89,7 +89,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_margin="4dp"
-                android:text="الأكتاف"
+                android:text="@string/dialog_body_map_guide_android_text_4"
                 app:cornerRadius="12dp" />
 
             <com.google.android.material.button.MaterialButton
@@ -99,7 +99,7 @@
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_margin="4dp"
-                android:text="المعدة"
+                android:text="@string/dialog_body_map_guide_android_text_5"
                 app:cornerRadius="12dp" />
         </GridLayout>
 

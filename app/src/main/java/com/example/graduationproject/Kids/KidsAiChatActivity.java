@@ -55,7 +55,7 @@ public class KidsAiChatActivity extends AppCompatActivity {
             int minutes = secondsRecorded / 60;
             int secs = secondsRecorded % 60;
             if (sheetBinding != null) {
-                String formattedTime = String.format(new Locale("ar"), "%02d:%02d", minutes, secs);
+                String formattedTime = String.format(Locale.getDefault(), "%02d:%02d", minutes, secs);
                 sheetBinding.tvTimer.setText(formattedTime);
             }
             timerHandler.postDelayed(this, 1000);

@@ -27,7 +27,7 @@
             android:id="@+id/tvHeaderTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="متابعة المزاج"
+            android:text="@string/activity_mood_tracker_android_text_0_1"
             android:textColor="#3A74B8"
             android:textSize="13sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -52,7 +52,7 @@
                 android:id="@+id/tvMoodSubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="مزاجي • MOOD"
+                android:text="@string/activity_mood_tracker_android_text_1_1"
                 android:textColor="#3A74B8"
                 android:textSize="11sp"
                 android:textStyle="bold"
@@ -62,7 +62,7 @@
                 android:id="@+id/tvMoodMainTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="مزاجي هذا الأسبوع"
+                android:text="@string/activity_mood_tracker_android_text_2_1"
                 android:textColor="#1F3A60"
                 android:textSize="28sp"
                 android:textStyle="bold"
@@ -72,7 +72,7 @@
                 android:id="@+id/tvMoodInfo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="٧ أيام • محفوظ على جهازك"
+                android:text="@string/activity_mood_tracker_android_text_3_1"
                 android:textColor="#557597"
                 android:textSize="14sp"
                 android:layout_marginTop="2dp" />
@@ -96,7 +96,7 @@
                         android:id="@+id/tvChartTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="توزيع المشاعر • EMOTIONS"
+                        android:text="@string/activity_mood_tracker_android_text_4_1"
                         android:textColor="#557597"
                         android:textSize="11sp"
                         android:textStyle="bold"
@@ -132,10 +132,10 @@
                         android:orientation="vertical"
                         android:padding="16dp"
                         android:gravity="start">
-                        <TextView android:id="@+id/tvLowLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="انخفاض" android:textColor="#557597" android:textSize="11sp"/>
-                        <TextView android:id="@+id/tvLowDay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="الثلاثاء" android:textColor="#1F3A60" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
-                        <TextView android:id="@+id/tvLowDesc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="والجمعة أضعف" android:textColor="#557597" android:textSize="12sp"/>
-                        <TextView android:id="@+id/tvLowCountTag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="٣ مرات" android:textColor="#A07855" android:background="#FCECDD" android:paddingHorizontal="8dp" android:paddingVertical="2dp" android:textSize="11sp" android:layout_marginTop="8dp" />
+                        <TextView android:id="@+id/tvLowLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_tracker_android_text_5_1" android:textColor="#557597" android:textSize="11sp"/>
+                        <TextView android:id="@+id/tvLowDay" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_tracker_android_text_6_1" android:textColor="#1F3A60" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                        <TextView android:id="@+id/tvLowDesc" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_tracker_android_text_7_1" android:textColor="#557597" android:textSize="12sp"/>
+                        <TextView android:id="@+id/tvLowCountTag" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_tracker_android_text_8_1" android:textColor="#A07855" android:background="#FCECDD" android:paddingHorizontal="8dp" android:paddingVertical="2dp" android:textSize="11sp" android:layout_marginTop="8dp" />
                     </LinearLayout>
                 </androidx.cardview.widget.CardView>
 
@@ -154,9 +154,9 @@
                         android:orientation="vertical"
                         android:padding="16dp"
                         android:gravity="start">
-                        <TextView android:id="@+id/tvHighLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="الأكثر" android:textColor="#557597" android:textSize="11sp"/>
-                        <TextView android:id="@+id/tvHighAction" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="امتنان" android:textColor="#1F3A60" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
-                        <TextView android:id="@+id/tvHighSource" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="أذكار الصباح" android:textColor="#557597" android:textSize="12sp"/>
+                        <TextView android:id="@+id/tvHighLabel" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_tracker_android_text_9_1" android:textColor="#557597" android:textSize="11sp"/>
+                        <TextView android:id="@+id/tvHighAction" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_tracker_android_text_10_1" android:textColor="#1F3A60" android:textSize="18sp" android:textStyle="bold" android:layout_marginTop="4dp"/>
+                        <TextView android:id="@+id/tvHighSource" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_mood_tracker_android_text_11_1" android:textColor="#557597" android:textSize="12sp"/>
 
                         <LinearLayout
                             android:layout_width="match_parent"
@@ -178,7 +178,7 @@
                                 android:id="@+id/tvProgressValue"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="69%"
+                                android:text="@string/activity_mood_tracker_android_text_12_1"
                                 android:textColor="#3A74B8"
                                 android:textSize="12sp"
                                 android:textStyle="bold"
@@ -205,7 +205,7 @@
                         android:id="@+id/tvTimelineTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="المسار اليومي • TIMELINE"
+                        android:text="@string/activity_mood_tracker_android_text_13_1"
                         android:textColor="#557597"
                         android:textSize="11sp"
                         android:textStyle="bold"
@@ -291,7 +291,7 @@
                         android:id="@+id/tvAiTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ملاحظة الأسبوع • AI"
+                        android:text="@string/activity_mood_tracker_android_text_14_1"
                         android:textColor="#557597"
                         android:textSize="11sp"
                         android:textStyle="bold"
@@ -302,7 +302,7 @@
                         android:id="@+id/tvAiContent"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="لاحظتُ أن مزاجكِ يكون أفضل في المساء. تمرين التنفس قبل النوم قد يساعد ← جرّبيه الليلة"
+                        android:text="@string/activity_mood_tracker_android_text_15_1"
                         android:textColor="#1F3A60"
                         android:textSize="15sp"
                         android:textStyle="bold"
@@ -313,7 +313,7 @@
                         android:id="@+id/btnBreathingExercise"
                         android:layout_width="wrap_content"
                         android:layout_height="36dp"
-                        android:text="تمرين التنفس ←"
+                        android:text="@string/activity_mood_tracker_android_text_16_1"
                         android:textColor="#FFFFFF"
                         android:backgroundTint="#4F80B9"
                         android:textSize="12sp"
@@ -344,7 +344,7 @@
                         android:id="@+id/tvLogTag"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="سجل الآن • LOG"
+                        android:text="@string/activity_mood_tracker_android_text_17_1"
                         android:textColor="#557597"
                         android:textSize="11sp"
                         android:textStyle="bold"
@@ -365,7 +365,7 @@
                                 android:id="@+id/btnCalm"
                                 android:layout_width="wrap_content"
                                 android:layout_height="38dp"
-                                android:text="هادئ ✓"
+                                android:text="@string/activity_mood_tracker_android_text_18_1"
                                 android:textColor="#FFFFFF"
                                 android:backgroundTint="#4F80B9"
                                 android:textSize="13sp"
@@ -377,7 +377,7 @@
                                 android:id="@+id/btnAnxious"
                                 android:layout_width="wrap_content"
                                 android:layout_height="38dp"
-                                android:text="قلق"
+                                android:text="@string/activity_mood_tracker_android_text_19_1"
                                 android:textColor="#1F3A60"
                                 android:backgroundTint="#D0DBE9"
                                 android:textSize="13sp"
@@ -389,7 +389,7 @@
                                 android:id="@+id/btnTired"
                                 android:layout_width="wrap_content"
                                 android:layout_height="38dp"
-                                android:text="تعب"
+                                android:text="@string/activity_mood_tracker_android_text_20_1"
                                 android:textColor="#1F3A60"
                                 android:backgroundTint="#D0DBE9"
                                 android:textSize="13sp"
@@ -401,7 +401,7 @@
                                 android:id="@+id/btnHappy"
                                 android:layout_width="wrap_content"
                                 android:layout_height="38dp"
-                                android:text="سعيد"
+                                android:text="@string/activity_mood_tracker_android_text_21_1"
                                 android:textColor="#1F3A60"
                                 android:backgroundTint="#D0DBE9"
                                 android:textSize="13sp"

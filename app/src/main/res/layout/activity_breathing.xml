@@ -29,7 +29,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="رجوع" />
+            android:contentDescription="@string/activity_breathing_android_contentdescription_0_1" />
 
         <!-- العنوان والترجمة في المنتصف -->
         <LinearLayout
@@ -45,7 +45,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="تمارين التنفس"
+                android:text="@string/activity_breathing_android_text_1_1"
                 android:textColor="#2D5B7B"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -54,7 +54,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="التنفس - BREATHING"
+                android:text="@string/activity_breathing_android_text_2_1"
                 android:textColor="#99AAB5"
                 android:textSize="10sp" />
         </LinearLayout>
@@ -83,7 +83,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
-                android:text="اعدادات الجلسة"
+                android:text="@string/activity_breathing_android_text_3_1"
                 android:textColor="#6A8CA3"
                 android:textSize="9sp"
                 android:textStyle="bold" />
@@ -110,7 +110,7 @@
                 android:id="@+id/tvMainTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="خذ نفساً معي"
+                android:text="@string/activity_breathing_android_text_4_1"
                 android:textColor="#2D5B7B"
                 android:textSize="26sp"
                 android:textStyle="bold"
@@ -123,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="دورة من ٣ - ٥ "
+                android:text="@string/activity_breathing_android_text_5_1"
                 android:textColor="#6A8CA3"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="@id/tvMainTitle"
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:gravity="center"
-                android:text="الكلاسيكي . بدون هدف إلزامي . استمر أينما ترتاح"
+                android:text="@string/activity_breathing_android_text_6_1"
                 android:textColor="#99AAB5"
                 android:textSize="18sp"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -185,7 +185,7 @@
                         android:id="@+id/tvState"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="شهيق"
+                        android:text="@string/activity_breathing_android_text_7_1"
                         android:textColor="#6A8CA3"
                         android:textSize="20sp" />
                 </LinearLayout>
@@ -204,14 +204,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="بطاقتك الشخصية"
+                    android:text="@string/activity_breathing_android_text_8_1"
                     android:textColor="#99AAB5"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="&quot;خذ وقتك، ما فيه استعجال&quot;"
+                    android:text="@string/activity_breathing_android_text_9_1"
                     android:textColor="#2D5B7B"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -233,14 +233,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="بطاقتك الشخصية"
+                    android:text="@string/activity_breathing_android_text_10_1"
                     android:textColor="#99AAB5"
                     android:textSize="11sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="&quot;أنت آمن، هذا سيمر&quot;"
+                    android:text="@string/activity_breathing_android_text_11_1"
                     android:textColor="#2D5B7B"
                     android:textSize="18sp"
                     android:textStyle="bold"
@@ -259,7 +259,7 @@
         android:layout_marginBottom="32dp"
         android:background="@drawable/white_rounded_card"
         android:backgroundTint="#4A7EBB"
-        android:text="ابدأ الجلسة"
+        android:text="@string/activity_breathing_android_text_12"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold"

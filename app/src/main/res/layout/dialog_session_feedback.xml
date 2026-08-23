@@ -17,7 +17,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="أحسنتِ جداً! 🕊️"
+        android:text="@string/dialog_session_feedback_android_text_0"
         android:textColor="#2C3E50"
         android:textSize="22sp"
         android:textStyle="bold"
@@ -26,7 +26,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="كيف تشعرين الآن مقارنة بـ قبل الجلسة؟"
+        android:text="@string/dialog_session_feedback_android_text_1"
         android:textColor="#7F8C8D"
         android:textSize="15sp"
         android:layout_marginBottom="24dp" />
@@ -53,12 +53,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="😌"
+                android:text="@string/dialog_session_feedback_android_text_2"
                 android:textSize="36sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="أهدأ بكثير"
+                android:text="@string/dialog_session_feedback_android_text_3"
                 android:textColor="#555555"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp" />
@@ -78,12 +78,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="🙂"
+                android:text="@string/dialog_session_feedback_android_text_4"
                 android:textSize="36sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="أحسن شوي"
+                android:text="@string/dialog_session_feedback_android_text_5"
                 android:textColor="#555555"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp" />
@@ -103,12 +103,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="😐"
+                android:text="@string/dialog_session_feedback_android_text_6"
                 android:textSize="36sp" />
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="نفس الشيء"
+                android:text="@string/dialog_session_feedback_android_text_7"
                 android:textColor="#555555"
                 android:textSize="12sp"
                 android:layout_marginTop="4dp" />
@@ -120,7 +120,7 @@
         android:id="@+id/btnSaveMood"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:text="سجّل هذا بمتابعة مزاجك اليوم ✨"
+        android:text="@string/dialog_session_feedback_android_text_8"
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="#FFFFFF"

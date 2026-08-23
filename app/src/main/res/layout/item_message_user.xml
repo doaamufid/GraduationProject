@@ -17,7 +17,7 @@
         android:id="@+id/tvUserMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="أشعر ببعض القلق اليوم"
+        android:text="@string/item_message_user_android_text_0"
         android:textColor="#FFFFFF"
         android:textSize="14sp" />
 
@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="start"
             android:layout_marginTop="4dp"
-            android:text="9:40 ص ✓✓"
+            android:text="@string/item_message_user_android_text_1"
             android:textColor="#E0E0E0"
             android:textSize="10sp" />
     </LinearLayout>

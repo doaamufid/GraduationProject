@@ -23,7 +23,7 @@
             android:id="@+id/btnBack"
             android:layout_width="34dp"
             android:layout_height="34dp"
-            android:contentDescription="رجوع"
+            android:contentDescription="@string/activity_body_map_android_contentdescription_0_1"
             android:src="@drawable/outline_arrow_forward_24"
             android:padding="8dp"
             app:tint="@color/text_main"
@@ -42,7 +42,7 @@
             android:focusable="true"
             android:gravity="center"
             android:paddingHorizontal="12dp"
-            android:text="غير متأكد؟ ❔"
+            android:text="@string/activity_body_map_android_text_1_1"
             android:textColor="#3A6898"
             android:textSize="13sp"
             android:textStyle="bold"
@@ -53,7 +53,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="خريطة الجسد"
+            android:text="@string/activity_body_map_android_text_2_1"
             android:textColor="#3A6898"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -80,7 +80,7 @@
                 android:id="@+id/tvGuideText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="أين تشعر بالتوتر؟ حدد المنطقة بالضغط عليها أو من القائمة تحت"
+                android:text="@string/activity_body_map_android_text_3_1"
                 android:textColor="#7F8C8D"
                 android:textSize="15sp"
                 android:gravity="center"
@@ -179,14 +179,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="الرأس والرقبة"
+                        android:text="@string/activity_body_map_android_text_4_1"
                         android:textColor="#B7950B"
                         android:textStyle="bold"
                         android:textSize="13sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="صداع • توتر"
+                        android:text="@string/activity_body_map_android_text_5_1"
                         android:textColor="#7F8C8D"
                         android:textSize="12sp"
                         android:layout_marginTop="2dp"/>
@@ -207,14 +207,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="الأكتاف"
+                        android:text="@string/activity_body_map_android_text_6_1"
                         android:textColor="#2980B9"
                         android:textStyle="bold"
                         android:textSize="13sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ثقل • تصلب"
+                        android:text="@string/activity_body_map_android_text_7_1"
                         android:textColor="#7F8C8D"
                         android:textSize="12sp"
                         android:layout_marginTop="2dp"/>
@@ -235,14 +235,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="الصدر"
+                        android:text="@string/activity_body_map_android_text_8_1"
                         android:textColor="#CB4335"
                         android:textStyle="bold"
                         android:textSize="13sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="ضيق • خفقان"
+                        android:text="@string/activity_body_map_android_text_9_1"
                         android:textColor="#7F8C8D"
                         android:textSize="12sp"
                         android:layout_marginTop="2dp"/>
@@ -263,14 +263,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="المعدة"
+                        android:text="@string/activity_body_map_android_text_10_1"
                         android:textColor="#5D6D7E"
                         android:textStyle="bold"
                         android:textSize="13sp"/>
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="غثيان • قلق"
+                        android:text="@string/activity_body_map_android_text_11_1"
                         android:textColor="#7F8C8D"
                         android:textSize="12sp"
                         android:layout_marginTop="2dp"/>

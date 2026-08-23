@@ -28,13 +28,13 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/headerBackground"
         app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
-        android:contentDescription="رجوع" />
+        android:contentDescription="@string/activity_notifications_android_contentdescription_0_1" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="الإشعارات"
+        android:text="@string/activity_notifications_android_text_1_1"
         android:textColor="#2D5B7B"
         android:textSize="18sp"
         android:textStyle="bold"

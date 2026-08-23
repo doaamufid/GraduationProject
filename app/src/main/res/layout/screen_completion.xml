@@ -12,7 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="✨"
+        android:text="@string/screen_completion_android_text_0"
         android:textSize="48sp" />
 
     <TextView

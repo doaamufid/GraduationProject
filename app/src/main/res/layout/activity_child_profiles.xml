@@ -23,14 +23,14 @@
         app:tint="#8B6F4D"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="رجوع" />
+        android:contentDescription="@string/activity_child_profiles_android_contentdescription_0_1" />
 
     <TextView
         android:id="@+id/tv_mascot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="78dp"
-        android:text="🦊"
+        android:text="@string/activity_child_profiles_android_text_1_1"
         android:textSize="48sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -41,7 +41,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="مين يلعب اليوم؟"
+        android:text="@string/activity_child_profiles_android_text_2_1"
         android:textColor="#F47C2B"
         android:textSize="26sp"
         android:textStyle="bold"
@@ -53,7 +53,7 @@
         android:id="@+id/tv_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="اختر اسمك عشان نفتح شجرتك أنت"
+        android:text="@string/activity_child_profiles_android_text_3_1"
         android:textColor="#7E654D"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -84,7 +84,7 @@
         android:layout_marginEnd="16dp"
         android:background="@drawable/bg_child_lock_banner"
         android:gravity="center"
-        android:text="🔒 كل طفل له شجرته ونقاطه الخاصة، ما تختلط ببعض 🔐"
+        android:text="@string/activity_child_profiles_android_text_4_1"
         android:textColor="#8B6F4D"
         android:textSize="13sp"
         android:textStyle="bold"

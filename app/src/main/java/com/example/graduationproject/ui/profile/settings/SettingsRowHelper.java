@@ -7,6 +7,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.graduationproject.AppLanguageManager;
 import com.example.graduationproject.R;
 
 import com.google.android.material.switchmaterial.SwitchMaterial;
@@ -28,11 +29,10 @@ public final class SettingsRowHelper {
         FrameLayout rightSlot = rowRoot.findViewById(R.id.rightSlot);
         rightSlot.removeAllViews();
         SwitchMaterial switchView = new SwitchMaterial(rowRoot.getContext());
-        // Force LTR on the switch so that OFF is Left and ON is Right
-        switchView.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
+        switchView.setLayoutDirection(AppLanguageManager.getLayoutDirection(rowRoot.getContext()));
 
         int primaryColor = rowRoot.getResources().getColor(R.color.primary);
-        int trackColor = rowRoot.getResources().getColor(R.color.border); // Neutral track when off
+        int trackColor = rowRoot.getResources().getColor(R.color.border);
 
         ColorStateList trackTint = new ColorStateList(
                 new int[][]{
@@ -49,7 +49,7 @@ public final class SettingsRowHelper {
         switchView.setThumbTintList(ColorStateList.valueOf(Color.WHITE));
         rightSlot.addView(switchView);
 
-        rowRoot.setClickable(false); // the whole row isn't clickable in the original for toggle rows
+        rowRoot.setClickable(false);
         return switchView;
     }
 
@@ -61,6 +61,7 @@ public final class SettingsRowHelper {
         rightSlot.removeAllViews();
         ImageView chevron = new ImageView(rowRoot.getContext());
         chevron.setImageResource(R.drawable.ic_chevron_left);
+        chevron.setScaleX(AppLanguageManager.isRtl(AppLanguageManager.getSavedLanguage(rowRoot.getContext())) ? -1f : 1f);
         rightSlot.addView(chevron);
 
         rowRoot.setOnClickListener(v -> onClick.run());
@@ -74,6 +75,7 @@ public final class SettingsRowHelper {
         rightSlot.removeAllViews();
         ImageView chevron = new ImageView(rowRoot.getContext());
         chevron.setImageResource(R.drawable.ic_chevron_left);
+        chevron.setScaleX(AppLanguageManager.isRtl(AppLanguageManager.getSavedLanguage(rowRoot.getContext())) ? -1f : 1f);
         rightSlot.addView(chevron);
 
         rowRoot.setOnClickListener(v -> onClick.run());

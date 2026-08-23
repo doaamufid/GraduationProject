@@ -27,10 +27,9 @@ public class OnBoardingActivity4 extends AppCompatActivity {
 
         androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
             androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom);
-            // Apply top padding to the skip button area or the first visible element
+            v.setPaddingRelative(systemBars.left, 0, systemBars.right, systemBars.bottom);
             if (binding.tvSkip != null) {
-                binding.tvSkip.setPadding(0, systemBars.top, 0, 0);
+                binding.tvSkip.setPaddingRelative(0, systemBars.top, 0, 0);
             }
             return insets;
         });

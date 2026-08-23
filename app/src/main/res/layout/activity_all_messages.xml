@@ -30,7 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="كل رسائلي"
+            android:text="@string/activity_all_messages_android_text_0_1"
             android:textColor="@color/text_main"
             android:textStyle="bold"
             android:textSize="22sp"/>

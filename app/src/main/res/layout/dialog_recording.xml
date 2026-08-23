@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end"
         android:padding="4dp"
-        android:text="إلغاء ←"
+        android:text="@string/dialog_recording_android_text_0"
         android:textColor="#8B6F4D"
         android:textSize="13sp"
         android:textStyle="bold" />
@@ -26,14 +26,14 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_kids_bubble_primary"
         android:gravity="center"
-        android:text="🎙️"
+        android:text="@string/dialog_recording_android_text_1"
         android:textSize="32sp" />
 
     <TextView
         android:id="@+id/tv_timer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="٠:٠٠"
+        android:text="@string/dialog_recording_android_text_2"
         android:textColor="#3D291F"
         android:textSize="18sp"
         android:textStyle="bold" />
@@ -42,7 +42,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:text="قول اللي حاسس فيه، وأنا بنسمعك 🧸"
+        android:text="@string/dialog_recording_android_text_3"
         android:textColor="#8B6F4D"
         android:textSize="13sp" />
 
@@ -53,7 +53,7 @@
         android:layout_marginTop="20dp"
         android:background="#21B573"
         android:gravity="center"
-        android:text="خلصت! ✅"
+        android:text="@string/dialog_recording_android_text_4"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         android:textStyle="bold" />

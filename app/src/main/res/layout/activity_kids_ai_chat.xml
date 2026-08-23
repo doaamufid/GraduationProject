@@ -16,7 +16,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
-        android:text="🐻"
+        android:text="@string/activity_kids_ai_chat_android_text_0_1"
         android:textSize="72sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -35,7 +35,7 @@
         app:tint="#8B6F4D"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="رجوع" />
+        android:contentDescription="@string/activity_kids_ai_chat_android_contentdescription_1_1" />
 
     <!-- Badge Header (Rounded Rectangle shape) -->
     <TextView
@@ -46,7 +46,7 @@
         android:background="@drawable/bg_kids_mood_card"
         android:paddingHorizontal="20dp"
         android:paddingVertical="8dp"
-        android:text="أنا هنا أسمعك 💙"
+        android:text="@string/activity_kids_ai_chat_android_text_2_1"
         android:textColor="#3D291F"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="كيف حالك الحين؟"
+            android:text="@string/activity_kids_ai_chat_android_text_3_1"
             android:textColor="#3D291F"
             android:textSize="19sp"
             android:textStyle="bold" />
@@ -94,8 +94,8 @@
                 android:background="@drawable/bg_kids_mood_card"
                 android:gravity="center"
                 android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😨" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="خايف" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_kids_ai_chat_android_text_4_1" android:textSize="26sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/activity_kids_ai_chat_android_text_5_1" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- 2. حزين -->
@@ -106,8 +106,8 @@
                 android:background="@drawable/bg_kids_mood_card"
                 android:gravity="center"
                 android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😢" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="حزين" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_kids_ai_chat_android_text_6_1" android:textSize="26sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/activity_kids_ai_chat_android_text_7_1" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- 3. زعلان -->
@@ -118,8 +118,8 @@
                 android:background="@drawable/bg_kids_mood_card"
                 android:gravity="center"
                 android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😡" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="زعلان" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_kids_ai_chat_android_text_8_1" android:textSize="26sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/activity_kids_ai_chat_android_text_9_1" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- 4. مش عارف -->
@@ -130,8 +130,8 @@
                 android:background="@drawable/bg_kids_mood_card"
                 android:gravity="center"
                 android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😕" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="مش عارف" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_kids_ai_chat_android_text_10_1" android:textSize="26sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/activity_kids_ai_chat_android_text_11_1" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- 5. تعبان -->
@@ -142,8 +142,8 @@
                 android:background="@drawable/bg_kids_mood_card"
                 android:gravity="center"
                 android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😫" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="تعبان" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_kids_ai_chat_android_text_12_1" android:textSize="26sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/activity_kids_ai_chat_android_text_13_1" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- 6. مبسوط -->
@@ -154,8 +154,8 @@
                 android:background="@drawable/bg_kids_mood_card"
                 android:gravity="center"
                 android:orientation="vertical">
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😊" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="مبسوط" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_kids_ai_chat_android_text_14_1" android:textSize="26sp"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/activity_kids_ai_chat_android_text_15_1" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
         </GridLayout>
 
@@ -175,14 +175,14 @@
                 android:layout_height="72dp"
                 android:background="@drawable/bg_kids_bubble_primary"
                 android:gravity="center"
-                android:text="🎙️"
+                android:text="@string/activity_kids_ai_chat_android_text_16_1"
                 android:textSize="32sp" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="اضغط واحكيلي"
+                android:text="@string/activity_kids_ai_chat_android_text_17_1"
                 android:textColor="#F47C2B"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -193,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:padding="6dp"
-                android:text="أو اكتب"
+                android:text="@string/activity_kids_ai_chat_android_text_18_1"
                 android:textColor="#8B6F4D"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -215,7 +215,7 @@
                 android:layout_height="100dp"
                 android:background="@drawable/bg_kids_mood_card"
                 android:gravity="top|start"
-                android:hint="اكتب اللي حاسس فيه هنا..."
+                android:hint="@string/activity_kids_ai_chat_android_hint_19_1"
                 android:inputType="textMultiLine|textLongMessage"
                 android:padding="14dp"
                 android:textColor="#3D291F"
@@ -228,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:padding="6dp"
-                android:text="أو سجل صوتك"
+                android:text="@string/activity_kids_ai_chat_android_text_20_1"
                 android:textColor="#8B6F4D"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -245,7 +245,7 @@
         android:layout_marginBottom="36dp"
         android:background="@drawable/bg_kids_bubble_primary"
         android:gravity="center"
-        android:text="حكيت نور! ⭐"
+        android:text="@string/activity_kids_ai_chat_android_text_21_1"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -269,7 +269,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="نور يستمع لك..."
+            android:text="@string/activity_kids_ai_chat_android_text_22_1"
             android:textColor="#8B6F4D"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -305,7 +305,7 @@
             android:gravity="center"
             android:paddingHorizontal="20dp"
             android:paddingVertical="18dp"
-            android:text="تعبك مسموع، خذ راحتك شوي."
+            android:text="@string/activity_kids_ai_chat_android_text_23_1"
             android:textColor="#3D291F"
             android:textSize="18sp"
             android:textStyle="bold" />
@@ -320,7 +320,7 @@
             android:gravity="center"
             android:paddingHorizontal="22dp"
             android:paddingVertical="10dp"
-            android:text="اسمع رد نور 🔊"
+            android:text="@string/activity_kids_ai_chat_android_text_24_1"
             android:textColor="#598F7A"
             android:textSize="14sp"
             android:textStyle="bold" />
@@ -330,7 +330,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
-            android:text="وش تحب تسوي الحين؟"
+            android:text="@string/activity_kids_ai_chat_android_text_25_1"
             android:textColor="#8B6F4D"
             android:textSize="15sp"
             android:textStyle="bold" />
@@ -343,7 +343,7 @@
             android:layout_marginTop="14dp"
             android:background="#FDE8D7"
             android:gravity="center"
-            android:text="خذ نفس معي 🫧"
+            android:text="@string/activity_kids_ai_chat_android_text_26_1"
             android:textColor="#E07026"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -356,7 +356,7 @@
             android:layout_marginTop="12dp"
             android:background="#E3EFE9"
             android:gravity="center"
-            android:text="ارسم كيف حاسس 🎨"
+            android:text="@string/activity_kids_ai_chat_android_text_27_1"
             android:textColor="#427A65"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -369,7 +369,7 @@
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_kids_mood_card"
             android:gravity="center"
-            android:text="خلص، أنا أحسن الحين 💛"
+            android:text="@string/activity_kids_ai_chat_android_text_28_1"
             android:textColor="#8B6F4D"
             android:textSize="16sp"
             android:textStyle="bold" />

@@ -150,8 +150,16 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void navigateToNext() {
-        // Forcing onboarding to appear each time as requested
-        Intent intent = new Intent(SplashActivity.this, OnBoardingActivity1.class);
+        SharedPreferences prefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        boolean firstRun = prefs.getBoolean("isFirstRun", true);
+
+        Intent intent;
+        if (firstRun) {
+            intent = new Intent(SplashActivity.this, OnBoardingLanguageActivity.class);
+        } else {
+            intent = new Intent(SplashActivity.this, MainActivity.class);
+        }
+
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();

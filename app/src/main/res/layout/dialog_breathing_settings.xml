@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:background="@drawable/white_rounded_card"
     android:padding="24dp"
-    android:layoutDirection="rtl">
+    android:layoutDirection="locale">
 
     <View
         android:layout_width="40dp"
@@ -18,7 +18,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Breathing Modes"
+        android:text="@string/dialog_breathing_settings_android_text_0"
         android:textColor="#2D5B7B"
         android:textSize="20sp"
         android:textStyle="bold"
@@ -46,7 +46,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
             android:layout_centerVertical="true"
-            android:text="📳 Vibration with breath"
+            android:text="@string/dialog_breathing_settings_android_text_1"
             android:textColor="#2D5B7B"
             android:textSize="14sp"
             android:textStyle="bold"/>

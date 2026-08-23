@@ -1,5 +1,6 @@
 package com.example.graduationproject;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -7,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import androidx.annotation.Nullable;
@@ -59,6 +62,7 @@ public class SettingsActivity extends AppCompatActivity {
         bindPrivacySection();
         bindNotificationsSection();
         bindCustomizationSection();
+        bindLanguageSection();
         bindAiSection();
         bindSoundSection();
         bindDataSection();
@@ -143,6 +147,53 @@ public class SettingsActivity extends AppCompatActivity {
                         DialectDialogFragment.newInstance(repo.dialect).show(getSupportFragmentManager(), "dialect"));
     }
 
+    private void bindLanguageSection() {
+        View rowLanguage = findViewById(R.id.rowLanguage);
+        SettingsRowHelper.bindNavRow(rowLanguage,
+                getString(R.string.language_title),
+                AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))
+                        ? getString(R.string.language_arabic)
+                        : getString(R.string.language_english),
+                R.drawable.ic_settings,
+                this::showLanguageDialog);
+    }
+
+    private void showLanguageDialog() {
+        String currentLanguage = AppLanguageManager.getSavedLanguage(this);
+        final String[] selectedLanguage = {currentLanguage};
+
+        View dialogView = LayoutInflater.from(this).inflate(R.layout.dialog_language_picker, null, false);
+        RadioGroup radioGroup = dialogView.findViewById(R.id.languageRadioGroup);
+        RadioButton rbArabic = dialogView.findViewById(R.id.rbArabic);
+        RadioButton rbEnglish = dialogView.findViewById(R.id.rbEnglish);
+
+        rbArabic.setChecked(AppLanguageManager.LANGUAGE_ARABIC.equals(selectedLanguage[0]));
+        rbEnglish.setChecked(AppLanguageManager.LANGUAGE_ENGLISH.equals(selectedLanguage[0]));
+
+        AlertDialog dialog = new AlertDialog.Builder(this)
+                .setTitle(R.string.language_title)
+                .setView(dialogView)
+                .setNegativeButton(android.R.string.cancel, null)
+                .setPositiveButton(R.string.apply_label, (d, which) -> {
+                    String nextLanguage = rbArabic.isChecked() ? AppLanguageManager.LANGUAGE_ARABIC : AppLanguageManager.LANGUAGE_ENGLISH;
+                    if (!nextLanguage.equals(AppLanguageManager.getSavedLanguage(this))) {
+                        AppLanguageManager.saveLanguage(this, nextLanguage);
+                        AppLanguageManager.restartApp(this);
+                    }
+                })
+                .create();
+
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            if (checkedId == R.id.rbArabic) {
+                selectedLanguage[0] = AppLanguageManager.LANGUAGE_ARABIC;
+            } else if (checkedId == R.id.rbEnglish) {
+                selectedLanguage[0] = AppLanguageManager.LANGUAGE_ENGLISH;
+            }
+        });
+
+        dialog.show();
+    }
+
     private void buildThemeSwatches() {
         llThemeSwatches.removeAllViews();
         for (ThemeOption option : themeOptions) {
@@ -179,6 +230,7 @@ public class SettingsActivity extends AppCompatActivity {
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowNotifications), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowAutoDark), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowDialect), colorInt);
+        SettingsRowHelper.setThemeColor(findViewById(R.id.rowLanguage), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowCloudAI), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowBreathHaptic), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowReduceMotion), colorInt);

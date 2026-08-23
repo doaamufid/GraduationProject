@@ -4,7 +4,7 @@
     android:id="@+id/reflection_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
+    android:layoutDirection="locale"
     android:background="@color/screen_bg">
 
     <!-- Full-bleed illustrated scene -->
@@ -138,7 +138,7 @@
                         android:layout_width="28dp"
                         android:layout_height="28dp"
                         android:gravity="center"
-                        android:text="💧"
+                        android:text="@string/activity_reflection_android_text_0"
                         android:textSize="13sp"
                         android:background="@drawable/bg_circle_translucent_33" />
 

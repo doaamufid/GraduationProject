@@ -26,7 +26,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="تخصيص وقت النوم"
+        android:text="@string/dialog_custom_timer_android_text_0"
         android:textColor="@color/text_main"
         android:textStyle="bold"
         android:textSize="18sp"
@@ -35,7 +35,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="اختر عدد الساعات والدقائق التي تفضلها"
+        android:text="@string/dialog_custom_timer_android_text_1"
         android:textColor="@color/text_soft"
         android:textSize="13sp"
         android:layout_marginBottom="24dp"
@@ -57,7 +57,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ساعات"
+                android:text="@string/dialog_custom_timer_android_text_2"
                 android:textColor="@color/text_soft"
                 android:textSize="11sp"
                 android:textStyle="bold"/>
@@ -79,7 +79,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="دقائق"
+                android:text="@string/dialog_custom_timer_android_text_3"
                 android:textColor="@color/text_soft"
                 android:textSize="11sp"
                 android:textStyle="bold"/>
@@ -94,7 +94,7 @@
         android:id="@+id/btnSetTimer"
         android:layout_width="match_parent"
         android:layout_height="54dp"
-        android:text="استمرار"
+        android:text="@string/dialog_custom_timer_android_text_4"
         android:textAllCaps="false"
         android:backgroundTint="@color/primary"
         android:textColor="@color/white"

@@ -79,7 +79,7 @@
                 android:background="@drawable/white_rounded_card"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="4dp"
-                android:text="Available now"
+                android:text="@string/item_content_card_android_text_0"
                 android:textColor="#3A74B8"
                 android:textSize="11sp"
                 android:textStyle="italic|bold" />
@@ -139,7 +139,7 @@
                 android:layout_marginStart="12dp"
                 android:background="@drawable/bg_pill_primary"
                 android:backgroundTint="#6580FF"
-                android:text="شاهد الآن"
+                android:text="@string/item_content_card_android_text_1"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF"
                 android:textSize="13sp"

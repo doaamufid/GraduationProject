@@ -2,7 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
+    android:layoutDirection="locale"
     android:background="@color/bg">
 
     <LinearLayout
@@ -96,7 +96,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
+                    android:layoutDirection="locale"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_encryption_card"
@@ -139,7 +139,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
+                    android:layoutDirection="locale"
                     android:orientation="vertical"
                     android:background="@drawable/bg_card"
                     android:padding="14dp"
@@ -165,6 +165,7 @@
 
                 <include android:id="@+id/rowAutoDark" layout="@layout/item_settings_row"/>
                 <include android:id="@+id/rowDialect" layout="@layout/item_settings_row"/>
+                <include android:id="@+id/rowLanguage" layout="@layout/item_settings_row"/>
 
                 <TextView style="@style/SectionTitle" android:text="@string/section_ai"/>
                 <include android:id="@+id/rowCloudAI" layout="@layout/item_settings_row"/>
@@ -173,7 +174,7 @@
                     android:id="@+id/btnResetRecs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
+                    android:layoutDirection="locale"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_card"
@@ -234,7 +235,7 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
+                    android:layoutDirection="locale"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_card"
@@ -267,7 +268,7 @@
                     android:id="@+id/btnExport"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layoutDirection="rtl"
+                    android:layoutDirection="locale"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:background="@drawable/bg_card"

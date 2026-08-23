@@ -104,29 +104,17 @@ public class SplashSelectActivity extends AppCompatActivity {
      * unless the user explicitly chose English ("en") in AppPrefs.
      */
     private String getAppLanguage() {
-        SharedPreferences appPrefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-        String lang = appPrefs.getString("language", "ar"); // default: Arabic
-        if (!"ar".equals(lang) && !"en".equals(lang)) {
-            lang = "ar"; // Arabic is the default setting for the app
-        }
-        return lang;
+        return AppLanguageManager.getSavedLanguage(this);
     }
 
     private boolean isRtl() {
-        return "ar".equals(currentLanguage);
+        return AppLanguageManager.isRtl(currentLanguage);
     }
 
     /** Applies the language and its layout direction (RTL for Arabic, LTR for English). */
     private void applyLocale(String lang) {
-        currentLanguage = lang;
-        Locale locale = new Locale(lang);
-        Locale.setDefault(locale);
-
-        Resources res = getResources();
-        Configuration config = new Configuration(res.getConfiguration());
-        config.setLocale(locale);
-        config.setLayoutDirection(locale);
-        res.updateConfiguration(config, res.getDisplayMetrics());
+        currentLanguage = AppLanguageManager.normalize(lang);
+        AppLanguageManager.applyLanguage(this, currentLanguage);
     }
 
     private void startEntranceAnimations() {

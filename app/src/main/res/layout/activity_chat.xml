@@ -30,7 +30,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="مساعدك النفسي - SALAM"
+            android:text="@string/activity_chat_android_text_0_1"
             android:textColor="#3A6898"
             android:textSize="16sp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -49,7 +49,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="رجوع" />
+            android:contentDescription="@string/activity_chat_android_contentdescription_1_1" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.recyclerview.widget.RecyclerView
@@ -83,7 +83,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:hint="اكتب رسالتك..."
+            android:hint="@string/activity_chat_android_hint_2_1"
             android:background="@drawable/bg_input_field"
             android:padding="12dp"
             android:textColorHint="#3A6898"

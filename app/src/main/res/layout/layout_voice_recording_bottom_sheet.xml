@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:padding="8dp"
-        android:text="إلغاء"
+        android:text="@string/layout_voice_recording_bottom_sheet_android_text_0"
         android:textColor="#A0A0A0"
         android:textSize="14sp"
         android:textStyle="bold" />
@@ -26,7 +26,7 @@
         android:layout_marginTop="12dp"
         android:background="@drawable/bg_kids_bubble_primary"
         android:gravity="center"
-        android:text="🎙️"
+        android:text="@string/layout_voice_recording_bottom_sheet_android_text_1"
         android:textSize="32sp" />
 
     <TextView
@@ -34,7 +34,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="0:01"
+        android:text="@string/layout_voice_recording_bottom_sheet_android_text_2"
         android:textColor="#3D291F"
         android:textSize="20sp"
         android:textStyle="bold" />
@@ -43,7 +43,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="قول اللي حاسس فيه، وأنا أسمعك 🧸"
+        android:text="@string/layout_voice_recording_bottom_sheet_android_text_3"
         android:textColor="#7A685D"
         android:textSize="14sp" />
 
@@ -55,7 +55,7 @@
         android:background="@drawable/bg_kids_bubble_circle"
         android:paddingHorizontal="32dp"
         android:paddingVertical="10dp"
-        android:text="خلصت! ✅"
+        android:text="@string/layout_voice_recording_bottom_sheet_android_text_4"
         android:textColor="#2E7D32"
         android:textSize="16sp"
         android:textStyle="bold" />

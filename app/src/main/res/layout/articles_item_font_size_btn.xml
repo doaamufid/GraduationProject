@@ -8,7 +8,7 @@
     android:background="@drawable/bg_note_box"
     android:gravity="center"
     android:paddingVertical="12dp"
-    android:text="Aa"
+    android:text="@string/articles_item_font_size_btn_android_text_0"
     android:textColor="@color/text"
     android:textStyle="bold"
     android:clickable="true"

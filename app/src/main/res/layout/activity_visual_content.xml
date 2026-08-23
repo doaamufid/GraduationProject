@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    android:layoutDirection="rtl"
+    android:layoutDirection="locale"
     tools:context=".VisualContentActivity">
 
     <!-- خلفية الهيدر العلوي -->
@@ -32,7 +32,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/headerBackground"
         app:layout_constraintBottom_toBottomOf="@+id/headerBackground"
-        android:contentDescription="رجوع" />
+        android:contentDescription="@string/activity_visual_content_android_contentdescription_0" />
 
     <!-- الحاوية الذكية للعنوان الرئيسي والنص الفرعي (استمع - Listen) -->
     <LinearLayout

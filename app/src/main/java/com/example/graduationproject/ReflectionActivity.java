@@ -100,32 +100,20 @@ public class ReflectionActivity extends AppCompatActivity {
         btnNext = findViewById(R.id.btn_next);
     }
 
-    private String getArabicString(int resId) {
-        // load the string from an Arabic-configured context to force Arabic text regardless of device locale
-        try {
-            Configuration conf = new Configuration(getResources().getConfiguration());
-            Locale ar = new Locale("ar");
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                conf.setLocale(ar);
-            } else {
-                conf.locale = ar;
-            }
-            return createConfigurationContext(conf).getResources().getString(resId);
-        } catch (Exception e) {
-            return getString(resId);
-        }
+    private String getCurrentLanguageString(int resId) {
+        return getString(resId);
     }
 
     private void renderCardInitial(int idx) {
         ReflectionCard card = cards.get(idx);
         sceneView.setSceneType(card.sceneType);
-        txtTitle.setText(getArabicString(card.titleRes));
-        txtTag.setText(getArabicString(card.tagRes).toUpperCase());
-        txtChip.setText(getArabicString(card.chipRes));
-        String noteDate = getArabicString(R.string.note_prefix) + " · " + getArabicString(card.dateRes);
+        txtTitle.setText(getCurrentLanguageString(card.titleRes));
+        txtTag.setText(getCurrentLanguageString(card.tagRes).toUpperCase());
+        txtChip.setText(getCurrentLanguageString(card.chipRes));
+        String noteDate = getCurrentLanguageString(R.string.note_prefix) + " · " + getCurrentLanguageString(card.dateRes);
         txtNoteDate.setText(noteDate);
-        txtNote.setText(getArabicString(card.noteRes));
-        txtNext.setText(getArabicString(R.string.enter_button));
+        txtNote.setText(getCurrentLanguageString(card.noteRes));
+        txtNext.setText(getCurrentLanguageString(R.string.enter_button));
     }
 
     private void cleanupHandler() {

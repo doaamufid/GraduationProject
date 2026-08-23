@@ -39,7 +39,7 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layoutDirection="rtl">
+            android:layoutDirection="locale">
 
             <TextView
                 android:id="@+id/tvExercisesTitle"
@@ -48,7 +48,7 @@
                 android:layout_marginTop="40dp"
                 android:layout_marginStart="24dp"
                 android:layout_marginEnd="24dp"
-                android:text="تمارين"
+                android:text="@string/fragment_exercises_android_text_0"
                 android:textColor="#2D5B7B"
                 android:textSize="26sp"
                 android:textStyle="bold"
@@ -61,7 +61,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
-                android:text="اختاري تمرينكِ اليوم"
+                android:text="@string/fragment_exercises_android_text_1"
                 android:textColor="#6A8CA3"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="@id/tvExercisesTitle"

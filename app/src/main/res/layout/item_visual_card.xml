@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="12dp"
-        android:layoutDirection="rtl">
+        android:layoutDirection="locale">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardThumbnail"
@@ -58,7 +58,7 @@
                     android:background="#99000000"
                     android:paddingHorizontal="6dp"
                     android:paddingVertical="2dp"
-                    android:text="12:30"
+                    android:text="@string/item_visual_card_android_text_0"
                     android:textColor="#FFFFFF"
                     android:textSize="9sp" />
             </FrameLayout>
@@ -77,7 +77,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:gravity="right"
+            android:gravity="end"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
@@ -89,7 +89,7 @@
                 android:id="@+id/tvVideoTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="كيف تتعامل مع القلق؟"
+                android:text="@string/item_visual_card_android_text_1"
                 android:textColor="#2D587B"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -99,7 +99,7 @@
                 android:id="@+id/tvTrainerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="منهج الصحة النفسية"
+                android:text="@string/item_visual_card_android_text_2"
                 android:textColor="#8C9AA5"
                 android:textSize="11sp"
                 android:layout_marginBottom="6dp" />
@@ -111,7 +111,7 @@
                 android:background="@drawable/bg_tag_gray"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="3dp"
-                android:text="فيديو"
+                android:text="@string/item_visual_card_android_text_3"
                 android:textColor="#8C9AA5"
                 android:textSize="10sp"
                 android:textStyle="bold" />

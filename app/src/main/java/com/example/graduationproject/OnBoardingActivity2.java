@@ -27,8 +27,8 @@ public class OnBoardingActivity2 extends AppCompatActivity {
 
         androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
             androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom);
-            binding.tvSkip.setPadding(0, systemBars.top, 0, 0);
+            v.setPaddingRelative(systemBars.left, 0, systemBars.right, systemBars.bottom);
+            binding.tvSkip.setPaddingRelative(0, systemBars.top, 0, 0);
             return insets;
         });
 

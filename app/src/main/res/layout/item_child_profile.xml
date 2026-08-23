@@ -17,7 +17,7 @@
         android:layout_height="60dp"
         android:background="@drawable/bg_child_avatar_mint"
         android:gravity="center"
-        android:text="🦊"
+        android:text="@string/item_child_profile_android_text_0"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -67,7 +67,7 @@
             android:layout_marginTop="-24dp"
             android:elevation="4dp"
             android:fontFamily="sans-serif-black"
-            android:text="Aiwanfo Faith"
+            android:text="@string/item_article_card_android_text_0"
             android:textColor="@color/card_title"
             android:textSize="22sp"
             android:textStyle="bold"
@@ -81,7 +81,7 @@
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="4dp"
-            android:text="Designing for clarity &amp; usability"
+            android:text="@string/item_article_card_android_text_1"
             android:textColor="@color/card_subtitle"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -113,7 +113,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:text="مقال تعليمي"
+                android:text="@string/item_article_card_android_text_2"
                 android:textColor="@color/card_subtitle"
                 android:textSize="12sp" />
 
@@ -130,7 +130,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="6dp"
-                android:text="في المسار الصحيح"
+                android:text="@string/item_article_card_android_text_3"
                 android:textColor="@color/card_subtitle"
                 android:textSize="12sp" />
         </LinearLayout>
@@ -191,7 +191,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="4dp"
-                            android:text="4.8"
+                            android:text="@string/item_article_card_android_text_4"
                             android:textColor="@color/card_title"
                             android:textSize="14sp"
                             android:textStyle="bold" />
@@ -200,7 +200,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="rating"
+                        android:text="@string/item_article_card_android_text_5"
                         android:textColor="@color/card_subtitle"
                         android:textSize="11sp" />
                 </LinearLayout>
@@ -221,7 +221,7 @@
                         android:id="@+id/tvDuration"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="5 دقائق"
+                        android:text="@string/item_article_card_android_text_6"
                         android:textColor="@color/card_title"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -229,7 +229,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="duration"
+                        android:text="@string/item_article_card_android_text_7"
                         android:textColor="@color/card_subtitle"
                         android:textSize="11sp" />
                 </LinearLayout>
@@ -250,7 +250,7 @@
                         android:id="@+id/tvReadStatus"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="مجاني"
+                        android:text="@string/item_article_card_android_text_8"
                         android:textColor="@color/card_title"
                         android:textSize="14sp"
                         android:textStyle="bold" />
@@ -258,7 +258,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="rate"
+                        android:text="@string/item_article_card_android_text_9"
                         android:textColor="@color/card_subtitle"
                         android:textSize="11sp" />
                 </LinearLayout>
@@ -272,7 +272,7 @@
                 android:backgroundTint="@color/black"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                android:text="قراءة الآن"
+                android:text="@string/item_article_card_android_text_10"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="14sp"

@@ -175,7 +175,7 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/bg_pill_primary"
             android:backgroundTint="#3A6898"
-            android:text="ابدأ التمرين الموجه ←"
+            android:text="@string/item_exercise_panel_android_text_0"
             android:textColor="#FFFFFF"
             android:textSize="16sp"
             android:textStyle="bold" />

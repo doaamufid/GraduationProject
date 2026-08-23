@@ -17,7 +17,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Animation Demo"
+            android:text="@string/activity_animation_demo_android_text_0_1"
             android:textSize="24sp"
             android:textStyle="bold"
             android:textColor="#333333"
@@ -26,7 +26,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Test your assets here before using them in the app."
+            android:text="@string/activity_animation_demo_android_text_1_1"
             android:textSize="14sp"
             android:textColor="#666666"
             android:layout_marginBottom="24dp"/>
@@ -48,7 +48,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lottie JSON"
+                    android:text="@string/activity_animation_demo_android_text_2_1"
                     android:textStyle="bold"
                     android:textColor="#3A74B8"
                     android:layout_marginBottom="12dp"/>
@@ -69,24 +69,24 @@
                     android:gravity="center"
                     android:layout_marginBottom="12dp">
 
-                    <Button android:id="@+id/btnLottiePlay" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Play"/>
-                    <Button android:id="@+id/btnLottiePause" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pause"/>
-                    <Button android:id="@+id/btnLottieRestart" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Restart"/>
-                    <Button android:id="@+id/btnLottieStop" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stop"/>
+                    <Button android:id="@+id/btnLottiePlay" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_3_1"/>
+                    <Button android:id="@+id/btnLottiePause" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_4_1"/>
+                    <Button android:id="@+id/btnLottieRestart" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_5_1"/>
+                    <Button android:id="@+id/btnLottieStop" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_6_1"/>
                 </LinearLayout>
 
                 <CheckBox
                     android:id="@+id/cbLottieLoop"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Loop Animation"
+                    android:text="@string/activity_animation_demo_android_text_7_1"
                     android:layout_marginBottom="8dp"/>
 
                 <TextView
                     android:id="@+id/tvLottieSpeed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Speed: 1.0x"
+                    android:text="@string/activity_animation_demo_android_text_8_1"
                     android:textSize="12sp"
                     android:layout_marginBottom="4dp"/>
 
@@ -116,7 +116,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Lordicon (Lottie JSON)"
+                    android:text="@string/activity_animation_demo_android_text_9_1"
                     android:textStyle="bold"
                     android:textColor="#3A74B8"
                     android:layout_marginBottom="12dp"/>
@@ -134,9 +134,9 @@
                     android:orientation="horizontal"
                     android:gravity="center">
 
-                    <Button android:id="@+id/btnLordiconPlay" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Play"/>
-                    <Button android:id="@+id/btnLordiconRestart" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Restart"/>
-                    <Button android:id="@+id/btnLordiconStop" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Stop"/>
+                    <Button android:id="@+id/btnLordiconPlay" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_10_1"/>
+                    <Button android:id="@+id/btnLordiconRestart" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_11_1"/>
+                    <Button android:id="@+id/btnLordiconStop" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_12_1"/>
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -158,7 +158,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="dotLottie (.lottie)"
+                    android:text="@string/activity_animation_demo_android_text_13_1"
                     android:textStyle="bold"
                     android:textColor="#3A74B8"
                     android:layout_marginBottom="12dp"/>
@@ -176,9 +176,9 @@
                     android:orientation="horizontal"
                     android:gravity="center">
 
-                    <Button android:id="@+id/btnDotLottiePlay" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Play"/>
-                    <Button android:id="@+id/btnDotLottiePause" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pause"/>
-                    <Button android:id="@+id/btnDotLottieRestart" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Restart"/>
+                    <Button android:id="@+id/btnDotLottiePlay" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_14_1"/>
+                    <Button android:id="@+id/btnDotLottiePause" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_15_1"/>
+                    <Button android:id="@+id/btnDotLottieRestart" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_16_1"/>
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -200,7 +200,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Rive (.riv)"
+                    android:text="@string/activity_animation_demo_android_text_17"
                     android:textStyle="bold"
                     android:textColor="#3A74B8"
                     android:layout_marginBottom="12dp"/>
@@ -219,20 +219,20 @@
                     android:gravity="center"
                     android:layout_marginBottom="12dp">
 
-                    <Button android:id="@+id/btnRivePlay" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Play"/>
-                    <Button android:id="@+id/btnRivePause" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Pause"/>
-                    <Button android:id="@+id/btnRiveRestart" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Reset"/>
+                    <Button android:id="@+id/btnRivePlay" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_18"/>
+                    <Button android:id="@+id/btnRivePause" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_19"/>
+                    <Button android:id="@+id/btnRiveRestart" style="@style/Widget.MaterialComponents.Button.TextButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_20"/>
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="State Machine Inputs"
+                    android:text="@string/activity_animation_demo_android_text_21"
                     android:textSize="12sp"
                     android:textStyle="bold"
                     android:layout_marginBottom="8dp"/>
 
-                <Button android:id="@+id/btnRiveTrigger" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Fire Trigger" android:layout_marginBottom="4dp"/>
+                <Button android:id="@+id/btnRiveTrigger" style="@style/Widget.MaterialComponents.Button.OutlinedButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_22" android:layout_marginBottom="4dp"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -240,7 +240,7 @@
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
                     android:layout_marginBottom="4dp">
-                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="Boolean Input"/>
+                    <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/activity_animation_demo_android_text_23"/>
                     <CheckBox android:id="@+id/cbRiveBoolean" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
                 </LinearLayout>
 
@@ -248,7 +248,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
-                    <TextView android:id="@+id/tvRiveNumber" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Number Input: 0.0" android:textSize="11sp"/>
+                    <TextView android:id="@+id/tvRiveNumber" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/activity_animation_demo_android_text_24" android:textSize="11sp"/>
                     <SeekBar android:id="@+id/sbRiveNumber" android:layout_width="match_parent" android:layout_height="wrap_content" android:max="100"/>
                 </LinearLayout>
 

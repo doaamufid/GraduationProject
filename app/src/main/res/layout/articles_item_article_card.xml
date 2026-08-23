@@ -111,7 +111,7 @@
                     android:textColor="#EBFFFFFF"
                     android:textSize="10sp"
                     android:textStyle="bold"
-                    android:text="♥ تمارين" />
+                    android:text="@string/articles_item_article_card_android_text_0" />
             </LinearLayout>
 
             <View

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg"
-    android:layoutDirection="rtl"
+    android:layoutDirection="locale"
     android:orientation="vertical">
 
     <include layout="@layout/view_top_bar" />
@@ -99,7 +99,7 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="رجوع"
+                    android:text="@string/fragment_browse_photos_android_text_0"
                     android:textColor="@color/text_main" />
 
                 <View
@@ -112,7 +112,7 @@
                     style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="حذف"
+                    android:text="@string/fragment_browse_photos_android_text_1"
                     android:textColor="@color/red_delete" />
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
