@@ -3,7 +3,54 @@
 
     <string name="salam_title">SALAM</string>
     <string name="mental_health_subtitle">MENTAL HEALTH · PEACE OF MIND</string>
+    <!-- Kids Profile & Registration -->
+    <string name="kids_age_gender_format">%2$s • %1$d years</string>
+    <string name="gender_boy">Boy</string>
+    <string name="gender_girl">Girl</string>
+    <string name="new_child_welcome_title">Welcome!</string>
+    <string name="new_child_welcome_subtitle">On Alef, we\'d love to get to know you</string>
+    <string name="new_child_label_name">What should we call you?</string>
+    <string name="new_child_hint_name">Enter your name or nickname</string>
+    <string name="new_child_label_age">How old are you?</string>
+    <string name="new_child_label_gender">Are you a boy or a girl?</string>
+    <string name="new_child_info_banner">Entering Nour\'s world\nContent is suited for your age</string>
+    <string name="new_child_btn_submit">Let\'s start!</string>
+    <string name="new_child_banner_subtitle">Activities suitable for your age</string>
+    <string name="new_child_secret_note">Your secret is safe with Nour 💛</string>
 
+    <!-- Bubble Breathing -->
+    <string name="bubble_quiet_exit">✕ Done, I feel good</string>
+    <string name="bubble_breath_hint">Use the button to blow</string>
+    <string name="bubble_btn_again">More bubbles 🫧</string>
+    <string name="bubble_btn_done">All done</string>
+    <string name="bubble_canvas_press_blow">Press and blow...</string>
+    <string name="bubble_canvas_keep_going">Keep going, bubble is growing! 🫧</string>
+    <string name="bubble_canvas_flew_away">Bubble flew away! 🌟</string>
+
+    <!-- Kids AI Chat & Moods -->
+    <string name="kids_chat_back_desc">Back</string>
+    <string name="kids_chat_nour_badge">I\'m here listening 💙</string>
+    <string name="kids_chat_question_title">How are you feeling now?</string>
+    <string name="kids_mood_scared">Scared</string>
+    <string name="kids_mood_sad">Sad</string>
+    <string name="kids_mood_angry">Angry</string>
+    <string name="kids_mood_confused">Don\'t know</string>
+    <string name="kids_mood_tired">Tired</string>
+    <string name="kids_mood_happy">Happy</string>
+    <string name="close">Close</string>
+    <string name="kids_chat_press_and_talk">Press and speak</string>
+    <string name="kids_chat_switch_to_text">Or write</string>
+    <string name="kids_chat_hint_input">Write how you feel here...</string>
+    <string name="kids_chat_switch_to_voice">Or record your voice</string>
+    <string name="kids_chat_btn_talk_nour">Talked to Nour! ⭐</string>
+    <string name="kids_chat_loading">Nour is listening to you...</string>
+    <string name="kids_chat_ai_default_response">Your fatigue is heard, take your time.</string>
+    <string name="kids_chat_listen_response">Hear Nour\'s reply 🔊</string>
+    <string name="kids_chat_what_next">What would you like to do now?</string>
+    <string name="kids_chat_action_breath">Take a breath with me 🫧</string>
+    <string name="kids_chat_action_draw">Draw how you feel 🎨</string>
+    <string name="kids_chat_action_better">Done, I feel better now 💛</string>
+    <string name="stage_fruit_tree_locked_status">Locked stage</string>
     <string name="question_how_to_address">How should I address you?</string>
     <string name="name_hint">Your name or nickname (optional)</string>
     <string name="btn_adults">Adults</string>
@@ -925,6 +972,33 @@
     <string name="language_title">Language</string>
     <string name="continue_label">Continue</string>
     <string name="chat_item_voice_message_android_text_0">00:00</string>
+    <!-- Bubble Breathing Strings (English) -->
+    <string name="bubble_btn_start">Let\'s Start! 🫧</string>
+    <string name="bubble_welcome_title">Let\'s blow bubbles together!</string>
+    <string name="bubble_welcome_body">Breathe gently towards the phone, and watch the bubble grow and fly!</string>
+    <string name="bubble_btn_hold">Press &amp; Hold Breath 🌬️</string>
+    <string name="bubble_btn_holding">Blowing now... 🫧</string>
+    <string name="bubble_done_title">Great job! You made %1$d bubbles 🥳</string>
+    <string name="bubble_done_body">You are calmer and stronger now!</string>
+    <!-- Kids Tree Activity Strings (English) -->
+    <string name="tree_stage_level">Stage %1$d</string>
+    <string name="stage_seed_title">Seed Stage</string>
+    <string name="stage_seed_desc">Beginning of the journey and self-care.</string>
+    <string name="stage_sprout_title">Sprout Stage</string>
+    <string name="stage_sprout_desc">Beginning of growth and continuous improvement.</string>
+    <string name="stage_tree_title">Tree Stage</string>
+    <string name="stage_tree_desc">Strong growth and stable habits.</string>
+    <string name="stage_fruit_tree_title">Fruitful Tree</string>
+    <string name="stage_fruit_tree_desc">Peak of success and high achievement!</string>
+    <string name="badge_unlocked_message">Badge unlocked successfully!</string>
+    <!-- Tree Progress Manager Stages (English) -->
+    <string name="stage_sprout">Sprout Stage</string>
+    <string name="stage_bud">Bud Stage</string>
+    <string name="stage_tree">Tree Stage</string>
+    <string name="stage_fruit_tree">Fruitful Tree</string>
+    <!-- New Child Profile Strings (English) -->
+    <string name="new_child_banner_title">Welcome %1$s!</string>
+    <string name="fill_all_fields_toast">Please fill all fields and select age and avatar</string>
     <!-- Voice Sheet -->
     <string name="kids_chat_sheet_cancel">Cancel</string>
     <string name="kids_chat_sheet_speak_hint">Say what you feel, I am listening 🧸</string>
@@ -962,8 +1036,6 @@
     <!-- Dialog النصوص الخاصة بـ -->
     <string name="daily_badge_title">Daily</string>
     <string name="daily_badge_desc">Logged in every day</string>
-    <string name="badge_unlocked_message">⭐ Nour is proud of you! You earned it today</string>
-    <string name="close">Close</string>
     <string name="badge_meditator_title">Meditator</string>
     <string name="badge_meditator_desc">Completed meditation and breathing exercises</string>
 
@@ -971,35 +1043,23 @@
     <string name="badge_consistent_desc">Keep logging your daily activities</string>
     <string name="badge_consistent_locked_status">🔒 Complete 7 consecutive days to unlock!</string>
 
-    <string name="stage_seed_title">Seed</string>
-    <string name="stage_seed_desc">Beginning of the growth journey</string>
     <string name="stage_achieved_status">Achieved with your effort!</string>
 
-    <string name="stage_sprout_title">Sprout</string>
-    <string name="stage_sprout_desc">Your tree is starting to branch out</string>
+<!--    <string name="stage_sprout_title">Sprout</string>-->
 
-    <string name="stage_tree_title">Tree</string>
-    <string name="stage_tree_desc">A big tree for everyone to see!</string>
     <string name="stage_current_status">You are currently in this stage!</string>
 
-    <string name="stage_fruit_tree_title">Fruit Tree</string>
-    <string name="stage_fruit_tree_desc">Highest growth stage of the recovery tree</string>
-    <string name="stage_fruit_tree_locked_status">🔒 Needs 50 points to reach!</string>
 
 
     <string name="cat_all">All</string>
 
 
         <!-- Tree Stages -->
-        <string name="stage_sprout">Small Sprout</string>
-        <string name="stage_bud">Bud</string>
-        <string name="stage_tree">Growing Tree</string>
-        <string name="stage_fruit_tree">Fruit Tree</string>
+
 
         <!-- UI Messages -->
         <string name="tree_points_format">Today: %d Points</string>
         <string name="tree_stage_description">Your tree is in %s stage</string>
-        <string name="tree_stage_level">Stage %d of 4</string>
     <string name="level_up_stage_reached">You are now at stage: %1$s</string>
         <string name="breathing_success_toast">Awesome! You earned 10 points for your tree 🌳✨</string>
     <string name="level_up_congrats">Congratulations! Your tree grew! 🥳</string>
@@ -1007,3 +1067,4 @@
     <string name="level_up_btn_continue">Continue Nurturing 💚</string>
 
 </resources>
+

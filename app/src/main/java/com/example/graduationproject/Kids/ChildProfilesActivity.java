@@ -19,6 +19,7 @@ import com.example.graduationproject.models.ChildProfile;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.Executors;
 
 public class ChildProfilesActivity extends AppCompatActivity {
     private ActivityChildProfilesBinding binding;
@@ -82,9 +83,14 @@ public class ChildProfilesActivity extends AppCompatActivity {
     }
 
     private void loadProfiles() {
-        profiles.clear();
-        profiles.addAll(childProfileStore.getProfiles());
-        adapter.notifyDataSetChanged();
+        Executors.newSingleThreadExecutor().execute(() -> {
+            List<ChildProfile> newProfiles = childProfileStore.getProfiles();
+            runOnUiThread(() -> {
+                profiles.clear();
+                profiles.addAll(newProfiles);
+                adapter.notifyDataSetChanged();
+            });
+        });
     }
 
 }

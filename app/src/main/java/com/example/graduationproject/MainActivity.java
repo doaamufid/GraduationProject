@@ -107,7 +107,7 @@ public class MainActivity extends AppCompatActivity implements CardHost {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        System.loadLibrary("rive-android");
         // ضبط لون شريط الحالة ليتناسق مع واجهة الرئيسية (اللون الأزرق الفاتح)
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg));
@@ -133,11 +133,9 @@ public class MainActivity extends AppCompatActivity implements CardHost {
             // 🧑 وضع البالغين (شغلكِ الحالي): نقوم بتهيئة وعرض الفراقمنتات الطبيعية للبالغين
             setupAdultNavigation();
         } else if (userType.equals("kid")) {
-            // 👶 وضع الأطفال (مجهز ومستعد لزميلاتكِ):
-            // هنا مستقبلاً سيقومون باستدعاء دالة خاصة بالأطفال setupKidNavigation()
-            // حالياً سنعرض رسالة تنبيه بسيطة
-            Toast.makeText(this, "مرحباً بك في وضع الأطفال (قيد التطوير)", Toast.LENGTH_LONG).show();
-            setupAdultNavigation(); // مؤقتاً يعرض واجهتك لكي لا يتوقف التطبيق
+            Intent intent = new Intent(MainActivity.this, com.example.graduationproject.Kids.ChildProfilesActivity.class);
+            startActivity(intent);
+            finish();
         }
 
         // هندلة زر الرجوع لمنع العودة للخلف بالخطأ وإغلاق التطبيق بنظافة

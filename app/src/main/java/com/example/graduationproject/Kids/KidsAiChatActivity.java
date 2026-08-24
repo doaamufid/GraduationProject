@@ -90,6 +90,11 @@ public class KidsAiChatActivity extends AppCompatActivity {
 
         setupListeners();
         startEntranceAnimations();
+        binding.btnActionTree.setOnClickListener(v -> {
+            // الكود الخاص بالانتقال لشاشة الشجرة
+            Intent intent = new Intent(KidsAiChatActivity.this, KidsTreeIntroActivity.class); // استبدلي TreeActivity باسم شاشتك
+            startActivity(intent);
+        });
     }
 
     private void initTextToSpeech() {
@@ -253,7 +258,7 @@ public class KidsAiChatActivity extends AppCompatActivity {
 
         binding.btnActionBetter.setOnClickListener(v -> navigateToTreeScreen());
 
-        binding.btnGoToTree.setOnClickListener(v -> navigateToTreeScreen());
+//        binding.btnGoToTree.setOnClickListener(v -> navigateToTreeScreen());
 
         for (int i = 0; i < binding.gridMoods.getChildCount(); i++) {
             View child = binding.gridMoods.getChildAt(i);

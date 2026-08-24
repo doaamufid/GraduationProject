@@ -699,11 +699,9 @@
     <string name="bubble_welcome_body">انفخ بفمك قدام التلفون بهدوء، وشوف الفقاعة تكبر وتطير — كل نفخة، أي حجم، تصير فقاعة حلوة!</string>
     <string name="bubble_btn_start">يلا نبدأ! 🫧</string>
     <string name="bubble_btn_hold">اضغط هنا وانفخ</string>
-    <string name="bubble_btn_holding">استمر بالضغط...</string>
     <string name="bubble_btn_again">فقاعات ثانية 🫧</string>
     <string name="bubble_btn_done">خلص كذا</string>
     <string name="bubble_done_title">يلا! نفخنا %1$d فقاعات 🎉</string>
-    <string name="bubble_done_body">خمس نفسات هادئة، وأنت الحين أهدأ شوي</string>
     <string name="bubble_canvas_press_blow">اضغط وانفخ...</string>
     <string name="bubble_canvas_keep_going">استمر فقاعتك تكبر! 🫧</string>
     <string name="bubble_canvas_flew_away">طارت الفقاعة! 🌟</string>
@@ -972,6 +970,32 @@
     <string name="language_title">اللغة</string>
     <string name="continue_label">متابعة</string>
     <string name="chat_item_voice_message_android_text_0">00:00</string>
+    <!-- Bubble Breathing Strings -->
+    <string name="bubble_btn_holding">انفخ الحين... 🫧</string>
+    <string name="bubble_done_body">صرت أهدى وأقوى الحين!</string>
+    <!-- Kids Tree Activity Strings -->
+    <string name="tree_today_points">نقاط اليوم: %1$d</string>
+    <string name="tree_stage_level">المرحلة %1$d</string>
+    <string name="stage_seed_title">مرحلة البذرة</string>
+    <string name="stage_seed_desc">بداية الرحلة والاهتمام بالنفس.</string>
+    <string name="stage_sprout_title">مرحلة البرعم</string>
+    <string name="stage_sprout_desc">بداية النمو والتحسن المستمر.</string>
+    <string name="stage_tree_title">مرحلة الشجرة</string>
+    <string name="stage_tree_desc">نمو قوي واستقرار في العادات.</string>
+    <string name="stage_fruit_tree_title">الشجرة المثمرة</string>
+    <string name="stage_fruit_tree_desc">قمة النجاح والإنجاز العالي!</string>
+    <string name="badge_unlocked_message">تم فتح هذا الوسام بنجاح!</string>
+    <string name="close">إغلاق</string>
+    <!-- Tree Progress Manager Stages (Arabic) -->
+    <string name="stage_sprout">مرحلة البرعم</string>
+    <string name="stage_bud">مرحلة البرعم المكتمل</string>
+    <string name="stage_tree">مرحلة الشجرة</string>
+    <string name="stage_fruit_tree">الشجرة المثمرة</string>
+    <!-- New Child Profile Strings (Arabic) -->
+<!--    <string name="stage_sprout">برعم صغير</string>-->
+<!--    <string name="stage_bud">نبتة نامية</string>-->
+<!--    <string name="stage_tree">شجرة قوية</string>-->
+<!--    <string name="stage_fruit_tree">شجرة مثمرة</string>-->
     <!-- Controls & Inputs -->
     <string name="kids_chat_press_and_talk">اضغط واحكيلي</string>
     <string name="kids_chat_switch_to_text">أو اكتب</string>
@@ -996,7 +1020,6 @@
     <!-- Tree Screens Texts -->
     <string name="tree_back">رجوع</string>
     <string name="tree_title">شجرة التعافي</string>
-    <string name="tree_today_points">اليوم: %d نقطة</string>
     <string name="tree_points_subtitle">تنفس • محادثة • يوميات</string>
     <string name="tree_stage_tree_title">شجرتك في مرحلة شجرة</string>
     <string name="tree_stage_3_of_4">المرحلة 3 من 4</string>
@@ -1025,8 +1048,6 @@
     <!-- النصوص الخاصة بـ Dialog -->
     <string name="daily_badge_title">يومي</string>
     <string name="daily_badge_desc">دخلت كل يوم</string>
-    <string name="badge_unlocked_message">⭐ نور فخور فيك! حصلتها اليوم</string>
-    <string name="close">إغلاق</string>
     <string name="badge_meditator_title">مُتأمل</string>
     <string name="badge_meditator_desc">أكملت تمارين التأمل والتنفس</string>
 
@@ -1034,34 +1055,21 @@
     <string name="badge_consistent_desc">استمر في تسجيل الأنشطة يومياً</string>
     <string name="badge_consistent_locked_status">🔒 كَمِّل 7 أيام متتالية لفتحها!</string>
 
-    <string name="stage_seed_title">بذرة</string>
-    <string name="stage_seed_desc">بداية رحلة النمو والتعافي</string>
     <string name="stage_achieved_status">تحققت بجميل إنجازاتك!</string>
 
-    <string name="stage_sprout_title">برعم</string>
-    <string name="stage_sprout_desc">شجرتك بدأت تتفرع وتكبر</string>
 
-    <string name="stage_tree_title">شجرة</string>
-    <string name="stage_tree_desc">شجرة كبيرة يشوفها الكل!</string>
     <string name="stage_current_status">أنت في هذه المرحلة حالياً!</string>
 
-    <string name="stage_fruit_tree_title">شجرة مثمرة</string>
-    <string name="stage_fruit_tree_desc">أعلى مراحل نمو شجرة التعافي</string>
     <string name="stage_fruit_tree_locked_status">🔒 تحتاج 50 نقطة لوصولها!</string>
 
 
 
 
         <!-- مراحل الشجرة -->
-        <string name="stage_sprout">نبتة صغيرة</string>
-        <string name="stage_bud">برعم</string>
-        <string name="stage_tree">شجرة نامية</string>
-        <string name="stage_fruit_tree">شجرة مثمرة</string>
 
         <!-- رسائل الواجهة -->
         <string name="tree_points_format">اليوم: %d نقطة</string>
         <string name="tree_stage_description">شجرتك في مرحلة %s</string>
-        <string name="tree_stage_level">المرحلة %d من 4</string>
         <string name="breathing_success_toast">أحسنت! أضفت 10 نقاط لشجرتك 🌳✨</string>
     <string name="level_up_congrats">مبارك! لقد نموت شجرتك 🥳</string>
     <string name="level_up_stage_reached">أنت الآن في مرحلة: %1$s %2$s</string>
