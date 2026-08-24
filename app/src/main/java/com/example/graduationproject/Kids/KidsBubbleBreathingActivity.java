@@ -62,11 +62,11 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
             return insets;
         });
 
-//        binding.btnGoToTree.setOnClickListener(v -> {
-//            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeIntroActivity.class);
-//            startActivity(intent);
-//            finish();
-//        });
+        binding.btnGoToTree.setOnClickListener(v -> {
+            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeIntroActivity.class);
+            startActivity(intent);
+            finish();
+        });
 
         binding.btnDone.setOnClickListener(v -> {
             Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeIntroActivity.class);

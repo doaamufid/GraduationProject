@@ -119,7 +119,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😡" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="زعلان" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="غضبان" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
             <!-- 4. مش عارف -->
@@ -358,6 +358,18 @@
             android:gravity="center"
             android:text="ارسم كيف حاسس 🎨"
             android:textColor="#427A65"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+        <!-- Option: زر شجرتك -->
+        <TextView
+            android:id="@+id/btn_action_tree"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:background="#EAF2D7"
+            android:gravity="center"
+            android:text="شوف شجرتك 🌳"
+            android:textColor="#4A6B22"
             android:textSize="16sp"
             android:textStyle="bold" />
 

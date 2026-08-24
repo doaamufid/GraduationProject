@@ -158,6 +158,18 @@
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+            <TextView
+                android:id="@+id/btn_go_to_tree"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginHorizontal="4dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_kids_bubble_secondary"
+                android:gravity="center"
+                android:text="شجرتك 🌳"
+                android:textColor="#8B6F4D"
+                android:textSize="14sp"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/btn_done"

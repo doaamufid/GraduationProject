@@ -934,9 +934,30 @@
     <string name="bubble_btn_holding">انفخ الحين... 🫧</string>
     <string name="bubble_done_title">أحسنت! سويت %1$d فقاعات 🥳</string>
     <string name="bubble_done_body">صرت أهدى وأقوى الحين!</string>
-    <string name="stage_sprout">برعم صغير</string>
-    <string name="stage_bud">نبتة نامية</string>
-    <string name="stage_tree">شجرة قوية</string>
-    <string name="stage_fruit_tree">شجرة مثمرة</string>
+    <!-- Kids Tree Activity Strings -->
+    <string name="tree_today_points">نقاط اليوم: %1$d</string>
+    <string name="tree_stage_level">المرحلة %1$d</string>
+    <string name="stage_seed_title">مرحلة البذرة</string>
+    <string name="stage_seed_desc">بداية الرحلة والاهتمام بالنفس.</string>
+    <string name="stage_sprout_title">مرحلة البرعم</string>
+    <string name="stage_sprout_desc">بداية النمو والتحسن المستمر.</string>
+    <string name="stage_tree_title">مرحلة الشجرة</string>
+    <string name="stage_tree_desc">نمو قوي واستقرار في العادات.</string>
+    <string name="stage_fruit_tree_title">الشجرة المثمرة</string>
+    <string name="stage_fruit_tree_desc">قمة النجاح والإنجاز العالي!</string>
+    <string name="badge_unlocked_message">تم فتح هذا الوسام بنجاح!</string>
+    <string name="close">إغلاق</string>
+    <!-- Tree Progress Manager Stages (Arabic) -->
+    <string name="stage_sprout">مرحلة البرعم</string>
+    <string name="stage_bud">مرحلة البرعم المكتمل</string>
+    <string name="stage_tree">مرحلة الشجرة</string>
+    <string name="stage_fruit_tree">الشجرة المثمرة</string>
+    <!-- New Child Profile Strings (Arabic) -->
+    <string name="new_child_banner_title">أهلاً بك يا %1$s!</string>
+    <string name="fill_all_fields_toast">يرجى تعبئة جميع الحقول واختيار الشكل والسن</string>
+<!--    <string name="stage_sprout">برعم صغير</string>-->
+<!--    <string name="stage_bud">نبتة نامية</string>-->
+<!--    <string name="stage_tree">شجرة قوية</string>-->
+<!--    <string name="stage_fruit_tree">شجرة مثمرة</string>-->
 </resources>
 

@@ -933,5 +933,26 @@
     <string name="bubble_btn_holding">Blowing now... 🫧</string>
     <string name="bubble_done_title">Great job! You made %1$d bubbles 🥳</string>
     <string name="bubble_done_body">You are calmer and stronger now!</string>
+    <!-- Kids Tree Activity Strings (English) -->
+    <string name="tree_today_points">Today\'s Points: %1$d</string>
+    <string name="tree_stage_level">Stage %1$d</string>
+    <string name="stage_seed_title">Seed Stage</string>
+    <string name="stage_seed_desc">Beginning of the journey and self-care.</string>
+    <string name="stage_sprout_title">Sprout Stage</string>
+    <string name="stage_sprout_desc">Beginning of growth and continuous improvement.</string>
+    <string name="stage_tree_title">Tree Stage</string>
+    <string name="stage_tree_desc">Strong growth and stable habits.</string>
+    <string name="stage_fruit_tree_title">Fruitful Tree</string>
+    <string name="stage_fruit_tree_desc">Peak of success and high achievement!</string>
+    <string name="badge_unlocked_message">Badge unlocked successfully!</string>
+    <string name="close">Close</string>
+    <!-- Tree Progress Manager Stages (English) -->
+    <string name="stage_sprout">Sprout Stage</string>
+    <string name="stage_bud">Bud Stage</string>
+    <string name="stage_tree">Tree Stage</string>
+    <string name="stage_fruit_tree">Fruitful Tree</string>
+    <!-- New Child Profile Strings (English) -->
+    <string name="new_child_banner_title">Welcome %1$s!</string>
+    <string name="fill_all_fields_toast">Please fill all fields and select age and avatar</string>
 </resources>
 
