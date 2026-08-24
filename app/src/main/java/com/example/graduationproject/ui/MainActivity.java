@@ -5,6 +5,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.FragmentManager;
 
+import com.example.graduationproject.AppLanguageManager;
+import com.example.graduationproject.ContentItemHost;
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.ContentItem;
 
@@ -14,17 +16,31 @@ import com.example.graduationproject.models.ContentItem;
  * "player") in the original root component. Navigation between them
  * uses the FragmentManager back stack.
  */
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements ContentItemHost {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Arabic + RTL by default; English + LTR when the saved app language is English
+        AppLanguageManager.applySavedLanguage(this);
+
         setContentView(R.layout.activity_video_library);
+
+        // Force this window's direction (the app theme hardcodes RTL globally)
+        boolean rtl = AppLanguageManager.isRtl(AppLanguageManager.getSavedLanguage(this));
+        android.view.View decor = getWindow().getDecorView();
+        decor.setLayoutDirection(rtl
+                ? android.view.View.LAYOUT_DIRECTION_RTL
+                : android.view.View.LAYOUT_DIRECTION_LTR);
+        decor.setTextDirection(rtl
+                ? android.view.View.TEXT_DIRECTION_RTL
+                : android.view.View.TEXT_DIRECTION_LTR);
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()
                     .beginTransaction()
-                    .replace(R.id.fragmentContainer, new LibraryFragment())
+                    .replace(R.id.fragmentContainer, new VideoLibraryFragment())
                     .commit();
         }
     }
@@ -51,3 +67,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
+
+
+

@@ -180,6 +180,25 @@
             android:orientation="vertical"
             android:layout_marginBottom="8dp"/>
 
+        <!-- Saved (article + video bookmarks) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/bookmarks_section_title"
+            android:textColor="@color/text_main"
+            android:textStyle="bold"
+            android:textSize="@dimen/text_title"
+            android:layout_gravity="start"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"/>
+
+        <LinearLayout
+            android:id="@+id/bookmark_links_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginBottom="8dp"/>
+
         <!-- Children link -->
         <LinearLayout
             android:id="@+id/btn_children_link"

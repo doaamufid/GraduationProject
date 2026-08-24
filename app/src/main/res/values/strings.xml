@@ -781,6 +781,25 @@
     <string name="search_hint">ابحث في المكتبة...</string>
     <string name="read_now">قراءة الآن</string>
 
+    <!-- Video library -->
+    <string name="bookmark_content">حفظ المحتوى</string>
+    <string name="unbookmark_content">إلغاء الحفظ</string>
+    <string name="video_library_sub">فيديوهات · VIDEOS</string>
+    <string name="search_hint_content">ابحث في المحتوى...</string>
+    <string name="fav_content_title">المحتوى المفضل</string>
+    <string name="bookmark_content_list_title">المحتوى المحفوظ</string>
+    <string name="empty_fav_content">لا يوجد محتوى مفضل بعد — اضغط على أيقونة القلب في أي فيديو</string>
+    <string name="empty_bookmark_content">لا يوجد محتوى محفوظ بعد — اضغط على أيقونة الحفظ في أي فيديو</string>
+    <string name="fav_content">إضافة للمفضلة</string>
+    <string name="unfav_content">إزالة من المفضلة</string>
+    <string name="content_desc_fav">المفضلة</string>
+    <string name="content_desc_bookmark">المحفوظات</string>
+    <string name="bookmarks_section_title">المحفوظات</string>
+    <string name="bookmark_videos_title">الفيديوهات المحفوظة</string>
+    <string name="bookmark_articles_sub">اقرأها لاحقاً في مكتبة المقالات</string>
+    <string name="bookmark_videos_sub">شاهدها لاحقاً في قسم الفيديوهات</string>
+    <string name="watch_now">شاهد الآن</string>
+
     <string name="library_cat_all">الكل</string>
     <string name="cat_sadness">الحزن</string>
     <string name="cat_anxiety">القلق</string>
@@ -1077,4 +1096,5 @@
     <string name="level_up_btn_continue">متابعة العناية بالشجرة 💚</string>
 
 </resources>
+
 
