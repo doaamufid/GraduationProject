@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3A5A40"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🎉 🌿 ✨ 🌟 🍃"
+        android:textSize="28sp" />
+
+    <TextView
+        android:id="@+id/tvTreeLevelEmoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="🌳"
+        android:textSize="120sp" />
+
+    <TextView
+        android:id="@+id/tvLevelUpTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="🌱 68% نمو مرحلة شجرة"
+    android:textColor="#FFFFFF"
+    android:textSize="24sp"
+    android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center"
+        android:text="شجرتك كبرت بسبب كل تمرين سويته 💚"
+        android:textColor="#A3B18A"
+        android:textSize="15sp" />
+
+    <Button
+        android:id="@+id/btnClaimReward"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="50dp"
+        android:backgroundTint="#FFFFFF"
+        android:text="يعطيك العافية! 🌟"
+        android:textColor="#3A5A40"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="28dp" />
+
+</LinearLayout>

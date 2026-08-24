@@ -9,6 +9,7 @@
     android:layoutDirection="rtl"
     android:textDirection="rtl"
     tools:context=".Kids.ChildProfilesActivity">
+<<<<<<< Updated upstream
 
 
     <ImageButton
@@ -21,6 +22,20 @@
         android:src="@drawable/outline_arrow_forward_24"
         android:padding="10dp"
         app:tint="#8B6F4D"
+=======
+    <TextView
+        android:id="@+id/btn_back"
+        android:layout_width="70dp"
+        android:layout_height="34dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/bg_child_back_pill"
+        android:gravity="center"
+        android:text="رجوع ←"
+        android:textColor="#8B6F4D"
+        android:textSize="12sp"
+        android:textStyle="bold"
+>>>>>>> Stashed changes
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         android:contentDescription="رجوع" />
@@ -69,7 +84,7 @@
         android:layout_marginTop="34dp"
         android:layout_marginEnd="16dp"
         android:clipToPadding="false"
-        android:paddingBottom="130dp"
+        android:paddingBottom="80dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

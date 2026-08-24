@@ -72,7 +72,6 @@ public class ChildProfilesAdapter extends RecyclerView.Adapter<RecyclerView.View
             binding.tvChildName.setText(profile.getName());
             binding.tvChildAge.setText(profile.getAge() + " سنوات • " + profile.getGender());
             binding.tvAvatar.setText(profile.getAvatar());
-            binding.tvChildAge.setText(profile.getAge() + " سنوات • " + profile.getGender());
             binding.tvAvatar.setBackgroundResource(position % 2 == 0
                     ? R.drawable.bg_child_avatar_mint
                     : R.drawable.bg_child_avatar_pink);

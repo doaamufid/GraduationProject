@@ -28,7 +28,7 @@ import com.example.graduationproject.databinding.ActivityNewChildProfileBinding;
 
 public class NewChildProfileActivity extends AppCompatActivity {
     private static final String[] AVATARS = {"🦊", "🐻", "🐰", "🐼", "🐨"};
-    private static final int[] AGES = {4, 5, 6, 7, 8, 9};
+    private static final int[] AGES = {3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
     private static final String GENDER_BOY = "ولد";
     private static final String GENDER_GIRL = "بنت";
     private static final int GENDER_DEFAULT_TEXT_COLOR = Color.rgb(93, 64, 55);
@@ -178,14 +178,16 @@ public class NewChildProfileActivity extends AppCompatActivity {
     }
 
     private void setupAgeButtons() {
-        int size = (int) (44 * getResources().getDisplayMetrics().density);
+        int size = (int) (48 * getResources().getDisplayMetrics().density);
         int margin = (int) (6 * getResources().getDisplayMetrics().density);
+
+        binding.ageContainer.removeAllViews();
 
         for (int age : AGES) {
             TextView ageView = new TextView(this);
             ageView.setText(String.valueOf(age));
             ageView.setGravity(Gravity.CENTER);
-            ageView.setTextSize(15);
+            ageView.setTextSize(16);
             ageView.setTypeface(ageView.getTypeface(), android.graphics.Typeface.BOLD);
             ageView.setTextColor(ContextCompat.getColor(this, android.R.color.black));
             ageView.setBackgroundResource(R.drawable.bg_child_age_default);
