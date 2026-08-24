@@ -34,7 +34,7 @@ public class ChildProfilesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         EdgeToEdge.enable(this);
         binding = ActivityChildProfilesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

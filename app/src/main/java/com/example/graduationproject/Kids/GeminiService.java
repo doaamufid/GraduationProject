@@ -1,5 +1,6 @@
 package com.example.graduationproject.Kids;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.google.firebase.ai.FirebaseAI;
@@ -12,6 +13,10 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
@@ -19,8 +24,6 @@ import java.util.concurrent.Executors;
 public class GeminiService {
 
     private static final String TAG = "GeminiService";
-
-    // استخدام اسم موديل رسمياً مدعوم في Firebase Vertex AI
     private static final String MODEL_NAME = "gemini-3.5-flash-lite";
 
     private final GenerativeModelFutures model;
@@ -32,78 +35,119 @@ public class GeminiService {
     }
 
     public GeminiService() {
-        // GenerativeBackend.googleAI() = نفس "Gemini Developer API" (الخطة المجانية)
-        // اللي فعّلناها من Firebase Console - بدون حاجة لمفتاح API يدوي
         GenerativeModel gm = FirebaseAI.getInstance(GenerativeBackend.googleAI())
                 .generativeModel(MODEL_NAME);
         this.model = GenerativeModelFutures.from(gm);
     }
 
     /**
-     * يبعت المزاج المختار لـ Gemini، ويرجع رسالة تشجيعية قصيرة من "دبدوب نور"
+     * إرسال طلب نصي عام لـ Gemini واستقبال الرد عبر Callback
      */
-    public void generateMoodMessage(String mood, GeminiCallback callback) {
-        String prompt = buildPrompt(mood);
-
-        Content content = new Content.Builder()
-                .addText(prompt)
-                .build();
-
+    private void executeGeminiRequest(Content content, GeminiCallback callback) {
         ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
 
         Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
             @Override
             public void onSuccess(GenerateContentResponse result) {
                 String resultText = result.getText();
-
                 if (resultText != null && !resultText.trim().isEmpty()) {
                     Log.d(TAG, "رد ناجح من Gemini: " + resultText);
                     callback.onSuccess(resultText.trim());
                 } else {
                     Log.e(TAG, "رد فاضي من Gemini");
-                    callback.onError("تعذّر قراءة رد Gemini");
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                Log.e(TAG, "خطأ من Gemini: " + t.getMessage(), t);
-                callback.onError("خطأ: " + t.getMessage());
-            }
-        }, executor);
-    }
-
-    private String buildPrompt(String mood) {
-        return "أنت دبدوب لطيف اسمه \"دبدوب نور\"، ترافق طفلاً صغيراً وتدعمه نفسياً. "
-                + "الطفل الآن يشعر بأنه \"" + mood + "\". "
-                + "اكتب رسالة تشجيعية واحدة قصيرة جداً (جملة أو جملتين بحد أقصى) "
-                + "باللغة العربية الفصحى المبسطة المناسبة للأطفال، "
-                + "دافئة، محبة، وتشعره بالأمان، بدون أي مقدمات أو شرح، فقط الرسالة نفسها.";
-    }
-    public void sendCustomPrompt(String userMessage, GeminiCallback callback) {
-        String prompt = "أنت صديق لطيف ومرح للأطفال اسمه \"دبدوب نور\". "
-                + "رسالة الطفل هي: \"" + userMessage + "\". "
-                + "رد عليه برفق وبجملة أو جملتين فقط، بلغة عربية بسيطة ومحبة، وبدون مقدمات إضافية.";
-
-        Content content = new Content.Builder().addText(prompt).build();
-        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
-
-        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
-            @Override
-            public void onSuccess(GenerateContentResponse result) {
-                if (result.getText() != null && !result.getText().trim().isEmpty()) {
-                    callback.onSuccess(result.getText().trim());
-                } else {
                     callback.onError("لم أستطع فهم ذلك يا صديقي!");
                 }
             }
 
             @Override
             public void onFailure(Throwable t) {
+                Log.e(TAG, "خطأ من Gemini: " + t.getMessage(), t);
                 callback.onError("تأكد من الاتصال بالإنترنت يا بطل!");
             }
         }, executor);
     }
+
+    private void executeGeminiRequest(String promptText, GeminiCallback callback) {
+        Content content = new Content.Builder().addText(promptText).build();
+        executeGeminiRequest(content, callback);
+    }
+
+    /**
+     * إرسال المزاج المختار لـ Gemini
+     */
+    public void generateMoodMessage(String mood, GeminiCallback callback) {
+        executeGeminiRequest(buildMoodPrompt(mood), callback);
+    }
+
+    /**
+     * تحليل رسمة الطفل (Bitmap)
+     */
+    public void analyzeDrawing(Bitmap drawingBitmap, GeminiCallback callback) {
+        Content content = new Content.Builder()
+                .addImage(drawingBitmap)
+                .addText(buildDrawingPrompt())
+                .build();
+
+        executeGeminiRequest(content, callback);
+    }
+
+    /**
+     * تحليل تسجيل صوتي للطفل
+     */
+    public void analyzeRecording(File audioFile, String phrase, GeminiCallback callback) {
+        executor.execute(() -> {
+            try {
+                byte[] audioBytes = readFileBytes(audioFile);
+                Content content = new Content.Builder()
+                        .addInlineData(audioBytes, "audio/mp4")
+                        .addText(buildRecordingPrompt(phrase))
+                        .build();
+
+                executeGeminiRequest(content, callback);
+            } catch (IOException e) {
+                Log.e(TAG, "خطأ بقراءة ملف الصوت: " + e.getMessage(), e);
+                callback.onError("تعذّر قراءة ملف التسجيل");
+            }
+        });
+    }
+
+    /**
+     * توليد كلمة/جملة محفزة جديدة
+     */
+    public void generatePhrase(GeminiCallback callback) {
+        String prompt = "أنت \"نور\"، صديقة داعمة نفسياً لطفل صغير. "
+                + "اقترحي كلمة أو جملة تحفيزية واحدة فقط، قصيرة جداً (كلمة إلى ثلاث كلمات كحد أقصى)، "
+                + "باللغة العربية الفصحى المبسطة المناسبة للأطفال، إيجابية ومحفزة على الثقة بالنفس "
+                + "(مثال: أنا قوي، أنا شجاع — لا تكرري نفس الأمثلة). "
+                + "أعيدي فقط الكلمة/الجملة نفسها بدون علامات تنصيص وبدون أي شرح أو مقدمة.";
+
+        executeGeminiRequest(prompt, new GeminiCallback() {
+            @Override
+            public void onSuccess(String message) {
+                callback.onSuccess(message.replace("\"", ""));
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                callback.onError(errorMessage);
+            }
+        });
+    }
+
+    /**
+     * إرسال رسالة مخصصة منفردة من الطفل
+     */
+    public void sendCustomPrompt(String userMessage, GeminiCallback callback) {
+        String prompt = "أنت صديق لطيف ومرح للأطفال اسمه \"دبدوب نور\". "
+                + "رسالة الطفل هي: \"" + userMessage + "\". "
+                + "رد عليه برفق وبجملة أو جملتين فقط، بلغة عربية بسيطة ومحبة، وبدون مقدمات إضافية.";
+
+        executeGeminiRequest(prompt, callback);
+    }
+
+    /**
+     * إرسال سجل المحادثة الكاملة مع الطفل
+     */
     public void sendChatHistory(List<ChatMessage> chatMessages, GeminiCallback callback) {
         StringBuilder fullPrompt = new StringBuilder();
         fullPrompt.append("أنت صديق لطيف للأطفال اسمك 'دبدوب نور'. تذكر ما قيل في المحادثة ورد بأسلوب محب وقصير (جملة أو جملتين) باللغة العربية المبسطة.\n\n");
@@ -120,24 +164,47 @@ public class GeminiService {
 
         executeGeminiRequest(fullPrompt.toString(), callback);
     }
-    private void executeGeminiRequest(String promptText, GeminiCallback callback) {
-        Content content = new Content.Builder().addText(promptText).build();
-        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
 
-        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
-            @Override
-            public void onSuccess(GenerateContentResponse result) {
-                if (result.getText() != null && !result.getText().trim().isEmpty()) {
-                    callback.onSuccess(result.getText().trim());
-                } else {
-                    callback.onError("لم أستطع فهم ذلك يا صديقي!");
-                }
-            }
+    // --- Helper Functions & Prompts ---
 
-            @Override
-            public void onFailure(Throwable t) {
-                callback.onError("تأكد من الاتصال بالإنترنت يا بطل!");
+    private String buildMoodPrompt(String mood) {
+        return "أنت دبدوب لطيف اسمه \"دبدوب نور\"، ترافق طفلاً صغيراً وتدعمه نفسياً. "
+                + "الطفل الآن يشعر بأنه \"" + mood + "\". "
+                + "اكتب رسالة تشجيعية واحدة قصيرة جداً (جملة أو جملتين بحد أقصى) "
+                + "باللغة العربية الفصحى المبسطة المناسبة للأطفال، "
+                + "دافئة، محبة، وتشعره بالأمان، بدون أي مقدمات أو شرح، فقط الرسالة نفسها.";
+    }
+
+    private String buildDrawingPrompt() {
+        return "أنت \"نور\"، صديقة لطيفة وداعمة نفسياً لطفل صغير. "
+                + "الطفل رسم هذه الرسمة وأرسلها لك. "
+                + "انظري إلى الرسمة وتفاعلي معها بشكل شخصي ودافئ: "
+                + "اذكري بلطف شيئاً واحداً لاحظتيه فيها (الألوان، الأشكال، أو أي عنصر واضح)، "
+                + "وامدحي مجهود الطفل ومشاعره وأنت تشجعينه. "
+                + "اكتبي فقرة قصيرة جداً (جملتين إلى ثلاث جمل كحد أقصى) "
+                + "باللغة العربية الفصحى المبسطة المناسبة للأطفال، "
+                + "بأسلوب دافئ ومحب ومطمئن، بدون أي مقدمات أو شرح تقني، فقط الرسالة نفسها موجهة للطفل مباشرة.";
+    }
+
+    private String buildRecordingPrompt(String phrase) {
+        return "أنت \"نور\"، صديقة لطيفة وداعمة نفسياً لطفل صغير. "
+                + "استمعي لهذا التسجيل الصوتي، حيث يحاول الطفل أن يقرأ بصوته العبارة التالية: \"" + phrase + "\". "
+                + "قيّمي المحاولة بلطف: إذا كان النطق واضحاً امدحيه بحرارة، وإذا كان فيه تردد أو صعوبة "
+                + "شجّعيه بدون أي انتقاد أو إشارة سلبية مباشرة. "
+                + "اكتبي رسالة قصيرة جداً (جملة أو جملتين كحد أقصى) باللغة العربية الفصحى المبسطة المناسبة للأطفال، "
+                + "دافئة وموجهة للطفل مباشرة، بدون أي مقدمات أو شرح تقني، فقط الرسالة نفسها.";
+    }
+
+    private byte[] readFileBytes(File file) throws IOException {
+        try (FileInputStream fis = new FileInputStream(file);
+             ByteArrayOutputStream buffer = new ByteArrayOutputStream()) {
+
+            int nRead;
+            byte[] data = new byte[16384];
+            while ((nRead = fis.read(data, 0, data.length)) != -1) {
+                buffer.write(data, 0, nRead);
             }
-        }, executor);
+            return buffer.toByteArray();
+        }
     }
 }

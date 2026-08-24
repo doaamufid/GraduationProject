@@ -16,8 +16,9 @@ import java.util.Locale;
 /**
  * الشاشة الأولى: بتعرض "كلمة القوة" لهالأسبوع وتخلي الطفل يسمعها ثم يسجلها بصوته.
  *
- * ملاحظة: الجملة حالياً ثابتة (DEFAULT_PHRASE). لو بدك كل أسبوع جملة مختلفة،
- * أسهل طريقة إنك تحط مصفوفة جمل + رقم الأسبوع الحالي وتختار منها هون.
+ * الكلمة هلأ بتنولد ديناميكياً من Gemini في كل مرة (مش ثابتة).
+ * لحد ما يوصل الرد من Gemini، منعرض جملة افتراضية (fallback) من strings.xml
+ * عشان الشاشة ما تظل فاضية أو معلّقة.
  */
 public class WordOfWeekActivity extends AppCompatActivity {
 
@@ -25,16 +26,20 @@ public class WordOfWeekActivity extends AppCompatActivity {
 
     private TextToSpeech textToSpeech;
     private String currentPhrase;
+    private TextView phraseText;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word_of_week);
 
+        // fallback مؤقت لحد ما يوصل رد Gemini، أو لو صار خطأ بالاتصال
         currentPhrase = getString(R.string.default_phrase);
 
-        TextView phraseText = findViewById(R.id.phraseText);
-        phraseText.setText(currentPhrase);
+        phraseText = findViewById(R.id.phraseText);
+        phraseText.setText(getString(R.string.loading_phrase));
+
+        loadPhraseFromGemini();
 
         // تهيئة "قراءة النص بصوت عالي" لزر "اسمعها بصوت نور الأول".
         // ده حل شغّال فوراً بدون ملفات صوتية جاهزة؛ لو عندك تسجيل حقيقي
@@ -52,6 +57,24 @@ public class WordOfWeekActivity extends AppCompatActivity {
             Intent intent = new Intent(WordOfWeekActivity.this, RecordingActivity.class);
             intent.putExtra(EXTRA_PHRASE, currentPhrase);
             startActivity(intent);
+        });
+    }
+
+    private void loadPhraseFromGemini() {
+        new GeminiService().generatePhrase(new GeminiService.GeminiCallback() {
+            @Override
+            public void onSuccess(String message) {
+                runOnUiThread(() -> {
+                    currentPhrase = message;
+                    phraseText.setText(currentPhrase);
+                });
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                // ما في نت أو صار خطأ - منرجع للجملة الافتراضية بدل ما نعلّق الطفل
+                runOnUiThread(() -> phraseText.setText(currentPhrase));
+            }
         });
     }
 

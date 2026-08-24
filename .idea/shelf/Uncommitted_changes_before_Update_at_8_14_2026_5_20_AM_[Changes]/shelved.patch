@@ -1,0 +1,411 @@
+Index: app/src/main/java/com/example/graduationproject/Kids/NewChildProfileActivity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.graduationproject.Kids;\r\n\r\nimport android.os.Bundle;\r\nimport android.text.Editable;\r\nimport android.text.TextWatcher;\r\nimport android.view.Gravity;\r\nimport android.view.View;\r\nimport android.widget.TextView;\r\nimport android.widget.Toast;\r\n\r\nimport androidx.activity.EdgeToEdge;\r\nimport androidx.appcompat.app.AppCompatActivity;\r\nimport androidx.core.content.ContextCompat;\r\nimport androidx.core.graphics.Insets;\r\nimport androidx.core.view.ViewCompat;\r\nimport androidx.core.view.WindowInsetsCompat;\r\n\r\nimport com.example.graduationproject.R;\r\nimport com.example.graduationproject.data.ChildProfileStore;\r\nimport com.example.graduationproject.databinding.ActivityNewChildProfileBinding;\r\n\r\npublic class NewChildProfileActivity extends AppCompatActivity {\r\n    private static final String[] AVATARS = {\"\uD83E\uDD8A\", \"\uD83D\uDC3B\", \"\uD83D\uDC30\", \"\uD83D\uDC3C\", \"\uD83D\uDC28\"};\r\n    private static final int[] AGES = {4, 5, 6, 7, 8, 9};\r\n\r\n    private ActivityNewChildProfileBinding binding;\r\n    private ChildProfileStore childProfileStore;\r\n    private TextView selectedAgeView;\r\n    private int selectedAge = -1;\r\n\r\n    @Override\r\n    protected void onCreate(Bundle savedInstanceState) {\r\n        super.onCreate(savedInstanceState);\r\n        EdgeToEdge.enable(this);\r\n        binding = ActivityNewChildProfileBinding.inflate(getLayoutInflater());\r\n        setContentView(binding.getRoot());\r\n        childProfileStore = new ChildProfileStore(this);\r\n\r\n        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {\r\n            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());\r\n            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);\r\n            return insets;\r\n        });\r\n\r\n        binding.btnBack.setOnClickListener(v -> finish());\r\n        binding.btnStart.setOnClickListener(v -> saveProfileAndFinish());\r\n        binding.etChildName.addTextChangedListener(new TextWatcher() {\r\n            @Override\r\n            public void beforeTextChanged(CharSequence s, int start, int count, int after) {\r\n            }\r\n\r\n            @Override\r\n            public void onTextChanged(CharSequence s, int start, int before, int count) {\r\n                updateStartState();\r\n            }\r\n\r\n            @Override\r\n            public void afterTextChanged(Editable s) {\r\n            }\r\n        });\r\n        setupAgeButtons();\r\n    }\r\n\r\n    private void setupAgeButtons() {\r\n        int size = (int) (44 * getResources().getDisplayMetrics().density);\r\n        int margin = (int) (6 * getResources().getDisplayMetrics().density);\r\n\r\n        for (int age : AGES) {\r\n            TextView ageView = new TextView(this);\r\n            ageView.setText(String.valueOf(age));\r\n            ageView.setGravity(Gravity.CENTER);\r\n            ageView.setTextSize(15);\r\n            ageView.setTypeface(ageView.getTypeface(), android.graphics.Typeface.BOLD);\r\n            ageView.setTextColor(ContextCompat.getColor(this, android.R.color.black));\r\n            ageView.setBackgroundResource(R.drawable.bg_child_age_default);\r\n            ageView.setOnClickListener(v -> selectAge((TextView) v, age));\r\n\r\n            android.widget.LinearLayout.LayoutParams params = new android.widget.LinearLayout.LayoutParams(size, size);\r\n            params.setMargins(margin, 0, margin, 0);\r\n            binding.ageContainer.addView(ageView, params);\r\n        }\r\n    }\r\n\r\n    private void selectAge(TextView ageView, int age) {\r\n        if (selectedAgeView != null) {\r\n            selectedAgeView.setBackgroundResource(R.drawable.bg_child_age_default);\r\n            selectedAgeView.setTextColor(ContextCompat.getColor(this, android.R.color.black));\r\n        }\r\n        selectedAge = age;\r\n        selectedAgeView = ageView;\r\n        selectedAgeView.setBackgroundResource(R.drawable.bg_child_age_selected);\r\n        selectedAgeView.setTextColor(ContextCompat.getColor(this, android.R.color.white));\r\n        binding.worldCard.setVisibility(View.VISIBLE);\r\n        updateStartState();\r\n    }\r\n\r\n    private void updateStartState() {\r\n        boolean canStart = selectedAge > 0 && !binding.etChildName.getText().toString().trim().isEmpty();\r\n        binding.btnStart.setEnabled(canStart);\r\n        binding.btnStart.setBackgroundResource(canStart\r\n                ? R.drawable.bg_child_start_enabled\r\n                : R.drawable.bg_child_start_disabled);\r\n    }\r\n\r\n    @Override\r\n    protected void onDestroy() {\r\n        childProfileStore.close();\r\n        super.onDestroy();\r\n    }\r\n\r\n    private void saveProfileAndFinish() {\r\n        String name = binding.etChildName.getText().toString().trim();\r\n        if (name.isEmpty() || selectedAge <= 0 || selectedGender.isEmpty()) {\r\n            Toast.makeText(this, \"اكتب الاسم واختر العمر والجنس\", Toast.LENGTH_SHORT).show();\r\n            return;\r\n        }\r\n        childProfileStore.addProfile(name, selectedAge, selectedGender, AVATARS[selectedAge % AVATARS.length]);\r\n        setResult(RESULT_OK);\r\n        finish();\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/graduationproject/Kids/NewChildProfileActivity.java b/app/src/main/java/com/example/graduationproject/Kids/NewChildProfileActivity.java
+--- a/app/src/main/java/com/example/graduationproject/Kids/NewChildProfileActivity.java	(revision 65bd005bbd7fef909e82de00043b208401622cd5)
++++ b/app/src/main/java/com/example/graduationproject/Kids/NewChildProfileActivity.java	(date 1786709423690)
+@@ -1,5 +1,6 @@
+ package com.example.graduationproject.Kids;
+ 
++import android.graphics.Color;
+ import android.os.Bundle;
+ import android.text.Editable;
+ import android.text.TextWatcher;
+@@ -7,6 +8,7 @@
+ import android.view.View;
+ import android.widget.TextView;
+ import android.widget.Toast;
++import android.graphics.Color;
+ 
+ import androidx.activity.EdgeToEdge;
+ import androidx.appcompat.app.AppCompatActivity;
+@@ -22,11 +24,18 @@
+ public class NewChildProfileActivity extends AppCompatActivity {
+     private static final String[] AVATARS = {"🦊", "🐻", "🐰", "🐼", "🐨"};
+     private static final int[] AGES = {4, 5, 6, 7, 8, 9};
++    private static final String GENDER_BOY = "ولد";
++    private static final String GENDER_GIRL = "بنت";
++    private static final int GENDER_DEFAULT_TEXT_COLOR = Color.rgb(93, 64, 55);
++
+ 
+     private ActivityNewChildProfileBinding binding;
+     private ChildProfileStore childProfileStore;
+     private TextView selectedAgeView;
++    private TextView selectedGenderView;
+     private int selectedAge = -1;
++    private String selectedGender = "";
++
+ 
+     @Override
+     protected void onCreate(Bundle savedInstanceState) {
+@@ -58,7 +67,10 @@
+             public void afterTextChanged(Editable s) {
+             }
+         });
++
++
+         setupAgeButtons();
++        setupGenderButtons();
+     }
+ 
+     private void setupAgeButtons() {
+@@ -86,6 +98,7 @@
+             selectedAgeView.setBackgroundResource(R.drawable.bg_child_age_default);
+             selectedAgeView.setTextColor(ContextCompat.getColor(this, android.R.color.black));
+         }
++
+         selectedAge = age;
+         selectedAgeView = ageView;
+         selectedAgeView.setBackgroundResource(R.drawable.bg_child_age_selected);
+@@ -94,8 +107,29 @@
+         updateStartState();
+     }
+ 
++    private void setupGenderButtons() {
++        binding.btnGenderBoy.setOnClickListener(v -> selectGender(binding.btnGenderBoy, GENDER_BOY));
++        binding.btnGenderGirl.setOnClickListener(v -> selectGender(binding.btnGenderGirl, GENDER_GIRL));
++    }
++
++    private void selectGender(TextView genderView, String gender) {
++        if (selectedGenderView != null) {
++            selectedGenderView.setBackgroundResource(R.drawable.bg_child_age_default);
++            selectedGenderView.setTextColor(GENDER_DEFAULT_TEXT_COLOR);
++        }
++
++        selectedGender = gender;
++        selectedGenderView = genderView;
++        selectedGenderView.setBackgroundResource(R.drawable.bg_child_age_selected);
++        selectedGenderView.setTextColor(ContextCompat.getColor(this, android.R.color.white));
++        updateStartState();
++    }
++
+     private void updateStartState() {
+-        boolean canStart = selectedAge > 0 && !binding.etChildName.getText().toString().trim().isEmpty();
++        boolean canStart = selectedAge > 0
++                && !selectedGender.isEmpty()
++                && !binding.etChildName.getText().toString().trim().isEmpty();
++
+         binding.btnStart.setEnabled(canStart);
+         binding.btnStart.setBackgroundResource(canStart
+                 ? R.drawable.bg_child_start_enabled
+@@ -118,4 +152,4 @@
+         setResult(RESULT_OK);
+         finish();
+     }
+-}
++}
+\ No newline at end of file
+Index: app/src/main/java/com/example/graduationproject/adapters/CategoryAdapter2.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/graduationproject/adapters/CategoryAdapter2.java b/app/src/main/java/com/example/graduationproject/adapters/CategoryAdapter2.java
+new file mode 100644
+--- /dev/null	(date 1786709512149)
++++ b/app/src/main/java/com/example/graduationproject/adapters/CategoryAdapter2.java	(date 1786709512149)
+@@ -0,0 +1,76 @@
++package com.example.graduationproject.adapters;
++
++import android.graphics.Color;
++import android.view.LayoutInflater;
++import android.view.View;
++import android.view.ViewGroup;
++import android.widget.TextView;
++import androidx.annotation.NonNull;
++import androidx.recyclerview.widget.RecyclerView;
++import com.example.graduationproject.R;
++import com.example.graduationproject.models.Category;
++import java.util.List;
++
++public class CategoryAdapter2 extends RecyclerView.Adapter<CategoryAdapter2.CategoryViewHolder> {
++
++    private List<Category> categories;
++    private OnCategoryClickListener listener;
++
++    public interface OnCategoryClickListener {
++        void onCategoryClick(Category category);
++    }
++
++    public CategoryAdapter2(List<Category> categories, OnCategoryClickListener listener) {
++        this.categories = categories;
++        this.listener = listener;
++    }
++
++    @NonNull
++    @Override
++    public CategoryViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
++        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_category_chip, parent, false);
++        return new CategoryViewHolder(view);
++    }
++
++    @Override
++    public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
++        Category category = categories.get(position);
++        holder.tvCategoryName.setText(category.getName());
++
++        // تغيير مظهر التبويب بناءً على حالته (محدد أم لا)
++        if (category.isSelected()) {
++            holder.tvCategoryName.setBackgroundResource(R.drawable.bg_timer_chip_selected);
++            holder.tvCategoryName.setTextColor(Color.WHITE);
++        } else {
++            holder.tvCategoryName.setBackgroundResource(R.drawable.bg_timer_chip);
++            holder.tvCategoryName.setTextColor(Color.parseColor("#2D587B"));
++        }
++
++        holder.itemView.setOnClickListener(v -> {
++            // إلغاء تحديد العنصر القديم وتحديد الجديد
++            for (Category cat : categories) {
++                cat.setSelected(false);
++            }
++            category.setSelected(true);
++            notifyDataSetChanged();
++
++            if (listener != null) {
++                listener.onCategoryClick(category);
++            }
++        });
++    }
++
++    @Override
++    public int getItemCount() {
++        return categories.size();
++    }
++
++    static class CategoryViewHolder extends RecyclerView.ViewHolder {
++        TextView tvCategoryName;
++
++        public CategoryViewHolder(@NonNull View itemView) {
++            super(itemView);
++            tvCategoryName = itemView.findViewById(R.id.tvCategoryName);
++        }
++    }
++}
+\ No newline at end of file
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>plugins {\r\n    alias(libs.plugins.android.application)\r\n    alias(libs.plugins.google.services)\r\n}\r\n\r\n// ⬇\uFE0F إضافة جديدة: قراءة ملف local.properties\r\ndef localProperties = new Properties()\r\ndef localPropertiesFile = rootProject.file('local.properties')\r\nif (localPropertiesFile.exists()) {\r\n    localProperties.load(new FileInputStream(localPropertiesFile))\r\n    alias(libs.plugins.kotlin.compose)\r\n}\r\n\r\nandroid {\r\n    namespace 'com.example.graduationproject'\r\n    compileSdk {\r\n        version = release(36) {\r\n            minorApiLevel = 1\r\n        }\r\n    }\r\n\r\n    defaultConfig {\r\n        applicationId \"com.example.graduationproject\"\r\n        minSdk 24\r\n        targetSdk 36\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n\r\n        // ⬇\uFE0F إضافة جديدة: نحط المفتاح جوا BuildConfig\r\n        buildConfigField \"String\", \"GEMINI_API_KEY\", \"\\\"${localProperties.getProperty('GEMINI_API_KEY', '')}\\\"\"\r\n    }\r\n    buildToolsVersion \"36.0.0\"\r\n\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n    compileOptions {\r\n        sourceCompatibility JavaVersion.VERSION_11\r\n        targetCompatibility JavaVersion.VERSION_11\r\n    }\r\n    buildFeatures {\r\n        viewBinding true\r\n        buildConfig true   // ⬅\uFE0F إضافة جديدة: لازم نفعّلها عشان BuildConfig يشتغل\r\n        compose true\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation 'androidx.appcompat:appcompat:1.6.1'\r\n    implementation 'com.google.android.material:material:1.11.0'\r\n    implementation 'androidx.cardview:cardview:1.0.0'\r\n    implementation 'androidx.activity:activity:1.8.2'\r\n    implementation 'androidx.core:core:1.12.0'\r\n    implementation platform(libs.compose.bom)\r\n    implementation libs.activity.compose\r\n    implementation libs.activity.ktx\r\n    implementation libs.appcompat\r\n    implementation libs.engage.core\r\n    implementation libs.lifecycle.runtime.ktx\r\n    implementation libs.material\r\n    implementation libs.activity\r\n    implementation libs.constraintlayout\r\n    implementation libs.material3\r\n    implementation libs.mpandroidchart\r\n    implementation 'androidx.appcompat:appcompat:1.6.1'\r\n    implementation 'com.google.android.material:material:1.11.0'\r\n    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'\r\n    implementation 'androidx.recyclerview:recyclerview:1.3.2'\r\n    implementation 'androidx.cardview:cardview:1.0.0'\r\n    implementation libs.flexbox\r\n    // احذفي القديم وضعي هذا بدقة:\r\n    implementation(\"androidx.navigation:navigation-fragment-ktx:2.8.0\")\r\n    implementation(\"androidx.navigation:navigation-ui-ktx:2.8.0\")\r\n\r\n    implementation libs.ui\r\n    implementation libs.ui.graphics\r\n    implementation libs.ui.tooling.preview\r\n\r\n    // ⬇\uFE0F إضافة جديدة: مكتبة للاتصال بالإنترنت (Gemini API)\r\n    implementation(\"com.squareup.okhttp3:okhttp:4.12.0\")\r\n    // Firebase AI Logic (Gemini Developer API - free tier, no billing needed)\r\n    implementation platform(libs.firebase.bom)\r\n    implementation libs.firebase.ai\r\n    implementation \"com.google.guava:guava:31.0.1-android\"\r\n    implementation \"com.google.firebase:firebase-appcheck-debug\"\r\n\r\n    testImplementation libs.junit\r\n    androidTestImplementation platform(libs.compose.bom)\r\n    androidTestImplementation libs.ext.junit\r\n    androidTestImplementation libs.espresso.core\r\n    androidTestImplementation libs.ui.test.junit4\r\n    debugImplementation libs.ui.test.manifest\r\n    debugImplementation libs.ui.tooling\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/build.gradle b/app/build.gradle
+--- a/app/build.gradle	(revision 65bd005bbd7fef909e82de00043b208401622cd5)
++++ b/app/build.gradle	(date 1786709512088)
+@@ -9,6 +9,15 @@
+ if (localPropertiesFile.exists()) {
+     localProperties.load(new FileInputStream(localPropertiesFile))
+     alias(libs.plugins.kotlin.compose)
++    alias(libs.plugins.google.services)
++    alias(libs.plugins.kotlin.compose)
++}
++
++// ⬇️ إضافة جديدة: قراءة ملف local.properties
++def localProperties = new Properties()
++def localPropertiesFile = rootProject.file('local.properties')
++if (localPropertiesFile.exists()) {
++    localProperties.load(new FileInputStream(localPropertiesFile))
+ }
+ 
+ android {
+Index: app/src/main/res/values/themes.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><resources xmlns:tools=\"http://schemas.android.com/tools\">\r\n    <style name=\"Theme.GraduationProject\" parent=\"Theme.MaterialComponents.Light.NoActionBar\">\r\n        <item name=\"colorPrimary\">@color/white</item>\r\n        <item name=\"colorPrimaryVariant\">@color/white</item>\r\n        <item name=\"android:colorBackground\">@color/bg</item>\r\n        <item name=\"colorOnPrimary\">@color/text_main</item>\r\n        <item name=\"materialButtonStyle\">@style/OutlinedButtonStyle</item>\r\n        <item name=\"android:statusBarColor\">@color/bg</item>\r\n        <item name=\"android:windowLightStatusBar\" tools:targetApi=\"23\">true</item>\r\n        <item name=\"android:layoutDirection\">rtl</item>\r\n        <item name=\"android:textDirection\">rtl</item>\r\n    </style>\r\n\r\n    <style name=\"OutlinedButtonStyle\" parent=\"Widget.MaterialComponents.Button.OutlinedButton\">\r\n        <item name=\"android:textColor\">#2C6E9E</item>\r\n        <item name=\"backgroundTint\">#FFFFFF</item>\r\n        <item name=\"strokeColor\">#A8CDE0</item>\r\n        <item name=\"strokeWidth\">1dp</item>\r\n        <item name=\"cornerRadius\">8dp</item>\r\n        <item name=\"android:stateListAnimator\">@null</item>\r\n    </style>\r\n\r\n    <style name=\"Theme.SurvivalBox\" parent=\"Theme.MaterialComponents.NoActionBar\">\r\n        <item name=\"colorPrimary\">@color/primary</item>\r\n        <item name=\"colorPrimaryDark\">@color/grad_top</item>\r\n        <item name=\"colorAccent\">@color/primary_light</item>\r\n        <item name=\"android:windowBackground\">@drawable/bg_app_gradient</item>\r\n        <item name=\"android:statusBarColor\">@color/grad_top</item>\r\n        <item name=\"android:windowLightStatusBar\" tools:targetApi=\"23\">false</item>\r\n    </style>\r\n\r\n    <style name=\"ThemeOverlay.FutureSelf.BottomSheet\" parent=\"ThemeOverlay.MaterialComponents.BottomSheetDialog\">\r\n        <item name=\"bottomSheetStyle\">@style/FutureSelf.BottomSheetStyle</item>\r\n    </style>\r\n\r\n    <style name=\"FutureSelf.BottomSheetStyle\" parent=\"Widget.MaterialComponents.BottomSheet.Modal\">\r\n        <item name=\"android:background\">@android:color/transparent</item>\r\n    </style>\r\n\r\n    <style name=\"Theme.FutureSelf.Dialog\" parent=\"Theme.MaterialComponents.Light.Dialog\">\r\n        <item name=\"android:windowBackground\">@android:color/transparent</item>\r\n        <item name=\"android:windowNoTitle\">true</item>\r\n        <item name=\"android:layoutDirection\">rtl</item>\r\n        <item name=\"android:textDirection\">rtl</item>\r\n        <item name=\"android:windowIsFloating\">true</item>\r\n    </style>\r\n\r\n    <style name=\"Theme.graduationproject_alt\" parent=\"Theme.MaterialComponents.Light.NoActionBar\">\r\n        <item name=\"colorPrimary\">@color/primary</item>\r\n        <item name=\"colorPrimaryDark\">@color/primary_dark</item>\r\n        <item name=\"colorAccent\">@color/primary</item>\r\n        <item name=\"android:windowBackground\">@color/bg</item>\r\n        <item name=\"android:statusBarColor\">@color/bg</item>\r\n        <item name=\"android:windowLightStatusBar\" tools:targetApi=\"23\">true</item>\r\n        <item name=\"android:layoutDirection\">rtl</item>\r\n        <item name=\"android:textDirection\">rtl</item>\r\n        <item name=\"android:textColorHint\">@color/text_soft</item>\r\n    </style>\r\n\r\n    <style name=\"ThemeOverlay.SurvivalBox.BottomSheet\" parent=\"ThemeOverlay.MaterialComponents.BottomSheetDialog\">\r\n        <item name=\"bottomSheetStyle\">@style/SurvivalBox.BottomSheetStyle</item>\r\n    </style>\r\n\r\n    <style name=\"SurvivalBox.BottomSheetStyle\" parent=\"Widget.MaterialComponents.BottomSheet.Modal\">\r\n        <item name=\"android:background\">@android:color/transparent</item>\r\n    </style>\r\n\r\n    <!-- Full-screen style used by the crisis-mode DialogFragment -->\r\n    <style name=\"Theme.SurvivalBox.FullScreenDialog\" parent=\"Theme.MaterialComponents.NoActionBar\">\r\n        <item name=\"android:windowIsFloating\">false</item>\r\n        <item name=\"android:windowBackground\">@android:color/transparent</item>\r\n        <item name=\"android:windowNoTitle\">true</item>\r\n        <item name=\"android:layoutDirection\">rtl</item>\r\n        <item name=\"android:textDirection\">rtl</item>\r\n        <item name=\"android:statusBarColor\">@color/grad_top</item>\r\n        <item name=\"android:windowAnimationStyle\">@android:style/Animation.Dialog</item>\r\n    </style>\r\n\r\n    <style name=\"ThemeOverlay.DailyHabits.BottomSheet\" parent=\"ThemeOverlay.MaterialComponents.BottomSheetDialog\">\r\n        <item name=\"bottomSheetStyle\">@style/DailyHabits.BottomSheetStyle</item>\r\n    </style>\r\n\r\n    <style name=\"DailyHabits.BottomSheetStyle\" parent=\"Widget.MaterialComponents.BottomSheet.Modal\">\r\n        <item name=\"android:background\">@android:color/transparent</item>\r\n    </style>\r\n\r\n    <style name=\"Theme.ArticleLibrary\" parent=\"Theme.MaterialComponents.Light.NoActionBar\">\r\n        <item name=\"colorPrimary\">@color/primary</item>\r\n        <item name=\"colorPrimaryDark\">@color/primary_dark</item>\r\n        <item name=\"colorAccent\">@color/primary</item>\r\n        <item name=\"android:windowBackground\">@color/bg</item>\r\n        <item name=\"android:statusBarColor\">@color/bg</item>\r\n        <item name=\"android:windowLightStatusBar\" tools:targetApi=\"23\">true</item>\r\n        <item name=\"android:layoutDirection\">rtl</item>\r\n        <item name=\"android:textDirection\">rtl</item>\r\n        <item name=\"android:textColorHint\">@color/text_soft</item>\r\n    </style>\r\n</resources>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/res/values/themes.xml b/app/src/main/res/values/themes.xml
+--- a/app/src/main/res/values/themes.xml	(revision 65bd005bbd7fef909e82de00043b208401622cd5)
++++ b/app/src/main/res/values/themes.xml	(date 1786709512136)
+@@ -11,6 +11,20 @@
+         <item name="android:textDirection">rtl</item>
+     </style>
+ 
++    <style name="CategoryCard">
++        <item name="android:layout_width">0dp</item>
++        <item name="android:layout_height">wrap_content</item>
++        <item name="android:layout_columnWeight">1</item>
++        <item name="android:layout_gravity">fill_horizontal</item>
++        <item name="android:layout_margin">6dp</item>
++        <item name="android:gravity">center</item>
++        <item name="android:padding">18dp</item>
++        <item name="android:textSize">15sp</item>
++        <item name="android:textStyle">bold</item>
++        <item name="android:textColor">#5A4632</item>
++        <item name="android:clickable">true</item>
++        <item name="android:focusable">true</item>
++    </style>
+     <style name="OutlinedButtonStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+         <item name="android:textColor">#2C6E9E</item>
+         <item name="backgroundTint">#FFFFFF</item>
+@@ -19,6 +33,26 @@
+         <item name="cornerRadius">8dp</item>
+         <item name="android:stateListAnimator">@null</item>
+     </style>
++    <style name="Theme.JourneyProfile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
++        <!-- عدّلي الألوان حسب مشروعك -->
++        <item name="colorPrimary">@color/teal_primary</item>
++        <item name="colorPrimaryVariant">@color/teal_primary</item>
++        <item name="colorOnPrimary">@color/white</item>
++    </style>
++    <style name="MoodItem">
++        <item name="android:layout_width">0dp</item>
++        <item name="android:layout_height">wrap_content</item>
++        <item name="android:layout_columnWeight">1</item>
++        <item name="android:layout_gravity">fill_horizontal</item>
++        <item name="android:layout_margin">6dp</item>
++        <item name="android:gravity">center</item>
++        <item name="android:padding">14dp</item>
++        <item name="android:background">@drawable/bg_bubble_yellow</item>
++        <item name="android:textSize">14sp</item>
++        <item name="android:textColor">#5A4632</item>
++        <item name="android:clickable">true</item>
++        <item name="android:focusable">true</item>
++    </style>
+ 
+     <style name="Theme.SurvivalBox" parent="Theme.MaterialComponents.NoActionBar">
+         <item name="colorPrimary">@color/primary</item>
+@@ -37,6 +71,88 @@
+         <item name="android:background">@android:color/transparent</item>
+     </style>
+ 
++    <style name="Theme.FutureSelf.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
++        <item name="android:windowBackground">@android:color/transparent</item>
++        <item name="android:windowNoTitle">true</item>
++        <item name="android:layoutDirection">rtl</item>
++        <item name="android:textDirection">rtl</item>
++        <item name="android:windowIsFloating">true</item>
++    </style>
++
++    <style name="Theme.graduationproject_alt" parent="Theme.MaterialComponents.Light.NoActionBar">
++        <item name="colorPrimary">@color/primary</item>
++        <item name="colorPrimaryDark">@color/primary_dark</item>
++        <item name="colorAccent">@color/primary</item>
++        <item name="android:windowBackground">@color/bg</item>
++        <item name="android:statusBarColor">@color/bg</item>
++        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
++        <item name="android:layoutDirection">rtl</item>
++        <item name="android:textDirection">rtl</item>
++        <item name="android:textColorHint">@color/text_soft</item>
++    </style>
++
++    <style name="ThemeOverlay.SurvivalBox.BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
++        <item name="bottomSheetStyle">@style/SurvivalBox.BottomSheetStyle</item>
++    </style>
++
++    <style name="SurvivalBox.BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
++        <item name="android:background">@android:color/transparent</item>
++    </style>
++
++    <!-- Full-screen style used by the crisis-mode DialogFragment -->
++    <style name="Theme.SurvivalBox.FullScreenDialog" parent="Theme.MaterialComponents.NoActionBar">
++        <item name="android:windowIsFloating">false</item>
++        <item name="android:windowBackground">@android:color/transparent</item>
++        <item name="android:windowNoTitle">true</item>
++        <item name="android:layoutDirection">rtl</item>
++        <item name="android:textDirection">rtl</item>
++        <item name="android:statusBarColor">@color/grad_top</item>
++        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
++    </style>
++
++    <style name="ThemeOverlay.DailyHabits.BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
++        <item name="bottomSheetStyle">@style/DailyHabits.BottomSheetStyle</item>
++    </style>
++
++    <style name="DailyHabits.BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
++        <item name="android:background">@android:color/transparent</item>
++    </style>
++
++    <style name="Theme.ArticleLibrary" parent="Theme.MaterialComponents.Light.NoActionBar">
++        <item name="colorPrimary">@color/primary</item>
++        <item name="colorPrimaryDark">@color/primary_dark</item>
++        <item name="colorAccent">@color/primary</item>
++        <item name="android:windowBackground">@color/bg</item>
++        <item name="android:statusBarColor">@color/bg</item>
++        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
++        <item name="android:layoutDirection">rtl</item>
++        <item name="android:textDirection">rtl</item>
++        <item name="android:textColorHint">@color/text_soft</item>
++    </style>
++
++    <style name="Theme.SurvivalBox" parent="Theme.MaterialComponents.NoActionBar">
++        <item name="colorPrimary">@color/primary</item>
++        <item name="colorPrimaryDark">@color/grad_top</item>
++        <item name="colorAccent">@color/primary_light</item>
++        <item name="android:windowBackground">@drawable/bg_app_gradient</item>
++        <item name="android:statusBarColor">@color/grad_top</item>
++        <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
++    </style>
++
++    <style name="ThemeOverlay.FutureSelf.BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
++        <item name="bottomSheetStyle">@style/FutureSelf.BottomSheetStyle</item>
++    </style>
++
++    <style name="FutureSelf.BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
++        <item name="android:background">@android:color/transparent</item>
++    </style>
++    <style name="ThemeOverlay.JourneyProfile.BottomSheet" parent="ThemeOverlay.MaterialComponents.BottomSheetDialog">
++        <item name="bottomSheetStyle">@style/JourneyProfile.BottomSheetStyle</item>
++    </style>
++
++    <style name="JourneyProfile.BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
++        <item name="android:background">@android:color/transparent</item>
++    </style>
+     <style name="Theme.FutureSelf.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
+         <item name="android:windowBackground">@android:color/transparent</item>
+         <item name="android:windowNoTitle">true</item>
+Index: app/src/main/java/com/example/graduationproject/data/ChildProfileStore.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.example.graduationproject.data;\r\n\r\nimport android.content.ContentValues;\r\nimport android.content.Context;\r\nimport android.content.SharedPreferences;\r\nimport android.database.Cursor;\r\nimport android.database.sqlite.SQLiteDatabase;\r\nimport android.database.sqlite.SQLiteOpenHelper;\r\n\r\nimport com.example.graduationproject.Kids.BotMessage;\r\nimport com.example.graduationproject.models.ChildProfile;\r\nimport com.example.graduationproject.models.SoundItem;\r\nimport com.example.graduationproject.models.VideoItem;\r\n\r\nimport org.json.JSONArray;\r\nimport org.json.JSONException;\r\nimport org.json.JSONObject;\r\n\r\nimport java.util.ArrayList;\r\nimport java.util.List;\r\n\r\npublic class ChildProfileStore extends SQLiteOpenHelper {\r\n    private static final String DATABASE_NAME = \"children_wellbeing.db\";\r\n    // ⚠\uFE0F رفعنا رقم النسخة من 1 إلى 2 عشان onUpgrade يشتغل ويضيف الجداول الجديدة\r\n    private static final int DATABASE_VERSION = 2;\r\n    private static final int DATABASE_VERSION = 3;\r\n\r\n    private static final String TABLE_BOT_MESSAGES = \"bot_messages\";\r\n    private static final String COLUMN_TEXT = \"text\";\r\n    private static final String COLUMN_MOOD = \"mood\";\r\n    private static final String TABLE_PROFILES = \"child_profiles\";\r\n    private static final String COLUMN_ID = \"id\";\r\n    private static final String COLUMN_NAME = \"name\";\r\n    private static final String COLUMN_AGE = \"age\";\r\n    private static final String COLUMN_GENDER = \"gender\";\r\n    private static final String COLUMN_AVATAR = \"avatar\";\r\n    private static final String COLUMN_CREATED_AT = \"created_at\";\r\n\r\n    private static final String TABLE_EVENTS = \"child_behavior_events\";\r\n    private static final String COLUMN_CHILD_ID = \"child_id\";\r\n    private static final String COLUMN_EVENT_TYPE = \"event_type\";\r\n    private static final String COLUMN_EVENT_VALUE = \"event_value\";\r\n    private static final String COLUMN_NOTES = \"notes\";\r\n    private static final String COLUMN_OCCURRED_AT = \"occurred_at\";\r\n\r\n    private static final String OLD_PREFS_NAME = \"child_profiles_prefs\";\r\n    private static final String OLD_KEY_PROFILES = \"child_profiles\";\r\n\r\n    // ==================== جداول جديدة: الأصوات ====================\r\n    private static final String TABLE_SOUNDS = \"sounds\";\r\n    private static final String COLUMN_SOUND_TITLE = \"title\";\r\n    private static final String COLUMN_SOUND_ICON = \"icon_name\";      // اسم drawable مثلاً \"ic_forest\"\r\n    private static final String COLUMN_SOUND_FILE = \"audio_file\";     // اسم ملف بالـ raw مثلاً \"forest_sound\"\r\n    private static final String COLUMN_SOUND_TYPE = \"sound_type\";     // \"box\" أو \"circle\" (تفرق شكل العرض)\r\n    private static final String COLUMN_SOUND_ORDER = \"sort_order\";\r\n\r\n    // ==================== جداول جديدة: الفيديوهات ====================\r\n    private static final String TABLE_VIDEOS = \"videos\";\r\n    private static final String COLUMN_VIDEO_TITLE = \"title\";\r\n    private static final String COLUMN_VIDEO_SUBTITLE = \"subtitle\";\r\n    private static final String COLUMN_VIDEO_CATEGORY = \"category\";       // لعبة / صداقة / نوم / مشاعر\r\n    private static final String COLUMN_VIDEO_THUMBNAIL = \"thumbnail_name\";\r\n    private static final String COLUMN_VIDEO_BG_COLOR = \"bg_color_hex\";   // \"#8E7CC3\"\r\n    private static final String COLUMN_VIDEO_FILE = \"video_file\";\r\n    private static final String COLUMN_VIDEO_DURATION = \"duration\";\r\n\r\n    public ChildProfileStore(Context context) {\r\n        super(context, DATABASE_NAME, null, DATABASE_VERSION);\r\n    }\r\n\r\n    @Override\r\n    public void onConfigure(SQLiteDatabase db) {\r\n        super.onConfigure(db);\r\n        db.setForeignKeyConstraintsEnabled(true);\r\n    }\r\n\r\n    @Override\r\n    public void onCreate(SQLiteDatabase db) {\r\n        db.execSQL(\"CREATE TABLE \" + TABLE_PROFILES + \" (\"\r\n                + COLUMN_ID + \" INTEGER PRIMARY KEY AUTOINCREMENT, \"\r\n                + COLUMN_NAME + \" TEXT NOT NULL, \"\r\n                + COLUMN_AGE + \" INTEGER NOT NULL, \"\r\n                + COLUMN_GENDER + \" TEXT NOT NULL DEFAULT 'غير محدد', \"\r\n                + COLUMN_AVATAR + \" TEXT NOT NULL, \"\r\n                + COLUMN_CREATED_AT + \" INTEGER NOT NULL\"\r\n                + \")\");\r\n\r\n        db.execSQL(\"CREATE TABLE \" + TABLE_EVENTS + \" (\"\r\n                + COLUMN_ID + \" INTEGER PRIMARY KEY AUTOINCREMENT, \"\r\n                + COLUMN_CHILD_ID + \" INTEGER NOT NULL, \"\r\n                + COLUMN_EVENT_TYPE + \" TEXT NOT NULL, \"\r\n                + COLUMN_EVENT_VALUE + \" TEXT, \"\r\n                + COLUMN_NOTES + \" TEXT, \"\r\n                + COLUMN_OCCURRED_AT + \" INTEGER NOT NULL, \"\r\n                + \"FOREIGN KEY(\" + COLUMN_CHILD_ID + \") REFERENCES \" + TABLE_PROFILES + \"(\" + COLUMN_ID + \") ON DELETE CASCADE\"\r\n                + \")\");\r\n\r\n        db.execSQL(\"CREATE TABLE \" + TABLE_BOT_MESSAGES + \" (\"\r\n                + COLUMN_ID + \" INTEGER PRIMARY KEY AUTOINCREMENT, \"\r\n                + COLUMN_CHILD_ID + \" INTEGER NOT NULL, \"\r\n                + COLUMN_TEXT + \" TEXT NOT NULL, \"\r\n                + COLUMN_MOOD + \" TEXT, \"\r\n                + COLUMN_CREATED_AT + \" INTEGER NOT NULL, \"\r\n                + \"FOREIGN KEY(\" + COLUMN_CHILD_ID + \") REFERENCES \" + TABLE_PROFILES + \"(\" + COLUMN_ID + \") ON DELETE CASCADE\"\r\n                + \")\");\r\n\r\n        createSoundsAndVideosTables(db);\r\n        seedSoundsAndVideosData(db);\r\n    }\r\n\r\n    @Override\r\n    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {\r\n        if (oldVersion < 2) {\r\n            createSoundsAndVideosTables(db);\r\n            seedSoundsAndVideosData(db);\r\n        }\r\n    }\r\n\r\n    private void createSoundsAndVideosTables(SQLiteDatabase db) {\r\n        db.execSQL(\"CREATE TABLE IF NOT EXISTS \" + TABLE_SOUNDS + \" (\"\r\n                + COLUMN_ID + \" INTEGER PRIMARY KEY AUTOINCREMENT, \"\r\n                + COLUMN_SOUND_TITLE + \" TEXT NOT NULL, \"\r\n                + COLUMN_SOUND_ICON + \" TEXT NOT NULL, \"\r\n                + COLUMN_SOUND_FILE + \" TEXT NOT NULL, \"\r\n                + COLUMN_SOUND_TYPE + \" TEXT NOT NULL, \"\r\n                + COLUMN_SOUND_ORDER + \" INTEGER NOT NULL DEFAULT 0\"\r\n                + \")\");\r\n\r\n        db.execSQL(\"CREATE TABLE IF NOT EXISTS \" + TABLE_VIDEOS + \" (\"\r\n                + COLUMN_ID + \" INTEGER PRIMARY KEY AUTOINCREMENT, \"\r\n                + COLUMN_VIDEO_TITLE + \" TEXT NOT NULL, \"\r\n                + COLUMN_VIDEO_SUBTITLE + \" TEXT, \"\r\n                + COLUMN_VIDEO_CATEGORY + \" TEXT NOT NULL, \"\r\n                + COLUMN_VIDEO_THUMBNAIL + \" TEXT, \"\r\n                + COLUMN_VIDEO_BG_COLOR + \" TEXT NOT NULL, \"\r\n                + COLUMN_VIDEO_FILE + \" TEXT NOT NULL, \"\r\n                + COLUMN_VIDEO_DURATION + \" TEXT\"\r\n                + \")\");\r\n    }\r\n\r\n    /** بيانات ابتدائية تطابق التصميم — تتنفذ مرة وحدة بس عند إنشاء القاعدة */\r\n    private void seedSoundsAndVideosData(SQLiteDatabase db) {\r\n        // ---- أصوات على شكل مربعات (Box) ----\r\n        insertSound(db, \"غابة\", \"ic_forest\", \"forest_sound\", \"box\", 1);\r\n        insertSound(db, \"شاطئ\", \"ic_beach\", \"beach_sound\", \"box\", 2);\r\n        insertSound(db, \"جبال\", \"ic_mountain\", \"mountain_sound\", \"box\", 3);\r\n        insertSound(db, \"مطر\", \"ic_rain\", \"rain_sound\", \"box\", 4);\r\n\r\n        // ---- أصوات على شكل دوائر (Circle) ----\r\n        insertSound(db, \"ريح\", \"ic_wind\", \"wind_sound\", \"circle\", 5);\r\n        insertSound(db, \"ماء\", \"ic_water\", \"water_sound\", \"circle\", 6);\r\n        insertSound(db, \"طيور\", \"ic_birds\", \"birds_sound\", \"circle\", 7);\r\n        insertSound(db, \"فيل النوم\", \"ic_elephant\", \"elephant_sound\", \"circle\", 8);\r\n        insertSound(db, \"وقت طويل\", \"ic_clock\", \"long_time_sound\", \"circle\", 9);\r\n        insertSound(db, \"شمس\", \"ic_sun\", \"sun_sound\", \"circle\", 10);\r\n\r\n        // ---- فيديوهات ----\r\n        insertVideo(db, \"قصة وقت النوم\", null, \"نوم\", \"thumb_sleep\", \"#8E7CC3\", \"sleep_story_video\", \"5:12\");\r\n        insertVideo(db, \"كيف أحب نفساتي\", null, \"مشاعر\", \"thumb_feelings\", \"#F2C94C\", \"feelings_video\", \"4:30\");\r\n        insertVideo(db, \"أصدقائي وأنا\", \"قصة عن الصداقة الحلوة\", \"صداقة\", \"thumb_friends\", \"#F49AC2\", \"friends_video\", \"4:26\");\r\n        insertVideo(db, \"تنمية المشاعر\", null, \"مشاعر\", \"thumb_emotions\", \"#4DD0C4\", \"emotions_video\", \"3:45\");\r\n        insertVideo(db, \"أحلام جميلة\", null, \"نوم\", \"thumb_dreams\", \"#5DADE2\", \"dreams_video\", \"6:00\");\r\n        insertVideo(db, \"أنا شجاع\", null, \"لعبة\", \"thumb_brave\", \"#F0932B\", \"brave_video\", \"4:00\");\r\n    }\r\n\r\n    private void insertSound(SQLiteDatabase db, String title, String icon, String file, String type, int order) {\r\n        ContentValues values = new ContentValues();\r\n        values.put(COLUMN_SOUND_TITLE, title);\r\n        values.put(COLUMN_SOUND_ICON, icon);\r\n        values.put(COLUMN_SOUND_FILE, file);\r\n        values.put(COLUMN_SOUND_TYPE, type);\r\n        values.put(COLUMN_SOUND_ORDER, order);\r\n        db.insert(TABLE_SOUNDS, null, values);\r\n    }\r\n\r\n    private void insertVideo(SQLiteDatabase db, String title, String subtitle, String category,\r\n                             String thumbnail, String bgColor, String file, String duration) {\r\n        ContentValues values = new ContentValues();\r\n        values.put(COLUMN_VIDEO_TITLE, title);\r\n        values.put(COLUMN_VIDEO_SUBTITLE, subtitle);\r\n        values.put(COLUMN_VIDEO_CATEGORY, category);\r\n        values.put(COLUMN_VIDEO_THUMBNAIL, thumbnail);\r\n        values.put(COLUMN_VIDEO_BG_COLOR, bgColor);\r\n        values.put(COLUMN_VIDEO_FILE, file);\r\n        values.put(COLUMN_VIDEO_DURATION, duration);\r\n        db.insert(TABLE_VIDEOS, null, values);\r\n    }\r\n\r\n    // ==================== دوال القراءة (DAO) للأصوات ====================\r\n\r\n    /** يرجع أصوات المربعات (غابة، شاطئ، جبال، مطر) */\r\n    public List<SoundItem> getBoxSounds() {\r\n        return getSoundsByType(\"box\");\r\n    }\r\n\r\n    /** يرجع أصوات الدوائر (ريح، ماء، طيور...) */\r\n    public List<SoundItem> getCircleSounds() {\r\n        return getSoundsByType(\"circle\");\r\n        if (oldVersion < 2) {\r\n            db.execSQL(\"ALTER TABLE \" + TABLE_PROFILES\r\n                    + \" ADD COLUMN \" + COLUMN_GENDER + \" TEXT NOT NULL DEFAULT 'غير محدد'\");\r\n        }\r\n    }\r\n\r\n    private List<SoundItem> getSoundsByType(String type) {\r\n        List<SoundItem> list = new ArrayList<>();\r\n        try (Cursor cursor = getReadableDatabase().query(\r\n                TABLE_SOUNDS,\r\n                new String[]{COLUMN_ID, COLUMN_SOUND_TITLE, COLUMN_SOUND_ICON, COLUMN_SOUND_FILE},\r\n                COLUMN_SOUND_TYPE + \" = ?\",\r\n                new String[]{type},\r\n                null, null,\r\n                COLUMN_SOUND_ORDER + \" ASC\")) {\r\n            while (cursor.moveToNext()) {\r\n                list.add(new SoundItem(\r\n                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SOUND_TITLE)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SOUND_ICON)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_SOUND_FILE))));\r\n            }\r\n        }\r\n        return list;\r\n    }\r\n\r\n    // ==================== دوال القراءة (DAO) للفيديوهات ====================\r\n\r\n    public List<VideoItem> getAllVideos() {\r\n        return queryVideos(null, null);\r\n    }\r\n\r\n    public List<VideoItem> getVideosByCategory(String category) {\r\n        return queryVideos(COLUMN_VIDEO_CATEGORY + \" = ?\", new String[]{category});\r\n    }\r\n\r\n    private List<VideoItem> queryVideos(String selection, String[] selectionArgs) {\r\n        List<VideoItem> list = new ArrayList<>();\r\n        try (Cursor cursor = getReadableDatabase().query(\r\n                TABLE_VIDEOS,\r\n                new String[]{COLUMN_ID, COLUMN_VIDEO_TITLE, COLUMN_VIDEO_SUBTITLE, COLUMN_VIDEO_CATEGORY,\r\n                        COLUMN_VIDEO_THUMBNAIL, COLUMN_VIDEO_BG_COLOR, COLUMN_VIDEO_FILE, COLUMN_VIDEO_DURATION},\r\n                selection, selectionArgs, null, null, COLUMN_ID + \" ASC\")) {\r\n            while (cursor.moveToNext()) {\r\n                list.add(new VideoItem(\r\n                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VIDEO_TITLE)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VIDEO_SUBTITLE)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VIDEO_CATEGORY)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VIDEO_THUMBNAIL)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VIDEO_BG_COLOR)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VIDEO_FILE)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_VIDEO_DURATION))));\r\n            }\r\n        }\r\n        return list;\r\n    }\r\n\r\n    // ==================== الكود الأصلي (بدون تغيير) ====================\r\n\r\n    public void migrateFromSharedPreferencesIfNeeded(Context context) {\r\n        SharedPreferences prefs = context.getSharedPreferences(OLD_PREFS_NAME, Context.MODE_PRIVATE);\r\n        String savedProfiles = prefs.getString(OLD_KEY_PROFILES, null);\r\n        if (savedProfiles == null || getProfilesCount() > 0) {\r\n            return;\r\n        }\r\n\r\n        try {\r\n            JSONArray profiles = new JSONArray(savedProfiles);\r\n            for (int i = 0; i < profiles.length(); i++) {\r\n                JSONObject profile = profiles.getJSONObject(i);\r\n                addProfile(\r\n                        profile.getString(\"name\"),\r\n                        profile.getInt(\"age\"),\r\n                        profile.optString(\"gender\", \"غير محدد\"),\r\n                        profile.optString(\"avatar\", \"\uD83E\uDD8A\"));\r\n            }\r\n            prefs.edit().remove(OLD_KEY_PROFILES).apply();\r\n        } catch (JSONException ignored) {\r\n            prefs.edit().remove(OLD_KEY_PROFILES).apply();\r\n        }\r\n    }\r\n\r\n  public long addProfile(String name, int age, String gender, String avatar) {\r\n        ContentValues values = new ContentValues();\r\n        values.put(COLUMN_NAME, name);\r\n        values.put(COLUMN_AGE, age);\r\n        values.put(COLUMN_GENDER, gender);\r\n        values.put(COLUMN_AVATAR, avatar);\r\n        values.put(COLUMN_CREATED_AT, System.currentTimeMillis());\r\n        return getWritableDatabase().insert(TABLE_PROFILES, null, values);\r\n    }\r\n\r\n    public List<ChildProfile> getProfiles() {\r\n        List<ChildProfile> profiles = new ArrayList<>();\r\n        try (Cursor cursor = getReadableDatabase().query(\r\n                TABLE_PROFILES,\r\n                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_AVATAR},\r\n                null, null, null, null,\r\n                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_GENDER, COLUMN_AVATAR},\r\n                null,\r\n                null,\r\n                null,\r\n                null,\r\n                COLUMN_CREATED_AT + \" ASC\")) {\r\n            while (cursor.moveToNext()) {\r\n                profiles.add(new ChildProfile(\r\n                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),\r\n                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_AGE)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR))));\r\n            }\r\n        }\r\n        return profiles;\r\n    }\r\n\r\n    public long addBehaviorEvent(long childId, String eventType, String eventValue, String notes, long occurredAt) {\r\n        ContentValues values = new ContentValues();\r\n        values.put(COLUMN_CHILD_ID, childId);\r\n        values.put(COLUMN_EVENT_TYPE, eventType);\r\n        values.put(COLUMN_EVENT_VALUE, eventValue);\r\n        values.put(COLUMN_NOTES, notes);\r\n        values.put(COLUMN_OCCURRED_AT, occurredAt);\r\n        return getWritableDatabase().insert(TABLE_EVENTS, null, values);\r\n    }\r\n\r\n    public long addBotMessage(long childId, String text, String mood, long createdAt) {\r\n        ContentValues values = new ContentValues();\r\n        values.put(COLUMN_CHILD_ID, childId);\r\n        values.put(COLUMN_TEXT, text);\r\n        values.put(COLUMN_MOOD, mood);\r\n        values.put(COLUMN_CREATED_AT, createdAt);\r\n        return getWritableDatabase().insert(TABLE_BOT_MESSAGES, null, values);\r\n    }\r\n\r\n    public List<BotMessage> getBotMessages(long childId) {\r\n        List<BotMessage> messages = new ArrayList<>();\r\n        try (Cursor cursor = getReadableDatabase().query(\r\n                TABLE_BOT_MESSAGES,\r\n                new String[]{COLUMN_ID, COLUMN_TEXT, COLUMN_MOOD, COLUMN_CREATED_AT},\r\n                COLUMN_CHILD_ID + \" = ?\",\r\n                new String[]{String.valueOf(childId)},\r\n                null, null,\r\n                COLUMN_CREATED_AT + \" DESC\")) {\r\n            while (cursor.moveToNext()) {\r\n                messages.add(new BotMessage(\r\n                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_TEXT)),\r\n                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MOOD)),\r\n                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_CREATED_AT))));\r\n            }\r\n        }\r\n        return messages;\r\n    }\r\n\r\n    private int getProfilesCount() {\r\n        try (Cursor cursor = getReadableDatabase().rawQuery(\"SELECT COUNT(*) FROM \" + TABLE_PROFILES, null)) {\r\n            return cursor.moveToFirst() ? cursor.getInt(0) : 0;\r\n        }\r\n    }\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/app/src/main/java/com/example/graduationproject/data/ChildProfileStore.java b/app/src/main/java/com/example/graduationproject/data/ChildProfileStore.java
+--- a/app/src/main/java/com/example/graduationproject/data/ChildProfileStore.java	(revision 65bd005bbd7fef909e82de00043b208401622cd5)
++++ b/app/src/main/java/com/example/graduationproject/data/ChildProfileStore.java	(date 1786709560825)
+@@ -43,6 +43,22 @@
+     private static final String COLUMN_NOTES = "notes";
+     private static final String COLUMN_OCCURRED_AT = "occurred_at";
+ 
++    private static final String TABLE_SOUNDS = "sounds";
++    private static final String COLUMN_SOUND_TITLE = "sound_title";
++    private static final String COLUMN_SOUND_ICON = "sound_icon";
++    private static final String COLUMN_SOUND_FILE = "sound_file";
++    private static final String COLUMN_SOUND_TYPE = "sound_type";
++    private static final String COLUMN_SOUND_ORDER = "sound_order";
++
++    private static final String TABLE_VIDEOS = "videos";
++    private static final String COLUMN_VIDEO_TITLE = "video_title";
++    private static final String COLUMN_VIDEO_SUBTITLE = "video_subtitle";
++    private static final String COLUMN_VIDEO_CATEGORY = "video_category";
++    private static final String COLUMN_VIDEO_THUMBNAIL = "video_thumbnail";
++    private static final String COLUMN_VIDEO_BG_COLOR = "video_bg_color";
++    private static final String COLUMN_VIDEO_FILE = "video_file";
++    private static final String COLUMN_VIDEO_DURATION = "video_duration";
++
+     private static final String OLD_PREFS_NAME = "child_profiles_prefs";
+     private static final String OLD_KEY_PROFILES = "child_profiles";
+ 
+@@ -293,13 +309,10 @@
+         List<ChildProfile> profiles = new ArrayList<>();
+         try (Cursor cursor = getReadableDatabase().query(
+                 TABLE_PROFILES,
+-                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_AVATAR},
+-                null, null, null, null,
++                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_GENDER, COLUMN_AVATAR},
++                null,null, null, null,
+                 new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_GENDER, COLUMN_AVATAR},
+-                null,
+-                null,
+-                null,
+-                null,
++                null, null, null, null,
+                 COLUMN_CREATED_AT + " ASC")) {
+             while (cursor.moveToNext()) {
+                 profiles.add(new ChildProfile(
