@@ -4,38 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
-    android:layout_gravity="center_horizontal"
     android:layout_height="match_parent"
     android:background="#FAF1E6"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
     tools:context=".Kids.KidsAiChatActivity">
-
-    <!-- Circle Back Button Top Right -->
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="16dp"
-        android:background="@drawable/bg_icon_button"
-        android:contentDescription="@string/kids_back_btn"
-        android:padding="10dp"
-        android:src="@drawable/outline_arrow_forward_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="#8B6F4D" />
 
     <!-- Bear Avatar Head -->
     <TextView
         android:id="@+id/tv_bear_avatar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="50dp"
         android:text="🐻"
         android:textSize="72sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btn_back" />
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- Circle Back Button Top End -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_icon_button"
+        android:src="@drawable/outline_arrow_forward_24"
+        android:padding="10dp"
+        app:tint="#8B6F4D"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="رجوع" />
+
+    <!-- Badge Header (Rounded Rectangle shape) -->
     <TextView
         android:id="@+id/tv_nour_badge"
         android:layout_width="wrap_content"
@@ -44,7 +46,7 @@
         android:background="@drawable/bg_kids_mood_card"
         android:paddingHorizontal="20dp"
         android:paddingVertical="8dp"
-        android:text="@string/kids_chat_nour_badge"
+        android:text="أنا هنا أسمعك 💙"
         android:textColor="#3D291F"
         android:textSize="15sp"
         android:textStyle="bold"
@@ -52,7 +54,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_bear_avatar" />
 
-    <!-- STATE 1: CHILD INPUT STATE -->
+    <!-- ==================== STATE 1: CHILD INPUT STATE ==================== -->
     <LinearLayout
         android:id="@+id/group_input_state"
         android:layout_width="0dp"
@@ -70,12 +72,12 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:text="@string/kids_chat_question_title"
+            android:text="كيف حالك الحين؟"
             android:textColor="#3D291F"
             android:textSize="19sp"
             android:textStyle="bold" />
 
-        <!-- Mood Grid -->
+        <!-- Mood Grid (6 Unique Emoji Cards) -->
         <GridLayout
             android:id="@+id/grid_moods"
             android:layout_width="wrap_content"
@@ -84,7 +86,7 @@
             android:columnCount="3"
             android:rowCount="2">
 
-            <!-- 1. Scared -->
+            <!-- 1. خايف -->
             <LinearLayout
                 android:layout_width="96dp"
                 android:layout_height="76dp"
@@ -93,10 +95,10 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😨" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/kids_mood_scared" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="خايف" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
-            <!-- 2. Sad -->
+            <!-- 2. حزين -->
             <LinearLayout
                 android:layout_width="96dp"
                 android:layout_height="76dp"
@@ -105,10 +107,10 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😢" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/kids_mood_sad" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="حزين" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
-            <!-- 3. Angry -->
+            <!-- 3. زعلان -->
             <LinearLayout
                 android:layout_width="96dp"
                 android:layout_height="76dp"
@@ -117,10 +119,10 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😡" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/kids_mood_angry" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="زعلان" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
-            <!-- 4. Not sure -->
+            <!-- 4. مش عارف -->
             <LinearLayout
                 android:layout_width="96dp"
                 android:layout_height="76dp"
@@ -129,10 +131,10 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😕" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/kids_mood_confused" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="مش عارف" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
-            <!-- 5. Tired -->
+            <!-- 5. تعبان -->
             <LinearLayout
                 android:layout_width="96dp"
                 android:layout_height="76dp"
@@ -141,10 +143,10 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😫" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/kids_mood_tired" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="تعبان" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
-            <!-- 6. Happy -->
+            <!-- 6. مبسوط -->
             <LinearLayout
                 android:layout_width="96dp"
                 android:layout_height="76dp"
@@ -153,7 +155,7 @@
                 android:gravity="center"
                 android:orientation="vertical">
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="😊" android:textSize="26sp"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="@string/kids_mood_happy" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="مبسوط" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
         </GridLayout>
 
@@ -180,7 +182,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
-                android:text="@string/kids_chat_press_and_talk"
+                android:text="اضغط واحكيلي"
                 android:textColor="#F47C2B"
                 android:textSize="16sp"
                 android:textStyle="bold" />
@@ -191,7 +193,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="4dp"
                 android:padding="6dp"
-                android:text="@string/kids_chat_switch_to_text"
+                android:text="أو اكتب"
                 android:textColor="#8B6F4D"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -207,14 +209,13 @@
             android:orientation="vertical"
             android:paddingHorizontal="28dp"
             android:visibility="gone">
-
             <EditText
                 android:id="@+id/edt_child_message"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:background="@drawable/bg_kids_mood_card"
                 android:gravity="top|start"
-                android:hint="@string/kids_chat_hint_input"
+                android:hint="اكتب اللي حاسس فيه هنا..."
                 android:inputType="textMultiLine|textLongMessage"
                 android:padding="14dp"
                 android:textColor="#3D291F"
@@ -227,7 +228,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="6dp"
                 android:padding="6dp"
-                android:text="@string/kids_chat_switch_to_voice"
+                android:text="أو سجل صوتك"
                 android:textColor="#8B6F4D"
                 android:textSize="13sp"
                 android:textStyle="bold" />
@@ -235,7 +236,7 @@
 
     </LinearLayout>
 
-    <!-- Bottom Wide Button -->
+    <!-- Bottom Wide Button: حكيت نور! ⭐ -->
     <TextView
         android:id="@+id/btn_talk_nour"
         android:layout_width="0dp"
@@ -244,7 +245,7 @@
         android:layout_marginBottom="36dp"
         android:background="@drawable/bg_kids_bubble_primary"
         android:gravity="center"
-        android:text="@string/kids_chat_btn_talk_nour"
+        android:text="حكيت نور! ⭐"
         android:textColor="#FFFFFF"
         android:textSize="18sp"
         android:textStyle="bold"
@@ -252,7 +253,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <!-- STATE 2: LOADING STATE -->
+    <!-- ==================== STATE 2: LOADING STATE ==================== -->
     <LinearLayout
         android:id="@+id/group_loading_state"
         android:layout_width="wrap_content"
@@ -268,7 +269,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/kids_chat_loading"
+            android:text="نور يستمع لك..."
             android:textColor="#8B6F4D"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -279,121 +280,100 @@
             android:layout_marginTop="12dp"
             android:indeterminateTint="#F47C2B" />
     </LinearLayout>
-    <!-- STATE 3: AI RESPONSE STATE (مع ScrollView لمنع تداخل التنسيق) -->
-    <ScrollView
+
+    <!-- ==================== STATE 3: AI RESPONSE STATE (Hidden initially) ==================== -->
+    <LinearLayout
         android:id="@+id/group_response_state"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:fillViewport="true"
-        android:scrollbars="none"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_bear_avatar">
 
-        <LinearLayout
+        <!-- Speech Bubble Card -->
+        <TextView
+            android:id="@+id/tv_ai_response_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical"
-            android:paddingHorizontal="24dp"
-            android:paddingBottom="24dp">
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_kids_mood_card"
+            android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="18dp"
+            android:text="تعبك مسموع، خذ راحتك شوي."
+            android:textColor="#3D291F"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-            <!-- Speech Bubble Card -->
-            <TextView
-                android:id="@+id/tv_ai_response_text"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:background="@drawable/bg_kids_mood_card"
-                android:gravity="center"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="18dp"
-                android:text="@string/kids_chat_ai_default_response"
-                android:textColor="#3D291F"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+        <!-- Listen Button Pill -->
+        <TextView
+            android:id="@+id/btn_listen_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="#D8EBE4"
+            android:gravity="center"
+            android:paddingHorizontal="22dp"
+            android:paddingVertical="10dp"
+            android:text="اسمع رد نور 🔊"
+            android:textColor="#598F7A"
+            android:textSize="14sp"
+            android:textStyle="bold" />
 
-            <!-- Listen Button Pill -->
-            <TextView
-                android:id="@+id/btn_listen_voice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
-                android:background="#D8EBE4"
-                android:gravity="center"
-                android:paddingHorizontal="22dp"
-                android:paddingVertical="8dp"
-                android:text="@string/kids_chat_listen_response"
-                android:textColor="#598F7A"
-                android:textSize="14sp"
-                android:textStyle="bold" />
+        <!-- Title Question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="وش تحب تسوي الحين؟"
+            android:textColor="#8B6F4D"
+            android:textSize="15sp"
+            android:textStyle="bold" />
 
-            <!-- Title Question -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="@string/kids_chat_what_next"
-                android:textColor="#8B6F4D"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+        <!-- Option 1: خذ نفس معي -->
+        <TextView
+            android:id="@+id/btn_action_breath"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="14dp"
+            android:background="#FDE8D7"
+            android:gravity="center"
+            android:text="خذ نفس معي 🫧"
+            android:textColor="#E07026"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <!-- Option 1: Take a breath -->
-            <TextView
-                android:id="@+id/btn_action_breath"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="10dp"
-                android:background="#FDE8D7"
-                android:gravity="center"
-                android:text="@string/kids_chat_action_breath"
-                android:textColor="#E07026"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+        <!-- Option 2: ارسم كيف حاسس -->
+        <TextView
+            android:id="@+id/btn_action_draw"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:background="#E3EFE9"
+            android:gravity="center"
+            android:text="ارسم كيف حاسس 🎨"
+            android:textColor="#427A65"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <!-- Option 2: Draw how you feel -->
-            <TextView
-                android:id="@+id/btn_action_draw"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="#E3EFE9"
-                android:gravity="center"
-                android:text="@string/kids_chat_action_draw"
-                android:textColor="#427A65"
-                android:textSize="15sp"
-                android:textStyle="bold" />
+        <!-- Option 3: خلص، أنا أحسن الحين -->
+        <TextView
+            android:id="@+id/btn_action_better"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/bg_kids_mood_card"
+            android:gravity="center"
+            android:text="خلص، أنا أحسن الحين 💛"
+            android:textColor="#8B6F4D"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
-            <!-- Option 3: Tree Button -->
-            <TextView
-                android:id="@+id/btn_go_to_tree"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="#E2F0D9"
-                android:gravity="center"
-                android:text="@string/see_your_tree"
-                android:textColor="#388E3C"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-            <!-- Option 4: Done -->
-            <TextView
-                android:id="@+id/btn_action_better"
-                android:layout_width="match_parent"
-                android:layout_height="48dp"
-                android:layout_marginTop="8dp"
-                android:background="@drawable/bg_kids_mood_card"
-                android:gravity="center"
-                android:text="@string/kids_chat_action_better"
-                android:textColor="#8B6F4D"
-                android:textSize="15sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
-    </ScrollView>
-
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

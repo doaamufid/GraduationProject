@@ -95,7 +95,8 @@
     <string name="tapped_count_format">%1$d/%2$d — just tap whenever you notice something</string>
 
     <string name="add_note_toggle">Add a note (completely optional)</string>
-    <string name="note_hint">Write anything if you like...</string>
+    <string name="grounding_note_hint">Write anything if you like...</string>
+    <string name="note_hint">Write your note here...</string>
 
     <string name="breathing_reminder">Take a breath between each step — Inhale 4s · Exhale 4s · Stop 4s</string>
 
@@ -177,8 +178,8 @@
     <string name="ai_suggestions_banner">Based on your mood and recent conversations, these are habits that might help you — choose what suits you</string>
     <string name="add_selected_format">Add selected habits (%1$d)</string>
 
-    <string name="library_title">Visual Content</string>
-    <string name="library_sub">Listen · Listen</string>
+    <string name="visual_content_title">Visual Content</string>
+    <string name="visual_content_sub">Listen · Listen</string>
 
     <string name="player_title">Now Playing</string>
     <string name="why_suggested">Why did we suggest this to you?</string>
@@ -671,128 +672,7 @@
     <string name="source_from_chat">From your venting · 10 minutes ago</string>
     <string name="source_written">Written now</string>
     <string name="thought_from_chat">No one cares about me and I\'m always the one suffering alone</string>
-    <string name="kids_title_select">Who is playing today</string>
-    <string name="kids_subtitle_select">Select your name to open your tree</string>
-    <string name="kids_privacy_banner">🔒 Each child has their own private tree and points 🔐</string>
-    <string name="kids_back_btn">Back</string>
-    <string name="gender_boy">Boy</string>
-    <string name="gender_girl">Girl</string>
-    <string name="new_child_welcome_title">Welcome</string>
-    <string name="new_child_welcome_subtitle">We would love to know you before starting</string>
-    <string name="new_child_label_name">What should we call you</string>
-    <string name="new_child_hint_name">Enter your name or favorite nickname</string>
-    <string name="new_child_label_age">How old are you</string>
-    <string name="new_child_label_gender">Are you a boy or a girl</string>
-    <string name="new_child_info_banner">Entering Noor\'s world\nSafe and tailored specifically for your age</string>
-    <string name="new_child_btn_submit">Let\'s start!</string>
-    <string name="kids_age_gender_format">%2$s • %1$d years old</string>
-    <string name="new_child_banner_subtitle">Tailored content and activities just for your age</string>
-    <string name="new_child_banner_title">Entering: World Noor</string>
-    <string name="fill_all_fields_toast">Please fill in all fields</string>
-    <string name="new_child_secret_note">Your secret is safe with Noor — real name not required 💛</string>
-    <string name="bubble_quiet_exit">✕ Done, I feel relaxed</string>
-    <string name="bubble_breath_hint">Use the button to blow</string>
-    <string name="bubble_welcome_title">Let\'s blow bubbles together!</string>
-    <string name="bubble_welcome_body">Blow gently into your phone, and watch the bubble grow and float away!</string>
-    <string name="bubble_btn_start">Let\'s start! 🫧</string>
-    <string name="bubble_btn_hold">Press and blow</string>
-    <string name="bubble_btn_holding">Keep holding...</string>
-    <string name="bubble_btn_again">More bubbles 🫧</string>
-    <string name="bubble_btn_done">All done</string>
-    <string name="bubble_done_title">Yay! We blew %1$d bubbles 🎉</string>
-    <string name="bubble_done_body">Five calm breaths, and now you\'re feeling a bit calmer</string>
-    <string name="bubble_canvas_press_blow">Press and blow...</string>
-    <string name="bubble_canvas_keep_going">Keep going, your bubble is growing! 🫧</string>
-    <string name="bubble_canvas_flew_away">The bubble flew away! 🌟</string>
-    <!-- Kids AI Chat Activity -->
-    <string name="kids_chat_back_desc">Back</string>
-    <string name="kids_chat_nour_badge">I am here listening to you 💙</string>
-    <string name="kids_chat_question_title">How are you feeling right now</string>
 
-    <!-- Moods -->
-    <string name="kids_mood_scared">Scared</string>
-    <string name="kids_mood_sad">Sad</string>
-    <string name="kids_mood_angry">Angry</string>
-    <string name="kids_mood_confused">Not Sure</string>
-    <string name="kids_mood_tired">Tired</string>
-    <string name="kids_mood_happy">Happy</string>
-
-    <!-- Controls & Inputs -->
-    <string name="kids_chat_press_and_talk">Press and talk to me</string>
-    <string name="kids_chat_switch_to_text">or Type</string>
-    <string name="kids_chat_hint_input">Write what you feel here...</string>
-    <string name="kids_chat_switch_to_voice">or Record your voice</string>
-    <string name="kids_chat_btn_talk_nour">Talked to Nour! ⭐</string>
-
-    <!-- States & Bottom Sheet -->
-    <string name="kids_chat_loading">Nour is listening to you...</string>
-    <string name="kids_chat_ai_default_response">I hear you, take your time.</string>
-    <string name="kids_chat_listen_response">Listen to Nour\'s reply 🔊</string>
-    <string name="kids_chat_what_next">What would you like to do now?</string>
-    <string name="kids_chat_action_breath">Take a breath with me 🫧</string>
-    <string name="kids_chat_action_draw">Draw how you feel 🎨</string>
-    <string name="kids_chat_action_better">Done, I feel better now 💛</string>
-
-    <!-- Voice Sheet -->
-    <string name="kids_chat_sheet_cancel">Cancel</string>
-    <string name="kids_chat_sheet_speak_hint">Say what you feel, I am listening 🧸</string>
-    <string name="kids_chat_sheet_done">Done</string>
-    <string name="kids_chat_toast_sending">Sending audio to AI for analysis...</string>
-    <!-- Tree Screens Texts (English) -->
-    <string name="tree_back">Back</string>
-    <string name="tree_title">Recovery Tree</string>
-    <string name="tree_today_points">Today: %d points</string>
-    <string name="tree_points_subtitle">Breathing • Chat • Journal</string>
-    <string name="tree_stage_tree_title">Your tree is in the tree stage</string>
-    <string name="tree_stage_3_of_4">Stage 3 of 4</string>
-    <string name="tree_progress_percent">🌱 68% growth in tree stage</string>
-    <string name="tree_btn_daily_actions">What did you achieve today 🌱</string>
-    <string name="tree_achievements">Achievements</string>
-    <string name="badge_meditator">Meditator</string>
-    <string name="badge_daily">Daily</string>
-    <string name="badge_consistent">Consistent</string>
-
-    <string name="tree_intro_title">This is your tree! 🌱</string>
-    <string name="tree_intro_description">Every time you breathe, remember, or write your feelings,\nyour tree grows little by little — come see how far\nit has grown!</string>
-    <string name="tree_intro_btn">Let\'s check it out! 🌳</string>
-
-    <string name="tree_level_up_growth">🌱 68% growth in tree stage</string>
-    <string name="tree_level_up_subtitle">Your tree grew because of every exercise you did 💚</string>
-    <string name="tree_level_up_btn">Great job! 🌟</string>
-    <string name="tree_points_added">You added + %d points!</string>
-    <string name="see_your_tree">See how your tree has grown! 🌳</string>
-    <!-- Bottom Sheet النصوص الخاصة بـ -->
-    <string name="what_did_you_achieve_today">What did you achieve today? 🌱</string>
-    <string name="breathing_exercise">Breathing exercise 💨 (+10 points)</string>
-    <string name="chat_with_friend">Chat with your friend 💬 (+10 points)</string>
-    <string name="write_journal">Write a journal 📝 (+10 points)</string>
-
-    <!-- Dialog النصوص الخاصة بـ -->
-    <string name="daily_badge_title">Daily</string>
-    <string name="daily_badge_desc">Logged in every day</string>
-    <string name="badge_unlocked_message">⭐ Nour is proud of you! You earned it today</string>
-    <string name="close">Close</string>
-    <string name="badge_meditator_title">Meditator</string>
-    <string name="badge_meditator_desc">Completed meditation and breathing exercises</string>
-
-    <string name="badge_consistent_title">Consistent</string>
-    <string name="badge_consistent_desc">Keep logging your daily activities</string>
-    <string name="badge_consistent_locked_status">🔒 Complete 7 consecutive days to unlock!</string>
-
-    <string name="stage_seed_title">Seed</string>
-    <string name="stage_seed_desc">Beginning of the growth journey</string>
-    <string name="stage_achieved_status">Achieved with your effort!</string>
-
-    <string name="stage_sprout_title">Sprout</string>
-    <string name="stage_sprout_desc">Your tree is starting to branch out</string>
-
-    <string name="stage_tree_title">Tree</string>
-    <string name="stage_tree_desc">A big tree for everyone to see!</string>
-    <string name="stage_current_status">You are currently in this stage!</string>
-
-    <string name="stage_fruit_tree_title">Fruit Tree</string>
-    <string name="stage_fruit_tree_desc">Highest growth stage of the recovery tree</string>
-    <string name="stage_fruit_tree_locked_status">🔒 Needs 50 points to reach!</string>
     <string name="wall_title">Messages from kind hearts</string>
     <string name="wall_sub">Words written by people like you for each other</string>
     <string name="top_impact">Top Impact</string>
@@ -839,7 +719,7 @@
     <string name="toast_copied">Message copied, ready to send to a friend</string>
     <string name="toast_copy_fail">Couldn\'t copy message, try again</string>
 
-    <string name="cat_all">All</string>
+    <string name="community_cat_all">All</string>
     <string name="milestone_reached">Reached</string>
 
     <string name="posted_time_ago">Posted - 2h ago</string>
@@ -851,20 +731,199 @@
     <string name="cd_remove_image">Remove image</string>
     <string name="choose_card_color">Choose Card Color</string>
 
-        <!-- Tree Stages -->
-        <string name="stage_sprout">Small Sprout</string>
-        <string name="stage_bud">Bud</string>
-        <string name="stage_tree">Growing Tree</string>
-        <string name="stage_fruit_tree">Fruit Tree</string>
+    <string name="library_title">Smart Articles Library</string>
+    <string name="library_sub">ARTICLES</string>
+    <string name="search_hint">Search in library...</string>
+    <string name="read_now">Read Now</string>
 
-        <!-- UI Messages -->
-        <string name="tree_points_format">Today: %d Points</string>
-        <string name="tree_stage_description">Your tree is in %s stage</string>
-        <string name="tree_stage_level">Stage %d of 4</string>
-    <string name="level_up_stage_reached">You are now at stage: %1$s</string>
-        <string name="breathing_success_toast">Awesome! You earned 10 points for your tree 🌳✨</string>
-    <string name="level_up_congrats">Congratulations! Your tree grew! 🥳</string>
-    <string name="level_up_points_earned">+%1$d Extra Points 🌟</string>
-    <string name="level_up_btn_continue">Continue Nurturing 💚</string>
+    <string name="library_cat_all">All</string>
+    <string name="cat_sadness">Sadness</string>
+    <string name="cat_anxiety">Anxiety</string>
+    <string name="cat_cbt">CBT</string>
+    <string name="cat_breathing">Breathing</string>
+    <string name="cat_sleep">Sleep</string>
 
+    <string name="my_notes_title">My Notes</string>
+    <string name="fav_articles_title">Favorite Articles</string>
+    <string name="bookmark_articles_title">Saved Articles</string>
+
+    <string name="tab_favorites">Favorites</string>
+    <string name="tab_notes">Notes</string>
+    <string name="tab_highlights">Highlights</string>
+
+    <string name="empty_fav_quotes">You haven\'t added any quotes to favorites yet — highlight text inside an article and tap the heart icon.</string>
+    <string name="empty_generic">No items here yet.</string>
+    <string name="empty_fav_articles">You haven\'t added any articles to favorites yet — tap the heart icon on any article.</string>
+    <string name="empty_bookmark_articles">You haven\'t saved any articles yet — tap the bookmark icon on any article.</string>
+
+    <string name="fav_quotes_header">Favorite Quotes</string>
+
+    <string name="reading_hint">Highlight any sentence that touches you to mark it, write a note, or save it.</string>
+    <string name="feedback_prompt">What do you think of this article?</string>
+    <string name="by_author">By %1$s</string>
+
+    <string name="reading_settings_title">Reading Settings</string>
+    <string name="page_appearance">Page Appearance</string>
+    <string name="font_size">Font Size</string>
+    <string name="font_weight">Font Weight</string>
+    <string name="normal_weight">Normal</string>
+    <string name="bold_weight">Bold</string>
+    <string name="brightness">Brightness</string>
+
+    <string name="theme_classic">Classic</string>
+    <string name="theme_traditional">Traditional</string>
+    <string name="theme_night">Night</string>
+    <string name="theme_typewriter">Typewriter</string>
+
+    <string name="articles_note_hint">Write a thought, reason for highlighting, or anything that helps you later...</string>
+    <string name="save_note">Save Note</string>
+    <string name="highlight_color">Highlight Color</string>
+    <string name="saving">Saving...</string>
+    <string name="saved_check">Saved ✓</string>
+    <string name="your_note">Your Note</string>
+    <string name="highlight_on">Enabled</string>
+    <string name="highlight_off">Disabled</string>
+    <string name="highlight_prefix">Highlight %1$s</string>
+
+    <string name="toast_liked">Liked — we\'ll suggest more articles like this.</string>
+    <string name="toast_highlighted">Highlighted ✨</string>
+    <string name="toast_saved_fav">Added to favorites ❤️</string>
+    <string name="toast_highlight_deleted">Highlight deleted</string>
+
+    <string name="menu_highlight_yellow">Highlight Yellow</string>
+    <string name="menu_highlight_pink">Highlight Pink</string>
+    <string name="menu_highlight_purple">Highlight Purple</string>
+    <string name="menu_highlight_blue">Highlight Blue</string>
+    <string name="menu_highlight_green">Highlight Green</string>
+    <string name="menu_write_note">Add Note</string>
+    <string name="menu_save_quote">Add to Favorites</string>
+
+    <string name="rate_label">rate</string>
+    <string name="duration_label">duration</string>
+    <string name="rating_label">rating</string>
+    <string name="exercises_label">Exercises</string>
+    <string name="chat_app_name">Companion Chat</string>
+    <string name="chat_status_time">9:41</string>
+
+    <string name="chat_header_title">Companion Chat</string>
+    <string name="chat_header_subtitle">SALAM · Online</string>
+
+    <string name="chat_input_hint">Type your message...</string>
+
+    <string name="chat_nav_home">Home</string>
+    <string name="chat_nav_exercises">Exercises</string>
+    <string name="chat_nav_stats">Stats</string>
+    <string name="chat_nav_me">Me</string>
+    <string name="chat_now">9:40 AM</string>
+
+    <!-- Breathing card -->
+    <string name="chat_breathing_kicker">BREATHING EXERCISE</string>
+    <string name="chat_breathing_title">Box Breathing 🫁</string>
+    <string name="chat_breathing_desc">4-minute exercise to calm the nervous system</string>
+    <string name="chat_breathing_button">Start Exercise</string>
+    <string name="chat_breathing_toast">Taking you to breathing exercise...</string>
+
+    <!-- Dhikr card -->
+    <string name="chat_dhikr_kicker">DHIKR</string>
+    <string name="chat_dhikr_title">Calming Dhikr 🌙</string>
+    <string name="chat_dhikr_desc">"SubhanAllah wa bihamdihi" — repeat slowly with each exhale</string>
+    <string name="chat_dhikr_button">Open my Dhikr</string>
+    <string name="chat_dhikr_toast">Opening your Dhikr...</string>
+
+    <!-- Article card -->
+    <string name="chat_article_tag">CBT</string>
+    <string name="chat_article_title">How to deal with sadness without suppressing it?</string>
+    <string name="chat_article_button">Read now →</string>
+    <string name="chat_article_toast">Opening the article...</string>
+
+    <!-- Conversation Nodes -->
+    <string name="chat_node_start_bot">Hello, I\'m here with you. How are you feeling today?</string>
+    <string name="chat_reply_start_anxious">I feel some anxiety today</string>
+    <string name="chat_reply_start_distress">I feel very distressed and can\'t breathe well</string>
+    <string name="chat_reply_start_fine">Fine, thank God</string>
+
+    <string name="chat_node_anxious_bot">I understand, anxiety is a natural feeling. Would you like to try a quick breathing exercise to calm your thoughts?</string>
+    <string name="chat_reply_anxious_breathing">Yes, try with me</string>
+    <string name="chat_reply_anxious_later">Later</string>
+    <string name="chat_reply_anxious_elaborate">Talk to me more</string>
+
+    <string name="chat_node_breathingOffer_bot">Okay, this is a simple exercise to calm your nervous system in minutes 💙</string>
+    <string name="chat_reply_breathingOffer_article">I\'d also like to read a short article</string>
+    <string name="chat_reply_breathingOffer_closing">Thanks, that\'s enough</string>
+
+    <string name="chat_node_article_bot">Sure, here\'s a short article that might help you understand your feelings more:</string>
+    <string name="chat_reply_article_closing">Thank you</string>
+
+    <string name="chat_node_later_bot">Okay, I\'m here whenever you need 💙</string>
+    <string name="chat_reply_later_closing">I\'ll see to myself later</string>
+
+    <string name="chat_node_elaborate_bot">Sure, tell me more about what\'s on your mind?</string>
+
+    <string name="chat_node_distress_bot">I hear you very well — it\'s very natural to feel this way. You are not alone, I\'m here. Shall we try a simple breathing exercise together?</string>
+    <string name="chat_reply_distress_yes">Yes</string>
+    <string name="chat_reply_distress_maybe">I don\'t know yet</string>
+    <string name="chat_reply_distress_no">No, thanks</string>
+
+    <string name="chat_node_dhikrOffer_bot">No worries, take your time. Try this simple dhikr, it helps calm your breathing with every exhale:</string>
+    <string name="chat_reply_dhikrOffer_closing">Thanks, I tried</string>
+
+    <string name="chat_node_fine_bot">Happy to hear that! 😊 Would you like to share something good that happened today?</string>
+
+    <string name="chat_node_closing_bot">I\'m proud of you for talking. I\'m always here whenever you need me 💙</string>
+
+    <string name="chat_node_freeReply_bot">I hear you, and this is important. Take your time, I\'m here with you step by step.</string>
+    <string name="chat_reply_freeReply_breathing">Try a breathing exercise</string>
+    <string name="chat_reply_freeReply_closing">Just wanted to talk</string>
+<!-- Splash select screen -->
+    <string name="splash_back">Back</string>
+    <string name="splash_salam">Hello</string>
+    <string name="splash_question">Who is this place for?</string>
+    <string name="splash_sub_question">Choose the category that fits you</string>
+    <string name="splash_adults_title">For Adults</string>
+    <string name="splash_adults_subtitle">A calm space for reflection and mental support</string>
+    <string name="splash_kids_title">For Kids</string>
+    <string name="splash_kids_subtitle">A fun and safe world for you!</string>
+<!-- Chat screen -->
+    <string name="chat_back">Back</string>
+    <string name="chat_send">Send</string>
+    <string name="chat_voice_record">Record a voice message</string>
+    <string name="chat_voice_play">Play voice message</string>
+    <string name="chat_voice_title">Record your voice message</string>
+    <string name="chat_voice_timer_zero">00:00</string>
+    <string name="chat_voice_hint">Tap Send when done, or Cancel to discard</string>
+    <string name="chat_voice_cancel">Cancel</string>
+    <string name="chat_voice_send">Send</string>
+    <string name="chat_voice_perm_title">Microphone Permission</string>
+    <string name="chat_voice_perm_msg">We need the microphone permission so you can record voice messages with your companion.</string>
+    <string name="chat_voice_perm_denied">Microphone permission was denied. You can grant it from Settings to continue.</string>
+    <string name="chat_voice_sent_toast">Voice message sent 🎙️</string>
+<!-- Home screen -->
+    <string name="home_friend">friend</string>
+    <string name="home_greeting_format">Good morning %1$s, how do you feel now?\nI\'m here with you 🌊</string>
+    <string name="home_greeting_default">Good morning, how do you feel now?\nI\'m here with you 🌊</string>
+    <string name="home_mood_title">Today\'s Mood</string>
+    <string name="home_relax_title">Quick relaxation session for today\'s mood</string>
+    <string name="home_relax_subtitle">10 minutes of calm</string>
+    <string name="home_start_now">Start Now</string>
+    <string name="home_feature_videos">Videos</string>
+    <string name="home_feature_videos_sub">VIDEOS</string>
+    <string name="home_feature_audio">Audio</string>
+    <string name="home_feature_audio_sub">AUDIO</string>
+    <string name="home_feature_articles">Articles</string>
+    <string name="home_feature_articles_sub">ARTICLES</string>
+    <string name="home_feature_habits">My Habits</string>
+    <string name="home_feature_habits_sub">HABITS</string>
+    <string name="home_feature_reports">Reports</string>
+    <string name="home_feature_reports_sub">REPORTS</string>
+    <string name="home_feature_community">Salam Community</string>
+    <string name="home_feature_community_sub">COMMUNITY</string>
+<!-- Language selection -->
+    <string name="language_selection_title">Choose your language</string>
+    <string name="language_selection_subtitle">Select the language you are most comfortable with.</string>
+    <string name="language_arabic">Arabic</string>
+    <string name="language_english">English</string>
+    <string name="language_title">Language</string>
+    <string name="continue_label">Continue</string>
+    <string name="chat_item_voice_message_android_text_0">00:00</string>
 </resources>
+
