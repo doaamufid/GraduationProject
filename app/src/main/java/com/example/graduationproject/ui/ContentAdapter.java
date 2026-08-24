@@ -65,38 +65,53 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
     public void onBindViewHolder(@NonNull VH holder, int position) {
         ContentItem item = items.get(position);
 
-        // 1. Background (mapped to the new ivCardBackground)
-        // Note: Using the gradient logic for now. If you have an image URL, use Glide here.
+        // 1. Background
         GradientDrawable gradient = new GradientDrawable(
                 GradientDrawable.Orientation.TL_BR,
                 new int[]{item.gradStart, item.gradEnd});
         holder.ivCardBackground.setBackground(gradient);
 
-        // 2. Top Right: Date (mapped from item.duration)
+        // 2. Metadata: Brand (Type) and Date (Duration)
+        holder.tvBrandLogo.setText(item.type);
         holder.tvDate.setText(item.duration);
 
-        // 3. Bottom Left: Title & Subtitle (mapped from title & source)
+        // 3. Main Text: Title & Subtitle (Source)
         holder.tvMainTitle.setText(item.title);
         holder.tvSubTitle.setText(item.src);
 
-        // 4. Top Left: Brand Logo (mapped from item.type)
-        holder.tvBrandLogo.setText(item.type);
+        // 4. Favorite & Bookmark States
+        boolean saved = AppState.get().isContentSaved(item.id);
+        holder.btnFavorite.setImageResource(
+                saved ? R.drawable.ic_heart : R.drawable.ic_heart_outline);
+        
+        boolean bookmarked = AppState.get().isContentBookmarked(item.id);
+        holder.btnBookmark.setImageResource(
+                bookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
 
-        // Card click → open player
+        // Click listeners
         holder.itemView.setOnClickListener(v -> {
             Animation press = AnimationUtils.loadAnimation(v.getContext(), R.anim.card_press);
             v.startAnimation(press);
             v.postDelayed(() -> listener.onOpen(item), 90);
         });
 
-        // Pill button click ("Learn more" / Watch now)
         holder.btnLearnMore.setOnClickListener(v -> {
             v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(70).withEndAction(() ->
                     v.animate().scaleX(1f).scaleY(1f).setDuration(70).start()).start();
             listener.onOpen(item);
         });
 
-        // Staggered entrance animation
+        holder.btnFavorite.setOnClickListener(v -> {
+            listener.onToggleFavorite(item);
+            notifyItemChanged(holder.getAdapterPosition());
+        });
+
+        holder.btnBookmark.setOnClickListener(v -> {
+            listener.onToggleBookmark(item);
+            notifyItemChanged(holder.getAdapterPosition());
+        });
+
+        // Entrance animation
         holder.itemView.setAlpha(0f);
         holder.itemView.setTranslationY(50f);
         holder.itemView.animate()
@@ -120,6 +135,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
     static class VH extends RecyclerView.ViewHolder {
         ImageView ivCardBackground;
         TextView tvBrandLogo, tvDate, tvMainTitle, tvSubTitle, btnLearnMore;
+        ImageButton btnFavorite, btnBookmark;
 
         VH(@NonNull View itemView) {
             super(itemView);
@@ -129,6 +145,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
             tvMainTitle = itemView.findViewById(R.id.tvMainTitle);
             tvSubTitle = itemView.findViewById(R.id.tvSubTitle);
             btnLearnMore = itemView.findViewById(R.id.btnLearnMore);
+            btnFavorite = itemView.findViewById(R.id.btnFavorite);
+            btnBookmark = itemView.findViewById(R.id.btnBookmark);
         }
     }
 }
