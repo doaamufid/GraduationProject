@@ -925,5 +925,24 @@
     <string name="language_title">Language</string>
     <string name="continue_label">Continue</string>
     <string name="chat_item_voice_message_android_text_0">00:00</string>
+
+    <!-- Video library flow -->
+    <string name="video_library_sub">Videos · VIDEOS</string>
+    <string name="search_hint_content">Search content…</string>
+    <string name="fav_content_title">Favorite Content</string>
+    <string name="bookmark_content_list_title">Saved Content</string>
+    <string name="empty_fav_content">No favorite content yet — tap the heart icon on any video</string>
+    <string name="empty_bookmark_content">No saved content yet — tap the save icon on any video</string>
+    <string name="fav_content">Add to favorites</string>
+    <string name="unfav_content">Remove from favorites</string>
+    <string name="bookmark_content">Save</string>
+    <string name="unbookmark_content">Remove save</string>
+    <string name="content_desc_fav">Favorites</string>
+    <string name="content_desc_bookmark">Saved</string>
+    <string name="bookmarks_section_title">Saved</string>
+    <string name="bookmark_videos_title">Saved Videos</string>
+    <string name="bookmark_articles_sub">Read them later in the articles library</string>
+    <string name="bookmark_videos_sub">Watch them later in the videos section</string>
+    <string name="watch_now">Watch now</string>
 </resources>
 

@@ -16,8 +16,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import com.example.graduationproject.ContentItemHost;
 import com.example.graduationproject.R;
-import com.example.graduationproject.VideoLibraryActivity;
 import com.example.graduationproject.models.ContentItem;
 import com.example.graduationproject.models.ContentRepository;
 import com.example.graduationproject.widget.FadeUtils;
@@ -301,12 +301,12 @@ public class PlayerFragment extends Fragment {
             }
 
             row.setOnClickListener(v -> {
-                if (getActivity() instanceof VideoLibraryActivity) {
+                if (getActivity() instanceof ContentItemHost) {
                     // Navigate back to library list first (by replacing with a new LibraryFragment)
                     // and then open the new player, or simply replace the current player.
                     // The user requested the back arrow to go to the full list, 
                     // which is achieved by not adding the player to the back stack.
-                    ((VideoLibraryActivity) getActivity()).openPlayer(suggestion);
+                    ((ContentItemHost) getActivity()).openPlayer(suggestion);
                 }
             });
 
@@ -334,3 +334,4 @@ public class PlayerFragment extends Fragment {
         }
     }
 }
+

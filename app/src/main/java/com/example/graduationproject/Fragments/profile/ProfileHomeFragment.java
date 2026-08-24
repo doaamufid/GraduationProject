@@ -1,3 +1,4 @@
+
 package com.example.graduationproject.Fragments.profile;
 
 import android.content.Intent;
@@ -16,9 +17,11 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
+import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.ProfileNavigator;
 import com.example.graduationproject.R;
 import com.example.graduationproject.SettingsActivity;
+import com.example.graduationproject.VideoLibraryActivity;
 import com.example.graduationproject.data.profile.ArabicDateUtils;
 import com.example.graduationproject.data.profile.SeedData;
 import com.example.graduationproject.models.profile.Badge;
@@ -57,6 +60,7 @@ public class ProfileHomeFragment extends Fragment {
         renderStats(view);
         renderBadges(view);
         renderArchiveLinks(view, activity);
+        renderBookmarkLinks(view);
 
         LinearLayout btnChildren = view.findViewById(R.id.btn_children_link);
         btnChildren.setOnClickListener(v -> activity.navigate("children"));
@@ -152,6 +156,52 @@ public class ProfileHomeFragment extends Fragment {
             });
             container.addView(row);
         }
+    }
+
+    /** Saved-content shortcuts: article bookmarks + video bookmarks. */
+    private void renderBookmarkLinks(View root) {
+        LinearLayout container = root.findViewById(R.id.bookmark_links_container);
+        container.removeAllViews();
+
+        Object[][] links = {
+                { "articles", R.string.bookmark_articles_title, R.string.bookmark_articles_sub, R.drawable.ic_bookmark, R.color.primary },
+                { "videos", R.string.bookmark_videos_title, R.string.bookmark_videos_sub, R.drawable.ic_bookmark_filled, R.color.sage },
+        };
+
+        for (Object[] link : links) {
+            String key = (String) link[0];
+            int labelRes = (int) link[1];
+            int subRes = (int) link[2];
+            int iconRes = (int) link[3];
+            int colorRes = (int) link[4];
+
+            View row = LayoutInflater.from(requireContext()).inflate(R.layout.item_archive_link, container, false);
+            ((TextView) row.findViewById(R.id.txt_link_label)).setText(labelRes);
+            ((TextView) row.findViewById(R.id.txt_link_sub)).setText(subRes);
+
+            ImageView iconBg = row.findViewById(R.id.img_link_icon_bg);
+            iconBg.setImageResource(iconRes);
+            int color = ContextCompat.getColor(requireContext(), colorRes);
+            iconBg.setColorFilter(color);
+            android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
+            bg.setColor((color & 0x00FFFFFF) | 0x18000000);
+            bg.setCornerRadius(dp(12));
+            iconBg.setBackground(bg);
+
+            row.setOnClickListener(v -> {
+                animateTap(row);
+                openBookmarks("articles".equals(key));
+            });
+            container.addView(row);
+        }
+    }
+
+    private void openBookmarks(boolean articles) {
+        Intent intent = new Intent(requireContext(),
+                articles ? ArticlesActivity.class : VideoLibraryActivity.class);
+        intent.putExtra(articles ? ArticlesActivity.EXTRA_OPEN : VideoLibraryActivity.EXTRA_OPEN,
+                "bookmarks");
+        startActivity(intent);
     }
 
     /** Mirrors .archive-tap:active { transform: scale(0.97) } */

@@ -193,10 +193,6 @@
             android:exported="false" />
 
         <activity
-            android:name=".VisualContentActivity"
-            android:exported="false" />
-
-        <activity
             android:name=".ui.StrengthsBankActivity"
             android:exported="false" />
 
