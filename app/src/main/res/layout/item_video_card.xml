@@ -8,13 +8,17 @@
     android:layout_margin="12dp"
     app:cardCornerRadius="28dp"
     app:cardElevation="6dp"
-    app:cardBackgroundColor="@android:color/black">
+    app:cardBackgroundColor="@android:color/black"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:layoutDirection="locale">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <!-- Background Image (e.g., the astronaut) -->
+        <!-- Background Image -->
         <ImageView
             android:id="@+id/ivCardBackground"
             android:layout_width="match_parent"
@@ -27,39 +31,77 @@
         <View
             android:id="@+id/bottomScrim"
             android:layout_width="match_parent"
-            android:layout_height="120dp"
+            android:layout_height="130dp"
             android:background="@drawable/bg_bottom_white_mist"
             app:layout_constraintBottom_toBottomOf="parent" />
 
-        <!-- Top Left: Logo/Brand -->
-        <TextView
-            android:id="@+id/tvBrandLogo"
+        <!-- Top Start: Brand/Logo & Date (NASA style) -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="20dp"
-            android:text="NASA"
-            android:textColor="#FFFFFF"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            android:letterSpacing="0.1"
+            android:orientation="vertical"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Top Right: Date -->
-        <TextView
-            android:id="@+id/tvDate"
+            <TextView
+                android:id="@+id/tvBrandLogo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="NASA"
+                android:textColor="#FFFFFF"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.1"
+                tools:text="NASA" />
+
+            <TextView
+                android:id="@+id/tvDate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="July 20, 1969"
+                android:textColor="#CCFFFFFF"
+                android:textSize="11sp"
+                tools:text="July 20, 1969" />
+        </LinearLayout>
+
+        <!-- Top End Actions: Love and Bookmark (Left in RTL) -->
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="24dp"
-            android:text="July 20, 1969"
-            android:textColor="#FFFFFF"
-            android:textSize="12sp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Bottom Left: Title & Subtitle -->
+            <ImageButton
+                android:id="@+id/btnFavorite"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_heart_outline"
+                app:tint="#FFFFFF"
+                android:contentDescription="@string/fav_content" />
+
+            <ImageButton
+                android:id="@+id/btnBookmark"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="4dp"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:padding="8dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_bookmark_outline"
+                app:tint="#FFFFFF"
+                android:contentDescription="@string/bookmark_content" />
+        </LinearLayout>
+
+        <!-- Bottom Start: Main Title & Subtitle -->
         <LinearLayout
             android:id="@+id/llBottomText"
             android:layout_width="0dp"
@@ -78,23 +120,25 @@
                 android:layout_height="wrap_content"
                 android:text="Apollo 11"
                 android:textColor="#FFFFFF"
-                android:textSize="32sp"
-                android:textStyle="bold" />
+                android:textSize="28sp"
+                android:textStyle="bold"
+                tools:text="Apollo 11" />
 
             <TextView
                 android:id="@+id/tvSubTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="4dp"
+                android:layout_marginTop="2dp"
                 android:text="One small step for man, one giant leap for mankind."
                 android:textColor="#FFFFFF"
-                android:textSize="14sp"
-                android:alpha="0.9"
+                android:textSize="13sp"
+                android:alpha="0.85"
                 android:maxLines="2"
-                android:ellipsize="end" />
+                android:ellipsize="end"
+                tools:text="One small step for man, one giant leap for mankind." />
         </LinearLayout>
 
-        <!-- Bottom Right: Pill Button -->
+        <!-- Bottom End: Watch Now Pill Button -->
         <TextView
             android:id="@+id/btnLearnMore"
             android:layout_width="wrap_content"
@@ -102,14 +146,15 @@
             android:layout_marginEnd="24dp"
             android:layout_marginBottom="24dp"
             android:background="@drawable/bg_dark_pill_button"
-            android:paddingHorizontal="20dp"
+            android:paddingHorizontal="22dp"
             android:paddingVertical="10dp"
-            android:text="Learn more"
+            android:text="@string/watch_now"
             android:textColor="#FFFFFF"
             android:textSize="14sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:text="Watch now" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </com.google.android.material.card.MaterialCardView>
