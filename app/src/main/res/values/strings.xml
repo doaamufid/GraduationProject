@@ -926,5 +926,17 @@
     <string name="language_title">اللغة</string>
     <string name="continue_label">متابعة</string>
     <string name="chat_item_voice_message_android_text_0">00:00</string>
+    <!-- Bubble Breathing Strings -->
+    <string name="bubble_btn_start">يلا نبدأ! 🫧</string>
+    <string name="bubble_welcome_title">خلنا ننفخ فقاعات سوا!</string>
+    <string name="bubble_welcome_body">انفخ بفمك قدام التلفون بهدوء، وشوف الفقاعة تكبر وتطير — كل نفخة، أي حجم، تصير فقاعة حلوة!</string>
+    <string name="bubble_btn_hold">اضغط واحبس نفسك 🌬️</string>
+    <string name="bubble_btn_holding">انفخ الحين... 🫧</string>
+    <string name="bubble_done_title">أحسنت! سويت %1$d فقاعات 🥳</string>
+    <string name="bubble_done_body">صرت أهدى وأقوى الحين!</string>
+    <string name="stage_sprout">برعم صغير</string>
+    <string name="stage_bud">نبتة نامية</string>
+    <string name="stage_tree">شجرة قوية</string>
+    <string name="stage_fruit_tree">شجرة مثمرة</string>
 </resources>
 

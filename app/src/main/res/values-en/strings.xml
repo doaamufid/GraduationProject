@@ -925,5 +925,13 @@
     <string name="language_title">Language</string>
     <string name="continue_label">Continue</string>
     <string name="chat_item_voice_message_android_text_0">00:00</string>
+    <!-- Bubble Breathing Strings (English) -->
+    <string name="bubble_btn_start">Let\'s Start! 🫧</string>
+    <string name="bubble_welcome_title">Let\'s blow bubbles together!</string>
+    <string name="bubble_welcome_body">Breathe gently towards the phone, and watch the bubble grow and fly!</string>
+    <string name="bubble_btn_hold">Press &amp; Hold Breath 🌬️</string>
+    <string name="bubble_btn_holding">Blowing now... 🫧</string>
+    <string name="bubble_done_title">Great job! You made %1$d bubbles 🥳</string>
+    <string name="bubble_done_body">You are calmer and stronger now!</string>
 </resources>
 
