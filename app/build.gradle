@@ -4,7 +4,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-// قراءة ملف local.properties لاستخراج مفتاح Gemini
+// قراءة ملف local.properties
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -24,24 +24,30 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        // مفتاح Gemini من local.properties
-        buildConfigField "String", "GEMINI_API_KEY", "\"${localProperties.getProperty('GEMINI_API_KEY', '')}\""
+        buildConfigField "String", "GEMINI_API_KEY",
+                "\"${localProperties.getProperty('GEMINI_API_KEY', '')}\""
+
         ndk {
             abiFilters "armeabi-v7a", "arm64-v8a", "x86", "x86_64"
         }
     }
 
 
+
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile(
+                    'proguard-android-optimize.txt'
+            ), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_11
         targetCompatibility JavaVersion.VERSION_11
     }
+
     buildFeatures {
         viewBinding true
         buildConfig true
@@ -50,59 +56,69 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.11.0'
-    implementation 'androidx.cardview:cardview:1.0.0'
-    implementation 'androidx.activity:activity:1.8.2'
-    implementation 'androidx.core:core:1.12.0'
+
+    // AndroidX
     implementation libs.core.ktx
     implementation libs.appcompat
-    implementation libs.engage.core
-    implementation libs.lifecycle.runtime.ktx
-    implementation libs.material
-    implementation libs.constraintlayout
     implementation libs.activity
     implementation libs.activity.ktx
+    implementation libs.lifecycle.runtime.ktx
+    implementation libs.constraintlayout
     implementation libs.cardview
+    implementation libs.engage.core
+
+    // Material
+    implementation libs.material
+
+    // RecyclerView
     implementation 'androidx.recyclerview:recyclerview:1.3.2'
+
+    // Charts
     implementation libs.mpandroidchart
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+    // Flexbox
+    implementation libs.flexbox
+
+    // Animations
+    implementation libs.lottie
+    implementation libs.rive.android
+
+    // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.0")
 
-    // ⬇️ إضافة جديدة: مكتبة للاتصال بالإنترنت (Gemini API)
+    // Gemini / Network
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
-    // Firebase AI Logic (Gemini Developer API - free tier, no billing needed)
+
+    // Firebase
     implementation platform(libs.firebase.bom)
     implementation libs.firebase.ai
-    implementation "com.google.guava:guava:31.0.1-android"
     implementation "com.google.firebase:firebase-appcheck-debug"
 
-    implementation platform(libs.compose.bom)
-    implementation libs.activity.compose
-    implementation libs.engage.core
-    implementation libs.lifecycle.runtime.ktx
-    implementation libs.material3
+    // Utilities
+    implementation "com.google.guava:guava:31.0.1-android"
 
-    implementation libs.flexbox
-    implementation libs.lottie
-    implementation libs.rive.android
+    // Images
     implementation libs.glide
     implementation libs.shimmer
+    annotationProcessor libs.glide.compiler
 
+    // Jetpack Compose
+    implementation platform(libs.compose.bom)
+    implementation libs.activity.compose
+    implementation libs.material3
     implementation libs.ui
     implementation libs.ui.graphics
     implementation libs.ui.tooling.preview
 
-    // Glide (مكتبة الصور)
-    annotationProcessor libs.glide.compiler
-
     // Testing
     testImplementation libs.junit
+
     androidTestImplementation platform(libs.compose.bom)
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation libs.ui.test.junit4
+
     debugImplementation libs.ui.test.manifest
     debugImplementation libs.ui.tooling
 }

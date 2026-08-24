@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.graduationproject"
     xmlns:tools="http://schemas.android.com/tools">
@@ -11,6 +12,10 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
+
+    <!-- إذن الكاميرا (ميزة ارسم مع نور) -->
+
+
 
     <application
         android:name=".GraduationProjectApplication"
@@ -127,6 +132,43 @@
         <activity
             android:name=".HealingEnvActivity"
             android:exported="false" />
+
+
+
+        <!-- Word of the Week feature (new) -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- Draw-with-Noor feature (new) -->
+
+
+
+
+
+
+
+
+
+
+        <activity
+            android:name=".HealingEnvironmentActivity"
+            android:exported="false" />
+
         <activity
             android:name=".HealingPlayerActivity"
             android:exported="false"
@@ -169,6 +211,16 @@
             android:name=".AnimationDemoActivity"
             android:exported="false"
             android:label="Animation Demo" />
+
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
         <activity
             android:name=".OnBoardingActivity1"
             android:exported="false"
@@ -288,6 +340,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
+
     </application>
 
 </manifest>

@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -21,6 +22,14 @@ public class ResultActivity extends AppCompatActivity {
         String uriString = getIntent().getStringExtra("photo_uri");
         if (uriString != null) {
             imgDrawingSmall.setImageURI(Uri.parse(uriString));
+        }
+
+        TextView tvFeedback = findViewById(R.id.tvFeedback);
+        String feedbackText = getIntent().getStringExtra("feedback_text");
+        if (feedbackText != null && !feedbackText.trim().isEmpty()) {
+            tvFeedback.setText(feedbackText);
+        } else {
+            tvFeedback.setText("رسمتك حلوة كتير يا بطل! 🌟 أنا فخورة فيك ومبسوطة إنك شاركتني إياها 💛");
         }
 
         FrameLayout btnPlayAudio = findViewById(R.id.btnPlayAudio);
