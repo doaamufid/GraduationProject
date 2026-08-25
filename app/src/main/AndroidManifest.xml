@@ -133,6 +133,9 @@
             android:name=".AdultMoodActivity"
             android:exported="false" />
         <activity
+            android:name=".AdultMoodStatsActivity"
+            android:exported="false" />
+        <activity
             android:name=".ReflectionActivity"
             android:exported="false" />
         <activity

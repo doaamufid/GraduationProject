@@ -206,4 +206,9 @@
         <item name="android:textSize">14sp</item>
         <item name="android:alpha">0.75</item>
     </style>
+
+    <style name="adult_stats_Theme.graduationproject" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 </resources>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Sliding white pill that highlights the active segment -->
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- soft shadow below the pill -->
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#1A94A3B8" />
+            <corners android:radius="999dp" />
+        </shape>
+    </item>
+    <!-- white pill on top -->
+    <item
+        android:bottom="1dp"
+        android:left="1dp"
+        android:right="1dp"
+        android:top="1dp">
+        <shape android:shape="rectangle">
+            <solid android:color="@color/surface" />
+            <corners android:radius="999dp" />
+        </shape>
+    </item>
+</layer-list>

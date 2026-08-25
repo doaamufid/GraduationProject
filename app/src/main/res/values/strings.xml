@@ -1331,4 +1331,31 @@
     <string name="adaptive_adult_onboarding_face_good">جيد</string>
     <string name="adaptive_adult_onboarding_face_great">رائع</string>
     <string name="new_child_banner_title">راح تدخل: عالم %s</string>
+
+    <string name="adult_stats_app_name">إحصائيات المزاج</string>
+
+    <string name="adult_stats_screen_title">إحصائيات المزاج</string>
+    <string name="adult_stats_screen_subtitle">بيانات آخر ٣٠ يوم فقط — كل شهر يبدأ سجل جديد</string>
+
+    <string name="adult_stats_tab_day">يوم</string>
+    <string name="adult_stats_tab_week">أسبوع</string>
+    <string name="adult_stats_tab_month">شهر</string>
+
+    <string name="adult_stats_chart_hint">حرّك إصبعك على الخط لتشوف مزاجك بأي لحظة</string>
+
+    <string name="adult_stats_day_sun">أحد</string>
+    <string name="adult_stats_day_mon">إثن</string>
+    <string name="adult_stats_day_tue">ثلا</string>
+    <string name="adult_stats_day_wed">أرب</string>
+    <string name="adult_stats_day_thu">خمس</string>
+    <string name="adult_stats_day_fri">جمعة</string>
+    <string name="adult_stats_day_sat">سبت</string>
+
+    <string name="adult_stats_mood_awful">منهار</string>
+    <string name="adult_stats_mood_sad">حزين</string>
+    <string name="adult_stats_mood_low">محبط</string>
+    <string name="adult_stats_mood_neutral">محايد</string>
+    <string name="adult_stats_mood_calm">مرتاح</string>
+    <string name="adult_stats_mood_happy">سعيد</string>
+    <string name="adult_stats_mood_overjoyed">بهجة كاملة</string>
 </resources>

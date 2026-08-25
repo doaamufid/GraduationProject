@@ -18,6 +18,7 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
 
+import com.example.graduationproject.AdultMoodStatsActivity;
 import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.DailyHabitsActivity;
@@ -144,7 +145,7 @@ public class HomeFragment extends Fragment {
             } else if (title.equals(getString(R.string.home_feature_habits))) {
                 startActivity(new Intent(getActivity(), DailyHabitsActivity.class));
             } else if (title.equals(getString(R.string.home_feature_reports))) {
-                // TODO: Implement ReportsActivity connection when ready
+                startActivity(new Intent(getActivity(), AdultMoodStatsActivity.class));
             } else if (title.equals(getString(R.string.home_feature_community))) {
                 startActivity(new Intent(getActivity(), SalamCommunityActivity.class));
             }

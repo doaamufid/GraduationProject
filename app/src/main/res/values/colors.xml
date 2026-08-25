@@ -318,4 +318,6 @@
     <color name="adaptive_adult_onboarding_card_fill_dark">#0FFFFFFF</color>
     <color name="adaptive_adult_onboarding_card_fill_selected">#29FFE3B0</color>
     <color name="adaptive_adult_onboarding_transparent">#00000000</color>
+    <color name="adult_stats_text_dark">#0F172A</color>
+    <color name="adult_stats_default_background">#E9ECF3</color>
 </resources>

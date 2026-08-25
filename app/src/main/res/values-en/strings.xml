@@ -1306,6 +1306,32 @@
     <string name="adaptive_adult_onboarding_face_good">Good</string>
     <string name="adaptive_adult_onboarding_face_great">Great</string>
     <string name="new_child_banner_title">You will enter: %s\'s World!</string>
+    <string name="adult_stats_app_name">Mood Statistics</string>
+
+    <string name="adult_stats_screen_title">Mood Statistics</string>
+    <string name="adult_stats_screen_subtitle">Data from the last 30 days only — a new record starts each month</string>
+
+    <string name="adult_stats_tab_day">Day</string>
+    <string name="adult_stats_tab_week">Week</string>
+    <string name="adult_stats_tab_month">Month</string>
+
+    <string name="adult_stats_chart_hint">Move your finger along the line to see your mood at any moment</string>
+
+    <string name="adult_stats_day_sun">Sun</string>
+    <string name="adult_stats_day_mon">Mon</string>
+    <string name="adult_stats_day_tue">Tue</string>
+    <string name="adult_stats_day_wed">Wed</string>
+    <string name="adult_stats_day_thu">Thu</string>
+    <string name="adult_stats_day_fri">Fri</string>
+    <string name="adult_stats_day_sat">Sat</string>
+
+    <string name="adult_stats_mood_awful">Overwhelmed</string>
+    <string name="adult_stats_mood_sad">Sad</string>
+    <string name="adult_stats_mood_low">Discouraged</string>
+    <string name="adult_stats_mood_neutral">Neutral</string>
+    <string name="adult_stats_mood_calm">Calm</string>
+    <string name="adult_stats_mood_happy">Happy</string>
+    <string name="adult_stats_mood_overjoyed">Joyful</string>
 </resources>
 
 
