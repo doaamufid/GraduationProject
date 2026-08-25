@@ -12,6 +12,7 @@ import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 
+import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
@@ -73,5 +74,65 @@ public class GeminiService {
                 + "اكتب رسالة تشجيعية واحدة قصيرة جداً (جملة أو جملتين بحد أقصى) "
                 + "باللغة العربية الفصحى المبسطة المناسبة للأطفال، "
                 + "دافئة، محبة، وتشعره بالأمان، بدون أي مقدمات أو شرح، فقط الرسالة نفسها.";
+    }
+    public void sendCustomPrompt(String userMessage, GeminiCallback callback) {
+        String prompt = "أنت صديق لطيف ومرح للأطفال اسمه \"دبدوب نور\". "
+                + "رسالة الطفل هي: \"" + userMessage + "\". "
+                + "رد عليه برفق وبجملة أو جملتين فقط، بلغة عربية بسيطة ومحبة، وبدون مقدمات إضافية.";
+
+        Content content = new Content.Builder().addText(prompt).build();
+        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
+
+        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
+            @Override
+            public void onSuccess(GenerateContentResponse result) {
+                if (result.getText() != null && !result.getText().trim().isEmpty()) {
+                    callback.onSuccess(result.getText().trim());
+                } else {
+                    callback.onError("لم أستطع فهم ذلك يا صديقي!");
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                callback.onError("تأكد من الاتصال بالإنترنت يا بطل!");
+            }
+        }, executor);
+    }
+    public void sendChatHistory(List<ChatMessage> chatMessages, GeminiCallback callback) {
+        StringBuilder fullPrompt = new StringBuilder();
+        fullPrompt.append("أنت صديق لطيف للأطفال اسمك 'دبدوب نور'. تذكر ما قيل في المحادثة ورد بأسلوب محب وقصير (جملة أو جملتين) باللغة العربية المبسطة.\n\n");
+        fullPrompt.append("سجل المحادثة:\n");
+
+        for (ChatMessage msg : chatMessages) {
+            if (msg.isUser()) {
+                fullPrompt.append("الطفل: ").append(msg.getMessage()).append("\n");
+            } else {
+                fullPrompt.append("دبدوب نور: ").append(msg.getMessage()).append("\n");
+            }
+        }
+        fullPrompt.append("دبدوب نور:");
+
+        executeGeminiRequest(fullPrompt.toString(), callback);
+    }
+    private void executeGeminiRequest(String promptText, GeminiCallback callback) {
+        Content content = new Content.Builder().addText(promptText).build();
+        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
+
+        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
+            @Override
+            public void onSuccess(GenerateContentResponse result) {
+                if (result.getText() != null && !result.getText().trim().isEmpty()) {
+                    callback.onSuccess(result.getText().trim());
+                } else {
+                    callback.onError("لم أستطع فهم ذلك يا صديقي!");
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                callback.onError("تأكد من الاتصال بالإنترنت يا بطل!");
+            }
+        }, executor);
     }
 }

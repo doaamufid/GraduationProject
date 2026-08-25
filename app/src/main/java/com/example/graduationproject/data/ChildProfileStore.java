@@ -7,6 +7,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.graduationproject.Kids.ChatMessage;
 import com.example.graduationproject.models.ChildProfile;
 
 import org.json.JSONArray;
@@ -18,7 +19,7 @@ import java.util.List;
 
 public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "children_wellbeing.db";
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5; // تم رفع الإصدار لـ 5 لإضافة جدول الشات
 
     private static final String TABLE_PROFILES = "child_profiles";
     private static final String COLUMN_ID = "id";
@@ -34,6 +35,12 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String COLUMN_EVENT_VALUE = "event_value";
     private static final String COLUMN_NOTES = "notes";
     private static final String COLUMN_OCCURRED_AT = "occurred_at";
+
+    // ⭐ جدول رسائل المحادثة الجديد
+    private static final String TABLE_CHAT = "chat_messages";
+    private static final String COLUMN_MESSAGE_TEXT = "message_text";
+    private static final String COLUMN_IS_USER = "is_user";
+    private static final String COLUMN_TIMESTAMP = "timestamp";
 
     private static final String OLD_PREFS_NAME = "child_profiles_prefs";
     private static final String OLD_KEY_PROFILES = "child_profiles";
@@ -68,6 +75,20 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                 + COLUMN_OCCURRED_AT + " INTEGER NOT NULL, "
                 + "FOREIGN KEY(" + COLUMN_CHILD_ID + ") REFERENCES " + TABLE_PROFILES + "(" + COLUMN_ID + ") ON DELETE CASCADE"
                 + ")");
+
+        // ⭐ إنشاء جدول المحادثات
+        createChatTable(db);
+    }
+
+    private void createChatTable(SQLiteDatabase db) {
+        db.execSQL("CREATE TABLE IF NOT EXISTS " + TABLE_CHAT + " ("
+                + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + COLUMN_CHILD_ID + " INTEGER NOT NULL, "
+                + COLUMN_MESSAGE_TEXT + " TEXT NOT NULL, "
+                + COLUMN_IS_USER + " INTEGER NOT NULL, "
+                + COLUMN_TIMESTAMP + " INTEGER NOT NULL, "
+                + "FOREIGN KEY(" + COLUMN_CHILD_ID + ") REFERENCES " + TABLE_PROFILES + "(" + COLUMN_ID + ") ON DELETE CASCADE"
+                + ")");
     }
 
     @Override
@@ -76,6 +97,42 @@ public class ChildProfileStore extends SQLiteOpenHelper {
             db.execSQL("ALTER TABLE " + TABLE_PROFILES
                     + " ADD COLUMN " + COLUMN_GENDER + " TEXT NOT NULL DEFAULT 'غير محدد'");
         }
+        if (oldVersion < 5) {
+            createChatTable(db);
+        }
+    }
+
+    // --- ⭐ دوال حفظ واسترجاع المحادثات من SQLite ---
+
+    public long addChatMessage(long childId, String messageText, boolean isUser) {
+        ContentValues values = new ContentValues();
+        values.put(COLUMN_CHILD_ID, childId);
+        values.put(COLUMN_MESSAGE_TEXT, messageText);
+        values.put(COLUMN_IS_USER, isUser ? 1 : 0);
+        values.put(COLUMN_TIMESTAMP, System.currentTimeMillis());
+        return getWritableDatabase().insert(TABLE_CHAT, null, values);
+    }
+
+    public List<ChatMessage> getChatHistory(long childId) {
+        List<ChatMessage> messages = new ArrayList<>();
+        String selection = COLUMN_CHILD_ID + " = ?";
+        String[] selectionArgs = new String[]{String.valueOf(childId)};
+
+        try (Cursor cursor = getReadableDatabase().query(
+                TABLE_CHAT,
+                new String[]{COLUMN_MESSAGE_TEXT, COLUMN_IS_USER},
+                selection,
+                selectionArgs,
+                null,
+                null,
+                COLUMN_TIMESTAMP + " ASC")) {
+            while (cursor.moveToNext()) {
+                String text = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MESSAGE_TEXT));
+                boolean isUser = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_USER)) == 1;
+                messages.add(new ChatMessage(text, isUser));
+            }
+        }
+        return messages;
     }
 
     public void migrateFromSharedPreferencesIfNeeded(Context context) {
@@ -143,7 +200,6 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         return getWritableDatabase().insert(TABLE_EVENTS, null, values);
     }
 
-    // ⭐ إضافة الدالة المفقودة لتسجيل الأحداث المكتملة بسهولة
     public long addCompletedEvent(long childId, String eventType) {
         return addBehaviorEvent(childId, eventType, "COMPLETED", "تم إنجاز التحدي اليومي", System.currentTimeMillis());
     }
@@ -157,7 +213,6 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     public boolean hasCompletedEventToday(long childId, String eventType) {
         SQLiteDatabase db = getReadableDatabase();
 
-        // تحديد بداية اليوم الحالي (00:00:00)
         java.util.Calendar calendar = java.util.Calendar.getInstance();
         calendar.set(java.util.Calendar.HOUR_OF_DAY, 0);
         calendar.set(java.util.Calendar.MINUTE, 0);

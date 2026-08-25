@@ -997,7 +997,6 @@
     <string name="stage_tree">Tree Stage</string>
     <string name="stage_fruit_tree">Fruitful Tree</string>
     <!-- New Child Profile Strings (English) -->
-    <string name="new_child_banner_title">Welcome %1$s!</string>
     <string name="fill_all_fields_toast">Please fill all fields and select age and avatar</string>
     <!-- Voice Sheet -->
     <string name="kids_chat_sheet_cancel">Cancel</string>
@@ -1306,6 +1305,7 @@
     <string name="adaptive_adult_onboarding_face_neutral">Normal</string>
     <string name="adaptive_adult_onboarding_face_good">Good</string>
     <string name="adaptive_adult_onboarding_face_great">Great</string>
+    <string name="new_child_banner_title">You will enter: %s\'s World!</string>
 </resources>
 
 

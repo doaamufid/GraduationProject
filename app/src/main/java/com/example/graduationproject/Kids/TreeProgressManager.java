@@ -11,21 +11,18 @@ public class TreeProgressManager {
 
     private final SharedPreferences prefs;
     private final Context context;
-    private final String childName; // حفظ اسم الطفل الحالي
+    private final String childName;
 
-    // البناء المعدل لاستقبال اسم الطفل
     public TreeProgressManager(Context context, String childName) {
         this.context = context;
         this.childName = (childName != null && !childName.trim().isEmpty()) ? childName.trim() : "default_child";
         this.prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
 
-    // بناء افتراضي لمنع كسر الكود القديم إن وجد
     public TreeProgressManager(Context context) {
         this(context, "default_child");
     }
 
-    // مفتاح خزن ديناميكي خاص بكل طفل
     private String getChildKey() {
         return KEY_POINTS_PREFIX + childName;
     }
@@ -36,7 +33,7 @@ public class TreeProgressManager {
     }
 
     public int getPoints() {
-        return prefs.getInt(getChildKey(), 0); // القيمة الافتراضية 0 لكل طفل جديد
+        return prefs.getInt(getChildKey(), 0);
     }
 
     public void resetPoints() {
@@ -45,28 +42,18 @@ public class TreeProgressManager {
 
     public int getStageNumber() {
         int points = getPoints();
-        if (points < 50) return 1;
-        if (points < 150) return 2;
-        if (points < 300) return 3;
-        return 4;
+        if (points < 50) return 1;  // البذرة (0 - 49 نقطة)
+        if (points < 150) return 2; // البرعم (50 - 149 نقطة)
+        if (points < 300) return 3; // الشجرة (150 - 299 نقطة)
+        return 4;                   // الشجرة المثمرة (300+ نقطة)
     }
 
-    // جلب اسم المرحلة مترجم تلقائياً حسب لغة الجهاز
     public String getStageName() {
         switch (getStageNumber()) {
-            case 1: return context.getString(R.string.stage_sprout);
-            case 2: return context.getString(R.string.stage_bud);
-            case 3: return context.getString(R.string.stage_tree);
-            default: return context.getString(R.string.stage_fruit_tree);
-        }
-    }
-
-    public int getStageImageRes() {
-        switch (getStageNumber()) {
-            case 1: return R.drawable.ic_plant_sprout;
-            case 2: return R.drawable.ic_plant_bud;
-            case 3: return R.drawable.ic_tree_growing;
-            default: return R.drawable.ic_tree_fruit;
+            case 1: return "مرحلة البذرة";
+            case 2: return "مرحلة البرعم";
+            case 3: return "مرحلة الشجرة";
+            default: return "مرحلة الشجرة المثمرة";
         }
     }
 

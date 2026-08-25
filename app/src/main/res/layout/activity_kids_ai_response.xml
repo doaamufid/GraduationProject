@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAF1E6"
+    android:layoutDirection="rtl"
+    android:textDirection="rtl"
+    tools:context=".Kids.KidsAiResponseActivity">
+
+    <!-- Circle Back Button -->
+    <ImageButton
+        android:id="@+id/btn_back"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/bg_icon_button"
+        android:contentDescription="رجوع"
+        android:padding="10dp"
+        android:src="@drawable/outline_arrow_forward_24"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#8B6F4D" />
+
+    <!-- Bear Avatar Head -->
+    <TextView
+        android:id="@+id/tv_bear_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="🐻"
+        android:textSize="72sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Response Content Layout -->
+    <LinearLayout
+        android:id="@+id/group_response_state"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingHorizontal="24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bear_avatar">
+
+        <!-- Speech Bubble Card -->
+        <TextView
+            android:id="@+id/tv_ai_response_text"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_kids_mood_card"
+            android:gravity="center"
+            android:paddingHorizontal="20dp"
+            android:paddingVertical="18dp"
+            android:text="يا بطلي الجميل، حتى النجوم الجصيلة تحتاج للراحة أحياناً. وأنا هنا لأحضنك وأحميك حتى تصبح أفضل."
+            android:textColor="#3D291F"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <!-- Listen Button Pill -->
+        <TextView
+            android:id="@+id/btn_listen_voice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="#D8EBE4"
+            android:gravity="center"
+            android:paddingHorizontal="22dp"
+            android:paddingVertical="10dp"
+            android:text="اسمع رد نور 🔊"
+            android:textColor="#598F7A"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <!-- Title Question -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="وش نحب نسوي الحين؟"
+            android:textColor="#8B6F4D"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- Option 1: خذ نفس معي -->
+        <TextView
+            android:id="@+id/btn_action_breath"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="12dp"
+            android:background="#FDE8D7"
+            android:gravity="center"
+            android:text="خذ نفس معي 🫧"
+            android:textColor="#E07026"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Option 2: ارسم كيف حاسس -->
+        <TextView
+            android:id="@+id/btn_action_draw"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="#E3EFE9"
+            android:gravity="center"
+            android:text="ارسم كيف حاسس 🎨"
+            android:textColor="#427A65"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Option 3: شوف شجرتك -->
+        <TextView
+            android:id="@+id/btn_action_tree"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="#EAF2D7"
+            android:gravity="center"
+            android:text="شوف شجرتك 🌳"
+            android:textColor="#4A6B22"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Option 4: احكي مع دبدوب (محادثة مفتوحة) -->
+        <!-- Option 4: احكي مع صديقك -->
+        <TextView
+            android:id="@+id/btn_action_chat"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_kids_mood_card"
+            android:gravity="center"
+            android:text="احكي مع صديقك 💬"
+            android:textColor="#3D291F"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+        <!-- Option 5: خلص، أنا أحسن الحين -->
+        <TextView
+            android:id="@+id/btn_action_better"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/bg_kids_mood_card"
+            android:gravity="center"
+            android:text="خلص، أنا أحسن الحين 💛"
+            android:textColor="#8B6F4D"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

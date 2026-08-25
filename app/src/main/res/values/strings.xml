@@ -493,7 +493,6 @@
     <string name="exercise_tag">تمرين</string>
 
 
-
     <!-- Add trait dialog -->
     <string name="add_trait_title">أضف صفة لاحظتها بنفسك</string>
 
@@ -690,7 +689,6 @@
     <string name="new_child_info_banner">راح ندخل عالم نور\nمضمون والمحادثة مناسبة لعمرك بالضبط</string>
     <string name="new_child_btn_submit">يلا نبدأ!</string>
     <string name="new_child_banner_subtitle">محتوى وأنشطة مناسبة لعمرك بالضبط</string>
-    <string name="new_child_banner_title">راح تدخل: عالم نور </string>
     <string name="fill_all_fields_toast">الرجاء تعبئة كافة البيانات</string>
     <string name="new_child_secret_note">سرك بينك وبين نور — ما نطلب اسمك الحقيقي 💛</string>
     <string name="bubble_quiet_exit">✕ خلص، أنا مرتاح</string>
@@ -938,7 +936,7 @@
     <string name="chat_node_freeReply_bot">أسمعك، وهذا الكلام مهم. خذ وقتك، أنا هنا معك خطوة بخطوة.</string>
     <string name="chat_reply_freeReply_breathing">جرب تمرين تنفس</string>
     <string name="chat_reply_freeReply_closing">بس حبيت أحكي</string>
-<!-- Splash select screen -->
+    <!-- Splash select screen -->
     <string name="splash_back">رجوع</string>
     <string name="splash_salam">سلام</string>
     <string name="splash_question">لمن هذا المكان؟</string>
@@ -947,7 +945,7 @@
     <string name="splash_adults_subtitle">مساحة هادئة للتأمل والدعم النفسي</string>
     <string name="splash_kids_title">للأطفال</string>
     <string name="splash_kids_subtitle">عالم ممتع وآمن لك!</string>
-<!-- Chat screen -->
+    <!-- Chat screen -->
     <string name="chat_back">رجوع</string>
     <string name="chat_send">إرسال</string>
     <string name="chat_voice_record">اسجل رسالة صوتية</string>
@@ -961,7 +959,7 @@
     <string name="chat_voice_perm_msg">نحتاج إذن الميكروفون لتتمكن من تسجيل رسائل صوتية مع رفيقك.</string>
     <string name="chat_voice_perm_denied">تم رفض إذن الميكروفون. يمكنك منحه من الإعدادات للمتابعة.</string>
     <string name="chat_voice_sent_toast">تم إرسال الرسالة الصوتية 🎙️</string>
-<!-- Home screen -->
+    <!-- Home screen -->
     <string name="home_friend">صديقي</string>
     <string name="home_greeting_format">صباح الخير %1$s كيف تشعر الآن؟\nأنا هنا معك 🌊</string>
     <string name="home_greeting_default">صباح الخير كيف تشعر الآن؟\nأنا هنا معك 🌊</string>
@@ -981,7 +979,7 @@
     <string name="home_feature_reports_sub">REPORTS</string>
     <string name="home_feature_community">مجتمع سلام</string>
     <string name="home_feature_community_sub">COMMUNITY</string>
-<!-- Language selection -->
+    <!-- Language selection -->
     <string name="language_selection_title">اختر لغتك</string>
     <string name="language_selection_subtitle">اختر اللغة التي تناسبك أكثر</string>
     <string name="language_arabic">العربية</string>
@@ -1011,10 +1009,10 @@
     <string name="stage_tree">مرحلة الشجرة</string>
     <string name="stage_fruit_tree">الشجرة المثمرة</string>
     <!-- New Child Profile Strings (Arabic) -->
-<!--    <string name="stage_sprout">برعم صغير</string>-->
-<!--    <string name="stage_bud">نبتة نامية</string>-->
-<!--    <string name="stage_tree">شجرة قوية</string>-->
-<!--    <string name="stage_fruit_tree">شجرة مثمرة</string>-->
+    <!--    <string name="stage_sprout">برعم صغير</string>-->
+    <!--    <string name="stage_bud">نبتة نامية</string>-->
+    <!--    <string name="stage_tree">شجرة قوية</string>-->
+    <!--    <string name="stage_fruit_tree">شجرة مثمرة</string>-->
     <!-- Controls & Inputs -->
     <string name="kids_chat_press_and_talk">اضغط واحكيلي</string>
     <string name="kids_chat_switch_to_text">أو اكتب</string>
@@ -1082,14 +1080,12 @@
     <string name="stage_fruit_tree_locked_status">🔒 تحتاج 50 نقطة لوصولها!</string>
 
 
+    <!-- مراحل الشجرة -->
 
-
-        <!-- مراحل الشجرة -->
-
-        <!-- رسائل الواجهة -->
-        <string name="tree_points_format">اليوم: %d نقطة</string>
-        <string name="tree_stage_description">شجرتك في مرحلة %s</string>
-        <string name="breathing_success_toast">أحسنت! أضفت 10 نقاط لشجرتك 🌳✨</string>
+    <!-- رسائل الواجهة -->
+    <string name="tree_points_format">اليوم: %d نقطة</string>
+    <string name="tree_stage_description">شجرتك في مرحلة %s</string>
+    <string name="breathing_success_toast">أحسنت! أضفت 10 نقاط لشجرتك 🌳✨</string>
     <string name="level_up_congrats">مبارك! لقد نموت شجرتك 🥳</string>
     <string name="level_up_stage_reached">أنت الآن في مرحلة: %1$s %2$s</string>
     <string name="level_up_points_earned">+%1$d نقطة إضافية 🌟</string>
@@ -1174,7 +1170,6 @@
 
     <string name="minute_1">دقيقة</string>
     <string name="minutes_n">دقائق</string>
-
 
 
     <string name="mood_entry_title">إنشاء يومية جديدة</string>
@@ -1335,4 +1330,5 @@
     <string name="adaptive_adult_onboarding_face_neutral">عادي</string>
     <string name="adaptive_adult_onboarding_face_good">جيد</string>
     <string name="adaptive_adult_onboarding_face_great">رائع</string>
+    <string name="new_child_banner_title">راح تدخل: عالم %s</string>
 </resources>

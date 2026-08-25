@@ -103,18 +103,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_secret_note" />
 
-    <LinearLayout
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_ages"
         android:layout_width="0dp"
         android:layout_height="45dp"
         android:layout_marginStart="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
-        android:gravity="center_vertical"
         android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/lbl_age" />
+        app:layout_constraintTop_toBottomOf="@id/lbl_age"
+        tools:listitem="@layout/item_age_selector" />
 
     <TextView
         android:id="@+id/lbl_gender"
@@ -192,43 +193,37 @@
         </LinearLayout>
     </LinearLayout>
 
+
     <TextView
-        android:id="@+id/tv_avatar_label"
-        android:layout_width="0dp"
+        android:id="@+id/lbl_avatar"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="24dp"
-        android:gravity="end"
-        android:text="اختر شخصيتك المفضلة ✨"
-        android:textColor="#5D4037"
-        android:textSize="14sp"
+        android:layout_marginTop="12dp"
+        android:text="اختر شكل شخصيتك المفضل ✨"
+        android:textColor="#4B2D24"
+        android:textSize="15sp"
         android:textStyle="bold"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/layout_gender" />
+        app:layout_constraintTop_toBottomOf="@id/layout_gender"
+        tools:visibility="visible" />
 
-    <HorizontalScrollView
-        android:id="@+id/avatar_scroll"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_avatars"
         android:layout_width="0dp"
-        android:layout_height="60dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="20dp"
-        android:scrollbars="none"
+        android:layout_height="45dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal"
         android:visibility="gone"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_avatar_label">
-
-        <LinearLayout
-            android:id="@+id/avatar_container"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:orientation="horizontal" />
-    </HorizontalScrollView>
+        app:layout_constraintTop_toBottomOf="@id/lbl_avatar"
+        tools:listitem="@layout/item_age_selector"
+        tools:visibility="visible" />
 
     <LinearLayout
         android:id="@+id/card_info_banner"
@@ -244,7 +239,7 @@
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/avatar_scroll"
+        app:layout_constraintTop_toBottomOf="@id/rv_avatars"
         tools:visibility="visible">
 
         <TextView

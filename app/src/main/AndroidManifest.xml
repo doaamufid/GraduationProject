@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
-
     <!-- إذن المايك لتسجيل الصوت في شات الأطفال -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <!-- Allow network image loading (Glide, Picasso, etc.) -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" /> <!-- Allow network image loading (Glide, Picasso, etc.) -->
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -17,228 +15,183 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
-
-        <!-- شاشة البداية الرئيسية SplashActivity -->
+        <activity
+            android:name=".Kids.KidsAiResponseActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsAiCompanionActivity"
+            android:exported="false" /> <!-- شاشة البداية الرئيسية SplashActivity -->
         <activity
             android:name=".SplashActivity"
-            android:exported="true" >
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
             android:name=".Kids.ChildProfilesActivity"
             android:exported="false" />
-
+        <activity
+            android:name=".Kids.ChildProfilesActivity"
+            android:exported="false" />
         <activity
             android:name=".VideoLibraryActivity"
             android:exported="false" />
-
         <activity
             android:name=".ExerciseTimerActivity"
             android:exported="false" />
-
         <activity
             android:name=".MindfulnessQuotesActivity"
             android:exported="false" />
-
         <activity
             android:name=".Kids.KidsAiChatActivity"
             android:exported="false" />
-
         <activity
             android:name=".Kids.KidsBubbleBreathingActivity"
             android:exported="false" />
-
         <activity
             android:name=".Kids.NewChildProfileActivity"
             android:exported="false" />
-
-        <activity
-            android:name=".Kids.ChildProfilesActivity"
-            android:exported="false" />
-
         <activity
             android:name=".HealingEnvActivity"
             android:exported="false" />
-
         <activity
             android:name=".CbtChatActivity"
             android:exported="false" />
-
         <activity
             android:name=".ReframingActivity"
             android:exported="false" />
-
         <activity
             android:name=".BodyMapActivity"
             android:exported="false" />
-
         <activity
             android:name=".BreathingActivity"
             android:exported="true" />
-
         <activity
             android:name=".ChatActivity"
             android:exported="false" />
-
         <activity
             android:name=".ChatMainActivity"
             android:exported="false" />
-
         <activity
             android:name=".MoodDashboardActivity"
             android:exported="false" />
-
         <activity
             android:name=".MoodTrackerActivity"
             android:exported="false" />
-
         <activity
             android:name=".SurvivalBoxActivity"
             android:exported="false"
             android:theme="@style/Theme.SurvivalBox" />
-
         <activity
             android:name=".ArticlesActivity"
             android:exported="false" />
-
         <activity
             android:name=".MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".AnimationDemoActivity"
-            android:label="Animation Demo"
-            android:exported="false" />
-
-        <activity
-            android:name=".SplashActivity"
-            android:exported="true" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-
+            android:exported="false"
+            android:label="Animation Demo" />
         <activity
             android:name=".OnBoardingActivity1"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".OnBoardingActivity2"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".OnBoardingActivity3"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".OnBoardingActivity4"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".GroundingExActivity"
             android:exported="false" />
-
         <activity
             android:name=".DailyHabitsActivity"
             android:exported="false" />
-
         <activity
             android:name=".AdultOnboardingMainActivity"
             android:exported="false" />
-
         <activity
             android:name=".AdultMoodActivity"
             android:exported="false" />
-
         <activity
             android:name=".ReflectionActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.AISuggestionsActivity"
             android:exported="false" />
-
         <activity
             android:name=".SplashSelectActivity"
             android:exported="false"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".FutureActivity"
             android:exported="false"
             android:label="@string/title_activity_future"
             android:theme="@style/Theme.GraduationProject"
             android:windowSoftInputMode="adjustResize" />
-
         <activity
             android:name=".ui.AllMessagesActivity"
             android:exported="false"
             android:theme="@style/Theme.GraduationProject"
             android:windowSoftInputMode="adjustResize" />
-
-
         <activity
             android:name=".SalamCommunityActivity"
             android:exported="false" />
-
         <activity
             android:name=".AdultProfileActivity"
             android:exported="false" />
-
         <activity
             android:name=".CBTRReframingActivity"
             android:exported="false" />
-
         <activity
             android:name=".NotificationsActivity"
             android:exported="false" />
-
         <activity
             android:name=".SettingsActivity"
             android:exported="false" />
-
         <activity
             android:name=".StrenghtBankActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.StrengthsBankActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.profile.settings.ChildProfilesActivity"
             android:exported="false" />
-
         <activity
             android:name=".ui.MainActivity"
             android:exported="false" />
-
         <activity
             android:name=".Kids.KidsTreeIntroActivity"
             android:exported="false" />
-
         <activity
             android:name=".Kids.KidsTreeActivity"
             android:exported="false" />
-
         <activity
             android:name=".Kids.KidsTreeLevelUpActivity"
             android:exported="false" />
-
         <activity
             android:name=".OneClickCalmActivity"
             android:exported="false" />
-
     </application>
 
 </manifest>

@@ -12,6 +12,7 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <!-- الشريط العلوي -->
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -36,6 +37,7 @@
                 android:textStyle="bold" />
         </RelativeLayout>
 
+        <!-- كارد نقاط اليوم -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,7 +56,7 @@
                     android:id="@+id/tvPointsCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="اليوم: 30 نقطة"
+                    android:text="نقاط اليوم: 0"
                     android:textColor="#FFFFFF"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -69,6 +71,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- كارد الشجرة والمراحل -->
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -88,7 +91,7 @@
                     android:id="@+id/tvTreeEmoji"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="🌳"
+                    android:text="🌱"
                     android:textSize="80sp" />
 
                 <TextView
@@ -96,7 +99,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="4dp"
-                    android:text="شجرتك في مرحلة شجرة"
+                    android:text="مرحلة البذرة"
                     android:textColor="#3A5A40"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -105,10 +108,11 @@
                     android:id="@+id/tvStageSubtitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="المرحلة 3 من 4"
+                    android:text="المرحلة 1 من 4"
                     android:textColor="#888888"
                     android:textSize="11sp" />
 
+                <!-- خط المراحل -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -120,7 +124,7 @@
                         android:id="@+id/stage1Icon"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:background="#E8F5E9"
+                        android:background="#3A5A40"
                         android:gravity="center"
                         android:text="🌱"
                         android:textSize="14sp" />
@@ -128,13 +132,13 @@
                     <View
                         android:layout_width="20dp"
                         android:layout_height="2dp"
-                        android:background="#81C784" />
+                        android:background="#E0E0E0" />
 
                     <TextView
                         android:id="@+id/stage2Icon"
                         android:layout_width="36dp"
                         android:layout_height="36dp"
-                        android:background="#E8F5E9"
+                        android:background="#F5F5F5"
                         android:gravity="center"
                         android:text="🌿"
                         android:textSize="14sp" />
@@ -142,16 +146,16 @@
                     <View
                         android:layout_width="20dp"
                         android:layout_height="2dp"
-                        android:background="#81C784" />
+                        android:background="#E0E0E0" />
 
                     <TextView
                         android:id="@+id/stage3Icon"
-                        android:layout_width="42dp"
-                        android:layout_height="42dp"
-                        android:background="#3A5A40"
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="#F5F5F5"
                         android:gravity="center"
                         android:text="🌳"
-                        android:textSize="20sp" />
+                        android:textSize="14sp" />
 
                     <View
                         android:layout_width="20dp"
@@ -173,7 +177,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
-                    android:text="🌱 68% نمو مرحلة شجرة"
+                    android:text="🌱 0% نمو مرحلة البذرة"
                     android:textColor="#588157"
                     android:textSize="12sp"
                     android:textStyle="bold" />
@@ -181,6 +185,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
 
+        <!-- زر شو انجزت اليوم -->
         <Button
             android:id="@+id/btnOpenDailyActions"
             android:layout_width="match_parent"
@@ -202,85 +207,150 @@
             android:textSize="16sp"
             android:textStyle="bold" />
 
+        <!-- الأوسمة مع وجود فواصل بينها -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
-            android:orientation="horizontal"
-            android:weightSum="3">
+            android:orientation="vertical">
 
+            <!-- الصف الأول (صديق نور + مستمر) -->
             <LinearLayout
-                android:id="@+id/badgeMotamel"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:layout_marginBottom="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#E8F5E9"
-                    android:gravity="center"
-                    android:text="🧠"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/badgeFriend"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="مُتأمل"
-                    android:textSize="12sp" />
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tvIconFriend"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:gravity="center"
+                        android:text="🐻"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="صديق نور"
+                        android:textColor="#3A5A40"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/badgeMostamer"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tvIconMostamer"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:gravity="center"
+                        android:text="🔥"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="مستمر"
+                        android:textColor="#3A5A40"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
 
+            <!-- الصف الثاني (يومي + مُتأمل) -->
             <LinearLayout
-                android:id="@+id/badgeYawmi"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
+                android:baselineAligned="false"
+                android:orientation="horizontal">
 
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#E8F5E9"
-                    android:gravity="center"
-                    android:text="⭐"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/badgeYawmi"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="يومي"
-                    android:textSize="12sp" />
+                    android:layout_weight="1"
+                    android:layout_marginEnd="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tvIconYawmi"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:gravity="center"
+                        android:text="⭐"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="يومي"
+                        android:textColor="#3A5A40"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/badgeMotamel"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:id="@+id/tvIconMotamel"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:gravity="center"
+                        android:text="🧠"
+                        android:textSize="24sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="مُتأمل"
+                        android:textColor="#3A5A40"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
             </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/badgeMostamer"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:background="#F5F5F5"
-                    android:gravity="center"
-                    android:text="🔒"
-                    android:textSize="24sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="مستمر"
-                    android:textSize="12sp" />
-            </LinearLayout>
         </LinearLayout>
-
     </LinearLayout>
 </ScrollView>

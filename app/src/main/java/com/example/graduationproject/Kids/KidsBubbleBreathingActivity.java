@@ -62,14 +62,16 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
             return insets;
         });
 
-        binding.btnGoToTree.setOnClickListener(v -> {
-            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeIntroActivity.class);
+        binding.btnGoTree.setOnClickListener(v -> {
+            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeActivity.class);
+            intent.putExtra("CHILD_ID", getCurrentChildId());
             startActivity(intent);
             finish();
         });
 
         binding.btnDone.setOnClickListener(v -> {
-            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeIntroActivity.class);
+            Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeActivity.class);
+            intent.putExtra("CHILD_ID", getCurrentChildId());
             startActivity(intent);
             finish();
         });
@@ -204,25 +206,29 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
     }
 
     private void saveBreathingAchievement() {
-        ChildProfileStore store = new ChildProfileStore(this);
         long currentChildId = getCurrentChildId();
 
-        // إضافة الحدث مباشرة للجدول في SQLite
-        store.addBehaviorEvent(
-                currentChildId,
-                "BREATHING_EXERCISE",
-                "COMPLETED",
-                "أتم الطفل تمرين التنفس بنجاح",
-                System.currentTimeMillis()
-        );
+        ChildProfileStore store = new ChildProfileStore(this);
+        // 1. تسجيل الحدث بالـ Long الموحد
+        store.addCompletedEvent(currentChildId, "BREATHING_EXERCISE");
+
+        // 2. استخدام نفس المفتاح بالضبط للشجرة
+        TreeProgressManager progressManager = new TreeProgressManager(this, String.valueOf(currentChildId));
+        progressManager.addPoints(15);
     }
 
     private long getCurrentChildId() {
+        // 1. القراءة من الـ Intent إذا كان موجوداً
         long id = getIntent().getLongExtra("CHILD_ID", -1L);
+
+        // 2. إذا لم يوجد في الـ Intent، نفحص الملفين الاحتياطيين المشهورين بالتطبيق
         if (id == -1L) {
             id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
         }
-        return id;
+        if (id == -1L) {
+            id = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", 1L);
+        }
+        return (id == -1L) ? 1L : id; // إذا كان فارغاً تماماً يعتمد 1 كمعرف افتراضي
     }
 
     private void resetExercise() {

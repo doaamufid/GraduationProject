@@ -30,12 +30,12 @@
         android:layout_marginTop="28dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/bg_icon_button"
-        android:src="@drawable/outline_arrow_forward_24"
+        android:contentDescription="رجوع"
         android:padding="10dp"
-        app:tint="#8B6F4D"
+        android:src="@drawable/outline_arrow_forward_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:contentDescription="رجوع" />
+        app:tint="#8B6F4D" />
 
     <!-- Badge Header (Rounded Rectangle shape) -->
     <TextView
@@ -110,7 +110,7 @@
                 <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2dp" android:text="حزين" android:textColor="#4B2D24" android:textSize="12sp" android:textStyle="bold"/>
             </LinearLayout>
 
-            <!-- 3. زعلان -->
+            <!-- 3. غضبان -->
             <LinearLayout
                 android:layout_width="96dp"
                 android:layout_height="76dp"
@@ -281,111 +281,7 @@
             android:indeterminateTint="#F47C2B" />
     </LinearLayout>
 
-    <!-- ==================== STATE 3: AI RESPONSE STATE (Hidden initially) ==================== -->
-    <LinearLayout
-        android:id="@+id/group_response_state"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:gravity="center_horizontal"
-        android:orientation="vertical"
-        android:paddingHorizontal="24dp"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_bear_avatar">
+    <!-- ==================== STATE 3: AI RESPONSE STATE ==================== -->
 
-        <!-- Speech Bubble Card -->
-        <TextView
-            android:id="@+id/tv_ai_response_text"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/bg_kids_mood_card"
-            android:gravity="center"
-            android:paddingHorizontal="20dp"
-            android:paddingVertical="18dp"
-            android:text="تعبك مسموع، خذ راحتك شوي."
-            android:textColor="#3D291F"
-            android:textSize="18sp"
-            android:textStyle="bold" />
-
-        <!-- Listen Button Pill -->
-        <TextView
-            android:id="@+id/btn_listen_voice"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:background="#D8EBE4"
-            android:gravity="center"
-            android:paddingHorizontal="22dp"
-            android:paddingVertical="10dp"
-            android:text="اسمع رد نور 🔊"
-            android:textColor="#598F7A"
-            android:textSize="14sp"
-            android:textStyle="bold" />
-
-        <!-- Title Question -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="28dp"
-            android:text="وش تحب تسوي الحين؟"
-            android:textColor="#8B6F4D"
-            android:textSize="15sp"
-            android:textStyle="bold" />
-
-        <!-- Option 1: خذ نفس معي -->
-        <TextView
-            android:id="@+id/btn_action_breath"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="14dp"
-            android:background="#FDE8D7"
-            android:gravity="center"
-            android:text="خذ نفس معي 🫧"
-            android:textColor="#E07026"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <!-- Option 2: ارسم كيف حاسس -->
-        <TextView
-            android:id="@+id/btn_action_draw"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="12dp"
-            android:background="#E3EFE9"
-            android:gravity="center"
-            android:text="ارسم كيف حاسس 🎨"
-            android:textColor="#427A65"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-        <!-- Option: زر شجرتك -->
-        <TextView
-            android:id="@+id/btn_action_tree"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="12dp"
-            android:background="#EAF2D7"
-            android:gravity="center"
-            android:text="شوف شجرتك 🌳"
-            android:textColor="#4A6B22"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-        <!-- Option 3: خلص، أنا أحسن الحين -->
-        <TextView
-            android:id="@+id/btn_action_better"
-            android:layout_width="match_parent"
-            android:layout_height="52dp"
-            android:layout_marginTop="12dp"
-            android:background="@drawable/bg_kids_mood_card"
-            android:gravity="center"
-            android:text="خلص، أنا أحسن الحين 💛"
-            android:textColor="#8B6F4D"
-            android:textSize="16sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

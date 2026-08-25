@@ -1,7 +1,5 @@
 package com.example.graduationproject.Kids;
 
-import static android.content.ContentValues.TAG;
-
 import android.Manifest;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
@@ -12,7 +10,6 @@ import android.graphics.Paint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -30,7 +27,6 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.example.graduationproject.R;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityKidsAiChatBinding;
 import com.example.graduationproject.databinding.LayoutVoiceRecordingBottomSheetBinding;
@@ -45,8 +41,6 @@ public class KidsAiChatActivity extends AppCompatActivity {
     private LayoutVoiceRecordingBottomSheetBinding sheetBinding;
     private GeminiService geminiService;
     private SpeechHelper speechHelper;
-    private TextToSpeech textToSpeech;
-    private boolean isTtsReady = false;
 
     private BottomSheetDialog recordingBottomSheet;
     private final Handler timerHandler = new Handler(Looper.getMainLooper());
@@ -85,34 +79,10 @@ public class KidsAiChatActivity extends AppCompatActivity {
 
         // Initialize Services
         geminiService = new GeminiService();
-        initTextToSpeech();
         initSpeechHelper();
 
         setupListeners();
         startEntranceAnimations();
-        binding.btnActionTree.setOnClickListener(v -> {
-            // الكود الخاص بالانتقال لشاشة الشجرة
-            Intent intent = new Intent(KidsAiChatActivity.this, KidsTreeIntroActivity.class); // استبدلي TreeActivity باسم شاشتك
-            startActivity(intent);
-        });
-    }
-
-    private void initTextToSpeech() {
-        textToSpeech = new TextToSpeech(this, status -> {
-            if (status == TextToSpeech.SUCCESS) {
-                int result = textToSpeech.setLanguage(new Locale("ar"));
-                if (result == TextToSpeech.LANG_MISSING_DATA || result == TextToSpeech.LANG_NOT_SUPPORTED) {
-                    Log.e("TTS", "اللغة العربية غير مدعومة بالكامل على هذا المحاكي");
-                }
-                isTtsReady = true;
-            }
-        });
-    }
-
-    private void speakText(String text) {
-        if (textToSpeech != null && !text.isEmpty()) {
-            textToSpeech.speak(text, TextToSpeech.QUEUE_FLUSH, null, "NourSpeechID");
-        }
     }
 
     private void initSpeechHelper() {
@@ -129,6 +99,119 @@ public class KidsAiChatActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    private void setupListeners() {
+        binding.btnSwitchToText.setPaintFlags(binding.btnSwitchToText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+        binding.btnSwitchToVoice.setPaintFlags(binding.btnSwitchToVoice.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
+
+        binding.btnSwitchToText.setOnClickListener(v -> animateStateTransition(binding.layoutVoiceInput, binding.layoutTextInput));
+        binding.btnSwitchToVoice.setOnClickListener(v -> animateStateTransition(binding.layoutTextInput, binding.layoutVoiceInput));
+
+        binding.btnBack.setOnClickListener(v -> finish());
+        binding.btnRecordMic.setOnClickListener(v -> checkPermissionAndShowRecordingSheet());
+
+        binding.btnTalkNour.setOnClickListener(v -> {
+            String promptToProcess = "";
+            if (binding.layoutTextInput.getVisibility() == View.VISIBLE) {
+                promptToProcess = binding.edtChildMessage.getText().toString().trim();
+            } else if (!lastRecognizedText.isEmpty()) {
+                promptToProcess = lastRecognizedText;
+            } else if (!selectedMoodText.isEmpty()) {
+                promptToProcess = selectedMoodText;
+            }
+
+            if (promptToProcess.isEmpty()) {
+                Toast.makeText(this, "اختر شعوراً أو قل شيئاً لدبدوب نور 🐻", Toast.LENGTH_SHORT).show();
+                return;
+            }
+            processAiRequest(promptToProcess);
+        });
+
+        for (int i = 0; i < binding.gridMoods.getChildCount(); i++) {
+            View child = binding.gridMoods.getChildAt(i);
+            child.setOnClickListener(v -> {
+                v.animate().scaleX(0.9f).scaleY(0.9f).setDuration(100)
+                        .withEndAction(() -> v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(100).start()).start();
+
+                if (child instanceof android.view.ViewGroup) {
+                    android.view.ViewGroup group = (android.view.ViewGroup) child;
+                    for (int j = 0; j < group.getChildCount(); j++) {
+                        View subView = group.getChildAt(j);
+                        if (subView instanceof TextView && !((TextView) subView).getText().toString().matches(".*[\\u2000-\\u3300_\\u2600-\\u26FF_\\u2700-\\u27BF].*")) {
+                            selectedMoodText = ((TextView) subView).getText().toString();
+                            break;
+                        }
+                    }
+                }
+                processAiRequest(selectedMoodText);
+            });
+        }
+    }
+
+    public void processAiRequest(String inputQuery) {
+        // 1. إخفاء واجهة الإدخال وإظهار التحميل
+        AnimatorSet fadeOut = new AnimatorSet();
+        fadeOut.playTogether(
+                ObjectAnimator.ofFloat(binding.groupInputState, "alpha", 0f),
+                ObjectAnimator.ofFloat(binding.tvNourBadge, "alpha", 0f),
+                ObjectAnimator.ofFloat(binding.btnTalkNour, "alpha", 0f)
+        );
+        fadeOut.setDuration(300);
+        fadeOut.start();
+
+        fadeOut.addListener(new android.animation.AnimatorListenerAdapter() {
+            @Override
+            public void onAnimationEnd(android.animation.Animator animation) {
+                binding.groupInputState.setVisibility(View.GONE);
+                binding.tvNourBadge.setVisibility(View.GONE);
+                binding.btnTalkNour.setVisibility(View.GONE);
+
+                binding.groupLoadingState.setVisibility(View.VISIBLE);
+                binding.groupLoadingState.setAlpha(0f);
+                binding.groupLoadingState.animate().alpha(1f).setDuration(300).start();
+
+                // مؤقت أمان: إذا تأخر API لأكثر من 5 ثوانٍ، ينتقل تلقائياً برد افتراضي ولا يعلق الطفل
+                Handler timeoutHandler = new Handler(Looper.getMainLooper());
+                Runnable timeoutRunnable = () -> navigateToResponseActivity("أنا هنا معك دائماً يا بطل! دبدوب نور يحبك 🐻");
+                timeoutHandler.postDelayed(timeoutRunnable, 5000);
+
+                // طلب الرد من API
+                geminiService.generateMoodMessage(inputQuery, new GeminiService.GeminiCallback() {
+                    @Override
+                    public void onSuccess(String message) {
+                        timeoutHandler.removeCallbacks(timeoutRunnable); // إلغاء مؤقت الأمان عند النجاح
+                        runOnUiThread(() -> navigateToResponseActivity(message));
+                    }
+
+                    @Override
+                    public void onError(String errorMessage) {
+                        timeoutHandler.removeCallbacks(timeoutRunnable);
+                        runOnUiThread(() -> navigateToResponseActivity("أنا هنا معك دائماً يا بطل! دبدوب نور يحبك 🐻"));
+                    }
+                });
+            }
+        });
+    }
+
+    private void navigateToResponseActivity(String aiMessage) {
+        onChildSentMessage();
+
+        Intent intent = new Intent(KidsAiChatActivity.this, KidsAiResponseActivity.class);
+        intent.putExtra("AI_RESPONSE", aiMessage);
+        startActivity(intent);
+
+        finish(); // إغلاق شاشة الاختيار بعد الانتقال للرد
+    }
+
+    private void animateStateTransition(View outView, View inView) {
+        outView.animate().alpha(0f).setDuration(200).withEndAction(() -> {
+            outView.setVisibility(View.GONE);
+            inView.setVisibility(View.VISIBLE);
+            inView.setAlpha(0f);
+            inView.setTranslationY(20f);
+            inView.animate().alpha(1f).translationY(0f).setDuration(300).start();
+        }).start();
     }
 
     private void startEntranceAnimations() {
@@ -216,117 +299,6 @@ public class KidsAiChatActivity extends AppCompatActivity {
         floatAnim.start();
     }
 
-    private void setupListeners() {
-        binding.btnSwitchToText.setPaintFlags(binding.btnSwitchToText.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        binding.btnSwitchToVoice.setPaintFlags(binding.btnSwitchToVoice.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-
-        binding.btnSwitchToText.setOnClickListener(v -> animateStateTransition(binding.layoutVoiceInput, binding.layoutTextInput));
-        binding.btnSwitchToVoice.setOnClickListener(v -> animateStateTransition(binding.layoutTextInput, binding.layoutVoiceInput));
-
-        binding.btnBack.setOnClickListener(v -> handleBackNavigation());
-        binding.btnRecordMic.setOnClickListener(v -> checkPermissionAndShowRecordingSheet());
-
-        binding.btnTalkNour.setOnClickListener(v -> {
-            String promptToProcess = "";
-            if (binding.layoutTextInput.getVisibility() == View.VISIBLE) {
-                promptToProcess = binding.edtChildMessage.getText().toString().trim();
-            } else if (!lastRecognizedText.isEmpty()) {
-                promptToProcess = lastRecognizedText;
-            } else if (!selectedMoodText.isEmpty()) {
-                promptToProcess = selectedMoodText;
-            }
-
-            if (promptToProcess.isEmpty()) {
-                Toast.makeText(this, "اختر شعوراً أو قل شيئاً لدبدوب نور 🐻", Toast.LENGTH_SHORT).show();
-                return;
-            }
-            processAiRequest(promptToProcess);
-        });
-
-        binding.btnListenVoice.setOnClickListener(v -> {
-            String response = binding.tvAiResponseText.getText().toString();
-            speakText(response);
-        });
-
-        binding.btnActionBreath.setOnClickListener(v -> {
-            if (textToSpeech != null && textToSpeech.isSpeaking()) {
-                textToSpeech.stop();
-            }
-            Intent intent = new Intent(KidsAiChatActivity.this, KidsBubbleBreathingActivity.class);
-            startActivity(intent);
-        });
-
-        binding.btnActionBetter.setOnClickListener(v -> navigateToTreeScreen());
-
-//        binding.btnGoToTree.setOnClickListener(v -> navigateToTreeScreen());
-
-        for (int i = 0; i < binding.gridMoods.getChildCount(); i++) {
-            View child = binding.gridMoods.getChildAt(i);
-            child.setOnClickListener(v -> {
-                v.animate().scaleX(0.9f).scaleY(0.9f).setDuration(100)
-                        .withEndAction(() -> v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(100).start()).start();
-
-                if (child instanceof android.view.ViewGroup) {
-                    android.view.ViewGroup group = (android.view.ViewGroup) child;
-                    for (int j = 0; j < group.getChildCount(); j++) {
-                        View subView = group.getChildAt(j);
-                        if (subView instanceof TextView && !((TextView) subView).getText().toString().matches(".*[\\u2000-\\u3300_\\u2600-\\u26FF_\\u2700-\\u27BF].*")) {
-                            selectedMoodText = ((TextView) subView).getText().toString();
-                            break;
-                        }
-                    }
-                }
-                processAiRequest(selectedMoodText);
-            });
-        }
-    }
-
-    private void navigateToTreeScreen() {
-        if (textToSpeech != null && textToSpeech.isSpeaking()) {
-            textToSpeech.stop();
-        }
-        Intent intent = new Intent(KidsAiChatActivity.this, KidsTreeIntroActivity.class);
-        startActivity(intent);
-        finish();
-    }
-
-    private void animateStateTransition(View outView, View inView) {
-        outView.animate().alpha(0f).setDuration(200).withEndAction(() -> {
-            outView.setVisibility(View.GONE);
-            inView.setVisibility(View.VISIBLE);
-            inView.setAlpha(0f);
-            inView.setTranslationY(20f);
-            inView.animate().alpha(1f).translationY(0f).setDuration(300).start();
-        }).start();
-    }
-
-    private void handleBackNavigation() {
-        if (binding.groupResponseState.getVisibility() == View.VISIBLE) {
-            animateBackToInput();
-        } else {
-            finish();
-        }
-    }
-
-    private void animateBackToInput() {
-        if (textToSpeech != null && textToSpeech.isSpeaking()) {
-            textToSpeech.stop();
-        }
-
-        binding.groupResponseState.animate().alpha(0f).translationX(200f).setDuration(300).withEndAction(() -> {
-            binding.groupResponseState.setVisibility(View.GONE);
-            binding.groupInputState.setVisibility(View.VISIBLE);
-            binding.tvNourBadge.setVisibility(View.VISIBLE);
-            binding.btnTalkNour.setVisibility(View.VISIBLE);
-
-            binding.groupInputState.setAlpha(0f);
-            binding.groupInputState.setTranslationX(-200f);
-            binding.groupInputState.animate().alpha(1f).translationX(0f).setDuration(300).start();
-            binding.tvNourBadge.setAlpha(1f);
-            binding.btnTalkNour.setAlpha(1f);
-        }).start();
-    }
-
     private void checkPermissionAndShowRecordingSheet() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.RECORD_AUDIO) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.RECORD_AUDIO}, REQUEST_RECORD_AUDIO_PERMISSION);
@@ -387,73 +359,6 @@ public class KidsAiChatActivity extends AppCompatActivity {
         }
     }
 
-    public void processAiRequest(String inputQuery) {
-        AnimatorSet fadeOut = new AnimatorSet();
-        fadeOut.playTogether(
-                ObjectAnimator.ofFloat(binding.groupInputState, "alpha", 0f),
-                ObjectAnimator.ofFloat(binding.tvNourBadge, "alpha", 0f),
-                ObjectAnimator.ofFloat(binding.btnTalkNour, "alpha", 0f)
-        );
-        fadeOut.setDuration(400);
-        fadeOut.start();
-
-        fadeOut.addListener(new android.animation.AnimatorListenerAdapter() {
-            @Override
-            public void onAnimationEnd(android.animation.Animator animation) {
-                binding.groupInputState.setVisibility(View.GONE);
-                binding.tvNourBadge.setVisibility(View.GONE);
-                binding.btnTalkNour.setVisibility(View.GONE);
-
-                binding.groupLoadingState.setVisibility(View.VISIBLE);
-                binding.groupLoadingState.setAlpha(0f);
-                binding.groupLoadingState.animate().alpha(1f).setDuration(300).start();
-
-                geminiService.generateMoodMessage(inputQuery, new GeminiService.GeminiCallback() {
-                    @Override
-                    public void onSuccess(String message) {
-                        runOnUiThread(() -> {
-                            binding.groupLoadingState.animate().alpha(0f).setDuration(200).withEndAction(() -> {
-                                binding.groupLoadingState.setVisibility(View.GONE);
-                                showAiResponse(message);
-                            }).start();
-                        });
-                    }
-
-                    @Override
-                    public void onError(String errorMessage) {
-                        runOnUiThread(() -> {
-                            binding.groupLoadingState.animate().alpha(0f).setDuration(200).withEndAction(() -> {
-                                binding.groupLoadingState.setVisibility(View.GONE);
-                                showAiResponse("حدث خطأ في الخدمة: " + errorMessage);
-                            }).start();
-                        });
-                    }
-                });
-            }
-        });
-    }
-
-    private void showAiResponse(String aiMessage) {
-        binding.groupResponseState.setVisibility(View.VISIBLE);
-
-        binding.groupResponseState.setTranslationX(0f);
-        binding.groupResponseState.setAlpha(0f);
-        binding.groupResponseState.setTranslationY(40f);
-
-        binding.groupResponseState.animate()
-                .alpha(1f)
-                .translationY(0f)
-                .setDuration(500)
-                .setInterpolator(new OvershootInterpolator())
-                .start();
-
-        binding.tvAiResponseText.setText(aiMessage);
-
-        speakText(aiMessage);
-
-        onChildSentMessage();
-    }
-
     private void onChildSentMessage() {
         long childId = getIntent().getLongExtra("CHILD_ID", -1L);
         if (childId == -1L) {
@@ -462,11 +367,8 @@ public class KidsAiChatActivity extends AppCompatActivity {
         String childName = getIntent().getStringExtra("CHILD_NAME");
 
         ChildProfileStore store = new ChildProfileStore(this);
-
-        // التثبت وتسجيل الحدث بشكل صحيح
         if (!store.hasCompletedEventToday(childId, "CHAT_SESSION")) {
             store.addCompletedEvent(childId, "CHAT_SESSION");
-
             TreeProgressManager progressManager = new TreeProgressManager(this, childName);
             progressManager.addPoints(10);
         }
@@ -483,20 +385,8 @@ public class KidsAiChatActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if (textToSpeech != null && textToSpeech.isSpeaking()) {
-            textToSpeech.stop();
-        }
         if (speechHelper != null) {
             speechHelper.stopListening();
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        if (textToSpeech != null) {
-            textToSpeech.stop();
-            textToSpeech.shutdown();
         }
     }
 }
