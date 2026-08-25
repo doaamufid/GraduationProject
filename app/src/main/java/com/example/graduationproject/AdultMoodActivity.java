@@ -2,6 +2,7 @@ package com.example.graduationproject;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -14,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.graduationproject.view.FaceView;
 
@@ -63,7 +66,7 @@ public class AdultMoodActivity extends AppCompatActivity {
         renderInstant(selectedIndex);
 
         findViewById(R.id.btn_continue).setOnClickListener(v ->
-                Toast.makeText(this, R.string.saved_toast, Toast.LENGTH_SHORT).show());
+                startActivity(new Intent(this, MainActivity.class)));
     }
 
     /** Same 7 moods / colours as ADULT_MOODS in the React source. */
@@ -109,6 +112,15 @@ public class AdultMoodActivity extends AppCompatActivity {
         }
     }
 
+    /** Keeps the status bar the same colour as the screen background. */
+    private void applyStatusBarColor(int color) {
+        getWindow().setStatusBarColor(color);
+
+        // All 7 mood backgrounds are light, so use dark status-bar icons for contrast.
+        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
+                .setAppearanceLightStatusBars(true);
+    }
+
     /** Draws the initial state with no animation (used once, on launch). */
     private void renderInstant(int index) {
         com.example.graduationproject.models.Mood mood = moods.get(index);
@@ -118,6 +130,7 @@ public class AdultMoodActivity extends AppCompatActivity {
         moodLabel.setText(mood.label);
         heroCircle.setBackground(ovalOrRect(mood.circleColor, true));
         updateChipStyles(index, false);
+        applyStatusBarColor(mood.bgColor);
     }
 
     /** User tapped a new mood chip — animate everything to the new mood. */
@@ -128,6 +141,7 @@ public class AdultMoodActivity extends AppCompatActivity {
         selectedIndex = newIndex;
 
         animateColor(from.bgColor, to.bgColor, rootLayout::setBackgroundColor);
+        animateColor(from.bgColor, to.bgColor, this::applyStatusBarColor);
         animateColor(from.accentColor, to.accentColor,
                 c -> progressFill.setBackground(ovalOrRect(c, false)));
         animateColor(from.circleColor, to.circleColor,
