@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
 
 import com.example.graduationproject.ProfileNavigator;
@@ -21,8 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Mirrors <ChildProfilesScreen/>. Deletion is immediate (single tap), exactly
- * like the JSX - no confirm-arm pattern here (unlike thoughts/messages).
+ * Mirrors <ChildProfilesScreen/>. Deleting a child profile asks for confirmation
+ * via a "Yes" / "Cancel" dialog before the profile is removed.
  */
 public class ChildProfilesFragment extends Fragment {
 
@@ -63,18 +64,24 @@ public class ChildProfilesFragment extends Fragment {
                     .setText(getString(R.string.age_years_fmt, child.age) + " · " + getString(R.string.tap_to_view_stats));
             ((TextView) row.findViewById(R.id.txt_child_avatar)).setText(child.avatarEmoji);
 
-            // Mirrors the edit button's onClick={(e) => e.stopPropagation()} — no actual
-            // functionality attached, it exists only as a placeholder in the original.
-            row.findViewById(R.id.btn_edit_child).setOnClickListener(v -> { /* no-op */ });
-
             row.findViewById(R.id.btn_open_child).setOnClickListener(v -> activity.showChildDetail(child.id));
 
-            row.findViewById(R.id.btn_delete_child).setOnClickListener(v -> {
-                children.removeIf(c -> c.id == child.id);
-                render(activity);
-            });
+            row.findViewById(R.id.btn_delete_child).setOnClickListener(v -> confirmDelete(activity, child));
 
             container.addView(row);
         }
+    }
+
+    /** Shows a confirmation dialog ("Yes" / "Cancel") before deleting a child profile. */
+    private void confirmDelete(ProfileNavigator activity, ChildProfile child) {
+        new AlertDialog.Builder(requireContext())
+                .setTitle(R.string.delete_child_title)
+                .setMessage(R.string.delete_child_message)
+                .setPositiveButton(R.string.answer_yes, (dialog, which) -> {
+                    children.removeIf(c -> c.id == child.id);
+                    render(activity);
+                })
+                .setNegativeButton(R.string.cancel, (dialog, which) -> dialog.dismiss())
+                .show();
     }
 }

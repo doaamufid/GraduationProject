@@ -272,6 +272,8 @@
     <string name="age_years_fmt">%1$d سنوات</string>
     <string name="add_child_profile">إضافة ملف طفل جديد</string>
     <string name="tap_to_view_stats">اضغط لعرض إحصائياته</string>
+    <string name="delete_child_title">حذف ملف الطفل؟</string>
+    <string name="delete_child_message">هل أنت متأكد أنك تريد حذف ملف هذا الطفل؟ لا يمكن التراجع عن هذا الإجراء.</string>
 
     <!-- Child detail dashboard -->
     <string name="last_active_fmt">آخر نشاط: %s</string>
@@ -413,7 +415,6 @@
     <string name="theme_color_title">لون الثيم</string>
     <string name="auto_dark_title">الوضع الداكن التلقائي</string>
     <string name="auto_dark_sub">بعد الساعة ٩ مساءً</string>
-    <string name="dialect_title">لهجة الرفيق الذكي</string>
 
     <string name="cloud_ai_title">الرفيق السحابي (عند الاتصال)</string>
     <string name="cloud_ai_sub">إيقافه يخلي التطبيق يعمل محلياً بالكامل</string>
@@ -439,12 +440,6 @@
     <string name="about_sub">الإصدار ١.٠.٠</string>
 
     <string name="delete_everything_btn">حذف كل بياناتي نهائياً</string>
-
-    <string name="dialect_dialog_title">لهجة الرفيق الذكي</string>
-    <string name="dialect_standard">فصحى</string>
-    <string name="dialect_gulf">خليجي</string>
-    <string name="dialect_levantine">شامي</string>
-    <string name="dialect_egyptian">مصري</string>
 
     <string name="delete_step1_title">حذف كل بياناتك نهائياً؟</string>
     <string name="delete_step1_body">راح تُحذف كل محادثاتك، تقاريرك، صفاتك المكتشفة، ورسائلك — هذا الإجراء لا يمكن التراجع عنه إطلاقاً.</string>

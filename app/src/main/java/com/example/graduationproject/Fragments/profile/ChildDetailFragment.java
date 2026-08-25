@@ -1,11 +1,15 @@
+
 package com.example.graduationproject.Fragments.profile;
 
+import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
+import android.view.animation.PathInterpolator;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -24,18 +28,35 @@ import com.example.graduationproject.models.profile.ChildAlert;
 import com.example.graduationproject.models.profile.ChildDetail;
 import com.example.graduationproject.models.profile.ChildFeature;
 import com.example.graduationproject.models.profile.ChildHistoryEntry;
-import com.example.graduationproject.ui.profile.MoodArcView;
+import com.example.graduationproject.ui.AdultMoodResult;
+import com.example.graduationproject.widget.AdultChartView;
+
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
- * Mirrors <ChildDetailScreen/>: hero card, stat grid, mood chart, top
- * features, an expandable alert (or "all good" box when alert is null),
- * recommendations, and an alert history list.
+ * Child Detail Screen with interactive bear-themed mood chart.
  */
 public class ChildDetailFragment extends Fragment {
 
     private static final String ARG_CHILD_ID = "child_id";
+    private static final long TAB_ANIM_MS = 300;
 
     private boolean alertOpen = false;
+
+    private static class Range {
+        final float[] scores;
+        final String[] labels;
+        Range(float[] scores, String[] labels) { this.scores = scores; this.labels = labels; }
+    }
+
+    private final Map<String, Range> ranges = new LinkedHashMap<>();
+    private String currentRange = "week";
+
+    private View segmentIndicator;
+    private LinearLayout segmentButtons;
+    private AdultChartView chartView;
+    private TextView scrubLabel, scrubSub, tabDay, tabWeek, tabMonth;
 
     public static ChildDetailFragment newInstance(long childId) {
         ChildDetailFragment f = new ChildDetailFragment();
@@ -67,11 +88,12 @@ public class ChildDetailFragment extends Fragment {
         bindHeader(view, child);
         bindHero(view, child);
         bindStats(view, child);
-        bindMoodChart(view, child);
         bindFeatures(view, child);
         bindAlert(view, child);
         bindRecommendations(view, child);
         bindHistory(view, child);
+
+        initMoodChart(view, child);
     }
 
     private void bindHeader(View root, ChildDetail child) {
@@ -100,23 +122,101 @@ public class ChildDetailFragment extends Fragment {
         ((TextView) root.findViewById(R.id.txt_stat_inactive)).setText(String.valueOf(child.stats.inactiveDays));
     }
 
-    private void bindMoodChart(View root, ChildDetail child) {
-        MoodArcView arc = root.findViewById(R.id.mood_arc_view);
-        arc.setData(child.mood, child.color);
+    private void initMoodChart(View view, ChildDetail child) {
+        segmentIndicator = view.findViewById(R.id.child_segment_indicator);
+        segmentButtons = view.findViewById(R.id.child_segment_buttons);
+        chartView = view.findViewById(R.id.child_chart_view);
+        scrubLabel = view.findViewById(R.id.child_scrub_label);
+        scrubSub = view.findViewById(R.id.child_scrub_sub);
+        tabDay = view.findViewById(R.id.child_tab_day);
+        tabWeek = view.findViewById(R.id.child_tab_week);
+        tabMonth = view.findViewById(R.id.child_tab_month);
 
-        LinearLayout daysRow = root.findViewById(R.id.mood_days_row);
-        daysRow.removeAllViews();
-        for (String day : child.days) {
-            TextView t = new TextView(requireContext());
-            t.setText(day);
-            t.setTextSize(11);
-            t.setTypeface(t.getTypeface(), android.graphics.Typeface.BOLD);
-            t.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_soft));
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
-            t.setLayoutParams(lp);
-            t.setGravity(android.view.Gravity.CENTER);
-            daysRow.addView(t);
+        buildRanges();
+
+        tabDay.setOnClickListener(v -> switchRange("day", tabDay));
+        tabWeek.setOnClickListener(v -> switchRange("week", tabWeek));
+        tabMonth.setOnClickListener(v -> switchRange("month", tabMonth));
+
+        chartView.setListener((shownIndex, isScrubbing) -> {
+            Range r = ranges.get(currentRange);
+            if (r == null || shownIndex < 0 || shownIndex >= r.scores.length) return;
+            AdultMoodResult mood = AdultMoodResult.from(r.scores[shownIndex], requireContext());
+            scrubLabel.setText(mood.label);
+            scrubLabel.setTextColor(child.color);
+            scrubSub.setText("· " + r.labels[shownIndex]);
+            chartView.setDotHighlightColor(child.color);
+        });
+
+        segmentButtons.getViewTreeObserver().addOnGlobalLayoutListener(
+                new ViewTreeObserver.OnGlobalLayoutListener() {
+                    @Override
+                    public void onGlobalLayout() {
+                        segmentButtons.getViewTreeObserver().removeOnGlobalLayoutListener(this);
+                        moveIndicatorTo(tabWeek, false);
+                        chartView.setData(ranges.get(currentRange).scores, ranges.get(currentRange).labels);
+                    }
+                });
+        
+        // Kids chart colors: Turquoise/Green
+        chartView.setDotHighlightColor(child.color);
+    }
+
+    private void buildRanges() {
+        ranges.put("day", new Range(
+                new float[]{4.0f, 3.8f, 4.2f, 3.5f, 4.8f, 4.5f, 4.1f, 4.3f},
+                new String[]{"١٢ص", "٣ص", "٦ص", "٩ص", "١٢م", "٣م", "٦م", "٩م"}));
+        ranges.put("week", new Range(
+                new float[]{3.2f, 4.5f, 2.8f, 4.0f, 4.6f, 3.9f, 4.4f},
+                new String[]{"ح", "ن", "ث", "ر", "خ", "ج", "س"}));
+        ranges.put("month", new Range(
+                new float[]{3.6f, 4.1f, 3.9f, 4.4f, 4.0f},
+                new String[]{"أسبوع ١", "أسبوع ٢", "أسبوع ٣", "أسبوع ٤", "أسبوع ٥"}));
+    }
+
+    private void switchRange(String key, TextView target) {
+        if (key.equals(currentRange)) return;
+        currentRange = key;
+        moveIndicatorTo(target, true);
+        Range r = ranges.get(key);
+        chartView.setData(r.scores, r.labels);
+
+        tabDay.setTextColor(Color.parseColor(key.equals("day") ? "#0F172A" : "#8598AC"));
+        tabWeek.setTextColor(Color.parseColor(key.equals("week") ? "#0F172A" : "#8598AC"));
+        tabMonth.setTextColor(Color.parseColor(key.equals("month") ? "#0F172A" : "#8598AC"));
+        
+        tabDay.setTypeface(null, key.equals("day") ? android.graphics.Typeface.BOLD : android.graphics.Typeface.NORMAL);
+        tabWeek.setTypeface(null, key.equals("week") ? android.graphics.Typeface.BOLD : android.graphics.Typeface.NORMAL);
+        tabMonth.setTypeface(null, key.equals("month") ? android.graphics.Typeface.BOLD : android.graphics.Typeface.NORMAL);
+    }
+
+    private void moveIndicatorTo(TextView target, boolean animate) {
+        float toX = target.getLeft();
+        int toWidth = target.getWidth();
+
+        if (!animate) {
+            segmentIndicator.setX(toX);
+            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) segmentIndicator.getLayoutParams();
+            lp.width = toWidth;
+            segmentIndicator.setLayoutParams(lp);
+            return;
         }
+
+        float fromX = segmentIndicator.getX();
+        int fromWidth = segmentIndicator.getWidth();
+        PathInterpolator interpolator = new PathInterpolator(0.22f, 1f, 0.36f, 1f);
+
+        ValueAnimator anim = ValueAnimator.ofFloat(0f, 1f);
+        anim.setDuration(TAB_ANIM_MS);
+        anim.setInterpolator(interpolator);
+        anim.addUpdateListener(a -> {
+            float f = (float) a.getAnimatedValue();
+            segmentIndicator.setX(fromX + (toX - fromX) * f);
+            FrameLayout.LayoutParams lp = (FrameLayout.LayoutParams) segmentIndicator.getLayoutParams();
+            lp.width = (int) (fromWidth + (toWidth - fromWidth) * f);
+            segmentIndicator.setLayoutParams(lp);
+        });
+        anim.start();
     }
 
     private void bindFeatures(View root, ChildDetail child) {
@@ -135,7 +235,6 @@ public class ChildDetailFragment extends Fragment {
         }
     }
 
-    /** Mirrors the ternary: child.alert ? <expandable accordion> : <"all good" box>. */
     private void bindAlert(View root, ChildDetail child) {
         FrameLayout container = root.findViewById(R.id.alert_container);
         container.removeAllViews();

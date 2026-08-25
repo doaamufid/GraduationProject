@@ -21,7 +21,7 @@ public class AdultMoodResult {
         this.face = face;
     }
 
-    public static AdultMoodResult from(float score, AdultMoodStatsActivity ctx) {
+    public static AdultMoodResult from(float score, android.content.Context ctx) {
         if (score < 1.6f) return new AdultMoodResult(ctx.getString(R.string.adult_stats_mood_awful), Color.parseColor("#D9695F"), "awful");
         if (score < 2.3f) return new AdultMoodResult(ctx.getString(R.string.adult_stats_mood_sad), Color.parseColor("#DC9142"), "sad");
         if (score < 3.0f) return new AdultMoodResult(ctx.getString(R.string.adult_stats_mood_low), Color.parseColor("#A47F4C"), "low");

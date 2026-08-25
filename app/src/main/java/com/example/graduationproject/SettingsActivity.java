@@ -24,7 +24,6 @@ import com.example.graduationproject.models.profile.settings.SettingsRepository;
 import com.example.graduationproject.models.profile.settings.ThemeOption;
 import com.example.graduationproject.Kids.ChildProfilesActivity;
 import com.example.graduationproject.ui.profile.settings.DeleteAllDialogFragment;
-import com.example.graduationproject.ui.profile.settings.DialectDialogFragment;
 import com.example.graduationproject.ui.profile.settings.SettingsRowHelper;
 import com.example.graduationproject.widget.FadeUtils;
 import com.example.graduationproject.widget.ToastController;
@@ -38,7 +37,6 @@ public class SettingsActivity extends AppCompatActivity {
 
     private ToastController toastController;
     private LinearLayout llThemeSwatches;
-    private View rowDialect;
     private List<ThemeOption> themeOptions;
     private TextView tvStatusClock;
     private final Handler clockHandler = new Handler(Looper.getMainLooper());
@@ -86,12 +84,6 @@ public class SettingsActivity extends AppCompatActivity {
         bindChildrenSection();
         bindSupportSection();
         bindDestructiveZone();
-
-        getSupportFragmentManager().setFragmentResultListener(
-                DialectDialogFragment.REQUEST_KEY, this, (key, bundle) -> {
-                    repo.dialect = bundle.getString(DialectDialogFragment.KEY_DIALECT);
-                    renderDialectRow();
-                });
 
         getSupportFragmentManager().setFragmentResultListener(
                 DeleteAllDialogFragment.REQUEST_KEY, this, (key, bundle) -> {
@@ -161,12 +153,6 @@ public class SettingsActivity extends AppCompatActivity {
                 findViewById(R.id.rowAutoDark), getString(R.string.auto_dark_title), getString(R.string.auto_dark_sub));
         swAutoDark.setChecked(repo.autoDark);
         swAutoDark.setOnCheckedChangeListener((b, checked) -> repo.autoDark = checked);
-
-        rowDialect = findViewById(R.id.rowDialect);
-        SettingsRowHelper.bindNavRow(rowDialect, getString(R.string.dialect_title), 
-                SettingsRepository.getDialectName(this, repo.dialect),
-                R.drawable.ic_palette, () ->
-                        DialectDialogFragment.newInstance(repo.dialect).show(getSupportFragmentManager(), "dialect"));
     }
 
     private void buildThemeSwatches() {
@@ -204,7 +190,6 @@ public class SettingsActivity extends AppCompatActivity {
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowAppLock), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowNotifications), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowAutoDark), colorInt);
-        SettingsRowHelper.setThemeColor(findViewById(R.id.rowDialect), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowCloudAI), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowBreathHaptic), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowReduceMotion), colorInt);
@@ -213,12 +198,6 @@ public class SettingsActivity extends AppCompatActivity {
 
         findViewById(R.id.resetRecsIconBg).getBackground().mutate().setTint(colorInt);
         findViewById(R.id.exportIconBg).getBackground().mutate().setTint(colorInt);
-    }
-
-    private void renderDialectRow() {
-        TextView tvSub = rowDialect.findViewById(R.id.tvRowSub);
-        tvSub.setText(SettingsRepository.getDialectName(this, repo.dialect));
-        tvSub.setVisibility(View.VISIBLE);
     }
 
     private void bindAiSection() {

@@ -1,30 +1,33 @@
+
 package com.example.graduationproject;
 
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.PathInterpolator;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
 
 import com.example.graduationproject.ui.AdultMoodResult;
 import com.example.graduationproject.widget.AdultChartView;
 import com.example.graduationproject.widget.AdultFaceView;
+import com.example.graduationproject.data.profile.ArabicDateUtils;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * Port of MoodStatsScreen.jsx:
- *  - Day / Week / Month segmented control with a sliding white indicator
- *    (mirrors the "Reading goal" style pill toggle the user referenced)
- *  - interactive chart: drag/scrub anywhere to inspect any point, exactly
- *    like the currency chart reference — release to snap back to "today"
+ * Reports & Stats Screen.
+ * Contains Mood Stats, Activity Stats, Personal Archive, and Children's Reports.
  */
 public class AdultMoodStatsActivity extends AppCompatActivity {
 
@@ -49,6 +52,8 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adult_mood_stats);
+
+        findViewById(R.id.btn_back).setOnClickListener(v -> finish());
 
         segmentIndicator = findViewById(R.id.segment_indicator);
         segmentButtons = findViewById(R.id.segment_buttons);
@@ -77,7 +82,6 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
             chartView.setDotHighlightColor(mood.color);
         });
 
-        // wait for layout to know real pixel widths before placing the indicator
         segmentButtons.getViewTreeObserver().addOnGlobalLayoutListener(
                 new ViewTreeObserver.OnGlobalLayoutListener() {
                     @Override
@@ -87,9 +91,90 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
                         chartView.setData(ranges.get(currentRange).scores, ranges.get(currentRange).labels);
                     }
                 });
+
+        renderStats();
+        renderArchiveLinks();
+
+        findViewById(R.id.btn_children_link).setOnClickListener(v -> {
+            // Open AdultProfileActivity and navigate to children
+            Intent intent = new Intent(this, AdultProfileActivity.class);
+            intent.putExtra("navigate_to", "children");
+            startActivity(intent);
+        });
     }
 
-    /** Same three datasets as RANGES in the React source. */
+    private void renderStats() {
+        LinearLayout statsRow = findViewById(R.id.stats_row);
+        statsRow.removeAllViews();
+        String[][] stats = { 
+                { ArabicDateUtils.toAr(47), getString(R.string.stat_days_active) },
+                { ArabicDateUtils.toAr(12), getString(R.string.stat_streak) },
+                { ArabicDateUtils.toAr(69), getString(R.string.stat_sessions) } 
+        };
+
+        for (String[] stat : stats) {
+            View box = LayoutInflater.from(this).inflate(R.layout.item_stat_box, statsRow, false);
+            ((TextView) box.findViewById(R.id.txt_stat_number)).setText(stat[0]);
+            ((TextView) box.findViewById(R.id.txt_stat_label)).setText(stat[1]);
+            LinearLayout.LayoutParams lp = (LinearLayout.LayoutParams) box.getLayoutParams();
+            lp.width = 0;
+            lp.weight = 1;
+            lp.setMarginEnd(dp(6));
+            box.setLayoutParams(lp);
+            statsRow.addView(box);
+        }
+    }
+
+    private void renderArchiveLinks() {
+        LinearLayout container = findViewById(R.id.archive_links_container);
+        container.removeAllViews();
+
+        Object[][] links = {
+                { "thoughts", R.string.link_thoughts_label, R.string.link_thoughts_sub, R.drawable.ic_pen_line, R.color.primary },
+                { "strengths", R.string.link_strengths_label, R.string.link_strengths_sub, R.drawable.ic_heart, R.color.pink },
+                { "messages", R.string.link_messages_label, R.string.link_messages_sub, R.drawable.ic_mail, R.color.purple },
+        };
+
+        for (Object[] link : links) {
+            final String key = (String) link[0];
+            int labelRes = (int) link[1];
+            int subRes = (int) link[2];
+            int iconRes = (int) link[3];
+            int colorRes = (int) link[4];
+
+            View row = LayoutInflater.from(this).inflate(R.layout.item_archive_link, container, false);
+            ((TextView) row.findViewById(R.id.txt_link_label)).setText(labelRes);
+            ((TextView) row.findViewById(R.id.txt_link_sub)).setText(subRes);
+
+            ImageView iconBg = row.findViewById(R.id.img_link_icon_bg);
+            iconBg.setImageResource(iconRes);
+            int color = ContextCompat.getColor(this, colorRes);
+            iconBg.setColorFilter(color);
+            android.graphics.drawable.GradientDrawable bg = new android.graphics.drawable.GradientDrawable();
+            bg.setColor((color & 0x00FFFFFF) | 0x18000000);
+            bg.setCornerRadius(dp(12));
+            iconBg.setBackground(bg);
+
+            row.setOnClickListener(v -> {
+                animateTap(row);
+                Intent intent = new Intent(this, AdultProfileActivity.class);
+                intent.putExtra("navigate_to", key);
+                startActivity(intent);
+            });
+            container.addView(row);
+        }
+    }
+
+    private void animateTap(View v) {
+        v.animate().scaleX(0.97f).scaleY(0.97f).setDuration(80).withEndAction(() ->
+                v.animate().scaleX(1f).scaleY(1f).setDuration(80).start()
+        ).start();
+    }
+
+    private int dp(int value) {
+        return Math.round(value * getResources().getDisplayMetrics().density);
+    }
+
     private void buildRanges() {
         ranges.put("day", new Range(
                 new float[]{3.2f, 3.6f, 2.8f, 4.0f, 4.4f, 3.9f, 4.6f, 4.1f},
@@ -117,7 +202,6 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
         tabMonth.setTextColor(Color.parseColor(key.equals("month") ? "#0F172A" : "#8598AC"));
     }
 
-    /** Slides + resizes the white indicator to sit exactly under the target tab. */
     private void moveIndicatorTo(TextView target, boolean animate) {
         float toX = target.getLeft();
         int toWidth = target.getWidth();
