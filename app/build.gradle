@@ -37,12 +37,12 @@ android {
 dependencies {
     implementation(libs.androidx.core.ktx) {
         version {
-            strictly("1.15.0")
+            strictly("1.13.1")
         }
     }
-    implementation("androidx.core:core:1.15.0") {
+    implementation("androidx.core:core:1.13.1") {
         version {
-            strictly("1.15.0")
+            strictly("1.13.1")
         }
     }
     implementation platform(libs.compose.bom)
