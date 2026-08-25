@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxHeight="620dp"
+    android:background="@drawable/bg_dialog_sheet"
+    android:padding="22dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dhikr_dialog_title"
+            android:textColor="@color/cream"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dhikr_text_label"
+            android:textColor="@color/cream"
+            android:textSize="13.5sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"/>
+
+        <EditText
+            android:id="@+id/dhikrInput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minLines="2"
+            android:gravity="top|start"
+            android:maxLength="60"
+            android:hint="@string/dhikr_text_hint"
+            android:textColorHint="@color/mutedDim"
+            android:textColor="@color/cream"
+            android:textSize="14sp"
+            android:background="@drawable/bg_btn_ghost"
+            android:padding="12dp"
+            android:inputType="textMultiLine"/>
+
+        <TextView
+            android:id="@+id/dhikrCharCounter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:textColor="@color/mutedDim"
+            android:textSize="11sp"
+            android:layout_marginTop="4dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dhikr_category_label"
+            android:textColor="@color/cream"
+            android:textSize="13.5sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <com.google.android.flexbox.FlexboxLayout
+            android:id="@+id/categoryChipsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:flexWrap="wrap"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/dhikr_duration_label"
+            android:textColor="@color/cream"
+            android:textSize="13.5sp"
+            android:textStyle="bold"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="8dp"/>
+
+        <LinearLayout
+            android:id="@+id/dhikrDurationChipsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="22dp">
+
+            <TextView
+                android:id="@+id/btnDhikrCancel"
+                style="@style/GhostButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:text="@string/cancel"/>
+
+            <TextView
+                android:id="@+id/btnDhikrSave"
+                style="@style/PrimaryButton"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginStart="10dp"
+                android:text="@string/save_and_favorite"/>
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

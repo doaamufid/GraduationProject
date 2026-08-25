@@ -184,4 +184,19 @@
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
+    <style name="Theme.CalmApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/bgDeep</item>
+        <item name="colorPrimary">@color/amber</item>
+        <item name="colorPrimaryDark">@color/bgDeep</item>
+        <item name="colorAccent">@color/amber</item>
+        <item name="android:statusBarColor">@color/bgDeep</item>
+        <item name="android:navigationBarColor">@color/bgDeep</item>
+        <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
+    </style>
+
+    <style name="Theme.CalmApp.Dialog" parent="Theme.MaterialComponents.DayNight.Dialog.MinWidth">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:backgroundDimAmount">0.75</item>
+    </style>
 </resources>

@@ -56,4 +56,9 @@
     <dimen name="chat_bubble_max_width">270dp</dimen>
     <dimen name="chat_card_max_width">280dp</dimen>
 
+    <dimen name="radius_sm">12dp</dimen>
+    <dimen name="card_big_height">320dp</dimen>
+    <dimen name="card_small_height">168dp</dimen>
+    <dimen name="thumb_size">56dp</dimen>
+    <dimen name="screen_padding">18dp</dimen>
 </resources>

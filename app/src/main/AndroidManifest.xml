@@ -231,6 +231,10 @@
             android:name=".Kids.KidsTreeLevelUpActivity"
             android:exported="false" />
 
+        <activity
+            android:name=".OneClickCalmActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
