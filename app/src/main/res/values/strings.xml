@@ -703,14 +703,6 @@
     <string name="kids_chat_nour_badge">أنا هنا أسمعك 💙</string>
     <string name="kids_chat_question_title">كيف حالك الحين؟</string>
 
-    <!-- Moods -->
-    <string name="kids_mood_scared">خايف</string>
-    <string name="kids_mood_sad">حزين</string>
-    <string name="kids_mood_angry">زعلان</string>
-    <string name="kids_mood_confused">مش عارف</string>
-    <string name="kids_mood_tired">تعبان</string>
-    <string name="kids_mood_happy">مبسوط</string>
-
     <string name="wall_title">رسائل من قلوب طيبة</string>
     <string name="wall_sub">كلام كتبه ناس زيك لبعض</string>
     <string name="top_impact">الأكثر أثراً</string>
@@ -1353,4 +1345,19 @@
     <string name="adult_stats_mood_calm">مرتاح</string>
     <string name="adult_stats_mood_happy">سعيد</string>
     <string name="adult_stats_mood_overjoyed">بهجة كاملة</string>
+
+    <string name="kids_mood_app_name">مزاجي (أطفال)</string>
+
+    <string name="kids_mood_entry_title">يوميتي الجديدة 🧸</string>
+    <string name="kids_mood_big_question">كيف حاسّ اليوم يا بطل؟</string>
+    <string name="kids_mood_continue_label">يلا كمّل! 🎉</string>
+    <string name="kids_mood_saved_toast">تم حفظ مزاجك ✅</string>
+
+    <string name="kids_mood_awful">أنا زعلان كتير</string>
+    <string name="kids_mood_sad">أنا حزين شوي</string>
+    <string name="kids_mood_low">أنا مش تمام</string>
+    <string name="kids_mood_neutral">أنا عادي</string>
+    <string name="kids_mood_calm">أنا منيح!</string>
+    <string name="kids_mood_happy">أنا مبسوط!</string>
+    <string name="kids_mood_overjoyed">أنا فرحان كتير كتير!</string>
 </resources>

@@ -320,4 +320,7 @@
     <color name="adaptive_adult_onboarding_transparent">#00000000</color>
     <color name="adult_stats_text_dark">#0F172A</color>
     <color name="adult_stats_default_background">#E9ECF3</color>
+
+    <color name="kids_mood_text_dark">#0F172A</color>
+    <color name="kids_mood_default_background">#FCE6D2</color>
 </resources>
