@@ -1065,6 +1065,97 @@
     <string name="level_up_congrats">Congratulations! Your tree grew! 🥳</string>
     <string name="level_up_points_earned">+%1$d Extra Points 🌟</string>
     <string name="level_up_btn_continue">Continue Nurturing 💚</string>
+    <string name="tab_gallery">My Cards</string>
+    <string name="tab_dhikr">My Dhikr</string>
+    <string name="tab_simulate">Crisis Scenario</string>
 
+    <string name="subtitle_cards">%1$d saved cards</string>
+    <string name="subtitle_cards_plural">%1$d saved cards</string>
+    <string name="subtitle_dhikr">%1$d favorite dhikr</string>
+    <string name="subtitle_dhikr_plural">%1$d favorite adhkar</string>
+    <string name="subtitle_simulate">Your card and dhikr will appear automatically</string>
+
+    <string name="info_title">Why is this feature different?</string>
+    <string name="info_body">Choose your active card, favorite the adhkar that comfort you, and set the duration for each one (from 1 to 5 minutes). During Instant Calm: take a deep 4-7-8 breath, followed by your favorite dhikr with a real countdown timer, and finally your card — all automatically, without any browsing during a crisis.</string>
+    <string name="got_it">Got it</string>
+
+    <string name="active_now_label">💛 Active Now — This is what will appear during a crisis</string>
+    <string name="no_active_card">No active card currently — choose one below</string>
+    <string name="all_cards">All Your Cards</string>
+    <string name="active_now_badge">✓ Active Now</string>
+    <string name="tap_to_activate">Tap to activate</string>
+    <string name="new_card_btn">+ New Card</string>
+
+    <string name="card_new_title">New Card</string>
+    <string name="card_edit_title">Edit Card</string>
+    <string name="phrase_label">The phrase that comforts you</string>
+    <string name="phrase_hint">Example: This feeling is temporary, and it will pass</string>
+    <string name="photo_label_optional">Photo (Optional)</string>
+    <string name="upload_photo">📁 Upload Photo</string>
+    <string name="upload_photo_selected">📁 Photo from your device ✓</string>
+    <string name="no_photo">✕ No Photo</string>
+    <string name="preview_label">Preview:</string>
+    <string name="cancel">Cancel</string>
+    <string name="save">Save</string>
+    <string name="card_placeholder">Write a comforting phrase…</string>
+
+    <string name="dhikr_intro">Favorite the adhkar that comfort you and set their duration. During Instant Calm, one of them will automatically appear with a real countdown timer.</string>
+    <string name="add_custom_dhikr">+ Add Your Own Dhikr</string>
+    <string name="dhikr_dialog_title">Your Own Dhikr</string>
+    <string name="dhikr_text_label">Write the dhikr</string>
+    <string name="dhikr_text_hint">Example: O Turner of hearts, make my heart steadfast</string>
+    <string name="dhikr_category_label">When do you feel it comforts you the most?</string>
+    <string name="dhikr_duration_label">How many minutes would you like to repeat it during a crisis?</string>
+    <string name="save_and_favorite">Save &amp; Favorite</string>
+    <string name="duration_display_label">Display duration during a crisis:</string>
+
+    <string name="locked_msg">There is no active card currently. Choose one from the “My Cards” tab so it appears automatically during a crisis.</string>
+    <string name="go_to_gallery">Go to My Cards</string>
+    <string name="sim_intro_msg">Press the button to experience exactly what happens during a real crisis moment.</string>
+    <string name="sim_start_btn">Start</string>
+    <string name="sim_start_label">Instant Calm Button</string>
+    <string name="no_favorite_dhikr_prompt">You haven\'t favorited any dhikr yet — favorite one now</string>
+    <string name="cancel_x">✕ Cancel</string>
+
+    <string name="breathing_technique_label">4-7-8 Deep Breathing Technique — Suitable for Panic Attacks</string>
+    <string name="breathing_cycle_fmt">Cycle %1$d of %2$d</string>
+    <string name="breathing_footer">After breathing and grounding, your favorite dhikr will appear, followed by your card automatically 💛</string>
+
+    <string name="grounding_msg">Notice 5 things around you right now</string>
+
+    <string name="dhikr_source_favorite">From Your Favorite Dhikr 📿</string>
+    <string name="dhikr_source_default">Default Dhikr — Favorite your adhkar from the “My Dhikr” tab</string>
+    <string name="another_dhikr">🔄 Another Dhikr</string>
+
+    <string name="card_auto_badge">Appeared automatically — No need to search for it 💛</string>
+    <string name="im_ok_now">I\'m okay now</string>
+
+    <string name="toast_activated">✓ Card is now active</string>
+    <string name="toast_added_card">✓ Card added</string>
+    <string name="toast_updated_card">✓ Card updated</string>
+    <string name="toast_deleted_card">🗑️ Card deleted</string>
+    <string name="toast_added_dhikr">✓ Dhikr added and favorited</string>
+
+    <string name="edit_desc">Edit</string>
+    <string name="delete_desc">Delete</string>
+    <string name="info_desc">About this feature</string>
+    <string name="favorite_desc">Add to favorites</string>
+    <string name="unfavorite_desc">Remove from favorites</string>
+
+    <string name="minute_1">minute</string>
+    <string name="minutes_n">minutes</string>
+
+
+    <string name="mood_entry_title">Create a New Journal Entry</string>
+    <string name="big_question">How are you feeling today?</string>
+    <string name="saved_toast">Your mood has been saved ✅</string>
+
+    <string name="mood_awful">I feel overwhelmed</string>
+    <string name="mood_sad">I feel sad</string>
+    <string name="mood_low">I feel discouraged</string>
+    <string name="mood_neutral">I feel neutral</string>
+    <string name="mood_calm">I feel at ease</string>
+    <string name="mood_happy">I feel happy</string>
+    <string name="mood_overjoyed">I feel completely joyful</string>
 </resources>
 

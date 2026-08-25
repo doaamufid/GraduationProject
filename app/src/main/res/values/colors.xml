@@ -295,4 +295,7 @@
 
     <color name="dialogScrim">#C7060812</color>
     <color name="rowBorder">#0FFFFFFF</color>
+
+    <color name="text_dark">#0F172A</color>
+    <color name="default_background">#EAEEF3</color>
 </resources>

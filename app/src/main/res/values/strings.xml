@@ -1174,4 +1174,18 @@
 
     <string name="minute_1">دقيقة</string>
     <string name="minutes_n">دقائق</string>
+
+
+
+    <string name="mood_entry_title">إنشاء يومية جديدة</string>
+    <string name="big_question">كيف مزاجك اليوم؟</string>
+    <string name="saved_toast">تم حفظ مزاجك ✅</string>
+
+    <string name="mood_awful">أشعر بالانهيار</string>
+    <string name="mood_sad">أشعر بالحزن</string>
+    <string name="mood_low">أشعر بالإحباط</string>
+    <string name="mood_neutral">أشعر بالحياد</string>
+    <string name="mood_calm">أشعر بالارتياح</string>
+    <string name="mood_happy">أشعر بالسعادة</string>
+    <string name="mood_overjoyed">أشعر بالبهجة الكاملة</string>
 </resources>

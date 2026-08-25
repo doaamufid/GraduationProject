@@ -156,6 +156,10 @@
             android:exported="false" />
 
         <activity
+            android:name=".AdultMoodActivity"
+            android:exported="false" />
+
+        <activity
             android:name=".ReflectionActivity"
             android:exported="false" />
 
