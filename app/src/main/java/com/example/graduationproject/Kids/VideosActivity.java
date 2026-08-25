@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.graduationproject.adapters.CategoryAdapter;
+import com.example.graduationproject.adapters.CategoryAdapter2;
 import com.example.graduationproject.adapters.VideoAdapter;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityVideosBinding;

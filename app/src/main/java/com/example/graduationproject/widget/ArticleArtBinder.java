@@ -4,7 +4,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import com.example.graduationproject.R;
-import com.example.graduationproject.models.ArticleRepository;
+import com.example.graduationproject.data.ArticleRepository;
 import com.example.graduationproject.models.CategoryStyle;
 
 /**

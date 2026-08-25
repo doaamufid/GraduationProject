@@ -1,7 +1,9 @@
 package com.example.graduationproject.data;
 
+import com.example.graduationproject.R;
 import com.example.graduationproject.models.Article;
 import com.example.graduationproject.models.ArticleCategory;
+import com.example.graduationproject.models.CategoryStyle;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,11 +31,77 @@ public class ArticleRepository {
 
     public static List<Article> getByCategory(String category) {
         List<Article> out = new ArrayList<>();
+
         for (Article a : getAll()) {
-            if (ArticleCategory.ALL.equals(category) || a.category.equals(category)) out.add(a);
+            if (ArticleCategory.ALL.equals(category)
+                    || a.category.equals(category)) {
+                out.add(a);
+            }
         }
+
         return out;
     }
+
+    // ============================================================
+    // CATEGORY STYLE
+    // ============================================================
+
+    /**
+     * Returns the visual style for each article category.
+     *
+     * This method is used by ArticleCardBinder.
+     */
+    public static CategoryStyle styleFor(String category) {
+
+        if (ArticleCategory.GRATITUDE.equals(category)) {
+
+            return new CategoryStyle(
+                    R.drawable.bg_art_grief,
+                    R.drawable.ic_heart,
+                    R.color.cat_grief_end,
+                    R.color.cat_grief_badge_bg
+            );
+
+        } else if (ArticleCategory.PATIENCE.equals(category)) {
+
+            return new CategoryStyle(
+                    R.drawable.bg_art_breathing,
+                    R.drawable.ic_wind,
+                    R.color.cat_breathing_end,
+                    R.color.cat_breathing_badge_bg
+            );
+
+        } else if (ArticleCategory.STRENGTH.equals(category)) {
+
+            return new CategoryStyle(
+                    R.drawable.bg_art_cbt,
+                    R.drawable.ic_brain,
+                    R.color.cat_cbt_end,
+                    R.color.cat_cbt_badge_bg
+            );
+
+        } else if (ArticleCategory.HOPE.equals(category)) {
+
+            return new CategoryStyle(
+                    R.drawable.bg_art_anxiety,
+                    R.drawable.ic_zap,
+                    R.color.cat_anxiety_end,
+                    R.color.cat_anxiety_badge_bg
+            );
+        }
+
+        // Default style
+        return new CategoryStyle(
+                R.drawable.bg_art_cbt,
+                R.drawable.ic_brain,
+                R.color.cat_cbt_end,
+                R.color.cat_cbt_badge_bg
+        );
+    }
+
+    // ============================================================
+    // ARTICLES
+    // ============================================================
 
     private static List<Article> build() {
         List<Article> list = new ArrayList<>();
