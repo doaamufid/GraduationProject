@@ -1095,6 +1095,83 @@
     <string name="level_up_points_earned">+%1$d نقطة إضافية 🌟</string>
     <string name="level_up_btn_continue">متابعة العناية بالشجرة 💚</string>
 
+    <string name="tab_gallery">بطاقاتي</string>
+    <string name="tab_dhikr">أذكاري</string>
+    <string name="tab_simulate">سيناريو الأزمة</string>
+
+    <string name="subtitle_cards">%1$d بطاقة محفوظة</string>
+    <string name="subtitle_cards_plural">%1$d بطاقات محفوظة</string>
+    <string name="subtitle_dhikr">%1$d ذكر مفضّل</string>
+    <string name="subtitle_dhikr_plural">%1$d أذكار مفضّلة</string>
+    <string name="subtitle_simulate">بطاقتك وذكرك يظهرو تلقائياً</string>
+
+    <string name="info_title">ليش هذي الميزة مختلفة؟</string>
+    <string name="info_body">تختارين بطاقتك الفعالة، وتفضّلين الأذكار اللي تريحك وتحددين مدة كل وحدة (من دقيقة لـ٥ دقايق). وقت التهدئة الفورية: تنفس عميق ٤-٧-٨، بعده ذكرك المفضل بعداد تنازلي حقيقي، وآخر شي بطاقتك — كلها تلقائي، بدون أي تصفح وقت الأزمة.</string>
+    <string name="got_it">فهمت</string>
+
+    <string name="active_now_label">💛 الفعالة الآن — هذي اللي بتطلع وقت الأزمة</string>
+    <string name="no_active_card">ما فيه بطاقة فعالة حالياً — اختاري وحدة من تحت</string>
+    <string name="all_cards">كل بطاقاتك</string>
+    <string name="active_now_badge">✓ الفعالة الآن</string>
+    <string name="tap_to_activate">اضغطي لتفعيلها</string>
+    <string name="new_card_btn">+ بطاقة جديدة</string>
+
+    <string name="card_new_title">بطاقة جديدة</string>
+    <string name="card_edit_title">تعديل البطاقة</string>
+    <string name="phrase_label">الجملة اللي تطمّنك</string>
+    <string name="phrase_hint">مثال: هذا الشعور مؤقت، وبيمر</string>
+    <string name="photo_label_optional">الصورة (اختياري)</string>
+    <string name="upload_photo">📁 رفع صورة</string>
+    <string name="upload_photo_selected">📁 صورة من جهازك ✓</string>
+    <string name="no_photo">✕ بدون صورة</string>
+    <string name="preview_label">معاينة:</string>
+    <string name="cancel">إلغاء</string>
+    <string name="save">حفظ</string>
+    <string name="card_placeholder">اكتبي جملة تطمّنك…</string>
+
+    <string name="dhikr_intro">فضّلي الأذكار اللي تريحك وحددي مدتها. وقت التهدئة الفورية رح يظهرلك وحد منها تلقائياً بعداد تنازلي حقيقي.</string>
+    <string name="add_custom_dhikr">+ أضيفي ذكرك الخاص</string>
+    <string name="dhikr_dialog_title">ذكرك الخاص</string>
+    <string name="dhikr_text_label">اكتبي الذكر</string>
+    <string name="dhikr_text_hint">مثال: يا مقلب القلوب ثبت قلبي</string>
+    <string name="dhikr_category_label">وين حاسة إنه يريحك أكثر؟</string>
+    <string name="dhikr_duration_label">كم دقيقة تحبين تكرريه وقت الأزمة؟</string>
+    <string name="save_and_favorite">حفظ وتفضيل</string>
+    <string name="duration_display_label">مدة العرض وقت الأزمة:</string>
+
+    <string name="locked_msg">ما فيه بطاقة فعالة حالياً. اختاري وحدة من تبويب «بطاقاتي» عشان تظهر تلقائياً وقت الأزمة.</string>
+    <string name="go_to_gallery">روحي لصفحة بطاقاتي</string>
+    <string name="sim_intro_msg">اضغطي الزر لتجربي بالضبط اللي بيصير وقت لحظة أزمة حقيقية.</string>
+    <string name="sim_start_btn">ابدئي</string>
+    <string name="sim_start_label">زر التهدئة الفورية</string>
+    <string name="no_favorite_dhikr_prompt">ما فضّلتي أذكار بعد — فضّلي وحدة الآن</string>
+    <string name="cancel_x">✕ إلغاء</string>
+
+    <string name="breathing_technique_label">تقنية ٤-٧-٨ للتنفس العميق — مناسبة لنوبات الهلع</string>
+    <string name="breathing_cycle_fmt">الدورة %1$d من %2$d</string>
+    <string name="breathing_footer">بعد التنفس والتأريض، رح يوصلك ذكرك المفضل ثم بطاقتك تلقائياً 💛</string>
+
+    <string name="grounding_msg">لاحظي ٥ أشياء حواليك الآن</string>
+
+    <string name="dhikr_source_favorite">من أذكارك المفضلة 📿</string>
+    <string name="dhikr_source_default">ذكر افتراضي — فضّلي أذكارك من تبويب «أذكاري»</string>
+    <string name="another_dhikr">🔄 ذكر ثاني</string>
+
+    <string name="card_auto_badge">ظهرت تلقائياً — بدون ما تدوّري عليها 💛</string>
+    <string name="im_ok_now">تم، أنا بخير الآن</string>
+
+    <string name="toast_activated">✓ أصبحت البطاقة الفعالة</string>
+    <string name="toast_added_card">✓ تمت إضافة البطاقة</string>
+    <string name="toast_updated_card">✓ تم تحديث البطاقة</string>
+    <string name="toast_deleted_card">🗑️ تم حذف البطاقة</string>
+    <string name="toast_added_dhikr">✓ تمت إضافة ذكرك، وصار مفضّل</string>
+
+    <string name="edit_desc">تعديل</string>
+    <string name="delete_desc">حذف</string>
+    <string name="info_desc">عن هذي الميزة</string>
+    <string name="favorite_desc">إضافة للمفضلة</string>
+    <string name="unfavorite_desc">إزالة من المفضلة</string>
+
+    <string name="minute_1">دقيقة</string>
+    <string name="minutes_n">دقائق</string>
 </resources>
-
-

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/bg_dialog_sheet"
+    android:padding="26dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="💛"
+        android:textSize="30sp"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/info_title"
+        android:textColor="@color/cream"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="12dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/info_body"
+        android:textColor="@color/muted"
+        android:textSize="13.5sp"
+        android:lineSpacingMultiplier="1.9"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/btnGotIt"
+        style="@style/GhostButton"
+        android:layout_marginTop="16dp"
+        android:text="@string/got_it"/>
+
+</LinearLayout>

@@ -275,4 +275,24 @@
     <color name="dhikr_gold">#D9A85C</color>
     <color name="online_green">#4CAF7D</color>
 
+    <color name="bgDeep">#0A0D1F</color>
+    <color name="bgMid">#171D3F</color>
+    <color name="cardLight">#212852</color>
+    <color name="borderSolid">#E7A855</color>
+    <color name="amber">#E7A855</color>
+    <color name="amberDeep">#B9803A</color>
+    <color name="amberLight">#F4C98A</color>
+    <color name="cream">#F5EEE1</color>
+    <color name="muted">#9099C0</color>
+    <color name="mutedDim">#5B628A</color>
+    <color name="dangerDeep">#2A0E0C</color>
+    <color name="scrimTop">#EB0A0D1F</color>
+    <color name="scrimMid">#2E0A0D1F</color>
+    <color name="scrimBottom">#050A0D1F</color>
+    <color name="amberFaint">#1FE7A855</color>
+    <color name="amberFaint2">#28E7A855</color>
+    <color name="cardBtnText">#241708</color>
+
+    <color name="dialogScrim">#C7060812</color>
+    <color name="rowBorder">#0FFFFFFF</color>
 </resources>

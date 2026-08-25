@@ -22,6 +22,7 @@ import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.CBTRReframingActivity;
 import com.example.graduationproject.FutureActivity;
 import com.example.graduationproject.GroundingExActivity;
+import com.example.graduationproject.OneClickCalmActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.StrenghtBankActivity;
 import com.example.graduationproject.SurvivalBoxActivity;
@@ -118,7 +119,7 @@ public class ExercisesFragment extends Fragment {
                     break;
 
                 case 3: // بطاقة التهدئة الشخصية
-                    Toast.makeText(requireContext(), "تم الضغط على بطاقة التهدئة", Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(requireContext(), OneClickCalmActivity.class));
                     break;
 
                 case 4: // التنفس (Breathing)
