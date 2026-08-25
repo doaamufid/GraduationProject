@@ -15,7 +15,7 @@
         android:paddingEnd="20dp"
         android:paddingBottom="32dp">
 
-        <!-- Top bar -->
+        <!-- 1. Header -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Hero card -->
+        <!-- 2. Hero card -->
         <LinearLayout
             android:id="@+id/hero_card"
             android:layout_width="match_parent"
@@ -112,7 +112,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Stats grid -->
+        <!-- 3. Stats grid -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -164,70 +164,7 @@
             </LinearLayout>
         </LinearLayout>
 
-        <!-- Mood chart -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:background="@drawable/bg_card_bordered"
-            android:padding="16dp"
-            android:layout_marginBottom="16dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="8dp">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/week_mood_label"
-                    android:textColor="@color/text_soft"
-                    android:textStyle="bold"
-                    android:textSize="@dimen/text_small"/>
-
-                <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:gravity="center_vertical"
-                    android:background="@drawable/bg_star_badge"
-                    android:paddingStart="8dp"
-                    android:paddingEnd="8dp"
-                    android:paddingTop="4dp"
-                    android:paddingBottom="4dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/week_peak_label"
-                        android:textColor="#A67B2E"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/text_tiny"
-                        android:layout_marginEnd="4dp"/>
-
-                    <ImageView android:layout_width="11dp" android:layout_height="11dp" android:src="@drawable/ic_star_filled" android:contentDescription="@null"/>
-                </LinearLayout>
-            </LinearLayout>
-
-            <com.example.graduationproject.ui.profile.MoodArcView
-                android:id="@+id/mood_arc_view"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-
-            <LinearLayout
-                android:id="@+id/mood_days_row"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:layout_marginTop="4dp"/>
-        </LinearLayout>
-
-        <!-- Top features -->
+        <!-- 4. Kids Mood Stats Card (Bear themed) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -237,6 +174,100 @@
             android:layout_marginBottom="16dp">
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="مزاجه هالشهر 🧸"
+                android:textColor="@color/text_main"
+                android:textStyle="bold"
+                android:textSize="@dimen/text_body"
+                android:layout_marginBottom="2dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="بيانات آخر ٣٠ يوم فقط"
+                android:textColor="@color/text_soft"
+                android:textSize="@dimen/text_tiny"
+                android:layout_marginBottom="12dp"/>
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_segmented_track"
+                android:padding="2dp">
+
+                <View
+                    android:id="@+id/child_segment_indicator"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/bg_segmented_indicator" />
+
+                <LinearLayout
+                    android:id="@+id/child_segment_buttons"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+                    <TextView android:id="@+id/child_tab_day" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="يوم" android:textSize="11sp" android:textColor="#8598AC" />
+                    <TextView android:id="@+id/child_tab_week" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="أسبوع" android:textSize="11sp" android:textColor="#0F172A" android:textStyle="bold" />
+                    <TextView android:id="@+id/child_tab_month" android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="1" android:gravity="center" android:text="شهر" android:textSize="11sp" android:textColor="#8598AC" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="6dp">
+                <TextView
+                    android:id="@+id/child_scrub_emoji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🧸"
+                    android:textSize="18sp"/>
+                <TextView
+                    android:id="@+id/child_scrub_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    tools:text="مرتاح"/>
+                <TextView
+                    android:id="@+id/child_scrub_sub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:textSize="12sp"
+                    android:textColor="#8598AC"
+                    tools:text="· اليوم"/>
+            </LinearLayout>
+
+            <com.example.graduationproject.widget.AdultChartView
+                android:id="@+id/child_chart_view"
+                android:layout_width="match_parent"
+                android:layout_height="120dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="حرّك إصبعك على الخط تشوف مزاجه بأي وقت 👆"
+                android:textSize="10sp"
+                android:textColor="#B7C2CE" />
+        </LinearLayout>
+
+        <!-- 5. Top features -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/bg_card_bordered"
+            android:padding="16dp"
+            android:layout_marginBottom="16dp">
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/most_used_features"
@@ -245,7 +276,6 @@
                 android:textSize="@dimen/text_body"
                 android:gravity="start"
                 android:layout_marginBottom="10dp"/>
-
             <LinearLayout
                 android:id="@+id/features_container"
                 android:layout_width="match_parent"
@@ -253,14 +283,14 @@
                 android:orientation="vertical"/>
         </LinearLayout>
 
-        <!-- Alert or OK box -->
+        <!-- 6. Alert box -->
         <FrameLayout
             android:id="@+id/alert_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"/>
 
-        <!-- Recommendations -->
+        <!-- 7. Recommendations -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -268,14 +298,12 @@
             android:background="@drawable/bg_recommend_box"
             android:padding="16dp"
             android:layout_marginBottom="16dp">
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:gravity="center_vertical"
                 android:layout_marginBottom="10dp">
-
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -284,10 +312,8 @@
                     android:textStyle="bold"
                     android:textSize="@dimen/text_small"
                     android:layout_marginEnd="6dp"/>
-
                 <ImageView android:layout_width="15dp" android:layout_height="15dp" android:src="@drawable/ic_sparkles" app:tint="@color/sage" android:contentDescription="@null"/>
             </LinearLayout>
-
             <LinearLayout
                 android:id="@+id/recommendations_container"
                 android:layout_width="match_parent"
@@ -295,7 +321,7 @@
                 android:orientation="vertical"/>
         </LinearLayout>
 
-        <!-- History -->
+        <!-- 8. History -->
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -305,7 +331,6 @@
             android:textSize="@dimen/text_body"
             android:layout_gravity="start"
             android:layout_marginBottom="8dp"/>
-
         <LinearLayout
             android:id="@+id/history_container"
             android:layout_width="match_parent"
@@ -313,6 +338,7 @@
             android:orientation="vertical"
             android:layout_marginBottom="16dp"/>
 
+        <!-- 9. Disclaimer -->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

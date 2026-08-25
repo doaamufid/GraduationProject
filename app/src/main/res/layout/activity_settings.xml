@@ -164,7 +164,6 @@
                 </LinearLayout>
 
                 <include android:id="@+id/rowAutoDark" layout="@layout/item_settings_row"/>
-                <include android:id="@+id/rowDialect" layout="@layout/item_settings_row"/>
 
                 <TextView style="@style/SectionTitle" android:text="@string/section_ai"/>
                 <include android:id="@+id/rowCloudAI" layout="@layout/item_settings_row"/>

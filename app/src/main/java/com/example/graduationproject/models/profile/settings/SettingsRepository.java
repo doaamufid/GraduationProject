@@ -9,13 +9,11 @@ import java.util.Arrays;
 import java.util.List;
 
 /**
- * Static/seed data source. Equivalent of THEMES, DIALECTS, and the
+ * Static/seed data source. Equivalent of THEMES and the
  * ChildProfilesScreen's initial `children` state. The children list is
  * kept as an in-memory singleton so edits persist while the app runs.
  */
 public final class SettingsRepository {
-
-    public static final List<String> DIALECT_KEYS = Arrays.asList("standard", "gulf", "levantine", "egyptian");
 
     private static SettingsRepository instance;
 
@@ -27,7 +25,6 @@ public final class SettingsRepository {
     public boolean appLock = false;
     public boolean autoDark = true;
     public String theme = "blue";
-    public String dialect = "gulf";
     public boolean cloudAI = true;
     public boolean breathHaptic = true;
     public boolean reduceMotion = false;
@@ -48,18 +45,6 @@ public final class SettingsRepository {
                 new ThemeOption("sage", context.getColor(R.color.sage)),
                 new ThemeOption("sand", context.getColor(R.color.sand))
         );
-    }
-
-    public static String getDialectName(Context context, String key) {
-        int resId;
-        switch (key) {
-            case "standard": resId = R.string.dialect_standard; break;
-            case "gulf": resId = R.string.dialect_gulf; break;
-            case "levantine": resId = R.string.dialect_levantine; break;
-            case "egyptian": resId = R.string.dialect_egyptian; break;
-            default: resId = R.string.dialect_gulf;
-        }
-        return context.getString(resId);
     }
 
     public void removeChild(int id) {

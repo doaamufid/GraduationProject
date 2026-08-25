@@ -49,7 +49,12 @@ public class AdultProfileActivity extends AppCompatActivity implements ProfileNa
         });
 
         if (savedInstanceState == null) {
-            showHome();
+            String nav = getIntent().getStringExtra("navigate_to");
+            if (nav != null) {
+                navigate(nav);
+            } else {
+                showHome();
+            }
         }
     }
 
