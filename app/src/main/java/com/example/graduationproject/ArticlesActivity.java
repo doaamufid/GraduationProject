@@ -25,6 +25,9 @@ import java.util.Locale;
  */
 public class ArticlesActivity extends AppCompatActivity {
 
+    public static final String EXTRA_OPEN = "open";
+    public static final String OPEN_BOOKMARKS = "bookmarks";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Force Arabic locale by default for RTL support
@@ -37,6 +40,11 @@ public class ArticlesActivity extends AppCompatActivity {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.fragmentContainer, LibraryFragment.newInstance())
                     .commit();
+
+            // Opened directly on the article bookmarks list (e.g. from the profile page)
+            if (OPEN_BOOKMARKS.equals(getIntent().getStringExtra(EXTRA_OPEN))) {
+                navigateTo(ArticleListFragment.newInstance(ArticleListFragment.MODE_BOOKMARKS), true);
+            }
         }
     }
 

@@ -58,6 +58,34 @@ public class AppState {
         return new ArrayList<>(bookmarkedIds);
     }
 
+    // ---- video / podcast content favorites & bookmarks (separate ID space from articles) ----
+    private final Set<Integer> savedContentIds = new LinkedHashSet<>();
+    private final Set<Integer> bookmarkedContentIds = new LinkedHashSet<>();
+
+    public boolean isContentSaved(int contentId) {
+        return savedContentIds.contains(contentId);
+    }
+
+    public void toggleContentSaved(int contentId) {
+        if (!savedContentIds.remove(contentId)) savedContentIds.add(contentId);
+    }
+
+    public List<Integer> getSavedContentIds() {
+        return new ArrayList<>(savedContentIds);
+    }
+
+    public boolean isContentBookmarked(int contentId) {
+        return bookmarkedContentIds.contains(contentId);
+    }
+
+    public void toggleContentBookmarked(int contentId) {
+        if (!bookmarkedContentIds.remove(contentId)) bookmarkedContentIds.add(contentId);
+    }
+
+    public List<Integer> getBookmarkedContentIds() {
+        return new ArrayList<>(bookmarkedContentIds);
+    }
+
     // ---- highlights ----
     public List<Highlight> getHighlights() {
         return highlights;

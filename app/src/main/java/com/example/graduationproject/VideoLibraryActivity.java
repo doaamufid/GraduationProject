@@ -1,6 +1,5 @@
 package com.example.graduationproject;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -8,8 +7,10 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.graduationproject.models.ContentItem;
-import com.example.graduationproject.ui.LibraryFragment;
+import com.example.graduationproject.ui.VideoLibraryFragment;
+import com.example.graduationproject.ui.VideoContentListFragment;
 import com.example.graduationproject.ui.PlayerFragment;
+
 
 /**
  * Hosts both screens (Library, Player) inside a single fragment
@@ -17,12 +18,23 @@ import com.example.graduationproject.ui.PlayerFragment;
  * "player") in the original root component. Navigation between them
  * uses the FragmentManager back stack.
  */
-public class VideoLibraryActivity extends AppCompatActivity {
+public class VideoLibraryActivity extends AppCompatActivity implements ContentItemHost {
+
+    public static final String EXTRA_OPEN = "open";
+    public static final String OPEN_BOOKMARKS = "bookmarks";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
+        // Arabic + RTL by default; English + LTR when the saved app language is English
+        AppLanguageManager.applySavedLanguage(this);
+
+        setContentView(R.layout.activity_video_library);
+
+        // Force this window's direction (the app theme hardcodes RTL globally)
+        applyWindowDirection();
+
         // ضبط لون شريط الحالة ليكون اللون الأزرق الفاتح (مثل الخلفية)
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg));
@@ -33,10 +45,33 @@ public class VideoLibraryActivity extends AppCompatActivity {
         }
 
         if (savedInstanceState == null) {
-            startActivity(new Intent(this, VisualContentActivity.class));
-            finish();
-            return;
+            getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, new VideoLibraryFragment())
+                    .commit();
+
+            // Opened directly on the video bookmarks list (e.g. from the profile page)
+            if (OPEN_BOOKMARKS.equals(getIntent().getStringExtra(EXTRA_OPEN))) {
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.fragmentContainer,
+                                VideoContentListFragment.newInstance(VideoContentListFragment.MODE_BOOKMARKS))
+                        .addToBackStack(null)
+                        .commit();
+            }
         }
+    }
+
+    /** Forces this window's layout + text direction to match the saved language. */
+    private void applyWindowDirection() {
+        boolean rtl = AppLanguageManager.isRtl(AppLanguageManager.getSavedLanguage(this));
+        android.view.View decor = getWindow().getDecorView();
+        decor.setLayoutDirection(rtl
+                ? android.view.View.LAYOUT_DIRECTION_RTL
+                : android.view.View.LAYOUT_DIRECTION_LTR);
+        decor.setTextDirection(rtl
+                ? android.view.View.TEXT_DIRECTION_RTL
+                : android.view.View.TEXT_DIRECTION_LTR);
     }
 
     /** Equivalent of `open(it)`: setActive(it) + setStage("player"). */
@@ -53,7 +88,8 @@ public class VideoLibraryActivity extends AppCompatActivity {
         // If we are currently on the Library list, add to backstack so we can return to it.
         // If we are already in the Player (e.g. clicking a suggestion), don't add to backstack
         // so that 'back' always returns to the Library list, not the previous video.
-        if (currentFragment instanceof LibraryFragment) {
+        if (currentFragment instanceof VideoLibraryFragment
+                || currentFragment instanceof VideoContentListFragment) {
             transaction.addToBackStack(null);
         }
 
@@ -73,3 +109,4 @@ public class VideoLibraryActivity extends AppCompatActivity {
         }
     }
 }
+
