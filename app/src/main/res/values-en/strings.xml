@@ -1157,5 +1157,155 @@
     <string name="mood_calm">I feel at ease</string>
     <string name="mood_happy">I feel happy</string>
     <string name="mood_overjoyed">I feel completely joyful</string>
+
+
+    <string name="adaptive_adult_onboarding_app_name">Salam</string>
+    <string name="adaptive_adult_onboarding_welcome_title">Welcome to Salam 🤍</string>
+    <string name="adaptive_adult_onboarding_welcome_body">A private space to help you understand your feelings and find simple ways to feel calm.</string>
+    <string name="adaptive_adult_onboarding_welcome_button">Let\'s start calmly</string>
+    <string name="adaptive_adult_onboarding_privacy_title">Before we begin…</string>
+    <string name="adaptive_adult_onboarding_privacy_subtext">Some of your answers will help Salam provide an experience closer to what you need. Nothing is shared outside your device without your knowledge.</string>
+    <string name="adaptive_adult_onboarding_privacy_card1">Your privacy is important</string>
+    <string name="adaptive_adult_onboarding_privacy_card2">You can skip any question</string>
+    <string name="adaptive_adult_onboarding_privacy_card3">You can edit your answers later</string>
+    <string name="adaptive_adult_onboarding_privacy_card4">You can delete your data whenever you want</string>
+    <string name="adaptive_adult_onboarding_privacy_button">Understood, let\'s continue</string>
+    <string name="adaptive_adult_onboarding_identity_title">What should we call you?</string>
+    <string name="adaptive_adult_onboarding_identity_subtext">You can use a nickname, or leave it completely empty.</string>
+    <string name="adaptive_adult_onboarding_identity_hint">Write a name here…</string>
+    <string name="adaptive_adult_onboarding_identity_greeting">Glad to meet you, %1$s 🌿</string>
+    <string name="adaptive_adult_onboarding_identity_age_title">How old are you approximately?</string>
+    <string name="adaptive_adult_onboarding_identity_gender_title">Would you like us to know your gender?</string>
+    <string name="adaptive_adult_onboarding_overall_mood_title">How do you feel these days in general?</string>
+    <string name="adaptive_adult_onboarding_unsure">I\'m not sure</string>
+    <string name="adaptive_adult_onboarding_frequent_emotions_title">What emotions visit you most these days?</string>
+    <string name="adaptive_adult_onboarding_frequent_emotions_subtext">Choose what applies to you, in no particular order or number.</string>
+    <string name="adaptive_adult_onboarding_safety_title">Do you feel fear or unsafe lately?</string>
+    <string name="adaptive_adult_onboarding_no_right_wrong">There is no right or wrong answer.</string>
+    <string name="adaptive_adult_onboarding_intense_fear_body">Sometimes a person may experience sudden moments of intense fear, or rapid breathing or heartbeat.</string>
+    <string name="adaptive_adult_onboarding_intense_fear_title">Have you had a similar experience recently?</string>
+    <string name="adaptive_adult_onboarding_timeline_title">At what time do you feel your emotions are most difficult?</string>
+    <string name="adaptive_adult_onboarding_helpful_title">When you go through a difficult moment, what usually helps you?</string>
+    <string name="adaptive_adult_onboarding_helpful_subtext">This will help us suggest activities that suit you best.</string>
+    <string name="adaptive_adult_onboarding_goals_title">What do you hope Salam will help you with most?</string>
+    <string name="adaptive_adult_onboarding_mood_demo_paragraph">From time to time, Salam may ask you a simple question like:</string>
+    <string name="adaptive_adult_onboarding_mood_demo_question">How was your day today?</string>
+    <string name="adaptive_adult_onboarding_mood_demo_subtext">Salam will appear to you like this from time to time so you can notice your feelings changing over time, and you can turn off this tracking later in the settings.</string>
+    <string name="adaptive_adult_onboarding_mood_demo_status_active">This is exactly how your daily tracking looks 🤍</string>
+    <string name="adaptive_adult_onboarding_mood_demo_status_idle">Try now to see what the daily tracking will look like</string>
+    <string name="adaptive_adult_onboarding_preview_title">So far, we\'ll try to make your experience closer to you</string>
+    <string name="adaptive_adult_onboarding_preview_subtext">🤍 A quick look at what we\'ve noticed with you</string>
+    <string name="adaptive_adult_onboarding_preview_card_night">The night might be a more difficult time for you sometimes.</string>
+    <string name="adaptive_adult_onboarding_preview_card_anxiety">We\'ll suggest calm and breathing exercises when you feel stressed.</string>
+    <string name="adaptive_adult_onboarding_preview_card_spiritual">You can see spiritual content if you choose to.</string>
+    <string name="adaptive_adult_onboarding_preview_card_writing">We\'ll suggest writing when it seems like a suitable way for you.</string>
+    <string name="adaptive_adult_onboarding_preview_card_goals_prefix">Based on what you shared, we\'ll focus on: </string>
+    <string name="adaptive_adult_onboarding_preview_card_default">It seems you prefer to explore Salam yourself first, and that\'s perfectly fine.</string>
+    <string name="adaptive_adult_onboarding_preview_hint">These are only preliminary suggestions, and you can change them later in the settings.</string>
+    <string name="adaptive_adult_onboarding_ready_title">Thank you for sharing what you feel %1$s 🤍</string>
+    <string name="adaptive_adult_onboarding_ready_body">You don\'t need to be okay all the time.\nTake things step by step.</string>
+    <string name="adaptive_adult_onboarding_ready_button">Enter Salam</string>
+    <string name="adaptive_adult_onboarding_resume_title">Continue from where you left off?</string>
+    <string name="adaptive_adult_onboarding_resume_body">We saved your journey locally on your device.</string>
+    <string name="adaptive_adult_onboarding_restart">Start fresh</string>
+    <string name="adaptive_adult_onboarding_home_good_evening">Good evening</string>
+    <string name="adaptive_adult_onboarding_home_salam_friend">Salam friend</string>
+    <string name="adaptive_adult_onboarding_home_suggested">Suggested for you now</string>
+    <string name="adaptive_adult_onboarding_home_replay">Replay Onboarding (Demo Mode)</string>
+    <string name="adaptive_adult_onboarding_simulate_reopen">Simulate Reopening</string>
+    <string name="adaptive_adult_onboarding_skip">Skip</string>
+    <string name="adaptive_adult_onboarding_continue">Continue</string>
+    <string name="adaptive_adult_onboarding_edit">Edit</string>
+    <string name="adaptive_adult_onboarding_back">Back</string>
+
+    <!-- AppData Strings -->
+    <string name="adaptive_adult_onboarding_age_under_18">Under 18</string>
+    <string name="adaptive_adult_onboarding_age_18_24">18–24</string>
+    <string name="adaptive_adult_onboarding_age_25_34">25–34</string>
+    <string name="adaptive_adult_onboarding_age_35_44">35–44</string>
+    <string name="adaptive_adult_onboarding_age_45_54">45–54</string>
+    <string name="adaptive_adult_onboarding_age_55_plus">55 and above</string>
+
+    <string name="adaptive_adult_onboarding_gender_female">Female</string>
+    <string name="adaptive_adult_onboarding_gender_male">Male</string>
+    <string name="adaptive_adult_onboarding_gender_prefer_not">I prefer not to specify</string>
+
+    <string name="adaptive_adult_onboarding_mood_calm">I usually feel calm</string>
+    <string name="adaptive_adult_onboarding_mood_pressured">I feel pressured or anxious</string>
+    <string name="adaptive_adult_onboarding_mood_hard">I feel things are very difficult lately</string>
+
+    <string name="adaptive_adult_onboarding_emotion_tension">Tension</string>
+    <string name="adaptive_adult_onboarding_emotion_fear">Fear</string>
+    <string name="adaptive_adult_onboarding_emotion_sadness">Sadness</string>
+    <string name="adaptive_adult_onboarding_emotion_irritation">Irritation</string>
+    <string name="adaptive_adult_onboarding_emotion_anxiety">Anxiety</string>
+    <string name="adaptive_adult_onboarding_emotion_terror">Terror</string>
+    <string name="adaptive_adult_onboarding_emotion_loneliness">Loneliness</string>
+    <string name="adaptive_adult_onboarding_emotion_exhaustion">Exhaustion</string>
+    <string name="adaptive_adult_onboarding_emotion_unsure">I don\'t know</string>
+    <string name="adaptive_adult_onboarding_emotion_okay">Usually okay</string>
+
+    <string name="adaptive_adult_onboarding_safety_rarely">Rarely</string>
+    <string name="adaptive_adult_onboarding_safety_sometimes">Sometimes</string>
+    <string name="adaptive_adult_onboarding_safety_often">Often</string>
+    <string name="adaptive_adult_onboarding_safety_most">Most of the time</string>
+    <string name="adaptive_adult_onboarding_safety_skip">I prefer not to answer</string>
+
+    <string name="adaptive_adult_onboarding_fear_yes_sometimes">Yes, sometimes</string>
+    <string name="adaptive_adult_onboarding_fear_yes_often">Yes, often</string>
+    <string name="adaptive_adult_onboarding_fear_rarely">Rarely</string>
+    <string name="adaptive_adult_onboarding_fear_unsure">I don\'t know</string>
+    <string name="adaptive_adult_onboarding_fear_skip">I prefer not to answer</string>
+
+    <string name="adaptive_adult_onboarding_time_morning">Morning</string>
+    <string name="adaptive_adult_onboarding_time_day">Day</string>
+    <string name="adaptive_adult_onboarding_time_evening">Evening</string>
+    <string name="adaptive_adult_onboarding_time_night">Night</string>
+
+    <string name="adaptive_adult_onboarding_followup_night_prompt">When night comes, what do you feel most?</string>
+    <string name="adaptive_adult_onboarding_followup_day_prompt">During the day, what do you feel most?</string>
+    <string name="adaptive_adult_onboarding_followup_morning_prompt">In the morning, what do you feel most?</string>
+    <string name="adaptive_adult_onboarding_followup_evening_prompt">In the evening, what do you feel most?</string>
+
+    <string name="adaptive_adult_onboarding_option_loneliness">Loneliness</string>
+    <string name="adaptive_adult_onboarding_option_fear">Fear</string>
+    <string name="adaptive_adult_onboarding_option_overthinking">Overthinking</string>
+    <string name="adaptive_adult_onboarding_option_anxiety">Anxiety</string>
+    <string name="adaptive_adult_onboarding_option_sadness">Sadness</string>
+    <string name="adaptive_adult_onboarding_option_insomnia">Difficulty sleeping</string>
+    <string name="adaptive_adult_onboarding_option_tension">Tension</string>
+    <string name="adaptive_adult_onboarding_option_exhaustion">Exhaustion</string>
+    <string name="adaptive_adult_onboarding_option_pressure">Pressure</string>
+    <string name="adaptive_adult_onboarding_option_focus">Difficulty focusing</string>
+    <string name="adaptive_adult_onboarding_option_tiredness">Tiredness</string>
+    <string name="adaptive_adult_onboarding_option_dread">Expecting a difficult day</string>
+    <string name="adaptive_adult_onboarding_option_starting">Difficulty starting</string>
+    <string name="adaptive_adult_onboarding_option_rest">Need for rest</string>
+
+    <string name="adaptive_adult_onboarding_helpful_audio">Listening to audio</string>
+    <string name="adaptive_adult_onboarding_helpful_breathing">Breathing and calm</string>
+    <string name="adaptive_adult_onboarding_helpful_spiritual">Quran or Azkar</string>
+    <string name="adaptive_adult_onboarding_helpful_writing">Writing</string>
+    <string name="adaptive_adult_onboarding_helpful_talking">Talking to someone</string>
+    <string name="adaptive_adult_onboarding_helpful_movement">Movement or walking</string>
+    <string name="adaptive_adult_onboarding_helpful_activity">Simple activity</string>
+    <string name="adaptive_adult_onboarding_helpful_unsure">I don\'t know what helps me</string>
+
+    <string name="adaptive_adult_onboarding_goal_calm">Feeling calm</string>
+    <string name="adaptive_adult_onboarding_goal_stress">Dealing with stress</string>
+    <string name="adaptive_adult_onboarding_goal_understand">Understanding my feelings</string>
+    <string name="adaptive_adult_onboarding_goal_routine">Organizing my day</string>
+    <string name="adaptive_adult_onboarding_goal_sleep">Improving sleep</string>
+    <string name="adaptive_adult_onboarding_goal_loneliness">Dealing with loneliness</string>
+    <string name="adaptive_adult_onboarding_goal_habits">Forming better habits</string>
+    <string name="adaptive_adult_onboarding_goal_express">Expressing my feelings</string>
+    <string name="adaptive_adult_onboarding_goal_explore">I just want to explore the app</string>
+
+    <string name="adaptive_adult_onboarding_face_sad">Hard</string>
+    <string name="adaptive_adult_onboarding_face_low">Tired</string>
+    <string name="adaptive_adult_onboarding_face_neutral">Normal</string>
+    <string name="adaptive_adult_onboarding_face_good">Good</string>
+    <string name="adaptive_adult_onboarding_face_great">Great</string>
 </resources>
+
 

@@ -298,4 +298,24 @@
 
     <color name="text_dark">#0F172A</color>
     <color name="default_background">#EAEEF3</color>
+    <color name="adaptive_adult_onboarding_night">#12142B</color>
+    <color name="adaptive_adult_onboarding_nightDeep">#0B0D1F</color>
+    <color name="adaptive_adult_onboarding_twilight">#332C55</color>
+    <color name="adaptive_adult_onboarding_twilight2">#4B3E72</color>
+    <color name="adaptive_adult_onboarding_dawn">#7C6A9C</color>
+    <color name="adaptive_adult_onboarding_dawn2">#C99E82</color>
+    <color name="adaptive_adult_onboarding_light">#F4E3C8</color>
+    <color name="adaptive_adult_onboarding_light2">#FBF0DE</color>
+    <color name="adaptive_adult_onboarding_glow">#FFE3B0</color>
+    <color name="adaptive_adult_onboarding_glowSoft">#FFD79A</color>
+    <color name="adaptive_adult_onboarding_teal">#6FA79A</color>
+    <color name="adaptive_adult_onboarding_tealSoft">#8FBFB2</color>
+    <color name="adaptive_adult_onboarding_ink">#211B33</color>
+    <color name="adaptive_adult_onboarding_cream">#F8F2E6</color>
+    <color name="adaptive_adult_onboarding_rose">#C98A8A</color>
+    <color name="adaptive_adult_onboarding_white_soft">#FFFDF6</color>
+    <color name="adaptive_adult_onboarding_card_stroke_dark">#29FFFFFF</color>
+    <color name="adaptive_adult_onboarding_card_fill_dark">#0FFFFFFF</color>
+    <color name="adaptive_adult_onboarding_card_fill_selected">#29FFE3B0</color>
+    <color name="adaptive_adult_onboarding_transparent">#00000000</color>
 </resources>

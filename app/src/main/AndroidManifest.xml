@@ -152,7 +152,7 @@
             android:exported="false" />
 
         <activity
-            android:name=".AdultSignupActivity"
+            android:name=".AdultOnboardingMainActivity"
             android:exported="false" />
 
         <activity

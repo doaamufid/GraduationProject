@@ -73,7 +73,7 @@ public class SplashSelectActivity extends AppCompatActivity {
             appPrefs.edit().putBoolean("isFirstRun", false).apply();
 
             // Open the adult signup screen after selection
-            Intent intent = new Intent(SplashSelectActivity.this, AdultSignupActivity.class);
+            Intent intent = new Intent(SplashSelectActivity.this, AdultOnboardingMainActivity.class);
             startActivity(intent);
             finish();
         });
