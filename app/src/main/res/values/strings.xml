@@ -1188,4 +1188,151 @@
     <string name="mood_calm">أشعر بالارتياح</string>
     <string name="mood_happy">أشعر بالسعادة</string>
     <string name="mood_overjoyed">أشعر بالبهجة الكاملة</string>
+    <string name="adaptive_adult_onboarding_app_name">سلام</string>
+    <string name="adaptive_adult_onboarding_welcome_title">مرحبًا بك في سلام 🤍</string>
+    <string name="adaptive_adult_onboarding_welcome_body">مساحة خاصة تساعدك على فهم مشاعرك واكتشاف طرق بسيطة للشعور بالهدوء.</string>
+    <string name="adaptive_adult_onboarding_welcome_button">لنبدأ بهدوء</string>
+    <string name="adaptive_adult_onboarding_privacy_title">قبل أن نبدأ…</string>
+    <string name="adaptive_adult_onboarding_privacy_subtext">ستساعد بعض إجاباتك سلام على تقديم تجربة أقرب إلى احتياجاتك. لن تتم مشاركة أي شيء خارج جهازك دون علمك.</string>
+    <string name="adaptive_adult_onboarding_privacy_card1">خصوصيتك مهمة</string>
+    <string name="adaptive_adult_onboarding_privacy_card2">يمكنك تخطي أي سؤال</string>
+    <string name="adaptive_adult_onboarding_privacy_card3">يمكنك تعديل إجاباتك لاحقًا</string>
+    <string name="adaptive_adult_onboarding_privacy_card4">يمكنك حذف بياناتك متى شئت</string>
+    <string name="adaptive_adult_onboarding_privacy_button">فهمت، لنكمل</string>
+    <string name="adaptive_adult_onboarding_identity_title">ماذا تحب أن نناديك؟</string>
+    <string name="adaptive_adult_onboarding_identity_subtext">يمكنك استخدام اسم مستعار، أو ترك الحقل فارغًا تمامًا.</string>
+    <string name="adaptive_adult_onboarding_identity_hint">اكتب اسمًا هنا…</string>
+    <string name="adaptive_adult_onboarding_identity_greeting">سعداء بلقائك، %1$s 🌿</string>
+    <string name="adaptive_adult_onboarding_identity_age_title">كم عمرك تقريبًا؟</string>
+    <string name="adaptive_adult_onboarding_identity_gender_title">هل تود أن نعرف جنسك؟</string>
+    <string name="adaptive_adult_onboarding_overall_mood_title">كيف تشعر بشكل عام هذه الأيام؟</string>
+    <string name="adaptive_adult_onboarding_unsure">لست متأكدًا</string>
+    <string name="adaptive_adult_onboarding_frequent_emotions_title">ما المشاعر التي تزورك أكثر هذه الأيام؟</string>
+    <string name="adaptive_adult_onboarding_frequent_emotions_subtext">اختر ما ينطبق عليك، دون ترتيب أو عدد محدد.</string>
+    <string name="adaptive_adult_onboarding_safety_title">هل تشعر بالخوف أو بعدم الأمان مؤخرًا؟</string>
+    <string name="adaptive_adult_onboarding_no_right_wrong">لا توجد إجابة صحيحة أو خاطئة.</string>
+    <string name="adaptive_adult_onboarding_intense_fear_body">قد يمر الشخص أحيانًا بلحظات مفاجئة من الخوف الشديد، أو التنفس السريع أو تسارع ضربات القلب.</string>
+    <string name="adaptive_adult_onboarding_intense_fear_title">هل مررت بتجربة مشابهة مؤخرًا؟</string>
+    <string name="adaptive_adult_onboarding_timeline_title">متى تشعر أن مشاعرك تكون أكثر صعوبة؟</string>
+    <string name="adaptive_adult_onboarding_helpful_title">عندما تمر بلحظة صعبة، ما الذي يساعدك عادةً؟</string>
+    <string name="adaptive_adult_onboarding_helpful_subtext">سيساعدنا ذلك على اقتراح أنشطة تناسبك بشكل أفضل.</string>
+    <string name="adaptive_adult_onboarding_goals_title">ما أكثر شيء تأمل أن يساعدك سلام فيه؟</string>
+    <string name="adaptive_adult_onboarding_mood_demo_paragraph">من وقت لآخر، قد يطرح عليك سلام سؤالًا بسيطًا مثل:</string>
+    <string name="adaptive_adult_onboarding_mood_demo_question">كيف كان يومك اليوم؟</string>
+    <string name="adaptive_adult_onboarding_mood_demo_subtext">سيظهر لك سلام بهذه الطريقة من وقت لآخر حتى تلاحظ تغيّر مشاعرك مع مرور الوقت، ويمكنك إيقاف هذه المتابعة لاحقًا من الإعدادات.</string>
+    <string name="adaptive_adult_onboarding_mood_demo_status_active">هكذا ستبدو متابعتك اليومية تمامًا 🤍</string>
+    <string name="adaptive_adult_onboarding_mood_demo_status_idle">جرّب الآن لترى كيف ستبدو المتابعة اليومية</string>
+    <string name="adaptive_adult_onboarding_preview_title">حتى الآن، سنحاول جعل تجربتك أقرب إليك</string>
+    <string name="adaptive_adult_onboarding_preview_subtext">🤍 نظرة سريعة على ما لاحظناه عنك</string>
+    <string name="adaptive_adult_onboarding_preview_card_night">قد يكون الليل وقتًا أكثر صعوبة بالنسبة لك أحيانًا.</string>
+    <string name="adaptive_adult_onboarding_preview_card_anxiety">سنقترح عليك تمارين للهدوء والتنفس عندما تشعر بالتوتر.</string>
+    <string name="adaptive_adult_onboarding_preview_card_spiritual">يمكنك رؤية المحتوى الروحي إذا اخترت ذلك.</string>
+    <string name="adaptive_adult_onboarding_preview_card_writing">سنقترح عليك الكتابة عندما تبدو طريقة مناسبة لك.</string>
+    <string name="adaptive_adult_onboarding_preview_card_goals_prefix">بناءً على ما شاركته معنا، سنركز على: </string>
+    <string name="adaptive_adult_onboarding_preview_card_default">يبدو أنك تفضل استكشاف سلام بنفسك أولًا، وهذا أمر طبيعي تمامًا.</string>
+    <string name="adaptive_adult_onboarding_preview_hint">هذه مجرد اقتراحات أولية، ويمكنك تغييرها لاحقًا من الإعدادات.</string>
+    <string name="adaptive_adult_onboarding_ready_title">شكرًا لمشاركتنا ما تشعر به %1$s 🤍</string>
+    <string name="adaptive_adult_onboarding_ready_body">لست بحاجة لأن تكون بخير طوال الوقت.\nخذ الأمور خطوة بخطوة.</string>
+    <string name="adaptive_adult_onboarding_ready_button">الدخول إلى سلام</string>
+    <string name="adaptive_adult_onboarding_resume_title">هل تريد المتابعة من حيث توقفت؟</string>
+    <string name="adaptive_adult_onboarding_resume_body">لقد حفظنا رحلتك محليًا على جهازك.</string>
+    <string name="adaptive_adult_onboarding_restart">ابدأ من جديد</string>
+    <string name="adaptive_adult_onboarding_home_good_evening">مساء الخير</string>
+    <string name="adaptive_adult_onboarding_home_salam_friend">مرحبًا يا صديق سلام</string>
+    <string name="adaptive_adult_onboarding_home_suggested">مقترح لك الآن</string>
+    <string name="adaptive_adult_onboarding_home_replay">إعادة تجربة الإعداد الأولي (الوضع التجريبي)</string>
+    <string name="adaptive_adult_onboarding_simulate_reopen">محاكاة إعادة الفتح</string>
+    <string name="adaptive_adult_onboarding_skip">تخطي</string>
+    <string name="adaptive_adult_onboarding_continue">متابعة</string>
+    <string name="adaptive_adult_onboarding_edit">تعديل</string>
+    <string name="adaptive_adult_onboarding_back">رجوع</string>
+
+    <!-- AppData Strings -->
+    <string name="adaptive_adult_onboarding_age_under_18">أقل من 18</string>
+    <string name="adaptive_adult_onboarding_age_18_24">18–24</string>
+    <string name="adaptive_adult_onboarding_age_25_34">25–34</string>
+    <string name="adaptive_adult_onboarding_age_35_44">35–44</string>
+    <string name="adaptive_adult_onboarding_age_45_54">45–54</string>
+    <string name="adaptive_adult_onboarding_age_55_plus">55 فأكثر</string>
+
+    <string name="adaptive_adult_onboarding_gender_female">أنثى</string>
+    <string name="adaptive_adult_onboarding_gender_male">ذكر</string>
+    <string name="adaptive_adult_onboarding_gender_prefer_not">أفضل عدم التحديد</string>
+
+    <string name="adaptive_adult_onboarding_mood_calm">أشعر عادةً بالهدوء</string>
+    <string name="adaptive_adult_onboarding_mood_pressured">أشعر بالضغط أو القلق</string>
+    <string name="adaptive_adult_onboarding_mood_hard">أشعر أن الأمور صعبة جدًا مؤخرًا</string>
+
+    <string name="adaptive_adult_onboarding_emotion_tension">التوتر</string>
+    <string name="adaptive_adult_onboarding_emotion_fear">الخوف</string>
+    <string name="adaptive_adult_onboarding_emotion_sadness">الحزن</string>
+    <string name="adaptive_adult_onboarding_emotion_irritation">الانزعاج</string>
+    <string name="adaptive_adult_onboarding_emotion_anxiety">القلق</string>
+    <string name="adaptive_adult_onboarding_emotion_terror">الهلع</string>
+    <string name="adaptive_adult_onboarding_emotion_loneliness">الوحدة</string>
+    <string name="adaptive_adult_onboarding_emotion_exhaustion">الإرهاق</string>
+    <string name="adaptive_adult_onboarding_emotion_unsure">لا أعرف</string>
+    <string name="adaptive_adult_onboarding_emotion_okay">بخير عادةً</string>
+
+    <string name="adaptive_adult_onboarding_safety_rarely">نادرًا</string>
+    <string name="adaptive_adult_onboarding_safety_sometimes">أحيانًا</string>
+    <string name="adaptive_adult_onboarding_safety_often">غالبًا</string>
+    <string name="adaptive_adult_onboarding_safety_most">معظم الوقت</string>
+    <string name="adaptive_adult_onboarding_safety_skip">أفضل عدم الإجابة</string>
+
+    <string name="adaptive_adult_onboarding_fear_yes_sometimes">نعم، أحيانًا</string>
+    <string name="adaptive_adult_onboarding_fear_yes_often">نعم، غالبًا</string>
+    <string name="adaptive_adult_onboarding_fear_rarely">نادرًا</string>
+    <string name="adaptive_adult_onboarding_fear_unsure">لا أعرف</string>
+    <string name="adaptive_adult_onboarding_fear_skip">أفضل عدم الإجابة</string>
+
+    <string name="adaptive_adult_onboarding_time_morning">الصباح</string>
+    <string name="adaptive_adult_onboarding_time_day">النهار</string>
+    <string name="adaptive_adult_onboarding_time_evening">المساء</string>
+    <string name="adaptive_adult_onboarding_time_night">الليل</string>
+
+    <string name="adaptive_adult_onboarding_followup_night_prompt">عندما يأتي الليل، ماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_day_prompt">خلال النهار، ماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_morning_prompt">في الصباح، ماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_evening_prompt">في المساء، ماذا تشعر أكثر؟</string>
+
+    <string name="adaptive_adult_onboarding_option_loneliness">الوحدة</string>
+    <string name="adaptive_adult_onboarding_option_fear">الخوف</string>
+    <string name="adaptive_adult_onboarding_option_overthinking">التفكير الزائد</string>
+    <string name="adaptive_adult_onboarding_option_anxiety">القلق</string>
+    <string name="adaptive_adult_onboarding_option_sadness">الحزن</string>
+    <string name="adaptive_adult_onboarding_option_insomnia">صعوبة النوم</string>
+    <string name="adaptive_adult_onboarding_option_tension">التوتر</string>
+    <string name="adaptive_adult_onboarding_option_exhaustion">الإرهاق</string>
+    <string name="adaptive_adult_onboarding_option_pressure">الضغط</string>
+    <string name="adaptive_adult_onboarding_option_focus">صعوبة التركيز</string>
+    <string name="adaptive_adult_onboarding_option_tiredness">التعب</string>
+    <string name="adaptive_adult_onboarding_option_dread">توقع يوم صعب</string>
+    <string name="adaptive_adult_onboarding_option_starting">صعوبة البدء</string>
+    <string name="adaptive_adult_onboarding_option_rest">الحاجة إلى الراحة</string>
+
+    <string name="adaptive_adult_onboarding_helpful_audio">الاستماع إلى المقاطع الصوتية</string>
+    <string name="adaptive_adult_onboarding_helpful_breathing">التنفس والهدوء</string>
+    <string name="adaptive_adult_onboarding_helpful_spiritual">القرآن أو الأذكار</string>
+    <string name="adaptive_adult_onboarding_helpful_writing">الكتابة</string>
+    <string name="adaptive_adult_onboarding_helpful_talking">التحدث مع شخص ما</string>
+    <string name="adaptive_adult_onboarding_helpful_movement">الحركة أو المشي</string>
+    <string name="adaptive_adult_onboarding_helpful_activity">نشاط بسيط</string>
+    <string name="adaptive_adult_onboarding_helpful_unsure">لا أعرف ما الذي يساعدني</string>
+
+    <string name="adaptive_adult_onboarding_goal_calm">الشعور بالهدوء</string>
+    <string name="adaptive_adult_onboarding_goal_stress">التعامل مع الضغط</string>
+    <string name="adaptive_adult_onboarding_goal_understand">فهم مشاعري</string>
+    <string name="adaptive_adult_onboarding_goal_routine">تنظيم يومي</string>
+    <string name="adaptive_adult_onboarding_goal_sleep">تحسين النوم</string>
+    <string name="adaptive_adult_onboarding_goal_loneliness">التعامل مع الوحدة</string>
+    <string name="adaptive_adult_onboarding_goal_habits">تكوين عادات أفضل</string>
+    <string name="adaptive_adult_onboarding_goal_express">التعبير عن مشاعري</string>
+    <string name="adaptive_adult_onboarding_goal_explore">أريد استكشاف التطبيق فقط</string>
+
+    <string name="adaptive_adult_onboarding_face_sad">صعب</string>
+    <string name="adaptive_adult_onboarding_face_low">متعب</string>
+    <string name="adaptive_adult_onboarding_face_neutral">عادي</string>
+    <string name="adaptive_adult_onboarding_face_good">جيد</string>
+    <string name="adaptive_adult_onboarding_face_great">رائع</string>
 </resources>
