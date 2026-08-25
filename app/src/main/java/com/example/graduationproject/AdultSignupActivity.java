@@ -320,7 +320,7 @@ public class AdultSignupActivity extends AppCompatActivity {
             userPrefs.edit().putString("user_gender", selectedGender).apply();
             appPrefs.edit().putBoolean("isFirstRun", false).apply();
 
-            Intent intent = new Intent(AdultSignupActivity.this, ReflectionActivity.class);
+            Intent intent = new Intent(AdultSignupActivity.this, AdultMoodActivity.class);
             startActivity(intent);
             finish();
         });

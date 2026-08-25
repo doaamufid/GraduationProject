@@ -170,4 +170,8 @@
         <item name="android:textColor">@color/cream</item>
         <item name="android:background">@drawable/bg_btn_ghost</item>
     </style>
+    <style name="Theme.AdultMood" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
 </resources>

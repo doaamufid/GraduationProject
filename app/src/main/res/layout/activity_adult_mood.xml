@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Root background colour is set/animated in code (AdultMoodActivity#animateBackgroundTo)
+  so it can smoothly cross-fade between mood colours, matching the CSS
+  "transition: background 0.5s ease" from the original React screen.
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:paddingHorizontal="20dp"
+    android:paddingBottom="18dp"
+    android:background="#EAEEF3">
+
+    <!-- progress track -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_progress_track">
+
+        <View
+            android:id="@+id/progress_fill"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@drawable/bg_progress_fill" />
+    </FrameLayout>
+
+    <!-- "إنشاء يومية جديدة" -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:text="@string/mood_entry_title"
+        android:textColor="#0F172A"
+        android:textSize="16sp"
+        android:textStyle="normal"
+        android:fontFamily="sans-serif-medium" />
+
+    <!-- "كيف مزاجك اليوم؟" -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="26dp"
+        android:gravity="center"
+        android:text="@string/big_question"
+        android:textColor="#0F172A"
+        android:textSize="26sp"
+        android:textStyle="bold" />
+
+    <!-- hero circle + label, expands to fill remaining space like flex-1 -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <FrameLayout
+            android:id="@+id/hero_circle"
+            android:layout_width="150dp"
+            android:layout_height="150dp">
+
+            <com.example.graduationproject.view.FaceView
+                android:id="@+id/hero_face"
+                android:layout_width="108dp"
+                android:layout_height="108dp"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/mood_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#0F172A"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- mood selector pill -->
+    <HorizontalScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/selector_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_selector_pill"
+            android:padding="8dp"
+            android:gravity="center_vertical" />
+    </HorizontalScrollView>
+
+    <!-- continue button -->
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/bg_continue_button"
+        android:elevation="6dp"
+        android:text="@string/continue_label"
+        android:textAllCaps="false"
+        android:textColor="#0F172A"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:drawableStart="@drawable/ic_arrow_continue"
+        android:drawablePadding="8dp"
+        android:gravity="center" />
+
+</LinearLayout>
