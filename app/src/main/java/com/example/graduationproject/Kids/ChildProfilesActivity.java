@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.graduationproject.KidsMoodActivity;
 import com.example.graduationproject.MainActivity;
 import com.example.graduationproject.adapters.ChildProfilesAdapter;
 import com.example.graduationproject.data.ChildProfileStore;
@@ -51,7 +52,8 @@ public class ChildProfilesActivity extends AppCompatActivity {
         adapter = new ChildProfilesAdapter(profiles, new ChildProfilesAdapter.OnChildProfileClickListener() {
             @Override
             public void onProfileClick(ChildProfile profile) {
-                Intent intent = new Intent(ChildProfilesActivity.this, KidsAiChatActivity.class);
+                // Selecting a child opens the teddy-bear mood tracker for that child.
+                Intent intent = new Intent(ChildProfilesActivity.this, KidsMoodActivity.class);
                 intent.putExtra("child_id", profile.getId());
                 intent.putExtra("child_name", profile.getName());
                 startActivity(intent);

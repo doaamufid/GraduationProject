@@ -2,6 +2,7 @@ package com.example.graduationproject;
 
 import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.graduationproject.Kids.ChildProfilesActivity;
 import com.example.graduationproject.models.KidsMood;
 import com.example.graduationproject.view.BearView;
 
@@ -42,6 +44,8 @@ public class KidsMoodActivity extends AppCompatActivity {
     private static final long BG_ANIM_MS = 500;
     private static final long CHIP_ANIM_MS = 200;
 
+    public static final String EXTRA_CHILD_ID = "extra_child_id";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,8 +62,15 @@ public class KidsMoodActivity extends AppCompatActivity {
         buildSelectorChips();
         renderInstant(selectedIndex);
 
-        findViewById(R.id.btn_continue).setOnClickListener(v ->
-                Toast.makeText(this, R.string.kids_mood_saved_toast, Toast.LENGTH_SHORT).show());
+        findViewById(R.id.btn_continue).setOnClickListener(v -> {
+            Toast.makeText(this, R.string.kids_mood_saved_toast, Toast.LENGTH_SHORT).show();
+            // Navigate to the kids main screen (child-selection dashboard).
+            // CLEAR_TOP brings the existing ChildProfilesActivity to the front and
+            // clears KidsMoodActivity from the back stack so we don't stack duplicates.
+            Intent intent = new Intent(KidsMoodActivity.this, ChildProfilesActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
     }
 
     /** Same 7 moods / colours as KID_MOODS in the React source. */

@@ -61,6 +61,9 @@
             android:name=".Kids.KidsBubbleBreathingActivity"
             android:exported="false" />
         <activity
+            android:name=".KidsMoodActivity"
+            android:exported="false" />
+        <activity
             android:name=".Kids.NewChildProfileActivity"
             android:exported="false" />
         <activity
