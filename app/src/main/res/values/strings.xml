@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">salam</string>
-
     <!--  Screen 1: Draw instruction  -->
     <string name="draw_title">ارسم على ورقة عندك!</string>
     <string name="draw_subtitle">هلا نشوف إبداعك</string>
@@ -8,21 +7,17 @@
     <string name="step_2">ارسم كيف تحس</string>
     <string name="step_3">بعدين صورها لي</string>
     <string name="btn_take_photo_now">صوّر رسمتك الحين</string>
-
     <!--  Screen 2: Upload photo  -->
     <string name="upload_title">جاهز صوّر رسمتك؟</string>
     <string name="upload_hint">اضغط لرفع صورتك</string>
     <string name="btn_camera">صوّر دلوقتي</string>
     <string name="btn_gallery">اختار من الصور</string>
-
     <!--  Screen 3: Confirm photo  -->
     <string name="confirm_title">هل هذي حلوة رسمتك؟</string>
     <string name="btn_send_to_noor">أرسلها لنور</string>
     <string name="btn_retake">صوّر غيرها</string>
-
     <!--  Screen 4: Processing  -->
     <string name="processing_text">نور بيشوف رسمتك بعناية</string>
-
     <!--  Screen 5: Result  -->
     <string name="result_message">واوا رسمتك قوية كتير 🎨 حسّيت فيها إحساسك، وأنا فخور فيك إنك عبّرت عنه!</string>
     <string name="got_star">حصلت على نجمة!</string>
@@ -31,10 +26,8 @@
     <string name="btn_finish">خلصت، شكراً نور</string>
     <string name="btn_finish_result">خلصت، شكراً نور</string>
     <string name="btn_thanks_noor">خلصت، شكراً نور</string>
-
     <string name="default_celebration_feedback">أحسنت! أنا فخورة فيك جداً 💛</string>
     <string name="loading_phrase">…جاري تحضير كلمتك</string>
-
     <string name="salam_title">SALAM</string>
     <string name="mental_health_subtitle">MENTAL HEALTH · PEACE OF MIND</string>
     <string name="question_how_to_address">كيف يمكنني مخاطبتك؟</string>
@@ -43,46 +36,37 @@
     <string name="btn_kids">الأطفال</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-
     <string name="title_select_kids">من سيلعب اليوم؟</string>
-
     <!--  شاشة كلمة الأسبوع  -->
     <string name="header_title_words">كلماتي</string>
     <string name="header_subtitle">كلمات قوة هالأسبوع</string>
     <string name="say_and_record">قول هالكلام وسجله بصوتك!</string>
     <string name="listen_first_voice">اسمعها بصوت نور الأول 🔊</string>
     <string name="press_and_record">اضغط وسجل صوتك وأنت تقولها</string>
-
     <!--  شاشة التسجيل  -->
     <string name="recording_now">يسجل الآن…</string>
     <string name="press_to_finish">خلصت؟ اضغط هنا</string>
-
     <!--  شاشة الاستماع  -->
     <string name="listen_to_yourself">استمع لنفسك وأنت تقولها!</string>
     <string name="save_it">أعجبني، احفظه ♥</string>
     <string name="record_again">سجل مرة تانية 🔄</string>
-
     <!--  شاشة التهنئة  -->
     <string name="well_done_hero">أحسنت يا بطل! 🎉</string>
     <string name="saved_message">حفظنا صوتك بصندوق كلماتك الحلوة، ترجعله لما حبيت تسمعه</string>
     <string name="another_word">كلمة تانية ⭐</string>
     <string name="see_my_words">شوف كلماتي</string>
-
     <!--  شاشة كلماتي  -->
     <string name="my_sweet_words">كلماتي الحلوة 💛</string>
     <string name="now_label">الآن</string>
-
     <!--  عام  -->
     <string name="permission_needed">لازم إذن المايكروفون عشان تسجل صوتك</string>
     <string name="default_phrase">أنا شجاع وقوي، وأقدر آتخطى أي شي صعب</string>
-
     <string name="summary_title">صندوق الطوارئ</string>
     <string name="summary_tag">SAFE SPACE · صندوق النجاة</string>
     <string name="summary_headline">صندوق النجاة النفسي</string>
     <string name="summary_sub">افتحه في لحظات الضيق الشديد</string>
     <string name="open_box_title">افتح الصندوق الآن</string>
     <string name="open_box_sub">عرض كل ما يريحك في ثانية واحدة</string>
-
     <string name="cat_audio_tag">AUDIO · صوتي</string>
     <string name="cat_audio_title">تسجيلات صوتية</string>
     <string name="cat_photos_tag">PHOTOS · صور</string>
@@ -95,7 +79,6 @@
     <string name="count_messages">%1$d رسائل</string>
     <string name="count_photos">%1$d صور</string>
     <string name="count_dhikr">%1$d أذكار</string>
-
     <!-- Browse -->
     <string name="browse_audio_title">تسجيلات صوتية</string>
     <string name="browse_photos_title">صور مريحة</string>
@@ -109,7 +92,6 @@
     <string name="back_to_grid">رجوع للشبكة</string>
     <string name="tag_self">من نفسي</string>
     <string name="tag_other">من شخص أحبه</string>
-
     <!-- Add audio dialog -->
     <string name="add_audio_title">تسجيل رسالة صوتية</string>
     <string name="tap_to_record">اضغط للبدء بالتسجيل</string>
@@ -119,25 +101,21 @@
     <string name="audio_label_hint">عنوان الرسالة (مثال: من ماما)</string>
     <string name="save_message">حفظ الرسالة</string>
     <string name="default_audio_label">رسالة صوتية</string>
-
     <!-- Add photo dialog -->
     <string name="add_photo_title">إضافة صورة مريحة</string>
     <string name="take_photo">التقط صورة</string>
     <string name="from_gallery">من المعرض</string>
     <string name="caption_hint">وصف قصير (اختياري)</string>
     <string name="save_photo">حفظ الصورة</string>
-
     <!-- Add love dialog -->
     <string name="add_love_title">إضافة رسالة محبة</string>
     <string name="love_text_hint">اكتب الرسالة هنا...</string>
-
     <!-- Add dhikr dialog -->
     <string name="add_dhikr_title">أذكار مفضلة</string>
     <string name="custom_dhikr_hint">اكتب ذكرك الخاص</string>
     <string name="write_custom">أو اكتب ذكرك الخاص</string>
     <string name="back_to_list">رجوع للقائمة</string>
     <string name="save_and_close">حفظ وإغلاق</string>
-
     <!-- Crisis mode -->
     <string name="crisis_calm_photo_fallback">خذ لحظة تتأمل هالصورة</string>
     <string name="crisis_audio_playing">يتشغّل الآن...</string>
@@ -148,31 +126,22 @@
     <string name="crisis_close">إغلاق</string>
     <string name="dhikr_emoji">📿</string>
     <string name="emoji_dove_crisis">🕊️</string>
-
     <string name="status_bar_time">٩:٤١</string>
-
     <string name="top_bar_label">تمارين التأريض</string>
     <string name="progress_title">١-٢-٣-٤-٥</string>
     <string name="progress_sub">أوقف القلق بالتركيز على الحاضر</string>
     <string name="step_counter_format">خطوة %1$d من %2$d</string>
-
     <string name="tapped_count_format">%1$d/%2$d — بس اضغطي كل ما لاحظتي شي</string>
-
     <string name="add_note_toggle">أضف ملاحظة (اختياري تماماً)</string>
     <string name="grounding_note_hint">اكتبي أي شي إذا حبيتي...</string>
     <string name="note_hint">اكتب ملاحظتك هنا...</string>
-
     <string name="breathing_reminder">خذي نفساً بين كل خطوة — شهيق ٤ث · زفير ٤ث · توقف ٤ث</string>
-
     <string name="btn_next">التالي</string>
     <string name="btn_finish_grounding">أنهِ التمرين</string>
-
     <string name="done_title">رجعت لحاضرك</string>
     <string name="done_sub_format">لاحظت %1$d تفاصيل حواليك — بأقل من دقيقة</string>
     <string name="btn_another_exercise">تمرين آخر</string>
-
     <string name="emoji_leaf">🌿</string>
-
     <string name="main_title_habits">عاداتي اليومية</string>
     <string name="main_sub_habits">التزامك اليومي البسيط يصنع فرقاً</string>
     <string name="done_today_format">%1$d/%2$d</string>
@@ -180,7 +149,6 @@
     <string name="suggest_habits">اقترح لي عادات ✨</string>
     <string name="add_manually">أضف عادة يدوياً</string>
     <string name="streak_format">%1$d يوم متتالي</string>
-
     <!-- Habit dialog -->
     <string name="habit_new_title">عادة جديدة</string>
     <string name="habit_edit_title">تعديل العادة</string>
@@ -190,16 +158,13 @@
     <string name="reminder_notice_format">راح توصلك إشعار بالوقت اللي تختاره: \"اذكري تشربي ٦ أكواب ماء اليوم\"</string>
     <string name="save_edits">حفظ التعديلات</string>
     <string name="add_habit_btn">أضف العادة</string>
-
     <!-- Time wheel -->
     <string name="choose_time">اختر الوقت</string>
     <string name="time_done">تم</string>
-
     <!-- AI suggestions -->
     <string name="ai_suggestions_title">اقتراحات ذكية لعاداتك</string>
     <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
     <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
-
     <!-- Library (Articles) -->
     <string name="library_title">مكتبة المقالات الذكية</string>
     <string name="library_sub">ARTICLES · المقالات</string>
@@ -208,7 +173,6 @@
     <string name="featured_badge">مقترح لك اليوم ✨</string>
     <string name="section_this_week">هذا الأسبوع</string>
     <string name="section_category_format">تصنيف: %1$s</string>
-
     <!-- Reader -->
     <string name="reader_title">المقالة</string>
     <string name="by_author_format">بقلم %1$s</string>
@@ -219,43 +183,33 @@
     <string name="continue_reading">تابع القراءة</string>
     <string name="toast_liked">سجّلنا إعجابك — بنقترح مقالات مشابهة أكثر</string>
     <string name="toast_reason_thanks">شكراً! هذا يساعدنا نحسّن اقتراحاتك القادمة</string>
-
     <string name="cat_all">الكل</string>
     <string name="visual_content_title">محتوى مرئي</string>
     <string name="visual_content_sub">Listen · استمع</string>
-
     <!-- Library (Videos/Listen) -->
     <string name="library_content_title">محتوى مرئي</string>
     <string name="library_content_sub">Listen · استمع</string>
-
     <string name="player_title">يشغّل الآن</string>
     <string name="why_suggested_content">ليش اقترحنا هذا لك؟</string>
     <string name="feedback_question_content">شو رأيك بهذا المحتوى؟</string>
     <string name="dislike_reason_title">وش السبب؟ (اختياري)</string>
     <string name="continue_watching">استمر بالمشاهدة</string>
-
     <string name="toast_like">سجّلنا إعجابك — بنقترح لك محتوى مشابه أكثر</string>
     <string name="toast_dislike_reason">شكراً! هذا يساعدنا نحسّن اقتراحاتك القادمة</string>
-
     <!--  شاشة كلمة الأسبوع  -->
     <string name="header_title">كلماتي</string>
-
     <!-- Profile screen -->
     <string name="profile_header_title">بروفايل الرحلة</string>
-
     <string name="join_date">معك منذ ١٢ مايو ٢٠٢٦</string>
     <string name="privacy_notice">خصوصيتك محمية بالكامل — لا بيانات حقيقية مخزّنة</string>
-
     <string name="stat_active_days_value">٤٧</string>
     <string name="stat_active_days_label">يوم نشاط</string>
     <string name="stat_streak_value">١٢</string>
     <string name="stat_streak_label">يوم متتالي</string>
     <string name="stat_sessions_value">٦٩</string>
     <string name="stat_sessions_label">جلسة</string>
-
     <string name="achievements_title">إنجازات رحلتك</string>
     <string name="earned_count_format">%1$d/%2$d</string>
-
     <string name="archive_title">أرشيفك الشخصي</string>
     <string name="archive_thoughts_label">أفكاري المتوازنة</string>
     <string name="archive_thoughts_sub">من إعادة الصياغة</string>
@@ -263,23 +217,18 @@
     <string name="archive_strengths_sub">الصفات المكتشفة فيك</string>
     <string name="archive_messages_label">رسائلي لنفسي</string>
     <string name="archive_messages_sub">رسائل مجدولة ووصلت</string>
-
     <string name="parent_link_label">بروفايلات أطفالك</string>
     <string name="parent_link_sub">٢ ملفات مسجّلة</string>
-
     <!-- Avatar picker dialog -->
     <string name="avatar_picker_title">اختر لون هويتك</string>
     <string name="avatar_picker_note">لا صور حقيقية — هويتك تبقى مجهولة تماماً 🔒</string>
-
     <!-- Name dialog -->
     <string name="name_dialog_title">تعديل الاسم المستعار</string>
     <string name="save_btn">حفظ</string>
-
     <!-- Badge dialog -->
     <string name="badge_earned_status">أنجزتها بالفعل 🎉</string>
     <string name="badge_need_format">تحتاج: %1$s</string>
     <string name="close_btn">إغلاق</string>
-
     <!-- Badges -->
     <string name="badge_week_label">أسبوع كامل</string>
     <string name="badge_week_need">٧ أيام متتالية</string>
@@ -293,17 +242,13 @@
     <string name="badge_message_need">أول رسالة لنفسك</string>
     <string name="badge_body_map_label">مستكشف الجسد</string>
     <string name="badge_body_map_need">جرّب كل مناطق خريطة الجسد</string>
-
     <string name="header_title_profile">بروفايل الرحلة</string>
     <string name="stat_sessions_label_user">جلسة</string>
-
     <string name="badge_week_title">أسبوع كامل</string>
     <string name="badge_ideas_title">١٠ أفكار متوازنة</string>
     <string name="badge_month_title">٣٠ يوم معنا</string>
     <string name="badge_message_title">رسالة للمستقبل</string>
-
     <string name="status_time">٩:٤١</string>
-
     <!-- Profile home -->
     <string name="profile_title">بروفايل الرحلة</string>
     <string name="member_since">معك منذ ١٢ مايو ٢٠٢٦</string>
@@ -315,21 +260,18 @@
     <string name="archive_title_profile">أرشيفك الشخصي</string>
     <string name="children_label">بروفايلات أطفالك</string>
     <string name="children_count_label">٢ ملفات مسجّلة</string>
-
     <string name="link_thoughts_label">أفكاري المتوازنة</string>
     <string name="link_thoughts_sub">من إعادة الصياغة</string>
     <string name="link_strengths_label">بنك نقاط القوة</string>
     <string name="link_strengths_sub">الصفات المكتشفة فيك</string>
     <string name="link_messages_label">رسائلي لنفسي</string>
     <string name="link_messages_sub">رسائل مجدولة ووصلت</string>
-
     <string name="badge_week_label_profile">أسبوع كامل</string>
     <string name="badge_ideas_label_profile">١٠ أفكار متوازنة</string>
     <string name="badge_traits_label">٥ صفات قوة</string>
     <string name="badge_month_label_profile">٣٠ يوم معنا</string>
     <string name="badge_message_label_profile">رسالة للمستقبل</string>
     <string name="badge_body_label">مستكشف الجسد</string>
-
     <!-- Balanced thoughts -->
     <string name="thoughts_title">أفكاري المتوازنة</string>
     <string name="thoughts_subtitle">من إعادة الصياغة</string>
@@ -340,7 +282,6 @@
     <string name="delete_from_archive">احذف من الأرشيف</string>
     <string name="confirm_delete">اضغط مرة أخرى للتأكيد</string>
     <string name="toast_started_exercise_fmt">بدأنا تمرين: %1$s...</string>
-
     <!-- Strengths bank -->
     <string name="strengths_title">بنكي</string>
     <string name="strengths_bank_heading">بنك نقاط القوة</string>
@@ -356,7 +297,6 @@
     <string name="analyze_ready">حلل محادثة اليوم الآن</string>
     <string name="analyze_loading">يحلل الآن...</string>
     <string name="analyze_empty">لا محادثات جديدة لتحليلها الآن</string>
-
     <!-- Add trait dialog -->
     <string name="add_trait_dialog_title">أضف صفة لاحظتها بنفسك</string>
     <string name="trait_name_hint">أو اكتب اسم الصفة</string>
@@ -367,7 +307,6 @@
     <string name="self_added_default_ctx">أضفتها يدوياً</string>
     <string name="self_added_exercise">تأمل بموقف ثاني أظهرت فيه هذي الصفة</string>
     <string name="trait_today_label">اليوم</string>
-
     <!-- Future messages -->
     <string name="messages_title">كل رسائلي</string>
     <string name="message_locked">رسالة مقفلة — لسا ما جا وقتها</string>
@@ -377,15 +316,14 @@
     <string name="confirm_delete_short">اضغط للتأكيد</string>
     <string name="message_locked_title">هذي الرسالة لسا مقفلة</string>
     <string name="close_button">إغلاق</string>
-
     <!-- Child profiles -->
+    <string name="today_label">اليوم</string>
     <string name="child_profiles_title">بروفايلات الأطفال</string>
     <string name="age_years_fmt">%1$d سنوات</string>
     <string name="add_child_profile">إضافة ملف طفل جديد</string>
     <string name="tap_to_view_stats">اضغط لعرض إحصائياته</string>
     <string name="delete_child_title">حذف ملف الطفل؟</string>
     <string name="delete_child_message">هل أنت متأكد أنك تريد حذف ملف هذا الطفل؟ لا يمكن التراجع عن هذا الإجراء.</string>
-
     <!-- Child detail dashboard -->
     <string name="last_active_fmt">آخر نشاط: %s</string>
     <string name="child_name_age_fmt">%1$s — %2$d سنوات</string>
@@ -400,28 +338,22 @@
     <string name="recommendations_for_parents">توصيات لكم كأهل</string>
     <string name="alerts_archive">أرشيف التنبيهات</string>
     <string name="disclaimer_note">هذي الملاحظات مبنية على أنماط استخدام فقط، وما تُعتبر تشخيصاً طبياً.</string>
-
-    <!-- Seed Data Strings -->
     <string name="pattern_overgeneralization">التعميم المفرط</string>
     <string name="pattern_all_or_nothing">الكل أو لا شيء</string>
     <string name="pattern_catastrophizing">التنبؤ بالفشل</string>
     <string name="pattern_discounting_positive">إهمال الإيجابيات</string>
-
     <string name="thought_1_original">أنا فاشل دائماً ولا أحد يهتم بي</string>
     <string name="thought_1_balanced">بعض الأشياء ما مشت زي ما توقعت، بس هذا ما يعني إن كل محاولاتي بلا فايدة.</string>
     <string name="thought_1_exercise">اكتب موقفين نجحت فيهم هذا الأسبوع رغم الصعوبة</string>
     <string name="thought_1_date">قبل يومين</string>
-
     <string name="thought_2_original">أكيد راح تفشل المقابلة، ما فيه فايدة أحاول</string>
     <string name="thought_2_balanced">أسوأ سيناريو نادراً ما يصير بالضبط زي ما نتخيله، وأنا تعاملت مع صعوبات قبل كذا ونجحت.</string>
     <string name="thought_2_exercise">اكتب خطة بسيطة لو صار أسوأ سيناريو فعلاً</string>
     <string name="thought_2_date">قبل ٤ أيام</string>
-
     <string name="thought_3_original">اليوم كان سيء كله، ما صار فيه شي حلو</string>
     <string name="thought_3_balanced">فيه إيجابيات صارت اليوم، بس عقلي كان مركز بس على السلبي.</string>
     <string name="thought_3_exercise">اكتب ٣ أشياء إيجابية صارت اليوم، مهما كانت صغيرة</string>
     <string name="thought_3_date">قبل أسبوع</string>
-
     <string name="trait_patience_name">الصبر</string>
     <string name="trait_patience_quote">رغم كل شيء واصلت</string>
     <string name="trait_patience_exercise">اكتب عن موقف ثاني صبرت فيه رغم الصعوبة</string>
@@ -431,7 +363,6 @@
     <string name="trait_empathy_name">التعاطف</string>
     <string name="trait_empathy_quote">اهتمامك للآخرين واضح</string>
     <string name="trait_empathy_exercise">اكتب رسالة دعم قصيرة لشخص تهتم فيه</string>
-
     <string name="evidence_last_tuesday">الثلاثاء الماضي</string>
     <string name="evidence_work_pressure">في حديث عن ضغط العمل</string>
     <string name="evidence_last_week">قبل أسبوع</string>
@@ -440,14 +371,11 @@
     <string name="evidence_future_fears">في محادثة عن مخاوفك من المستقبل</string>
     <string name="evidence_today">اليوم</string>
     <string name="evidence_friend_distress">في حديث عن صديق يمر بضيق</string>
-
     <string name="message_1_text">اليوم كان صعباً لكنك تجاوزته، وأنت أقوى مما تتخيل الآن.</string>
     <string name="message_2_text">لا تنسى إنك وعدت نفسك تاخذ الأمور بروية أكثر — كيف الوضع الحين؟</string>
     <string name="message_3_text">أتمنى تكون حققت الهدف اللي حطيته اليوم.</string>
-
     <string name="child_youssef">يوسف</string>
     <string name="child_sara">سارة</string>
-
     <string name="child_detail_active_today">اليوم · ٣:٣٠ م</string>
     <string name="child_detail_active_yesterday">أمس · ٧:١٠ م</string>
     <string name="feature_safe_room">غرفة الأمان</string>
@@ -456,17 +384,14 @@
     <string name="feature_recovery_tree">شجرة التعافي</string>
     <string name="feature_dandelion">نفخ الهندباء</string>
     <string name="feature_treasure_box">صندوق الكنز</string>
-
     <string name="alert_youssef_title">تكرار دخول غرفة الأمان</string>
     <string name="alert_youssef_body">دخل غرفة الأمان أكثر من ٣ مرات يومياً هذا الأسبوع.</string>
     <string name="alert_youssef_note">مؤشر سلوكي فقط، ليس تشخيصاً. قد يرتبط بضغط مدرسي أو تغيير روتين.</string>
-
     <string name="recommend_youssef_1">جربوا تحددون وقت هادئ ثابت قبل النوم — نلاحظ نشاطه يزيد مساءً.</string>
     <string name="recommend_youssef_2">اسألوه بلطف كيف يومه بالمدرسة هالأسبوع.</string>
     <string name="recommend_youssef_3">شجّعوه يجرب تمرين التنفس معكم مرة بالأسبوع.</string>
     <string name="recommend_sara_1">روتينها مستقر هالأسبوع — استمروا بنفس التشجيع.</string>
     <string name="recommend_sara_2">احتفلوا معها بشجرتها اللي كبرت مرحلة جديدة!</string>
-
     <string name="history_three_days_ago">قبل ٣ أيام</string>
     <string name="history_no_patterns">لا أنماط تستدعي الانتباه</string>
     <string name="history_two_weeks_ago">قبل أسبوعين</string>
@@ -499,9 +424,8 @@
         <item>نوفمبر</item>
         <item>ديسمبر</item>
     </string-array>
-
+    <string name="history_2_weeks_ago">قبل أسبوعين</string>
     <string name="screen_title">الإعدادات</string>
-
     <string name="section_privacy">الخصوصية والأمان</string>
     <string name="section_notifications">الإشعارات</string>
     <string name="section_customization">التخصيص</string>
@@ -511,7 +435,6 @@
     <string name="section_accessibility">الوصول</string>
     <string name="section_children">بروفايلات الأطفال</string>
     <string name="section_support">الدعم</string>
-
     <string name="disguise_title">وضع الإخفاء</string>
     <string name="disguise_sub">يظهر التطبيق كآلة حاسبة</string>
     <string name="auto_delete_title">حذف تلقائي بعد ٧ أيام</string>
@@ -519,37 +442,28 @@
     <string name="app_lock_title">قفل التطبيق</string>
     <string name="app_lock_sub">رمز أو بصمة عند كل فتح</string>
     <string name="encryption_notice">بياناتك مشفّرة بالكامل على جهازك — AES-256</string>
-
     <string name="notifications_title">إعدادات الإشعارات</string>
     <string name="notifications_sub">اللوك سكرين، الفئات، التوقيت</string>
-
     <string name="theme_color_title">لون الثيم</string>
     <string name="auto_dark_title">الوضع الداكن التلقائي</string>
     <string name="auto_dark_sub">بعد الساعة ٩ مساءً</string>
-
     <string name="cloud_ai_title">الرفيق السحابي (عند الاتصال)</string>
     <string name="cloud_ai_sub">إيقافه يخلي التطبيق يعمل محلياً بالكامل</string>
     <string name="reset_recs_title">إعادة ضبط توصياتي</string>
     <string name="reset_recs_sub">يمسح بيانات إعجابك/عدم إعجابك بالمحتوى</string>
-
     <string name="breath_haptic_title">اهتزاز مع التنفس</string>
     <string name="breath_haptic_sub">نبض خفيف متزامن مع الشهيق والزفير</string>
-
     <string name="storage_size">١٤ MB</string>
     <string name="storage_label">البيانات المخزّنة محلياً</string>
     <string name="export_title">تصدير نسخة احتياطية</string>
     <string name="export_sub">احفظها قبل تغيير جهازك</string>
-
     <string name="reduce_motion_title">تقليل الحركة</string>
     <string name="reduce_motion_sub">أنيميشن أبسط، مناسب لأجهزة أضعف</string>
-
     <string name="manage_children_title">إدارة ملفات الأطفال</string>
     <string name="children_count_format">%1$d ملفات مسجّلة</string>
-
     <string name="faq_title">الأسئلة الشائعة</string>
     <string name="about_title">عن سلام</string>
     <string name="about_sub">الإصدار ١.٠.٠</string>
-
     <string name="delete_everything_btn">حذف كل بياناتي نهائياً</string>
 
     <string name="delete_step1_title">حذف كل بياناتك نهائياً؟</string>
@@ -560,53 +474,41 @@
     <string name="delete_step2_body">هذي فرصتك الأخيرة — بعد هذا ما فيه رجعة.</string>
     <string name="delete_step2_confirm">احذف كل شي نهائياً</string>
     <string name="delete_step2_cancel">لا، تراجع</string>
-
     <string name="child_age_format">%1$d سنوات</string>
     <string name="add_child_btn">إضافة ملف طفل جديد</string>
-
     <string name="toast_reset_recs">تم إعادة ضبط توصياتك من الصفر</string>
     <string name="toast_export_started">بدأ تصدير النسخة الاحتياطية&#8230;</string>
     <string name="toast_deleted_everything">تم حذف كل بياناتك</string>
     <string name="toast_coming_soon">هذه الميزة ستتوفر قريباً</string>
-
     <string name="env_badge_format">%1$s · %2$s</string>
     <string name="status_playing">يشتغل الآن</string>
     <string name="status_paused">متوقف</string>
-
     <string name="timer_label_sleep">وضع النوم</string>
     <string name="timer_label_remaining_format">%1$d د متبقية</string>
     <string name="timer_prefix">TIMER · %1$s</string>
-
     <string name="ended_message">🌙 انتهت جلستك الهادئة — أتمنى لك راحة طيبة</string>
-
     <string name="layers_section_title">طبقات الصوت · LAYERS</string>
     <string name="layer_percent_format">%1$d٪</string>
-
     <string name="discovered_count_format">%1$d</string>
     <string name="discovered_label">صفة اكتُشفت</string>
     <string name="bank_title">مخزون قواك</string>
     <string name="bank_sub">نورٌ اكتشفناه في كلماتك وتفاصيلك</string>
     <string name="last_analysis">آخر تأمل في شخصيتك: قبل يومين</string>
-
     <string name="add_trait_btn">أضف لمسة منك</string>
     <string name="highlight_this_month">أجمل ما فيك هذا الشهر</string>
-
     <string name="count_times_format">%1$d مرات</string>
     <string name="badge_self_added">أضفتها بنفسك</string>
     <string name="badge_new">جديدة</string>
     <string name="evidence_title">متى ظهرت هذه الصفة؟</string>
     <string name="start_btn">ابدأ</string>
     <string name="exercise_tag">تمرين</string>
-
     <!-- Add trait dialog -->
     <string name="add_trait_title">أضف صفة لاحظتها بنفسك</string>
-
     <string name="save_trait_btn">حفظ الصفة</string>
     <string name="default_self_note">لاحظتها بنفسك اليوم</string>
     <string name="default_self_ctx">أضفتها يدوياً</string>
     <string name="default_self_when">اليوم</string>
     <string name="default_self_exercise">تأمل بموقف ثاني أظهرت فيه هذي الصفة</string>
-
     <!-- Analysis result screen -->
     <string name="source_format">من محادثة %1$s · %2$s (%3$s)</string>
     <string name="discovered_new_trait">✨ اكتشفنا صفة جديدة!</string>
@@ -614,11 +516,9 @@
     <string name="related_toggle_format">🌱 صفات تانية ممكن تطورها بما إن عندك "%1$s"</string>
     <string name="view_in_bank">شوفها في بنكي</string>
     <string name="later_btn">لاحقاً</string>
-
     <!-- Toasts -->
     <string name="toast_no_new_conversations">لا محادثات جديدة لتحليلها الآن</string>
     <string name="toast_started_exercise_format">بدأنا تمرين: %1$s...</string>
-
     <!-- Traits -->
     <string name="trait_patience">الصبر</string>
     <string name="trait_courage">الشجاعة</string>
@@ -627,38 +527,29 @@
     <string name="trait_discipline">الانضباط</string>
     <string name="trait_confidence">الثقة بالنفس</string>
     <string name="trait_resilience">المرونة</string>
-
     <!-- Content -->
     <string name="patience_quote">رغم كل شيء واصلت</string>
     <string name="patience_exercise">اكتب عن موقف ثاني صبرت فيه رغم الصعوبة</string>
     <string name="patience_evidence_1">في حديث عن ضغط العمل</string>
     <string name="patience_evidence_2">في محادثة عن انتظار نتيجة مهمة</string>
     <string name="patience_evidence_3">في حديث عن خلاف عائلي</string>
-
     <string name="courage_quote">تحدثت عن مشاعرك بشجاعة</string>
     <string name="courage_exercise">اكتب عن موقف ثاني كنت فيه شجاعاً</string>
     <string name="courage_evidence_1">في محادثة عن مخاوفك من المستقبل</string>
     <string name="courage_evidence_2">في حديث عن قرار صعب اتخذته</string>
-
     <string name="empathy_quote">اهتمامك للآخرين واضح</string>
     <string name="empathy_exercise">اكتب رسالة دعم قصيرة لشخص تهتم فيه</string>
     <string name="empathy_evidence_1">في حديث عن صديق يمر بضيق</string>
     <string name="empathy_evidence_2">في محادثة عن عائلتك</string>
-
     <string name="persistence_paraphrase">قلت إنك قررت تكمل رغم التعب، وهذي أول مرة نلاحظ فيها هذا النمط بوضوح.</string>
     <string name="persistence_exercise">اكتب عن موقف ثاني أصررت فيه على شي رغم الصعوبة</string>
-
     <string name="discipline_reason">الإصرار غالباً يرافقه الانضباط — قدرتك على الالتزام بروتين حتى لو ما حسيت بالحافز.</string>
     <string name="discipline_suggestion">حدد هدف صغير كل يوم وتابعه لمدة أسبوع كامل</string>
-
     <string name="confidence_reason">كل مرة تصر وتكمل، تبني دليل ملموس إنك قادر — وهذا يغذي ثقتك بنفسك مع الوقت.</string>
     <string name="confidence_suggestion">اكتب ٣ إنجازات صغيرة حققتها بإصرارك هذا الأسبوع</string>
-
     <string name="resilience_reason">الإصرار السليم يحتاج مرونة تعرف فيها متى تعدّل خطتك بدل ما تكرر نفس الطريقة الفاشلة.</string>
     <string name="resilience_suggestion">فكر بموقف عدّلت فيه خطتك بدل ما تستسلم</string>
-
     <string name="empathy_note">تكررت الإشارة لاهتمامك بصديقك</string>
-
     <string name="last_week">الثلاثاء الماضي</string>
     <string name="one_week_ago">قبل أسبوع</string>
     <string name="two_weeks_ago">قبل أسبوعين</string>
@@ -668,25 +559,18 @@
     <string name="three_days_ago">قبل ٣ أيام</string>
     <string name="sunday_date">الأحد ٥ يوليو</string>
     <string name="pm_time">١١:٤٠ م</string>
-
     <string name="welcome_title">أهلاً بك في سلام</string>
     <string name="welcome_subtitle">خلنا نتعرف عليك شوي قبل ما نبدأ رحلتك</string>
-
     <string name="name_label">اسمك أو اسم مستعار</string>
     <string name="name_hint_sign_up">اختياري — سرّك بينك وبين سلام</string>
-
     <string name="age_label">الفئة العمرية</string>
-
     <string name="gender_label">الجنس</string>
     <string name="gender_female">أنثى</string>
     <string name="gender_male">ذكر</string>
     <string name="gender_female_symbol">♀️</string>
     <string name="gender_male_symbol">♂️</string>
-
     <string name="privacy_note_sign_up">هذي المعلومات تُطلب مرة وحدة بس، وتساعدنا نخصص تجربتك 🔒</string>
-
     <string name="continue_button">متابعة</string>
-
     <string-array name="age_ranges">
         <item>١٨-٢٤</item>
         <item>٢٥-٣٤</item>
@@ -694,44 +578,37 @@
         <item>٤٥-٥٤</item>
         <item>٥٥+</item>
     </string-array>
-
     <string name="next_button">التالي</string>
     <string name="enter_button">Invest Now</string>
     <string name="note_prefix">ملاحظة اليوم</string>
-
     <!-- Card 1 -->
     <string name="c1_title">Magna\nCity</string>
     <string name="c1_tag">لحظة تأمل</string>
     <string name="c1_chip">🌫️ هادئ</string>
     <string name="c1_date">٨ أبريل</string>
     <string name="c1_note">A premier destination set along some of the world\'s most beautiful coastline. Magna will be a new region from NEOM that defies imagination. Across 120 kilometers of inspiring and unique coastline, a new kind</string>
-
     <!-- Card 2 -->
     <string name="c2_title">Magna\nCity</string>
     <string name="c2_tag">لحظة اتساع</string>
     <string name="c2_chip">🌊 هدوء</string>
     <string name="c2_date">٧ أبريل</string>
     <string name="c2_note">A premier destination set along some of the world\'s most beautiful coastline. Magna will be a new region from NEOM that defies imagination. Across 120 kilometers of inspiring and unique coastline, a new kind</string>
-
     <!-- Card 3 -->
     <string name="c3_title">Magna\nCity</string>
     <string name="c3_tag">لحظة حضور</string>
     <string name="c3_chip">🌿 سكينة</string>
     <string name="c3_date">٦ أبريل</string>
     <string name="c3_note">A premier destination set along some of the world\'s most beautiful coastline. Magna will be a new region from NEOM that defies imagination. Across 120 kilometers of inspiring and unique coastline, a new kind</string>
-
     <!-- Card 4 -->
     <string name="c4_title">Magna\nCity</string>
     <string name="c4_tag">لحظة صبر</string>
     <string name="c4_chip">☀️ صبر</string>
     <string name="c4_date">٥ أبريل</string>
     <string name="c4_note">A premier destination set along some of the world\'s most beautiful coastline. Magna will be a new region from NEOM that defies imagination. Across 120 kilometers of inspiring and unique coastline, a new kind</string>
-
     <string name="entry_title">إعادة الصياغة</string>
     <string name="entry_subtitle">شاركني فكرة مزعجة تراودك الآن، وخلنا نشوفها من زاوية ثانية سوا</string>
     <string name="entry_from_chat">استخدم فكرة من محادثتك الأخيرة</string>
     <string name="entry_write_new">اكتب فكرتك الآن</string>
-
     <string name="write_title">اكتب فكرتك</string>
     <string name="mode_text">اكتب</string>
     <string name="mode_voice">سجّل صوتك</string>
@@ -740,41 +617,33 @@
     <string name="voice_alt_hint">(أو اكتبها هنا كبديل)</string>
     <string name="emotions_label">وش تحس فيه؟ (اختياري)</string>
     <string name="analyze_button">حلّل هذه الفكرة</string>
-
     <string name="painful_thought_label">الفكرة المؤلمة</string>
     <string name="pattern_question">ما النمط المعرفي هنا؟</string>
     <string name="why_pattern_label">ليش هذا النمط؟</string>
     <string name="badge_detected">🤖 اكتشفه رفيقك</string>
-
     <string name="examine_intro">سؤال بسيط قبل ما نعيد الصياغة</string>
     <string name="answer_yes">نعم</string>
     <string name="answer_no">لا</string>
     <string name="answer_unsure">مو متأكد</string>
     <string name="followup_hint">شنو هذي اللحظة؟ (اختياري)</string>
     <string name="skip_question">تخطي هذا السؤال</string>
-
     <string name="original_label">ORIGINAL · فكرتك الآن</string>
     <string name="mirror_label">MIRROR · نظرة أخرى</string>
     <string name="reword_button">صياغة أخرى</string>
     <string name="save_button">احفظ وابدأ التمرين</string>
     <string name="back_to_chat">ارجع للمحادثة لاحقاً</string>
     <string name="followup_appendix">هل في شخص واحد تشعرين بالارتياح معه؟</string>
-
     <string name="completion_title">حُفظت فكرتك المتوازنة</string>
     <string name="completion_subtitle">انضافت لأرشيف "أفكاري المتوازنة"</string>
     <string name="your_exercise_label">تمرينك الآن</string>
     <string name="another_thought">فكرة ثانية</string>
-
     <string name="clock_time">٩:٤١</string>
-
     <string name="step_identify">تحديد</string>
     <string name="step_examine">فحص</string>
     <string name="step_reframe">إعادة صياغة</string>
-
     <string name="source_from_chat">من فضفضتك · قبل ١٠ دقائق</string>
     <string name="source_written">كُتبت الآن</string>
     <string name="thought_from_chat">لا أحد يهتم بي وداءماً أنا اللي أعاني لوحدي</string>
-
     <!-- Kids Screen Translation -->
     <string name="kids_title_select" translatable="false">مين يلعب اليوم؟</string>
     <string name="kids_subtitle_select" translatable="false">اختر اسمك عشان نفتح شجرتك أنت</string>
@@ -806,12 +675,10 @@
     <string name="bubble_canvas_press_blow">اضغط وانفخ...</string>
     <string name="bubble_canvas_keep_going">استمر فقاعتك تكبر! 🫧</string>
     <string name="bubble_canvas_flew_away">طارت الفقاعة! 🌟</string>
-
     <!-- Kids AI Chat Activity -->
     <string name="kids_chat_back_desc">رجوع</string>
     <string name="kids_chat_nour_badge">أنا هنا أسمعك 💙</string>
     <string name="kids_chat_question_title">كيف حالك الحين؟</string>
-
     <!-- Moods -->
     <string name="kids_chat_mood_scared">خايف</string>
     <string name="kids_chat_mood_sad">حزين</string>
@@ -819,7 +686,6 @@
     <string name="kids_chat_mood_confused">مش عارف</string>
     <string name="kids_chat_mood_tired">تعبان</string>
     <string name="kids_chat_mood_happy">مبسوط</string>
-
     <string name="wall_title">رسائل من قلوب طيبة</string>
     <string name="wall_sub">كلام كتبه ناس زيك لبعض</string>
     <string name="top_impact">الأكثر أثراً</string>
@@ -827,7 +693,6 @@
     <string name="top_impact_image">لحظات بالصور</string>
     <string name="fab_share">شارك كلمة تشجيع</string>
     <string name="community_person">شخص من المجتمع</string>
-
     <string name="compose_title">شارك كلمة تشجيع</string>
     <string name="compose_hint_top">اكتب كلمة ممكن تخفف عن حد ثاني اليوم — كلامك بيوصل بدون اسمك.</string>
     <string name="compose_placeholder">اكتب رسالتك هنا...</string>
@@ -836,50 +701,39 @@
     <string name="compose_emoji_added">رمز مضاف لرسالتك</string>
     <string name="compose_emoji_add">ضيف رمز لطيف لرسالتك (اختياري)</string>
     <string name="compose_submit">أرسل للمراجعة</string>
-
     <string name="analyzing_title">نتأكد إن رسالتك تناسب المجتمع...</string>
     <string name="analyzing_sub">هذي خطوة تلقائية بسيطة، بتاخذ لحظات بس</string>
-
     <string name="approved_title">نُشرت رسالتك!</string>
     <string name="approved_sub">الآن ممكن كلامك يخفف عن حد ثاني اليوم</string>
     <string name="approved_cta">شوف رسائل ثانية</string>
-
     <string name="rejected_title_crisis">نحس إن هالكلام يستاهل اهتمام أكثر</string>
     <string name="rejected_title_normal">ما قدرنا ننشر رسالتك</string>
     <string name="rejected_cta_crisis">تكلم مع رفيق سلام الآن</string>
     <string name="rejected_cta_edit">عدّل الرسالة</string>
     <string name="rejected_back">رجوع</string>
-
     <string name="reason_crisis">لاحظنا كلامك يعبّر عن ألم كبير — هذا يستاهل دعم مباشر لك أنت، مو نشره للعموم.</string>
     <string name="reason_contact">رسالتك فيها معلومة تواصل شخصية (رقم أو حساب) — لحماية خصوصيتك وخصوصية الكل، ما ننشر هذي التفاصيل.</string>
     <string name="reason_negative">رسالتك فيها كلام قاسي ما يتماشى مع روح المجتمع الداعمة هنا.</string>
     <string name="reason_short">رسالتك قصيرة شوي — جربي تفصّلين أكثر عشان تأثيرها يكون أقوى.</string>
-
     <string name="mine_title">رسائلي</string>
     <string name="mine_empty_title">لسا ما شاركت شي</string>
     <string name="mine_empty_body">أول كلمة تشجيع تكتبها بتظهر هنا بعد ما توافق عليها المراجعة</string>
-
     <string name="pinned_title">المحفوظات</string>
     <string name="pinned_empty_title">ما حفظت شي بعد</string>
     <string name="pinned_empty_body">اضغط أيقونة الحفظ على أي رسالة عجبتك عشان ترجع لها بسهولة</string>
-
     <string name="toast_pinned">انحفظت — بتلقاها في المحفوظات</string>
     <string name="toast_unpinned">انحذفت من المحفوظات</string>
     <string name="toast_copied">تم نسخ الرسالة، جاهزة ترسلها لصديق</string>
     <string name="toast_copy_fail">ما قدرنا ننسخ الرسالة، جرب مرة ثانية</string>
-
     <string name="community_cat_all">الكل</string>
     <string name="milestone_reached">لمست</string>
-
     <string name="posted_time_ago">منذ يومين</string>
     <string name="posted_just_now">منذ قليل</string>
-
     <string name="cd_back">رجوع</string>
     <string name="cd_pin">احفظ الرسالة</string>
     <string name="cd_share">شارك الرسالة</string>
     <string name="cd_remove_image">إزالة الصورة</string>
     <string name="choose_card_color">اختر لون البطاقة</string>
-
     <!-- Video library -->
     <string name="bookmark_content">حفظ المحتوى</string>
     <string name="unbookmark_content">إلغاء الحفظ</string>
@@ -898,33 +752,26 @@
     <string name="bookmark_articles_sub">اقرأها لاحقاً في مكتبة المقالات</string>
     <string name="bookmark_videos_sub">شاهدها لاحقاً في قسم الفيديوهات</string>
     <string name="watch_now">شاهد الآن</string>
-
     <string name="library_cat_all">الكل</string>
     <string name="cat_sadness">الحزن</string>
     <string name="cat_anxiety">القلق</string>
     <string name="cat_cbt">CBT</string>
     <string name="cat_breathing">التنفس</string>
     <string name="cat_sleep">نوم</string>
-
     <string name="my_notes_title">قائمة ملاحظاتي</string>
     <string name="fav_articles_title">المقالات المفضلة</string>
     <string name="bookmark_articles_title">المقالات المحفوظة</string>
-
     <string name="tab_favorites">المفضلة</string>
     <string name="tab_notes">الملاحظات</string>
     <string name="tab_highlights">التمييزات</string>
-
     <string name="empty_fav_quotes">ما أضفتِ أي اقتباس للمفضلة بعد — علّمي نص داخل المقال واضغطي القلب</string>
     <string name="empty_generic">ما فيه عناصر هنا بعد</string>
     <string name="empty_fav_articles">ما أضفتِ أي مقالة للمفضلة بعد — اضغطي أيقونة القلب على أي مقالة</string>
     <string name="empty_bookmark_articles">ما حفظتِ أي مقالة بعد — اضغطي أيقونة البوكمارك على أي مقالة</string>
-
     <string name="fav_quotes_header">الاقتباسات المفضلة</string>
-
     <string name="reading_hint">علّمي على أي جملة تلمسك لتظليلها أو كتابة ملاحظة عليها أو حفظها</string>
     <string name="feedback_prompt">شو رأيك بهالمقالة؟</string>
     <string name="by_author">بقلم %1$s</string>
-
     <string name="reading_settings_title">إعدادات القراءة</string>
     <string name="page_appearance">مظهر الصفحة</string>
     <string name="font_size">حجم الخط</string>
@@ -932,12 +779,10 @@
     <string name="normal_weight">عادي</string>
     <string name="bold_weight">عريض</string>
     <string name="brightness">سطوع الشاشة</string>
-
     <string name="theme_classic">كلاسيكي</string>
     <string name="theme_traditional">تقليدي</string>
     <string name="theme_night">ليلي</string>
     <string name="theme_typewriter">آلة كاتبة</string>
-
     <string name="articles_note_hint">اكتبي خاطرة، سبب التظليل، أو أي شي يفيدك لاحقاً...</string>
     <string name="save_note">حفظ الملاحظة</string>
     <string name="highlight_color">لون التظليل</string>
@@ -947,11 +792,9 @@
     <string name="highlight_on">مفعّل</string>
     <string name="highlight_off">غير مفعّل</string>
     <string name="highlight_prefix">التظليل %1$s</string>
-
     <string name="toast_highlighted">تم التظليل ✨</string>
     <string name="toast_saved_fav">تمت الإضافة للمفضلة ❤️</string>
     <string name="toast_highlight_deleted">تم حذف التظليل</string>
-
     <string name="menu_highlight_yellow">تظليل أصفر</string>
     <string name="menu_highlight_pink">تظليل وردي</string>
     <string name="menu_highlight_purple">تظليل بنفسجي</string>
@@ -959,84 +802,65 @@
     <string name="menu_highlight_green">تظليل أخضر</string>
     <string name="menu_write_note">أضف ملاحظة</string>
     <string name="menu_save_quote">أضف إلى المفضلة</string>
-
     <string name="rate_label">التقييم</string>
     <string name="duration_label">المدة</string>
     <string name="rating_label">التقييم</string>
     <string name="exercises_label">تمارين</string>
     <string name="chat_app_name">مساعدك النفسي</string>
     <string name="chat_status_time">٩:٤١</string>
-
     <string name="chat_header_title">مساعدك النفسي</string>
     <string name="chat_header_subtitle">سلام · متصل الآن</string>
-
     <string name="chat_input_hint">اكتب رسالتك...</string>
-
     <string name="chat_nav_home">الرئيسية</string>
     <string name="chat_nav_exercises">تمارين</string>
     <string name="chat_nav_stats">إحصاء</string>
     <string name="chat_nav_me">أنا</string>
     <string name="chat_now">٩:٤٠ ص</string>
-
     <!-- Breathing card -->
     <string name="chat_breathing_kicker">تمرين التنفس</string>
     <string name="chat_breathing_title">تنفس الصندوق 🫁</string>
     <string name="chat_breathing_desc">تمرين ٤ دقائق لتهدئة الجهاز العصبي</string>
     <string name="chat_breathing_button">ابدأ التمرين</string>
     <string name="chat_breathing_toast">ينقلك لتمرين التنفس...</string>
-
     <!-- Dhikr card -->
     <string name="chat_dhikr_kicker">ذكر</string>
     <string name="chat_dhikr_title">ذكر مهدئ 🌙</string>
     <string name="chat_dhikr_desc">"سبحان الله وبحمده" — كررها ببطء مع كل زفير</string>
     <string name="chat_dhikr_button">فتح أذكاري</string>
     <string name="chat_dhikr_toast">يفتح أذكارك...</string>
-
     <!-- Article card -->
     <string name="chat_article_tag">العلاج السلوكي المعرفي</string>
     <string name="chat_article_title">كيف تتعاملين مع الحزن بدون قمعه؟</string>
     <string name="chat_article_button">اقرأي الآن ←</string>
     <string name="chat_article_toast">يفتح المقالة...</string>
-
     <!-- Conversation Nodes -->
     <string name="chat_node_start_bot">أهلاً، أنا هنا معك. كيف تشعر اليوم؟</string>
     <string name="chat_reply_start_anxious">أشعر بعض القلق اليوم</string>
     <string name="chat_reply_start_distress">أشعر بضيق شديد ولا أستطيع التنفس جيداً</string>
     <string name="chat_reply_start_fine">بخير الحمدلله</string>
-
     <string name="chat_node_anxious_bot">أفهمك، القلق شعور طبيعي. هل تريد تجربة تمرين تنفس سريع لتهدئة الأفكار؟</string>
     <string name="chat_reply_anxious_breathing">نعم، جرب معي</string>
     <string name="chat_reply_anxious_later">لاحقاً</string>
     <string name="chat_reply_anxious_elaborate">تحدث معي أكثر</string>
-
     <string name="chat_node_breathingOffer_bot">تمام، هذا تمرين بسيط يهدي جهازك العصبي خلال دقائق 💙</string>
     <string name="chat_reply_breathingOffer_article">حاب كمان أقرأ مقالة قصيرة</string>
     <string name="chat_reply_breathingOffer_closing">شكراً، هذا يكفي</string>
-
     <string name="chat_node_article_bot">أكيد، هذي مقالة قصيرة ممكن تساعدك تفهم مشاعرك أكثر:</string>
     <string name="chat_reply_article_closing">شكراً لك</string>
-
     <string name="chat_node_later_bot">تمام، أنا هنا وقت ما احتجت 💙</string>
     <string name="chat_reply_later_closing">بروحي أشوف حالي لاحقاً</string>
-
     <string name="chat_node_elaborate_bot">أكيد، خبرني أكثر عن اللي يشغل بالك؟</string>
-
     <string name="chat_node_distress_bot">أنا أسمعك جداً — من الطبيعي جداً أن تشعر بهذا. أنت لست وحدك، أنا هنا. هل تجرب تمرين بسيط للتنفس معاً؟</string>
     <string name="chat_reply_distress_yes">نعم</string>
     <string name="chat_reply_distress_maybe">لا أدري بعد</string>
     <string name="chat_reply_distress_no">لا، شكراً</string>
-
     <string name="chat_node_dhikrOffer_bot">ولا يهمك، خذ وقتك. جربي هذا الذكر البسيط، يساعد يهدي التنفس مع كل زفير:</string>
     <string name="chat_reply_dhikrOffer_closing">شكراً، حاولت</string>
-
     <string name="chat_node_fine_bot">يسعدني أسمع هذا! 😊 حاب تشارك شي حلو صار اليوم؟</string>
-
     <string name="chat_node_closing_bot">أنا فخور فيك إنك حكيت. أنا هنا دايماً وقت ما احتجتني 💙</string>
-
     <string name="chat_node_freeReply_bot">أسمعك، وهذا الكلام مهم. خذ وقتك، أنا هنا معك خطوة بخطوة.</string>
     <string name="chat_reply_freeReply_breathing">جرب تمرين تنفس</string>
     <string name="chat_reply_freeReply_closing">بس حبيت أحكي</string>
-
     <!-- Splash select screen -->
     <string name="splash_back">رجوع</string>
     <string name="splash_salam">سلام</string>
@@ -1046,7 +870,6 @@
     <string name="splash_adults_subtitle">مساحة هادئة للتأمل والدعم النفسي</string>
     <string name="splash_kids_title">للأطفال</string>
     <string name="splash_kids_subtitle">عالم ممتع وآمن لك!</string>
-
     <!-- Chat screen -->
     <string name="chat_back">رجوع</string>
     <string name="chat_send">إرسال</string>
@@ -1061,7 +884,6 @@
     <string name="chat_voice_perm_msg">نحتاج إذن الميكروفون لتتمكن من تسجيل رسائل صوتية مع رفيقك.</string>
     <string name="chat_voice_perm_denied">تم رفض إذن الميكروفون. يمكنك منحه من الإعدادات للمتابعة.</string>
     <string name="chat_voice_sent_toast">تم إرسال الرسالة الصوتية 🎙️</string>
-
     <!-- Home screen -->
     <string name="home_friend">صديقي</string>
     <string name="home_greeting_format">صباح الخير %1$s كيف تشعر الآن؟\nأنا هنا معك 🌊</string>
@@ -1082,7 +904,6 @@
     <string name="home_feature_reports_sub">REPORTS</string>
     <string name="home_feature_community">مجتمع سلام</string>
     <string name="home_feature_community_sub">COMMUNITY</string>
-
     <!-- Language selection -->
     <string name="language_selection_title">اختر لغتك</string>
     <string name="language_selection_subtitle">اختر اللغة التي تناسبك أكثر</string>
@@ -1091,11 +912,9 @@
     <string name="language_title">اللغة</string>
     <string name="continue_label">متابعة</string>
     <string name="chat_item_voice_message_android_text_0">00:00</string>
-
     <!-- Bubble Breathing Strings -->
     <string name="bubble_btn_holding">انفخ الحين... 🫧</string>
     <string name="bubble_done_body">صرت أهدى وأقوى الحين!</string>
-
     <!-- Kids Tree Activity Strings -->
     <string name="tree_today_points">نقاط اليوم: %1$d</string>
     <string name="tree_stage_level">المرحلة %1$d</string>
@@ -1109,20 +928,17 @@
     <string name="stage_fruit_tree_desc">قمة النجاح والإنجاز العالي!</string>
     <string name="badge_unlocked_message">تم فتح هذا الوسام بنجاح!</string>
     <string name="close">إغلاق</string>
-
     <!-- Tree Progress Manager Stages (Arabic) -->
     <string name="stage_sprout">مرحلة البرعم</string>
     <string name="stage_bud">مرحلة البرعم المكتمل</string>
     <string name="stage_tree">مرحلة الشجرة</string>
     <string name="stage_fruit_tree">الشجرة المثمرة</string>
-
     <!-- Controls & Inputs -->
     <string name="kids_chat_press_and_talk">اضغط واحكيلي</string>
     <string name="kids_chat_switch_to_text">أو اكتب</string>
     <string name="kids_chat_hint_input">اكتب اللي حاسس فيه هنا...</string>
     <string name="kids_chat_switch_to_voice">أو سجل صوتك</string>
     <string name="kids_chat_btn_talk_nour">حكيت نور! ⭐</string>
-
     <!-- States & Bottom Sheet -->
     <string name="kids_chat_loading">نور يستمع لك...</string>
     <string name="kids_chat_ai_default_response">تعبك مسموع، خذ راحتك شوي.</string>
@@ -1131,13 +947,11 @@
     <string name="kids_chat_action_breath">خذ نفس معي 🫧</string>
     <string name="kids_chat_action_draw">ارسم كيف حاسس 🎨</string>
     <string name="kids_chat_action_better">خلص، أنا أحسن الحين 💛</string>
-
     <!-- Voice Sheet -->
     <string name="kids_chat_sheet_cancel">إلغاء</string>
     <string name="kids_chat_sheet_speak_hint">قول اللي حاسس فيه، وأنا أسمعك 🧸</string>
     <string name="kids_chat_sheet_done">خلصت</string>
     <string name="kids_chat_toast_sending">جاري إرسال الصوت للتحليل بواسطة الـ AI...</string>
-
     <!-- Tree Screens Texts -->
     <string name="tree_back">رجوع</string>
     <string name="tree_title">شجرة التعافي</string>
@@ -1150,37 +964,30 @@
     <string name="badge_meditator">مُتأمل</string>
     <string name="badge_daily">يومي</string>
     <string name="badge_consistent">مستمر</string>
-
     <string name="tree_intro_title">هذي شجرتك! 🌱</string>
     <string name="tree_intro_description">كل مرة تتنفس، تتذكر، أو تكتب مشاعرك،\nشجرتك تكبر شوي شوي — تعالي شوفي وين\nوصلت!</string>
     <string name="tree_intro_btn">يلا نشوفها! 🌳</string>
-
     <string name="tree_level_up_growth">🌱 68% نمو مرحلة شجرة</string>
     <string name="tree_level_up_subtitle">شجرتك كبرت بسبب كل تمرين سويته 💚</string>
     <string name="tree_level_up_btn">يعطيك العافية! 🌟</string>
     <string name="tree_points_added">أضفت + %d نقاط!</string>
     <string name="see_your_tree">شوف شجرتك كيف كبرت! 🌳</string>
-
     <!-- النصوص الخاصة بـ Bottom Sheet -->
     <string name="what_did_you_achieve_today">شو أنجزت اليوم؟ 🌱</string>
     <string name="breathing_exercise">تمرين تنفس 💨 (+10 نقاط)</string>
     <string name="chat_with_friend">محادثة مع صديقك 💬 (+10 نقاط)</string>
     <string name="write_journal">كتابة يوميات 📝 (+10 نقاط)</string>
-
     <!-- النصوص الخاصة بـ Dialog -->
     <string name="daily_badge_title">يومي</string>
     <string name="daily_badge_desc">دخلت كل يوم</string>
     <string name="badge_meditator_title">مُتأمل</string>
     <string name="badge_meditator_desc">أكملت تمارين التأمل والتنفس</string>
-
     <string name="badge_consistent_title">مستمر</string>
     <string name="badge_consistent_desc">استمر في تسجيل الأنشطة يومياً</string>
     <string name="badge_consistent_locked_status">🔒 كَمِّل 7 أيام متتالية لفتحها!</string>
-
     <string name="stage_achieved_status">تحققت بجميل إنجازاتك!</string>
     <string name="stage_current_status">أنت في هذه المرحلة حالياً!</string>
     <string name="stage_fruit_tree_locked_status">🔒 تحتاج 50 نقطة لوصولها!</string>
-
     <!-- رسائل الواجهة -->
     <string name="tree_points_format">اليوم: %d نقطة</string>
     <string name="tree_stage_description">شجرتك في مرحلة %s</string>
@@ -1189,28 +996,23 @@
     <string name="level_up_stage_reached">أنت الآن في مرحلة: %1$s %2$s</string>
     <string name="level_up_points_earned">+%1$d نقطة إضافية 🌟</string>
     <string name="level_up_btn_continue">متابعة العناية بالشجرة 💚</string>
-
     <string name="tab_gallery">بطاقاتي</string>
     <string name="tab_dhikr">أذكاري</string>
     <string name="tab_simulate">سيناريو الأزمة</string>
-
     <string name="subtitle_cards">%1$d بطاقة محفوظة</string>
     <string name="subtitle_cards_plural">%1$d بطاقات محفوظة</string>
     <string name="subtitle_dhikr">%1$d ذكر مفضّل</string>
     <string name="subtitle_dhikr_plural">%1$d أذكار مفضّلة</string>
     <string name="subtitle_simulate">بطاقتك وذكرك يظهرو تلقائياً</string>
-
     <string name="info_title">ليش هذي الميزة مختلفة؟</string>
     <string name="info_body">تختارين بطاقتك الفعالة، وتفضّلين الأذكار اللي تريحك وتحددين مدة كل وحدة (من دقيقة لـ٥ دقايق). وقت التهدئة الفورية: تنفس عميق ٤-٧-٨، بعده ذكرك المفضل بعداد تنازلي حقيقي، وآخر شي بطاقتك — كلها تلقائي، بدون أي تصفح وقت الأزمة.</string>
     <string name="got_it">فهمت</string>
-
     <string name="active_now_label">💛 الفعالة الآن — هذي اللي بتطلع وقت الأزمة</string>
     <string name="no_active_card">ما فيه بطاقة فعالة حالياً — اختاري وحدة من تحت</string>
     <string name="all_cards">كل بطاقاتك</string>
     <string name="active_now_badge">✓ الفعالة الآن</string>
     <string name="tap_to_activate">اضغطي لتفعيلها</string>
     <string name="new_card_btn">+ بطاقة جديدة</string>
-
     <string name="card_new_title">بطاقة جديدة</string>
     <string name="card_edit_title">تعديل البطاقة</string>
     <string name="phrase_label">الجملة اللي تطمّنك</string>
@@ -1223,7 +1025,6 @@
     <string name="cancel">إلغاء</string>
     <string name="save">حفظ</string>
     <string name="card_placeholder">اكتبي جملة تطمّنك…</string>
-
     <string name="dhikr_intro">فضّلي الأذكار اللي تريحك وحددي مدتها. وقت التهدئة الفورية رح يظهرلك وحد منها تلقائياً بعداد تنازلي حقيقي.</string>
     <string name="add_custom_dhikr">+ أضيفي ذكرك الخاص</string>
     <string name="dhikr_dialog_title">ذكرك الخاص</string>
@@ -1233,7 +1034,6 @@
     <string name="dhikr_duration_label">كم دقيقة تحبين تكرريه وقت الأزمة؟</string>
     <string name="save_and_favorite">حفظ وتفضيل</string>
     <string name="duration_display_label">مدة العرض وقت الأزمة:</string>
-
     <string name="locked_msg">ما فيه بطاقة فعالة حالياً. اختاري وحدة من تبويب «بطاقاتي» عشان تظهر تلقائياً وقت الأزمة.</string>
     <string name="go_to_gallery">روحي لصفحة بطاقاتي</string>
     <string name="sim_intro_msg">اضغطي الزر لتجربي بالضبط اللي بيصير وقت لحظة أزمة حقيقية.</string>
@@ -1241,39 +1041,30 @@
     <string name="sim_start_label">زر التهدئة الفورية</string>
     <string name="no_favorite_dhikr_prompt">ما فضّلتي أذكار بعد — فضّلي وحدة الآن</string>
     <string name="cancel_x">✕ إلغاء</string>
-
     <string name="breathing_technique_label">تقنية ٤-٧-٨ للتنفس العميق — مناسبة لنوبات الهلع</string>
     <string name="breathing_cycle_fmt">الدورة %1$d من %2$d</string>
     <string name="breathing_footer">بعد التنفس والتأريض، رح يوصلك ذكرك المفضل ثم بطاقتك تلقائياً 💛</string>
-
     <string name="grounding_msg">لاحظي ٥ أشياء حواليك الآن</string>
-
     <string name="dhikr_source_favorite">من أذكارك المفضلة 📿</string>
     <string name="dhikr_source_default">ذكر افتراضي — فضّلي أذكارك من تبويب «أذكاري»</string>
     <string name="another_dhikr">🔄 ذكر ثاني</string>
-
     <string name="card_auto_badge">ظهرت تلقائياً — بدون ما تدوّري عليها 💛</string>
     <string name="im_ok_now">تم، أنا بخير الآن</string>
-
     <string name="toast_activated">✓ أصبحت البطاقة الفعالة</string>
     <string name="toast_added_card">✓ تمت إضافة البطاقة</string>
     <string name="toast_updated_card">✓ تم تحديث البطاقة</string>
     <string name="toast_deleted_card">🗑️ تم حذف البطاقة</string>
     <string name="toast_added_dhikr">✓ تمت إضافة ذكرك، وصار مفضّل</string>
-
     <string name="edit_desc">تعديل</string>
     <string name="delete_desc">حذف</string>
     <string name="info_desc">عن هذي الميزة</string>
     <string name="favorite_desc">إضافة للمفضلة</string>
     <string name="unfavorite_desc">إزالة من المفضلة</string>
-
     <string name="minute_1">دقيقة</string>
     <string name="minutes_n">دقائق</string>
-
     <string name="mood_entry_title">إنشاء يومية جديدة</string>
     <string name="big_question">كيف مزاجك اليوم؟</string>
     <string name="saved_toast">تم حفظ مزاجك ✅</string>
-
     <string name="mood_awful">أشعر بالانهيار</string>
     <string name="mood_sad">أشعر بالحزن</string>
     <string name="mood_low">أشعر بالإحباط</string>
@@ -1281,7 +1072,6 @@
     <string name="mood_calm">أشعر بالارتياح</string>
     <string name="mood_happy">أشعر بالسعادة</string>
     <string name="mood_overjoyed">أشعر بالبهجة الكاملة</string>
-
     <string name="adaptive_adult_onboarding_app_name">سلام</string>
     <string name="adaptive_adult_onboarding_welcome_title">مرحبًا بك في سلام 🤍</string>
     <string name="adaptive_adult_onboarding_welcome_body">مساحة خاصة تساعدك على فهم مشاعرك واكتشاف طرق بسيطة للشعور بالهدوء.</string>
@@ -1313,6 +1103,7 @@
     <string name="adaptive_adult_onboarding_goals_title">ما أكثر شيء تأمل أن يساعدك سلام فيه؟</string>
     <string name="adaptive_adult_onboarding_mood_demo_paragraph">من وقت لآخر، قد يطرح عليك سلام سؤالًا بسيطًا مثل:</string>
     <string name="adaptive_adult_onboarding_mood_demo_question">كيف كان يومك اليوم؟</string>
+    <string name="adaptive_adult_onboarding_mood_demo_subtext">سيظهر لك سلام بهذه الطريقة من وقت لآخر حتى تلاحظ تغيّر مشاعرك مع مرور الوقت،</string>
     <string name="adaptive_adult_onboarding_mood_demo_subtext">سيظهر لك سلام بهذه الطريقة من وقت لآخر حتى تلاحظ تغيّر مشاعرك مع مرور الوقت، ويمكنك إيقاف هذه المتابعة لاحقًا من الإعدادات.</string>
     <string name="adaptive_adult_onboarding_mood_demo_status_active">هكذا ستبدو متابعتك اليومية تمامًا 🤍</string>
     <string name="adaptive_adult_onboarding_mood_demo_status_idle">جرّب الآن لترى كيف ستبدو المتابعة اليومية</string>
@@ -1894,5 +1685,4 @@
     <string name="feedback_question">شو رأيك بهالمقالة؟</string>
     <string name="why_suggested">ليش اقترحنا هذي المقالة؟</string>
 
-    <string name="adaptive_adult_onboarding_preview_subtext">🤍 نظرة سريعة</string>
 </resources>

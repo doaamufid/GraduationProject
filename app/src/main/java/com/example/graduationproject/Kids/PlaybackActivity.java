@@ -105,7 +105,7 @@ public class PlaybackActivity extends AppCompatActivity {
             @Override
             public void onError(String errorMessage) {
                 // ما في نت أو صار خطأ - منعرض رسالة افتراضية بدل ما نعلّق الطفل بالانتظار
-                goToCelebration(getString(R.string.default_celebration_feedback));
+                goToCelebration(getString(R.string.default_audio_label));
             }
         });
     }
