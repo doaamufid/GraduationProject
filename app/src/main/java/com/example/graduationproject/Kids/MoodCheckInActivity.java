@@ -64,8 +64,10 @@ public class MoodCheckInActivity extends AppCompatActivity {
             Intent intent = new Intent(this, DrawInstructionActivity.class);
             startActivity(intent);
         });
-        binding.cardBreathe.setOnClickListener(v ->
-                Toast.makeText(this, "تنفس مع الهدهاد - قريبًا", Toast.LENGTH_SHORT).show());
+        binding.cardBreathe.setOnClickListener(v -> {
+            Intent intent = new Intent(this, KidsAiChatActivity.class);
+            startActivity(intent);
+        });
         binding.cardComfort.setOnClickListener(v -> {
             Intent intent = new Intent(this, SoundsActivity.class);
             startActivity(intent);

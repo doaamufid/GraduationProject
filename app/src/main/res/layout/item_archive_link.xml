@@ -5,65 +5,50 @@
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
-    android:background="@drawable/bg_archive_row"
+    android:background="@drawable/bg_card_bordered"
     android:padding="14dp"
     android:layout_marginBottom="10dp"
     android:clickable="true"
     android:focusable="true">
 
-    <!-- Icon on the right (first in RTL order) -->
-    <FrameLayout
+    <ImageView
+        android:id="@+id/img_link_icon_bg"
         android:layout_width="36dp"
-        android:layout_height="36dp">
+        android:layout_height="36dp"
+        android:padding="9dp"
+        android:contentDescription="@null"
+        tools:src="@drawable/ic_pen_line"/>
 
-        <View
-            android:id="@+id/archiveIconBg"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
-            android:background="@drawable/bg_archive_icon_box"/>
-
-        <ImageView
-            android:id="@+id/ivArchiveIcon"
-            android:layout_width="16dp"
-            android:layout_height="16dp"
-            android:layout_gravity="center"
-            tools:src="@drawable/ic_pen_line"
-            android:contentDescription="@null"/>
-    </FrameLayout>
-
-    <!-- Content in the middle, aligned right (start in RTL) -->
     <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginStart="12dp"
-        android:layout_marginEnd="12dp"
         android:orientation="vertical"
         android:gravity="start">
 
         <TextView
-            android:id="@+id/tvArchiveLabel"
+            android:id="@+id/txt_link_label"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_main"
             android:textStyle="bold"
-            android:textSize="17sp"
+            android:textSize="@dimen/text_title"
             tools:text="أفكاري المتوازنة"/>
 
         <TextView
-            android:id="@+id/tvArchiveSub"
+            android:id="@+id/txt_link_sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/text_soft"
-            android:textSize="13sp"
+            android:textSize="@dimen/text_tiny"
             tools:text="من إعادة الصياغة"/>
     </LinearLayout>
 
-    <!-- Chevron on the left (last in RTL order) -->
     <ImageView
+        android:id="@+id/ivArchiveIcon"
         android:layout_width="14dp"
         android:layout_height="14dp"
-        android:src="@drawable/ic_chevron_left"
+        android:src="@drawable/ic_arrow_right"
         android:contentDescription="@null"/>
-
 </LinearLayout>

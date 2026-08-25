@@ -138,7 +138,7 @@ public class ProfileActivity extends AppCompatActivity {
     private void buildBadgesGrid() {
         int earnedCount = 0;
         for (Badge b : badges) if (b.earned) earnedCount++;
-        tvEarnedCount.setText(getString(R.string.earned_count_format, earnedCount, badges.size()));
+        tvEarnedCount.setText(getString(R.string.badge_earned_status, earnedCount, badges.size()));
 
         llBadgesGrid.removeAllViews();
         float density = getResources().getDisplayMetrics().density;
