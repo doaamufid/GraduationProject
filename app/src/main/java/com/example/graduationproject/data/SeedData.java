@@ -58,7 +58,7 @@ public class SeedData {
         list.add(new Message(10, "كلمة منك ممكن تغير يوم كامل لشخص غريب. لا تستهين بجمال روحك.", "دعم", 45, null, "🫂", false));
         list.add(new Message(11, "الحياة مو سباق، الحياة رحلة. استمتع بكل خطوة حتى لو كانت بطيئة.", "نمو", 215, "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=500&q=60", "🌳", false));
         list.add(new Message(12, "الامتنان هو المغناطيس اللي يسحب كل الأشياء الجميلة لحياتك.", "امتنان", 188, null, "💖", false));
-        list.add(new Message(13, "كونك حقيقي هو أجمل شيء ممكن تقدمه لنفسك وللعالم.", "تقبل", 92, "https://images.unsplash.com/photo-1518005020251-58296d8f8b4d?w=500&q=60", "🍃", false));
+        list.add(new Message(13, "كونك حقيقي هو أجمل شيء ممكن تقدمه لنفسك وللعالم.", "تقبل", 92, "https://images.unsplash.com/photo-1528605248644-14dd04022da1?w=500&q=60", "🍃", false));
         list.add(new Message(14, "كل بداية جديدة محتاجة شجاعة. وأنت شجاع لأنك لسا بتحاول.", "شجاعة", 276, null, "🦁", false));
         list.add(new Message(15, "خلي قلبك مثل الورد، يعطر حتى اللي كسره.", "سلام", 143, "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=500&q=60", "🌹", false));
         list.add(new Message(16, "ابتسم، لأن الابتسامة هي لغة لا تحتاج لترجمة.", "تفاؤل", 67, null, "😊", false));

@@ -1,17 +1,17 @@
 package com.example.graduationproject.adapters;
 
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.R;
+import com.example.graduationproject.data.SeedData;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder> {
@@ -22,10 +22,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
     private List<String> categories;
     private OnCategoryClickListener listener;
-    private int selectedPosition = 0; // أول تصنيف محدد افتراضياً
+    private String selectedCategory;
 
     public CategoryAdapter(List<String> categories, OnCategoryClickListener listener) {
         this.categories = categories;
+        this.listener = listener;
+        if (!categories.isEmpty()) {
+            this.selectedCategory = categories.get(0);
+        }
+    }
+
+    public CategoryAdapter(String[] categories, String selectedCategory, OnCategoryClickListener listener) {
+        this.categories = Arrays.asList(categories);
+        this.selectedCategory = selectedCategory;
         this.listener = listener;
     }
 
@@ -40,23 +49,19 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
     @Override
     public void onBindViewHolder(@NonNull CategoryViewHolder holder, int position) {
         String category = categories.get(position);
-        boolean isSelected = position == selectedPosition;
+        boolean isSelected = category.equals(selectedCategory);
 
         holder.label.setText(category);
-        holder.icon.setText(getEmojiFor(category));
-        holder.iconCard.setCardBackgroundColor(Color.parseColor(getColorFor(category)));
+        holder.icon.setText(SeedData.getCategoryEmoji(category));
 
-        // خط التحديد يظهر بس تحت التصنيف المحدد
-        holder.underline.setVisibility(isSelected ? View.VISIBLE : View.INVISIBLE);
-
-        // شفافية خفيفة للمربعات الغير محددة (اختياري لإبراز المحدد)
-        holder.iconCard.setAlpha(isSelected ? 1f : 0.6f);
+        holder.ring.setVisibility(isSelected ? View.VISIBLE : View.GONE);
+        holder.container.setBackgroundResource(isSelected ? 0 : R.drawable.bg_category_border);
+        holder.label.setAlpha(isSelected ? 1.0f : 0.6f);
+        holder.icon.setAlpha(isSelected ? 1.0f : 0.8f);
 
         holder.itemView.setOnClickListener(v -> {
-            int previous = selectedPosition;
-            selectedPosition = holder.getAdapterPosition();
-            notifyItemChanged(previous);
-            notifyItemChanged(selectedPosition);
+            selectedCategory = category;
+            notifyDataSetChanged();
             listener.onCategoryClick(category);
         });
     }
@@ -66,50 +71,23 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
         return categories.size();
     }
 
-    // إيموجي مناسب لكل تصنيف
-    private String getEmojiFor(String category) {
-        switch (category) {
-            case "لعبة":
-                return "🎮";
-            case "صداقة":
-                return "🤝";
-            case "نوم":
-                return "😴";
-            case "مشاعر":
-                return "😊";
-            default:
-                return "⭐";
-        }
-    }
-
-    // لون مربع مناسب لكل تصنيف
-    private String getColorFor(String category) {
-        switch (category) {
-            case "لعبة":
-                return "#FFA352";
-            case "صداقة":
-                return "#6C63FF";
-            case "نوم":
-                return "#2EC4B6";
-            case "مشاعر":
-                return "#FFD166";
-            default:
-                return "#B0B0B0";
-        }
+    public void setSelected(String category) {
+        this.selectedCategory = category;
+        notifyDataSetChanged();
     }
 
     static class CategoryViewHolder extends RecyclerView.ViewHolder {
         TextView label;
         TextView icon;
-        CardView iconCard;
-        View underline;
+        View ring;
+        View container;
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            label = itemView.findViewById(R.id.categoryLabel);
-            icon = itemView.findViewById(R.id.categoryIcon);
-            iconCard = itemView.findViewById(R.id.categoryIconCard);
-            underline = itemView.findViewById(R.id.categoryUnderline);
+            label = itemView.findViewById(R.id.txt_chip);
+            icon = itemView.findViewById(R.id.txt_category_icon);
+            ring = itemView.findViewById(R.id.category_ring);
+            container = itemView.findViewById(R.id.category_icon_container);
         }
     }
 }

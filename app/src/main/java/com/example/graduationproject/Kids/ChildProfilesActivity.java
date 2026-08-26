@@ -51,9 +51,14 @@ public class ChildProfilesActivity extends AppCompatActivity {
         adapter = new ChildProfilesAdapter(profiles, new ChildProfilesAdapter.OnChildProfileClickListener() {
             @Override
             public void onProfileClick(ChildProfile profile) {
+                // Save current child ID for context maintenance
+                getSharedPreferences("KidsApp", MODE_PRIVATE).edit()
+                        .putLong("current_child_id", profile.getId())
+                        .apply();
+
                 Intent intent = new Intent(ChildProfilesActivity.this, KidsAiChatActivity.class);
-                intent.putExtra("child_id", profile.getId());
-                intent.putExtra("child_name", profile.getName());
+                intent.putExtra("CHILD_ID", profile.getId());
+                intent.putExtra("CHILD_NAME", profile.getName());
                 startActivity(intent);
             }
 

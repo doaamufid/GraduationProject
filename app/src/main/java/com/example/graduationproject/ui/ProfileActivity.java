@@ -194,14 +194,14 @@ public class ProfileActivity extends AppCompatActivity {
         for (ArchiveItem item : items) {
             View row = LayoutInflater.from(this).inflate(R.layout.item_archive_link, llArchiveLinks, false);
 
-            ((TextView) row.findViewById(R.id.tvArchiveLabel)).setText(item.label);
-            ((TextView) row.findViewById(R.id.tvArchiveSub)).setText(item.sub);
+            ((TextView) row.findViewById(R.id.txt_link_label)).setText(item.label);
+            ((TextView) row.findViewById(R.id.txt_link_sub)).setText(item.sub);
 
-            ImageView ivIcon = row.findViewById(R.id.ivArchiveIcon);
+            ImageView ivIcon = row.findViewById(R.id.img_link_icon_bg);
             ivIcon.setImageResource(item.iconRes);
             ivIcon.setColorFilter(item.colorInt);
 
-            View iconBg = row.findViewById(R.id.archiveIconBg);
+            View iconBg = row.findViewById(R.id.img_link_icon_bg);
             iconBg.getBackground().mutate().setTint(withAlpha(item.colorInt, 0x18));
 
             // Matches the original: these rows have no onClick handler attached.

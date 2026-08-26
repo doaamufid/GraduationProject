@@ -68,14 +68,8 @@ public class HomeFragment extends Fragment {
 
         tvGreeting.setText(getString(R.string.home_greeting_format, userName));
 
-        // --- إضافة التحريكات (Animations) ---
         Animation fadeIn = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
         tvGreeting.startAnimation(fadeIn);
-
-        LayoutAnimationController animationController = AnimationUtils.loadLayoutAnimation(requireContext(), R.anim.layout_animation_fall_down);
-        rvActions.setLayoutAnimation(animationController);
-        rvFeatures.setLayoutAnimation(animationController);
-
 
         setupActions();
         setupFeatures();

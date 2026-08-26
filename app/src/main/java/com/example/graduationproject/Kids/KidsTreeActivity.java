@@ -43,12 +43,8 @@ public class KidsTreeActivity extends AppCompatActivity {
         childId = getCurrentChildId();
         childName = getIntent().getStringExtra("CHILD_NAME");
 
-        if (childName == null || childName.trim().isEmpty()) {
-            childName = "Child_" + childId; // اسم افتراضي محمي بالـ ID لمنع تداخل الحسابات
-        }
-
-        // 2. ربط ومدير التقدم بالطفل الموحد
-        progressManager = new TreeProgressManager(this, childName);
+        // 2. ربط ومدير التقدم بالطفل الموحد بالمعرف وليس الاسم لضمان الخصوصية والتفرد
+        progressManager = new TreeProgressManager(this, String.valueOf(childId));
 
         // تسجيل الدخول اليومي
         trackDailyLogin();
@@ -65,13 +61,9 @@ public class KidsTreeActivity extends AppCompatActivity {
         super.onResume();
 
         // جلب الـ ID بضمان عدم كونه -1
-        long currentId = getIntent().getLongExtra("CHILD_ID", -1L);
-        if (currentId == -1L) {
-            currentId = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", 1L);
-        }
+        this.childId = getCurrentChildId();
 
         // إعادة بناء مدير النقاط بالمعرف الصحيح وتحديث الواجهة
-        this.childId = currentId;
         this.progressManager = new TreeProgressManager(this, String.valueOf(this.childId));
 
         updateTreeDisplay();
@@ -321,12 +313,17 @@ public class KidsTreeActivity extends AppCompatActivity {
     }
 
     private long getCurrentChildId() {
+        // 1. القراءة من الـ Intent إذا كان موجوداً
         long id = getIntent().getLongExtra("CHILD_ID", -1L);
+
+        // 2. إذا لم يوجد في الـ Intent، نفحص الملفات الاحتياطية
         if (id == -1L) {
-            // جلب معرف الطفل النشط المسجل في التطبيق
-            id = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", 1L);
+            id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
         }
-        return id;
+        if (id == -1L) {
+            id = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", -1L);
+        }
+        return (id == -1L) ? 1L : id; // إذا كان فارغاً تماماً يعتمد 1 كمعرف افتراضي
     }
     private void applyBadgeStyle(View badgeLayout, boolean isUnlocked) {
         if (badgeLayout == null) return;

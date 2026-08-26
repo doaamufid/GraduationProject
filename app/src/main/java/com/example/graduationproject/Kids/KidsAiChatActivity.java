@@ -360,18 +360,36 @@ public class KidsAiChatActivity extends AppCompatActivity {
     }
 
     private void onChildSentMessage() {
-        long childId = getIntent().getLongExtra("CHILD_ID", -1L);
+        long childId = getChildId();
+
         if (childId == -1L) {
-            childId = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
+            Log.w("KidsAiChatActivity", "Child ID is invalid (-1), skipping database event recording");
+            return;
         }
+
         String childName = getIntent().getStringExtra("CHILD_NAME");
+        if (childName == null || childName.isEmpty()) {
+            childName = "طفل_" + childId;
+        }
 
         ChildProfileStore store = new ChildProfileStore(this);
         if (!store.hasCompletedEventToday(childId, "CHAT_SESSION")) {
             store.addCompletedEvent(childId, "CHAT_SESSION");
-            TreeProgressManager progressManager = new TreeProgressManager(this, childName);
+            // Use childId as string to keep points unique to this child
+            TreeProgressManager progressManager = new TreeProgressManager(this, String.valueOf(childId));
             progressManager.addPoints(10);
         }
+    }
+
+    private long getChildId() {
+        long id = getIntent().getLongExtra("CHILD_ID", -1L);
+        if (id == -1L) {
+            id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
+        }
+        if (id == -1L) {
+            id = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", -1L);
+        }
+        return id;
     }
 
     @Override

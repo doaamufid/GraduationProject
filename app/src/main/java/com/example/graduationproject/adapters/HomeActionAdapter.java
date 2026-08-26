@@ -52,10 +52,11 @@ public class HomeActionAdapter extends RecyclerView.Adapter<HomeActionAdapter.Ac
         View.OnClickListener clickListener = v -> {
             v.animate().scaleX(0.95f).scaleY(0.95f).setDuration(150).withEndAction(() -> {
                 v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(150).start();
-                if (listener != null) {
-                    listener.onClick(holder.getAdapterPosition());
-                }
             }).start();
+
+            if (listener != null) {
+                listener.onClick(holder.getAdapterPosition());
+            }
         };
 
         holder.itemView.setOnClickListener(clickListener);
