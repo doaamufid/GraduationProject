@@ -39,8 +39,8 @@ public class OnBoardingLanguageActivity extends AppCompatActivity {
             return insets;
         });
 
-        binding.btnArabic.setOnClickListener(v -> setSelectedLanguage(AppLanguageManager.LANGUAGE_ARABIC));
-        binding.btnEnglish.setOnClickListener(v -> setSelectedLanguage(AppLanguageManager.LANGUAGE_ENGLISH));
+        binding.cardArabic.setOnClickListener(v -> setSelectedLanguage(AppLanguageManager.LANGUAGE_ARABIC));
+        binding.cardEnglish.setOnClickListener(v -> setSelectedLanguage(AppLanguageManager.LANGUAGE_ENGLISH));
         binding.btnContinue.setOnClickListener(v -> {
             Intent intent = new Intent(OnBoardingLanguageActivity.this, OnBoardingActivity1.class);
             startActivity(intent);
@@ -62,10 +62,10 @@ public class OnBoardingLanguageActivity extends AppCompatActivity {
         binding.tvTitle.setTranslationY(50f);
         binding.tvDescription.setAlpha(0f);
         binding.tvDescription.setTranslationY(50f);
-        binding.btnArabic.setAlpha(0f);
-        binding.btnArabic.setTranslationY(80f);
-        binding.btnEnglish.setAlpha(0f);
-        binding.btnEnglish.setTranslationY(80f);
+        binding.cardArabic.setAlpha(0f);
+        binding.cardArabic.setTranslationY(80f);
+        binding.cardEnglish.setAlpha(0f);
+        binding.cardEnglish.setTranslationY(80f);
         binding.btnContinue.setAlpha(0f);
         binding.btnContinue.setTranslationY(100f);
 
@@ -102,11 +102,11 @@ public class OnBoardingLanguageActivity extends AppCompatActivity {
         descAlpha.setStartDelay(600);
         descMove.setStartDelay(600);
 
-        // Language Buttons Animation
-        ObjectAnimator btnArAlpha = ObjectAnimator.ofFloat(binding.btnArabic, "alpha", 0f, 1f);
-        ObjectAnimator btnArMove = ObjectAnimator.ofFloat(binding.btnArabic, "translationY", 80f, 0f);
-        ObjectAnimator btnEnAlpha = ObjectAnimator.ofFloat(binding.btnEnglish, "alpha", 0f, 1f);
-        ObjectAnimator btnEnMove = ObjectAnimator.ofFloat(binding.btnEnglish, "translationY", 80f, 0f);
+        // Language Cards Animation
+        ObjectAnimator btnArAlpha = ObjectAnimator.ofFloat(binding.cardArabic, "alpha", 0f, 1f);
+        ObjectAnimator btnArMove = ObjectAnimator.ofFloat(binding.cardArabic, "translationY", 80f, 0f);
+        ObjectAnimator btnEnAlpha = ObjectAnimator.ofFloat(binding.cardEnglish, "alpha", 0f, 1f);
+        ObjectAnimator btnEnMove = ObjectAnimator.ofFloat(binding.cardEnglish, "translationY", 80f, 0f);
         
         btnArAlpha.setDuration(800);
         btnArMove.setDuration(800);
@@ -139,28 +139,20 @@ public class OnBoardingLanguageActivity extends AppCompatActivity {
         
         // Refresh layout direction immediately
         binding.getRoot().setLayoutDirection(AppLanguageManager.getLayoutDirection(this));
-        
-        // Restart activity to apply language changes fully if needed, 
-        // but for onboarding, just updating UI text might be enough if using strings.xml
-        // However, AppLanguageManager.saveLanguage already calls applyLanguage.
     }
 
     private void updateSelection() {
         boolean isArabic = AppLanguageManager.isArabic(selectedLanguage);
-        binding.btnArabic.setSelected(isArabic);
-        binding.btnEnglish.setSelected(!isArabic);
+        int blueColor = getColor(R.color.primary);
 
-        binding.btnArabic.setBackgroundTintList(getColorStateList(isArabic ? R.color.primary : R.color.white));
-        binding.btnArabic.setTextColor(getColor(isArabic ? android.R.color.white : R.color.text_main));
+        // Update Arabic Card state
+        binding.cardArabic.setAlpha(isArabic ? 1.0f : 0.4f);
+        binding.tvLanguageNameAr.setTextColor(isArabic ? blueColor : android.graphics.Color.WHITE);
 
-        binding.btnEnglish.setBackgroundTintList(getColorStateList(!isArabic ? R.color.primary : R.color.white));
-        binding.btnEnglish.setTextColor(getColor(!isArabic ? android.R.color.white : R.color.text_main));
-        
-        // Update strings if they are not automatically updated
-        binding.tvTitle.setText(R.string.language_selection_title);
-        binding.tvDescription.setText(R.string.language_selection_subtitle);
-        binding.btnArabic.setText(R.string.language_arabic);
-        binding.btnEnglish.setText(R.string.language_english);
+        // Update English Card state
+        binding.cardEnglish.setAlpha(!isArabic ? 1.0f : 0.4f);
+        binding.tvLanguageNameEn.setTextColor(!isArabic ? blueColor : android.graphics.Color.WHITE);
+
         binding.btnContinue.setText(R.string.continue_label);
     }
 }

@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_onboarding_blue"
-    android:layoutDirection="locale"
     android:padding="24dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".OnBoardingLanguageActivity">
 
     <TextView
@@ -17,7 +18,7 @@
         android:layout_marginTop="16dp"
         android:fontFamily="sans-serif-medium"
         android:padding="8dp"
-        android:text="@string/btn_next"
+        android:text="@string/onboarding_skip"
         android:textColor="#8A9AA5"
         android:textSize="16sp"
         android:visibility="gone"
@@ -27,10 +28,11 @@
     <ImageView
         android:id="@+id/ivIllustration"
         android:layout_width="0dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="40dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
         android:src="@drawable/img1_on_boarding"
+        android:contentDescription="@null"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvSkip" />
@@ -39,10 +41,10 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="16dp"
         android:text="@string/language_selection_title"
         android:textColor="#0E2335"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,44 +55,91 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/language_selection_subtitle"
         android:textColor="#526475"
-        android:textSize="16sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnArabic"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="24dp"
-        android:background="@drawable/rounded_button_bg"
-        android:backgroundTint="@color/white"
-        android:text="@string/language_arabic"
-        android:textColor="@color/text_main"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
+    <LinearLayout
+        android:id="@+id/layoutCards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        app:layout_constraintTop_toBottomOf="@id/tvDescription"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvDescription" />
+        app:layout_constraintEnd_toEndOf="parent">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnEnglish"
-        android:layout_width="0dp"
-        android:layout_height="56dp"
-        android:layout_marginTop="14dp"
-        android:background="@drawable/rounded_button_bg"
-        android:backgroundTint="@color/white"
-        android:text="@string/language_english"
-        android:textColor="@color/text_main"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/btnArabic" />
+        <!-- Arabic Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardArabic"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:strokeWidth="0dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_glass_card">
+
+                <TextView
+                    android:id="@+id/tvLanguageNameAr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/language_name_ar"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- English Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardEnglish"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:layout_margin="12dp"
+            app:cardCornerRadius="40dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="@android:color/transparent"
+            app:strokeWidth="0dp"
+            android:clickable="true"
+            android:focusable="true">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/bg_glass_card">
+
+                <TextView
+                    android:id="@+id/tvLanguageNameEn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/language_name_en"
+                    android:textColor="#FFFFFF"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnContinue"
@@ -107,4 +156,5 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1348,4 +1348,13 @@
     <string name="onboarding3_desc">Talk, vent, and try simple psychological exercises that help you breathe and calm down step-by-step.</string>
     <string name="onboarding4_title">Always with you in the hardest moments</string>
     <string name="onboarding4_desc">A psychological survival box, calm environments, and exercises ready with one click when needed.</string>
+
+    <string name="language_label_ar">Language</string>
+    <string name="language_name_ar">Arabic</string>
+    <string name="language_select_ar">Select</string>
+    <string name="language_selected_ar">Selected</string>
+    <string name="language_label_en">Language</string>
+    <string name="language_name_en">English</string>
+    <string name="language_select_en">Select</string>
+    <string name="language_selected_en">Selected</string>
 </resources>
