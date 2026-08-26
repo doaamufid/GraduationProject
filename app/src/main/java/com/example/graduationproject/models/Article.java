@@ -21,8 +21,8 @@ public class Article {
 
     // Legacy constructor used by com.example.graduationproject.data.ArticleRepository
     public Article(int id, String title, String category, String time, String price,
-                    double rating, String author, boolean hasExercise, String reason,
-                    String relatedExerciseLabel, String[] body) {
+                   double rating, String author, boolean hasExercise, String reason,
+                   String relatedExerciseLabel, String[] body) {
         this.id = id;
         this.title = title;
         this.category = category;
@@ -40,8 +40,8 @@ public class Article {
 
     // New constructor used by com.example.graduationproject.models.ArticleRepository
     public Article(int id, String title, String category, String time, String price,
-                    String author, boolean featured, String reason,
-                    RelatedExercise relatedExercise, String[] body) {
+                   String author, boolean featured, String reason,
+                   RelatedExercise relatedExercise, String[] body) {
         this.id = id;
         this.title = title;
         this.category = category;

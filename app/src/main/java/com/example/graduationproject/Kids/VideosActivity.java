@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.graduationproject.adapters.CategoryAdapter;
+import com.example.graduationproject.adapters.CategoryAdapterKids;
 import com.example.graduationproject.adapters.CategoryAdapter2;
 import com.example.graduationproject.adapters.VideoAdapter;
 import com.example.graduationproject.data.ChildProfileStore;
@@ -47,7 +47,7 @@ public class VideosActivity extends AppCompatActivity {
         categories.add("نوم");
         categories.add("مشاعر");
 
-        CategoryAdapter categoryAdapter = new CategoryAdapter(categories, this::filterVideos);
+        CategoryAdapterKids categoryAdapter = new CategoryAdapterKids(categories, this::filterVideos);
         binding.categoryRecycler.setAdapter(categoryAdapter);
 
         // أول تصنيف محدد افتراضياً عند فتح الشاشة
