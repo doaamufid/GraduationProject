@@ -58,10 +58,14 @@ public class OverallMoodFragment extends BaseScreenFragment {
         list.removeAllViews();
         for (Option m : AdultOnboardingAppData.MOOD_OPTIONS) {
             boolean selected = m.id.equals(data.overallMood);
-            list.addView(Widgets.choiceCard(requireContext(), m.emoji, m.iconRes, getString(m.labelRes), null, selected, () -> {
+            View card = Widgets.choiceCard(requireContext(), m.emoji, getString(m.labelRes), null, selected, () -> {
                 data.overallMood = m.id;
                 renderOptions(list);
-            }));
+            });
+            list.addView(card);
+            if (selected) {
+                Widgets.startPulse(card);
+            }
         }
     }
 

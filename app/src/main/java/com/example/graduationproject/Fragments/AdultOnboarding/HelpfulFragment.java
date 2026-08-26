@@ -43,6 +43,10 @@ public class HelpfulFragment extends BaseScreenFragment {
             glp.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
             glp.setMargins(dp(4), dp(4), dp(4), dp(4));
             grid.addView(card, glp);
+            
+            if (selected) {
+                Widgets.startPulse(card);
+            }
         }
     }
 

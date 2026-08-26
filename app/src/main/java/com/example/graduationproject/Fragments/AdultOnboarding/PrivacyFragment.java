@@ -6,7 +6,6 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,41 +26,52 @@ public class PrivacyFragment extends BaseScreenFragment {
                 getString(R.string.adaptive_adult_onboarding_privacy_subtext),
                 Color.WHITE), 6);
 
-        int[][] cardData = {
-                {R.drawable.ic_lock, R.string.adaptive_adult_onboarding_privacy_card1},
-                {R.drawable.ic_check_circle, R.string.adaptive_adult_onboarding_privacy_card2},
-                {R.drawable.ic_pencil, R.string.adaptive_adult_onboarding_privacy_card3},
-                {R.drawable.ic_trash, R.string.adaptive_adult_onboarding_privacy_card4},
+        Object[][] cardData = {
+                {"\uD83D\uDD12", getString(R.string.adaptive_adult_onboarding_privacy_card1), Color.parseColor("#4D91A5")},
+                {"\uD83E\uDD0D", getString(R.string.adaptive_adult_onboarding_privacy_card2), Color.parseColor("#59B28D")},
+                {"\uD83D\uDCDD", getString(R.string.adaptive_adult_onboarding_privacy_card3), Color.parseColor("#7659B2")},
+                {"\uD83D\uDDD1", getString(R.string.adaptive_adult_onboarding_privacy_card4), Color.parseColor("#C98A8A")},
         };
 
         GridLayout grid = new GridLayout(requireContext());
         grid.setColumnCount(2);
-        for (int[] c : cardData) {
+        for (Object[] c : cardData) {
             LinearLayout cell = new LinearLayout(requireContext());
             cell.setOrientation(LinearLayout.VERTICAL);
             cell.setGravity(Gravity.CENTER);
             GradientDrawable gd = new GradientDrawable();
-            gd.setCornerRadius(dp(16));
-            gd.setColor(Color.argb(18, 255, 255, 255));
-            gd.setStroke(dp(1), Color.argb(36, 255, 255, 255));
+            gd.setCornerRadius(dp(22));
+            gd.setColor(Color.argb(30, 255, 255, 255));
+            gd.setStroke(dp(1), Color.argb(50, 255, 255, 255));
             cell.setBackground(gd);
-            cell.setPadding(dp(12), dp(16), dp(12), dp(16));
+            cell.setPadding(dp(12), dp(18), dp(12), dp(18));
 
-            ImageView icon = new ImageView(requireContext());
-            icon.setImageResource(c[0]);
-            icon.setColorFilter(Color.WHITE);
-            int iconSize = dp(24);
-            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(iconSize, iconSize);
-            cell.addView(icon, icLp);
+            LinearLayout iconCircle = new LinearLayout(requireContext());
+            iconCircle.setGravity(Gravity.CENTER);
+            GradientDrawable icGd = new GradientDrawable();
+            icGd.setShape(GradientDrawable.OVAL);
+            icGd.setColor((int) c[2]);
+            iconCircle.setBackground(icGd);
+            int circleSize = dp(44);
+            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(circleSize, circleSize);
+            icLp.bottomMargin = dp(8);
+            
+            TextView emoji = new TextView(requireContext());
+            emoji.setText((String) c[0]);
+            emoji.setTextSize(20);
+            emoji.setGravity(Gravity.CENTER);
+            iconCircle.addView(emoji);
+            cell.addView(iconCircle, icLp);
+            
+            Widgets.startPulse(iconCircle);
 
             TextView label = new TextView(requireContext());
-            label.setText(c[1]);
+            label.setText((String) c[1]);
             label.setTextColor(Color.WHITE);
-            label.setTextSize(13.5f);
+            label.setTextSize(13f);
             label.setGravity(Gravity.CENTER);
             label.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.tajawal(false));
             LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            llp.topMargin = dp(6);
             cell.addView(label, llp);
 
             GridLayout.LayoutParams glp = new GridLayout.LayoutParams();

@@ -5,7 +5,6 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -74,7 +73,16 @@ public class MoodDemoFragment extends BaseScreenFragment {
 
     private void renderFaces() {
         facesRow.removeAllViews();
-        for (Option f : AdultOnboardingAppData.DEMO_FACES) {
+        int[] moodColors = {
+                Color.parseColor("#FF5E5B"), // sad
+                Color.parseColor("#99AAB5"), // low
+                Color.parseColor("#A0A0A0"), // neutral
+                Color.parseColor("#59B28D"), // good
+                Color.parseColor("#FFD79A")  // great
+        };
+        
+        for (int i = 0; i < AdultOnboardingAppData.DEMO_FACES.length; i++) {
+            Option f = AdultOnboardingAppData.DEMO_FACES[i];
             boolean isSel = f.id.equals(data.demoMoodSelected);
             LinearLayout col = new LinearLayout(requireContext());
             col.setOrientation(LinearLayout.VERTICAL);
@@ -90,20 +98,24 @@ public class MoodDemoFragment extends BaseScreenFragment {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             col.setLayoutParams(lp);
 
-            if (f.iconRes != 0) {
-                ImageView icon = new ImageView(requireContext());
-                icon.setImageResource(f.iconRes);
-                int size = dp(28);
-                LinearLayout.LayoutParams ilp = new LinearLayout.LayoutParams(size, size);
-                ilp.bottomMargin = dp(4);
-                col.addView(icon, ilp);
-            } else {
-                TextView emoji = new TextView(requireContext());
-                emoji.setText(f.emoji);
-                emoji.setTextSize(24);
-                emoji.setGravity(Gravity.CENTER);
-                col.addView(emoji);
-            }
+            LinearLayout emojiCircle = new LinearLayout(requireContext());
+            emojiCircle.setGravity(Gravity.CENTER);
+            GradientDrawable icGd = new GradientDrawable();
+            icGd.setShape(GradientDrawable.OVAL);
+            icGd.setColor(moodColors[i]);
+            emojiCircle.setBackground(icGd);
+            int circleSize = dp(42);
+            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(circleSize, circleSize);
+            icLp.bottomMargin = dp(4);
+            
+            TextView emoji = new TextView(requireContext());
+            emoji.setText(f.emoji);
+            emoji.setTextSize(22);
+            emoji.setGravity(Gravity.CENTER);
+            emojiCircle.addView(emoji);
+            col.addView(emojiCircle, icLp);
+            
+            Widgets.startPulse(emojiCircle);
 
             TextView label = new TextView(requireContext());
             label.setText(f.labelRes);
