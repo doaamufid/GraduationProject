@@ -64,10 +64,6 @@ public class TimelineFragment extends BaseScreenFragment {
             glp.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
             glp.setMargins(dp(6), dp(6), dp(6), dp(6));
             grid.addView(card, glp);
-            
-            if (selected) {
-                Widgets.startPulse(card);
-            }
         }
     }
 

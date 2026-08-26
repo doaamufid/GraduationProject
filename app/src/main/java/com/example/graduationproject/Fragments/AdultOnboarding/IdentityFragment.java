@@ -47,8 +47,8 @@ public class IdentityFragment extends BaseScreenFragment {
 
         nicknameInput = new EditText(requireContext());
         nicknameInput.setHint(R.string.adaptive_adult_onboarding_identity_hint);
-        nicknameInput.setHintTextColor(Color.argb(120, 255, 255, 255));
-        nicknameInput.setTextColor(Color.WHITE);
+        nicknameInput.setHintTextColor(Color.argb(120, 33, 27, 51)); // Dark hint (Ink alpha)
+        nicknameInput.setTextColor(AdultOnboardingAppData.INK); // Dark text
         nicknameInput.setGravity(Gravity.CENTER);
         nicknameInput.setTextSize(16);
         nicknameInput.setBackgroundResource(com.example.graduationproject.R.drawable.bg_input_field);
@@ -58,7 +58,7 @@ public class IdentityFragment extends BaseScreenFragment {
         addToContent(content, nicknameInput, 14);
 
         greeting = new TextView(requireContext());
-        greeting.setTextColor(Color.WHITE);
+        greeting.setTextColor(AdultOnboardingAppData.CREAM);
         greeting.setTextSize(14);
         greeting.setGravity(Gravity.CENTER);
         updateGreeting();
@@ -82,23 +82,22 @@ public class IdentityFragment extends BaseScreenFragment {
 
         TextView ageHeading = new TextView(requireContext());
         ageHeading.setText(R.string.adaptive_adult_onboarding_identity_age_title);
-        ageHeading.setTextColor(Color.WHITE);
+        ageHeading.setTextColor(AdultOnboardingAppData.CREAM);
         ageHeading.setTextSize(15.5f);
         ageHeading.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.cairo(true));
         ageHeading.setGravity(Gravity.CENTER);
-        addToContent(content, ageHeading, 12);
+        addToContent(content, ageHeading, 28);
 
         AgeRangeSliderView ageSlider = new AgeRangeSliderView(requireContext());
         ageSlider.setIndex(data.ageRangeIndex != null ? data.ageRangeIndex : AdultOnboardingAppData.AGE_BRACKETS.length / 2);
         ageSlider.setOnAgeChange(idx -> {
             data.ageRangeIndex = idx;
-            pulse();
         });
         addToContent(content, ageSlider, 10);
 
         TextView genderHeading = new TextView(requireContext());
         genderHeading.setText(R.string.adaptive_adult_onboarding_identity_gender_title);
-        genderHeading.setTextColor(Color.WHITE);
+        genderHeading.setTextColor(AdultOnboardingAppData.CREAM);
         genderHeading.setTextSize(15.5f);
         genderHeading.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.cairo(true));
         genderHeading.setGravity(Gravity.CENTER);
@@ -108,7 +107,6 @@ public class IdentityFragment extends BaseScreenFragment {
         genderPicker.setValueSilently(data.gender);
         genderPicker.setOnGenderChange(g -> {
             data.gender = g;
-            pulse();
         });
         addToContent(content, genderPicker, 10);
     }

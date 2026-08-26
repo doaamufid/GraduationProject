@@ -105,8 +105,6 @@ public class PreviewFragment extends BaseScreenFragment {
             LinearLayout.LayoutParams elp = new LinearLayout.LayoutParams(size, size);
             elp.setMarginEnd(dp(14));
             row.addView(emoji, elp);
-            
-            Widgets.startPulse(emoji);
 
             LinearLayout card = new LinearLayout(requireContext());
             card.setOrientation(LinearLayout.HORIZONTAL);

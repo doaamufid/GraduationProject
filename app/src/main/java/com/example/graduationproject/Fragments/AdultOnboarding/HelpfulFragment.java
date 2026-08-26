@@ -23,30 +23,21 @@ public class HelpfulFragment extends BaseScreenFragment {
         addToContent(content, Widgets.heading(requireContext(), getString(R.string.adaptive_adult_onboarding_helpful_title), Color.WHITE), 4);
         addToContent(content, Widgets.subtext(requireContext(), getString(R.string.adaptive_adult_onboarding_helpful_subtext), Color.WHITE), 2);
 
-        GridLayout grid = new GridLayout(requireContext());
-        grid.setColumnCount(2);
-        addToContent(content, grid, 6);
-        render(grid);
+        LinearLayout list = new LinearLayout(requireContext());
+        list.setOrientation(LinearLayout.VERTICAL);
+        addToContent(content, list, 6);
+        render(list);
     }
 
-    private void render(GridLayout grid) {
-        grid.removeAllViews();
+    private void render(LinearLayout list) {
+        list.removeAllViews();
         for (Option h : AdultOnboardingAppData.HELPFUL) {
             boolean selected = data.helpfulActivities.contains(h.id);
             android.view.View card = Widgets.choiceCard(requireContext(), h.emoji, getString(h.labelRes), null, selected, () -> {
                 OnboardingData.toggle(data.helpfulActivities, h.id);
-                render(grid);
+                render(list);
             });
-            GridLayout.LayoutParams glp = new GridLayout.LayoutParams();
-            glp.width = 0;
-            glp.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            glp.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-            glp.setMargins(dp(4), dp(4), dp(4), dp(4));
-            grid.addView(card, glp);
-            
-            if (selected) {
-                Widgets.startPulse(card);
-            }
+            list.addView(card);
         }
     }
 

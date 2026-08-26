@@ -83,6 +83,11 @@ public abstract class BaseScreenFragment extends Fragment {
         companionView.setMood(getCompanionMood());
         progressPath.setProgress(AdultOnboardingAppData.TOTAL_SCREENS, index);
 
+        // Update status bar color to match the top of the sky gradient
+        if (getActivity() != null) {
+            getActivity().getWindow().setStatusBarColor(stage.fromColor);
+        }
+
         btnBack.setVisibility(index > 0 ? View.VISIBLE : View.INVISIBLE);
         btnBack.setOnClickListener(v -> onBack());
 

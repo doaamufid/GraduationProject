@@ -79,15 +79,16 @@ public class MoodDemoFragment extends BaseScreenFragment {
             LinearLayout col = new LinearLayout(requireContext());
             col.setOrientation(LinearLayout.VERTICAL);
             col.setGravity(Gravity.CENTER);
-            col.setPadding(dp(2), dp(10), dp(2), dp(10));
+            col.setPadding(dp(2), dp(8), dp(2), dp(8));
             if (isSel) {
                 GradientDrawable gd = new GradientDrawable();
-                gd.setCornerRadius(dp(14));
+                gd.setCornerRadius(dp(12));
                 gd.setColor(Color.argb(46, 255, 227, 176));
                 gd.setStroke(dp(1), AdultOnboardingAppData.GLOW);
                 col.setBackground(gd);
             }
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+            lp.setMargins(dp(2), 0, dp(2), 0);
             col.setLayoutParams(lp);
 
             TextView emoji = new TextView(requireContext());
@@ -97,8 +98,6 @@ public class MoodDemoFragment extends BaseScreenFragment {
             LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(44), dp(44));
             icLp.bottomMargin = dp(4);
             col.addView(emoji, icLp);
-            
-            Widgets.startPulse(emoji);
 
             TextView label = new TextView(requireContext());
             label.setText(f.labelRes);

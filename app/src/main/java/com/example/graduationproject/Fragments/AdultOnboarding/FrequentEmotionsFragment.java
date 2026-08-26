@@ -40,9 +40,6 @@ public class FrequentEmotionsFragment extends BaseScreenFragment {
                 render(flow);
             });
             flow.addView(bubble);
-            if (selected) {
-                Widgets.startPulse(bubble);
-            }
         }
     }
 

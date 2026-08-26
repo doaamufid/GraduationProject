@@ -65,7 +65,7 @@ public class GenderPickerView extends LinearLayout {
             col.setGravity(Gravity.CENTER);
             int w = AdultOnboardingUiUtils.dp(getContext(), 96);
             LayoutParams lp = new LayoutParams(w, LayoutParams.WRAP_CONTENT);
-            int m = AdultOnboardingUiUtils.dp(getContext(), 6);
+            int m = AdultOnboardingUiUtils.dp(getContext(), 10);
             lp.setMargins(m, m, m, m);
             col.setLayoutParams(lp);
             col.setPadding(AdultOnboardingUiUtils.dp(getContext(), 8), AdultOnboardingUiUtils.dp(getContext(), 16), AdultOnboardingUiUtils.dp(getContext(), 8), AdultOnboardingUiUtils.dp(getContext(), 16));
@@ -95,11 +95,7 @@ public class GenderPickerView extends LinearLayout {
             col.addView(label);
 
             col.setOnClickListener(v -> setValue(g.id));
-            col.animate().translationY(selected ? -AdultOnboardingUiUtils.dp(getContext(), 3) : 0).scaleX(selected ? 1.03f : 1f).scaleY(selected ? 1.03f : 1f).setDuration(240).start();
             row.addView(col);
-            if (selected) {
-                Widgets.startPulse(col);
-            }
         }
         String prefText = getContext().getString(com.example.graduationproject.R.string.adaptive_adult_onboarding_gender_prefer_not);
         preferNot.setText("unspecified".equals(value) ? ("Ã¢Å“â€œ " + prefText) : prefText);

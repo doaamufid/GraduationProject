@@ -24,6 +24,7 @@ public class GoalsFragment extends BaseScreenFragment {
 
         FlowLayout flow = new FlowLayout(requireContext());
         flow.setGravityCenter(true);
+        flow.setSpacing(dp(8), dp(10));
         addToContent(content, flow, 10);
         render(flow);
     }
@@ -37,9 +38,6 @@ public class GoalsFragment extends BaseScreenFragment {
                 render(flow);
             });
             flow.addView(chip);
-            if (selected) {
-                Widgets.startPulse(chip);
-            }
         }
     }
 
