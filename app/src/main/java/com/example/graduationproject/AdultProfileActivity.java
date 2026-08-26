@@ -33,13 +33,6 @@ public class AdultProfileActivity extends AppCompatActivity implements ProfileNa
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Force Arabic locale
-        Locale locale = new Locale("ar");
-        Locale.setDefault(locale);
-        Configuration config = new Configuration();
-        config.setLocale(locale);
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adult_profile);
 
