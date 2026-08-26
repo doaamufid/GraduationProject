@@ -1483,4 +1483,14 @@
     <string name="onboarding3_desc">تحدث، فضفض، وجرّب تمارين نفسية بسيطة تساعدك تتنفس وتهدأ خطوة بخطوة.</string>
     <string name="onboarding4_title">معك دائماً في أصعب اللحظات</string>
     <string name="onboarding4_desc">صندوق نجاة نفسي، بيئات هادئة، وتمارين جاهزة بضغطة واحدة وقت الحاجة.</string>
+
+    <!-- Language selection extension -->
+    <string name="language_label_ar">اللغة</string>
+    <string name="language_name_ar">العربية</string>
+    <string name="language_select_ar">اختيار</string>
+    <string name="language_selected_ar">تم الاختيار</string>
+    <string name="language_label_en">Language</string>
+    <string name="language_name_en">English</string>
+    <string name="language_select_en">Select</string>
+    <string name="language_selected_en">Selected</string>
 </resources>
