@@ -297,4 +297,18 @@ public final class Widgets {
         tv.setOnClickListener(v -> onClick.run());
         return tv;
     }
+
+    public static void startPulse(View v) {
+        android.animation.ObjectAnimator scaleX = android.animation.ObjectAnimator.ofFloat(v, "scaleX", 1f, 1.15f, 1f);
+        android.animation.ObjectAnimator scaleY = android.animation.ObjectAnimator.ofFloat(v, "scaleY", 1f, 1.15f, 1f);
+        scaleX.setDuration(2500);
+        scaleY.setDuration(2500);
+        scaleX.setRepeatCount(android.animation.ValueAnimator.INFINITE);
+        scaleY.setRepeatCount(android.animation.ValueAnimator.INFINITE);
+        scaleX.setInterpolator(new android.view.animation.AccelerateDecelerateInterpolator());
+        scaleY.setInterpolator(new android.view.animation.AccelerateDecelerateInterpolator());
+        android.animation.AnimatorSet set = new android.animation.AnimatorSet();
+        set.playTogether(scaleX, scaleY);
+        set.start();
+    }
 }
