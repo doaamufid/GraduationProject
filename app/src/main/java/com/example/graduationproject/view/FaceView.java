@@ -19,7 +19,7 @@ public class FaceView extends View {
 
     private String type = "neutral";
 
-    private static final int LINE_COLOR = 0xFF26324A;
+    private int lineColor = 0xFF26324A;
     private static final int BLUSH_COLOR = 0xFFFF9FAE;
     private static final int TEAR_COLOR = 0xFF7FCBEF;
     private static final int SPARKLE_COLOR = 0xFFFFFFFF;
@@ -41,13 +41,19 @@ public class FaceView extends View {
     private void init() {
         strokePaint.setStyle(Paint.Style.STROKE);
         strokePaint.setStrokeCap(Paint.Cap.ROUND);
-        strokePaint.setColor(LINE_COLOR);
+        strokePaint.setColor(lineColor);
         fillPaint.setStyle(Paint.Style.FILL);
     }
 
     /** Sets which of the 7 expressions to render and redraws. */
     public void setMoodType(String type) {
         this.type = type;
+        invalidate();
+    }
+
+    public void setLineColor(int color) {
+        this.lineColor = color;
+        strokePaint.setColor(color);
         invalidate();
     }
 
@@ -124,7 +130,7 @@ public class FaceView extends View {
     // ---- 7 mood expressions ---------------------------------------------
 
     private void drawAwful(Canvas canvas, float s) {
-        strokePaint.setColor(LINE_COLOR);
+        strokePaint.setColor(lineColor);
         strokePaint.setAlpha(255);
         // eyes: two X marks
         path.reset();
@@ -141,7 +147,7 @@ public class FaceView extends View {
         canvas.drawPath(path, strokePaint);
 
         // mouth: filled wide open frown
-        fillPaint.setColor(LINE_COLOR);
+        fillPaint.setColor(lineColor);
         fillPaint.setAlpha(255);
         path.reset();
         path.moveTo(x(s, 0.28f), y(s, 0.72f));
@@ -155,7 +161,7 @@ public class FaceView extends View {
     }
 
     private void drawSad(Canvas canvas, float s) {
-        strokePaint.setColor(LINE_COLOR);
+        strokePaint.setColor(lineColor);
         strokePaint.setAlpha(255);
         path.reset();
         path.moveTo(x(s, 0.23f), y(s, 0.42f));
@@ -175,7 +181,7 @@ public class FaceView extends View {
     }
 
     private void drawLow(Canvas canvas, float s) {
-        strokePaint.setColor(LINE_COLOR);
+        strokePaint.setColor(lineColor);
         strokePaint.setAlpha(255);
         path.reset();
         path.moveTo(x(s, 0.24f), y(s, 0.38f));
@@ -193,19 +199,19 @@ public class FaceView extends View {
     }
 
     private void drawNeutral(Canvas canvas, float s) {
-        fillPaint.setColor(LINE_COLOR);
+        fillPaint.setColor(lineColor);
         fillPaint.setAlpha(255);
         float r = strokePaint.getStrokeWidth() * 0.55f;
         canvas.drawCircle(x(s, 0.3f), y(s, 0.4f), r, fillPaint);
         canvas.drawCircle(x(s, 0.7f), y(s, 0.4f), r, fillPaint);
 
-        strokePaint.setColor(LINE_COLOR);
+        strokePaint.setColor(lineColor);
         strokePaint.setAlpha(255);
         canvas.drawLine(x(s, 0.32f), y(s, 0.63f), x(s, 0.68f), y(s, 0.63f), strokePaint);
     }
 
     private void drawCalm(Canvas canvas, float s) {
-        strokePaint.setColor(LINE_COLOR);
+        strokePaint.setColor(lineColor);
         strokePaint.setAlpha(255);
         path.reset();
         path.moveTo(x(s, 0.23f), y(s, 0.4f));
@@ -225,7 +231,7 @@ public class FaceView extends View {
     }
 
     private void drawHappy(Canvas canvas, float s) {
-        strokePaint.setColor(LINE_COLOR);
+        strokePaint.setColor(lineColor);
         strokePaint.setAlpha(255);
         path.reset();
         path.moveTo(x(s, 0.22f), y(s, 0.42f));
@@ -236,7 +242,7 @@ public class FaceView extends View {
         path.quadTo(x(s, 0.7f), y(s, 0.32f), x(s, 0.78f), y(s, 0.42f));
         canvas.drawPath(path, strokePaint);
 
-        fillPaint.setColor(LINE_COLOR);
+        fillPaint.setColor(lineColor);
         fillPaint.setAlpha(255);
         path.reset();
         path.moveTo(x(s, 0.26f), y(s, 0.56f));
@@ -249,7 +255,7 @@ public class FaceView extends View {
     }
 
     private void drawOverjoyed(Canvas canvas, float s) {
-        strokePaint.setColor(LINE_COLOR);
+        strokePaint.setColor(lineColor);
         strokePaint.setAlpha(255);
         path.reset();
         path.moveTo(x(s, 0.2f), y(s, 0.44f));
@@ -260,7 +266,7 @@ public class FaceView extends View {
         path.quadTo(x(s, 0.7f), y(s, 0.3f), x(s, 0.8f), y(s, 0.44f));
         canvas.drawPath(path, strokePaint);
 
-        fillPaint.setColor(LINE_COLOR);
+        fillPaint.setColor(lineColor);
         fillPaint.setAlpha(255);
         path.reset();
         path.moveTo(x(s, 0.22f), y(s, 0.55f));

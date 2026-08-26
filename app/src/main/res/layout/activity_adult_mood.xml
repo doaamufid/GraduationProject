@@ -91,16 +91,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:fillViewport="true"
         android:scrollbars="none">
 
         <LinearLayout
             android:id="@+id/selector_row"
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:orientation="horizontal"
             android:background="@drawable/bg_selector_pill"
             android:padding="8dp"
-            android:gravity="center_vertical" />
+            android:gravity="center" />
     </HorizontalScrollView>
 
     <!-- continue button -->

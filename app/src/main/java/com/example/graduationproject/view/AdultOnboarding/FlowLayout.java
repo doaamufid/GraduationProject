@@ -20,6 +20,12 @@ public class FlowLayout extends ViewGroup {
     public FlowLayout(Context context) { super(context); }
     public FlowLayout(Context context, AttributeSet attrs) { super(context, attrs); }
 
+    public void setSpacing(int hPx, int vPx) {
+        this.horizontalSpacingPx = hPx;
+        this.verticalSpacingPx = vPx;
+        requestLayout();
+    }
+
     public void setGravityCenter(boolean center) {
         this.gravity = center ? Gravity.CENTER_HORIZONTAL : Gravity.START;
     }

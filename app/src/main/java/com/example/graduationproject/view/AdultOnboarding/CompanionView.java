@@ -121,7 +121,7 @@ public class CompanionView extends View {
 
         float cx = w / 2f;
         float cy = h / 2f + floatOffsetPx;
-        float baseR = Math.min(w, h) / 2f * 0.86f;
+        float baseR = getResources().getDisplayMetrics().density * 22f; // Fixed size for the orb core
         float r = baseR * pulseScale;
         int color = moodColor();
 

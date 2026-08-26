@@ -19,7 +19,7 @@ import java.util.List;
 public class PreviewFragment extends BaseScreenFragment {
 
     private static class Card {
-        String emoji, text; Integer jump;
+        String emoji; String text; Integer jump;
         Card(String e, String t, Integer j) { emoji = e; text = t; jump = j; }
     }
 
@@ -30,16 +30,16 @@ public class PreviewFragment extends BaseScreenFragment {
     private List<Card> buildPreview() {
         List<Card> cards = new ArrayList<>();
         if (data.difficultTimes.contains("night")) {
-            cards.add(new Card("ðŸŒ™", getString(R.string.adaptive_adult_onboarding_preview_card_night), 7));
+            cards.add(new Card("\uD83C\uDF19", getString(R.string.adaptive_adult_onboarding_preview_card_night), 7));
         }
         if (data.frequentEmotions.contains("anxiety") || data.frequentEmotions.contains("tension")) {
-            cards.add(new Card("ðŸ«", getString(R.string.adaptive_adult_onboarding_preview_card_anxiety), 4));
+            cards.add(new Card("\uD83C\uDF2C", getString(R.string.adaptive_adult_onboarding_preview_card_anxiety), 4));
         }
         if (data.helpfulActivities.contains("spiritual")) {
-            cards.add(new Card("ðŸ•Œ", getString(R.string.adaptive_adult_onboarding_preview_card_spiritual), 8));
+            cards.add(new Card("\u2728", getString(R.string.adaptive_adult_onboarding_preview_card_spiritual), 8));
         }
         if (data.helpfulActivities.contains("writing")) {
-            cards.add(new Card("âœï¸", getString(R.string.adaptive_adult_onboarding_preview_card_writing), 8));
+            cards.add(new Card("\u270D\uFE0F", getString(R.string.adaptive_adult_onboarding_preview_card_writing), 8));
         }
         if (!data.goals.isEmpty() && !(data.goals.size() == 1 && data.goals.contains("explore"))) {
             StringBuilder sb = new StringBuilder();
@@ -47,16 +47,16 @@ public class PreviewFragment extends BaseScreenFragment {
             for (String gId : data.goals) {
                 if ("explore".equals(gId)) continue;
                 if (count >= 2) break;
-                if (count > 0) sb.append(getString(R.string.adaptive_adult_onboarding_app_name).equals("Salam") ? ", " : "ØŒ ");
+                if (count > 0) sb.append(getString(R.string.adaptive_adult_onboarding_app_name).equals("Salam") ? ", " : "، ");
                 sb.append(getString(findGoalLabelRes(gId)));
                 count++;
             }
             if (count > 0) {
-                cards.add(new Card("ðŸŒ±", getString(R.string.adaptive_adult_onboarding_preview_card_goals_prefix) + sb + ".", 9));
+                cards.add(new Card("\uD83C\uDF31", getString(R.string.adaptive_adult_onboarding_preview_card_goals_prefix) + sb + ".", 9));
             }
         }
         if (cards.isEmpty()) {
-            cards.add(new Card("ðŸ¤", getString(R.string.adaptive_adult_onboarding_preview_card_default), null));
+            cards.add(new Card("\uD83E\uDD0D", getString(R.string.adaptive_adult_onboarding_preview_card_default), null));
         }
         return cards;
     }
@@ -97,19 +97,14 @@ public class PreviewFragment extends BaseScreenFragment {
             rowLp.topMargin = dp(14);
             list.addView(row, rowLp);
 
-            TextView emojiBubble = new TextView(requireContext());
-            emojiBubble.setText(c.emoji);
-            emojiBubble.setTextSize(20);
-            emojiBubble.setGravity(Gravity.CENTER);
-            int circle = dp(46);
-            LinearLayout.LayoutParams elp = new LinearLayout.LayoutParams(circle, circle);
+            TextView emoji = new TextView(requireContext());
+            emoji.setText(c.emoji);
+            emoji.setTextSize(32);
+            emoji.setGravity(Gravity.CENTER);
+            int size = dp(46);
+            LinearLayout.LayoutParams elp = new LinearLayout.LayoutParams(size, size);
             elp.setMarginEnd(dp(14));
-            android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable();
-            gd.setShape(android.graphics.drawable.GradientDrawable.OVAL);
-            gd.setColor(AdultOnboardingAppData.GLOW);
-            emojiBubble.setBackground(gd);
-            emojiBubble.setLayoutParams(elp);
-            row.addView(emojiBubble);
+            row.addView(emoji, elp);
 
             LinearLayout card = new LinearLayout(requireContext());
             card.setOrientation(LinearLayout.HORIZONTAL);

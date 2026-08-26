@@ -24,6 +24,7 @@ public class GoalsFragment extends BaseScreenFragment {
 
         FlowLayout flow = new FlowLayout(requireContext());
         flow.setGravityCenter(true);
+        flow.setSpacing(dp(8), dp(10));
         addToContent(content, flow, 10);
         render(flow);
     }
@@ -32,10 +33,11 @@ public class GoalsFragment extends BaseScreenFragment {
         flow.removeAllViews();
         for (Option g : AdultOnboardingAppData.GOALS) {
             boolean selected = data.goals.contains(g.id);
-            flow.addView(Widgets.lightChip(requireContext(), g.emoji, getString(g.labelRes), selected, () -> {
+            android.view.View chip = Widgets.lightChip(requireContext(), g.emoji, getString(g.labelRes), selected, () -> {
                 OnboardingData.toggle(data.goals, g.id);
                 render(flow);
-            }));
+            });
+            flow.addView(chip);
         }
     }
 

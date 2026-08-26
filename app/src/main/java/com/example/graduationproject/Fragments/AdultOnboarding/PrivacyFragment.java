@@ -26,47 +26,48 @@ public class PrivacyFragment extends BaseScreenFragment {
                 getString(R.string.adaptive_adult_onboarding_privacy_subtext),
                 Color.WHITE), 6);
 
-        String[][] cards = {
-                {"ðŸ”’", getString(R.string.adaptive_adult_onboarding_privacy_card1)},
-                {"ðŸ¤", getString(R.string.adaptive_adult_onboarding_privacy_card2)},
-                {"âœï¸", getString(R.string.adaptive_adult_onboarding_privacy_card3)},
-                {"ðŸ—‘", getString(R.string.adaptive_adult_onboarding_privacy_card4)},
+        Object[][] cardData = {
+                {"\uD83D\uDD12", getString(R.string.adaptive_adult_onboarding_privacy_card1), Color.parseColor("#4D91A5")},
+                {"\uD83E\uDD0D", getString(R.string.adaptive_adult_onboarding_privacy_card2), Color.parseColor("#59B28D")},
+                {"\uD83D\uDCDD", getString(R.string.adaptive_adult_onboarding_privacy_card3), Color.parseColor("#7659B2")},
+                {"\uD83D\uDDD1", getString(R.string.adaptive_adult_onboarding_privacy_card4), Color.parseColor("#C98A8A")},
         };
 
         GridLayout grid = new GridLayout(requireContext());
         grid.setColumnCount(2);
-        for (String[] c : cards) {
+        for (Object[] c : cardData) {
             LinearLayout cell = new LinearLayout(requireContext());
             cell.setOrientation(LinearLayout.VERTICAL);
             cell.setGravity(Gravity.CENTER);
             GradientDrawable gd = new GradientDrawable();
-            gd.setCornerRadius(dp(16));
-            gd.setColor(Color.argb(18, 255, 255, 255));
-            gd.setStroke(dp(1), Color.argb(36, 255, 255, 255));
+            gd.setCornerRadius(dp(22));
+            gd.setColor(Color.argb(30, 255, 255, 255));
+            gd.setStroke(dp(1), Color.argb(50, 255, 255, 255));
             cell.setBackground(gd);
-            cell.setPadding(dp(12), dp(16), dp(12), dp(16));
+            cell.setPadding(dp(12), dp(18), dp(12), dp(18));
 
             TextView emoji = new TextView(requireContext());
-            emoji.setText(c[0]);
-            emoji.setTextSize(24);
+            emoji.setText((String) c[0]);
+            emoji.setTextSize(32);
             emoji.setGravity(Gravity.CENTER);
-            cell.addView(emoji);
+            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(44), dp(44));
+            icLp.bottomMargin = dp(8);
+            cell.addView(emoji, icLp);
 
             TextView label = new TextView(requireContext());
-            label.setText(c[1]);
+            label.setText((String) c[1]);
             label.setTextColor(Color.WHITE);
-            label.setTextSize(13.5f);
+            label.setTextSize(13f);
             label.setGravity(Gravity.CENTER);
             label.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.tajawal(false));
             LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            llp.topMargin = dp(6);
             cell.addView(label, llp);
 
             GridLayout.LayoutParams glp = new GridLayout.LayoutParams();
             glp.width = 0;
             glp.height = GridLayout.LayoutParams.WRAP_CONTENT;
             glp.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-            glp.setMargins(dp(6), dp(6), dp(6), dp(6));
+            glp.setMargins(dp(10), dp(10), dp(10), dp(10));
             grid.addView(cell, glp);
         }
         addToContent(content, grid, 6);
