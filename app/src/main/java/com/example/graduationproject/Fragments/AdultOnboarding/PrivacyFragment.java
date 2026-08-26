@@ -46,24 +46,15 @@ public class PrivacyFragment extends BaseScreenFragment {
             cell.setBackground(gd);
             cell.setPadding(dp(12), dp(18), dp(12), dp(18));
 
-            LinearLayout iconCircle = new LinearLayout(requireContext());
-            iconCircle.setGravity(Gravity.CENTER);
-            GradientDrawable icGd = new GradientDrawable();
-            icGd.setShape(GradientDrawable.OVAL);
-            icGd.setColor((int) c[2]);
-            iconCircle.setBackground(icGd);
-            int circleSize = dp(44);
-            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(circleSize, circleSize);
-            icLp.bottomMargin = dp(8);
-            
             TextView emoji = new TextView(requireContext());
             emoji.setText((String) c[0]);
-            emoji.setTextSize(20);
+            emoji.setTextSize(32);
             emoji.setGravity(Gravity.CENTER);
-            iconCircle.addView(emoji);
-            cell.addView(iconCircle, icLp);
+            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(44), dp(44));
+            icLp.bottomMargin = dp(8);
+            cell.addView(emoji, icLp);
             
-            Widgets.startPulse(iconCircle);
+            Widgets.startPulse(emoji);
 
             TextView label = new TextView(requireContext());
             label.setText((String) c[1]);

@@ -151,20 +151,17 @@ public final class Widgets {
         lp.setMargins(m, m, m, m);
         col.setLayoutParams(lp);
 
-        GradientDrawable gd = new GradientDrawable();
-        gd.setShape(GradientDrawable.OVAL);
         if (selected) {
-            gd.setColor(Color.argb(64, 255, 227, 176));
+            GradientDrawable gd = new GradientDrawable();
+            gd.setShape(GradientDrawable.OVAL);
+            gd.setColor(Color.argb(41, 255, 227, 176));
             gd.setStroke(dp(ctx, 1), AdultOnboardingAppData.GLOW);
-        } else {
-            gd.setColor(Color.argb(13, 255, 255, 255));
-            gd.setStroke(dp(ctx, 1), Color.argb(36, 255, 255, 255));
+            col.setBackground(gd);
         }
-        col.setBackground(gd);
 
         TextView em = new TextView(ctx);
         em.setText(emoji);
-        em.setTextSize(26);
+        em.setTextSize(32);
         em.setGravity(Gravity.CENTER);
         col.addView(em);
 
@@ -197,15 +194,10 @@ public final class Widgets {
 
         android.widget.ImageView iv = new android.widget.ImageView(ctx);
         iv.setImageResource(sceneRes);
-        int circle = dp(ctx, 64);
-        LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(circle, circle);
+        int size = dp(ctx, 48);
+        LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(size, size);
         ivLp.bottomMargin = dp(ctx, 10);
         iv.setLayoutParams(ivLp);
-        GradientDrawable circleBg = new GradientDrawable();
-        circleBg.setShape(GradientDrawable.OVAL);
-        circleBg.setColor(selected ? Color.argb(46, 255, 255, 255) : Color.argb(20, 255, 255, 255));
-        iv.setBackground(circleBg);
-        iv.setPadding(dp(ctx, 12), dp(ctx, 12), dp(ctx, 12), dp(ctx, 12));
         col.addView(iv);
 
         TextView title = new TextView(ctx);

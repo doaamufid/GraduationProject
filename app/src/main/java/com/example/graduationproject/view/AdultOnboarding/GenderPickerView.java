@@ -78,16 +78,12 @@ public class GenderPickerView extends LinearLayout {
 
             TextView symbol = new TextView(getContext());
             symbol.setText(g.emoji);
-            symbol.setTextSize(20);
+            symbol.setTextSize(26);
             symbol.setTextColor(Color.WHITE);
             symbol.setGravity(Gravity.CENTER);
             int circle = AdultOnboardingUiUtils.dp(getContext(), 40);
             LayoutParams symLp = new LayoutParams(circle, circle);
             symLp.bottomMargin = AdultOnboardingUiUtils.dp(getContext(), 6);
-            GradientDrawable symBg = new GradientDrawable();
-            symBg.setShape(GradientDrawable.OVAL);
-            symBg.setColor(selected ? AdultOnboardingAppData.GLOW : Color.argb(26, 255, 255, 255));
-            symbol.setBackground(symBg);
             symbol.setLayoutParams(symLp);
             col.addView(symbol);
 
