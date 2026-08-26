@@ -63,7 +63,7 @@ public class WallFragment extends Fragment {
 
         // Animate elements
         view.findViewById(R.id.topBar).startAnimation(android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.slide_up_fade));
-        
+
         categoryRecycler = view.findViewById(R.id.categoryRecycler);
         categoryRecycler.startAnimation(android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in_right));
 

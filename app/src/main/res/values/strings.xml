@@ -340,12 +340,12 @@
     <!-- Profile & Achievements -->
     <string name="profile_header_title">بروفايل الرحلة</string>
     <string name="header_title_profile">بروفايل الرحلة</string>
-    <string name="profile_title">رحلة الملف الشخصي</string>
     <string name="join_date">معك منذ ١٢ مايو ٢٠٢٦</string>
-    <string name="member_since">معنا منذ 12 مايو 2026</string>
     <string name="privacy_notice">خصوصيتك محمية بالكامل — لا بيانات حقيقية مخزّنة</string>
+    <string name="stat_active_days_value">٤٧</string>
+    <string name="profile_title">رحلة الملف الشخصي</string>
+    <string name="member_since">معنا منذ 12 مايو 2026</string>
     <string name="privacy_note">خصوصيتك محمية بالكامل — لا يتم تخزين أي بيانات حقيقية</string>
-    <string name="stat_active_days_value">47</string>
     <string name="stat_active_days_label">يوم نشاط</string>
     <string name="stat_days_active">أيام النشاط</string>
     <string name="stat_streak_value">12</string>
@@ -368,19 +368,16 @@
     <string name="link_thoughts_sub">من إعادة صياغة الأفكار</string>
     <string name="thoughts_title">أفكاري المتوازنة</string>
     <string name="thoughts_subtitle">من إعادة صياغة الأفكار</string>
-
     <string name="archive_strengths_label">بنك نقاط القوة</string>
     <string name="archive_strengths_sub">الصفات المكتشفة فيك</string>
     <string name="link_strengths_label">بنك نقاط القوة</string>
     <string name="link_strengths_sub">سمات تم اكتشافها فيك</string>
-
     <string name="archive_messages_label">رسائلي لنفسي</string>
     <string name="archive_messages_sub">رسائل مجدولة ووصلت</string>
     <string name="link_messages_label">رسائلي إلى نفسي</string>
     <string name="link_messages_sub">الرسائل المجدولة والمسلمة</string>
-
-    <string name="parent_link_label">بروفايلات أطفالك</string>
-    <string name="parent_link_sub">٢ ملفات مسجّلة</string>
+    <string name="parent_link_label">ربط حساب ولي الأمر</string>
+    <string name="parent_link_sub">قم بربط الحساب لمتابعة التقدم</string>
     <string name="children_label">ملفات أطفالك</string>
     <string name="children_count_label">ملفان مسجلان</string>
 
@@ -391,33 +388,27 @@
     <string name="badge_week_title">أسبوع كامل</string>
     <string name="badge_week_label_profile">أسبوع كامل</string>
     <string name="badge_week_need">٧ أيام متتالية</string>
-
     <string name="badge_ideas_label">١٠ أفكار متوازنة</string>
     <string name="badge_ideas_title">١٠ أفكار متوازنة</string>
     <string name="badge_ideas_label_profile">10 أفكار متوازنة</string>
     <string name="badge_ideas_need">١٠ إعادة صياغة محفوظة</string>
-
     <string name="badge_strengths_label">٥ صفات قوة</string>
     <string name="badge_traits_label">5 نقاط قوة</string>
     <string name="badge_strengths_need">٥ صفات مكتشفة</string>
-
     <string name="badge_month_label">٣٠ يوم معنا</string>
     <string name="badge_month_title">٣٠ يوم معنا</string>
     <string name="badge_month_label_profile">30 يومًا معنا</string>
     <string name="badge_month_need">٣٠ يوم منذ الانضمام</string>
-
     <string name="badge_message_label">رسالة للمستقبل</string>
     <string name="badge_message_title">رسالة للمستقبل</string>
     <string name="badge_message_label_profile">رسالة إلى المستقبل</string>
     <string name="badge_message_need">أول رسالة لنفسك</string>
-
     <string name="badge_body_map_label">مستكشف الجسد</string>
     <string name="badge_body_label">مستكشف الجسد</string>
     <string name="badge_body_map_need">أكمل تمرين استكشاف الجسم</string>
-
-    <string name="avatar_picker_title">اختر لون هويتك</string>
-    <string name="avatar_picker_note">لا صور حقيقية — هويتك تبقى مجهولة تماماً 🔒</string>
-    <string name="name_dialog_title">تعديل الاسم المستعار</string>
+    <string name="avatar_picker_title">اختر الصورة الشخصية</string>
+    <string name="avatar_picker_note">يمكنك تغيير الصورة في أي وقت</string>
+    <string name="name_dialog_title">تعديل الاسم</string>
 
     <!-- Balanced Thoughts Section -->
     <string name="thoughts_count_fmt">%1$d أفكار محفوظة</string>
@@ -488,26 +479,22 @@
     <string name="trait_patience_quote">استمررت بالتقدم رغم كل شيء</string>
     <string name="patience_exercise">اكتب عن موقف آخر كنت فيه صبورًا رغم الصعوبة</string>
     <string name="trait_patience_exercise">اكتب عن موقف آخر كنت فيه صبورًا رغم الصعوبة</string>
-
     <string name="trait_courage">الشجاعة</string>
     <string name="trait_courage_name">الشجاعة</string>
     <string name="courage_quote">تحدثت عن مشاعرك بشجاعة</string>
     <string name="trait_courage_quote">تحدثت عن مشاعرك بشجاعة</string>
     <string name="courage_exercise">اكتب عن موقف آخر كنت فيه شجاعًا</string>
     <string name="trait_courage_exercise">اكتب عن موقف آخر كنت فيه شجاعًا</string>
-
     <string name="trait_empathy">التعاطف</string>
     <string name="trait_empathy_name">التعاطف</string>
     <string name="empathy_quote">اهتمامك بالآخرين واضح</string>
     <string name="trait_empathy_quote">اهتمامك بالآخرين واضح جدًا</string>
     <string name="empathy_exercise">اكتب رسالة دعم قصيرة لشخص تهتم لأمره</string>
     <string name="trait_empathy_exercise">اكتب رسالة دعم قصيرة لشخص تهتم لأمره</string>
-
     <string name="trait_persistence">المثابرة</string>
     <string name="trait_discipline">الانضباط</string>
     <string name="trait_confidence">الثقة بالنفس</string>
     <string name="trait_resilience">المرونة والصمود</string>
-
     <string name="patience_evidence_1">في محادثة حول ضغط العمل</string>
     <string name="evidence_work_pressure">في محادثة حول ضغط العمل</string>
     <string name="patience_evidence_2">في محادثة حول انتظار نتيجة مهمة</string>
@@ -519,7 +506,6 @@
     <string name="empathy_evidence_1">في محادثة حول صديق يمر بوقت صعب</string>
     <string name="evidence_friend_distress">في محادثة حول صديق يمر بوقت صعب</string>
     <string name="empathy_evidence_2">في محادثة حول عائلتك</string>
-
     <string name="persistence_paraphrase">قلت إنك قررت الاستمرار رغم شعورك بالتعب، وهذه هي المرة الأولى التي نلاحظ فيها هذا النمط بوضوح.</string>
     <string name="persistence_exercise">اكتب عن موقف آخر واصلت فيه السعي رغم الصعوبة</string>
     <string name="discipline_reason">غالبًا ما تصاحب المثابرة الانضباط — قدرتك على الالتزام بروتين حتى لو لم تكن تشعر بالتحفيز.</string>
@@ -538,10 +524,8 @@
     <string name="child_profiles_title">ملفات الأطفال</string>
     <string name="age_years_fmt">العمر %1$d سنة</string>
     <string name="child_age_format">العمر %1$d سنة</string>
-
     <string name="add_child_profile">إضافة ملف طفل جديد</string>
     <string name="add_child_btn">إضافة ملف طفل جديد</string>
-
     <string name="tap_to_view_stats">اضغط لعرض إحصاءاته</string>
     <string name="delete_child_title">حذف ملف الطفل؟</string>
     <string name="delete_child_message">هل أنت متأكد أنك تريد حذف ملف هذا الطفل؟ لا يمكن التراجع عن هذا الإجراء.</string>
@@ -561,7 +545,6 @@
     <string name="pattern_all_or_nothing">التفكير الكلّي أو لا شيء</string>
     <string name="pattern_catastrophizing">التفكير الكارثي</string>
     <string name="pattern_discounting_positive">التقليل من الإيجابيات</string>
-
     <string name="thought_1_original">أنا أفشل دائمًا ولا أحد يهتم بي</string>
     <string name="thought_1_balanced">بعض الأشياء لم تسر كما توقعت، لكن هذا لا يعني أن كل جهودي بلا فائدة.</string>
     <string name="thought_1_exercise">اكتب موقفين نجحت فيهما هذا الأسبوع رغم الصعوبات</string>
@@ -574,7 +557,6 @@
     <string name="thought_3_balanced">كانت هناك أشياء إيجابية حدثت اليوم، لكن عقلي كان مركزًا فقط على السلبيات.</string>
     <string name="thought_3_exercise">اكتب 3 أشياء إيجابية حدثت اليوم، مهما كانت صغيرة</string>
     <string name="thought_3_date">منذ أسبوع</string>
-
     <string name="message_1_text">كان اليوم صعبًا، لكنك تجاوزته. أنت أقوى مما تعتقد الآن.</string>
     <string name="message_2_text">لا تنسَ أنك وعدت نفسك بأخذ الأمور ببطء أكثر — كيف أصبحت الأمور الآن؟</string>
     <string name="message_3_text">أتمنى أن تكون قد حققت الهدف الذي حددته لنفسك اليوم.</string>
@@ -647,7 +629,6 @@
     <string name="section_accessibility">إمكانية الوصول</string>
     <string name="section_children">ملفات الأطفال</string>
     <string name="section_support">الدعم</string>
-
     <string name="disguise_title">وضع التخفي</string>
     <string name="disguise_sub">يجعل التطبيق يظهر كآلة حاسبة</string>
     <string name="auto_delete_title">حذف تلقائي بعد 7 أيام</string>
@@ -655,26 +636,19 @@
     <string name="app_lock_title">قفل التطبيق</string>
     <string name="app_lock_sub">رمز PIN أو بصمة الأصبع في كل مرة تفتح فيها التطبيق</string>
     <string name="encryption_notice">بياناتك مشفرة بالكامل على جهازك — AES-256</string>
-
     <string name="notifications_title">إعدادات الإشعارات</string>
     <string name="notifications_sub">شاشة القفل، التصنيفات، التوقيت</string>
     <string name="theme_color_title">لون المظهر</string>
     <string name="auto_dark_title">الوضع الداكن التلقائي</string>
-
     <string name="auto_dark_sub">بعد الساعة 9 مساءً</string>
-
     <string name="cloud_ai_title">المساعد السحابي (عند الاتصال)</string>
     <string name="cloud_ai_sub">إيقافه يجعل التطبيق يعمل محليًا بالكامل</string>
-
     <string name="reset_recs_title">إعادة ضبط الاقتراحات</string>
     <string name="reset_recs_sub">يمسح تسجيلات الإعجاب وعدم الإعجاب للمحتوى</string>
-
     <string name="breath_haptic_title">اهتزازات التنفس</string>
     <string name="breath_haptic_sub">نبض لطيف متزامن مع الشهيق والزفير</string>
-
     <string name="storage_size">14 ميجابايت</string>
     <string name="storage_label">البيانات المخزنة محليًا</string>
-
     <string name="export_title">تصدير نسخة احتياطية</string>
     <string name="export_sub">احفظها قبل تغيير الجهاز</string>
     <string name="reduce_motion_title">تقليل الحركة</string>
@@ -682,10 +656,8 @@
     <string name="manage_children_title">إدارة ملفات الأطفال</string>
     <string name="children_count_format">%1$d ملفات مسجلة</string>
     <string name="faq_title">الأسئلة الشائعة</string>
-
     <string name="about_title">حول سلام</string>
     <string name="about_sub">الإصدار 1.0.0</string>
-
     <string name="delete_everything_btn">حذف كل بياناتي نهائيًا</string>
     <string name="delete_step1_title">حذف جميع بياناتك نهائيًا؟</string>
     <string name="delete_step1_body">ستحذف كل المحادثات، التقارير، السمات المكتشفة، والرسائل — لا يمكن التراجع عن هذا الإجراء.</string>
@@ -695,7 +667,6 @@
     <string name="delete_step2_body">هذه فرصتك الأخيرة — لا يمكن العودة بعد هذه الخطوة.</string>
     <string name="delete_step2_confirm">حذف كل شيء نهائيًا</string>
     <string name="delete_step2_cancel">لا، عُد</string>
-
     <string name="dialect_title">لهجة المساعد الذكي</string>
     <string name="dialect_dialog_title">لهجة المساعد الذكي</string>
     <string name="dialect_standard">العربية الفصحى الحديثة</string>
@@ -740,7 +711,6 @@
     <string name="c1_chip">🌫️ هدوء</string>
     <string name="c1_date">8 أبريل</string>
     <string name="c1_note">أحيانًا أقوى شعور هو أن تدرك مدى صغرك أمام شيء أكبر منك. خذ نفسًا. يُسمح لك بأن تكون هادئًا الآن.</string>
-
     <string name="c2_title">أفق بعيد</string>
     <!-- Card 1 -->
     <!-- Card 2 -->
@@ -748,14 +718,12 @@
     <string name="c2_chip">🌊 سلام</string>
     <string name="c2_date">7 أبريل</string>
     <string name="c2_note">قد يبدو العالم أكبر من مشكلة اليوم. امنح نفسك بعض المساحة، حتى لو كانت صغيرة، للتنفس بحرية.</string>
-
     <string name="c3_title">ظلال الغابة</string>
     <!-- Card 3 -->
     <string name="c3_tag">لحظة حضور</string>
     <string name="c3_chip">🌿 صفاء</string>
     <string name="c3_date">6 أبريل</string>
     <string name="c3_note">ليس عليك حل كل شيء اليوم. يكفي أن تكون حاضرًا في هذه اللحظة، تستمع وتستشعر.</string>
-
     <string name="c4_title">دفء الرمال</string>
     <!-- Card 4 -->
     <string name="c4_tag">لحظة صبر</string>
@@ -812,7 +780,6 @@
     <string name="kids_chat_mood_confused">مش عارف</string>
     <string name="kids_chat_mood_tired">تعبان</string>
     <string name="kids_chat_mood_happy">مبسوط</string>
-
 
     <!-- Community Wall / Messages -->
     <string name="wall_title">رسائل من قلوب طيبة</string>
@@ -966,13 +933,11 @@
     <string name="chat_breathing_desc">تمرين لمدة 4 دقائق لتهدئة الجهاز العصبي</string>
     <string name="chat_breathing_button">بدء التمرين</string>
     <string name="chat_breathing_toast">جاري الانتقال إلى تمرين التنفس...</string>
-
     <string name="chat_dhikr_kicker">الذكر</string>
     <string name="chat_dhikr_title">ذكر مهدئ 🌙</string>
     <string name="chat_dhikr_desc">"سبحان الله وبحمده" — كرر ببطء مع كل زفير</string>
     <string name="chat_dhikr_button">افتح أذكاري</string>
     <string name="chat_dhikr_toast">جاري فتح أذكارك...</string>
-
     <string name="chat_article_tag">العلاج المعرفي السلوكي</string>
     <string name="chat_article_title">كيف نتعامل مع الحزن دون كبتِه؟</string>
     <string name="chat_article_button">اقرأ الآن ←</string>
@@ -1053,18 +1018,14 @@
     <string name="stage_sprout_desc">بداية النمو والتحسن المستمر.</string>
     <string name="stage_sprout">مرحلة البرعم</string>
     <string name="stage_bud">مرحلة البرعم</string>
-
     <string name="stage_tree_title">مرحلة الشجرة</string>
     <string name="stage_tree_desc">نمو قوي وعادات مستقرة.</string>
     <string name="stage_tree">مرحلة الشجرة</string>
-
     <string name="stage_fruit_tree_title">شجرة مثمرة</string>
     <string name="stage_fruit_tree_desc">قمة النجاح والإنجاز العالي!</string>
     <string name="stage_fruit_tree">شجرة مثمرة</string>
-
     <string name="stage_fruit_tree_locked_status">مرحلة مقفلة</string>
     <string name="badge_unlocked_message">تم فتح هذا الوسام بنجاح!</string>
-
     <string name="tree_back">رجوع</string>
     <string name="tree_title">شجرة التعافي</string>
     <string name="tree_today_points">اليوم: %d نقطة</string>
@@ -1091,7 +1052,6 @@
     <string name="badge_consistent_locked_status">🔒 أكمل 7 أيام متتالية لفتحها!</string>
     <string name="stage_achieved_status">تحققت بجهدك!</string>
     <string name="stage_current_status">أنت حاليًا في هذه المرحلة!</string>
-
     <string name="tree_intro_title">هذه شجرتك! 🌱</string>
     <string name="tree_intro_description">في كل مرة تتنفس، تتذكر، أو تكتب مشاعرك،\nتنمو شجرتك شيئًا فشيئًا — تعال وشاهد كم كبُرت!</string>
     <string name="tree_intro_btn">لِنرَ كيف أصبحت! 🌳</string>
@@ -1099,10 +1059,11 @@
     <string name="tree_level_up_btn">أحسنت! 🌟</string>
     <string name="tree_points_added">أضفت + %d نقطة!</string>
     <string name="see_your_tree">شاهد كيف نمت شجرتك! 🌳</string>
-
     <string name="breathing_exercise">تمرين تنفس 💨 (+10 نقاط)</string>
     <string name="chat_with_friend">تحدث مع صديقك 💬 (+10 نقاط)</string>
     <string name="write_journal">اكتب في يومياتك 📝 (+10 نقاط)</string>
+
+    <!-- Interface Messages -->
     <string name="tree_stage_description">شجرتك في مرحلة %s</string>
     <string name="level_up_stage_reached">أنت الآن في المرحلة: %1$s</string>
     <string name="breathing_success_toast">رائع! حصلت على 10 نقاط لشجرتك 🌳✨</string>
@@ -1148,118 +1109,88 @@
     <string name="save_and_favorite">حفظ وتفضيل</string>
     <string name="duration_display_label">مدة العرض وقت الأزمة:</string>
     <string name="locked_msg">ما فيه بطاقة فعالة حالياً. اختاري وحدة من تبويب «بطاقاتي» عشان تظهر تلقائياً وقت الأزمة.</string>
-    <string name="go_to_gallery">روحي لصفحة بطاقاتي</string>
-    <string name="sim_intro_msg">اضغطي الزر لتجربي بالضبط اللي بيصير وقت لحظة أزمة حقيقية.</string>
-    <string name="sim_start_btn">ابدئي</string>
-    <string name="sim_start_label">زر التهدئة الفورية</string>
-    <string name="no_favorite_dhikr_prompt">ما فضّلتي أذكار بعد — فضّلي وحدة الآن</string>
-    <string name="cancel_x">✕ إلغاء</string>
-    <string name="breathing_technique_label">تقنية ٤-٧-٨ للتنفس العميق — مناسبة لنوبات الهلع</string>
-    <string name="breathing_cycle_fmt">الدورة %1$d من %2$d</string>
-    <string name="breathing_footer">بعد التنفس والتأريض، رح يوصلك ذكرك المفضل ثم بطاقتك تلقائياً 💛</string>
-    <string name="grounding_msg">لاحظي ٥ أشياء حواليك الآن</string>
-    <string name="dhikr_source_favorite">من أذكارك المفضلة 📿</string>
-    <string name="dhikr_source_default">ذكر افتراضي — فضّلي أذكارك من تبويب «أذكاري»</string>
-    <string name="another_dhikr">🔄 ذكر ثاني</string>
-    <string name="card_auto_badge">ظهرت تلقائياً — بدون ما تدوّري عليها 💛</string>
-    <string name="im_ok_now">تم، أنا بخير الآن</string>
-    <string name="toast_activated">✓ أصبحت البطاقة الفعالة</string>
-    <string name="toast_added_card">✓ تمت إضافة البطاقة</string>
-    <string name="toast_updated_card">✓ تم تحديث البطاقة</string>
-    <string name="toast_deleted_card">🗑️ تم حذف البطاقة</string>
-    <string name="toast_added_dhikr">✓ تمت إضافة ذكرك، وصار مفضّل</string>
-    <string name="edit_desc">تعديل</string>
-    <string name="delete_desc">حذف</string>
-    <string name="info_desc">عن هذي الميزة</string>
-    <string name="favorite_desc">إضافة للمفضلة</string>
-    <string name="unfavorite_desc">إزالة من المفضلة</string>
-    <string name="minute_1">دقيقة</string>
-    <string name="minutes_n">دقائق</string>
-    <string name="mood_entry_title">إنشاء يومية جديدة</string>
-    <string name="big_question">كيف مزاجك اليوم؟</string>
+
+    <!-- Moods & Onboarding Adaptive -->
+    <string name="mood_entry_title">إنشاء إدخال يوميات جديد</string>
+    <string name="big_question">كيف تشعر اليوم؟</string>
     <string name="saved_toast">تم حفظ مزاجك ✅</string>
-    <string name="mood_awful">أشعر بالانهيار</string>
+    <string name="mood_awful">أشعر بالإرهاق</string>
     <string name="mood_sad">أشعر بالحزن</string>
     <string name="mood_low">أشعر بالإحباط</string>
     <string name="mood_neutral">أشعر بالحياد</string>
-    <string name="mood_calm">أشعر بالارتياح</string>
+    <string name="mood_calm">أشعر بالراحة</string>
     <string name="mood_happy">أشعر بالسعادة</string>
-    <string name="mood_overjoyed">أشعر بالبهجة الكاملة</string>
+    <string name="mood_overjoyed">أشعر بسعادة غامرة</string>
     <string name="adaptive_adult_onboarding_app_name">سلام</string>
     <string name="adaptive_adult_onboarding_welcome_title">مرحبًا بك في سلام 🤍</string>
-    <string name="adaptive_adult_onboarding_welcome_body">مساحة خاصة تساعدك على فهم مشاعرك واكتشاف طرق بسيطة للشعور بالهدوء.</string>
+    <string name="adaptive_adult_onboarding_welcome_body">مساحة خاصة تساعدك على فهم مشاعرك وإيجاد طرق بسيطة للشعور بالهدوء.</string>
     <string name="adaptive_adult_onboarding_welcome_button">لنبدأ بهدوء</string>
     <string name="adaptive_adult_onboarding_privacy_title">قبل أن نبدأ…</string>
-    <string name="adaptive_adult_onboarding_privacy_subtext">ستساعد بعض إجاباتك سلام على تقديم تجربة أقرب إلى احتياجاتك. لن تتم مشاركة أي شيء خارج جهازك دون علمك.</string>
+    <string name="adaptive_adult_onboarding_privacy_subtext">بعض إجاباتك ستساعد سلام في تقديم تجربة أقرب لما تحتاجه. لا يتم مشاركة أي شيء خارج جهازك دون علمك.</string>
     <string name="adaptive_adult_onboarding_privacy_card1">خصوصيتك مهمة</string>
     <string name="adaptive_adult_onboarding_privacy_card2">يمكنك تخطي أي سؤال</string>
     <string name="adaptive_adult_onboarding_privacy_card3">يمكنك تعديل إجاباتك لاحقًا</string>
     <string name="adaptive_adult_onboarding_privacy_card4">يمكنك حذف بياناتك متى شئت</string>
-    <string name="adaptive_adult_onboarding_privacy_button">فهمت، لنكمل</string>
-    <string name="adaptive_adult_onboarding_identity_title">ماذا تحب أن نناديك؟</string>
-    <string name="adaptive_adult_onboarding_identity_subtext">يمكنك استخدام اسم مستعار، أو ترك الحقل فارغًا تمامًا.</string>
+    <string name="adaptive_adult_onboarding_privacy_button">فهمت، لنواصل</string>
+    <string name="adaptive_adult_onboarding_identity_title">ماذا نسمّيك؟</string>
+    <string name="adaptive_adult_onboarding_identity_subtext">يمكنك استخدام لقب، أو تركه فارغًا تمامًا.</string>
     <string name="adaptive_adult_onboarding_identity_hint">اكتب اسمًا هنا…</string>
-    <string name="adaptive_adult_onboarding_identity_greeting">سعداء بلقائك، %1$s 🌿</string>
+    <string name="adaptive_adult_onboarding_identity_greeting">سعيد بلقائك، %1$s 🌿</string>
     <string name="adaptive_adult_onboarding_identity_age_title">كم عمرك تقريبًا؟</string>
-    <string name="adaptive_adult_onboarding_identity_gender_title">هل تود أن نعرف جنسك؟</string>
-    <string name="adaptive_adult_onboarding_overall_mood_title">كيف تشعر بشكل عام هذه الأيام؟</string>
+    <string name="adaptive_adult_onboarding_identity_gender_title">هل تود إخبارنا بجنسك؟</string>
+    <string name="adaptive_adult_onboarding_overall_mood_title">كيف تشعر هذه الأيام بشكل عام؟</string>
     <string name="adaptive_adult_onboarding_unsure">لست متأكدًا</string>
     <string name="adaptive_adult_onboarding_frequent_emotions_title">ما المشاعر التي تزورك أكثر هذه الأيام؟</string>
     <string name="adaptive_adult_onboarding_frequent_emotions_subtext">اختر ما ينطبق عليك، دون ترتيب أو عدد محدد.</string>
     <string name="adaptive_adult_onboarding_safety_title">هل تشعر بالخوف أو بعدم الأمان مؤخرًا؟</string>
     <string name="adaptive_adult_onboarding_no_right_wrong">لا توجد إجابة صحيحة أو خاطئة.</string>
-    <string name="adaptive_adult_onboarding_intense_fear_body">قد يمر الشخص أحيانًا بلحظات مفاجئة من الخوف الشديد، أو التنفس السريع أو تسارع ضربات القلب.</string>
+    <string name="adaptive_adult_onboarding_intense_fear_body">أحيانًا قد يمر الشخص بلحظات مفاجئة من الخوف الشديد، أو تسارع التنفس ونبضات القلب.</string>
     <string name="adaptive_adult_onboarding_intense_fear_title">هل مررت بتجربة مشابهة مؤخرًا؟</string>
-    <string name="adaptive_adult_onboarding_timeline_title">متى تشعر أن مشاعرك تكون أكثر صعوبة؟</string>
+    <string name="adaptive_adult_onboarding_timeline_title">في أي وقت تشعر أن مشاعرك تكون أصعب؟</string>
     <string name="adaptive_adult_onboarding_helpful_title">عندما تمر بلحظة صعبة، ما الذي يساعدك عادةً؟</string>
-    <string name="adaptive_adult_onboarding_helpful_subtext">سيساعدنا ذلك على اقتراح أنشطة تناسبك بشكل أفضل.</string>
-    <string name="adaptive_adult_onboarding_goals_title">ما أكثر شيء تأمل أن يساعدك سلام فيه؟</string>
-    <string name="adaptive_adult_onboarding_mood_demo_paragraph">من وقت لآخر، قد يطرح عليك سلام سؤالًا بسيطًا مثل:</string>
+    <string name="adaptive_adult_onboarding_helpful_subtext">سيساعدنا ذلك على اقتراح أنشطة تناسبك أكثر.</string>
+    <string name="adaptive_adult_onboarding_goals_title">في ماذا تأمل أن يساعدك سلام أكثر؟</string>
+    <string name="adaptive_adult_onboarding_mood_demo_paragraph">من وقت لآخر، قد يسألك سلام سؤالاً بسيطًا مثل:</string>
     <string name="adaptive_adult_onboarding_mood_demo_question">كيف كان يومك اليوم؟</string>
-    <string name="adaptive_adult_onboarding_mood_demo_subtext">سيظهر لك سلام بهذه الطريقة من وقت لآخر حتى تلاحظ تغيّر مشاعرك مع مرور الوقت،</string>
-    <string name="adaptive_adult_onboarding_mood_demo_status_active">هكذا ستبدو متابعتك اليومية تمامًا 🤍</string>
-    <string name="adaptive_adult_onboarding_mood_demo_status_idle">جرّب الآن لترى كيف ستبدو المتابعة اليومية</string>
+    <string name="adaptive_adult_onboarding_mood_demo_subtext">سيظهر لك سلام هذا السؤال من وقت لآخر حتى تلاحظ تغير مشاعرك مع الوقت، ويمكنك إيقاف هذا التتبع لاحقًا من الإعدادات.</string>
+    <string name="adaptive_adult_onboarding_mood_demo_status_active">هذا هو بالضبط كيف يبدو تتبعك اليومي 🤍</string>
+    <string name="adaptive_adult_onboarding_mood_demo_status_idle">جرّب الآن لترى كيف سيبدو التتبع اليومي</string>
     <string name="adaptive_adult_onboarding_preview_title">حتى الآن، سنحاول جعل تجربتك أقرب إليك</string>
-    <string name="adaptive_adult_onboarding_preview_subtext">🤍 نظرة سريعة على ما لاحظناه عنك</string>
-    <string name="adaptive_adult_onboarding_preview_card_night">قد يكون الليل وقتًا أكثر صعوبة بالنسبة لك أحيانًا.</string>
-    <string name="adaptive_adult_onboarding_preview_card_anxiety">سنقترح عليك تمارين للهدوء والتنفس عندما تشعر بالتوتر.</string>
-    <string name="adaptive_adult_onboarding_preview_card_spiritual">يمكنك رؤية المحتوى الروحي إذا اخترت ذلك.</string>
+    <string name="adaptive_adult_onboarding_preview_subtext">🤍 نظرة سريعة على ما لاحظناه معك</string>
+    <string name="adaptive_adult_onboarding_preview_card_night">قد يكون الليل وقتًا أكثر صعوبة عليك أحيانًا.</string>
+    <string name="adaptive_adult_onboarding_preview_card_anxiety">سنقترح عليك تمارين الهدوء والتنفس عندما تشعر بالتوتر.</string>
+    <string name="adaptive_adult_onboarding_preview_card_spiritual">يمكنك عرض المحتوى الروحي إذا اخترت ذلك.</string>
     <string name="adaptive_adult_onboarding_preview_card_writing">سنقترح عليك الكتابة عندما تبدو طريقة مناسبة لك.</string>
-    <string name="adaptive_adult_onboarding_preview_card_goals_prefix">بناءً على ما شاركته معنا، سنركز على: </string>
-    <string name="adaptive_adult_onboarding_preview_card_default">يبدو أنك تفضل استكشاف سلام بنفسك أولًا، وهذا أمر طبيعي تمامًا.</string>
+    <string name="adaptive_adult_onboarding_preview_card_goals_prefix">بناءً على ما شاركته، سنركز على: </string>
+    <string name="adaptive_adult_onboarding_preview_card_default">يبدو أنك تفضل استكشاف سلام بنفسك أولاً، وهذا أمر جيد تمامًا.</string>
     <string name="adaptive_adult_onboarding_preview_hint">هذه مجرد اقتراحات أولية، ويمكنك تغييرها لاحقًا من الإعدادات.</string>
-    <string name="adaptive_adult_onboarding_ready_title">شكرًا لمشاركتنا ما تشعر به %1$s 🤍</string>
-    <string name="adaptive_adult_onboarding_ready_body">لست بحاجة لأن تكون بخير طوال الوقت.\nخذ الأمور خطوة بخطوة.</string>
+    <string name="adaptive_adult_onboarding_ready_title">شكرًا لك لمشاركة ما تشعر به %1$s 🤍</string>
+    <string name="adaptive_adult_onboarding_ready_body">لا تحتاج إلى أن تكون بخير طوال الوقت.\nخذ الأمور خطوة بخطوة.</string>
     <string name="adaptive_adult_onboarding_ready_button">الدخول إلى سلام</string>
     <string name="adaptive_adult_onboarding_resume_title">هل تريد المتابعة من حيث توقفت؟</string>
-    <string name="adaptive_adult_onboarding_resume_body">لقد حفظنا رحلتك محليًا على جهازك.</string>
+    <string name="adaptive_adult_onboarding_resume_body">حفظنا رحلتك محليًا على جهازك.</string>
     <string name="adaptive_adult_onboarding_restart">ابدأ من جديد</string>
     <string name="adaptive_adult_onboarding_home_good_evening">مساء الخير</string>
-    <string name="adaptive_adult_onboarding_home_salam_friend">مرحبًا يا صديق سلام</string>
-    <string name="adaptive_adult_onboarding_home_suggested">مقترح لك الحين</string>
-    <string name="adaptive_adult_onboarding_home_replay">إعادة تجربة الإعداد الأولي (الوضع التجريبي)</string>
+    <string name="adaptive_adult_onboarding_home_salam_friend">صديق سلام</string>
+    <string name="adaptive_adult_onboarding_home_suggested">مقترح لك الآن</string>
+    <string name="adaptive_adult_onboarding_home_replay">إعادة التهيئة (الوضع التجريبي)</string>
     <string name="adaptive_adult_onboarding_simulate_reopen">محاكاة إعادة الفتح</string>
     <string name="adaptive_adult_onboarding_skip">تخطي</string>
     <string name="adaptive_adult_onboarding_continue">متابعة</string>
     <string name="adaptive_adult_onboarding_edit">تعديل</string>
     <string name="adaptive_adult_onboarding_back">رجوع</string>
-
-    <!-- AppData Strings -->
     <string name="adaptive_adult_onboarding_age_under_18">أقل من 18</string>
     <string name="adaptive_adult_onboarding_age_18_24">18–24</string>
     <string name="adaptive_adult_onboarding_age_25_34">25–34</string>
     <string name="adaptive_adult_onboarding_age_35_44">35–44</string>
     <string name="adaptive_adult_onboarding_age_45_54">45–54</string>
     <string name="adaptive_adult_onboarding_age_55_plus">55 فأكثر</string>
-
     <string name="adaptive_adult_onboarding_gender_female">أنثى</string>
     <string name="adaptive_adult_onboarding_gender_male">ذكر</string>
     <string name="adaptive_adult_onboarding_gender_prefer_not">أفضل عدم التحديد</string>
-
     <string name="adaptive_adult_onboarding_mood_calm">أشعر عادةً بالهدوء</string>
     <string name="adaptive_adult_onboarding_mood_pressured">أشعر بالضغط أو القلق</string>
     <string name="adaptive_adult_onboarding_mood_hard">أشعر أن الأمور صعبة جدًا مؤخرًا</string>
-
     <string name="adaptive_adult_onboarding_emotion_tension">التوتر</string>
     <string name="adaptive_adult_onboarding_emotion_fear">الخوف</string>
     <string name="adaptive_adult_onboarding_emotion_sadness">الحزن</string>
@@ -1269,33 +1200,28 @@
     <string name="adaptive_adult_onboarding_emotion_loneliness">الوحدة</string>
     <string name="adaptive_adult_onboarding_emotion_exhaustion">الإرهاق</string>
     <string name="adaptive_adult_onboarding_emotion_unsure">لا أعرف</string>
-    <string name="adaptive_adult_onboarding_emotion_okay">بخير عادةً</string>
-
+    <string name="adaptive_adult_onboarding_emotion_okay">عادةً بخير</string>
     <string name="adaptive_adult_onboarding_safety_rarely">نادرًا</string>
     <string name="adaptive_adult_onboarding_safety_sometimes">أحيانًا</string>
     <string name="adaptive_adult_onboarding_safety_often">غالبًا</string>
     <string name="adaptive_adult_onboarding_safety_most">معظم الوقت</string>
     <string name="adaptive_adult_onboarding_safety_skip">أفضل عدم الإجابة</string>
-
     <string name="adaptive_adult_onboarding_fear_yes_sometimes">نعم، أحيانًا</string>
-    <string name="adaptive_adult_onboarding_fear_yes_often">نعم، كثير</string>
+    <string name="adaptive_adult_onboarding_fear_yes_often">نعم، غالبًا</string>
     <string name="adaptive_adult_onboarding_fear_rarely">نادرًا</string>
     <string name="adaptive_adult_onboarding_fear_unsure">لا أعرف</string>
     <string name="adaptive_adult_onboarding_fear_skip">أفضل عدم الإجابة</string>
-
-    <string name="adaptive_adult_onboarding_time_morning">الصباح الباكر</string>
-    <string name="adaptive_adult_onboarding_time_day">وقت الظهيرة</string>
-    <string name="adaptive_adult_onboarding_time_evening">وقت المساء</string>
-    <string name="adaptive_adult_onboarding_time_night">آخر الليل</string>
-
-    <string name="adaptive_adult_onboarding_followup_night_prompt">في آخر الليل، ماذا تشعر أكثر؟</string>
-    <string name="adaptive_adult_onboarding_followup_day_prompt">في وقت الظهيرة، ماذا تشعر أكثر؟</string>
-    <string name="adaptive_adult_onboarding_followup_morning_prompt">في الصباح الباكر، ماذا تشعر أكثر؟</string>
-    <string name="adaptive_adult_onboarding_followup_evening_prompt">في وقت المساء، ماذا تشعر أكثر؟</string>
-
+    <string name="adaptive_adult_onboarding_time_morning">الصباح</string>
+    <string name="adaptive_adult_onboarding_time_day">النهار</string>
+    <string name="adaptive_adult_onboarding_time_evening">المساء</string>
+    <string name="adaptive_adult_onboarding_time_night">الليل</string>
+    <string name="adaptive_adult_onboarding_followup_night_prompt">عندما يأتي الليل، بماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_day_prompt">خلال النهار، بماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_morning_prompt">في الصباح، بماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_evening_prompt">في المساء، بماذا تشعر أكثر؟</string>
     <string name="adaptive_adult_onboarding_option_loneliness">الوحدة</string>
     <string name="adaptive_adult_onboarding_option_fear">الخوف</string>
-    <string name="adaptive_adult_onboarding_option_overthinking">التفكير الزائد</string>
+    <string name="adaptive_adult_onboarding_option_overthinking">الإفراط في التفكير</string>
     <string name="adaptive_adult_onboarding_option_anxiety">القلق</string>
     <string name="adaptive_adult_onboarding_option_sadness">الحزن</string>
     <string name="adaptive_adult_onboarding_option_insomnia">صعوبة النوم</string>
@@ -1307,43 +1233,36 @@
     <string name="adaptive_adult_onboarding_option_dread">توقع يوم صعب</string>
     <string name="adaptive_adult_onboarding_option_starting">صعوبة البدء</string>
     <string name="adaptive_adult_onboarding_option_rest">الحاجة إلى الراحة</string>
-
-    <string name="adaptive_adult_onboarding_helpful_audio">الاستماع إلى المقاطع الصوتية</string>
+    <string name="adaptive_adult_onboarding_helpful_audio">الاستماع إلى الصوتيات</string>
     <string name="adaptive_adult_onboarding_helpful_breathing">التنفس والهدوء</string>
     <string name="adaptive_adult_onboarding_helpful_spiritual">القرآن أو الأذكار</string>
     <string name="adaptive_adult_onboarding_helpful_writing">الكتابة</string>
-    <string name="adaptive_adult_onboarding_helpful_talking">التحدث مع شخص ما</string>
+    <string name="adaptive_adult_onboarding_helpful_talking">التحدث مع شخص</string>
     <string name="adaptive_adult_onboarding_helpful_movement">الحركة أو المشي</string>
     <string name="adaptive_adult_onboarding_helpful_activity">نشاط بسيط</string>
     <string name="adaptive_adult_onboarding_helpful_unsure">لا أعرف ما الذي يساعدني</string>
-
     <string name="adaptive_adult_onboarding_goal_calm">الشعور بالهدوء</string>
-    <string name="adaptive_adult_onboarding_goal_stress">التعامل مع الضغط</string>
+    <string name="adaptive_adult_onboarding_goal_stress">التعامل مع التوتر</string>
     <string name="adaptive_adult_onboarding_goal_understand">فهم مشاعري</string>
     <string name="adaptive_adult_onboarding_goal_routine">تنظيم يومي</string>
     <string name="adaptive_adult_onboarding_goal_sleep">تحسين النوم</string>
     <string name="adaptive_adult_onboarding_goal_loneliness">التعامل مع الوحدة</string>
     <string name="adaptive_adult_onboarding_goal_habits">تكوين عادات أفضل</string>
     <string name="adaptive_adult_onboarding_goal_express">التعبير عن مشاعري</string>
-    <string name="adaptive_adult_onboarding_goal_explore">أريد استكشاف التطبيق فقط</string>
-
+    <string name="adaptive_adult_onboarding_goal_explore">أريد فقط استكشاف التطبيق</string>
     <string name="adaptive_adult_onboarding_face_sad">صعب</string>
     <string name="adaptive_adult_onboarding_face_low">متعب</string>
-    <string name="adaptive_adult_onboarding_face_neutral">عادي</string>
+    <string name="adaptive_adult_onboarding_face_neutral">طبيعي</string>
     <string name="adaptive_adult_onboarding_face_good">جيد</string>
     <string name="adaptive_adult_onboarding_face_great">رائع</string>
 
     <string name="adult_stats_app_name">إحصائيات المزاج</string>
-
     <string name="adult_stats_screen_title">إحصائيات المزاج</string>
     <string name="adult_stats_screen_subtitle">بيانات آخر ٣٠ يوم فقط — كل شهر يبدأ سجل جديد</string>
-
     <string name="adult_stats_tab_day">يوم</string>
     <string name="adult_stats_tab_week">أسبوع</string>
     <string name="adult_stats_tab_month">شهر</string>
-
     <string name="adult_stats_chart_hint">حرّك إصبعك على الخط لتشوف مزاجك بأي لحظة</string>
-
     <string name="adult_stats_day_sun">أحد</string>
     <string name="adult_stats_day_mon">إثن</string>
     <string name="adult_stats_day_tue">ثلا</string>
@@ -1351,7 +1270,6 @@
     <string name="adult_stats_day_thu">خمس</string>
     <string name="adult_stats_day_fri">جمعة</string>
     <string name="adult_stats_day_sat">سبت</string>
-
     <string name="adult_stats_mood_awful">منهار</string>
     <string name="adult_stats_mood_sad">حزين</string>
     <string name="adult_stats_mood_low">محبط</string>
@@ -1794,4 +1712,31 @@
     <string name="feedback_question">شو رأيك بهالمقالة؟</string>
     <string name="why_suggested">ليش اقترحنا هذي المقالة؟</string>
 
+    <string name="go_to_gallery">الانتقال إلى بطاقاتي</string>
+    <string name="sim_intro_msg">اضغط الزر لتجربة ما يحدث تمامًا خلال لحظة أزمة حقيقية.</string>
+    <string name="sim_start_btn">ابدأ</string>
+    <string name="sim_start_label">زر الهدوء الفوري</string>
+    <string name="no_favorite_dhikr_prompt">لم تضف أي ذكر إلى المفضلة بعد — أضف واحدًا الآن</string>
+    <string name="cancel_x">✕ إلغاء</string>
+    <string name="breathing_technique_label">تقنية التنفس العميق 4-7-8 — مناسبة لنوبات الهلع</string>
+    <string name="breathing_cycle_fmt">الدورة %1$d من %2$d</string>
+    <string name="breathing_footer">بعد التنفس والتأريض، سيظهر ذكرك المفضل، ثم بطاقتك تلقائيًا 💛</string>
+    <string name="grounding_msg">لاحظ 5 أشياء من حولك الآن</string>
+    <string name="dhikr_source_favorite">من أذكارك المفضلة 📿</string>
+    <string name="dhikr_source_default">الذكر الافتراضي — أضف أذكارك إلى المفضلة من تبويب «أذكاري»</string>
+    <string name="another_dhikr">🔄 ذكر آخر</string>
+    <string name="card_auto_badge">ظهر تلقائيًا — لا حاجة للبحث عنه 💛</string>
+    <string name="im_ok_now">أنا بخير الآن</string>
+    <string name="toast_activated">✓ البطاقة نشطة الآن</string>
+    <string name="toast_added_card">✓ تمت إضافة البطاقة</string>
+    <string name="toast_updated_card">✓ تم تحديث البطاقة</string>
+    <string name="toast_deleted_card">🗑️ تم حذف البطاقة</string>
+    <string name="toast_added_dhikr">✓ تمت إضافة الذكر إلى المفضلة</string>
+    <string name="edit_desc">تعديل</string>
+    <string name="delete_desc">حذف</string>
+    <string name="info_desc">حول هذه الميزة</string>
+    <string name="favorite_desc">إضافة إلى المفضلة</string>
+    <string name="unfavorite_desc">إزالة من المفضلة</string>
+    <string name="minute_1">دقيقة</string>
+    <string name="minutes_n">دقائق</string>
 </resources>
