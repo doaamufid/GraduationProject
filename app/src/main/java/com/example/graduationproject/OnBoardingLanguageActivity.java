@@ -140,29 +140,27 @@ public class OnBoardingLanguageActivity extends AppCompatActivity {
         
         // Refresh layout direction immediately
         binding.getRoot().setLayoutDirection(AppLanguageManager.getLayoutDirection(this));
-        
-        // Restart activity to apply language changes fully if needed, 
-        // but for onboarding, just updating UI text might be enough if using strings.xml
-        // However, AppLanguageManager.saveLanguage already calls applyLanguage.
     }
 
     private void updateSelection() {
         boolean isArabic = AppLanguageManager.isArabic(selectedLanguage);
-        
-        binding.cardArabic.setStrokeWidth(isArabic ? dpToPx(3) : 0);
-        binding.pillArabic.setBackgroundTintList(android.content.res.ColorStateList.valueOf(isArabic ? getColor(R.color.primary) : Color.parseColor("#4DFFFFFF")));
+        int primaryColor = getColor(R.color.primary);
+        int glassPillColor = Color.parseColor("#4DFFFFFF");
+
+        // Update Arabic Card state
+        binding.cardArabic.setAlpha(isArabic ? 1.0f : 0.5f);
+        binding.tvSelectArabic.setBackgroundTintList(android.content.res.ColorStateList.valueOf(isArabic ? primaryColor : glassPillColor));
+        binding.tvSelectArabic.setTextColor(isArabic ? Color.WHITE : Color.parseColor("#0E2335"));
         binding.tvSelectArabic.setText(isArabic ? R.string.language_selected_ar : R.string.language_select_ar);
 
-        binding.cardEnglish.setStrokeWidth(!isArabic ? dpToPx(3) : 0);
-        binding.pillEnglish.setBackgroundTintList(android.content.res.ColorStateList.valueOf(!isArabic ? getColor(R.color.primary) : Color.parseColor("#4DFFFFFF")));
+        // Update English Card state
+        binding.cardEnglish.setAlpha(!isArabic ? 1.0f : 0.5f);
+        binding.tvSelectEnglish.setBackgroundTintList(android.content.res.ColorStateList.valueOf(!isArabic ? primaryColor : glassPillColor));
+        binding.tvSelectEnglish.setTextColor(!isArabic ? Color.WHITE : Color.parseColor("#0E2335"));
         binding.tvSelectEnglish.setText(!isArabic ? R.string.language_selected_en : R.string.language_select_en);
 
         binding.btnContinue.setText(R.string.continue_label);
         binding.tvLangLabelAr.setText(R.string.language_label_ar);
         binding.tvLangLabelEn.setText(R.string.language_label_en);
-    }
-
-    private int dpToPx(int dp) {
-        return (int) (dp * getResources().getDisplayMetrics().density);
     }
 }

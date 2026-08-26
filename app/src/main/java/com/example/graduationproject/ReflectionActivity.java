@@ -71,10 +71,21 @@ public class ReflectionActivity extends AppCompatActivity {
         };
         handler.postDelayed(showNextButtonRunnable, 4000);
 
-        // 4. الانتقال المباشر للـ AdultMood بعد الضغط
+        // 4. الانتقال للـ AdultMood للبالغين أو Home للأطفال بعد الضغط
         btnNext.setOnClickListener(v -> {
             cleanupHandler();
-            Intent intent = new Intent(ReflectionActivity.this, AdultMoodActivity.class);
+            
+            // Check user type to decide the next screen
+            String userType = getSharedPreferences("UserPrefs", MODE_PRIVATE).getString("user_type", "adult");
+            
+            Intent intent;
+            if ("adult".equals(userType)) {
+                intent = new Intent(ReflectionActivity.this, AdultMoodActivity.class);
+            } else {
+                // For kids, go directly to MainActivity which will redirect to ChildProfilesActivity
+                intent = new Intent(ReflectionActivity.this, MainActivity.class);
+            }
+
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

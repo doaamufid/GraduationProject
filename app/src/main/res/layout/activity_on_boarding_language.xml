@@ -6,6 +6,8 @@
     android:layout_height="match_parent"
     android:background="@drawable/bg_onboarding_blue"
     android:padding="24dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     tools:context=".OnBoardingLanguageActivity">
 
     <TextView
@@ -26,8 +28,8 @@
     <ImageView
         android:id="@+id/ivIllustration"
         android:layout_width="0dp"
-        android:layout_height="220dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="180dp"
+        android:layout_marginTop="10dp"
         android:scaleType="fitCenter"
         android:src="@drawable/img1_on_boarding"
         android:contentDescription="@null"
@@ -39,10 +41,10 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:text="@string/language_selection_title"
         android:textColor="#0E2335"
-        android:textSize="28sp"
+        android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -53,11 +55,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginHorizontal="16dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:gravity="center"
         android:text="@string/language_selection_subtitle"
         android:textColor="#526475"
-        android:textSize="16sp"
+        android:textSize="15sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tvTitle" />
@@ -66,9 +68,11 @@
         android:id="@+id/layoutCards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
+        android:clipToPadding="false"
+        android:clipChildren="false"
         app:layout_constraintTop_toBottomOf="@id/tvDescription"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
@@ -76,20 +80,21 @@
         <!-- Arabic Card -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardArabic"
-            android:layout_width="160dp"
-            android:layout_height="180dp"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="28dp"
-            app:cardElevation="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent"
             app:strokeWidth="0dp"
-            app:strokeColor="@color/primary"
             android:clickable="true"
             android:focusable="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_glass_card_arabic"
+                android:background="@drawable/bg_glass_card"
                 android:padding="16dp">
 
                 <TextView
@@ -97,57 +102,51 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/language_label_ar"
-                    android:textColor="#CCFFFFFF"
+                    android:textColor="#526475"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/rounded_button_bg"
-                    android:backgroundTint="#4DFFFFFF"
-                    android:text="AR"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10sp"
-                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/rounded_button_bg"
+                    android:backgroundTint="#26000000"
+                    android:text="AR"
+                    android:textColor="#0E2335"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvLanguageNameAr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/language_name_ar"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textColor="#0E2335"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/pillArabic"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/pillArabic"
-                    android:layout_width="0dp"
-                    android:layout_height="32dp"
-                    android:background="@drawable/rounded_button_bg"
-                    android:backgroundTint="#4DFFFFFF"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/tvSelectArabic"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button_bg"
+                    android:backgroundTint="#4DFFFFFF"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="6dp"
                     android:text="@string/language_select_ar"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#0E2335"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@id/pillArabic"
-                    app:layout_constraintEnd_toEndOf="@id/pillArabic"
-                    app:layout_constraintStart_toStartOf="@id/pillArabic"
-                    app:layout_constraintTop_toTopOf="@id/pillArabic" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -155,20 +154,21 @@
         <!-- English Card -->
         <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardEnglish"
-            android:layout_width="160dp"
-            android:layout_height="180dp"
-            android:layout_margin="8dp"
-            app:cardCornerRadius="28dp"
-            app:cardElevation="8dp"
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_marginVertical="8dp"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="6dp"
+            app:cardBackgroundColor="@android:color/transparent"
             app:strokeWidth="0dp"
-            app:strokeColor="@color/primary"
             android:clickable="true"
             android:focusable="true">
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/bg_glass_card_english"
+                android:background="@drawable/bg_glass_card"
                 android:padding="16dp">
 
                 <TextView
@@ -176,57 +176,51 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/language_label_en"
-                    android:textColor="#CCFFFFFF"
+                    android:textColor="#526475"
                     android:textSize="12sp"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/rounded_button_bg"
-                    android:backgroundTint="#4DFFFFFF"
-                    android:text="EN"
-                    android:textColor="#FFFFFF"
-                    android:textSize="10sp"
-                    android:gravity="center"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:background="@drawable/rounded_button_bg"
+                    android:backgroundTint="#26000000"
+                    android:text="EN"
+                    android:textColor="#0E2335"
+                    android:textSize="10sp"
+                    android:gravity="center"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/tvLanguageNameEn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/language_name_en"
-                    android:textColor="#FFFFFF"
-                    android:textSize="24sp"
+                    android:textColor="#0E2335"
+                    android:textSize="22sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@id/pillEnglish"
+                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
-
-                <View
-                    android:id="@+id/pillEnglish"
-                    android:layout_width="0dp"
-                    android:layout_height="32dp"
-                    android:background="@drawable/rounded_button_bg"
-                    android:backgroundTint="#4DFFFFFF"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent" />
 
                 <TextView
                     android:id="@+id/tvSelectEnglish"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/rounded_button_bg"
+                    android:backgroundTint="#4DFFFFFF"
+                    android:paddingHorizontal="24dp"
+                    android:paddingVertical="6dp"
                     android:text="@string/language_select_en"
-                    android:textColor="#FFFFFF"
+                    android:textColor="#0E2335"
                     android:textSize="14sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="@id/pillEnglish"
-                    app:layout_constraintEnd_toEndOf="@id/pillEnglish"
-                    app:layout_constraintStart_toStartOf="@id/pillEnglish"
-                    app:layout_constraintTop_toTopOf="@id/pillEnglish" />
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </com.google.android.material.card.MaterialCardView>
