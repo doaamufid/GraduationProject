@@ -94,8 +94,7 @@ public class WallFragment extends Fragment {
     private void setupCategoryChips(SalamCommunityActivity activity) {
         categoryRecycler.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         CategoryAdapter adapter = new CategoryAdapter(SeedData.CATEGORIES, Repository.get().getCurrentCategory(), cat -> {
-            Repository.get().setCurrentCategory(cat.getName());
-            categoryRecycler.post(() -> ((CategoryAdapter) categoryRecycler.getAdapter()).setSelected(cat.getName()));
+            Repository.get().setCurrentCategory(cat);
             rebuildGrid();
         });
         categoryRecycler.setAdapter(adapter);

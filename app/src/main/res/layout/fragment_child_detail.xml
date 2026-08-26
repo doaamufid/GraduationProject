@@ -146,7 +146,7 @@
 
                 <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_activity" android:layout_marginBottom="4dp" android:contentDescription="@null"/>
                 <TextView android:id="@+id/txt_stat_sessions" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="@color/text_main" android:textStyle="bold" android:textSize="@dimen/text_title" tools:text="١٨"/>
-                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/stat_sessions_label" android:textColor="@color/text_soft" android:textSize="@dimen/text_tiny"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/stat_sessions_label_child" android:textColor="@color/text_soft" android:textSize="@dimen/text_tiny"/>
             </LinearLayout>
 
             <LinearLayout

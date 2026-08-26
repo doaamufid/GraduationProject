@@ -24,7 +24,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="@string/header_title"
+                android:text="@string/header_title_words"
                 android:textColor="@color/orange_dark"
                 android:textSize="18sp"
                 android:textStyle="bold" />

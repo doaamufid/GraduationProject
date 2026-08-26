@@ -98,11 +98,11 @@ public class SeedData {
 
     public static List<Badge> getBadges() {
         List<Badge> list = new ArrayList<>();
-        list.add(new Badge(R.string.badge_week_label, R.drawable.ic_flame, true, R.color.sand));
-        list.add(new Badge(R.string.badge_ideas_label, R.drawable.ic_pen_line, true, R.color.primary));
+        list.add(new Badge(R.string.badge_week_title, R.drawable.ic_flame, true, R.color.sand));
+        list.add(new Badge(R.string.badge_ideas_title, R.drawable.ic_pen_line, true, R.color.primary));
         list.add(new Badge(R.string.badge_traits_label, R.drawable.ic_heart, true, R.color.pink));
-        list.add(new Badge(R.string.badge_month_label, R.drawable.ic_calendar, false, R.color.sage));
-        list.add(new Badge(R.string.badge_message_label, R.drawable.ic_mail, true, R.color.purple));
+        list.add(new Badge(R.string.badge_month_title, R.drawable.ic_calendar, false, R.color.sage));
+        list.add(new Badge(R.string.badge_message_title, R.drawable.ic_mail, true, R.color.purple));
         list.add(new Badge(R.string.badge_body_label, R.drawable.ic_sparkles, false, R.color.primary));
         return list;
     }
@@ -137,7 +137,7 @@ public class SeedData {
                             ctx.getString(R.string.recommend_youssef_3)
                     ),
                     Arrays.asList(
-                            new ChildHistoryEntry(ctx.getString(R.string.history_3_days_ago), ctx.getString(R.string.alert_youssef_title)),
+                            new ChildHistoryEntry(ctx.getString(R.string.history_three_days_ago), ctx.getString(R.string.alert_youssef_title)),
                             new ChildHistoryEntry(ctx.getString(R.string.evidence_last_week), ctx.getString(R.string.history_no_patterns))
                     )
             );
@@ -160,7 +160,7 @@ public class SeedData {
                             ctx.getString(R.string.recommend_sara_2)
                     ),
                     Arrays.asList(
-                            new ChildHistoryEntry(ctx.getString(R.string.history_2_weeks_ago), ctx.getString(R.string.history_no_patterns))
+                            new ChildHistoryEntry(ctx.getString(R.string.history_two_weeks_ago), ctx.getString(R.string.history_no_patterns))
                     )
             );
         }

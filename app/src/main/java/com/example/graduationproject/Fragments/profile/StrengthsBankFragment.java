@@ -339,7 +339,7 @@ public class StrengthsBankFragment extends Fragment {
 
         Trait newTrait = new Trait(
                 "self-" + System.currentTimeMillis(), name, sageColor, 1, quote, true,
-                java.util.Collections.singletonList(new TraitEvidence(getString(R.string.today_label), ctx)),
+                java.util.Collections.singletonList(new TraitEvidence(getString(R.string.trait_today_label), ctx)),
                 getString(R.string.self_added_exercise)
         );
         traits.add(newTrait);

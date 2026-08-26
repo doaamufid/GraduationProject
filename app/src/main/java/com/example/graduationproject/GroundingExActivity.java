@@ -195,7 +195,7 @@ public class GroundingExActivity extends AppCompatActivity {
         renderTapCounter();
 
         tvNextLabel.setText(stepIdx < senses.size() - 1
-                ? getString(R.string.btn_next) : getString(R.string.btn_finish));
+                ? getString(R.string.btn_next) : getString(R.string.btn_finish_grounding));
 
         // Note field always collapses back to closed when moving to a new step
         // (matches `setNoteOpen(false)` inside `goNext()`).

@@ -58,6 +58,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="title_select_kids">Who is playing today?</string>
+    <string name="header_title_words">My Words</string>
 
     <string name="summary_title">Emergency Box</string>
     <string name="summary_tag">SAFE SPACE · Survival Box</string>
@@ -148,7 +149,8 @@
     <string name="breathing_reminder">Take a breath between each step — Inhale 4s · Exhale 4s · Stop 4s</string>
 
     <string name="btn_next">Next</string>
-    <string name="btn_finish">Finish Exercise</string>
+    <string name="btn_finish_grounding">Finish Exercise</string>
+    <string name="btn_finish_result">Finished, thanks Noor</string>
 
     <string name="done_title">Returned to the present</string>
     <string name="done_sub_format">Noticed %1$d details around you — in less than a minute</string>
@@ -229,8 +231,10 @@
     <string name="visual_content_sub">Listen · Listen</string>
 
     <string name="player_title">Now Playing</string>
-    <string name="why_suggested">Why did we suggest this to you?</string>
-    <string name="feedback_question">What do you think of this content?</string>
+    <string name="why_suggested_content">Why did we suggest this to you?</string>
+    <string name="feedback_question_content">What do you think of this content?</string>
+    <string name="why_suggested_article">Why did we suggest this article?</string>
+    <string name="feedback_question_article">What do you think of this article?</string>
     <string name="dislike_reason_title">What\'s the reason? (optional)</string>
     <string name="continue_watching">Continue Watching</string>
 
@@ -241,14 +245,15 @@
     <string name="status_time">9:41</string>
 
     <!-- Profile home -->
-    <string name="profile_title">Journey Profile</string>
+    <string name="header_title_profile">Journey Profile</string>
     <string name="member_since">With you since May 12, 2026</string>
     <string name="privacy_note">Your privacy is fully protected — no real data is stored</string>
     <string name="stat_days_active">Active Days</string>
     <string name="stat_streak">Day Streak</string>
+    <string name="stat_sessions_label_user">Sessions</string>
     <string name="stat_sessions">Sessions</string>
-    <string name="achievements_title">Your Journey Achievements</string>
-    <string name="archive_title">Your Personal Archive</string>
+    <string name="achievements_title_profile">Your Journey Achievements</string>
+    <string name="archive_title_profile">Your Personal Archive</string>
     <string name="children_label">Your Children\'s Profiles</string>
     <string name="children_count_label">2 Registered Profiles</string>
 
@@ -259,12 +264,17 @@
     <string name="link_messages_label">My Messages to Myself</string>
     <string name="link_messages_sub">Scheduled and Delivered Messages</string>
 
-    <string name="badge_week_label">Full Week</string>
-    <string name="badge_ideas_label">10 Balanced Thoughts</string>
+    <string name="badge_week_title">Full Week</string>
+    <string name="badge_ideas_title">10 Balanced Thoughts</string>
     <string name="badge_traits_label">5 Strength Traits</string>
-    <string name="badge_month_label">30 Days With Us</string>
-    <string name="badge_message_label">Message to the Future</string>
+    <string name="badge_month_title">30 Days With Us</string>
+    <string name="badge_message_title">Message to the Future</string>
     <string name="badge_body_label">Body Explorer</string>
+
+    <string name="badge_week_label_profile">Full Week</string>
+    <string name="badge_ideas_label_profile">10 Balanced Thoughts</string>
+    <string name="badge_month_label_profile">30 Days With Us</string>
+    <string name="badge_message_label_profile">Message to the Future</string>
 
     <!-- Balanced thoughts -->
     <string name="thoughts_title">My Balanced Thoughts</string>
@@ -281,7 +291,7 @@
     <string name="strengths_title">My Bank</string>
     <string name="strengths_bank_heading">Strengths Bank</string>
     <string name="strengths_bank_sub">Extracted by AI from your conversations</string>
-    <string name="header_title">My Bank</string>
+    <string name="header_title_bank">My Bank</string>
     <string name="traits_discovered_fmt">%1$d traits discovered</string>
     <string name="add_trait_button">Add Trait</string>
     <string name="best_this_month">Highlights This Month</string>
@@ -302,7 +312,7 @@
     <string name="self_added_default_quote">You noticed it in yourself today</string>
     <string name="self_added_default_ctx">Added manually</string>
     <string name="self_added_exercise">Reflect on another situation where you showed this trait</string>
-    <string name="today_label">Today</string>
+    <string name="trait_today_label">Today</string>
 
     <!-- Future messages -->
     <string name="messages_title">All My Messages</string>
@@ -326,7 +336,7 @@
     <string name="last_active_fmt">Last active: %s</string>
     <string name="child_name_age_fmt">%1$s — %2$d years old</string>
     <string name="stat_exercises_done">Exercises Completed</string>
-    <string name="stat_sessions_label">Sessions</string>
+    <string name="stat_sessions_label_child">Sessions</string>
     <string name="stat_inactive_days">Inactive Days</string>
     <string name="week_peak_label">Weekly Peak</string>
     <string name="week_mood_label">Weekly Mood</string>
@@ -403,9 +413,9 @@
     <string name="recommend_sara_1">Her routine has been stable this week — keep up the same encouragement.</string>
     <string name="recommend_sara_2">Celebrate with her as her tree grows to a new stage!</string>
 
-    <string name="history_3_days_ago">3 days ago</string>
+    <string name="history_three_days_ago">3 days ago</string>
     <string name="history_no_patterns">No patterns requiring attention</string>
-    <string name="history_2_weeks_ago">2 weeks ago</string>
+    <string name="history_two_weeks_ago">2 weeks ago</string>
 
     <string-array name="day_abbreviations">
         <item>S</item>
@@ -868,7 +878,7 @@
     <!-- Dhikr card -->
     <string name="chat_dhikr_kicker">DHIKR</string>
     <string name="chat_dhikr_title">Calming Dhikr 🌙</string>
-    <string name="chat_dhikr_desc">"SubhanAllah wa bihamdihi" — repeat slowly with each exhale</string>
+    <string name="chat_dhikr_desc">\"SubhanAllah wa bihamdihi\" — repeat slowly with each exhale</string>
     <string name="chat_dhikr_button">Open my Dhikr</string>
     <string name="chat_dhikr_toast">Opening your Dhikr...</string>
 
@@ -1328,5 +1338,3 @@
     <string name="adult_stats_mood_happy">Happy</string>
     <string name="adult_stats_mood_overjoyed">Joyful</string>
 </resources>
-
-

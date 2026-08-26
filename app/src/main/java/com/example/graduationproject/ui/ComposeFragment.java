@@ -182,7 +182,7 @@ public class ComposeFragment extends Fragment {
         System.arraycopy(SeedData.CATEGORIES, 1, cats, 0, cats.length);
 
         CategoryAdapter adapter = new CategoryAdapter(cats, selectedCategory, cat -> {
-            selectedCategory = cat.getName();
+            selectedCategory = cat;
             refreshCategoryToggle();
         });
         rv.setAdapter(adapter);
