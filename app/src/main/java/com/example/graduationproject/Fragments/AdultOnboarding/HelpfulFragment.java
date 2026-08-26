@@ -33,7 +33,7 @@ public class HelpfulFragment extends BaseScreenFragment {
         grid.removeAllViews();
         for (Option h : AdultOnboardingAppData.HELPFUL) {
             boolean selected = data.helpfulActivities.contains(h.id);
-            android.view.View card = Widgets.choiceCard(requireContext(), h.emoji, getString(h.labelRes), null, selected, () -> {
+            android.view.View card = Widgets.choiceCard(requireContext(), h.emoji, h.iconRes, getString(h.labelRes), null, selected, () -> {
                 OnboardingData.toggle(data.helpfulActivities, h.id);
                 render(grid);
             });

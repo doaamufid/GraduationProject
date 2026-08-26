@@ -6,6 +6,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,6 +27,10 @@ public final class Widgets {
 
     // ---------------- ChoiceCard ----------------
     public static View choiceCard(Context ctx, String emoji, String label, String sub, boolean selected, Runnable onClick) {
+        return choiceCard(ctx, emoji, 0, label, sub, selected, onClick);
+    }
+
+    public static View choiceCard(Context ctx, String emoji, int iconRes, String label, String sub, boolean selected, Runnable onClick) {
         LinearLayout row = new LinearLayout(ctx);
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setGravity(Gravity.CENTER_VERTICAL);
@@ -36,7 +41,15 @@ public final class Widgets {
         lp.bottomMargin = dp(ctx, 10);
         row.setLayoutParams(lp);
 
-        if (emoji != null) {
+        if (iconRes != 0) {
+            ImageView iv = new ImageView(ctx);
+            iv.setImageResource(iconRes);
+            iv.setColorFilter(Color.WHITE);
+            int size = dp(ctx, 22);
+            LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(size, size);
+            ivLp.setMarginEnd(dp(ctx, 12));
+            row.addView(iv, ivLp);
+        } else if (emoji != null) {
             TextView em = new TextView(ctx);
             em.setText(emoji);
             em.setTextSize(20);
@@ -78,6 +91,10 @@ public final class Widgets {
 
     // ---------------- Light theme chip (Goals screen Ã¢â‚¬â€ cream sky background) ----------------
     public static View lightChip(Context ctx, String emoji, String label, boolean selected, Runnable onClick) {
+        return lightChip(ctx, emoji, 0, label, selected, onClick);
+    }
+
+    public static View lightChip(Context ctx, String emoji, int iconRes, String label, boolean selected, Runnable onClick) {
         LinearLayout row = new LinearLayout(ctx);
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setGravity(Gravity.CENTER_VERTICAL);
@@ -96,11 +113,21 @@ public final class Widgets {
         row.setBackground(gd);
         row.setElevation(selected ? dp(ctx, 3) : dp(ctx, 1));
 
-        TextView em = new TextView(ctx);
-        em.setText(emoji);
-        em.setTextSize(16);
-        em.setPadding(0, 0, dp(ctx, 8), 0);
-        row.addView(em);
+        if (iconRes != 0) {
+            ImageView iv = new ImageView(ctx);
+            iv.setImageResource(iconRes);
+            iv.setColorFilter(AdultOnboardingAppData.INK);
+            int size = dp(ctx, 18);
+            LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(size, size);
+            ivLp.setMarginEnd(dp(ctx, 8));
+            row.addView(iv, ivLp);
+        } else if (emoji != null) {
+            TextView em = new TextView(ctx);
+            em.setText(emoji);
+            em.setTextSize(16);
+            em.setPadding(0, 0, dp(ctx, 8), 0);
+            row.addView(em);
+        }
 
         TextView title = new TextView(ctx);
         title.setText(label);
@@ -142,6 +169,10 @@ public final class Widgets {
 
     // ---------------- Emotion bubble (circular) ----------------
     public static View emotionBubble(Context ctx, String emoji, String label, boolean selected, Runnable onClick) {
+        return emotionBubble(ctx, emoji, 0, label, selected, onClick);
+    }
+
+    public static View emotionBubble(Context ctx, String emoji, int iconRes, String label, boolean selected, Runnable onClick) {
         LinearLayout col = new LinearLayout(ctx);
         col.setOrientation(LinearLayout.VERTICAL);
         col.setGravity(Gravity.CENTER);
@@ -162,11 +193,21 @@ public final class Widgets {
         }
         col.setBackground(gd);
 
-        TextView em = new TextView(ctx);
-        em.setText(emoji);
-        em.setTextSize(26);
-        em.setGravity(Gravity.CENTER);
-        col.addView(em);
+        if (iconRes != 0) {
+            ImageView iv = new ImageView(ctx);
+            iv.setImageResource(iconRes);
+            iv.setColorFilter(Color.WHITE);
+            int icSize = dp(ctx, 28);
+            LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(icSize, icSize);
+            ivLp.bottomMargin = dp(ctx, 4);
+            col.addView(iv, ivLp);
+        } else if (emoji != null) {
+            TextView em = new TextView(ctx);
+            em.setText(emoji);
+            em.setTextSize(26);
+            em.setGravity(Gravity.CENTER);
+            col.addView(em);
+        }
 
         TextView title = new TextView(ctx);
         title.setText(label);

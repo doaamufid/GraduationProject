@@ -6,6 +6,7 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -26,16 +27,16 @@ public class PrivacyFragment extends BaseScreenFragment {
                 getString(R.string.adaptive_adult_onboarding_privacy_subtext),
                 Color.WHITE), 6);
 
-        String[][] cards = {
-                {"ðŸ”’", getString(R.string.adaptive_adult_onboarding_privacy_card1)},
-                {"ðŸ¤", getString(R.string.adaptive_adult_onboarding_privacy_card2)},
-                {"âœï¸", getString(R.string.adaptive_adult_onboarding_privacy_card3)},
-                {"ðŸ—‘", getString(R.string.adaptive_adult_onboarding_privacy_card4)},
+        int[][] cardData = {
+                {R.drawable.ic_lock, R.string.adaptive_adult_onboarding_privacy_card1},
+                {R.drawable.ic_check_circle, R.string.adaptive_adult_onboarding_privacy_card2},
+                {R.drawable.ic_pencil, R.string.adaptive_adult_onboarding_privacy_card3},
+                {R.drawable.ic_trash, R.string.adaptive_adult_onboarding_privacy_card4},
         };
 
         GridLayout grid = new GridLayout(requireContext());
         grid.setColumnCount(2);
-        for (String[] c : cards) {
+        for (int[] c : cardData) {
             LinearLayout cell = new LinearLayout(requireContext());
             cell.setOrientation(LinearLayout.VERTICAL);
             cell.setGravity(Gravity.CENTER);
@@ -46,11 +47,12 @@ public class PrivacyFragment extends BaseScreenFragment {
             cell.setBackground(gd);
             cell.setPadding(dp(12), dp(16), dp(12), dp(16));
 
-            TextView emoji = new TextView(requireContext());
-            emoji.setText(c[0]);
-            emoji.setTextSize(24);
-            emoji.setGravity(Gravity.CENTER);
-            cell.addView(emoji);
+            ImageView icon = new ImageView(requireContext());
+            icon.setImageResource(c[0]);
+            icon.setColorFilter(Color.WHITE);
+            int iconSize = dp(24);
+            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(iconSize, iconSize);
+            cell.addView(icon, icLp);
 
             TextView label = new TextView(requireContext());
             label.setText(c[1]);

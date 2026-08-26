@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -19,8 +20,8 @@ import java.util.List;
 public class PreviewFragment extends BaseScreenFragment {
 
     private static class Card {
-        String emoji, text; Integer jump;
-        Card(String e, String t, Integer j) { emoji = e; text = t; jump = j; }
+        int icon; String text; Integer jump;
+        Card(int i, String t, Integer j) { icon = i; text = t; jump = j; }
     }
 
     @Override protected int getScreenIndex() { return 11; }
@@ -30,16 +31,16 @@ public class PreviewFragment extends BaseScreenFragment {
     private List<Card> buildPreview() {
         List<Card> cards = new ArrayList<>();
         if (data.difficultTimes.contains("night")) {
-            cards.add(new Card("ðŸŒ™", getString(R.string.adaptive_adult_onboarding_preview_card_night), 7));
+            cards.add(new Card(R.drawable.ic_moon, getString(R.string.adaptive_adult_onboarding_preview_card_night), 7));
         }
         if (data.frequentEmotions.contains("anxiety") || data.frequentEmotions.contains("tension")) {
-            cards.add(new Card("ðŸ«", getString(R.string.adaptive_adult_onboarding_preview_card_anxiety), 4));
+            cards.add(new Card(R.drawable.ic_wind, getString(R.string.adaptive_adult_onboarding_preview_card_anxiety), 4));
         }
         if (data.helpfulActivities.contains("spiritual")) {
-            cards.add(new Card("ðŸ•Œ", getString(R.string.adaptive_adult_onboarding_preview_card_spiritual), 8));
+            cards.add(new Card(R.drawable.ic_sparkles, getString(R.string.adaptive_adult_onboarding_preview_card_spiritual), 8));
         }
         if (data.helpfulActivities.contains("writing")) {
-            cards.add(new Card("âœï¸", getString(R.string.adaptive_adult_onboarding_preview_card_writing), 8));
+            cards.add(new Card(R.drawable.ic_pencil, getString(R.string.adaptive_adult_onboarding_preview_card_writing), 8));
         }
         if (!data.goals.isEmpty() && !(data.goals.size() == 1 && data.goals.contains("explore"))) {
             StringBuilder sb = new StringBuilder();
@@ -47,16 +48,16 @@ public class PreviewFragment extends BaseScreenFragment {
             for (String gId : data.goals) {
                 if ("explore".equals(gId)) continue;
                 if (count >= 2) break;
-                if (count > 0) sb.append(getString(R.string.adaptive_adult_onboarding_app_name).equals("Salam") ? ", " : "ØŒ ");
+                if (count > 0) sb.append(getString(R.string.adaptive_adult_onboarding_app_name).equals("Salam") ? ", " : "، ");
                 sb.append(getString(findGoalLabelRes(gId)));
                 count++;
             }
             if (count > 0) {
-                cards.add(new Card("ðŸŒ±", getString(R.string.adaptive_adult_onboarding_preview_card_goals_prefix) + sb + ".", 9));
+                cards.add(new Card(R.drawable.ic_trees, getString(R.string.adaptive_adult_onboarding_preview_card_goals_prefix) + sb + ".", 9));
             }
         }
         if (cards.isEmpty()) {
-            cards.add(new Card("ðŸ¤", getString(R.string.adaptive_adult_onboarding_preview_card_default), null));
+            cards.add(new Card(R.drawable.ic_heart, getString(R.string.adaptive_adult_onboarding_preview_card_default), null));
         }
         return cards;
     }
@@ -97,19 +98,20 @@ public class PreviewFragment extends BaseScreenFragment {
             rowLp.topMargin = dp(14);
             list.addView(row, rowLp);
 
-            TextView emojiBubble = new TextView(requireContext());
-            emojiBubble.setText(c.emoji);
-            emojiBubble.setTextSize(20);
-            emojiBubble.setGravity(Gravity.CENTER);
-            int circle = dp(46);
-            LinearLayout.LayoutParams elp = new LinearLayout.LayoutParams(circle, circle);
+            ImageView iconView = new ImageView(requireContext());
+            iconView.setImageResource(c.icon);
+            iconView.setColorFilter(AdultOnboardingAppData.INK);
+            int circleSize = dp(46);
+            int iconSize = dp(22);
+            iconView.setPadding(dp(12), dp(12), dp(12), dp(12));
+            LinearLayout.LayoutParams elp = new LinearLayout.LayoutParams(circleSize, circleSize);
             elp.setMarginEnd(dp(14));
             android.graphics.drawable.GradientDrawable gd = new android.graphics.drawable.GradientDrawable();
             gd.setShape(android.graphics.drawable.GradientDrawable.OVAL);
             gd.setColor(AdultOnboardingAppData.GLOW);
-            emojiBubble.setBackground(gd);
-            emojiBubble.setLayoutParams(elp);
-            row.addView(emojiBubble);
+            iconView.setBackground(gd);
+            iconView.setLayoutParams(elp);
+            row.addView(iconView);
 
             LinearLayout card = new LinearLayout(requireContext());
             card.setOrientation(LinearLayout.HORIZONTAL);

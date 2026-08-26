@@ -5,6 +5,7 @@ import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -89,11 +90,20 @@ public class MoodDemoFragment extends BaseScreenFragment {
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             col.setLayoutParams(lp);
 
-            TextView emoji = new TextView(requireContext());
-            emoji.setText(f.emoji);
-            emoji.setTextSize(24);
-            emoji.setGravity(Gravity.CENTER);
-            col.addView(emoji);
+            if (f.iconRes != 0) {
+                ImageView icon = new ImageView(requireContext());
+                icon.setImageResource(f.iconRes);
+                int size = dp(28);
+                LinearLayout.LayoutParams ilp = new LinearLayout.LayoutParams(size, size);
+                ilp.bottomMargin = dp(4);
+                col.addView(icon, ilp);
+            } else {
+                TextView emoji = new TextView(requireContext());
+                emoji.setText(f.emoji);
+                emoji.setTextSize(24);
+                emoji.setGravity(Gravity.CENTER);
+                col.addView(emoji);
+            }
 
             TextView label = new TextView(requireContext());
             label.setText(f.labelRes);
