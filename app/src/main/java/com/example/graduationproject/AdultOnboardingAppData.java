@@ -65,29 +65,29 @@ public final class AdultOnboardingAppData {
     };
 
     public static final Option[] GENDER_OPTIONS = new Option[]{
-            new Option("female", "\uD83D\uDC69", R.string.adaptive_adult_onboarding_gender_female),
-            new Option("male", "\uD83D\uDC68", R.string.adaptive_adult_onboarding_gender_male),
+            new Option("female", "♀", R.string.adaptive_adult_onboarding_gender_female),
+            new Option("male", "♂", R.string.adaptive_adult_onboarding_gender_male),
     };
 
     // ---- Overall mood ----
     public static final Option[] MOOD_OPTIONS = new Option[]{
-            new Option("calm", "\uD83C\uDF24", R.string.adaptive_adult_onboarding_mood_calm),
-            new Option("pressured", "\uD83C\uDF27", R.string.adaptive_adult_onboarding_mood_pressured),
-            new Option("hard", "\uD83C\uDF2A", R.string.adaptive_adult_onboarding_mood_hard),
+            new Option("calm", "🌤", R.string.adaptive_adult_onboarding_mood_calm),
+            new Option("pressured", "🌧", R.string.adaptive_adult_onboarding_mood_pressured),
+            new Option("hard", "🌪", R.string.adaptive_adult_onboarding_mood_hard),
     };
 
     // ---- Frequent emotions ----
     public static final Option[] EMOTIONS = new Option[]{
-            new Option("tension", "\uD83D\uDE1F", R.string.adaptive_adult_onboarding_emotion_tension),
-            new Option("fear", "\uD83D\uDE28", R.string.adaptive_adult_onboarding_emotion_fear),
-            new Option("sadness", "\uD83D\uDE14", R.string.adaptive_adult_onboarding_emotion_sadness),
-            new Option("irritation", "\uD83D\uDE16", R.string.adaptive_adult_onboarding_emotion_irritation),
-            new Option("anxiety", "\uD83D\uDE30", R.string.adaptive_adult_onboarding_emotion_anxiety),
-            new Option("terror", "\uD83D\uDE31", R.string.adaptive_adult_onboarding_emotion_terror),
-            new Option("loneliness", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_emotion_loneliness),
-            new Option("exhaustion", "\uD83D\uDE35", R.string.adaptive_adult_onboarding_emotion_exhaustion),
-            new Option("unsure", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_emotion_unsure),
-            new Option("okay", "\uD83C\uDF24", R.string.adaptive_adult_onboarding_emotion_okay),
+            new Option("tension", "😟", R.string.adaptive_adult_onboarding_emotion_tension),
+            new Option("fear", "😨", R.string.adaptive_adult_onboarding_emotion_fear),
+            new Option("sadness", "😔", R.string.adaptive_adult_onboarding_emotion_sadness),
+            new Option("irritation", "😣", R.string.adaptive_adult_onboarding_emotion_irritation),
+            new Option("anxiety", "😰", R.string.adaptive_adult_onboarding_emotion_anxiety),
+            new Option("terror", "😱", R.string.adaptive_adult_onboarding_emotion_terror),
+            new Option("loneliness", "😶", R.string.adaptive_adult_onboarding_emotion_loneliness),
+            new Option("exhaustion", "😵", R.string.adaptive_adult_onboarding_emotion_exhaustion),
+            new Option("unsure", "🫥", R.string.adaptive_adult_onboarding_emotion_unsure),
+            new Option("okay", "🌤", R.string.adaptive_adult_onboarding_emotion_okay),
     };
 
     // ---- Safety ----
@@ -158,36 +158,36 @@ public final class AdultOnboardingAppData {
 
     // ---- Helpful activities ----
     public static final Option[] HELPFUL = new Option[]{
-            new Option("audio", "\uD83C\uDFA7", R.string.adaptive_adult_onboarding_helpful_audio),
-            new Option("breathing", "\uD83E\uDEC1", R.string.adaptive_adult_onboarding_helpful_breathing),
-            new Option("spiritual", "\u2728", R.string.adaptive_adult_onboarding_helpful_spiritual),
-            new Option("writing", "\u270D\uFE0F", R.string.adaptive_adult_onboarding_helpful_writing),
-            new Option("talking", "\uD83D\uDCAC", R.string.adaptive_adult_onboarding_helpful_talking),
-            new Option("movement", "\uD83D\uDEB6", R.string.adaptive_adult_onboarding_helpful_movement),
-            new Option("activity", "\uD83C\uDFAE", R.string.adaptive_adult_onboarding_helpful_activity),
-            new Option("unsure", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_helpful_unsure),
+            new Option("audio", "🎧", R.string.adaptive_adult_onboarding_helpful_audio),
+            new Option("breathing", "🫁", R.string.adaptive_adult_onboarding_helpful_breathing),
+            new Option("spiritual", "🕌", R.string.adaptive_adult_onboarding_helpful_spiritual),
+            new Option("writing", "✍️", R.string.adaptive_adult_onboarding_helpful_writing),
+            new Option("talking", "💬", R.string.adaptive_adult_onboarding_helpful_talking),
+            new Option("movement", "🚶", R.string.adaptive_adult_onboarding_helpful_movement),
+            new Option("activity", "🎮", R.string.adaptive_adult_onboarding_helpful_activity),
+            new Option("unsure", "😶", R.string.adaptive_adult_onboarding_helpful_unsure),
     };
 
     // ---- Goals ----
     public static final Option[] GOALS = new Option[]{
-            new Option("calm", "\uD83C\uDF24", R.string.adaptive_adult_onboarding_goal_calm),
-            new Option("stress", "\uD83E\uDEC1", R.string.adaptive_adult_onboarding_goal_stress),
-            new Option("understand", "\uD83E\uDDE0", R.string.adaptive_adult_onboarding_goal_understand),
-            new Option("routine", "\uD83D\uDDD3\uFE0F", R.string.adaptive_adult_onboarding_goal_routine),
-            new Option("sleep", "\uD83C\uDF19", R.string.adaptive_adult_onboarding_goal_sleep),
-            new Option("loneliness", "\uD83E\uDD0D", R.string.adaptive_adult_onboarding_goal_loneliness),
-            new Option("habits", "\uD83C\uDF31", R.string.adaptive_adult_onboarding_goal_habits),
-            new Option("express", "\u270D\uFE0F", R.string.adaptive_adult_onboarding_goal_express),
-            new Option("explore", "\uD83E\uDDEA", R.string.adaptive_adult_onboarding_goal_explore),
+            new Option("calm", "🌤", R.string.adaptive_adult_onboarding_goal_calm),
+            new Option("stress", "🫁", R.string.adaptive_adult_onboarding_goal_stress),
+            new Option("understand", "🧠", R.string.adaptive_adult_onboarding_goal_understand),
+            new Option("routine", "🗓️", R.string.adaptive_adult_onboarding_goal_routine),
+            new Option("sleep", "🌙", R.string.adaptive_adult_onboarding_goal_sleep),
+            new Option("loneliness", "🤍", R.string.adaptive_adult_onboarding_goal_loneliness),
+            new Option("habits", "🌱", R.string.adaptive_adult_onboarding_goal_habits),
+            new Option("express", "✍️", R.string.adaptive_adult_onboarding_goal_express),
+            new Option("explore", "🧭", R.string.adaptive_adult_onboarding_goal_explore),
     };
     public static final int GOAL_EXPLORE_RES = R.string.adaptive_adult_onboarding_goal_explore;
 
     // ---- Mood check-in demo ----
     public static final Option[] DEMO_FACES = new Option[]{
-            new Option("sad", "\uD83D\uDE14", R.string.adaptive_adult_onboarding_face_sad),
-            new Option("low", "\uD83D\uDE15", R.string.adaptive_adult_onboarding_face_low),
-            new Option("neutral", "\uD83D\uDE10", R.string.adaptive_adult_onboarding_face_neutral),
-            new Option("good", "\uD83D\uDE42", R.string.adaptive_adult_onboarding_face_good),
-            new Option("great", "\uD83D\uDE04", R.string.adaptive_adult_onboarding_face_great),
+            new Option("sad", "😔", R.string.adaptive_adult_onboarding_face_sad),
+            new Option("low", "😕", R.string.adaptive_adult_onboarding_face_low),
+            new Option("neutral", "😐", R.string.adaptive_adult_onboarding_face_neutral),
+            new Option("good", "🙂", R.string.adaptive_adult_onboarding_face_good),
+            new Option("great", "😄", R.string.adaptive_adult_onboarding_face_great),
     };
 }

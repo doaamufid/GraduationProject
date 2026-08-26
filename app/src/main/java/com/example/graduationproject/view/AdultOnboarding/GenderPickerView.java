@@ -5,6 +5,7 @@ import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import android.view.Gravity;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -65,7 +66,7 @@ public class GenderPickerView extends LinearLayout {
             col.setGravity(Gravity.CENTER);
             int w = AdultOnboardingUiUtils.dp(getContext(), 96);
             LayoutParams lp = new LayoutParams(w, LayoutParams.WRAP_CONTENT);
-            int m = AdultOnboardingUiUtils.dp(getContext(), 10);
+            int m = AdultOnboardingUiUtils.dp(getContext(), 6);
             lp.setMargins(m, m, m, m);
             col.setLayoutParams(lp);
             col.setPadding(AdultOnboardingUiUtils.dp(getContext(), 8), AdultOnboardingUiUtils.dp(getContext(), 16), AdultOnboardingUiUtils.dp(getContext(), 8), AdultOnboardingUiUtils.dp(getContext(), 16));
@@ -76,16 +77,36 @@ public class GenderPickerView extends LinearLayout {
             gd.setStroke(AdultOnboardingUiUtils.dp(getContext(), 1), selected ? AdultOnboardingAppData.GLOW : Color.argb(41, 255, 255, 255));
             col.setBackground(gd);
 
-            TextView symbol = new TextView(getContext());
-            symbol.setText(g.emoji);
-            symbol.setTextSize(26);
-            symbol.setTextColor(Color.WHITE);
-            symbol.setGravity(Gravity.CENTER);
-            int circle = AdultOnboardingUiUtils.dp(getContext(), 40);
-            LayoutParams symLp = new LayoutParams(circle, circle);
-            symLp.bottomMargin = AdultOnboardingUiUtils.dp(getContext(), 6);
-            symbol.setLayoutParams(symLp);
-            col.addView(symbol);
+            if (g.iconRes != 0) {
+                ImageView iv = new ImageView(getContext());
+                iv.setImageResource(g.iconRes);
+                iv.setColorFilter(Color.WHITE);
+                int circleSize = AdultOnboardingUiUtils.dp(getContext(), 40);
+                LayoutParams symLp = new LayoutParams(circleSize, circleSize);
+                symLp.bottomMargin = AdultOnboardingUiUtils.dp(getContext(), 6);
+                GradientDrawable symBg = new GradientDrawable();
+                symBg.setShape(GradientDrawable.OVAL);
+                symBg.setColor(selected ? AdultOnboardingAppData.GLOW : Color.argb(26, 255, 255, 255));
+                iv.setBackground(symBg);
+                iv.setPadding(AdultOnboardingUiUtils.dp(getContext(), 10), AdultOnboardingUiUtils.dp(getContext(), 10), AdultOnboardingUiUtils.dp(getContext(), 10), AdultOnboardingUiUtils.dp(getContext(), 10));
+                iv.setLayoutParams(symLp);
+                col.addView(iv);
+            } else {
+                TextView symbol = new TextView(getContext());
+                symbol.setText(g.emoji);
+                symbol.setTextSize(20);
+                symbol.setTextColor(Color.WHITE);
+                symbol.setGravity(Gravity.CENTER);
+                int circle = AdultOnboardingUiUtils.dp(getContext(), 40);
+                LayoutParams symLp = new LayoutParams(circle, circle);
+                symLp.bottomMargin = AdultOnboardingUiUtils.dp(getContext(), 6);
+                GradientDrawable symBg = new GradientDrawable();
+                symBg.setShape(GradientDrawable.OVAL);
+                symBg.setColor(selected ? AdultOnboardingAppData.GLOW : Color.argb(26, 255, 255, 255));
+                symbol.setBackground(symBg);
+                symbol.setLayoutParams(symLp);
+                col.addView(symbol);
+            }
 
             TextView label = new TextView(getContext());
             label.setText(g.labelRes);
@@ -95,9 +116,10 @@ public class GenderPickerView extends LinearLayout {
             col.addView(label);
 
             col.setOnClickListener(v -> setValue(g.id));
+            col.animate().translationY(selected ? -AdultOnboardingUiUtils.dp(getContext(), 3) : 0).scaleX(selected ? 1.03f : 1f).scaleY(selected ? 1.03f : 1f).setDuration(240).start();
             row.addView(col);
         }
         String prefText = getContext().getString(com.example.graduationproject.R.string.adaptive_adult_onboarding_gender_prefer_not);
-        preferNot.setText("unspecified".equals(value) ? ("Ã¢Å“â€œ " + prefText) : prefText);
+        preferNot.setText("unspecified".equals(value) ? ("✓ " + prefText) : prefText);
     }
 }

@@ -2,7 +2,6 @@ package com.example.graduationproject.Fragments.AdultOnboarding;
 
 import android.graphics.Color;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
@@ -34,12 +33,11 @@ public class FrequentEmotionsFragment extends BaseScreenFragment {
         flow.removeAllViews();
         for (Option em : AdultOnboardingAppData.EMOTIONS) {
             boolean selected = data.frequentEmotions.contains(em.id);
-            View bubble = Widgets.emotionBubble(requireContext(), em.emoji, getString(em.labelRes), selected, () -> {
+            flow.addView(Widgets.emotionBubble(requireContext(), em.emoji, em.iconRes, getString(em.labelRes), selected, () -> {
                 OnboardingData.toggle(data.frequentEmotions, em.id);
                 pulse();
                 render(flow);
-            });
-            flow.addView(bubble);
+            }));
         }
     }
 
