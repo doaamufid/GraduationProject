@@ -71,10 +71,10 @@ public class ReflectionActivity extends AppCompatActivity {
         };
         handler.postDelayed(showNextButtonRunnable, 4000);
 
-        // 4. الانتقال المباشر للـ Home بعد الضغط
+        // 4. الانتقال المباشر للـ AdultMood بعد الضغط
         btnNext.setOnClickListener(v -> {
             cleanupHandler();
-            Intent intent = new Intent(ReflectionActivity.this, MainActivity.class);
+            Intent intent = new Intent(ReflectionActivity.this, AdultMoodActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

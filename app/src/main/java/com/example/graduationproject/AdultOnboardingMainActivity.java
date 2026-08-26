@@ -95,8 +95,8 @@ public class AdultOnboardingMainActivity extends AppCompatActivity implements Ad
     @Override
     public void completeOnboarding() {
         data.onboardingCompleted = true;
-        // The final "Ready" screen button routes the user to the mood check-in.
-        Intent intent = new Intent(AdultOnboardingMainActivity.this, AdultMoodActivity.class);
+        // The final "Ready" screen button routes the user to the Reflection screen.
+        Intent intent = new Intent(AdultOnboardingMainActivity.this, ReflectionActivity.class);
         startActivity(intent);
         finish();
     }
