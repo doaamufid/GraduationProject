@@ -164,10 +164,12 @@ public class AdultMoodActivity extends AppCompatActivity {
 
     private void updateChipStyles(int selected, boolean animate) {
         for (int i = 0; i < chipViews.size(); i++) {
-            View chip = chipViews.get(i);
+            FrameLayout chip = (FrameLayout) chipViews.get(i);
+            FaceView icon = (FaceView) chip.getChildAt(0);
             boolean isSelected = (i == selected);
             int targetSize = dp(isSelected ? 42 : 36);
             float targetAlpha = isSelected ? 1f : 0.45f;
+            int targetIconColor = isSelected ? Color.WHITE : 0xFF26324A;
 
             if (animate) {
                 chip.animate().alpha(targetAlpha).setDuration(CHIP_ANIM_MS).start();
@@ -188,6 +190,7 @@ public class AdultMoodActivity extends AppCompatActivity {
                 lp.height = targetSize;
                 chip.setLayoutParams(lp);
             }
+            icon.setLineColor(targetIconColor);
             chip.setBackground(isSelected ? getDrawable(R.drawable.bg_chip_selected) : null);
             chip.setElevation(isSelected ? dp(3) : 0);
         }

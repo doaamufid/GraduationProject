@@ -33,7 +33,7 @@ public final class Widgets {
         row.setPadding(padH, padV, padH, padV);
         row.setBackground(cardBackground(ctx, selected));
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp.bottomMargin = dp(ctx, 10);
+        lp.bottomMargin = dp(ctx, 16);
         row.setLayoutParams(lp);
 
         if (emoji != null) {
@@ -64,7 +64,6 @@ public final class Widgets {
         row.setOnClickListener(v -> onClick.run());
         row.setClickable(true);
         row.setFocusable(true);
-        row.animate().translationY(selected ? -dp(ctx, 1) : 0).setDuration(220).start();
         return row;
     }
 
@@ -105,17 +104,16 @@ public final class Widgets {
         TextView title = new TextView(ctx);
         title.setText(label);
         title.setTextColor(AdultOnboardingAppData.INK);
-        title.setTextSize(13.5f);
+        title.setTextSize(15.5f);
         title.setTypeface(AdultOnboardingUiUtils.tajawal(selected));
         row.addView(title);
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int m = dp(ctx, 5);
+        int m = dp(ctx, 8);
         lp.setMargins(m, m, m, m);
         row.setLayoutParams(lp);
 
         row.setOnClickListener(v -> onClick.run());
-        row.animate().translationY(selected ? -dp(ctx, 2) : 0).scaleX(selected ? 1.03f : 1f).scaleY(selected ? 1.03f : 1f).setDuration(240).start();
         return row;
     }
 
@@ -133,7 +131,7 @@ public final class Widgets {
         gd.setStroke(dp(ctx, 1), selected ? AdultOnboardingAppData.GLOW : Color.argb(46, 255, 255, 255));
         tv.setBackground(gd);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        int m = dp(ctx, 4);
+        int m = dp(ctx, 6);
         lp.setMargins(m, m, m, m);
         tv.setLayoutParams(lp);
         tv.setOnClickListener(v -> onClick.run());
@@ -147,7 +145,7 @@ public final class Widgets {
         col.setGravity(Gravity.CENTER);
         int size = dp(ctx, 92);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(size, size);
-        int m = dp(ctx, 4);
+        int m = dp(ctx, 8);
         lp.setMargins(m, m, m, m);
         col.setLayoutParams(lp);
 
@@ -174,7 +172,6 @@ public final class Widgets {
         col.addView(title);
 
         col.setOnClickListener(v -> onClick.run());
-        col.animate().translationY(selected ? -dp(ctx, 6) : 0).scaleX(selected ? 1.06f : 1f).scaleY(selected ? 1.06f : 1f).setDuration(260).start();
         return col;
     }
 
@@ -208,23 +205,28 @@ public final class Widgets {
         col.addView(title);
 
         col.setOnClickListener(v -> onClick.run());
-        col.animate().translationY(selected ? -dp(ctx, 3) : 0).scaleX(selected ? 1.02f : 1f).scaleY(selected ? 1.02f : 1f).setDuration(260).start();
         return col;
     }
 
     // ---------------- Primary button ----------------
     public static android.widget.Button primaryButton(Context ctx, String text, boolean darkGlow, Runnable onClick) {
-        android.widget.Button btn = new android.widget.Button(ctx);
+        com.google.android.material.button.MaterialButton btn = new com.google.android.material.button.MaterialButton(ctx);
         btn.setText(text);
         btn.setAllCaps(false);
         btn.setTextColor(AdultOnboardingAppData.INK);
         btn.setTextSize(16);
         btn.setTypeface(AdultOnboardingUiUtils.cairo(true));
+
+        // Use custom background and ensure MaterialButton doesn't overwrite it with tint
+        btn.setBackgroundTintList(null);
         btn.setBackgroundResource(darkGlow ? com.example.graduationproject.R.drawable.bg_button_glow : com.example.graduationproject.R.drawable.bg_button_light);
-        btn.setElevation(dp(ctx, 6));
-        btn.setStateListAnimator(null);
+
+        btn.setElevation(dp(ctx, 8));
+        btn.setTranslationZ(dp(ctx, 2));
         btn.setPadding(dp(ctx, 18), dp(ctx, 15), dp(ctx, 18), dp(ctx, 15));
-        ViewGroup.LayoutParams lp = new ViewGroup.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, dp(ctx, 56));
+
+        android.widget.FrameLayout.LayoutParams lp = new android.widget.FrameLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, dp(ctx, 56));
         btn.setLayoutParams(lp);
         btn.setOnTouchListener((v, event) -> {
             switch (event.getAction()) {

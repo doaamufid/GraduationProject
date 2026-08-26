@@ -63,9 +63,6 @@ public class OverallMoodFragment extends BaseScreenFragment {
                 renderOptions(list);
             });
             list.addView(card);
-            if (selected) {
-                Widgets.startPulse(card);
-            }
         }
     }
 

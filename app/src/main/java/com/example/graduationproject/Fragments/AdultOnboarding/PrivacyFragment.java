@@ -53,8 +53,6 @@ public class PrivacyFragment extends BaseScreenFragment {
             LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(44), dp(44));
             icLp.bottomMargin = dp(8);
             cell.addView(emoji, icLp);
-            
-            Widgets.startPulse(emoji);
 
             TextView label = new TextView(requireContext());
             label.setText((String) c[1]);
@@ -69,7 +67,7 @@ public class PrivacyFragment extends BaseScreenFragment {
             glp.width = 0;
             glp.height = GridLayout.LayoutParams.WRAP_CONTENT;
             glp.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
-            glp.setMargins(dp(6), dp(6), dp(6), dp(6));
+            glp.setMargins(dp(10), dp(10), dp(10), dp(10));
             grid.addView(cell, glp);
         }
         addToContent(content, grid, 6);
