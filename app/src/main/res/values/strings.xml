@@ -1472,4 +1472,15 @@
     <string name="adult_stats_mood_calm">مرتاح</string>
     <string name="adult_stats_mood_happy">سعيد</string>
     <string name="adult_stats_mood_overjoyed">بهجة كاملة</string>
+    <string name="onboarding_skip">تخطي</string>
+    <string name="onboarding_next">التالي</string>
+    <string name="onboarding_start">ابدأ الآن</string>
+    <string name="onboarding1_title">أهلاً بك في سلام</string>
+    <string name="onboarding1_desc">مساحتك الآمنة للدعم النفسي، في أي وقت وأي مكان.</string>
+    <string name="onboarding2_title">يعمل بدون إنترنت، وبياناتك لك وحدك</string>
+    <string name="onboarding2_desc">كل ما تكتبه أو تسجله يبقى مشفراً على جهازك فقط — لا أسماء حقيقية، لا مشاركة بيانات.</string>
+    <string name="onboarding3_title">رفيق يسمعك ويرافقك</string>
+    <string name="onboarding3_desc">تحدث، فضفض، وجرّب تمارين نفسية بسيطة تساعدك تتنفس وتهدأ خطوة بخطوة.</string>
+    <string name="onboarding4_title">معك دائماً في أصعب اللحظات</string>
+    <string name="onboarding4_desc">صندوق نجاة نفسي، بيئات هادئة، وتمارين جاهزة بضغطة واحدة وقت الحاجة.</string>
 </resources>

@@ -150,8 +150,8 @@ public class SplashActivity extends AppCompatActivity {
     }
 
     private void navigateToNext() {
-        // Forcing onboarding to appear each time as requested
-        Intent intent = new Intent(SplashActivity.this, OnBoardingActivity1.class);
+        // Navigate to Language Selection as the first onboarding step
+        Intent intent = new Intent(SplashActivity.this, OnBoardingLanguageActivity.class);
         startActivity(intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
         finish();

@@ -70,16 +70,6 @@ public class CBTRReframingActivity extends AppCompatActivity {
     private View headerBack;
     private FrameLayout dialogOverlay;
 
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        Locale locale = new Locale("ar");
-        Locale.setDefault(locale);
-        Resources res = newBase.getResources();
-        Configuration config = new Configuration(res.getConfiguration());
-        config.setLocale(locale);
-        Context context = newBase.createConfigurationContext(config);
-        super.attachBaseContext(context);
-    }
 
     // ---- Write dialog views (statically included, bound once) ----
     private TextView tabText, tabVoice;

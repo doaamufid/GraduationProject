@@ -30,9 +30,6 @@ public class ArticlesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        // Force Arabic locale by default for RTL support
-        setLocale("ar");
-        
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_articles);
 
@@ -48,15 +45,6 @@ public class ArticlesActivity extends AppCompatActivity {
         }
     }
 
-    private void setLocale(String lang) {
-        Locale myLocale = new Locale(lang);
-        Resources res = getResources();
-        DisplayMetrics dm = res.getDisplayMetrics();
-        Configuration conf = res.getConfiguration();
-        conf.setLocale(myLocale);
-        conf.setLayoutDirection(myLocale);
-        res.updateConfiguration(conf, dm);
-    }
 
     private void navigateTo(Fragment fragment, boolean addToBackStack) {
         FragmentTransaction tx = getSupportFragmentManager().beginTransaction();

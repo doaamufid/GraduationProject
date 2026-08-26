@@ -24,7 +24,7 @@ public final class AppLanguageManager {
 
     public static String getSavedLanguage(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        String language = prefs.getString(KEY_LANGUAGE, LANGUAGE_ARABIC);
+        String language = prefs.getString(KEY_LANGUAGE, LANGUAGE_ENGLISH);
         return normalize(language);
     }
 
