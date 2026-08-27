@@ -4,7 +4,6 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -144,23 +143,16 @@ public class OnBoardingLanguageActivity extends AppCompatActivity {
 
     private void updateSelection() {
         boolean isArabic = AppLanguageManager.isArabic(selectedLanguage);
-        int primaryColor = getColor(R.color.primary);
-        int glassPillColor = Color.parseColor("#4DFFFFFF");
+        int blueColor = getColor(R.color.primary);
 
         // Update Arabic Card state
-        binding.cardArabic.setAlpha(isArabic ? 1.0f : 0.5f);
-        binding.tvSelectArabic.setBackgroundTintList(android.content.res.ColorStateList.valueOf(isArabic ? primaryColor : glassPillColor));
-        binding.tvSelectArabic.setTextColor(isArabic ? Color.WHITE : Color.parseColor("#0E2335"));
-        binding.tvSelectArabic.setText(isArabic ? R.string.language_selected_ar : R.string.language_select_ar);
+        binding.cardArabic.setAlpha(isArabic ? 1.0f : 0.4f);
+        binding.tvLanguageNameAr.setTextColor(isArabic ? blueColor : android.graphics.Color.WHITE);
 
         // Update English Card state
-        binding.cardEnglish.setAlpha(!isArabic ? 1.0f : 0.5f);
-        binding.tvSelectEnglish.setBackgroundTintList(android.content.res.ColorStateList.valueOf(!isArabic ? primaryColor : glassPillColor));
-        binding.tvSelectEnglish.setTextColor(!isArabic ? Color.WHITE : Color.parseColor("#0E2335"));
-        binding.tvSelectEnglish.setText(!isArabic ? R.string.language_selected_en : R.string.language_select_en);
+        binding.cardEnglish.setAlpha(!isArabic ? 1.0f : 0.4f);
+        binding.tvLanguageNameEn.setTextColor(!isArabic ? blueColor : android.graphics.Color.WHITE);
 
         binding.btnContinue.setText(R.string.continue_label);
-        binding.tvLangLabelAr.setText(R.string.language_label_ar);
-        binding.tvLangLabelEn.setText(R.string.language_label_en);
     }
 }
