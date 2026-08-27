@@ -1398,4 +1398,152 @@
     <string name="exercises_duration_5min">5 mins</string>
     <string name="exercises_duration_7min">7 mins</string>
     <string name="exercises_duration_10min">10 mins</string>
+    ```xml
+    <string name="kids_adaptive_app_name">Salam for Kids</string>
+
+    <!-- Common -->
+    <string name="kids_adaptive_back_cd">Back</string>
+    <string name="kids_adaptive_skip">Skip</string>
+    <string name="kids_adaptive_btn_continue">Continue</string>
+    <string name="kids_adaptive_unsure">I’m not sure</string>
+    <string name="kids_adaptive_dont_want_answer">I don’t want to answer</string>
+
+    <!-- Screen 0: Welcome -->
+    <string name="kids_adaptive_welcome_cta">Let’s start! 🎈</string>
+    <string name="kids_adaptive_welcome_title">Welcome to Salam 🧸</string>
+    <string name="kids_adaptive_welcome_body">A friendly place that helps you understand your feelings and find simple things that help you feel calm.</string>
+
+    <!-- Screen 1: Privacy -->
+    <string name="kids_adaptive_privacy_cta">Okay, let’s continue</string>
+    <string name="kids_adaptive_privacy_title">Before we begin...</string>
+    <string name="kids_adaptive_privacy_body">Some simple questions will help Salam understand you better. No one can see what you share except you.</string>
+    <string name="kids_adaptive_privacy_card_1">Your words stay private</string>
+    <string name="kids_adaptive_privacy_card_2">You can skip any question</string>
+    <string name="kids_adaptive_privacy_card_3">You can change your answers later</string>
+    <string name="kids_adaptive_privacy_card_4">You can delete them whenever you want</string>
+
+    <!-- Screen 2: Identity -->
+    <string name="kids_adaptive_identity_title">What would you like us to call you?</string>
+    <string name="kids_adaptive_identity_subtitle">Use a name you like, or leave it empty. No worries 🙂</string>
+    <string name="kids_adaptive_identity_hint">Write your name here…</string>
+    <string name="kids_adaptive_identity_greeting_prefix">Welcome</string>
+    <string name="kids_adaptive_age_question">How old are you?</string>
+    <string name="kids_adaptive_gender_question">Are you a boy or a girl?</string>
+    <string name="kids_adaptive_gender_female">Girl</string>
+    <string name="kids_adaptive_gender_male">Boy</string>
+    <string name="kids_adaptive_gender_unspecified">I don’t want to say</string>
+    <string name="kids_adaptive_gender_unspecified_selected">✓ I don’t want to say</string>
+
+    <!-- Screen 3: Overall mood -->
+    <string name="kids_adaptive_overall_mood_title">How have you been feeling lately?</string>
+    <string name="kids_adaptive_mood_calm">Usually happy and calm</string>
+    <string name="kids_adaptive_mood_pressured">A little upset or worried</string>
+    <string name="kids_adaptive_mood_hard">Things have been difficult for me lately</string>
+
+    <!-- Screen 4: Frequent emotions -->
+    <string name="kids_adaptive_emotions_title">What feelings visit you the most?</string>
+    <string name="kids_adaptive_emotions_subtitle">Choose what feels like you. There’s no set number.</string>
+    <string name="kids_adaptive_em_tension">Tense</string>
+    <string name="kids_adaptive_em_fear">Scared</string>
+    <string name="kids_adaptive_em_sadness">Sad</string>
+    <string name="kids_adaptive_em_irritation">Annoyed</string>
+    <string name="kids_adaptive_em_anxiety">Worried</string>
+    <string name="kids_adaptive_em_terror">Very scared</string>
+    <string name="kids_adaptive_em_loneliness">Alone</string>
+    <string name="kids_adaptive_em_exhaustion">Tired</string>
+    <string name="kids_adaptive_em_unsure">I don’t know</string>
+    <string name="kids_adaptive_em_okay">Usually okay</string>
+
+    <!-- Screen 5: Safety -->
+    <string name="kids_adaptive_safety_title">Do you sometimes feel uncomfortable or scared?</string>
+    <string name="kids_adaptive_safety_subtitle">There’s no wrong answer. Just tell us how you feel.</string>
+    <string name="kids_adaptive_safety_rarely">Rarely</string>
+    <string name="kids_adaptive_safety_sometimes">Sometimes</string>
+    <string name="kids_adaptive_safety_often">Often</string>
+    <string name="kids_adaptive_safety_most">Most of the time</string>
+
+    <!-- Screen 6: Intense fear -->
+    <string name="kids_adaptive_fear_body">Sometimes your heart may beat fast, or you may suddenly feel scared without knowing why.</string>
+    <string name="kids_adaptive_fear_title">Have you felt something like this lately?</string>
+    <string name="kids_adaptive_fear_yes_sometimes">Yes, sometimes</string>
+    <string name="kids_adaptive_fear_yes_often">Yes, often</string>
+    <string name="kids_adaptive_fear_rarely">Rarely</string>
+
+    <!-- Screen 7: Timeline -->
+    <string name="kids_adaptive_timeline_title">When are your feelings the hardest?</string>
+    <string name="kids_adaptive_period_morning">Morning</string>
+    <string name="kids_adaptive_period_day">Daytime</string>
+    <string name="kids_adaptive_period_evening">Evening</string>
+    <string name="kids_adaptive_period_night">Night</string>
+    <string name="kids_adaptive_followup_night_prompt">When night comes, what do you feel the most?</string>
+    <string name="kids_adaptive_followup_day_prompt">During the day, what do you feel the most?</string>
+    <string name="kids_adaptive_followup_morning_prompt">In the morning, what do you feel the most?</string>
+    <string name="kids_adaptive_followup_evening_prompt">In the evening, what do you feel the most?</string>
+
+    <!-- Screen 8: Helpful activities -->
+    <string name="kids_adaptive_helpful_title">When you’re having a difficult moment, what helps you?</string>
+    <string name="kids_adaptive_help_audio">Listen to songs or stories</string>
+    <string name="kids_adaptive_help_breathing">Take calm breaths</string>
+    <string name="kids_adaptive_help_spiritual">Azkar or Du\'a</string>
+    <string name="kids_adaptive_help_writing">Draw or write</string>
+    <string name="kids_adaptive_help_talking">Talk to someone I love</string>
+    <string name="kids_adaptive_help_movement">Play or move around</string>
+    <string name="kids_adaptive_help_activity">A simple game</string>
+    <string name="kids_adaptive_help_unsure">I don’t know what helps me</string>
+
+    <!-- Screen 9: Goals -->
+    <string name="kids_adaptive_goals_title">What do you hope Salam can help you with?</string>
+    <string name="kids_adaptive_goal_calm">Feel calm</string>
+    <string name="kids_adaptive_goal_stress">Deal with stress</string>
+    <string name="kids_adaptive_goal_understand">Understand my feelings</string>
+    <string name="kids_adaptive_goal_organize">Organize my day</string>
+    <string name="kids_adaptive_goal_sleep">Sleep better</string>
+    <string name="kids_adaptive_goal_alone">Feel less alone</string>
+    <string name="kids_adaptive_goal_habits">Build good habits</string>
+    <string name="kids_adaptive_goal_express">Express my feelings</string>
+    <string name="kids_adaptive_goal_watch">I just want to explore the app</string>
+
+    <!-- Screen 10: Mood demo -->
+    <string name="kids_adaptive_demo_intro">From time to time, Salam may ask you a simple question like this:</string>
+    <string name="kids_adaptive_demo_question">How was your day today?</string>
+    <string name="kids_adaptive_demo_face_sad">Hard</string>
+    <string name="kids_adaptive_demo_face_low">Tired</string>
+    <string name="kids_adaptive_demo_face_neutral">Okay</string>
+    <string name="kids_adaptive_demo_face_good">Good</string>
+    <string name="kids_adaptive_demo_face_great">Amazing</string>
+    <string name="kids_adaptive_demo_hint_after">This is exactly what your daily tracking will look like 🧸</string>
+    <string name="kids_adaptive_demo_hint_before">Try it now to see what it looks like</string>
+
+    <!-- Screen 11: Preview -->
+    <string name="kids_adaptive_preview_title">So far, we’ve gotten to know you a little 🧸</string>
+    <string name="kids_adaptive_preview_edit">Edit</string>
+    <string name="kids_adaptive_preview_footnote">These are just suggestions. You can change them later in Settings.</string>
+    <string name="kids_adaptive_preview_night">Nighttime might sometimes be a harder time for you.</string>
+    <string name="kids_adaptive_preview_breathing">We’ll suggest breathing exercises to help you calm down when you feel stressed.</string>
+    <string name="kids_adaptive_preview_spiritual">You can explore spiritual content if you’d like.</string>
+    <string name="kids_adaptive_preview_writing">We’ll suggest drawing and writing when they seem helpful for you.</string>
+    <string name="kids_adaptive_preview_goals_prefix">Based on what you shared, we’ll focus on: %1$s.</string>
+    <string name="kids_adaptive_preview_fallback">It seems you’d like to explore Salam on your own first, and that’s perfectly okay.</string>
+
+    <!-- Screen 12: Ready -->
+    <string name="kids_adaptive_ready_cta">Enter Salam 🎉</string>
+    <string name="kids_adaptive_ready_thanks">Thank you for telling us how you feel</string>
+    <string name="kids_adaptive_ready_body">You don’t have to be okay all the time.\nStep by step, we’re here with you.</string>
+
+    <!-- Home -->
+    <string name="kids_adaptive_home_greeting_label">Welcome</string>
+    <string name="kids_adaptive_home_default_name">Salam Friend</string>
+    <string name="kids_adaptive_home_suggested_now">Suggested for you now</string>
+    <string name="kids_adaptive_home_restart">Replay Onboarding (Demo Mode)</string>
+
+    <!-- Resume dialog -->
+    <string name="kids_adaptive_resume_title">Continue from where we stopped?</string>
+    <string name="kids_adaptive_resume_body">We saved your journey on your device.</string>
+    <string name="kids_adaptive_resume_continue">Continue</string>
+    <string name="kids_adaptive_resume_restart">Start Over</string>
+
+    <!-- Demo reopen debug button -->
+    <string name="kids_adaptive_simulate_reopen">Simulate Reopening</string>
+    <string name="kids_adaptive_simulate_reopen_cd">Simulate reopening the app (for demonstration purposes)</string>
+
 </resources>

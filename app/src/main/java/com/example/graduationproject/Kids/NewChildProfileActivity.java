@@ -20,6 +20,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graduationproject.KidsAdaptiveMainActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityNewChildProfileBinding;
@@ -186,8 +187,8 @@ public class NewChildProfileActivity extends AppCompatActivity {
 
         setResult(RESULT_OK);
 
-        Intent intent = new Intent(this, MoodCheckInActivity.class);
-        intent.putExtra(MoodCheckInActivity.EXTRA_CHILD_ID, newChildId);
+        Intent intent = new Intent(this, KidsAdaptiveMainActivity.class);
+        intent.putExtra("CHILD_ID", newChildId);
         intent.putExtra("CHILD_NAME", name);
         intent.putExtra("CHILD_AGE", selectedAge);
         intent.putExtra("CHILD_GENDER", selectedGender);

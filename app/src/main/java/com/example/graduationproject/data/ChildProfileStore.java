@@ -232,8 +232,8 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         return getWritableDatabase().insert(TABLE_CHAT, null, values);
     }
 
-    public List<ChatMessage> getChatHistory(long childId) {
-        List<ChatMessage> messages = new ArrayList<>();
+    public List<com.example.graduationproject.Kids.ChatMessage> getChatHistory(long childId) {
+        List<com.example.graduationproject.Kids.ChatMessage> messages = new ArrayList<>();
         String selection = COLUMN_CHILD_ID + " = ?";
         String[] selectionArgs = new String[]{String.valueOf(childId)};
 
@@ -248,7 +248,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
                 String text = cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_MESSAGE_TEXT));
                 boolean isUser = cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_IS_USER)) == 1;
-                messages.add(new ChatMessage(text, isUser));
+                messages.add(new com.example.graduationproject.Kids.ChatMessage(text, isUser));
             }
         }
         return messages;

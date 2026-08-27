@@ -266,7 +266,7 @@ public class SplashSelectActivity extends AppCompatActivity {
     }
 
     private void navigateToQuotes() {
-        Intent intent = new Intent(SplashSelectActivity.this, ReflectionActivity.class);
+        Intent intent = new Intent(SplashSelectActivity.this, com.example.graduationproject.Kids.ChildProfilesActivity.class);
         startActivity(intent);
         finish();
     }

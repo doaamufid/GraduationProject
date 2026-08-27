@@ -282,4 +282,17 @@
         <item name="android:textDirection">rtl</item>
         <item name="android:textColorHint">@color/text_soft</item>
     </style>
+    <style name="kids_adaptive.Theme.SalamKids" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/kids_adaptive_coral</item>
+        <item name="colorPrimaryDark">@color/kids_adaptive_sun</item>
+        <item name="colorAccent">@color/kids_adaptive_coral</item>
+        <item name="android:windowBackground">@color/kids_adaptive_root_bg</item>
+        <item name="android:statusBarColor">@color/kids_adaptive_sun_soft</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="kids_adaptive.Theme.SalamKids.Dialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+    </style>
 </resources>
