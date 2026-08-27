@@ -831,7 +831,7 @@
     <string name="cd_remove_image">إزالة الصورة</string>
     <string name="choose_card_color">اختر لون البطاقة</string>
 
-    <!-- Video & Article Bookmarks -->
+<!-- Video & Article Bookmarks -->
     <string name="bookmark_content">حفظ المحتوى</string>
     <string name="unbookmark_content">إلغاء الحفظ</string>
     <string name="video_library_sub">فيديوهات · VIDEOS</string>

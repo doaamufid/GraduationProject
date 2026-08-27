@@ -2,7 +2,6 @@ package com.example.graduationproject.Kids;
 
 import android.graphics.Bitmap;
 import android.util.Log;
-
 import com.google.firebase.ai.FirebaseAI;
 import com.google.firebase.ai.GenerativeModel;
 import com.google.firebase.ai.type.GenerativeBackend;
@@ -12,7 +11,6 @@ import com.google.firebase.ai.type.GenerateContentResponse;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
-
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -22,10 +20,8 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
 
 public class GeminiService {
-
     private static final String TAG = "GeminiService";
     private static final String MODEL_NAME = "gemini-3.5-flash-lite";
-
     private final GenerativeModelFutures model;
     private final Executor executor = Executors.newSingleThreadExecutor();
 
@@ -45,7 +41,6 @@ public class GeminiService {
      */
     private void executeGeminiRequest(Content content, GeminiCallback callback) {
         ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
-
         Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
             @Override
             public void onSuccess(GenerateContentResponse result) {
@@ -87,7 +82,6 @@ public class GeminiService {
                 .addImage(drawingBitmap)
                 .addText(buildDrawingPrompt())
                 .build();
-
         executeGeminiRequest(content, callback);
     }
 
@@ -102,7 +96,6 @@ public class GeminiService {
                         .addInlineData(audioBytes, "audio/mp4")
                         .addText(buildRecordingPrompt(phrase))
                         .build();
-
                 executeGeminiRequest(content, callback);
             } catch (IOException e) {
                 Log.e(TAG, "خطأ بقراءة ملف الصوت: " + e.getMessage(), e);
@@ -120,7 +113,6 @@ public class GeminiService {
                 + "باللغة العربية الفصحى المبسطة المناسبة للأطفال، إيجابية ومحفزة على الثقة بالنفس "
                 + "(مثال: أنا قوي، أنا شجاع — لا تكرري نفس الأمثلة). "
                 + "أعيدي فقط الكلمة/الجملة نفسها بدون علامات تنصيص وبدون أي شرح أو مقدمة.";
-
         executeGeminiRequest(prompt, new GeminiCallback() {
             @Override
             public void onSuccess(String message) {
@@ -135,13 +127,21 @@ public class GeminiService {
     }
 
     /**
+     * يولّد قصة قصيرة مناسبة للتصنيف المحدد (لعبة / صداقة / نوم / مشاعر...)
+     * القصة قصيرة ومناسبة للأطفال، وبتنقرأ لاحقاً بواسطة TextToSpeech.
+     */
+    public void generateStoryForCategory(String category, GeminiCallback callback) {
+        String prompt = buildStoryPrompt(category);
+        executeGeminiRequest(prompt, callback);
+    }
+
+    /**
      * إرسال رسالة مخصصة منفردة من الطفل
      */
     public void sendCustomPrompt(String userMessage, GeminiCallback callback) {
         String prompt = "أنت صديق لطيف ومرح للأطفال اسمه \"دبدوب نور\". "
                 + "رسالة الطفل هي: \"" + userMessage + "\". "
                 + "رد عليه برفق وبجملة أو جملتين فقط، بلغة عربية بسيطة ومحبة، وبدون مقدمات إضافية.";
-
         executeGeminiRequest(prompt, callback);
     }
 
@@ -152,7 +152,6 @@ public class GeminiService {
         StringBuilder fullPrompt = new StringBuilder();
         fullPrompt.append("أنت صديق لطيف للأطفال اسمك 'دبدوب نور'. تذكر ما قيل في المحادثة ورد بأسلوب محب وقصير (جملة أو جملتين) باللغة العربية المبسطة.\n\n");
         fullPrompt.append("سجل المحادثة:\n");
-
         for (ChatMessage msg : chatMessages) {
             if (msg.isUser()) {
                 fullPrompt.append("الطفل: ").append(msg.getMessage()).append("\n");
@@ -161,11 +160,19 @@ public class GeminiService {
             }
         }
         fullPrompt.append("دبدوب نور:");
-
         executeGeminiRequest(fullPrompt.toString(), callback);
     }
 
     // --- Helper Functions & Prompts ---
+
+    private String buildStoryPrompt(String category) {
+        return "أنت \"نور\"، راوية قصص لطيفة للأطفال الصغار. "
+                + "اكتبي قصة قصيرة جداً (٤ إلى ٦ جمل فقط) مناسبة لتصنيف \"" + category + "\"، "
+                + "باللغة العربية الفصحى المبسطة المناسبة للأطفال، "
+                + "بأسلوب دافئ، مشوّق، وإيجابي، بحيث تُقرأ بصوت عالٍ للطفل. "
+                + "لا تكرري نفس القصة، اخترعي قصة جديدة كل مرة، وابتعدي عن أي محتوى مخيف أو حزين. "
+                + "أعيدي فقط نص القصة نفسه بدون عنوان وبدون أي مقدمات أو شروحات.";
+    }
 
     private String buildMoodPrompt(String mood) {
         return "أنت دبدوب لطيف اسمه \"دبدوب نور\"، ترافق طفلاً صغيراً وتدعمه نفسياً. "
@@ -198,7 +205,6 @@ public class GeminiService {
     private byte[] readFileBytes(File file) throws IOException {
         try (FileInputStream fis = new FileInputStream(file);
              ByteArrayOutputStream buffer = new ByteArrayOutputStream()) {
-
             int nRead;
             byte[] data = new byte[16384];
             while ((nRead = fis.read(data, 0, data.length)) != -1) {

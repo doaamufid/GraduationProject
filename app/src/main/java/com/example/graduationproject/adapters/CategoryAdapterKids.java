@@ -106,7 +106,7 @@ public class CategoryAdapterKids extends RecyclerView.Adapter<CategoryAdapterKid
 
         public CategoryViewHolder(@NonNull View itemView) {
             super(itemView);
-            label = itemView.findViewById(R.id.categoryLabel);
+            label = itemView.findViewById(R.id.txt_category_icon);
             icon = itemView.findViewById(R.id.categoryIcon);
             iconCard = itemView.findViewById(R.id.categoryIconCard);
             underline = itemView.findViewById(R.id.categoryUnderline);

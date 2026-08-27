@@ -1,10 +1,76 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent" android:layout_height="match_parent" android:layoutDirection="rtl" android:background="@color/bg_cream" android:orientation="vertical" android:padding="20dp" android:gravity="center_horizontal">
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/header_title" android:textColor="@color/orange_dark" android:textSize="18sp" android:textStyle="bold"/>
-    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1"/>
-    <ImageView android:layout_width="88dp" android:layout_height="88dp" android:src="@drawable/mascot_fox"/>
-    <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:gravity="center" android:text="@string/listen_to_yourself" android:textColor="@color/orange_dark" android:textSize="18sp" android:textStyle="bold"/>
-    <ImageButton android:id="@+id/playButton" android:layout_width="90dp" android:layout_height="90dp" android:layout_marginTop="28dp" android:background="@drawable/circle_teal" android:padding="26dp" android:src="@drawable/ic_play"/>
-    <View android:layout_width="1dp" android:layout_height="0dp" android:layout_weight="1"/>
-    <Button android:id="@+id/saveButton" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="12dp" android:background="@drawable/bg_button_orange" android:text="@string/save_it" android:textAllCaps="false" android:textColor="@color/white" android:textSize="15sp" android:textStyle="bold"/>
-    <Button android:id="@+id/recordAgainButton" android:layout_width="match_parent" android:layout_height="52dp" android:layout_marginBottom="8dp" android:background="@drawable/bg_button_outline" android:text="@string/record_again" android:textAllCaps="false" android:textColor="@color/orange_dark" android:textSize="15sp"/>
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@color/bg_cream"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/header_title_words"
+        android:textColor="@color/orange_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <ImageView
+        android:layout_width="88dp"
+        android:layout_height="88dp"
+        android:src="@drawable/mascot_fox" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="@string/listen_to_yourself"
+        android:textColor="@color/orange_dark"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <ImageButton
+        android:id="@+id/playButton"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:layout_marginTop="28dp"
+        android:background="@drawable/circle_teal"
+        android:padding="26dp"
+        android:src="@drawable/ic_play" />
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <Button
+        android:id="@+id/saveButton"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/bg_button_orange"
+        android:text="@string/save_it"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/recordAgainButton"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_button_outline"
+        android:text="@string/record_again"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="15sp" />
+
 </LinearLayout>

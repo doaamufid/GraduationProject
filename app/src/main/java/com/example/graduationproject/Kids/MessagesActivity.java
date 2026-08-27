@@ -30,8 +30,9 @@ public class MessagesActivity extends AppCompatActivity {
         childProfileStore = new ChildProfileStore(this);
         currentChildId = getIntent().getLongExtra(EXTRA_CHILD_ID, -1);
 
-        binding.btnBack.setOnClickListener(v -> finish());
-
+        binding.btnBack.setOnClickListener(v ->
+                getOnBackPressedDispatcher().onBackPressed()
+        );
         loadMessages();
     }
 

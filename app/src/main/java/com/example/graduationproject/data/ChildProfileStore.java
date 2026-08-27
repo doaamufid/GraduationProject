@@ -182,7 +182,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         insertSound(db, "ريح", "ic_wind", "wind_sound", "circle", 5);
         insertSound(db, "ماء", "ic_water", "water_sound", "circle", 6);
         insertSound(db, "طيور", "ic_birds", "birds_sound", "circle", 7);
-        insertSound(db, "قبل النوم", "ic_elephant", "elephant_sound", "circle", 8);
+        insertSound(db, "قبل النوم", "ic_clock_small", "elephant_sound", "circle", 8);
         insertSound(db, "شمس", "ic_sun", "sun_sound", "circle", 10);
 
         insertVideo(db, "قصة وقت النوم", null, "نوم",

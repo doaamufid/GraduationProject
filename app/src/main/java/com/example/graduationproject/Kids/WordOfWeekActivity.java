@@ -3,6 +3,8 @@ package com.example.graduationproject.Kids;
 import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
+import android.speech.tts.UtteranceProgressListener;
+import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -24,9 +26,14 @@ public class WordOfWeekActivity extends AppCompatActivity {
 
     public static final String EXTRA_PHRASE = "extra_phrase";
 
+    // إعدادات صوت "نور" لتصير ودودة ومناسبة للأطفال: نبرة أعلى شوي وسرعة أبطأ قليلاً
+    private static final float NOOR_VOICE_PITCH = 1.15f;
+    private static final float NOOR_VOICE_SPEECH_RATE = 1f;
+    private TextView listenFirstVoiceButton;
     private TextToSpeech textToSpeech;
     private String currentPhrase;
     private TextView phraseText;
+    private boolean isTtsReady = false;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,10 +54,15 @@ public class WordOfWeekActivity extends AppCompatActivity {
         textToSpeech = new TextToSpeech(this, status -> {
             if (status == TextToSpeech.SUCCESS && textToSpeech != null) {
                 textToSpeech.setLanguage(new Locale("ar"));
+                // نبرة وسرعة مضبوطتين لصوت أقرب لأسلوب دافئ ومناسب للأطفال
+                textToSpeech.setPitch(NOOR_VOICE_PITCH);
+                textToSpeech.setSpeechRate(NOOR_VOICE_SPEECH_RATE);
+                isTtsReady = true;
             }
         });
 
-        findViewById(R.id.listenFirstVoiceButton).setOnClickListener(v -> speakPhrase());
+        listenFirstVoiceButton = findViewById(R.id.listenFirstVoiceButton);
+        listenFirstVoiceButton.setOnClickListener(v -> speakPhrase());
 
         ImageButton micButton = findViewById(R.id.micButton);
         micButton.setOnClickListener(v -> {
@@ -79,9 +91,29 @@ public class WordOfWeekActivity extends AppCompatActivity {
     }
 
     private void speakPhrase() {
-        if (textToSpeech != null) {
-            textToSpeech.speak(currentPhrase, TextToSpeech.QUEUE_FLUSH, null, "phrase_utterance");
+        if (!isTtsReady || textToSpeech == null || currentPhrase == null) {
+            return;
         }
+
+        // نعطّل الزر أثناء الكلام حتى ما يصير ضغط متكرر يشغّل أكتر من نسخة فوق بعضها
+        listenFirstVoiceButton.setEnabled(false);
+
+        textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
+            @Override
+            public void onStart(String utteranceId) {}
+
+            @Override
+            public void onDone(String utteranceId) {
+                runOnUiThread(() -> listenFirstVoiceButton.setEnabled(true));
+            }
+
+            @Override
+            public void onError(String utteranceId) {
+                runOnUiThread(() -> listenFirstVoiceButton.setEnabled(true));
+            }
+        });
+
+        textToSpeech.speak(currentPhrase, TextToSpeech.QUEUE_FLUSH, null, "phrase_utterance");
     }
 
     @Override
