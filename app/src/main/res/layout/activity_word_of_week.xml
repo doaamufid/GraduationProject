@@ -2,7 +2,7 @@
     <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="vertical" android:padding="20dp">
         <!--  الهيدر  -->
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
-            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/header_title" android:textColor="@color/orange_dark" android:textSize="18sp" android:textStyle="bold"/>
+            <TextView android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:text="@string/header_title_words" android:textColor="@color/orange_dark" android:textSize="18sp" android:textStyle="bold"/>
             <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="09:41" android:textColor="@color/text_gray" android:textSize="12sp"/>
         </LinearLayout>
         <!--  شارة كلمة الأسبوع + نجوم  -->
@@ -23,7 +23,24 @@
         <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="20dp" android:background="@drawable/bg_card_border" android:orientation="vertical" android:padding="20dp">
             <ImageView android:layout_width="44dp" android:layout_height="44dp" android:src="@drawable/mascot_lion"/>
             <TextView android:id="@+id/phraseText" android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="10dp" android:gravity="center" android:text="@string/default_phrase" android:textColor="@color/text_dark" android:textSize="18sp" android:textStyle="bold"/>
-            <TextView android:id="@+id/listenFirstVoiceButton" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_gravity="center_horizontal" android:layout_marginTop="16dp" android:background="@drawable/bg_pill_light" android:paddingStart="16dp" android:paddingTop="8dp" android:paddingEnd="16dp" android:paddingBottom="8dp" android:text="@string/listen_first_voice" android:textColor="@color/orange_dark" android:textSize="13sp" android:clickable="true" android:focusable="true"/>
+
+            <TextView
+                android:id="@+id/listenFirstVoiceButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_pill_light"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="16dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="8dp"
+                android:text="@string/listen_first_voice"
+                android:textColor="@color/orange_dark"
+                android:textSize="13sp"
+                android:visibility="gone" />
         </LinearLayout>
         <!--  زر المايك  -->
         <ImageButton android:id="@+id/micButton" android:layout_width="76dp" android:layout_height="76dp" android:layout_gravity="center_horizontal" android:layout_marginTop="28dp" android:background="@drawable/circle_orange" android:contentDescription="@string/press_and_record" android:padding="22dp" android:src="@drawable/ic_mic"/>

@@ -31,11 +31,7 @@
                 android:layout_height="1dp"
                 android:layout_weight="1" />
 
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@android:drawable/ic_menu_search"
-                android:contentDescription="بحث" />
+
         </LinearLayout>
 
         <!-- Teddy avatar -->
@@ -106,7 +102,7 @@
                 android:id="@+id/moodUpset"
                 style="@style/MoodItem"
                 android:tag="محزون"
-                android:text="😔&#10;محزون" />
+                android:text="😔&#10;مكتئب" />
         </GridLayout>
 
         <!-- Confirm button -->
@@ -152,7 +148,7 @@
                 android:id="@+id/cardPlayBushes"
                 style="@style/CategoryCard"
                 android:background="@drawable/bg_card_orange"
-                android:text="🌳&#10;شجيرات اللعبة" />
+                android:text="📔&#10;كلماتك القوية"/>
 
             <TextView
                 android:id="@+id/cardVideos"

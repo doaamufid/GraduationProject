@@ -131,7 +131,6 @@ public class MoodCheckInActivity extends AppCompatActivity {
                     Intent intent = new Intent(MoodCheckInActivity.this, MessagesActivity.class);
                     intent.putExtra(MessagesActivity.EXTRA_CHILD_ID, currentChildId);
                     startActivity(intent);
-                    finish();
                 });
             }
 

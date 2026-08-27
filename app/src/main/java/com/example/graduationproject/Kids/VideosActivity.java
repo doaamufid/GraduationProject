@@ -8,8 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.graduationproject.adapters.CategoryAdapterKids;
-import com.example.graduationproject.adapters.CategoryAdapter2;
+import com.example.graduationproject.adapters.CategoryAdapter;
 import com.example.graduationproject.adapters.VideoAdapter;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityVideosBinding;
@@ -28,7 +27,7 @@ public class VideosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding =ActivityVideosBinding.inflate(getLayoutInflater());
+        binding = ActivityVideosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         dbStore = new ChildProfileStore(this);
@@ -47,7 +46,7 @@ public class VideosActivity extends AppCompatActivity {
         categories.add("نوم");
         categories.add("مشاعر");
 
-        CategoryAdapterKids categoryAdapter = new CategoryAdapterKids(categories, this::filterVideos);
+        CategoryAdapter categoryAdapter = new CategoryAdapter(categories, this::filterVideos);
         binding.categoryRecycler.setAdapter(categoryAdapter);
 
         // أول تصنيف محدد افتراضياً عند فتح الشاشة
@@ -58,12 +57,11 @@ public class VideosActivity extends AppCompatActivity {
         binding.videosRecycler.setLayoutManager(new GridLayoutManager(this, 2));
 
         videoAdapter = new VideoAdapter(new ArrayList<>(), video -> {
-            Intent intent = new Intent(VideosActivity.this, VideoDetailActivity.class);
-            intent.putExtra(VideoDetailActivity.EXTRA_TITLE, video.getTitle());
-            intent.putExtra(VideoDetailActivity.EXTRA_SUBTITLE, video.getSubtitle());
-            intent.putExtra(VideoDetailActivity.EXTRA_THUMBNAIL_NAME, video.getThumbnailName());
-            intent.putExtra(VideoDetailActivity.EXTRA_VIDEO_FILE, video.getVideoFile());
-            intent.putExtra(VideoDetailActivity.EXTRA_DURATION, video.getDuration());
+            // بدل تشغيل فيديو ثابت، نفتح شاشة القصة المولّدة من Gemini
+            // ونمررلها التصنيف بس (هي بتتكفل بتوليد القصة + التشغيل)
+            Intent intent = new Intent(VideosActivity.this, StoryPlaybackActivity.class);
+            intent.putExtra(StoryPlaybackActivity.EXTRA_CATEGORY, video.getCategory());
+            intent.putExtra(StoryPlaybackActivity.EXTRA_TITLE, video.getTitle());
             startActivity(intent);
         });
         binding.videosRecycler.setAdapter(videoAdapter);

@@ -99,8 +99,8 @@
                 android:elevation="0dp"
                 android:text="@string/btn_retake"
                 android:textAllCaps="false"
-                android:textColor="@color/text_dark"
-                android:textSize="15sp"/>
+                android:textColor="@color/white"
+                android:textSize="15sp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
