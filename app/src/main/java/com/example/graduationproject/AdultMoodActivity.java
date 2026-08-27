@@ -42,6 +42,11 @@ public class AdultMoodActivity extends AppCompatActivity {
     private TextView moodLabel;
     private LinearLayout selectorRow;
 
+    @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
     private final List<com.example.graduationproject.models.Mood> moods = new ArrayList<>();
     private final List<View> chipViews = new ArrayList<>();
     private int selectedIndex = 3; // "neutral" — same default as the React version
@@ -65,8 +70,16 @@ public class AdultMoodActivity extends AppCompatActivity {
         buildSelectorChips();
         renderInstant(selectedIndex);
 
-        findViewById(R.id.btn_continue).setOnClickListener(v ->
-                startActivity(new Intent(this, MainActivity.class)));
+        findViewById(R.id.btn_continue).setOnClickListener(v -> {
+            // Save selected mood for Home screen
+            com.example.graduationproject.models.Mood mood = moods.get(selectedIndex);
+            getSharedPreferences("AppPrefs", MODE_PRIVATE).edit()
+                    .putString("today_mood_id", mood.id)
+                    .putInt("today_mood_color", mood.circleColor)
+                    .apply();
+
+            startActivity(new Intent(this, ReflectionActivity.class));
+        });
     }
 
     /** Same 7 moods / colours as ADULT_MOODS in the React source. */
@@ -112,13 +125,15 @@ public class AdultMoodActivity extends AppCompatActivity {
         }
     }
 
-    /** Keeps the status bar the same colour as the screen background. */
-    private void applyStatusBarColor(int color) {
+    /** Keeps the status and navigation bars the same colour as the screen background. */
+    private void applySystemBarColors(int color) {
         getWindow().setStatusBarColor(color);
+        getWindow().setNavigationBarColor(color);
 
-        // All 7 mood backgrounds are light, so use dark status-bar icons for contrast.
-        WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView())
-                .setAppearanceLightStatusBars(true);
+        // All 7 mood backgrounds are light, so use dark icons for contrast.
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        controller.setAppearanceLightStatusBars(true);
+        controller.setAppearanceLightNavigationBars(true);
     }
 
     /** Draws the initial state with no animation (used once, on launch). */
@@ -130,7 +145,7 @@ public class AdultMoodActivity extends AppCompatActivity {
         moodLabel.setText(mood.label);
         heroCircle.setBackground(ovalOrRect(mood.circleColor, true));
         updateChipStyles(index, false);
-        applyStatusBarColor(mood.bgColor);
+        applySystemBarColors(mood.bgColor);
     }
 
     /** User tapped a new mood chip — animate everything to the new mood. */
@@ -141,7 +156,7 @@ public class AdultMoodActivity extends AppCompatActivity {
         selectedIndex = newIndex;
 
         animateColor(from.bgColor, to.bgColor, rootLayout::setBackgroundColor);
-        animateColor(from.bgColor, to.bgColor, this::applyStatusBarColor);
+        animateColor(from.bgColor, to.bgColor, this::applySystemBarColors);
         animateColor(from.accentColor, to.accentColor,
                 c -> progressFill.setBackground(ovalOrRect(c, false)));
         animateColor(from.circleColor, to.circleColor,

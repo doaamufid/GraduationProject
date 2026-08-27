@@ -41,6 +41,27 @@ public final class AppLanguageManager {
         applyLanguage(context, getSavedLanguage(context));
     }
 
+    public static Context wrapContext(Context context) {
+        String language = getSavedLanguage(context);
+        Locale locale = new Locale(language);
+        Locale.setDefault(locale);
+
+        Resources res = context.getResources();
+        Configuration config = new Configuration(res.getConfiguration());
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            config.setLocale(locale);
+            config.setLayoutDirection(locale);
+            return context.createConfigurationContext(config);
+        } else {
+            config.locale = locale;
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+                config.setLayoutDirection(locale);
+            }
+            res.updateConfiguration(config, res.getDisplayMetrics());
+            return context;
+        }
+    }
+
     public static void applyLanguage(Context context, String language) {
         String normalized = normalize(language);
         Locale locale = new Locale(normalized);
@@ -48,8 +69,14 @@ public final class AppLanguageManager {
 
         Resources resources = context.getResources();
         Configuration config = new Configuration(resources.getConfiguration());
-        config.setLocale(locale);
-        config.setLayoutDirection(locale);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+            config.setLocale(locale);
+        } else {
+            config.locale = locale;
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            config.setLayoutDirection(locale);
+        }
         resources.updateConfiguration(config, resources.getDisplayMetrics());
 
         if (context instanceof Activity) {

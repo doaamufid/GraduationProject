@@ -15,6 +15,11 @@ import com.example.graduationproject.databinding.ActivityOnBoarding2Binding;
 
 public class OnBoardingActivity2 extends AppCompatActivity {
 
+    @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
     private ActivityOnBoarding2Binding binding;
 
     @Override

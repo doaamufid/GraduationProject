@@ -39,6 +39,8 @@ public class TimelineFragment extends BaseScreenFragment {
 
         GridLayout grid = new GridLayout(requireContext());
         grid.setColumnCount(2);
+        grid.setAlignmentMode(GridLayout.ALIGN_BOUNDS);
+        grid.setUseDefaultMargins(false); // We set them manually
         addToContent(content, grid, 10);
 
         followupsContainer = new LinearLayout(requireContext());
@@ -84,8 +86,8 @@ public class TimelineFragment extends BaseScreenFragment {
 
             TextView prompt = new TextView(requireContext());
             prompt.setText(fu.promptRes);
-            prompt.setTextColor(Color.WHITE);
-            prompt.setTextSize(14);
+            prompt.setTextColor(AdultOnboardingAppData.INK); // Changed to ink
+            prompt.setTextSize(15);
             prompt.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.tajawal(true));
             box.addView(prompt);
 

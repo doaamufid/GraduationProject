@@ -29,7 +29,7 @@ public class SafetyFragment extends BaseScreenFragment {
 
         LinearLayout list = new LinearLayout(requireContext());
         list.setOrientation(LinearLayout.VERTICAL);
-        addToContent(content, list, 4);
+        addToContent(content, list, 8); // Slightly more margin
         render(list);
     }
 
@@ -37,7 +37,7 @@ public class SafetyFragment extends BaseScreenFragment {
         list.removeAllViews();
         for (Option o : AdultOnboardingAppData.SAFETY_OPTIONS) {
             boolean selected = o.id.equals(data.safetyFeeling);
-            list.addView(Widgets.choiceCard(requireContext(), null, getString(o.labelRes), null, selected, () -> {
+            list.addView(Widgets.choiceCard(requireContext(), null, getString(o.labelRes), null, o.color, selected, () -> {
                 data.safetyFeeling = o.id;
                 render(list);
             }));

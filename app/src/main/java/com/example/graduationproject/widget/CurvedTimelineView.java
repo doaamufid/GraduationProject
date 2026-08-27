@@ -48,16 +48,16 @@ public class CurvedTimelineView extends View {
         density = context.getResources().getDisplayMetrics().density;
 
         thickPaint.setStyle(Paint.Style.STROKE);
-        thickPaint.setStrokeWidth(60 * density);
+        thickPaint.setStrokeWidth(6 * density);
         thickPaint.setStrokeCap(Paint.Cap.ROUND);
-        thickPaint.setColor(context.getResources().getColor(R.color.path_color));
-        thickPaint.setAlpha(255); // Full opacity for the river color, as it's already light
+        thickPaint.setColor(context.getResources().getColor(R.color.white));
+        thickPaint.setAlpha(80); // Faint solid line underneath
 
         dashedPaint.setStyle(Paint.Style.STROKE);
-        dashedPaint.setStrokeWidth(2 * density);
+        dashedPaint.setStrokeWidth(3 * density);
         dashedPaint.setStrokeCap(Paint.Cap.ROUND);
-        dashedPaint.setColor(context.getResources().getColor(R.color.path_dark));
-        dashedPaint.setPathEffect(new DashPathEffect(new float[]{1 * density, 10 * density}, 0));
+        dashedPaint.setColor(context.getResources().getColor(R.color.white));
+        dashedPaint.setPathEffect(new DashPathEffect(new float[]{10 * density, 15 * density}, 0));
     }
 
     /** Points in dp, matching {@link TimelineGeometry#computePoints(int)}. */

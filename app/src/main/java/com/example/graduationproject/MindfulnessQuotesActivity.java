@@ -112,7 +112,7 @@ public class MindfulnessQuotesActivity extends AppCompatActivity {
             intent = new Intent(MindfulnessQuotesActivity.this, ChildProfilesActivity.class);
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         } else {
-            intent = new Intent(MindfulnessQuotesActivity.this, ReflectionActivity.class);
+            intent = new Intent(MindfulnessQuotesActivity.this, AdultMoodActivity.class);
         }
 
         startActivity(intent);

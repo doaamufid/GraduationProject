@@ -71,17 +71,29 @@ public class GenderPickerView extends LinearLayout {
             col.setPadding(AdultOnboardingUiUtils.dp(getContext(), 8), AdultOnboardingUiUtils.dp(getContext(), 16), AdultOnboardingUiUtils.dp(getContext(), 8), AdultOnboardingUiUtils.dp(getContext(), 16));
 
             GradientDrawable gd = new GradientDrawable();
-            gd.setCornerRadius(AdultOnboardingUiUtils.dp(getContext(), 20));
-            gd.setColor(selected ? Color.argb(41, 255, 227, 176) : Color.argb(15, 255, 255, 255));
-            gd.setStroke(AdultOnboardingUiUtils.dp(getContext(), 1), selected ? AdultOnboardingAppData.GLOW : Color.argb(41, 255, 255, 255));
+            // Blob radius
+            gd.setCornerRadii(new float[]{
+                AdultOnboardingUiUtils.dp(getContext(), 30), AdultOnboardingUiUtils.dp(getContext(), 30),
+                AdultOnboardingUiUtils.dp(getContext(), 20), AdultOnboardingUiUtils.dp(getContext(), 20),
+                AdultOnboardingUiUtils.dp(getContext(), 40), AdultOnboardingUiUtils.dp(getContext(), 40),
+                AdultOnboardingUiUtils.dp(getContext(), 25), AdultOnboardingUiUtils.dp(getContext(), 25)
+            });
+
+            if (selected) {
+                gd.setColor(Color.WHITE);
+                gd.setStroke(AdultOnboardingUiUtils.dp(getContext(), 2.5f), AdultOnboardingAppData.INK);
+            } else {
+                gd.setColor(Color.argb(160, 255, 255, 255));
+                gd.setStroke(AdultOnboardingUiUtils.dp(getContext(), 1), Color.argb(30, 0, 0, 0));
+            }
             col.setBackground(gd);
 
             TextView symbol = new TextView(getContext());
             symbol.setText(g.emoji);
-            symbol.setTextSize(26);
-            symbol.setTextColor(Color.WHITE);
+            symbol.setTextSize(32); // Bigger icon
+            symbol.setTextColor(AdultOnboardingAppData.INK); // Changed to ink
             symbol.setGravity(Gravity.CENTER);
-            int circle = AdultOnboardingUiUtils.dp(getContext(), 40);
+            int circle = AdultOnboardingUiUtils.dp(getContext(), 48);
             LayoutParams symLp = new LayoutParams(circle, circle);
             symLp.bottomMargin = AdultOnboardingUiUtils.dp(getContext(), 6);
             symbol.setLayoutParams(symLp);
@@ -89,8 +101,8 @@ public class GenderPickerView extends LinearLayout {
 
             TextView label = new TextView(getContext());
             label.setText(g.labelRes);
-            label.setTextColor(Color.WHITE);
-            label.setTextSize(13);
+            label.setTextColor(AdultOnboardingAppData.INK); // Changed to ink
+            label.setTextSize(14.5f);
             label.setTypeface(AdultOnboardingUiUtils.tajawal(selected));
             col.addView(label);
 

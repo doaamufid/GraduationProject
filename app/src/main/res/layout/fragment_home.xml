@@ -4,113 +4,277 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg"
+    android:background="#FDFCF9"
     tools:context=".bottomNavFragments.HomeFragment">
 
-    <com.example.graduationproject.ui.LiquidGradientView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/imageLayout"
+    <!-- Optional: Keep the subtle wave if desired, but I'll focus on the new UI -->
+    <ImageView
+        android:id="@+id/imgWaveBottom"
         android:layout_width="match_parent"
         android:layout_height="400dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent">
-
-        <ImageView
-            android:id="@+id/imgWaveBottom"
-            android:layout_width="match_parent"
-            android:layout_height="500dp"
-            android:layout_marginBottom="-20dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/img_1"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        android:scaleType="centerCrop"
+        android:src="@drawable/img_1"
+        android:alpha="0.3"
+        app:layout_constraintBottom_toBottomOf="parent" />
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
         android:clipToPadding="false"
-        android:paddingBottom="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:paddingBottom="100dp">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layoutDirection="rtl">
+            android:orientation="vertical"
+            android:padding="24dp">
 
-            <TextView
-                android:id="@+id/tvGreeting"
-                android:layout_width="0dp"
+            <!-- Header Section -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_alignParentStart="true">
+
+                    <TextView
+                        android:id="@+id/tvGreeting"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/home_greeting_morning"
+                        android:textColor="#1A1A1A"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCheckIn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/home_check_in_label"
+                        android:textColor="#9E9E9E"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageButton
+                        android:id="@+id/btnNotifications"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/bg_circle_white"
+                        android:src="@drawable/ic_bell"
+                        android:padding="10dp"
+                        app:tint="@color/text_main"
+                        android:contentDescription="Notifications" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/bg_pill_white"
+                        android:gravity="center"
+                        android:paddingHorizontal="12dp"
+                        android:paddingVertical="6dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_flame"
+                            app:tint="#FF7043" />
+
+                        <TextView
+                            android:id="@+id/tvStreakCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="4dp"
+                            android:text="7"
+                            android:textColor="#212121"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!-- Mood Weekly Row -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvWeeklyMood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:listitem="@layout/item_weekly_mood" />
+
+            <!-- Session Title Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:lineSpacingExtra="4dp"
-                android:text="@string/home_greeting_default"
-                android:textColor="#2D5B7B"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_session_title"
+                    android:textColor="#1A1A1A"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_circle_orange_stroke"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#FF7043"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Feature Cards - Redesigned to be thinner and lighter -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardCalm"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="20dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#E1F1FF">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="20dp">
+
+                    <ImageView
+                        android:id="@+id/ivCalmIllust"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/chat3"
+                        app:tint="#4A90E2"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ivCalmIllust"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tvCalmTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_calm_title_main"
+                            android:textColor="#1D3557"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/home_calm_sub_main"
+                            android:textColor="#457B9D"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardBreathing"
+                android:layout_width="match_parent"
+                android:layout_height="100dp"
+                android:layout_marginTop="16dp"
+                app:cardCornerRadius="24dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="#D4EDDA">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:paddingHorizontal="20dp">
+
+                    <ImageView
+                        android:id="@+id/ivBreathingIllust"
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:src="@drawable/ic_wind"
+                        app:tint="#2D6A4F"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginStart="16dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/ivBreathingIllust"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:id="@+id/tvBreathingTitle"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/home_breathing_title_main"
+                            android:textColor="#1B4332"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/home_breathing_sub_main"
+                            android:textColor="#409167"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
+
+            <!-- Other Features Section (Optional, if you want to keep them) -->
             <TextView
-                android:id="@+id/tvMoodTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
-                android:text="@string/home_mood_title"
-                android:textColor="#6A8CA3"
-                android:textSize="12sp"
-                app:layout_constraintStart_toStartOf="@id/tvGreeting"
-                app:layout_constraintTop_toBottomOf="@id/tvGreeting" />
-
-            <app.rive.runtime.kotlin.RiveAnimationView
-                android:id="@+id/riveMood"
-                android:layout_width="0dp"
-                android:layout_height="180dp"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="12dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/tvMoodTitle" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/rvActions"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginHorizontal="24dp"
-                android:layout_marginTop="16dp"
-                android:nestedScrollingEnabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/riveMood"
-                tools:itemCount="2"
-                tools:listitem="@layout/item_home_action" />
+                android:layout_marginTop="32dp"
+                android:text="@string/home_explore_title_main"
+                android:textColor="#1A1A1A"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvFeatures"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginHorizontal="18dp"
                 android:layout_marginTop="8dp"
                 android:nestedScrollingEnabled="false"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/rvActions"
                 app:spanCount="3"
-                tools:itemCount="9"
+                tools:itemCount="6"
                 tools:listitem="@layout/item_home_feature" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
+        </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

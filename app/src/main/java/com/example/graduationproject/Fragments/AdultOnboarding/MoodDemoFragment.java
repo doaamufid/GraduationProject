@@ -36,16 +36,16 @@ public class MoodDemoFragment extends BaseScreenFragment {
         card.setOrientation(LinearLayout.VERTICAL);
         GradientDrawable gd = new GradientDrawable();
         gd.setCornerRadius(dp(20));
-        gd.setColor(Color.argb(18, 255, 255, 255));
-        gd.setStroke(dp(1), Color.argb(41, 255, 255, 255));
+        gd.setColor(Color.argb(160, 255, 255, 255));
+        gd.setStroke(dp(1), Color.argb(40, 0, 0, 0));
         card.setBackground(gd);
         card.setPadding(dp(14), dp(18), dp(14), dp(18));
         addToContent(content, card, 12);
 
         TextView question = new TextView(requireContext());
         question.setText(R.string.adaptive_adult_onboarding_mood_demo_question);
-        question.setTextColor(Color.WHITE);
-        question.setTextSize(16);
+        question.setTextColor(com.example.graduationproject.AdultOnboardingAppData.INK);
+        question.setTextSize(17);
         question.setGravity(Gravity.CENTER);
         question.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.cairo(true));
         LinearLayout.LayoutParams qlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -81,11 +81,11 @@ public class MoodDemoFragment extends BaseScreenFragment {
             col.setGravity(Gravity.CENTER);
             col.setPadding(dp(2), dp(8), dp(2), dp(8));
             if (isSel) {
-                GradientDrawable gd = new GradientDrawable();
-                gd.setCornerRadius(dp(12));
-                gd.setColor(Color.argb(46, 255, 227, 176));
-                gd.setStroke(dp(1), AdultOnboardingAppData.GLOW);
-                col.setBackground(gd);
+                GradientDrawable bg = new GradientDrawable();
+                bg.setCornerRadius(dp(12));
+                bg.setColor(Color.WHITE);
+                bg.setStroke(dp(2), com.example.graduationproject.AdultOnboardingAppData.INK);
+                col.setBackground(bg);
             }
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             lp.setMargins(dp(2), 0, dp(2), 0);
@@ -93,17 +93,17 @@ public class MoodDemoFragment extends BaseScreenFragment {
 
             TextView emoji = new TextView(requireContext());
             emoji.setText(f.emoji);
-            emoji.setTextSize(32);
+            emoji.setTextSize(34); // Bigger icon
             emoji.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(44), dp(44));
+            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(48), dp(48));
             icLp.bottomMargin = dp(4);
             col.addView(emoji, icLp);
 
             TextView label = new TextView(requireContext());
             label.setText(f.labelRes);
-            label.setTextColor(Color.WHITE);
-            label.setAlpha(0.75f);
-            label.setTextSize(10.5f);
+            label.setTextColor(com.example.graduationproject.AdultOnboardingAppData.INK);
+            label.setAlpha(0.9f);
+            label.setTextSize(11f);
             label.setGravity(Gravity.CENTER);
             col.addView(label);
 

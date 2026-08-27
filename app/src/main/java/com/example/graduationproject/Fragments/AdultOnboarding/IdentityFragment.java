@@ -48,12 +48,13 @@ public class IdentityFragment extends BaseScreenFragment {
         nicknameInput = new EditText(requireContext());
         nicknameInput.setHint(R.string.adaptive_adult_onboarding_identity_hint);
         nicknameInput.setHintTextColor(Color.argb(120, 33, 27, 51)); // Dark hint (Ink alpha)
-        nicknameInput.setTextColor(AdultOnboardingAppData.INK); // Dark text
+        nicknameInput.setTextColor(com.example.graduationproject.AdultOnboardingAppData.INK); // Dark text
         nicknameInput.setGravity(Gravity.CENTER);
-        nicknameInput.setTextSize(16);
+        nicknameInput.setTextSize(18); // Slightly bigger
         nicknameInput.setBackgroundResource(com.example.graduationproject.R.drawable.bg_input_field);
-        nicknameInput.setPadding(dp(16), dp(14), dp(16), dp(14));
+        nicknameInput.setPadding(dp(16), dp(18), dp(16), dp(18)); // More padding
         nicknameInput.setSingleLine(true);
+        nicknameInput.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.tajawal(true));
         if (data.nickname != null) nicknameInput.setText(data.nickname);
         addToContent(content, nicknameInput, 14);
 

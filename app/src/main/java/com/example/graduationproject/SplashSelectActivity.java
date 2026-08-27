@@ -34,18 +34,19 @@ public class SplashSelectActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Apply locale + layout direction before super.onCreate to ensure layout inflation uses it
+        String lang = getAppLanguage();
+        applyLocale(lang);
+        
         super.onCreate(savedInstanceState);
-
-        // Apply locale + layout direction: RTL for Arabic (default), LTR for English
-        applyLocale(getAppLanguage());
-
         EdgeToEdge.enable(this);
 
         binding = ActivitySplashSelectBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Explicitly enforce the direction on this screen (RTL for Arabic, LTR for English)
-        binding.getRoot().setLayoutDirection(isRtl() ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR);
+        // Explicitly enforce the direction on the root view
+        int direction = "ar".equals(lang) ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR;
+        binding.getRoot().setLayoutDirection(direction);
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());

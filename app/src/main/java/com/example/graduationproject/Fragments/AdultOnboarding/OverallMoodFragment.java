@@ -36,8 +36,8 @@ public class OverallMoodFragment extends BaseScreenFragment {
         gd.setAlpha(150);
         bar.setBackground(gd);
         LinearLayout.LayoutParams barLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(6));
-        barLp.topMargin = dp(10);
-        barLp.bottomMargin = dp(4);
+        barLp.topMargin = dp(14);
+        barLp.bottomMargin = dp(6);
         content.addView(bar, barLp);
 
         LinearLayout list = new LinearLayout(requireContext());
@@ -58,7 +58,7 @@ public class OverallMoodFragment extends BaseScreenFragment {
         list.removeAllViews();
         for (Option m : AdultOnboardingAppData.MOOD_OPTIONS) {
             boolean selected = m.id.equals(data.overallMood);
-            View card = Widgets.choiceCard(requireContext(), m.emoji, getString(m.labelRes), null, selected, () -> {
+            View card = Widgets.choiceCard(requireContext(), m.emoji, getString(m.labelRes), null, m.color, selected, () -> {
                 data.overallMood = m.id;
                 renderOptions(list);
             });

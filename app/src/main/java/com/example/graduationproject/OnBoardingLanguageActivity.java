@@ -23,6 +23,11 @@ public class OnBoardingLanguageActivity extends AppCompatActivity {
     private String selectedLanguage;
 
     @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         AppLanguageManager.applySavedLanguage(this);

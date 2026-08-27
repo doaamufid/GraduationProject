@@ -18,28 +18,15 @@
         android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
+        app:layout_constraintBottom_toTopOf="@id/bottom_navigation_container"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
+    <FrameLayout
+        android:id="@+id/bottom_navigation_container"
         android:layout_width="match_parent"
-        android:layout_height="75dp"
-        android:background="#FFFFFF"
-        android:elevation="8dp"
-
-        app:labelVisibilityMode="labeled"
-
-        app:itemIconTint="@color/bottom_nav_colors"
-        app:itemTextColor="@color/bottom_nav_colors"
-
-        app:itemIconSize="26dp"
-        app:itemTextAppearanceActive="@style/BottomNavLabelStyle"
-        app:itemTextAppearanceInactive="@style/BottomNavLabelStyle"
-
-        app:itemRippleColor="@android:color/transparent"
-
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <include layout="@layout/layout_bottom_nav_custom" />
+    </FrameLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
