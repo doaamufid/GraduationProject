@@ -56,7 +56,8 @@ public class ChildProfilesActivity extends AppCompatActivity {
                         .putLong("current_child_id", profile.getId())
                         .apply();
 
-                Intent intent = new Intent(ChildProfilesActivity.this, KidsAiChatActivity.class);
+                Intent intent = new Intent(ChildProfilesActivity.this, com.example.graduationproject.ReflectionActivity.class);
+                intent.putExtra("FOR_KIDS", true);
                 intent.putExtra("CHILD_ID", profile.getId());
                 intent.putExtra("CHILD_NAME", profile.getName());
                 startActivity(intent);
@@ -84,7 +85,7 @@ public class ChildProfilesActivity extends AppCompatActivity {
     }
 
     private void openNewProfileScreen() {
-        startActivity(new Intent(this,NewChildProfileActivity.class));
+        startActivity(new Intent(this, com.example.graduationproject.KidsAdaptiveMainActivity.class));
     }
 
     private void loadProfiles() {

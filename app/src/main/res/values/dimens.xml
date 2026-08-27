@@ -61,4 +61,23 @@
     <dimen name="card_small_height">168dp</dimen>
     <dimen name="thumb_size">56dp</dimen>
     <dimen name="screen_padding">18dp</dimen>
+    <dimen name="kids_adaptive_phone_max_width">420dp</dimen>
+    <dimen name="kids_adaptive_phone_max_height">880dp</dimen>
+
+    <dimen name="kids_adaptive_screen_padding_h">22dp</dimen>
+    <dimen name="kids_adaptive_teddy_header_size">64dp</dimen>
+    <dimen name="kids_adaptive_teddy_hero_size">120dp</dimen>
+    <dimen name="kids_adaptive_teddy_ready_size">104dp</dimen>
+    <dimen name="kids_adaptive_teddy_home_size">48dp</dimen>
+
+    <dimen name="kids_adaptive_corner_card">20dp</dimen>
+    <dimen name="kids_adaptive_corner_button">22dp</dimen>
+    <dimen name="kids_adaptive_corner_pill">999dp</dimen>
+
+    <dimen name="kids_adaptive_text_title">21sp</dimen>
+    <dimen name="kids_adaptive_text_title_lg">28sp</dimen>
+    <dimen name="kids_adaptive_text_subtitle">14sp</dimen>
+    <dimen name="kids_adaptive_text_body">15sp</dimen>
+    <dimen name="kids_adaptive_text_button">18sp</dimen>
+    <dimen name="kids_adaptive_text_small">12sp</dimen>
 </resources>

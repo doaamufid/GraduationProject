@@ -33,12 +33,21 @@ public class ReflectionActivity extends AppCompatActivity {
 
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable showNextButtonRunnable;
+    private boolean forKids = false;
+    private long childId = -1;
+    private String childName = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_reflection);
+
+        if (getIntent() != null) {
+            forKids = getIntent().getBooleanExtra("FOR_KIDS", false);
+            childId = getIntent().getLongExtra("CHILD_ID", -1);
+            childName = getIntent().getStringExtra("CHILD_NAME");
+        }
 
         // تطبيق حواف الشاشة على محتوى الواجهة الأمامية فقط لتستمر الخلفية بالظهور تحت الـ Status Bar
         View contentContainer = findViewById(R.id.content_container);
@@ -74,8 +83,15 @@ public class ReflectionActivity extends AppCompatActivity {
         // 4. الانتقال إلى MainActivity بعد الضغط
         btnNext.setOnClickListener(v -> {
             cleanupHandler();
-            
-            Intent intent = new Intent(ReflectionActivity.this, MainActivity.class);
+
+            Intent intent;
+            if (forKids) {
+                intent = new Intent(ReflectionActivity.this, com.example.graduationproject.Kids.KidsAiChatActivity.class);
+                intent.putExtra("CHILD_ID", childId);
+                intent.putExtra("CHILD_NAME", childName);
+            } else {
+                intent = new Intent(ReflectionActivity.this, MainActivity.class);
+            }
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
             finish();

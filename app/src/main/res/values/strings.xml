@@ -1534,4 +1534,154 @@
     <string name="exercises_duration_5min">٥ دقائق</string>
     <string name="exercises_duration_7min">٧ دقائق</string>
     <string name="exercises_duration_10min">١٠ دقائق</string>
+
+
+    <string name="kids_adaptive_app_name">سلام للأطفال</string>
+
+    <!-- Common -->
+    <string name="kids_adaptive_back_cd">رجوع</string>
+    <string name="kids_adaptive_skip">تخطي</string>
+    <string name="kids_adaptive_btn_continue">متابعة</string>
+    <string name="kids_adaptive_unsure">مو متأكد</string>
+    <string name="kids_adaptive_dont_want_answer">ما أحب أجاوب</string>
+
+    <!-- Screen 0: Welcome -->
+    <string name="kids_adaptive_welcome_cta">يلا نبدأ 🎈</string>
+    <string name="kids_adaptive_welcome_title">أهلاً بك في سلام 🧸</string>
+    <string name="kids_adaptive_welcome_body">مكان لطيف يساعدك تتعرف على مشاعرك، وتلاقي أشياء بسيطة تخلّيك تحس بالراحة.</string>
+
+    <!-- Screen 1: Privacy -->
+    <string name="kids_adaptive_privacy_cta">تمام، يلا نكمل</string>
+    <string name="kids_adaptive_privacy_title">قبل ما نبدأ...</string>
+    <string name="kids_adaptive_privacy_body">بعض الأسئلة بسيطة، وبتساعد سلام يصير أقرب لك. محد بيشوف كلامك غيرك.</string>
+    <string name="kids_adaptive_privacy_card_1">كلامك يبقى سرّك</string>
+    <string name="kids_adaptive_privacy_card_2">تقدر تتخطى أي سؤال</string>
+    <string name="kids_adaptive_privacy_card_3">تقدر تغيّر إجابتك بعدين</string>
+    <string name="kids_adaptive_privacy_card_4">تقدر تمسحها وقت ما تبي</string>
+
+    <!-- Screen 2: Identity -->
+    <string name="kids_adaptive_identity_title">شو تحب نناديك؟</string>
+    <string name="kids_adaptive_identity_subtitle">اسم تحبه، أو خله فاضي، لا تشيل هم 🙂</string>
+    <string name="kids_adaptive_identity_hint">اكتب اسمك هنا…</string>
+    <string name="kids_adaptive_identity_greeting_prefix">يا هلا فيك</string>
+    <string name="kids_adaptive_age_question">كم عمرك؟</string>
+    <string name="kids_adaptive_gender_question">ولد ولا بنت؟</string>
+    <string name="kids_adaptive_gender_female">بنت</string>
+    <string name="kids_adaptive_gender_male">ولد</string>
+    <string name="kids_adaptive_gender_unspecified">ما أحب أقول</string>
+    <string name="kids_adaptive_gender_unspecified_selected">✓ ما أحب أقول</string>
+
+    <!-- Screen 3: Overall mood -->
+    <string name="kids_adaptive_overall_mood_title">شلون حسّك هالأيام؟</string>
+    <string name="kids_adaptive_mood_calm">مبسوط ومرتاح غالباً</string>
+    <string name="kids_adaptive_mood_pressured">متضايق أو قلقان شوي</string>
+    <string name="kids_adaptive_mood_hard">الأمور صعبة عليّ هالأيام</string>
+
+    <!-- Screen 4: Frequent emotions -->
+    <string name="kids_adaptive_emotions_title">وش الأحاسيس اللي تزورك أكثر؟</string>
+    <string name="kids_adaptive_emotions_subtitle">اختر اللي يشبهك، ما فيه عدد معيّن</string>
+    <string name="kids_adaptive_em_tension">متوتر</string>
+    <string name="kids_adaptive_em_fear">خايف</string>
+    <string name="kids_adaptive_em_sadness">حزين</string>
+    <string name="kids_adaptive_em_irritation">منزعج</string>
+    <string name="kids_adaptive_em_anxiety">قلقان</string>
+    <string name="kids_adaptive_em_terror">خوف شديد</string>
+    <string name="kids_adaptive_em_loneliness">لحالي</string>
+    <string name="kids_adaptive_em_exhaustion">تعبان</string>
+    <string name="kids_adaptive_em_unsure">مو عارف</string>
+    <string name="kids_adaptive_em_okay">تمام غالباً</string>
+
+    <!-- Screen 5: Safety -->
+    <string name="kids_adaptive_safety_title">هل يصير أحياناً تحس إنك مو مرتاح أو خايف؟</string>
+    <string name="kids_adaptive_safety_subtitle">ما فيه جواب غلط، قول اللي تحس فيه بس</string>
+    <string name="kids_adaptive_safety_rarely">نادراً</string>
+    <string name="kids_adaptive_safety_sometimes">أحياناً</string>
+    <string name="kids_adaptive_safety_often">كثير</string>
+    <string name="kids_adaptive_safety_most">أغلب الوقت</string>
+
+    <!-- Screen 6: Intense fear -->
+    <string name="kids_adaptive_fear_body">بعض المرات القلب يدق بسرعة أو نحس بخوف مفاجئ من دون سبب واضح.</string>
+    <string name="kids_adaptive_fear_title">صار وياك شي شبيه هالأيام؟</string>
+    <string name="kids_adaptive_fear_yes_sometimes">إي، أحياناً</string>
+    <string name="kids_adaptive_fear_yes_often">إي، كثير</string>
+    <string name="kids_adaptive_fear_rarely">نادراً</string>
+
+    <!-- Screen 7: Timeline -->
+    <string name="kids_adaptive_timeline_title">وقت إيش تكون مشاعرك أصعب؟</string>
+    <string name="kids_adaptive_period_morning">الصباح</string>
+    <string name="kids_adaptive_period_day">النهار</string>
+    <string name="kids_adaptive_period_evening">المساء</string>
+    <string name="kids_adaptive_period_night">الليل</string>
+    <string name="kids_adaptive_followup_night_prompt">لما يجي الليل، إيش تحس أكثر؟</string>
+    <string name="kids_adaptive_followup_day_prompt">خلال النهار، إيش تحس أكثر؟</string>
+    <string name="kids_adaptive_followup_morning_prompt">في الصباح، إيش تحس أكثر؟</string>
+    <string name="kids_adaptive_followup_evening_prompt">في المساء، إيش تحس أكثر؟</string>
+
+    <!-- Screen 8: Helpful activities -->
+    <string name="kids_adaptive_helpful_title">لما تحس بلحظة صعبة، إيش يساعدك؟</string>
+    <string name="kids_adaptive_help_audio">أسمع أغاني أو قصص</string>
+    <string name="kids_adaptive_help_breathing">أتنفس بهدوء</string>
+    <string name="kids_adaptive_help_spiritual">أذكار أو دعاء</string>
+    <string name="kids_adaptive_help_writing">أرسم أو أكتب</string>
+    <string name="kids_adaptive_help_talking">أحكي مع حد أحبه</string>
+    <string name="kids_adaptive_help_movement">ألعب أو أتحرك</string>
+    <string name="kids_adaptive_help_activity">لعبة بسيطة</string>
+    <string name="kids_adaptive_help_unsure">ما أدري إيش يساعدني</string>
+
+    <!-- Screen 9: Goals -->
+    <string name="kids_adaptive_goals_title">وش تتمنى سلام يساعدك فيه؟</string>
+    <string name="kids_adaptive_goal_calm">أحس بالراحة</string>
+    <string name="kids_adaptive_goal_stress">أتعامل مع التوتر</string>
+    <string name="kids_adaptive_goal_understand">أفهم مشاعري</string>
+    <string name="kids_adaptive_goal_organize">أنظّم يومي</string>
+    <string name="kids_adaptive_goal_sleep">أنام أحسن</string>
+    <string name="kids_adaptive_goal_alone">ما أحس إني لحالي</string>
+    <string name="kids_adaptive_goal_habits">أكوّن عادات حلوة</string>
+    <string name="kids_adaptive_goal_express">أعبّر عن مشاعري</string>
+    <string name="kids_adaptive_goal_watch">أبي بس أتفرج على التطبيق</string>
+
+    <!-- Screen 10: Mood demo -->
+    <string name="kids_adaptive_demo_intro">بين فترة وفترة، سلام ممكن يسألك سؤال بسيط زي كذا:</string>
+    <string name="kids_adaptive_demo_question">يومك اليوم كان كيف؟</string>
+    <string name="kids_adaptive_demo_face_sad">صعب</string>
+    <string name="kids_adaptive_demo_face_low">تعبان</string>
+    <string name="kids_adaptive_demo_face_neutral">عادي</string>
+    <string name="kids_adaptive_demo_face_good">حلو</string>
+    <string name="kids_adaptive_demo_face_great">روعة</string>
+    <string name="kids_adaptive_demo_hint_after">بالضبط كذا بيكون شكل المتابعة اليومية 🧸</string>
+    <string name="kids_adaptive_demo_hint_before">جرّب الحين تشوف شكلها</string>
+
+    <!-- Screen 11: Preview -->
+    <string name="kids_adaptive_preview_title">لحد الحين، تعرّفنا عليك شوي 🧸</string>
+    <string name="kids_adaptive_preview_edit">تعديل</string>
+    <string name="kids_adaptive_preview_footnote">هذي مجرد اقتراحات، تقدر تغيّرها بعدين من الإعدادات.</string>
+    <string name="kids_adaptive_preview_night">يمكن الليل يكون وقت أصعب عليك أحياناً.</string>
+    <string name="kids_adaptive_preview_breathing">بنقترح عليك تمارين تنفّس تهدّيك وقت التوتر.</string>
+    <string name="kids_adaptive_preview_spiritual">تقدر تشوف محتوى روحاني إذا حبيت.</string>
+    <string name="kids_adaptive_preview_writing">بنقترح عليك الرسم والكتابة وقت ما يناسبك.</string>
+    <string name="kids_adaptive_preview_goals_prefix">بناءً على كلامك، بنركّز على: %1$s.</string>
+    <string name="kids_adaptive_preview_fallback">يبدو إنك تحب تتفرج على سلام لحالك أول، وهذا تمام تماماً.</string>
+
+    <!-- Screen 12: Ready -->
+    <string name="kids_adaptive_ready_cta">ادخل سلام 🎉</string>
+    <string name="kids_adaptive_ready_thanks">شكراً إنك حكيت لنا شو حاسس فيه</string>
+    <string name="kids_adaptive_ready_body">مو لازم تكون تمام طول الوقت.\nخطوة خطوة، وإحنا وياك.</string>
+
+    <!-- Home -->
+    <string name="kids_adaptive_home_greeting_label">هلا فيك</string>
+    <string name="kids_adaptive_home_default_name">صديق سلام</string>
+    <string name="kids_adaptive_home_suggested_now">مقترح لك الحين</string>
+    <string name="kids_adaptive_home_restart">إعادة عرض التهيئة (وضع العرض)</string>
+
+    <!-- Resume dialog -->
+    <string name="kids_adaptive_resume_title">نكمل من وين وقفنا؟</string>
+    <string name="kids_adaptive_resume_body">حفظنا رحلتك على جهازك.</string>
+    <string name="kids_adaptive_resume_continue">متابعة</string>
+    <string name="kids_adaptive_resume_restart">البدء من جديد</string>
+
+    <!-- Demo reopen debug button -->
+    <string name="kids_adaptive_simulate_reopen">محاكاة إعادة الفتح</string>
+    <string name="kids_adaptive_simulate_reopen_cd">محاكاة إعادة فتح التطبيق (لأغراض العرض)</string>
+
+
 </resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kids_adaptive_root_bg">
+
+    <FrameLayout
+        android:id="@+id/phone_frame"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/kids_adaptive_cream"
+        android:elevation="16dp"
+        app:layout_constraintWidth_max="@dimen/kids_adaptive_phone_max_width"
+        app:layout_constraintHeight_max="@dimen/kids_adaptive_phone_max_height"
+        app:layout_constraintWidth_percent="1"
+        app:layout_constraintHeight_percent="1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <TextView
+            android:id="@+id/btn_simulate_reopen"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="8dp"
+            android:background="@drawable/kids_adaptive_bg_debug_pill"
+            android:contentDescription="@string/kids_adaptive_simulate_reopen_cd"
+            android:padding="6dp"
+            android:text="@string/kids_adaptive_simulate_reopen"
+            android:textColor="#FFFFFF"
+            android:alpha="0.5"
+            android:textSize="10sp"
+            android:visibility="gone" />
+    </FrameLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

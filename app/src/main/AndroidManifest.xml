@@ -80,9 +80,6 @@
         <activity
             android:name=".Kids.ChildProfilesActivity"
             android:exported="false" />
-        <activity
-            android:name=".Kids.ChildProfilesActivity"
-            android:exported="false" />
 
         <!-- Draw-with-Noor feature (new) -->
         <activity
@@ -247,6 +244,9 @@
             android:exported="false" />
         <activity
             android:name=".Kids.KidsTreeLevelUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KidsAdaptiveMainActivity"
             android:exported="false" />
         <activity
             android:name=".OneClickCalmActivity"

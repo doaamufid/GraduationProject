@@ -428,4 +428,51 @@
     <color name="adaptive_adult_onboarding_transparent">#00000000</color>
     <color name="adult_stats_text_dark">#0F172A</color>
     <color name="adult_stats_default_background">#E9ECF3</color>
+
+    <!-- Core design tokens (mirrors COLORS in the React source) -->
+    <color name="kids_adaptive_ink">#2B3350</color>
+    <color name="kids_adaptive_cream">#FFFDF8</color>
+    <color name="kids_adaptive_sun">#FFC94D</color>
+    <color name="kids_adaptive_sun_soft">#FFE29A</color>
+    <color name="kids_adaptive_coral">#FF9B85</color>
+    <color name="kids_adaptive_mint">#8FE0C4</color>
+    <color name="kids_adaptive_sky">#8FD3F4</color>
+    <color name="kids_adaptive_lilac">#C9A6E8</color>
+    <color name="kids_adaptive_pink">#FFB3C6</color>
+
+    <color name="kids_adaptive_white">#FFFFFF</color>
+    <color name="kids_adaptive_ink_10">#1A2B3350</color>
+    <color name="kids_adaptive_ink_12">#1F2B3350</color>
+    <color name="kids_adaptive_ink_15">#262B3350</color>
+    <color name="kids_adaptive_coral_18">#2EFF9B85</color>
+    <color name="kids_adaptive_coral_25">#40FF9B85</color>
+    <color name="kids_adaptive_coral_30">#4DFF9B85</color>
+    <color name="kids_adaptive_white_70">#B3FFFFFF</color>
+    <color name="kids_adaptive_white_75">#BFFFFFFF</color>
+    <color name="kids_adaptive_white_85">#D9FFFFFF</color>
+    <color name="kids_adaptive_white_60">#99FFFFFF</color>
+    <color name="kids_adaptive_teddy_light">#FFE9C4</color>
+    <color name="kids_adaptive_teddy_mid">#E3A25E</color>
+    <color name="kids_adaptive_teddy_dark">#C87F3D</color>
+    <color name="kids_adaptive_teddy_outline">#B0702F</color>
+    <color name="kids_adaptive_teddy_snout">#FFF3DE</color>
+
+    <!-- Sky stages: from -> to (matches STAGES array, index 0..5) -->
+    <color name="kids_adaptive_stage0_from">#CDEBFB</color>
+    <color name="kids_adaptive_stage0_to">#EAF7FF</color>
+    <color name="kids_adaptive_stage1_from">#EAF7FF</color>
+    <color name="kids_adaptive_stage1_to">#FFE7CE</color>
+    <color name="kids_adaptive_stage2_from">#FFE7CE</color>
+    <color name="kids_adaptive_stage2_to">#FCD9EA</color>
+    <color name="kids_adaptive_stage3_from">#FCD9EA</color>
+    <color name="kids_adaptive_stage3_to">#FFF3B8</color>
+    <color name="kids_adaptive_stage4_from">#FFF3B8</color>
+    <color name="kids_adaptive_stage4_to">#FFD9A0</color>
+    <color name="kids_adaptive_stage5_from">#FFD9A0</color>
+    <color name="kids_adaptive_stage5_to">#FFC1A6</color>
+
+    <color name="kids_adaptive_home_bg_from">#FFF3D6</color>
+    <color name="kids_adaptive_home_bg_to">#FFD9A0</color>
+    <color name="kids_adaptive_root_bg">#FFE9C4</color>
+
 </resources>

@@ -5,7 +5,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 /**
- * This file is currently disabled because it conflicts with com.example.graduationproject.Kids.ChildProfilesActivity
+ * This file is currently disabled because it conflicts with com.example.graduationproject.ChildProfilesActivity
  * and has several resource ID mismatches with activity_child_profiles.xml.
  */
 public class ChildProfilesActivity extends AppCompatActivity {
