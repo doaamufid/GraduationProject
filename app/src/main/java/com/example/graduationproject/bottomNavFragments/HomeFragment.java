@@ -3,44 +3,46 @@ package com.example.graduationproject.bottomNavFragments;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.LayoutAnimationController;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.AdultMoodStatsActivity;
 import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.DailyHabitsActivity;
 import com.example.graduationproject.HealingEnvActivity;
+import com.example.graduationproject.OneClickCalmActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.SalamCommunityActivity;
 import com.example.graduationproject.VideoLibraryActivity;
-import com.example.graduationproject.adapters.HomeActionAdapter;
 import com.example.graduationproject.adapters.HomeFeatureAdapter;
-import com.example.graduationproject.models.HomeAction;
+import com.example.graduationproject.adapters.WeeklyMoodAdapter;
 import com.example.graduationproject.models.HomeFeature;
+import com.example.graduationproject.models.MoodDay;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
-    private RecyclerView rvActions, rvFeatures;
-    private HomeActionAdapter actionAdapter;
+    private RecyclerView rvWeeklyMood, rvFeatures;
+    private WeeklyMoodAdapter weeklyMoodAdapter;
     private HomeFeatureAdapter featureAdapter;
 
-    private final List<HomeAction> actionList = new ArrayList<>();
+    private final List<MoodDay> moodDays = new ArrayList<>();
     private final List<HomeFeature> featureList = new ArrayList<>();
 
     @Nullable
@@ -54,10 +56,13 @@ public class HomeFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        rvActions = view.findViewById(R.id.rvActions);
+        rvWeeklyMood = view.findViewById(R.id.rvWeeklyMood);
         rvFeatures = view.findViewById(R.id.rvFeatures);
 
         TextView tvGreeting = view.findViewById(R.id.tvGreeting);
+        View cardCalm = view.findViewById(R.id.cardCalm);
+        View cardBreathing = view.findViewById(R.id.cardBreathing);
+        View btnNotifications = view.findViewById(R.id.btnNotifications);
 
         SharedPreferences prefs = requireContext().getSharedPreferences("UserPrefs", android.content.Context.MODE_PRIVATE);
         String userName = prefs.getString("user_name", "");
@@ -65,16 +70,23 @@ public class HomeFragment extends Fragment {
         if (userName.trim().isEmpty()) {
             userName = getString(R.string.home_friend);
         }
+        tvGreeting.setText(getString(R.string.home_greeting_morning, userName));
 
-        tvGreeting.setText(getString(R.string.home_greeting_format, userName));
-
-        Animation fadeIn = AnimationUtils.loadAnimation(requireContext(), R.anim.fade_in_up);
-        tvGreeting.startAnimation(fadeIn);
-
-        setupActions();
+        setupWeeklyMood();
         setupFeatures();
 
-        // تحريك الأمواج في الأسفل بشكل عائم (Floating Waves) - يطابق تصميم شاشة التمارين
+        cardCalm.setOnClickListener(v -> startActivity(new Intent(getActivity(), OneClickCalmActivity.class)));
+        cardBreathing.setOnClickListener(v -> startActivity(new Intent(getActivity(), BreathingActivity.class)));
+        btnNotifications.setOnClickListener(v -> {
+            try {
+                Class<?> notificationsClass = Class.forName("com.example.graduationproject.NotificationsActivity");
+                startActivity(new Intent(getActivity(), notificationsClass));
+            } catch (ClassNotFoundException e) {
+                // Fallback if not found
+            }
+        });
+
+        // Keep wave animation
         View imgWaveBottom = view.findViewById(R.id.imgWaveBottom);
         if (imgWaveBottom != null) {
             imgWaveBottom.animate()
@@ -96,56 +108,74 @@ public class HomeFragment extends Fragment {
                 .start();
     }
 
-    private void setupActions() {
-        actionList.clear();
-        actionList.add(new HomeAction(
-                R.drawable.body_map, // صورة تعبيرية تشبه الموجودة بالصورة
-                R.drawable.bg_icon_calm,
-                getString(R.string.home_relax_title),
-                getString(R.string.home_relax_subtitle)
-        ));
+    private void setupWeeklyMood() {
+        moodDays.clear();
+        
+        SharedPreferences appPrefs = requireContext().getSharedPreferences("AppPrefs", android.content.Context.MODE_PRIVATE);
+        String todayMoodId = appPrefs.getString("today_mood_id", "");
+        int todayMoodColor = appPrefs.getInt("today_mood_color", 0xFFEAEEF3); // Default neutral
 
-        actionAdapter = new HomeActionAdapter(requireContext(), actionList, position -> {
-            switch (position) {
-                case 0:
-                    startActivity(new Intent(getActivity(), BreathingActivity.class));
-                    break;
-            }
-        });
+        Calendar cal = Calendar.getInstance();
+        int currentDayOfWeek = cal.get(Calendar.DAY_OF_WEEK); // Sunday = 1, Monday = 2...
 
-        rvActions.setLayoutManager(new LinearLayoutManager(requireContext()));
-        rvActions.setAdapter(actionAdapter);
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", Locale.getDefault());
+        Calendar tempCal = (Calendar) cal.clone();
+        tempCal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+        
+        // Mock data for other days to match image
+        int[] mockMoodColors = {0xFFDEF3EF, 0xFFFCF0C6, 0xFFDEF3E0, 0xFFF8DCDA, 0, 0, 0};
+        int[] mockMoodIcons = {R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, 0, 0, 0};
+
+        for (int i = 0; i < 7; i++) {
+            int dayIndex = (i + 1); // 1-7
+            boolean isToday = (dayIndex == currentDayOfWeek);
+            
+            String dayName = dayFormat.format(tempCal.getTime());
+            String date = String.valueOf(tempCal.get(Calendar.DAY_OF_MONTH));
+            
+            int icon = isToday && !todayMoodId.isEmpty() ? R.drawable.ic_smile : mockMoodIcons[i];
+            int color = isToday && !todayMoodId.isEmpty() ? todayMoodColor : mockMoodColors[i];
+
+            moodDays.add(new MoodDay(dayName, date, icon, color, isToday));
+            tempCal.add(Calendar.DAY_OF_MONTH, 1);
+        }
+
+        weeklyMoodAdapter = new WeeklyMoodAdapter(requireContext(), moodDays);
+        rvWeeklyMood.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
+        rvWeeklyMood.setAdapter(weeklyMoodAdapter);
+        
+        // Scroll to current day if needed
+        rvWeeklyMood.scrollToPosition(currentDayOfWeek - 1);
     }
 
     private void setupFeatures() {
         featureList.clear();
-        featureList.add(new HomeFeature(R.drawable.video, R.drawable.bg_icon_purple, getString(R.string.home_feature_videos), getString(R.string.home_feature_videos_sub)));
-        featureList.add(new HomeFeature(R.drawable.audio, R.drawable.bg_icon_green, getString(R.string.home_feature_audio), getString(R.string.home_feature_audio_sub)));
-        featureList.add(new HomeFeature(R.drawable.ic_heart_filled_red, R.drawable.bg_icon_pink, getString(R.string.home_feature_articles), getString(R.string.home_feature_articles_sub)));
-        featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange, getString(R.string.home_feature_habits), getString(R.string.home_feature_habits_sub)));
-        featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue, getString(R.string.home_feature_reports), getString(R.string.home_feature_reports_sub)));
-        featureList.add(new HomeFeature(R.drawable.ic_users, R.drawable.bg_icon_purple, getString(R.string.home_feature_community), getString(R.string.home_feature_community_sub)));
+        featureList.add(new HomeFeature(R.drawable.video, R.drawable.bg_icon_purple, getString(R.string.home_feature_videos_title), getString(R.string.home_feature_videos_desc)));
+        featureList.add(new HomeFeature(R.drawable.audio, R.drawable.bg_icon_green, getString(R.string.home_feature_audio_title), getString(R.string.home_feature_audio_desc)));
+        featureList.add(new HomeFeature(R.drawable.ic_heart_filled_red, R.drawable.bg_icon_pink, getString(R.string.home_feature_articles_title), getString(R.string.home_feature_articles_desc)));
+        featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange, getString(R.string.home_feature_habits_title), getString(R.string.home_feature_habits_desc)));
+        featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue, getString(R.string.home_feature_reports_title), getString(R.string.home_feature_reports_desc)));
+        featureList.add(new HomeFeature(R.drawable.ic_users, R.drawable.bg_icon_purple, getString(R.string.home_feature_community_title), getString(R.string.home_feature_community_desc)));
 
         featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
-            // Resolve by feature title to avoid index mismatches
             HomeFeature feature = featureList.get(position);
             String title = feature.getTitle();
-            if (title.equals(getString(R.string.home_feature_videos))) {
+            if (title.equals(getString(R.string.home_feature_videos_title))) {
                 startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
-            } else if (title.equals(getString(R.string.home_feature_audio))) {
+            } else if (title.equals(getString(R.string.home_feature_audio_title))) {
                 startActivity(new Intent(getActivity(), HealingEnvActivity.class));
-            } else if (title.equals(getString(R.string.home_feature_articles))) {
+            } else if (title.equals(getString(R.string.home_feature_articles_title))) {
                 startActivity(new Intent(getActivity(), ArticlesActivity.class));
-            } else if (title.equals(getString(R.string.home_feature_habits))) {
+            } else if (title.equals(getString(R.string.home_feature_habits_title))) {
                 startActivity(new Intent(getActivity(), DailyHabitsActivity.class));
-            } else if (title.equals(getString(R.string.home_feature_reports))) {
+            } else if (title.equals(getString(R.string.home_feature_reports_title))) {
                 startActivity(new Intent(getActivity(), AdultMoodStatsActivity.class));
-            } else if (title.equals(getString(R.string.home_feature_community))) {
+            } else if (title.equals(getString(R.string.home_feature_community_title))) {
                 startActivity(new Intent(getActivity(), SalamCommunityActivity.class));
             }
         });
 
-        rvFeatures.setLayoutManager(new androidx.recyclerview.widget.GridLayoutManager(requireContext(), 3));
+        rvFeatures.setLayoutManager(new GridLayoutManager(requireContext(), 3));
         rvFeatures.setAdapter(featureAdapter);
     }
 }

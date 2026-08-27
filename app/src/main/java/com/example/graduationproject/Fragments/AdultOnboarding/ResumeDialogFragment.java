@@ -72,7 +72,7 @@ public class ResumeDialogFragment extends DialogFragment {
         TextView title = new TextView(requireContext());
         title.setText(R.string.adaptive_adult_onboarding_resume_title);
         title.setTextColor(AdultOnboardingAppData.CREAM);
-        title.setTextSize(17);
+        title.setTextSize(18);
         title.setTypeface(AdultOnboardingUiUtils.cairo(true));
         title.setGravity(Gravity.CENTER);
         LinearLayout.LayoutParams titleLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
@@ -82,8 +82,8 @@ public class ResumeDialogFragment extends DialogFragment {
         TextView body = new TextView(requireContext());
         body.setText(R.string.adaptive_adult_onboarding_resume_body);
         body.setTextColor(AdultOnboardingAppData.CREAM);
-        body.setAlpha(0.75f);
-        body.setTextSize(13.5f);
+        body.setAlpha(0.85f);
+        body.setTextSize(14.5f);
         body.setGravity(Gravity.CENTER);
         LinearLayout.LayoutParams bodyLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         bodyLp.topMargin = dp(6);

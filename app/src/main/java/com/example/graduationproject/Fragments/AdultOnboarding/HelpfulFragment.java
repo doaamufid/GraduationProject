@@ -11,6 +11,7 @@ import com.example.graduationproject.R;
 import com.example.graduationproject.models.AdultOnboarding.OnboardingData;
 import com.example.graduationproject.models.AdultOnboarding.Option;
 import com.example.graduationproject.view.AdultOnboarding.CompanionView;
+import com.example.graduationproject.view.AdultOnboarding.FlowLayout;
 import com.example.graduationproject.view.AdultOnboarding.Widgets;
 
 public class HelpfulFragment extends BaseScreenFragment {
@@ -23,21 +24,22 @@ public class HelpfulFragment extends BaseScreenFragment {
         addToContent(content, Widgets.heading(requireContext(), getString(R.string.adaptive_adult_onboarding_helpful_title), Color.WHITE), 4);
         addToContent(content, Widgets.subtext(requireContext(), getString(R.string.adaptive_adult_onboarding_helpful_subtext), Color.WHITE), 2);
 
-        LinearLayout list = new LinearLayout(requireContext());
-        list.setOrientation(LinearLayout.VERTICAL);
-        addToContent(content, list, 6);
-        render(list);
+        FlowLayout flow = new FlowLayout(requireContext());
+        flow.setGravityCenter(true);
+        flow.setSpacing(dp(6), dp(8));
+        addToContent(content, flow, 10);
+        render(flow);
     }
 
-    private void render(LinearLayout list) {
-        list.removeAllViews();
+    private void render(FlowLayout flow) {
+        flow.removeAllViews();
         for (Option h : AdultOnboardingAppData.HELPFUL) {
             boolean selected = data.helpfulActivities.contains(h.id);
-            android.view.View card = Widgets.choiceCard(requireContext(), h.emoji, getString(h.labelRes), null, selected, () -> {
+            android.view.View chip = Widgets.lightChip(requireContext(), h.emoji, getString(h.labelRes), h.color, selected, () -> {
                 OnboardingData.toggle(data.helpfulActivities, h.id);
-                render(list);
+                render(flow);
             });
-            list.addView(card);
+            flow.addView(chip);
         }
     }
 

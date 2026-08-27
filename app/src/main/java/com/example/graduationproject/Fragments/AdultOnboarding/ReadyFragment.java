@@ -24,7 +24,7 @@ public class ReadyFragment extends BaseScreenFragment {
         CompanionView big = new CompanionView(requireContext());
         big.setReducedMotion(host.isReducedMotion());
         big.setMood(CompanionView.MOOD_CALM);
-        LinearLayout.LayoutParams bigLp = new LinearLayout.LayoutParams(dp(96), dp(96));
+        LinearLayout.LayoutParams bigLp = new LinearLayout.LayoutParams(dp(110), dp(110)); // Bigger
         bigLp.gravity = Gravity.CENTER_HORIZONTAL;
         bigLp.topMargin = dp(24);
         content.addView(big, bigLp);
@@ -34,19 +34,19 @@ public class ReadyFragment extends BaseScreenFragment {
         String namePart = nickname.isEmpty() ? "" : (", " + nickname);
         title.setText(getString(R.string.adaptive_adult_onboarding_ready_title, namePart));
         title.setTextColor(AdultOnboardingAppData.CREAM);
-        title.setTextSize(22);
+        title.setTextSize(26);
         title.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.cairo(true));
         title.setGravity(Gravity.CENTER);
-        addToContent(content, title, 16);
+        addToContent(content, title, 20); // More margin
 
         TextView body = new TextView(requireContext());
         body.setText(R.string.adaptive_adult_onboarding_ready_body);
         body.setTextColor(AdultOnboardingAppData.CREAM);
-        body.setAlpha(0.85f);
-        body.setTextSize(15);
+        body.setAlpha(0.9f);
+        body.setTextSize(16);
         body.setLineSpacing(0, 1.4f);
         body.setGravity(Gravity.CENTER);
-        addToContent(content, body, 12);
+        addToContent(content, body, 14); // More margin
     }
 
     @Override

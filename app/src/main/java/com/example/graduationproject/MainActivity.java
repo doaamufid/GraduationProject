@@ -8,8 +8,9 @@ import android.view.View;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
@@ -36,6 +37,11 @@ import androidx.fragment.app.FragmentTransaction;
 public class MainActivity extends AppCompatActivity implements CardHost {
     private final int defaultBottomNavigationItem = R.id.nav_home;
     ActivityMainBinding binding;
+
+    @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
 
     @Override
     public FrameLayout getToastOverlay() {
@@ -108,18 +114,29 @@ public class MainActivity extends AppCompatActivity implements CardHost {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         System.loadLibrary("rive-android");
-        // ضبط لون شريط الحالة ليتناسق مع واجهة الرئيسية (اللون الأزرق الفاتح)
+
+        // ضبط لون شريط الحالة والأسفل ليتناسق مع واجهة الرئيسية (اللون البيج الفاتح)
+        int navColor = android.graphics.Color.parseColor("#FDFCF9");
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg));
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-            }
+            getWindow().setStatusBarColor(navColor);
+            getWindow().setNavigationBarColor(navColor);
+            
+            WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
         }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+        
+        binding.getRoot().setLayoutDirection(AppLanguageManager.getLayoutDirection(this));
 
-        ViewCompat.setOnApplyWindowInsetsListener(binding.bottomNavigation, (v, insets) -> {
+        // Remove old BottomNavigationView setup and replace with custom one
+        setupCustomNavigation();
+
+        // Handle window insets for bottom nav
+        View navContainer = findViewById(R.id.bottom_navigation_container);
+        ViewCompat.setOnApplyWindowInsetsListener(navContainer, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(v.getPaddingLeft(), v.getPaddingTop(), v.getPaddingRight(), systemBars.bottom);
             return insets;
@@ -149,35 +166,58 @@ public class MainActivity extends AppCompatActivity implements CardHost {
 
     // دالة مستقلة تحتوي على منطق البالغين ليكون الكود مرتباً ومنفصلاً
     private void setupAdultNavigation() {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frameLayout, new HomeFragment())
-                .commit();
+        // Handled by setupCustomNavigation()
+    }
 
-        binding.bottomNavigation.setSelectedItemId(defaultBottomNavigationItem);
+    private void setupCustomNavigation() {
+        View navHome = findViewById(R.id.nav_home);
+        View navExercises = findViewById(R.id.nav_exercises);
+        View navFriend = findViewById(R.id.nav_friend);
+        View navProfile = findViewById(R.id.nav_profile);
 
-        binding.bottomNavigation.setOnItemSelectedListener(item -> {
-            int itemId = item.getItemId();
+        navHome.setOnClickListener(v -> selectNavItem(R.id.nav_home));
+        navExercises.setOnClickListener(v -> selectNavItem(R.id.nav_exercises));
+        navFriend.setOnClickListener(v -> selectNavItem(R.id.nav_friend));
+        navProfile.setOnClickListener(v -> selectNavItem(R.id.nav_profile));
 
-            if (itemId == R.id.nav_home) {
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout, new HomeFragment())
-                        .commit();
-                return true;
-            } else if (itemId == R.id.nav_exercises) {
-                getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.frameLayout, new ExercisesFragment())
-                        .commit();
-                return true;
-            } else if (itemId == R.id.nav_friend) {
-                // فتح صفحة رفيقي (ChatMainActivity) كـ Activity منفصلة
-                startActivity(new Intent(this, ChatMainActivity.class));
-                return false; // نرجع false لكي لا يتم اختيار العنصر بصرياً في الشريط السفلي إذا كنت تفضل ذلك، أو true إذا أردت بقاء الاختيار عليه
-            } else if (itemId == R.id.nav_profile) {
-                startActivity(new Intent(this, AdultProfileActivity.class));
-                return true;
-            }
-            return true;
-        });
+        // Default selection
+        selectNavItem(R.id.nav_home);
+    }
+
+    private void selectNavItem(int itemId) {
+        // Reset all
+        resetNavItems();
+
+        if (itemId == R.id.nav_home) {
+            findViewById(R.id.nav_home).setSelected(true);
+            findViewById(R.id.nav_home_bg).setVisibility(View.VISIBLE);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameLayout, new HomeFragment())
+                    .commit();
+        } else if (itemId == R.id.nav_exercises) {
+            findViewById(R.id.nav_exercises).setSelected(true);
+            findViewById(R.id.nav_exercises_bg).setVisibility(View.VISIBLE);
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.frameLayout, new ExercisesFragment())
+                    .commit();
+        } else if (itemId == R.id.nav_friend) {
+            findViewById(R.id.nav_friend).setSelected(true);
+            findViewById(R.id.nav_friend_bg).setVisibility(View.VISIBLE);
+            startActivity(new Intent(this, ChatMainActivity.class));
+        } else if (itemId == R.id.nav_profile) {
+            findViewById(R.id.nav_profile).setSelected(true);
+            findViewById(R.id.nav_profile_bg).setVisibility(View.VISIBLE);
+            startActivity(new Intent(this, AdultProfileActivity.class));
+        }
+    }
+
+    private void resetNavItems() {
+        int[] ids = {R.id.nav_home, R.id.nav_exercises, R.id.nav_friend, R.id.nav_profile};
+        int[] bgs = {R.id.nav_home_bg, R.id.nav_exercises_bg, R.id.nav_friend_bg, R.id.nav_profile_bg};
+        
+        for (int i = 0; i < ids.length; i++) {
+            findViewById(ids[i]).setSelected(false);
+            findViewById(bgs[i]).setVisibility(View.INVISIBLE);
+        }
     }
 }

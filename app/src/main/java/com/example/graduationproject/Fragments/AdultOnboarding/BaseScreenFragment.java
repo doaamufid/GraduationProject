@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.graduationproject.AdultOnboardingAppData;
@@ -83,9 +85,18 @@ public abstract class BaseScreenFragment extends Fragment {
         companionView.setMood(getCompanionMood());
         progressPath.setProgress(AdultOnboardingAppData.TOTAL_SCREENS, index);
 
-        // Update status bar color to match the top of the sky gradient
+        // Update status and navigation bar colors to match the sky gradient
         if (getActivity() != null) {
             getActivity().getWindow().setStatusBarColor(stage.fromColor);
+            getActivity().getWindow().setNavigationBarColor(stage.toColor);
+
+            // If text color is dark (INK), the background is light, so use dark icons.
+            boolean isLightBackground = (stage.textColor == AdultOnboardingAppData.INK);
+            WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getActivity().getWindow(), getActivity().getWindow().getDecorView());
+            if (controller != null) {
+                controller.setAppearanceLightStatusBars(isLightBackground);
+                controller.setAppearanceLightNavigationBars(isLightBackground);
+            }
         }
 
         btnBack.setVisibility(index > 0 ? View.VISIBLE : View.INVISIBLE);

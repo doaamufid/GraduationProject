@@ -1,6 +1,7 @@
 package com.example.graduationproject.Fragments.AdultOnboarding;
 
 import android.graphics.Color;
+import android.graphics.Color;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -23,19 +24,19 @@ public class WelcomeFragment extends BaseScreenFragment {
         CompanionView big = new CompanionView(requireContext());
         big.setReducedMotion(host.isReducedMotion());
         big.setMood(CompanionView.MOOD_NEUTRAL);
-        addToContent(content, big, 20, dp(104));
+        addToContent(content, big, 20, dp(120)); // Bigger
 
         androidx.appcompat.widget.AppCompatTextView title = new androidx.appcompat.widget.AppCompatTextView(requireContext());
         title.setText(R.string.adaptive_adult_onboarding_welcome_title);
         title.setTextColor(Color.WHITE);
-        title.setTextSize(26);
+        title.setTextSize(28);
         title.setGravity(Gravity.CENTER);
         title.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.cairo(true));
-        addToContent(content, title, 18);
+        addToContent(content, title, 22); // More margin
 
         addToContent(content, Widgets.paragraph(requireContext(),
                 getString(R.string.adaptive_adult_onboarding_welcome_body),
-                Color.WHITE), 10);
+                Color.WHITE), 12);
     }
 
     private void addToContent(LinearLayout content, android.view.View v, int marginTopDp, int fixedSizePx) {

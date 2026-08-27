@@ -27,7 +27,7 @@ public class IntenseFearFragment extends BaseScreenFragment {
         addToContent(content, Widgets.paragraph(requireContext(),
                 getString(R.string.adaptive_adult_onboarding_intense_fear_body),
                 Color.WHITE), 6);
-        addToContent(content, Widgets.heading(requireContext(), getString(R.string.adaptive_adult_onboarding_intense_fear_title), Color.WHITE), 2);
+        addToContent(content, Widgets.heading(requireContext(), getString(R.string.adaptive_adult_onboarding_intense_fear_title), Color.WHITE), 6); // More margin
 
         LinearLayout list = new LinearLayout(requireContext());
         list.setOrientation(LinearLayout.VERTICAL);
@@ -39,7 +39,7 @@ public class IntenseFearFragment extends BaseScreenFragment {
         list.removeAllViews();
         for (Option o : AdultOnboardingAppData.FEAR_OPTIONS) {
             boolean selected = o.id.equals(data.intenseFearExperience);
-            list.addView(Widgets.choiceCard(requireContext(), null, getString(o.labelRes), null, selected, () -> {
+            list.addView(Widgets.choiceCard(requireContext(), null, getString(o.labelRes), null, o.color, selected, () -> {
                 data.intenseFearExperience = o.id;
                 render(list);
             }));

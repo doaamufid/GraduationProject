@@ -71,41 +71,41 @@ public final class AdultOnboardingAppData {
 
     // ---- Overall mood ----
     public static final Option[] MOOD_OPTIONS = new Option[]{
-            new Option("calm", "\uD83C\uDF24", R.string.adaptive_adult_onboarding_mood_calm),
-            new Option("pressured", "\uD83C\uDF27", R.string.adaptive_adult_onboarding_mood_pressured),
-            new Option("hard", "\uD83C\uDF2A", R.string.adaptive_adult_onboarding_mood_hard),
+            new Option("calm", "\uD83C\uDF24", R.string.adaptive_adult_onboarding_mood_calm, Color.parseColor("#E2F5FF")),
+            new Option("pressured", "\uD83C\uDF27", R.string.adaptive_adult_onboarding_mood_pressured, Color.parseColor("#FFF4D6")),
+            new Option("hard", "\uD83C\uDF2A", R.string.adaptive_adult_onboarding_mood_hard, Color.parseColor("#FFD9CB")),
     };
 
     // ---- Frequent emotions ----
     public static final Option[] EMOTIONS = new Option[]{
-            new Option("tension", "\uD83D\uDE1F", R.string.adaptive_adult_onboarding_emotion_tension),
-            new Option("fear", "\uD83D\uDE28", R.string.adaptive_adult_onboarding_emotion_fear),
-            new Option("sadness", "\uD83D\uDE14", R.string.adaptive_adult_onboarding_emotion_sadness),
-            new Option("irritation", "\uD83D\uDE16", R.string.adaptive_adult_onboarding_emotion_irritation),
-            new Option("anxiety", "\uD83D\uDE30", R.string.adaptive_adult_onboarding_emotion_anxiety),
-            new Option("terror", "\uD83D\uDE31", R.string.adaptive_adult_onboarding_emotion_terror),
-            new Option("loneliness", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_emotion_loneliness),
-            new Option("exhaustion", "\uD83D\uDE35", R.string.adaptive_adult_onboarding_emotion_exhaustion),
-            new Option("unsure", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_emotion_unsure),
-            new Option("okay", "\uD83C\uDF24", R.string.adaptive_adult_onboarding_emotion_okay),
+            new Option("tension", "\uD83D\uDE1F", R.string.adaptive_adult_onboarding_emotion_tension, Color.parseColor("#FFF4D6")),
+            new Option("fear", "\uD83D\uDE28", R.string.adaptive_adult_onboarding_emotion_fear, Color.parseColor("#FFD9CB")),
+            new Option("sadness", "\uD83D\uDE14", R.string.adaptive_adult_onboarding_emotion_sadness, Color.parseColor("#F6E4E4")),
+            new Option("irritation", "\uD83D\uDE16", R.string.adaptive_adult_onboarding_emotion_irritation, Color.parseColor("#FFE5E5")),
+            new Option("anxiety", "\uD83D\uDE30", R.string.adaptive_adult_onboarding_emotion_anxiety, Color.parseColor("#E2F5FF")),
+            new Option("terror", "\uD83D\uDE31", R.string.adaptive_adult_onboarding_emotion_terror, Color.parseColor("#F5E5FF")),
+            new Option("loneliness", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_emotion_loneliness, Color.parseColor("#EEE6F5")),
+            new Option("exhaustion", "\uD83D\uDE35", R.string.adaptive_adult_onboarding_emotion_exhaustion, Color.parseColor("#E5F9E5")),
+            new Option("unsure", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_emotion_unsure, Color.parseColor("#F9F9F9")),
+            new Option("okay", "\uD83C\uDF24", R.string.adaptive_adult_onboarding_emotion_okay, Color.parseColor("#E1D7FF")),
     };
 
     // ---- Safety ----
     public static final Option[] SAFETY_OPTIONS = new Option[]{
-            new Option("rarely", null, R.string.adaptive_adult_onboarding_safety_rarely),
-            new Option("sometimes", null, R.string.adaptive_adult_onboarding_safety_sometimes),
-            new Option("often", null, R.string.adaptive_adult_onboarding_safety_often),
-            new Option("most", null, R.string.adaptive_adult_onboarding_safety_most),
-            new Option("skip", null, R.string.adaptive_adult_onboarding_safety_skip),
+            new Option("rarely", null, R.string.adaptive_adult_onboarding_safety_rarely, Color.parseColor("#FFE5E5")),
+            new Option("sometimes", null, R.string.adaptive_adult_onboarding_safety_sometimes, Color.parseColor("#FFF4D6")),
+            new Option("often", null, R.string.adaptive_adult_onboarding_safety_often, Color.parseColor("#E2F5FF")),
+            new Option("most", null, R.string.adaptive_adult_onboarding_safety_most, Color.parseColor("#E5F9E5")),
+            new Option("skip", null, R.string.adaptive_adult_onboarding_safety_skip, Color.parseColor("#F9F9F9")),
     };
 
     // ---- Intense fear ----
     public static final Option[] FEAR_OPTIONS = new Option[]{
-            new Option("yes_sometimes", null, R.string.adaptive_adult_onboarding_fear_yes_sometimes),
-            new Option("yes_often", null, R.string.adaptive_adult_onboarding_fear_yes_often),
-            new Option("rarely", null, R.string.adaptive_adult_onboarding_fear_rarely),
-            new Option("unsure", null, R.string.adaptive_adult_onboarding_fear_unsure),
-            new Option("skip", null, R.string.adaptive_adult_onboarding_fear_skip),
+            new Option("yes_sometimes", null, R.string.adaptive_adult_onboarding_fear_yes_sometimes, Color.parseColor("#FFD9CB")),
+            new Option("yes_often", null, R.string.adaptive_adult_onboarding_fear_yes_often, Color.parseColor("#FFE5E5")),
+            new Option("rarely", null, R.string.adaptive_adult_onboarding_fear_rarely, Color.parseColor("#E5F9E5")),
+            new Option("unsure", null, R.string.adaptive_adult_onboarding_fear_unsure, Color.parseColor("#FFF4D6")),
+            new Option("skip", null, R.string.adaptive_adult_onboarding_fear_skip, Color.parseColor("#F9F9F9")),
     };
 
     // ---- Timeline periods ----
@@ -158,27 +158,27 @@ public final class AdultOnboardingAppData {
 
     // ---- Helpful activities ----
     public static final Option[] HELPFUL = new Option[]{
-            new Option("audio", "\uD83C\uDFA7", R.string.adaptive_adult_onboarding_helpful_audio),
-            new Option("breathing", "\uD83E\uDEC1", R.string.adaptive_adult_onboarding_helpful_breathing),
-            new Option("spiritual", "\u2728", R.string.adaptive_adult_onboarding_helpful_spiritual),
-            new Option("writing", "\u270D\uFE0F", R.string.adaptive_adult_onboarding_helpful_writing),
-            new Option("talking", "\uD83D\uDCAC", R.string.adaptive_adult_onboarding_helpful_talking),
-            new Option("movement", "\uD83D\uDEB6", R.string.adaptive_adult_onboarding_helpful_movement),
-            new Option("activity", "\uD83C\uDFAE", R.string.adaptive_adult_onboarding_helpful_activity),
-            new Option("unsure", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_helpful_unsure),
+            new Option("audio", "\uD83C\uDFA7", R.string.adaptive_adult_onboarding_helpful_audio, Color.parseColor("#E2F5FF")),
+            new Option("breathing", "\uD83E\uDEC1", R.string.adaptive_adult_onboarding_helpful_breathing, Color.parseColor("#FFD9CB")),
+            new Option("spiritual", "\u2728", R.string.adaptive_adult_onboarding_helpful_spiritual, Color.parseColor("#FFF4D6")),
+            new Option("writing", "\u270D\uFE0F", R.string.adaptive_adult_onboarding_helpful_writing, Color.parseColor("#F9F9F9")),
+            new Option("talking", "\uD83D\uDCAC", R.string.adaptive_adult_onboarding_helpful_talking, Color.parseColor("#F5E5FF")),
+            new Option("movement", "\uD83D\uDEB6", R.string.adaptive_adult_onboarding_helpful_movement, Color.parseColor("#E5F9E5")),
+            new Option("activity", "\uD83C\uDFAE", R.string.adaptive_adult_onboarding_helpful_activity, Color.parseColor("#E1D7FF")),
+            new Option("unsure", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_helpful_unsure, Color.parseColor("#FFFFFF")),
     };
 
     // ---- Goals ----
     public static final Option[] GOALS = new Option[]{
-            new Option("calm", "\uD83C\uDF24", R.string.adaptive_adult_onboarding_goal_calm),
-            new Option("stress", "\uD83E\uDEC1", R.string.adaptive_adult_onboarding_goal_stress),
-            new Option("understand", "\uD83E\uDDE0", R.string.adaptive_adult_onboarding_goal_understand),
-            new Option("routine", "\uD83D\uDDD3\uFE0F", R.string.adaptive_adult_onboarding_goal_routine),
-            new Option("sleep", "\uD83C\uDF19", R.string.adaptive_adult_onboarding_goal_sleep),
-            new Option("loneliness", "\uD83E\uDD0D", R.string.adaptive_adult_onboarding_goal_loneliness),
-            new Option("habits", "\uD83C\uDF31", R.string.adaptive_adult_onboarding_goal_habits),
-            new Option("express", "\u270D\uFE0F", R.string.adaptive_adult_onboarding_goal_express),
-            new Option("explore", "\uD83E\uDDEA", R.string.adaptive_adult_onboarding_goal_explore),
+            new Option("calm", "\uD83C\uDF24", R.string.adaptive_adult_onboarding_goal_calm, Color.parseColor("#E1D7FF")),
+            new Option("stress", "\uD83E\uDEC1", R.string.adaptive_adult_onboarding_goal_stress, Color.parseColor("#FFD9CB")),
+            new Option("understand", "\uD83E\uDDE0", R.string.adaptive_adult_onboarding_goal_understand, Color.parseColor("#FFF4D6")),
+            new Option("routine", "\uD83D\uDDD3\uFE0F", R.string.adaptive_adult_onboarding_goal_routine, Color.parseColor("#FFE5E5")),
+            new Option("sleep", "\uD83C\uDF19", R.string.adaptive_adult_onboarding_goal_sleep, Color.parseColor("#E2F5FF")),
+            new Option("loneliness", "\uD83E\uDD0D", R.string.adaptive_adult_onboarding_goal_loneliness, Color.parseColor("#F5E5FF")),
+            new Option("habits", "\uD83C\uDF31", R.string.adaptive_adult_onboarding_goal_habits, Color.parseColor("#E5F9E5")),
+            new Option("express", "\u270D\uFE0F", R.string.adaptive_adult_onboarding_goal_express, Color.parseColor("#F9F9F9")),
+            new Option("explore", "\uD83E\uDDEA", R.string.adaptive_adult_onboarding_goal_explore, Color.parseColor("#FFFFFF")),
     };
     public static final int GOAL_EXPLORE_RES = R.string.adaptive_adult_onboarding_goal_explore;
 

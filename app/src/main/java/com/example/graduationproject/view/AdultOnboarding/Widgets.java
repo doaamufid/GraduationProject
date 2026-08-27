@@ -25,42 +25,68 @@ public final class Widgets {
     public static int dp(Context ctx, float v) { return AdultOnboardingUiUtils.dp(ctx, v); }
 
     // ---------------- ChoiceCard ----------------
-    public static View choiceCard(Context ctx, String emoji, String label, String sub, boolean selected, Runnable onClick) {
+    public static View choiceCard(Context ctx, String emoji, String label, String sub, int baseColor, boolean selected, Runnable onClick) {
         LinearLayout row = new LinearLayout(ctx);
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setGravity(Gravity.CENTER_VERTICAL);
-        int padH = dp(ctx, 16), padV = dp(ctx, 13);
+        int padH = dp(ctx, 18), padV = dp(ctx, 14);
         row.setPadding(padH, padV, padH, padV);
-        row.setBackground(cardBackground(ctx, selected));
+
+        GradientDrawable gd = new GradientDrawable();
+        // Dynamic blob-like radius
+        gd.setCornerRadii(new float[]{
+                dp(ctx, 40), dp(ctx, 40),
+                dp(ctx, 25), dp(ctx, 25),
+                dp(ctx, 35), dp(ctx, 35),
+                dp(ctx, 20), dp(ctx, 20)
+        });
+
+        if (selected) {
+            gd.setColor(baseColor != 0 ? baseColor : Color.WHITE);
+            gd.setStroke(dp(ctx, 2f), AdultOnboardingAppData.INK);
+        } else {
+            gd.setColor(baseColor != 0 ? Color.argb(180, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor)) : Color.argb(15, 255, 255, 255));
+            gd.setStroke(dp(ctx, 1), Color.argb(30, 0, 0, 0));
+        }
+        row.setBackground(gd);
+
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp.bottomMargin = dp(ctx, 16);
+        lp.bottomMargin = dp(ctx, 12);
         row.setLayoutParams(lp);
 
         if (emoji != null) {
             TextView em = new TextView(ctx);
             em.setText(emoji);
-            em.setTextSize(20);
-            em.setPadding(0, 0, dp(ctx, 10), 0);
+            em.setTextSize(26); // Smaller icon
+            em.setPadding(0, 0, dp(ctx, 12), 0);
             row.addView(em);
         }
         LinearLayout textCol = new LinearLayout(ctx);
         textCol.setOrientation(LinearLayout.VERTICAL);
         TextView title = new TextView(ctx);
         title.setText(label);
-        title.setTextColor(Color.WHITE);
+        title.setTextColor(AdultOnboardingAppData.INK);
         title.setTextSize(15.5f);
-        title.setTypeface(AdultOnboardingUiUtils.tajawal(selected));
-        title.setTypeface(title.getTypeface(), selected ? android.graphics.Typeface.BOLD : android.graphics.Typeface.NORMAL);
+        title.setTypeface(AdultOnboardingUiUtils.tajawal(true));
         textCol.addView(title);
         if (sub != null) {
             TextView subTv = new TextView(ctx);
             subTv.setText(sub);
-            subTv.setTextColor(Color.WHITE);
-            subTv.setAlpha(0.65f);
+            subTv.setTextColor(AdultOnboardingAppData.INK);
+            subTv.setAlpha(0.7f);
             subTv.setTextSize(12.5f);
             textCol.addView(subTv);
         }
-        row.addView(textCol);
+        row.addView(textCol, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+
+        if (selected) {
+            TextView check = new TextView(ctx);
+            check.setText("✓");
+            check.setTextColor(AdultOnboardingAppData.INK);
+            check.setTextSize(14);
+            row.addView(check);
+        }
+
         row.setOnClickListener(v -> onClick.run());
         row.setClickable(true);
         row.setFocusable(true);
@@ -75,38 +101,55 @@ public final class Widgets {
         return gd;
     }
 
-    // ---------------- Light theme chip (Goals screen Ã¢â‚¬â€ cream sky background) ----------------
-    public static View lightChip(Context ctx, String emoji, String label, boolean selected, Runnable onClick) {
+    // ---------------- Light theme chip (Goals screen — cream sky background) ----------------
+    public static View lightChip(Context ctx, String emoji, String label, int baseColor, boolean selected, Runnable onClick) {
         LinearLayout row = new LinearLayout(ctx);
         row.setOrientation(LinearLayout.HORIZONTAL);
         row.setGravity(Gravity.CENTER_VERTICAL);
-        int padH = dp(ctx, 18), padV = dp(ctx, 11);
+        int padH = dp(ctx, 16), padV = dp(ctx, 12);
         row.setPadding(padH, padV, padH, padV);
 
         GradientDrawable gd = new GradientDrawable();
-        gd.setCornerRadius(dp(ctx, 999));
+        // Dynamic blob-like radius
+        gd.setCornerRadii(new float[]{
+                dp(ctx, 35), dp(ctx, 35),
+                dp(ctx, 18), dp(ctx, 18),
+                dp(ctx, 45), dp(ctx, 45),
+                dp(ctx, 25), dp(ctx, 25)
+        });
+
         if (selected) {
-            gd.setOrientation(GradientDrawable.Orientation.TL_BR);
-            gd.setColors(new int[]{AdultOnboardingAppData.GLOW, AdultOnboardingAppData.DAWN_2});
+            gd.setColor(baseColor != 0 ? baseColor : Color.WHITE);
+            gd.setStroke(dp(ctx, 2f), AdultOnboardingAppData.INK);
         } else {
-            gd.setColor(Color.argb(140, 255, 255, 255));
-            gd.setStroke(dp(ctx, 1), Color.argb(20, 0, 0, 0));
+            gd.setColor(baseColor != 0 ? Color.argb(200, Color.red(baseColor), Color.green(baseColor), Color.blue(baseColor)) : Color.argb(140, 255, 255, 255));
+            gd.setStroke(dp(ctx, 1), Color.argb(30, 0, 0, 0));
         }
         row.setBackground(gd);
-        row.setElevation(selected ? dp(ctx, 3) : dp(ctx, 1));
 
-        TextView em = new TextView(ctx);
-        em.setText(emoji);
-        em.setTextSize(16);
-        em.setPadding(0, 0, dp(ctx, 8), 0);
-        row.addView(em);
+        if (emoji != null) {
+            TextView em = new TextView(ctx);
+            em.setText(emoji);
+            em.setTextSize(22); // Smaller icon
+            em.setPadding(0, 0, dp(ctx, 10), 0);
+            row.addView(em);
+        }
 
         TextView title = new TextView(ctx);
         title.setText(label);
         title.setTextColor(AdultOnboardingAppData.INK);
-        title.setTextSize(15.5f);
-        title.setTypeface(AdultOnboardingUiUtils.tajawal(selected));
+        title.setTextSize(14.5f); // Smaller text
+        title.setTypeface(AdultOnboardingUiUtils.tajawal(true));
         row.addView(title);
+
+        if (selected) {
+            TextView check = new TextView(ctx);
+            check.setText("✓");
+            check.setTextColor(AdultOnboardingAppData.INK);
+            check.setTextSize(13);
+            check.setPadding(dp(ctx, 6), 0, 0, 0);
+            row.addView(check);
+        }
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int m = dp(ctx, 8);
@@ -121,14 +164,20 @@ public final class Widgets {
     public static View darkPill(Context ctx, String label, boolean selected, Runnable onClick) {
         TextView tv = new TextView(ctx);
         tv.setText(label);
-        tv.setTextColor(Color.WHITE);
-        tv.setTextSize(13);
-        int padH = dp(ctx, 14), padV = dp(ctx, 8);
+        tv.setTextColor(AdultOnboardingAppData.INK); // Changed to ink
+        tv.setTextSize(14);
+        int padH = dp(ctx, 16), padV = dp(ctx, 10);
         tv.setPadding(padH, padV, padH, padV);
         GradientDrawable gd = new GradientDrawable();
         gd.setCornerRadius(dp(ctx, 999));
-        gd.setColor(selected ? Color.argb(51, 255, 227, 176) : Color.TRANSPARENT);
-        gd.setStroke(dp(ctx, 1), selected ? AdultOnboardingAppData.GLOW : Color.argb(46, 255, 255, 255));
+
+        if (selected) {
+            gd.setColor(Color.WHITE);
+            gd.setStroke(dp(ctx, 2f), AdultOnboardingAppData.INK);
+        } else {
+            gd.setColor(Color.argb(40, 33, 27, 51));
+            gd.setStroke(dp(ctx, 1), Color.argb(40, 33, 27, 51));
+        }
         tv.setBackground(gd);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         int m = dp(ctx, 6);
@@ -143,30 +192,40 @@ public final class Widgets {
         LinearLayout col = new LinearLayout(ctx);
         col.setOrientation(LinearLayout.VERTICAL);
         col.setGravity(Gravity.CENTER);
-        int size = dp(ctx, 92);
+        int size = dp(ctx, 100); // Smaller size
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(size, size);
         int m = dp(ctx, 8);
         lp.setMargins(m, m, m, m);
         col.setLayoutParams(lp);
 
+        GradientDrawable gd = new GradientDrawable();
+        // Dynamic blob-like radius
+        gd.setCornerRadii(new float[]{
+                dp(ctx, 45), dp(ctx, 45),
+                dp(ctx, 35), dp(ctx, 35),
+                dp(ctx, 55), dp(ctx, 55),
+                dp(ctx, 30), dp(ctx, 30)
+        });
+
         if (selected) {
-            GradientDrawable gd = new GradientDrawable();
-            gd.setShape(GradientDrawable.OVAL);
-            gd.setColor(Color.argb(41, 255, 227, 176));
-            gd.setStroke(dp(ctx, 1), AdultOnboardingAppData.GLOW);
-            col.setBackground(gd);
+            gd.setColor(Color.WHITE);
+            gd.setStroke(dp(ctx, 2f), AdultOnboardingAppData.INK);
+        } else {
+            gd.setColor(Color.argb(160, 255, 255, 255));
+            gd.setStroke(dp(ctx, 1), Color.argb(30, 0, 0, 0));
         }
+        col.setBackground(gd);
 
         TextView em = new TextView(ctx);
         em.setText(emoji);
-        em.setTextSize(32);
+        em.setTextSize(36); // Smaller icon
         em.setGravity(Gravity.CENTER);
         col.addView(em);
 
         TextView title = new TextView(ctx);
         title.setText(label);
-        title.setTextColor(Color.WHITE);
-        title.setTextSize(11.5f);
+        title.setTextColor(AdultOnboardingAppData.INK);
+        title.setTextSize(12.5f);
         title.setTypeface(AdultOnboardingUiUtils.tajawal(true));
         title.setGravity(Gravity.CENTER);
         col.addView(title);
@@ -180,18 +239,30 @@ public final class Widgets {
         LinearLayout col = new LinearLayout(ctx);
         col.setOrientation(LinearLayout.VERTICAL);
         col.setGravity(Gravity.CENTER);
-        int padV = dp(ctx, 22), padH = dp(ctx, 8);
+        int padV = dp(ctx, 20), padH = dp(ctx, 10);
         col.setPadding(padH, padV, padH, padV);
 
         GradientDrawable gd = new GradientDrawable();
-        gd.setCornerRadius(dp(ctx, 22));
-        gd.setColor(selected ? Color.argb(41, 255, 227, 176) : Color.argb(15, 255, 255, 255));
-        gd.setStroke(dp(ctx, 1), selected ? AdultOnboardingAppData.GLOW : Color.argb(36, 255, 255, 255));
+        // Blob radius
+        gd.setCornerRadii(new float[]{
+                dp(ctx, 40), dp(ctx, 40),
+                dp(ctx, 20), dp(ctx, 20),
+                dp(ctx, 50), dp(ctx, 50),
+                dp(ctx, 25), dp(ctx, 25)
+        });
+
+        if (selected) {
+            gd.setColor(Color.WHITE);
+            gd.setStroke(dp(ctx, 2f), AdultOnboardingAppData.INK);
+        } else {
+            gd.setColor(Color.argb(160, 255, 255, 255));
+            gd.setStroke(dp(ctx, 1), Color.argb(30, 0, 0, 0));
+        }
         col.setBackground(gd);
 
         android.widget.ImageView iv = new android.widget.ImageView(ctx);
         iv.setImageResource(sceneRes);
-        int size = dp(ctx, 48);
+        int size = dp(ctx, 54); // Smaller size
         LinearLayout.LayoutParams ivLp = new LinearLayout.LayoutParams(size, size);
         ivLp.bottomMargin = dp(ctx, 10);
         iv.setLayoutParams(ivLp);
@@ -199,9 +270,9 @@ public final class Widgets {
 
         TextView title = new TextView(ctx);
         title.setText(label);
-        title.setTextColor(Color.WHITE);
+        title.setTextColor(AdultOnboardingAppData.INK); // Changed to ink
         title.setTextSize(14);
-        title.setTypeface(AdultOnboardingUiUtils.tajawal(selected));
+        title.setTypeface(AdultOnboardingUiUtils.tajawal(true));
         col.addView(title);
 
         col.setOnClickListener(v -> onClick.run());
@@ -249,7 +320,7 @@ public final class Widgets {
         TextView tv = new TextView(ctx);
         tv.setText(text);
         tv.setTextColor(colorRes);
-        tv.setTextSize(20);
+        tv.setTextSize(22);
         tv.setTypeface(AdultOnboardingUiUtils.cairo(true));
         tv.setGravity(Gravity.CENTER);
         return tv;
@@ -259,8 +330,8 @@ public final class Widgets {
         TextView tv = new TextView(ctx);
         tv.setText(text);
         tv.setTextColor(colorRes);
-        tv.setAlpha(0.78f);
-        tv.setTextSize(13.5f);
+        tv.setAlpha(0.85f);
+        tv.setTextSize(14.5f);
         tv.setGravity(Gravity.CENTER);
         tv.setTypeface(AdultOnboardingUiUtils.tajawal(false));
         return tv;
@@ -271,7 +342,7 @@ public final class Widgets {
         tv.setText(text);
         tv.setTextColor(colorRes);
         tv.setAlpha(0.9f);
-        tv.setTextSize(14.5f);
+        tv.setTextSize(15.5f);
         tv.setLineSpacing(0, 1.35f);
         tv.setGravity(Gravity.CENTER);
         tv.setTypeface(AdultOnboardingUiUtils.tajawal(false));
@@ -283,7 +354,7 @@ public final class Widgets {
         TextView tv = new TextView(ctx);
         tv.setText(text);
         tv.setTextColor(color);
-        tv.setAlpha(0.75f);
+        tv.setAlpha(0.8f);
         tv.setTextSize(14);
         tv.setPaintFlags(tv.getPaintFlags() | android.graphics.Paint.UNDERLINE_TEXT_FLAG);
         int pad = dp(ctx, 6);

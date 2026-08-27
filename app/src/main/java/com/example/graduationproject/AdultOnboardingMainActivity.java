@@ -6,6 +6,8 @@ import android.view.View;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -40,6 +42,11 @@ public class AdultOnboardingMainActivity extends AppCompatActivity implements Ad
     private boolean everStarted = false;
     private boolean reducedMotion = false;
 
+    @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
     private OnboardingData savedSnapshot = null;
     private int savedIndex = 0;
 
@@ -54,6 +61,15 @@ public class AdultOnboardingMainActivity extends AppCompatActivity implements Ad
 
         // Force RTL + Arabic, matching dir="rtl" lang="ar" on the JS root.
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
+
+        // Initial system bar colors matching the first onboarding stage
+        getWindow().setStatusBarColor(AdultOnboardingAppData.NIGHT_DEEP);
+        getWindow().setNavigationBarColor(AdultOnboardingAppData.NIGHT);
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(false);
+            controller.setAppearanceLightNavigationBars(false);
+        }
 
         simulateReopenButton = findViewById(R.id.btnSimulateReopen);
         simulateReopenButton.setOnClickListener(v -> simulateReopen());
@@ -95,8 +111,8 @@ public class AdultOnboardingMainActivity extends AppCompatActivity implements Ad
     @Override
     public void completeOnboarding() {
         data.onboardingCompleted = true;
-        // The final "Ready" screen button routes the user to the Reflection screen.
-        Intent intent = new Intent(AdultOnboardingMainActivity.this, ReflectionActivity.class);
+        // The final "Ready" screen button routes the user to the Adult Mood screen.
+        Intent intent = new Intent(AdultOnboardingMainActivity.this, AdultMoodActivity.class);
         startActivity(intent);
         finish();
     }

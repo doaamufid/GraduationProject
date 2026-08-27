@@ -60,6 +60,11 @@ public class ChatMainActivity extends AppCompatActivity {
     private static long nextId() { return ++uid; }
     private String now() { return getString(R.string.chat_now); }
 
+    @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
     private final List<ChatMessage> messages = new ArrayList<>();
     private String currentNode = ConversationScript.NODE_START;
     private boolean typing = false;

@@ -31,7 +31,8 @@ public class FutureActivity extends AppCompatActivity {
 
     private FrameLayout timelineContainer;
     private CurvedTimelineView curvedTimelineView;
-    private TextView tvFooterPreview, btnViewAll, tvTodayPreviewText;
+    private TextView tvFooterPreview, tvTodayPreviewText;
+    private ImageView btnViewAll;
     private View cardTodayPreview;
 
     private float density;
@@ -92,52 +93,40 @@ public class FutureActivity extends AppCompatActivity {
         List<PointF> points = TimelineGeometry.computePoints(0);
         curvedTimelineView.setPoints(points);
 
-        // Milestone Labels
-        String[] labels = {"اليوم", "أسبوع", "شهر", "3 أشهر", "سنة"};
+        // Milestone Labels matching "Unit X" design
+        String[] labels = {"Unit 1", "Unit 2", "Unit 3", "Unit 4"};
 
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 4; i++) {
             addMilestoneNode(i, labels[i], points.get(i));
         }
 
-        // Add the large Send button at the last point
-        addSendButton(points.get(5));
+        // Add the large Start button at the last point
+        addSendButton(points.get(4));
 
-        // Position Today's Preview Bubble at the end of the road
-        positionTodayPreview(points.get(5));
+        // Position Today's Preview Bubble
+        positionTodayPreview(points.get(4));
     }
 
     private void addMilestoneNode(int index, String label, PointF pointDp) {
         View node = LayoutInflater.from(this).inflate(R.layout.item_milestone_node, timelineContainer, false);
         View circleBg = node.findViewById(R.id.nodeCircleBg);
         ImageView ivIcon = node.findViewById(R.id.ivNodeIcon);
-        TextView tvLabelTop = node.findViewById(R.id.tvLabelTop);
         TextView tvLabelBottom = node.findViewById(R.id.tvLabelBottom);
 
-        if (index == 0) {
-            circleBg.setBackgroundResource(R.drawable.bg_circle_white);
-            ivIcon.setImageResource(R.drawable.mail);
-            ivIcon.setVisibility(View.VISIBLE);
-            tvLabelTop.setText(label);
-            tvLabelTop.setVisibility(View.VISIBLE);
-        } else if (index == 2) {
-            circleBg.setBackgroundResource(R.drawable.bg_node_arrived);
-            ivIcon.setImageResource(R.drawable.ic_heart_filled_white);
-            ivIcon.setVisibility(View.VISIBLE);
-            tvLabelBottom.setText(label);
-            tvLabelBottom.setVisibility(View.VISIBLE);
-            tvLabelBottom.setTextColor(Color.parseColor("#E86E5E"));
+        tvLabelBottom.setText(label);
+        
+        // Match the organic design
+        if (index % 2 == 0) {
+            circleBg.setRotation(index * 45f);
         } else {
-            circleBg.setBackgroundResource(R.drawable.bg_circle_white);
-            ivIcon.setVisibility(View.GONE);
-            tvLabelBottom.setText(label);
-            tvLabelBottom.setVisibility(View.VISIBLE);
+            circleBg.setRotation(index * -30f);
         }
 
         FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         flp.gravity = Gravity.TOP | Gravity.START;
-        flp.leftMargin = Math.round((pointDp.x - 30) * density);
-        flp.topMargin = Math.round((pointDp.y - 30) * density);
+        flp.leftMargin = Math.round((pointDp.x - 50) * density);
+        flp.topMargin = Math.round((pointDp.y - 50) * density);
         node.setLayoutParams(flp);
 
         timelineContainer.addView(node);
@@ -152,7 +141,7 @@ public class FutureActivity extends AppCompatActivity {
         FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         flp.gravity = Gravity.TOP | Gravity.START;
-        flp.leftMargin = Math.round((pointDp.x - 80) * density);
+        flp.leftMargin = Math.round((pointDp.x - 70) * density);
         flp.topMargin = Math.round((pointDp.y - 70) * density);
         btn.setLayoutParams(flp);
 

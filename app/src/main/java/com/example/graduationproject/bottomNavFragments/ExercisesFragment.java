@@ -92,52 +92,80 @@ public class ExercisesFragment extends Fragment {
     private void setupExercisesData() {
         exerciseList.clear();
 
-        // البيانات مأخوذة من الفيجما مباشرة مع إضافة خلفيات ملونة للأيقونات لتطابق تصميم الصفحة الرئيسية
-        exerciseList.add(new ExerciseFeature(R.drawable.license, R.drawable.bg_icon_blue, "نقاط قوتي", "STRENGTHS"));
-        exerciseList.add(new ExerciseFeature(R.drawable.mail, R.drawable.bg_icon_purple, "رسالة لنفسي", "FUTURE SELF"));
-        exerciseList.add(new ExerciseFeature(R.drawable.center, R.drawable.bg_icon_orange, "التأريض", "GROUNDING"));
-        exerciseList.add(new ExerciseFeature(R.drawable.style, R.drawable.bg_icon_pink, "بطاقة التهدئة الشخصية", "CALM CARD"));
-        exerciseList.add(new ExerciseFeature(R.drawable.air, R.drawable.bg_icon_green, "التنفس", "BREATHING"));
-        exerciseList.add(new ExerciseFeature(R.drawable.center, R.drawable.bg_icon_purple, "إعادة صياغة الأفكار", "CBT REFRAMING"));
-        exerciseList.add(new ExerciseFeature(R.drawable.pin, R.drawable.bg_icon_yellow, "خريطة الجسد", "BODY MAP"));
-        exerciseList.add(new ExerciseFeature(R.drawable.box2, R.drawable.bg_icon_purple, "صندوق النجاة", "SURVIVAL BOX"));
+        // Colors from the reference image
+        int colorGreenCard = 0xFFEBF2E5;
+        int colorGreenCircle = 0xFF7BA67E;
+        
+        int colorBlueCard = 0xFFE3F2F5;
+        int colorBlueCircle = 0xFF3D7B85;
+        
+        int colorYellowCard = 0xFFFDF2D7;
+        int colorYellowCircle = 0xFFE5A647;
+        
+        int colorPinkCard = 0xFFF9E7E7;
+        int colorPinkCircle = 0xFFD67676;
+
+        // Add exercises based on the localized strings
+        // 1. التأريض
+        exerciseList.add(new ExerciseFeature(R.drawable.center, getString(R.string.exercises_grounding_title), getString(R.string.exercises_grounding_desc), getString(R.string.exercises_duration_5min), colorGreenCard, colorGreenCircle));
+        
+        // 2. التنفس
+        exerciseList.add(new ExerciseFeature(R.drawable.air, getString(R.string.exercises_breathing_title_main), getString(R.string.exercises_breathing_desc_main), getString(R.string.exercises_duration_3min), colorBlueCard, colorBlueCircle));
+        
+        // 3. صندوق النجاة
+        exerciseList.add(new ExerciseFeature(R.drawable.box2, getString(R.string.exercises_survival_box_title), getString(R.string.exercises_survival_box_desc), getString(R.string.exercises_duration_1min), colorYellowCard, colorYellowCircle));
+        
+        // 4. بطاقة التهدئة
+        exerciseList.add(new ExerciseFeature(R.drawable.style, getString(R.string.exercises_calm_card_title), getString(R.string.exercises_calm_card_desc), getString(R.string.exercises_duration_1min), colorPinkCard, colorPinkCircle));
+
+        // 5. نقاط قوتي
+        exerciseList.add(new ExerciseFeature(R.drawable.license, getString(R.string.exercises_strengths_title), getString(R.string.exercises_strengths_desc), getString(R.string.exercises_duration_5min), colorGreenCard, colorGreenCircle));
+        
+        // 6. رسالة لنفسي
+        exerciseList.add(new ExerciseFeature(R.drawable.mail, getString(R.string.exercises_future_letter_title), getString(R.string.exercises_future_letter_desc), getString(R.string.exercises_duration_10min), colorBlueCard, colorBlueCircle));
+        
+        // 7. إعادة صياغة الأفكار
+        exerciseList.add(new ExerciseFeature(R.drawable.center, getString(R.string.exercises_reframe_title), getString(R.string.exercises_reframe_desc), getString(R.string.exercises_duration_7min), colorYellowCard, colorYellowCircle));
+        
+        // 8. خريطة الجسد
+        exerciseList.add(new ExerciseFeature(R.drawable.pin, getString(R.string.exercises_body_map_title), getString(R.string.exercises_body_map_desc), getString(R.string.exercises_duration_5min), colorPinkCard, colorPinkCircle));
 
         // 3. تهيئة الـ Adapter وتمرير مستمع النقرات لاحقاً
         adapter = new ExerciseFeatureAdapter(requireContext(), exerciseList, position -> {
             // هنا ستضعين الأكشن لكل تمرين عند الضغط عليه لاحقاً
             switch (position) {
-                case 0: // نقاط قوتي
-                    startActivity(new Intent(requireContext(), StrenghtBankActivity.class));
-                    break;
-
-                case 1: // رسالة لنفسي
-                    startActivity(new Intent(requireContext(), FutureActivity.class));
-                    break;
-
-                case 2: // التأريض
+                case 0: // التأريض
                     startActivity(new Intent(requireContext(), GroundingExActivity.class));
+                    break;
+
+                case 1: // التنفس (Breathing)
+                    Intent breathingIntent = new Intent(requireContext(), BreathingActivity.class);
+                    startActivity(breathingIntent);
+                    break;
+
+                case 2: // صندوق النجاة (Survival Box)
+                    startActivity(new Intent(requireContext(), SurvivalBoxActivity.class));
                     break;
 
                 case 3: // بطاقة التهدئة الشخصية
                     startActivity(new Intent(requireContext(), OneClickCalmActivity.class));
                     break;
 
-                case 4: // التنفس (Breathing)
-                    Intent breathingIntent = new Intent(requireContext(), BreathingActivity.class);
-                    startActivity(breathingIntent);
+                case 4: // نقاط قوتي
+                    startActivity(new Intent(requireContext(), StrenghtBankActivity.class));
                     break;
 
-                case 5: // إعادة صياغة الأفكار (CBT Reframing)
+                case 5: // رسالة لنفسي
+                    startActivity(new Intent(requireContext(), FutureActivity.class));
+                    break;
+
+                case 6: // إعادة صياغة الأفكار (CBT Reframing)
                     startActivity(new Intent(requireContext(), CBTRReframingActivity.class));
                     break;
 
-                case 6: // خريطة الجسد (Body Map)
+                case 7: // خريطة الجسد (Body Map)
                     Intent bodyMapIntent = new Intent(requireContext(), BodyMapActivity.class);
                     startActivity(bodyMapIntent);
-                    break;
-
-                case 7: // صندوق النجاة (Survival Box)
-                    startActivity(new Intent(requireContext(), SurvivalBoxActivity.class));
                     break;
             }
         });

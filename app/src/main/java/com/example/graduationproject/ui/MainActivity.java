@@ -19,6 +19,11 @@ import com.example.graduationproject.models.ContentItem;
 public class MainActivity extends AppCompatActivity implements ContentItemHost {
 
     @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

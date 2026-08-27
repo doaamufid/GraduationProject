@@ -24,18 +24,17 @@ public final class TimelineGeometry {
     /** Returns fixed points scaled to fit within a typical screen height. */
     public static List<PointF> computePoints(int count) {
         List<PointF> points = new ArrayList<>();
-        // Alternating X to distribute nodes around the road
-        points.add(new PointF(CENTER_X_DP, 40f));   // 0: Today (Top)
-        points.add(new PointF(250f, 130f));         // 1: Week (Right)
-        points.add(new PointF(70f, 225f));          // 2: Month (Left)
-        points.add(new PointF(250f, 320f));         // 3: 3 Months (Right)
-        points.add(new PointF(70f, 415f));          // 4: Year (Left)
-        points.add(new PointF(CENTER_X_DP, 530f));  // 5: Send Button (Bottom)
+        // Zigzag matching the organic flow in the image
+        points.add(new PointF(240f, 60f));   // 0: Milestone 1 (Top Right)
+        points.add(new PointF(100f, 180f));  // 1: Milestone 2 (Middle Left)
+        points.add(new PointF(260f, 300f));  // 2: Milestone 3 (Middle Right)
+        points.add(new PointF(80f, 420f));   // 3: Milestone 4 (Bottom Left)
+        points.add(new PointF(200f, 550f));  // 4: Start Button (Bottom Right-ish)
         return points;
     }
 
     /** Total height of the road view itself. */
     public static float totalHeightDp(int count) {
-        return 600f;
+        return 650f;
     }
 }

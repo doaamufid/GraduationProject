@@ -27,10 +27,10 @@ public class PrivacyFragment extends BaseScreenFragment {
                 Color.WHITE), 6);
 
         Object[][] cardData = {
-                {"\uD83D\uDD12", getString(R.string.adaptive_adult_onboarding_privacy_card1), Color.parseColor("#4D91A5")},
-                {"\uD83E\uDD0D", getString(R.string.adaptive_adult_onboarding_privacy_card2), Color.parseColor("#59B28D")},
-                {"\uD83D\uDCDD", getString(R.string.adaptive_adult_onboarding_privacy_card3), Color.parseColor("#7659B2")},
-                {"\uD83D\uDDD1", getString(R.string.adaptive_adult_onboarding_privacy_card4), Color.parseColor("#C98A8A")},
+                {"\uD83D\uDD12", getString(R.string.adaptive_adult_onboarding_privacy_card1), Color.parseColor("#E2F5FF")},
+                {"\uD83E\uDD0D", getString(R.string.adaptive_adult_onboarding_privacy_card2), Color.parseColor("#E5F9E5")},
+                {"\uD83D\uDCDD", getString(R.string.adaptive_adult_onboarding_privacy_card3), Color.parseColor("#F5E5FF")},
+                {"\uD83D\uDDD1", getString(R.string.adaptive_adult_onboarding_privacy_card4), Color.parseColor("#FFE5E5")},
         };
 
         GridLayout grid = new GridLayout(requireContext());
@@ -40,26 +40,32 @@ public class PrivacyFragment extends BaseScreenFragment {
             cell.setOrientation(LinearLayout.VERTICAL);
             cell.setGravity(Gravity.CENTER);
             GradientDrawable gd = new GradientDrawable();
-            gd.setCornerRadius(dp(22));
-            gd.setColor(Color.argb(30, 255, 255, 255));
-            gd.setStroke(dp(1), Color.argb(50, 255, 255, 255));
+            // Blob radius
+            gd.setCornerRadii(new float[]{
+                dp(40), dp(40),
+                dp(25), dp(25),
+                dp(50), dp(50),
+                dp(30), dp(30)
+            });
+            gd.setColor((int)c[2]);
+            gd.setStroke(dp(1), Color.argb(40, 0, 0, 0));
             cell.setBackground(gd);
-            cell.setPadding(dp(12), dp(18), dp(12), dp(18));
+            cell.setPadding(dp(12), dp(22), dp(12), dp(22));
 
             TextView emoji = new TextView(requireContext());
             emoji.setText((String) c[0]);
-            emoji.setTextSize(32);
+            emoji.setTextSize(38); // Bigger icon
             emoji.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(44), dp(44));
+            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(54), dp(54));
             icLp.bottomMargin = dp(8);
             cell.addView(emoji, icLp);
 
             TextView label = new TextView(requireContext());
             label.setText((String) c[1]);
-            label.setTextColor(Color.WHITE);
-            label.setTextSize(13f);
+            label.setTextColor(com.example.graduationproject.AdultOnboardingAppData.INK); // Changed to ink
+            label.setTextSize(14f);
             label.setGravity(Gravity.CENTER);
-            label.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.tajawal(false));
+            label.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.tajawal(true));
             LinearLayout.LayoutParams llp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             cell.addView(label, llp);
 

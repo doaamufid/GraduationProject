@@ -15,6 +15,11 @@ import com.example.graduationproject.databinding.ActivityOnBoarding3Binding;
 
 public class OnBoardingActivity3 extends AppCompatActivity {
 
+    @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
     private ActivityOnBoarding3Binding binding;
 
     @Override

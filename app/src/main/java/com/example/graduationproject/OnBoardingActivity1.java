@@ -18,6 +18,11 @@ public class OnBoardingActivity1 extends AppCompatActivity {
     private ActivityOnBoarding1Binding binding;
 
     @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 

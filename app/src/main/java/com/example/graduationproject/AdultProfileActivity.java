@@ -32,6 +32,11 @@ public class AdultProfileActivity extends AppCompatActivity implements ProfileNa
     private Runnable pendingToastHide;
 
     @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adult_profile);
