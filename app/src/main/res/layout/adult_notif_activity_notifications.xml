@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/adult_notif_bg_gradient"
+    android:layoutDirection="rtl"
+    android:fitsSystemWindows="true">
+
+    <!-- ===== الهيدر ===== -->
+    <LinearLayout
+        android:id="@+id/adult_notif_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:background="@drawable/adult_notif_bg_header"
+        android:paddingHorizontal="@dimen/adult_notif_header_padding_h"
+        android:paddingVertical="@dimen/adult_notif_header_padding_v"
+        android:elevation="2dp">
+
+        <ImageButton
+            android:id="@+id/adult_notif_btn_back"
+            android:layout_width="@dimen/adult_notif_header_button_size"
+            android:layout_height="@dimen/adult_notif_header_button_size"
+            android:padding="9dp"
+            android:src="@drawable/adult_notif_ic_back"
+            android:background="@drawable/adult_notif_ripple_circle"
+            android:contentDescription="@string/adult_notif_cd_back"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:text="@string/adult_notif_notifications_title"
+            style="@style/adult_notif_Text.HeaderTitle" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/adult_notif_btn_options"
+            android:layout_width="@dimen/adult_notif_header_button_size"
+            android:layout_height="@dimen/adult_notif_header_button_size"
+            android:padding="10dp"
+            android:src="@drawable/adult_notif_ic_more_vert"
+            android:background="@drawable/adult_notif_ripple_circle"
+            android:contentDescription="@string/adult_notif_cd_options"
+            android:scaleType="fitCenter" />
+
+    </LinearLayout>
+
+    <!-- ===== قائمة الاشعارات ===== -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/adult_notif_recycler_notifications"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingHorizontal="@dimen/adult_notif_page_padding_h"
+        android:paddingTop="16dp"
+        android:paddingBottom="24dp"
+        android:overScrollMode="ifContentScrolls" />
+
+</LinearLayout>

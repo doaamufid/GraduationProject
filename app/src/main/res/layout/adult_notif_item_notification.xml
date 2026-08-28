@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/adult_notif_card_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/adult_notif_item_spacing"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardBackgroundColor="@color/adult_notif_surface"
+    app:cardCornerRadius="@dimen/adult_notif_card_corner_radius"
+    app:cardElevation="@dimen/adult_notif_card_elevation"
+    app:strokeWidth="0dp"
+    app:rippleColor="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top"
+        android:padding="@dimen/adult_notif_card_padding">
+
+        <!-- دائرة الأيقونة -->
+        <FrameLayout
+            android:id="@+id/adult_notif_icon_circle"
+            android:layout_width="@dimen/adult_notif_icon_circle_size"
+            android:layout_height="@dimen/adult_notif_icon_circle_size"
+            android:background="@drawable/adult_notif_bg_icon_circle">
+
+            <ImageView
+                android:id="@+id/adult_notif_img_type_icon"
+                android:layout_width="@dimen/adult_notif_icon_size"
+                android:layout_height="@dimen/adult_notif_icon_size"
+                android:layout_gravity="center"
+                android:src="@drawable/adult_notif_ic_quote"
+                android:contentDescription="@null" />
+        </FrameLayout>
+
+        <!-- المحتوى النصي -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/adult_notif_tv_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    style="@style/adult_notif_Text.ItemTitle"
+                    tools:text="اقتباس اليوم" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginStart="6dp">
+
+                    <TextView
+                        android:id="@+id/adult_notif_tv_time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/adult_notif_Text.ItemTime"
+                        tools:text="قبل ساعتين" />
+
+                    <View
+                        android:id="@+id/adult_notif_dot_unread"
+                        android:layout_width="@dimen/adult_notif_unread_dot_size"
+                        android:layout_height="@dimen/adult_notif_unread_dot_size"
+                        android:layout_marginStart="6dp"
+                        android:background="@drawable/adult_notif_bg_dot_accent" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/adult_notif_tv_desc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="end"
+                android:maxLines="3"
+                style="@style/adult_notif_Text.ItemDesc"
+                tools:text="اقتباس مخصص لك بناءً على مزاجك" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

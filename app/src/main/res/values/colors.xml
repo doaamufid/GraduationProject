@@ -504,5 +504,41 @@
     <color name="kids_calm_overlayDark">#8C2B3A55</color>
     <color name="kids_calm_toastBg">#2B3A55</color>
     <color name="kids_calm_transparent">#00000000</color>
+
+    <!-- خلفية متدرجة -->
+    <color name="adult_notif_bg_top">#EAF3FB</color>
+    <color name="adult_notif_bg_bottom">#F8F8F5</color>
+
+    <!-- أساسي -->
+    <color name="adult_notif_surface">#FFFFFF</color>
+    <color name="adult_notif_ink">#2B3A4A</color>
+    <color name="adult_notif_ink_muted">#6B7A89</color>
+    <color name="adult_notif_ink_faint">#9CA6AF</color>
+    <color name="adult_notif_border">#0F2B3A4A</color>
+    <color name="adult_notif_accent">#3E7CA6</color>
+
+    <!-- ripple / press states -->
+    <color name="adult_notif_press_overlay">#14000000</color>
+    <color name="adult_notif_card_shadow">#0F2B3A4A</color>
+
+    <!-- ألوان كل نوع إشعار (خلفية / أيقونة) -->
+    <color name="adult_notif_type_quote_bg">#E4EFF8</color>
+    <color name="adult_notif_type_quote_fg">#3E7CA6</color>
+
+    <color name="adult_notif_type_breathing_bg">#FBF1DF</color>
+    <color name="adult_notif_type_breathing_fg">#B9812E</color>
+
+    <color name="adult_notif_type_child_bg">#F8EAE8</color>
+    <color name="adult_notif_type_child_fg">#BD6F63</color>
+
+    <color name="adult_notif_type_report_bg">#E6EEF8</color>
+    <color name="adult_notif_type_report_fg">#4A6FA0</color>
+
+    <color name="adult_notif_type_parent_report_bg">#E9F0EA</color>
+    <color name="adult_notif_type_parent_report_fg">#5D8570</color>
+
+    <color name="adult_notif_type_dhikr_bg">#FBF1DF</color>
+    <color name="adult_notif_type_dhikr_fg">#B9812E</color>
+
 </resources>
 
