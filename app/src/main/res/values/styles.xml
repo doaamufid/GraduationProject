@@ -243,4 +243,65 @@
         <item name="android:textSize">13sp</item>
         <item name="android:textStyle">bold</item>
     </style>
+
+    <style name="adult_notif_Theme.Salam" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/adult_notif_accent</item>
+        <item name="colorPrimaryDark">@color/adult_notif_bg_top</item>
+        <item name="colorAccent">@color/adult_notif_accent</item>
+        <item name="android:statusBarColor">@color/adult_notif_bg_top</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@color/adult_notif_bg_bottom</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <!-- Base text style to support dot notation inheritance -->
+    <style name="adult_notif_Text" parent="android:Widget.TextView" />
+
+    <!-- نص عنوان الشاشة (يقابل Almarai ExtraBold 800) -->
+    <style name="adult_notif_Text.HeaderTitle">
+        <item name="android:textColor">@color/adult_notif_ink</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+
+    <!-- عنوان المجموعة الفرعية -->
+    <style name="adult_notif_Text.GroupLabel">
+        <item name="android:textColor">@color/adult_notif_ink_muted</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <!-- عنوان بطاقة الإشعار -->
+    <style name="adult_notif_Text.ItemTitle">
+        <item name="android:textColor">@color/adult_notif_ink</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+    </style>
+
+    <!-- وصف الإشعار -->
+    <style name="adult_notif_Text.ItemDesc">
+        <item name="android:textColor">@color/adult_notif_ink_muted</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:lineSpacingMultiplier">1.2</item>
+    </style>
+
+    <!-- وقت الإشعار -->
+    <style name="adult_notif_Text.ItemTime">
+        <item name="android:textColor">@color/adult_notif_ink_faint</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+
+    <!-- نص القائمة المنسدلة -->
+    <style name="adult_notif_Text.PopupItem">
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+
 </resources>

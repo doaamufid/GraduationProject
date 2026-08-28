@@ -80,4 +80,24 @@
     <dimen name="kids_adaptive_text_body">15sp</dimen>
     <dimen name="kids_adaptive_text_button">18sp</dimen>
     <dimen name="kids_adaptive_text_small">12sp</dimen>
+
+    <dimen name="adult_notif_page_padding_h">16dp</dimen>
+    <dimen name="adult_notif_header_padding_v">14dp</dimen>
+    <dimen name="adult_notif_header_padding_h">8dp</dimen>
+
+    <dimen name="adult_notif_icon_circle_size">44dp</dimen>
+    <dimen name="adult_notif_icon_size">19dp</dimen>
+
+    <dimen name="adult_notif_card_corner_radius">16dp</dimen>
+    <dimen name="adult_notif_card_padding">12dp</dimen>
+    <dimen name="adult_notif_card_elevation">2dp</dimen>
+    <dimen name="adult_notif_item_spacing">8dp</dimen>
+    <dimen name="adult_notif_group_spacing">24dp</dimen>
+
+    <dimen name="adult_notif_popup_corner_radius">14dp</dimen>
+    <dimen name="adult_notif_popup_width">190dp</dimen>
+
+    <dimen name="adult_notif_unread_dot_size">8dp</dimen>
+
+    <dimen name="adult_notif_header_button_size">40dp</dimen>
 </resources>

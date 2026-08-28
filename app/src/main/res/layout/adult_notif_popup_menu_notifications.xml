@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/adult_notif_popup_width"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:background="@drawable/adult_notif_bg_popup"
+    android:elevation="8dp">
+
+    <TextView
+        android:id="@+id/adult_notif_tv_mark_all_read"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/adult_notif_ripple_popup_item"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="end"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="12dp"
+        android:text="@string/adult_notif_mark_all_read"
+        style="@style/adult_notif_Text.PopupItem" />
+
+</LinearLayout>
