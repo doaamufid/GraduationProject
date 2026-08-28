@@ -303,5 +303,31 @@
         <item name="android:fontFamily">sans-serif-medium</item>
     </style>
 
+    <style name="kids_routine_Theme.SalamRoutine" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:statusBarColor">@color/kids_routine_stage_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:windowBackground">@color/kids_routine_stage_bg</item>
+        <item name="colorPrimary">@color/kids_routine_accent_orange</item>
+        <item name="colorAccent">@color/kids_routine_accent_coral</item>
+        <item name="android:fontFamily">@font/cairo_variable</item>
+    </style>
+
+    <!-- Full-screen transparent dialog used for the celebration overlay -->
+    <style name="kids_routine_Theme.SalamRoutine.FullscreenDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+    </style>
+
+    <!-- Bottom sheet dialog theme: transparent so our own rounded drawable shows -->
+    <style name="kids_routine_Theme.SalamRoutine.BottomSheet" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/kids_routine_BottomSheetStyle</item>
+    </style>
+
+    <style name="kids_routine_BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
 
 </resources>

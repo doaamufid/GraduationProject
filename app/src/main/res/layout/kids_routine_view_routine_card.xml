@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="9dp"
+    android:background="@drawable/kids_routine_bg_card_white"
+    android:clipToOutline="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+
+        <!-- accent strip, colored per period, clipped by parent's rounded outline -->
+        <View
+            android:id="@+id/accentStrip"
+            android:layout_width="5dp"
+            android:layout_height="match_parent"
+            android:minHeight="64dp"
+            android:background="@color/kids_routine_period_morning"/>
+
+        <FrameLayout
+            android:id="@+id/emojiCircle"
+            android:layout_width="@dimen/kids_routine_emoji_circle_size"
+            android:layout_height="@dimen/kids_routine_emoji_circle_size"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/kids_routine_bg_emoji_circle_undone">
+
+            <TextView
+                android:id="@+id/tvItemEmoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:textSize="24sp"
+                tools:text="🌞"/>
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tvItemLabel"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textSize="@dimen/kids_routine_text_card_label"
+            android:textStyle="bold"
+            android:textColor="@color/kids_routine_ink_purple"
+            android:fontFamily="@font/cairo_variable"
+            tools:text="استيقظت"/>
+
+        <FrameLayout
+            android:id="@+id/checkCircle"
+            android:layout_width="@dimen/kids_routine_check_circle_size"
+            android:layout_height="@dimen/kids_routine_check_circle_size"
+            android:layout_marginEnd="14dp"
+            android:background="@drawable/kids_routine_bg_check_unchecked">
+
+            <ImageView
+                android:id="@+id/ivCheck"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:src="@drawable/kids_routine_ic_check"
+                android:visibility="invisible"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- delete badge, top-start corner, shown only in edit mode -->
+    <ImageButton
+        android:id="@+id/btnDeleteItem"
+        android:layout_width="@dimen/kids_routine_delete_badge_size"
+        android:layout_height="@dimen/kids_routine_delete_badge_size"
+        android:layout_gravity="top|start"
+        android:layout_marginTop="-6dp"
+        android:layout_marginStart="-6dp"
+        android:background="@drawable/kids_routine_bg_delete_badge"
+        android:src="@drawable/kids_routine_ic_close"
+        android:padding="5dp"
+        android:scaleType="fitCenter"
+        android:contentDescription="@string/kids_routine_cd_delete"
+        android:visibility="gone"
+        android:elevation="4dp"/>
+
+    <!-- container for star-burst celebration particles, anchored near the check circle -->
+    <FrameLayout
+        android:id="@+id/burstContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</FrameLayout>

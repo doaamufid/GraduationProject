@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kids_routine_celebrate_overlay"
+    android:padding="24dp">
+
+    <LinearLayout
+        android:id="@+id/celebrateCard"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/kids_routine_bg_celebrate_card"
+        android:paddingTop="30dp"
+        android:paddingBottom="30dp"
+        android:paddingStart="24dp"
+        android:paddingEnd="24dp">
+
+        <TextView
+            android:id="@+id/tvCelebrateSticker"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="60sp"
+            android:layout_marginBottom="6dp"
+            tools:text="🌟"
+            xmlns:tools="http://schemas.android.com/tools"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/kids_routine_celebrate_title"
+            android:textColor="@color/kids_routine_ink_purple"
+            android:textSize="@dimen/kids_routine_text_celebrate_title"
+            android:textStyle="bold"
+            android:layout_marginBottom="6dp"
+            android:fontFamily="@font/baloo_variable"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/kids_routine_celebrate_sub"
+            android:textColor="@color/kids_routine_muted_purple"
+            android:textSize="@dimen/kids_routine_text_celebrate_sub"
+            android:textStyle="bold"
+            android:lineSpacingMultiplier="1.4"
+            android:layout_marginBottom="14dp"
+            android:fontFamily="@font/cairo_variable"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/kids_routine_bg_celebrate_streak"
+            android:paddingStart="14dp"
+            android:paddingEnd="14dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
+            android:layout_marginBottom="20dp">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/kids_routine_ic_flame"/>
+
+            <TextView
+                android:id="@+id/tvCelebrateStreak"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:textColor="@color/kids_routine_ink_purple"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:fontFamily="@font/cairo_variable"
+                tools:text="4 أيام متتالية"
+                xmlns:tools="http://schemas.android.com/tools"/>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnCelebrateOk"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kids_routine_bg_confirm_btn"
+            android:gravity="center"
+            android:paddingTop="13dp"
+            android:paddingBottom="13dp"
+            android:text="@string/kids_routine_btn_ok_star"
+            android:textColor="@color/kids_routine_card_white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:fontFamily="@font/baloo_variable"
+            android:clickable="true"
+            android:focusable="true"/>
+
+    </LinearLayout>
+</FrameLayout>

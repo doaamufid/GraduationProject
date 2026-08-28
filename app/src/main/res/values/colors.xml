@@ -540,5 +540,59 @@
     <color name="adult_notif_type_dhikr_bg">#FBF1DF</color>
     <color name="adult_notif_type_dhikr_fg">#B9812E</color>
 
+    <!-- Base -->
+    <color name="kids_routine_stage_bg">#EFE9F5</color>
+    <color name="kids_routine_phone_bg">#FFFBF5</color>
+    <color name="kids_routine_notch_bg">#1C1730</color>
+
+    <!-- Text / brand -->
+    <color name="kids_routine_ink_purple">#4A3B5C</color>
+    <color name="kids_routine_muted_purple">#8577A0</color>
+    <color name="kids_routine_line_purple">#EDE6F5</color>
+
+    <!-- Accents -->
+    <color name="kids_routine_accent_orange">#FFB627</color>
+    <color name="kids_routine_accent_coral">#FF8C61</color>
+    <color name="kids_routine_accent_lilac">#8B7BB8</color>
+
+    <!-- Period accents -->
+    <color name="kids_routine_period_morning">#FFB627</color>
+    <color name="kids_routine_period_noon">#FF8C61</color>
+    <color name="kids_routine_period_evening">#8B7BB8</color>
+
+    <!-- Card / surfaces -->
+    <color name="kids_routine_card_white">#FFFFFF</color>
+    <color name="kids_routine_emoji_circle_done_bg">#EAF7EC</color>
+    <color name="kids_routine_emoji_circle_undone_bg">#FFF6E9</color>
+    <color name="kids_routine_check_done_bg">#7FB77E</color>
+    <color name="kids_routine_check_undone_border">#E4DDF0</color>
+    <color name="kids_routine_delete_badge_bg">#E97A6E</color>
+    <color name="kids_routine_sticker_shelf_bg">#FFF6E9</color>
+    <color name="kids_routine_input_bg">#FAF7F2</color>
+    <color name="kids_routine_input_border">#EDE6F5</color>
+    <color name="kids_routine_chip_unselected_bg">#FAF7F2</color>
+
+    <!-- Overlays -->
+    <color name="kids_routine_sheet_overlay">#73242B56</color>
+    <color name="kids_routine_celebrate_overlay">#8C2B2456</color>
+    <color name="kids_routine_celebrate_streak_bg">#FFF1E7</color>
+
+    <!-- White w/ alpha, used on header (over dynamic sky gradient) -->
+    <color name="kids_routine_white_70">#B3FFFFFF</color>
+    <color name="kids_routine_white_75">#BFFFFFFF</color>
+    <color name="kids_routine_white_85">#D9FFFFFF</color>
+    <color name="kids_routine_white_90">#E6FFFFFF</color>
+    <color name="kids_routine_white_55">#8CFFFFFF</color>
+    <color name="kids_routine_white_full">#FFFFFFFF</color>
+
+    <!-- Sky gradient stops (top / bottom) used by KidsRoutineSkyArcView -->
+    <color name="kids_routine_sky0_top">#FFE3B3</color>
+    <color name="kids_routine_sky0_bottom">#FFC1A6</color>
+    <color name="kids_routine_sky1_top">#BFE6FF</color>
+    <color name="kids_routine_sky1_bottom">#EAF8FF</color>
+    <color name="kids_routine_sky2_top">#C9A6FF</color>
+    <color name="kids_routine_sky2_bottom">#8B7BB8</color>
+    <color name="kids_routine_sky3_top">#2B2456</color>
+    <color name="kids_routine_sky3_bottom">#120E2A</color>
 </resources>
 
