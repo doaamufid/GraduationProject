@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingHorizontal="6dp">
+
+    <com.example.graduationproject.view.kidsCalmMascotView
+        android:id="@+id/introMascot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/startButton"
+        android:layout_width="140dp"
+        android:layout_height="140dp"
+        android:layout_marginTop="24dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/kids_calm_bg_launch_circle"
+        android:elevation="6dp"
+        android:clickable="true"
+        android:focusable="true">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/kids_calm_icon_rocket"
+            android:textSize="40sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="@string/kids_calm_adv_start"
+            android:textColor="@color/kids_calm_navy"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            style="@style/kids_calm_Font.Display" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/noWordsHint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:text="@string/kids_calm_adv_no_words"
+        android:textColor="@color/kids_calm_purpleDeep"
+        android:textSize="12sp"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        style="@style/kids_calm_Font.Body" />
+
+</LinearLayout>

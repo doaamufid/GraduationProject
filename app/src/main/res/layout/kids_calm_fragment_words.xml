@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:clipChildren="false"
+    android:clipToPadding="false">
+
+    <com.example.graduationproject.view.kidsCalmMascotView
+        android:id="@+id/wordsMascot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/wordsRecycler"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="16dp"
+        android:nestedScrollingEnabled="true"
+        android:clipChildren="true"
+        android:clipToPadding="true"
+        tools:listitem="@layout/kids_calm_item_word" />
+
+    <TextView
+        android:id="@+id/newWordButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/kids_calm_bg_big_button_mint"
+        android:gravity="center"
+        android:paddingVertical="15dp"
+        android:text="@string/kids_calm_words_new"
+        android:textColor="@color/kids_calm_white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:elevation="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        style="@style/kids_calm_Font.Display" />
+
+</LinearLayout>

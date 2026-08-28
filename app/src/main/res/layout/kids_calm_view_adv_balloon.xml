@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <com.example.graduationproject.view.kidsCalmMascotView
+        android:id="@+id/balloonMascot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/balloonEmoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
+        android:text="@string/kids_calm_icon_balloon"
+        android:textSize="90sp"
+        android:clickable="true"
+        android:focusable="true" />
+
+    <TextView
+        android:id="@+id/balloonCounter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:textColor="@color/kids_calm_navy"
+        android:textSize="14sp"
+        android:textStyle="bold"
+        style="@style/kids_calm_Font.Display" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center"
+        android:text="@string/kids_calm_adv_balloon_sub"
+        android:textColor="@color/kids_calm_navySoft"
+        android:textSize="11.5sp"
+        style="@style/kids_calm_Font.Body" />
+
+</LinearLayout>

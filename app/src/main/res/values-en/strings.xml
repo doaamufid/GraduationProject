@@ -690,4 +690,95 @@
     <string name="kids_adaptive_simulate_reopen">Simulate Reopening</string>
     <string name="kids_adaptive_simulate_reopen_cd">Simulate reopening the app (for demonstration purposes)</string>
 
+
+    <string name="kids_calm_app_name">Calm Corner</string>
+    <string name="kids_calm_app_subtitle">With Najma, your calm friend</string>
+
+    <string name="kids_calm_tab_gallery">🎨 My Cards</string>
+    <string name="kids_calm_tab_words">💬 My Words</string>
+    <string name="kids_calm_tab_simulate">🚀 Try It</string>
+
+    <string name="kids_calm_info_title">What is this place?</string>
+    <string name="kids_calm_info_body">Make a magic card and a sweet word you love. When you feel upset, press \"Try It\" and I will walk with you step by step, and at the end your card appears and you earn a star! ⭐</string>
+    <string name="kids_calm_info_ok">Got it! 🌈</string>
+
+    <string name="kids_calm_gallery_hint">Make a card with a sweet word and put a sticker you love on it! 🎨</string>
+    <string name="kids_calm_gallery_active_label">💛 This is your magic card right now</string>
+    <string name="kids_calm_gallery_empty">Pick a card from below! 👇</string>
+    <string name="kids_calm_gallery_all_cards">All your cards</string>
+    <string name="kids_calm_gallery_new_card">+ New card 🎨</string>
+    <string name="kids_calm_gallery_active_tag">⭐ This is the one right now</string>
+    <string name="kids_calm_gallery_pick_tag">Tap to choose it</string>
+
+    <string name="kids_calm_words_hint">Put a heart ♥️ on the words you love and choose how long you want to hear them!</string>
+    <string name="kids_calm_words_new">+ A special word of mine 💬</string>
+
+    <string name="kids_calm_dur_short">A little</string>
+    <string name="kids_calm_dur_medium">A bit more</string>
+    <string name="kids_calm_dur_long">Longer</string>
+
+    <string name="kids_calm_dialog_new_card_title">🎨 New card</string>
+    <string name="kids_calm_dialog_edit_card_title">✏️ Edit your card</string>
+    <string name="kids_calm_dialog_phrase_label">What is the sweet word?</string>
+    <string name="kids_calm_dialog_phrase_hint">Example: I am as brave as a lion 🦁</string>
+    <string name="kids_calm_dialog_sticker_label">Pick a sticker 🎁</string>
+    <string name="kids_calm_dialog_photo_btn">📷 Or add a photo that makes you laugh</string>
+    <string name="kids_calm_dialog_photo_btn_set">📷 You added a photo ✓</string>
+    <string name="kids_calm_dialog_preview_label">It looks like this:</string>
+    <string name="kids_calm_dialog_cancel">Cancel</string>
+    <string name="kids_calm_dialog_save_card">Save 🌟</string>
+
+    <string name="kids_calm_dialog_new_word_title">💬 My special word</string>
+    <string name="kids_calm_dialog_word_label">Write your word</string>
+    <string name="kids_calm_dialog_word_hint">Example: Lord, hold my hand</string>
+    <string name="kids_calm_dialog_emoji_label">Pick an emoji</string>
+    <string name="kids_calm_dialog_dur_label">How long do you want to hear it?</string>
+    <string name="kids_calm_dialog_save_word">Save 💛</string>
+
+    <string name="kids_calm_adv_no_card_msg">You haven\'t picked your magic card yet! Pick one first.</string>
+    <string name="kids_calm_adv_go_gallery">Go to my cards 🎨</string>
+    <string name="kids_calm_adv_intro">Ready to start a calm adventure? Press the button and come with me! 🚀</string>
+    <string name="kids_calm_adv_start">Start!</string>
+    <string name="kids_calm_adv_no_words">You haven\'t picked sweet words yet — pick one</string>
+    <string name="kids_calm_adv_back">✕ Back</string>
+
+    <string name="kids_calm_adv_balloon_hint">Tap the balloon and blow it up, and take a slow breath with it! 🎈</string>
+    <string name="kids_calm_adv_balloon_sub">Breathe in through your nose and out slowly through your mouth 🌬️</string>
+    <string name="kids_calm_adv_balloon_progress">Blow!</string>
+
+    <string name="kids_calm_adv_hunt_hint">Look around you for 5 things and check off each one you find! 🔍</string>
+    <string name="kids_calm_adv_hunt_found">Found one! ✋</string>
+
+    <string name="kids_calm_adv_word_fav">From your sweet words 💛</string>
+    <string name="kids_calm_adv_word_generic">A regular word — pick your words from \"My Words\"</string>
+
+    <string name="kids_calm_adv_card_ready">🎉 Your magic card is here!</string>
+    <string name="kids_calm_adv_star_earned">+1 ⭐ for finishing the adventure!</string>
+    <string name="kids_calm_adv_done">All good, I feel great now 💛</string>
+
+    <string name="kids_calm_toast_card_selected">🌟 This is now your card!</string>
+    <string name="kids_calm_toast_card_new">🎉 New card!</string>
+    <string name="kids_calm_toast_card_saved">✓ Done!</string>
+    <string name="kids_calm_toast_card_deleted">Deleted 👋</string>
+    <string name="kids_calm_toast_word_saved">💛 Your word is saved!</string>
+
+    <string name="kids_calm_cd_info">Explain to me</string>
+    <string name="kids_calm_cd_photo">Photo</string>
+
+    <!-- Icons / symbols reused around the UI -->
+    <string name="kids_calm_icon_mascot">🌟</string>
+    <string name="kids_calm_icon_star">⭐</string>
+    <string name="kids_calm_icon_balloon">🎈</string>
+    <string name="kids_calm_icon_compass">🧭</string>
+    <string name="kids_calm_icon_rocket">🚀</string>
+    <string name="kids_calm_icon_info">?</string>
+    <string name="kids_calm_icon_edit">✎</string>
+    <string name="kids_calm_icon_delete">🗑</string>
+    <string name="kids_calm_icon_confirm">✓</string>
+    <string name="kids_calm_icon_cancel">✕</string>
+    <string name="kids_calm_heart_filled">♥</string>
+    <string name="kids_calm_heart_empty">♡</string>
+    <string name="kids_calm_stars_default">2</string>
+    <string name="kids_calm_card_phrase_placeholder">Choose a sweet word…</string>
+
 </resources>

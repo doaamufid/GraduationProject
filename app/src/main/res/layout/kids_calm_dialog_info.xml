@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/kids_calm_bg_dialog_sheet_sun"
+    android:padding="24dp"
+    android:layoutDirection="rtl">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kids_calm_icon_mascot"
+        android:textSize="34sp"
+        android:layout_marginBottom="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kids_calm_info_title"
+        android:textColor="@color/kids_calm_navy"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="10dp"
+        style="@style/kids_calm_Font.Display" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/kids_calm_info_body"
+        android:textColor="@color/kids_calm_navySoft"
+        android:textSize="13sp"
+        android:lineSpacingMultiplier="1.4"
+        android:layout_marginBottom="14dp"
+        style="@style/kids_calm_Font.Body" />
+
+    <TextView
+        android:id="@+id/infoOkButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kids_calm_bg_ghost_button"
+        android:gravity="center"
+        android:paddingVertical="13dp"
+        android:text="@string/kids_calm_info_ok"
+        android:textColor="@color/kids_calm_navy"
+        android:textSize="14.5sp"
+        android:textStyle="bold"
+        android:clickable="true"
+        android:focusable="true"
+        style="@style/kids_calm_Font.Display" />
+
+</LinearLayout>
