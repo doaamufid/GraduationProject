@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:paddingHorizontal="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kids_calm_icon_balloon"
+        android:textSize="40sp"
+        android:layout_marginBottom="12dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="@string/kids_calm_adv_no_card_msg"
+        android:textColor="@color/kids_calm_navySoft"
+        android:textSize="14sp"
+        android:lineSpacingMultiplier="1.3"
+        android:layout_marginBottom="20dp"
+        style="@style/kids_calm_Font.Body" />
+
+    <TextView
+        android:id="@+id/goGalleryButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kids_calm_bg_big_button_coral"
+        android:paddingHorizontal="24dp"
+        android:paddingVertical="12dp"
+        android:text="@string/kids_calm_adv_go_gallery"
+        android:textColor="@color/kids_calm_white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:elevation="4dp"
+        android:clickable="true"
+        android:focusable="true"
+        style="@style/kids_calm_Font.Display" />
+</LinearLayout>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="@drawable/kids_calm_bg_root_sky">
+
+    <!-- main content container -->
+    <LinearLayout
+        android:id="@+id/phoneWrap"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:clipChildren="false"
+        android:clipToPadding="false">
+
+        <!-- header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/kids_calm_bg_header"
+            android:paddingTop="40dp"
+            android:paddingBottom="16dp"
+            android:paddingHorizontal="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <TextView
+                    android:id="@+id/mascotHeaderEmoji"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/kids_calm_icon_mascot"
+                    android:textSize="26sp"
+                    android:layout_marginStart="8dp" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginStart="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kids_calm_app_name"
+                        android:textColor="@color/kids_calm_navy"
+                        android:textSize="17sp"
+                        android:textStyle="bold"
+                        style="@style/kids_calm_Font.Display" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/kids_calm_app_subtitle"
+                        android:textColor="@color/kids_calm_navySoft"
+                        android:textSize="10.5sp"
+                        style="@style/kids_calm_Font.Body" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:background="@drawable/kids_calm_bg_star_chip"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="6dp"
+                        android:layout_marginEnd="8dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/kids_calm_icon_star"
+                            android:textSize="13sp"
+                            android:layout_marginStart="4dp" />
+
+                        <TextView
+                            android:id="@+id/starsText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/kids_calm_stars_default"
+                            android:textColor="@color/kids_calm_sunDeep"
+                            android:textSize="12.5sp"
+                            android:textStyle="bold"
+                            style="@style/kids_calm_Font.Display" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/infoButton"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/kids_calm_bg_info_btn"
+                        android:gravity="center"
+                        android:text="@string/kids_calm_icon_info"
+                        android:textColor="@color/kids_calm_purpleDeep"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:contentDescription="@string/kids_calm_cd_info" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- tabs -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="14dp"
+                android:weightSum="3">
+
+                <TextView
+                    android:id="@+id/tabGallery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="3.5dp"
+                    android:background="@drawable/kids_calm_bg_tab_active"
+                    android:gravity="center"
+                    android:paddingVertical="9dp"
+                    android:text="@string/kids_calm_tab_gallery"
+                    android:textColor="@color/kids_calm_coralDeep"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    style="@style/kids_calm_Font.Display" />
+
+                <TextView
+                    android:id="@+id/tabWords"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="3.5dp"
+                    android:background="@drawable/kids_calm_bg_tab_idle"
+                    android:gravity="center"
+                    android:paddingVertical="9dp"
+                    android:text="@string/kids_calm_tab_words"
+                    android:textColor="@color/kids_calm_navySoft"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    style="@style/kids_calm_Font.Display" />
+
+                <TextView
+                    android:id="@+id/tabSimulate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:layout_marginStart="3.5dp"
+                    android:background="@drawable/kids_calm_bg_tab_idle"
+                    android:gravity="center"
+                    android:paddingVertical="9dp"
+                    android:text="@string/kids_calm_tab_simulate"
+                    android:textColor="@color/kids_calm_navySoft"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:clickable="true"
+                    android:focusable="true"
+                    style="@style/kids_calm_Font.Display" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- content: fragment container -->
+        <FrameLayout
+            android:id="@+id/fragmentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingHorizontal="16dp"
+            android:paddingTop="16dp"
+            android:paddingBottom="20dp"
+            android:clipChildren="false"
+            android:clipToPadding="false" />
+    </LinearLayout>
+
+    <!-- toast pill -->
+    <TextView
+        android:id="@+id/toastView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|center_horizontal"
+        android:layout_marginBottom="26dp"
+        android:background="@drawable/kids_calm_bg_toast_pill"
+        android:paddingHorizontal="20dp"
+        android:paddingVertical="10dp"
+        android:text=""
+        android:textColor="@color/kids_calm_white"
+        android:textSize="13.5sp"
+        android:textStyle="bold"
+        android:visibility="gone"
+        android:elevation="30dp"
+        style="@style/kids_calm_Font.Display" />
+
+</FrameLayout>

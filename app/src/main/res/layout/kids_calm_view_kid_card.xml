@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="160dp"
+    android:layout_margin="12dp"
+    app:cardCornerRadius="28dp"
+    app:strokeWidth="3dp"
+    app:strokeColor="@color/kids_calm_white"
+    app:cardElevation="10dp"
+    app:cardBackgroundColor="@color/kids_calm_sun"
+    app:contentPadding="0dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/cardPhoto"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+
+        <View
+            android:id="@+id/cardGradientBg"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <View
+            android:id="@+id/cardPhotoScrim"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/kids_calm_scrim_photo_bottom"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:paddingHorizontal="16dp">
+
+            <TextView
+                android:id="@+id/cardStickerEmoji"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/kids_calm_icon_star"
+                android:textSize="56sp"
+                android:includeFontPadding="false" />
+
+            <TextView
+                android:id="@+id/cardPhraseText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="@string/kids_calm_card_phrase_placeholder"
+                android:textColor="@color/kids_calm_navy"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:lineSpacingMultiplier="1.2"
+                style="@style/kids_calm_Font.Display" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/cardConfettiLayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+</com.google.android.material.card.MaterialCardView>

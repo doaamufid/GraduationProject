@@ -481,4 +481,28 @@
     <color name="ai_bg_end">#2B2140</color>
     <color name="ai_chip_bg">#1AFFFFFF</color>
 
+    <color name="kids_calm_skyTop">#B2E5FC</color>
+    <color name="kids_calm_skyBottom">#F5FBFF</color>
+    <color name="kids_calm_white">#FFFFFF</color>
+    <color name="kids_calm_cardBorder">#E3EFFB</color>
+    <color name="kids_calm_navy">#2B3A55</color>
+    <color name="kids_calm_navySoft">#6C7C9C</color>
+    <color name="kids_calm_sun">#FFC93C</color>
+    <color name="kids_calm_sunDeep">#F2A400</color>
+    <color name="kids_calm_coral">#FF7F66</color>
+    <color name="kids_calm_coralDeep">#EB5B42</color>
+    <color name="kids_calm_mint">#4FD9BE</color>
+    <color name="kids_calm_mintDeep">#26B69B</color>
+    <color name="kids_calm_purple">#9B7EDE</color>
+    <color name="kids_calm_purpleDeep">#7A56C4</color>
+    <color name="kids_calm_pink">#FF9FC0</color>
+
+    <color name="kids_calm_chipFavBg">#FFF6DE</color>
+    <color name="kids_calm_wordFavBg">#FFEAF2</color>
+    <color name="kids_calm_wordIdleBg">#F6FBFF</color>
+    <color name="kids_calm_tabActiveBg">#FFEDE9</color>
+    <color name="kids_calm_overlayDark">#8C2B3A55</color>
+    <color name="kids_calm_toastBg">#2B3A55</color>
+    <color name="kids_calm_transparent">#00000000</color>
 </resources>
+

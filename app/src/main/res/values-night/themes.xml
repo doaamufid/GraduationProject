@@ -9,4 +9,17 @@
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="kids_calm_Theme.CalmCorner" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/kids_calm_coral</item>
+        <item name="colorPrimaryDark">@color/kids_calm_coralDeep</item>
+        <item name="colorAccent">@color/kids_calm_sun</item>
+        <item name="android:windowBackground">@drawable/kids_calm_bg_root_sky</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/kids_calm_skyTop</item>
+        <item name="android:windowLightNavigationBar">true</item>
+
+        <item name="android:dialogTheme">@style/kids_calm_Dialog.Rounded</item>
+        <item name="android:alertDialogTheme">@style/kids_calm_Dialog.Rounded</item>
+    </style>
 </resources>

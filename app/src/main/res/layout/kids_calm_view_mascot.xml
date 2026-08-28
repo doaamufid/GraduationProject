@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="top">
+
+    <TextView
+        android:id="@+id/mascotEmoji"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kids_calm_icon_mascot"
+        android:textSize="34sp"
+        android:layout_marginEnd="10dp" />
+
+    <TextView
+        android:id="@+id/mascotText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@drawable/kids_calm_bg_speech_bubble"
+        android:padding="12dp"
+        android:textColor="@color/kids_calm_navy"
+        android:textSize="13.5sp"
+        android:lineSpacingMultiplier="1.3"
+        style="@style/kids_calm_Font.Body" />
+</LinearLayout>

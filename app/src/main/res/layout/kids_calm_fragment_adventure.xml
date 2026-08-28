@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/advBackButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/kids_calm_adv_back"
+        android:textColor="@color/kids_calm_navySoft"
+        android:textSize="13sp"
+        android:layout_marginBottom="4dp"
+        android:visibility="gone"
+        android:clickable="true"
+        android:focusable="true"
+        style="@style/kids_calm_Font.Body" />
+
+    <LinearLayout
+        android:id="@+id/stepDotsRow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginBottom="18dp"
+        android:visibility="gone" />
+
+    <FrameLayout
+        android:id="@+id/advContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+</LinearLayout>
