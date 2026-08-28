@@ -69,8 +69,10 @@ public class CBTRReframingActivity extends AppCompatActivity {
 
     // ---- Root chrome views ----
     private FrameLayout contentContainer;
-    private View headerTop;
     private View headerBack;
+    private com.example.graduationproject.view.ReframingStepIndicator stepIndicator;
+    private View layoutDetectedPattern;
+    private TextView tvDetectedPatternName;
     private FrameLayout dialogOverlay;
 
 
@@ -102,11 +104,12 @@ public class CBTRReframingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_cbtr_reframing);
 
         contentContainer = findViewById(R.id.contentContainer);
-        headerTop = findViewById(R.id.headerTop);
         headerBack = findViewById(R.id.headerBack);
+        stepIndicator = findViewById(R.id.stepIndicator);
+        layoutDetectedPattern = findViewById(R.id.layoutDetectedPattern);
+        tvDetectedPatternName = findViewById(R.id.tvDetectedPatternName);
         dialogOverlay = findViewById(R.id.dialogOverlay);
 
-        findViewById(R.id.btnClose).setOnClickListener(v -> restart());
         findViewById(R.id.btnBack).setOnClickListener(v -> restart());
 
         setupWriteDialog();
@@ -121,8 +124,27 @@ public class CBTRReframingActivity extends AppCompatActivity {
         stage = newStage;
 
         boolean isEntry = STAGE_ENTRY.equals(stage);
-        headerTop.setVisibility(isEntry ? View.GONE : View.VISIBLE);
+        boolean isDone = STAGE_DONE.equals(stage);
         headerBack.setVisibility(isEntry ? View.GONE : View.VISIBLE);
+        
+        if (stepIndicator != null) {
+            if (isEntry || isDone) {
+                stepIndicator.setVisibility(View.GONE);
+                if (layoutDetectedPattern != null) layoutDetectedPattern.setVisibility(View.GONE);
+            } else {
+                stepIndicator.setVisibility(View.VISIBLE);
+                if (layoutDetectedPattern != null) {
+                    layoutDetectedPattern.setVisibility(STAGE_IDENTIFY.equals(stage) ? View.VISIBLE : View.GONE);
+                    if (tvDetectedPatternName != null) {
+                        tvDetectedPatternName.setText(ReframingAppData.findPattern(detected).label);
+                    }
+                }
+                int step = 0;
+                if (STAGE_EXAMINE.equals(stage)) step = 1;
+                else if (STAGE_REFRAME.equals(stage)) step = 2;
+                stepIndicator.setStep(step);
+            }
+        }
 
         contentContainer.removeAllViews();
         int layoutRes;
@@ -377,8 +399,8 @@ public class CBTRReframingActivity extends AppCompatActivity {
         for (Map.Entry<String, View[]> entry : patternViews.entrySet()) {
             boolean selected = entry.getKey().equals(pattern);
             entry.getValue()[0].setBackgroundResource(
-                    selected ? R.drawable.bg_pattern_selected : R.drawable.bg_pattern_unselected);
-            ((TextView) entry.getValue()[1]).setTextColor(getColorCompat(selected ? R.color.white : R.color.text_main));
+                    selected ? R.drawable.bg_pattern_selected_purple : R.drawable.bg_pattern_unselected_gray);
+            ((TextView) entry.getValue()[1]).setTextColor(Color.parseColor(selected ? "#7E81BA" : "#1F3A60"));
         }
         tvWhyExplain.setText(ReframingAppData.findPattern(pattern).explain);
     }
@@ -454,7 +476,6 @@ public class CBTRReframingActivity extends AppCompatActivity {
     // =========================================================================================
 
     private void bindReframe(View root) {
-        TextView tvOriginal = root.findViewById(R.id.tvOriginalThought);
         TextView tvMirror = root.findViewById(R.id.tvMirrorText);
         LinearLayout dotsContainer = root.findViewById(R.id.dotsContainer);
         TextView tvExercise = root.findViewById(R.id.tvExercise);
@@ -462,12 +483,10 @@ public class CBTRReframingActivity extends AppCompatActivity {
         View btnSave = root.findViewById(R.id.btnSave);
         View btnBackToChat = root.findViewById(R.id.btnBackToChat);
 
-        root.findViewById(R.id.cardOriginal).startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_up));
         root.findViewById(R.id.cardMirror).startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_up));
         root.findViewById(R.id.cardExercise).startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_up));
         btnSave.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_up));
 
-        tvOriginal.setText("\"" + thought + "\"");
         tvExercise.setText(ReframingAppData.EXERCISES.get(pattern));
 
         String[] reframes = ReframingAppData.REFRAMES.get(pattern);

@@ -27,10 +27,8 @@
         <item name="android:windowBackground">@color/bg2</item>
         <item name="android:statusBarColor" tools:targetApi="21">@color/bg1</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
-        <!-- See res/font/README.txt to swap this for the exact "Cairo" font -->
         <item name="android:fontFamily">sans-serif</item>
     </style>
-    <!-- Reusable text appearances mirroring the React design's type scale -->
     <style name="Text.Title" parent="android:Widget.TextView">
         <item name="android:textColor">@color/text_main</item>
         <item name="android:textSize">20sp</item>
@@ -152,6 +150,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">15dp</item>
         <item name="android:paddingBottom">15dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">15.5sp</item>
         <item name="android:textStyle">bold</item>
@@ -164,6 +164,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:paddingTop">13dp</item>
         <item name="android:paddingBottom">13dp</item>
+        <item name="android:paddingStart">16dp</item>
+        <item name="android:paddingEnd">16dp</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">14.5sp</item>
         <item name="android:textStyle">bold</item>
@@ -210,5 +212,35 @@
     <style name="adult_stats_Theme.graduationproject" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <style name="AiActionChip">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:background">@drawable/bg_ai_chip</item>
+        <item name="android:gravity">center</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingTop">14dp</item>
+        <item name="android:paddingBottom">14dp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+
+    <style name="AiChipIcon">
+        <item name="android:layout_width">18dp</item>
+        <item name="android:layout_height">18dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:tint">@color/ai_orb_text</item>
+    </style>
+
+    <style name="AiChipText">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/ai_orb_text</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
     </style>
 </resources>

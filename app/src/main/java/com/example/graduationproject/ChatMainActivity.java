@@ -122,18 +122,9 @@ public class ChatMainActivity extends AppCompatActivity {
         
         setContentView(R.layout.chat_activity_main);
 
-        View navBlur = findViewById(R.id.system_nav_blur);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.chat_root), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(0, systemBars.top, 0, systemBars.bottom); // Avoid status bar overlap
-
-            if (navBlur != null) {
-                navBlur.getLayoutParams().height = systemBars.bottom;
-                navBlur.requestLayout();
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
-                    navBlur.setRenderEffect(android.graphics.RenderEffect.createBlurEffect(15f, 15f, android.graphics.Shader.TileMode.CLAMP));
-                }
-            }
             return insets;
         });
 

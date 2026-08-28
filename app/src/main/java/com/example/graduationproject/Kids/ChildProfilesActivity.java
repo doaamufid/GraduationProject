@@ -62,11 +62,6 @@ public class ChildProfilesActivity extends AppCompatActivity {
         });
 
         binding.btnBack.setOnClickListener(v -> finish());
-        binding.btnSwitchAccount.setOnClickListener(v -> {
-            Intent intent = new Intent(ChildProfilesActivity.this, com.example.graduationproject.SplashSelectActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        });
         setupProfilesList();
     }
 

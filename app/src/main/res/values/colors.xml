@@ -475,4 +475,10 @@
     <color name="kids_adaptive_home_bg_to">#FFD9A0</color>
     <color name="kids_adaptive_root_bg">#FFE9C4</color>
 
+    <!-- AI Feature Colors -->
+    <color name="ai_orb_text">#FFFFFF</color>
+    <color name="ai_bg_start">#1F3A60</color>
+    <color name="ai_bg_end">#2B2140</color>
+    <color name="ai_chip_bg">#1AFFFFFF</color>
+
 </resources>

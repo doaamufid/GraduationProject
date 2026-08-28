@@ -32,11 +32,10 @@ public class KidsAiResponseActivity extends AppCompatActivity {
         binding = ActivityKidsAiResponseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Match status bar and navigation bar with screen color (#FAF1E6)
-        Window window = getWindow();
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        window.setStatusBarColor(Color.parseColor("#FAF1E6"));
-        window.setNavigationBarColor(Color.parseColor("#FAF1E6"));
+        // Make status bar and navigation bar transparent
+        android.view.Window window = getWindow();
+        window.setFlags(android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
 
         WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(window, window.getDecorView());
         if (controller != null) {
@@ -82,14 +81,16 @@ public class KidsAiResponseActivity extends AppCompatActivity {
             startActivity(new Intent(KidsAiResponseActivity.this, DrawInstructionActivity.class));
         });
 
-        binding.btnActionBetter.setOnClickListener(v -> {
+        binding.btnBack.setOnClickListener(v -> {
             stopSpeech();
             finish();
         });
 
-        binding.btnBack.setOnClickListener(v -> {
+        binding.btnSwitchProfile.setOnClickListener(v -> {
             stopSpeech();
-            finish();
+            Intent intent = new Intent(KidsAiResponseActivity.this, ChildProfilesActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         });
     }
 

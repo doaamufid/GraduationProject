@@ -16,333 +16,236 @@
         android:paddingTop="8dp"
         android:paddingBottom="24dp">
 
-        <include layout="@layout/view_step_progress" />
-
-        <TextView
-            android:id="@+id/tvSource"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="20dp"
-            android:gravity="center"
-            style="@style/Text.Soft"
-            android:textSize="14sp"
-            tools:text="من فضفضتك · قبل ١٠ دقائق" />
-
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:text="@string/painful_thought_label"
-            style="@style/Text.Soft"
-            android:textSize="14sp"
+            android:layout_gravity="center"
+            android:text="الفكرة المؤلمة"
+            android:textColor="#8A9CB2"
+            android:textSize="12sp"
             android:textStyle="bold" />
 
-        <LinearLayout
+        <!-- Thought Card -->
+        <com.google.android.material.card.MaterialCardView
             android:id="@+id/cardIdentify"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="24dp"
+                android:gravity="center">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/tvThought"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_toStartOf="@+id/ivThoughtIcon"
+                        android:gravity="center"
+                        android:textColor="#1F3A60"
+                        android:textSize="20sp"
+                        android:textStyle="bold"
+                        tools:text="&quot;أنا فاشل دائماً&quot;" />
+
+                    <ImageView
+                        android:id="@+id/ivThoughtIcon"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/ic_thought_cloud"
+                        app:tint="#1F3A60"
+                        android:alpha="0.8" />
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/tvSource"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:textColor="#8A9CB2"
+                    android:textSize="11sp"
+                    tools:text="كُتب منذ ١٠ دقائق • من فضفضة" />
+
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Pattern Selection Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="20dp"
-            android:background="@drawable/bg_card_translucent"
-            android:gravity="center"
+            app:cardBackgroundColor="#FFFFFF"
+            app:cardCornerRadius="24dp"
+            app:cardElevation="2dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:layout_gravity="end"
+                    android:text="ما النمط المعرفي هنا؟"
+                    android:textColor="#8A9CB2"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <GridLayout
+                    android:id="@+id/patternContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:columnCount="2">
+
+                    <LinearLayout
+                        android:id="@+id/patternOvergen"
+                        android:layout_width="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_pattern_unselected_gray"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingVertical="14dp">
+                        <TextView
+                            android:id="@+id/tvPatternOvergen"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="التعميم المفرط"
+                            android:textColor="#1F3A60"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                        <View android:id="@+id/badgeOvergen" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/patternAllnothing"
+                        android:layout_width="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_pattern_unselected_gray"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingVertical="14dp">
+                        <TextView
+                            android:id="@+id/tvPatternAllnothing"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="الكل أو لا شيء"
+                            android:textColor="#1F3A60"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                        <View android:id="@+id/badgeAllnothing" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/patternNeglect"
+                        android:layout_width="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_pattern_unselected_gray"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingVertical="14dp">
+                        <TextView
+                            android:id="@+id/tvPatternNeglect"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="إهمال الإيجابيات"
+                            android:textColor="#1F3A60"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                        <View android:id="@+id/badgeNeglect" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/patternCatastro"
+                        android:layout_width="0dp"
+                        android:layout_columnWeight="1"
+                        android:layout_margin="4dp"
+                        android:background="@drawable/bg_pattern_unselected_gray"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingVertical="14dp">
+                        <TextView
+                            android:id="@+id/tvPatternCatastro"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="التنبؤ بالفشل"
+                            android:textColor="#1F3A60"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+                        <View android:id="@+id/badgeCatastro" android:layout_width="0dp" android:layout_height="0dp" android:visibility="gone"/>
+                    </LinearLayout>
+
+                </GridLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Explainer Box -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="32dp"
+            android:background="@drawable/bg_explainer_purple"
             android:orientation="vertical"
             android:padding="20dp">
 
             <TextView
-                android:id="@+id/tvThought"
-                style="@style/Text.Title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                tools:text="&quot;لا أحد يهتم بي&quot;" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="12dp"
-            android:text="@string/pattern_question"
-            style="@style/Text.Body"
-            android:textStyle="bold" />
-
-        <LinearLayout
-            android:id="@+id/patternContainer"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="8dp"
-                android:orientation="horizontal">
+                android:layout_gravity="end"
+                android:text="💡 لماذا هذا النمط؟"
+                android:textColor="#7E81BA"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="4dp"
-                    android:clipChildren="false"
-                    android:clipToPadding="false">
-
-                    <LinearLayout
-                        android:id="@+id/patternOvergen"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/bg_pattern_unselected"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:paddingTop="14dp"
-                        android:paddingBottom="14dp">
-                        <TextView
-                            android:id="@+id/tvPatternOvergen"
-                            style="@style/Text.Body"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="التعميم المفرط"
-                            android:textStyle="bold"
-                            android:textSize="13sp"
-                            android:gravity="center" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/badgeOvergen"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|end"
-                        android:layout_marginEnd="-4dp"
-                        android:background="@drawable/bg_badge"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="@string/badge_detected"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"
-                        android:elevation="2dp" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="4dp"
-                    android:clipChildren="false"
-                    android:clipToPadding="false">
-
-                    <LinearLayout
-                        android:id="@+id/patternAllnothing"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/bg_pattern_unselected"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:paddingTop="14dp"
-                        android:paddingBottom="14dp">
-                        <TextView
-                            android:id="@+id/tvPatternAllnothing"
-                            style="@style/Text.Body"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="الكل أو لا شيء"
-                            android:textStyle="bold"
-                            android:textSize="13sp"
-                            android:gravity="center" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/badgeAllnothing"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|end"
-                        android:layout_marginEnd="-4dp"
-                        android:background="@drawable/bg_badge"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="@string/badge_detected"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"
-                        android:elevation="2dp" />
-                </FrameLayout>
-            </LinearLayout>
-
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvWhyExplain"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:orientation="horizontal"
-                android:clipChildren="false"
-                android:clipToPadding="false">
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginEnd="4dp"
-                    android:clipChildren="false"
-                    android:clipToPadding="false">
-
-                    <LinearLayout
-                        android:id="@+id/patternCatastro"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/bg_pattern_unselected"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:paddingTop="14dp"
-                        android:paddingBottom="14dp">
-                        <TextView
-                            android:id="@+id/tvPatternCatastro"
-                            style="@style/Text.Body"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="التنبؤ بالفشل"
-                            android:textStyle="bold"
-                            android:textSize="13sp"
-                            android:gravity="center" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/badgeCatastro"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|end"
-                        android:layout_marginEnd="-4dp"
-                        android:background="@drawable/bg_badge"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="@string/badge_detected"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"
-                        android:elevation="2dp" />
-                </FrameLayout>
-
-                <FrameLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginStart="4dp"
-                    android:clipChildren="false"
-                    android:clipToPadding="false">
-
-                    <LinearLayout
-                        android:id="@+id/patternNeglect"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:background="@drawable/bg_pattern_unselected"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:gravity="center"
-                        android:paddingTop="14dp"
-                        android:paddingBottom="14dp">
-                        <TextView
-                            android:id="@+id/tvPatternNeglect"
-                            style="@style/Text.Body"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="إهمال الإيجابيات"
-                            android:textStyle="bold"
-                            android:textSize="13sp"
-                            android:gravity="center" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:id="@+id/badgeNeglect"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="top|end"
-                        android:layout_marginEnd="-4dp"
-                        android:background="@drawable/bg_badge"
-                        android:paddingStart="8dp"
-                        android:paddingEnd="8dp"
-                        android:paddingTop="4dp"
-                        android:paddingBottom="4dp"
-                        android:text="@string/badge_detected"
-                        android:textColor="@color/white"
-                        android:textSize="11sp"
-                        android:textStyle="bold"
-                        android:visibility="gone"
-                        android:elevation="2dp" />
-                </FrameLayout>
-            </LinearLayout>
-        </LinearLayout>
-
-        <!-- "Why this pattern" explainer card -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/bg_card_soft_04"
-            android:orientation="horizontal"
-            android:padding="14dp">
-
-            <ImageView
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginTop="2dp"
-                android:src="@drawable/ic_lightbulb"
-                app:tint="@color/primary_light"
-                android:contentDescription="@null" />
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="2dp"
-                    android:gravity="end"
-                    android:text="@string/why_pattern_label"
-                    style="@style/Text.Body"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/tvWhyExplain"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="end"
-                    style="@style/Text.Soft"
-                    tools:text="توضيح النمط" />
-            </LinearLayout>
+                android:gravity="end"
+                android:textColor="#1F3A60"
+                android:textSize="14sp"
+                android:lineSpacingMultiplier="1.4"
+                tools:text="كلمة دائما تُعمّم حالة واحدة على كل حياتك — هذا نمط يُضخّم الألم." />
         </LinearLayout>
 
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnIdentifyNext"
-            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
-            android:layout_height="60dp"
-            app:backgroundTint="@color/primary"
-            app:cornerRadius="30dp"
-            android:text="@string/next_button"
-            android:textColor="@color/white"
+            android:layout_height="56dp"
+            android:backgroundTint="#7E81BA"
+            app:cornerRadius="28dp"
+            android:text="التالي"
+            android:textColor="#FFFFFF"
             android:textStyle="bold"
-            android:textSize="15sp"
+            android:textSize="16sp"
             app:icon="@drawable/ic_chevron_left"
             app:iconGravity="textStart"
-            app:iconTint="@color/white"
+            app:iconTint="#FFFFFF"
             app:iconPadding="8dp"
-            android:textAllCaps="false"
-            android:elevation="4dp" />
+            android:textAllCaps="false" />
 
     </LinearLayout>
 </ScrollView>

@@ -68,7 +68,20 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        androidx.activity.EdgeToEdge.enable(this);
         setContentView(R.layout.activity_kids_ai_companion);
+
+        // Make status bar and navigation bar transparent
+        android.view.Window window = getWindow();
+        window.setFlags(android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
+                android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
+
+        androidx.core.view.WindowInsetsControllerCompat controller = androidx.core.view.WindowCompat.getInsetsController(window, window.getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
 
         initViews();
         setupChatRecyclerView();

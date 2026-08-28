@@ -53,6 +53,9 @@ public class BreathingActivity extends AppCompatActivity {
     private int totalCycles = 5;
     private int currentCycleStep = 0; // 0: Inhale, 1: Hold1, 2: Exhale, 3: Hold2
 
+    private ObjectAnimator outerRotationAnimator;
+    private ObjectAnimator middleRotationAnimator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -102,6 +105,22 @@ public class BreathingActivity extends AppCompatActivity {
         });
 
         startEntranceAnimations();
+        startContinuousRotations();
+    }
+
+    private void startContinuousRotations() {
+        outerRotationAnimator = ObjectAnimator.ofFloat(binding.imgOuterRing, "rotation", 0f, 360f);
+        outerRotationAnimator.setDuration(10000);
+        outerRotationAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        outerRotationAnimator.setInterpolator(new LinearInterpolator());
+
+        middleRotationAnimator = ObjectAnimator.ofFloat(binding.imgMiddleRing, "rotation", 0f, -360f);
+        middleRotationAnimator.setDuration(15000);
+        middleRotationAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        middleRotationAnimator.setInterpolator(new LinearInterpolator());
+
+        outerRotationAnimator.start();
+        middleRotationAnimator.start();
     }
 
     private void setupModes() {
@@ -342,7 +361,7 @@ public class BreathingActivity extends AppCompatActivity {
         binding.btnStartBreathing.setText("ابدأ الجلسة");
         binding.tvTimer.setText("4");
         binding.tvState.setText("شهيق");
-        binding.breathingProgress.setProgress(40);
+        // binding.breathingProgress.setProgress(40); // Removed as it's hidden
 
         binding.frameProgress.setScaleX(1.0f);
         binding.frameProgress.setScaleY(1.0f);
@@ -448,6 +467,12 @@ public class BreathingActivity extends AppCompatActivity {
     protected void onDestroy() {
         isSessionRunning = false;
         cancelAnimators();
+        if (outerRotationAnimator != null) {
+            outerRotationAnimator.cancel();
+        }
+        if (middleRotationAnimator != null) {
+            middleRotationAnimator.cancel();
+        }
         binding = null;
         super.onDestroy();
     }
