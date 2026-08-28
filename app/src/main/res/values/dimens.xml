@@ -100,4 +100,35 @@
     <dimen name="adult_notif_unread_dot_size">8dp</dimen>
 
     <dimen name="adult_notif_header_button_size">40dp</dimen>
+
+
+    <dimen name="kids_routine_radius_phone">40dp</dimen>
+    <dimen name="kids_routine_radius_header">28dp</dimen>
+    <dimen name="kids_routine_radius_card">18dp</dimen>
+    <dimen name="kids_routine_radius_sheet">26dp</dimen>
+    <dimen name="kids_routine_radius_input">14dp</dimen>
+    <dimen name="kids_routine_radius_chip">12dp</dimen>
+    <dimen name="kids_routine_radius_btn">16dp</dimen>
+    <dimen name="kids_routine_radius_emoji_pick">12dp</dimen>
+
+    <dimen name="kids_routine_header_padding_h">18dp</dimen>
+    <dimen name="kids_routine_content_padding_h">18dp</dimen>
+
+    <dimen name="kids_routine_emoji_circle_size">44dp</dimen>
+    <dimen name="kids_routine_check_circle_size">27dp</dimen>
+    <dimen name="kids_routine_mascot_avatar_size">46dp</dimen>
+    <dimen name="kids_routine_delete_badge_size">20dp</dimen>
+
+    <dimen name="kids_routine_small_fab_size">44dp</dimen>
+    <dimen name="kids_routine_main_fab_size">58dp</dimen>
+
+    <dimen name="kids_routine_text_title">17sp</dimen>
+    <dimen name="kids_routine_text_speech">13.5sp</dimen>
+    <dimen name="kids_routine_text_streak">13sp</dimen>
+    <dimen name="kids_routine_text_progress">12.5sp</dimen>
+    <dimen name="kids_routine_text_period_label">13sp</dimen>
+    <dimen name="kids_routine_text_card_label">14.5sp</dimen>
+    <dimen name="kids_routine_text_sheet_title">16.5sp</dimen>
+    <dimen name="kids_routine_text_celebrate_title">20sp</dimen>
+    <dimen name="kids_routine_text_celebrate_sub">13.5sp</dimen>
 </resources>

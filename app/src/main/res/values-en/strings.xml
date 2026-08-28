@@ -815,4 +815,55 @@
     <string name="adult_notif_n7_title">Evening Dhikr</string>
     <string name="adult_notif_n7_desc">It’s time for your evening dhikr with us</string>
     <string name="adult_notif_n7_time">Sunday</string>
+
+
+    <string name="kids_routine_app_name">Noor\'s Daily Routine</string>
+    <string name="kids_routine_cd_back">Back</string>
+    <string name="kids_routine_cd_edit">Edit Routine</string>
+    <string name="kids_routine_cd_reset">Reset Day</string>
+    <string name="kids_routine_cd_add">Add New Step</string>
+    <string name="kids_routine_cd_delete">Delete Activity</string>
+
+    <string name="kids_routine_your_stars">Your Stars</string>
+    <string name="kids_routine_progress_fmt">%1$d of %2$d steps</string>
+    <string name="kids_routine_progress_done_suffix"> ✅</string>
+
+    <string name="kids_routine_empty_title">No steps yet. Press + to add your first step!</string>
+
+    <string name="kids_routine_sheet_title">New Step</string>
+    <string name="kids_routine_input_hint">Step name, e.g.: Made my bed</string>
+    <string name="kids_routine_btn_add_confirm">Add to Routine</string>
+
+    <string name="kids_routine_celebrate_title">You finished today\'s routine!</string>
+    <string name="kids_routine_celebrate_sub">I\'m so proud of you hero 💛 keep it up every day</string>
+    <string name="kids_routine_celebrate_streak_fmt">%1$d consecutive days</string>
+    <string name="kids_routine_btn_ok_star">Got it 🌟</string>
+
+    <!-- Periods -->
+    <string name="kids_routine_period_morning">Morning</string>
+    <string name="kids_routine_period_noon">Noon</string>
+    <string name="kids_routine_period_evening">Evening</string>
+
+    <!-- Greetings -->
+    <string name="kids_routine_greet_empty">Add your first step, hero! 🌟</string>
+    <string name="kids_routine_greet_start">Good morning hero! Ready to start our day?</string>
+    <string name="kids_routine_greet_mid">Great! Keep going step by step 💪</string>
+    <string name="kids_routine_greet_half">Mashallah! Halfway there 🌈</string>
+    <string name="kids_routine_greet_done">You finished your whole day! So proud of you 🌟</string>
+
+    <!-- Bottom-sheet period chips -->
+    <string name="kids_routine_chip_morning">🌅 Morning</string>
+    <string name="kids_routine_chip_noon">☀️ Noon</string>
+    <string name="kids_routine_chip_evening">🌙 Evening</string>
+
+    <!-- Static sample routine items -->
+    <string name="kids_routine_static_item_wake_up">Woke up</string>
+    <string name="kids_routine_static_item_brush_teeth">Brushed my teeth</string>
+    <string name="kids_routine_static_item_breakfast">Had breakfast</string>
+    <string name="kids_routine_static_item_get_dressed">Got dressed</string>
+    <string name="kids_routine_static_item_play_draw">Played and drew</string>
+    <string name="kids_routine_static_item_lunch">Had lunch</string>
+    <string name="kids_routine_static_item_shower">Took a shower</string>
+    <string name="kids_routine_static_item_story">Listened to a story</string>
+    <string name="kids_routine_static_item_sleep">Slept</string>
 </resources>

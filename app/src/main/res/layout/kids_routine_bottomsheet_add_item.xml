@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/kids_routine_bg_sheet_top"
+    android:paddingStart="20dp"
+    android:paddingEnd="20dp"
+    android:paddingBottom="22dp">
+
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginBottom="14dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/kids_routine_bg_sheet_handle"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/kids_routine_sheet_title"
+        android:textColor="@color/kids_routine_ink_purple"
+        android:textSize="@dimen/kids_routine_text_sheet_title"
+        android:textStyle="bold"
+        android:layout_marginBottom="14dp"
+        android:fontFamily="@font/baloo_variable"/>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/emojiGrid"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:overScrollMode="never"/>
+
+    <EditText
+        android:id="@+id/etLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kids_routine_bg_text_input"
+        android:hint="@string/kids_routine_input_hint"
+        android:paddingStart="14dp"
+        android:paddingEnd="14dp"
+        android:paddingTop="12dp"
+        android:paddingBottom="12dp"
+        android:maxLength="28"
+        android:maxLines="1"
+        android:inputType="text"
+        android:textColor="@color/kids_routine_ink_purple"
+        android:textColorHint="@color/kids_routine_muted_purple"
+        android:textSize="14sp"
+        android:fontFamily="@font/cairo_variable"
+        android:layout_marginBottom="12dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="16dp">
+
+        <TextView
+            android:id="@+id/chipMorning"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/kids_routine_bg_chip_selected"
+            android:gravity="center"
+            android:paddingTop="9dp"
+            android:paddingBottom="9dp"
+            android:text="@string/kids_routine_chip_morning"
+            android:textSize="12.5sp"
+            android:textStyle="bold"
+            android:textColor="@color/kids_routine_card_white"
+            android:fontFamily="@font/cairo_variable"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/chipNoon"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/kids_routine_bg_chip_unselected"
+            android:gravity="center"
+            android:paddingTop="9dp"
+            android:paddingBottom="9dp"
+            android:text="@string/kids_routine_chip_noon"
+            android:textSize="12.5sp"
+            android:textStyle="bold"
+            android:textColor="@color/kids_routine_muted_purple"
+            android:fontFamily="@font/cairo_variable"
+            android:clickable="true"
+            android:focusable="true"/>
+
+        <TextView
+            android:id="@+id/chipEvening"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/kids_routine_bg_chip_unselected"
+            android:gravity="center"
+            android:paddingTop="9dp"
+            android:paddingBottom="9dp"
+            android:text="@string/kids_routine_chip_evening"
+            android:textSize="12.5sp"
+            android:textStyle="bold"
+            android:textColor="@color/kids_routine_muted_purple"
+            android:fontFamily="@font/cairo_variable"
+            android:clickable="true"
+            android:focusable="true"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/btnConfirmAdd"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kids_routine_bg_confirm_btn"
+        android:gravity="center"
+        android:paddingTop="13dp"
+        android:paddingBottom="13dp"
+        android:text="@string/kids_routine_btn_add_confirm"
+        android:textColor="@color/kids_routine_card_white"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:fontFamily="@font/baloo_variable"
+        android:clickable="true"
+        android:focusable="true"
+        android:alpha="0.5"/>
+
+</LinearLayout>

@@ -1811,4 +1811,55 @@
     <string name="adult_notif_n7_title">ذكر المساء</string>
     <string name="adult_notif_n7_desc">حان وقت ذكر المساء معنا</string>
     <string name="adult_notif_n7_time">الأحد</string>
+
+
+    <string name="kids_routine_app_name">روتين نور اليومي</string>
+    <string name="kids_routine_cd_back">رجوع</string>
+    <string name="kids_routine_cd_edit">تعديل الروتين</string>
+    <string name="kids_routine_cd_reset">إعادة تعيين اليوم</string>
+    <string name="kids_routine_cd_add">إضافة خطوة جديدة</string>
+    <string name="kids_routine_cd_delete">حذف النشاط</string>
+
+    <string name="kids_routine_your_stars">نجومك</string>
+    <string name="kids_routine_progress_fmt">%1$d من %2$d خطوات</string>
+    <string name="kids_routine_progress_done_suffix"> ✅</string>
+
+    <string name="kids_routine_empty_title">ما فيه خطوات بعد. اضغط + وضيف أول خطوة بيومك!</string>
+
+    <string name="kids_routine_sheet_title">خطوة جديدة بيومك</string>
+    <string name="kids_routine_input_hint">اسم الخطوة، مثلاً: رتبت غرفتي</string>
+    <string name="kids_routine_btn_add_confirm">إضافة للروتين</string>
+
+    <string name="kids_routine_celebrate_title">خلصتي روتين اليوم!</string>
+    <string name="kids_routine_celebrate_sub">فخورة فيك جداً يا بطل 💛 استمر هيك كل يوم</string>
+    <string name="kids_routine_celebrate_streak_fmt">%1$d أيام متتالية</string>
+    <string name="kids_routine_btn_ok_star">تمام 🌟</string>
+
+    <!-- Periods -->
+    <string name="kids_routine_period_morning">الصباح</string>
+    <string name="kids_routine_period_noon">الظهر</string>
+    <string name="kids_routine_period_evening">المساء</string>
+
+    <!-- Greetings -->
+    <string name="kids_routine_greet_empty">أضف أول خطوة ليومك يا بطل! 🌟</string>
+    <string name="kids_routine_greet_start">صباح النور يا بطل! جاهز نبدأ يومنا؟</string>
+    <string name="kids_routine_greet_mid">رائع! كمّل هيك خطوة خطوة 💪</string>
+    <string name="kids_routine_greet_half">ماشاء الله! نص الطريق خلص 🌈</string>
+    <string name="kids_routine_greet_done">خلصت يومك كله! فخورة فيك جداً 🌟</string>
+    <!-- Bottom-sheet period chips -->
+    <string name="kids_routine_chip_morning">🌅 الصباح</string>
+    <string name="kids_routine_chip_noon">☀️ الظهر</string>
+    <string name="kids_routine_chip_evening">🌙 المساء</string>
+
+    <!-- Static sample routine items -->
+    <string name="kids_routine_static_item_wake_up">استيقظت</string>
+    <string name="kids_routine_static_item_brush_teeth">غسلت أسناني</string>
+    <string name="kids_routine_static_item_breakfast">فطرت</string>
+    <string name="kids_routine_static_item_get_dressed">لبست ثيابي</string>
+    <string name="kids_routine_static_item_play_draw">لعبت ورسمت</string>
+    <string name="kids_routine_static_item_lunch">تغديت</string>
+    <string name="kids_routine_static_item_shower">استحميت</string>
+    <string name="kids_routine_static_item_story">سمعت قصة</string>
+    <string name="kids_routine_static_item_sleep">نمت</string>
+
 </resources>
