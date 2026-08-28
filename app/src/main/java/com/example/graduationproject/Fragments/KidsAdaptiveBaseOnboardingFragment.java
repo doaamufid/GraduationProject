@@ -49,6 +49,11 @@ public abstract class KidsAdaptiveBaseOnboardingFragment extends Fragment {
     protected String getSkipLabel() { return getString(R.string.kids_adaptive_skip); }
     /** Teddy's facial expression for this screen ("neutral" | "warm" | "calm"). */
     protected String getCompanionMood() { return KidsAdaptiveTeddyBuddyView.MOOD_NEUTRAL; }
+    /** Whether to show the top companion bear in the header. */
+    protected boolean showHeaderTeddy() {
+        int index = getScreenIndex();
+        return index != 0 && index != 12 && index != 4; // Hide on Welcome, Ready, and Frequent Emotions
+    }
 
     @Override
     public void onAttach(@NonNull android.content.Context context) {
@@ -71,12 +76,12 @@ public abstract class KidsAdaptiveBaseOnboardingFragment extends Fragment {
         KidsAdaptiveProgressPathView progress = root.findViewById(R.id.progress_path);
         progress.setProgress(KidsAdaptiveStages.TOTAL_SCREENS, getScreenIndex());
 
-        ImageButton back = root.findViewById(R.id.btn_back);
+        Button backFooter = root.findViewById(R.id.btn_back_footer);
         if (getScreenIndex() > 0) {
-            back.setVisibility(View.VISIBLE);
-            back.setOnClickListener(v -> host.goBack());
+            backFooter.setVisibility(View.VISIBLE);
+            backFooter.setOnClickListener(v -> host.goBack());
         } else {
-            back.setVisibility(View.INVISIBLE);
+            backFooter.setVisibility(View.GONE);
         }
 
         TextView skip = root.findViewById(R.id.btn_skip);
@@ -91,6 +96,8 @@ public abstract class KidsAdaptiveBaseOnboardingFragment extends Fragment {
         teddyHeader = root.findViewById(R.id.teddy_header);
         teddyHeader.setReducedMotion(host != null && host.isReducedMotion());
         teddyHeader.setMood(getCompanionMood());
+        // Show companion bear contextually
+        teddyHeader.setVisibility(showHeaderTeddy() ? View.VISIBLE : View.GONE);
 
         btnPrimary = root.findViewById(R.id.btn_primary);
         btnPrimary.setText(getPrimaryButtonText());

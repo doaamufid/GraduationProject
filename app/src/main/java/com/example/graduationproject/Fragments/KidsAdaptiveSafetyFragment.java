@@ -29,15 +29,18 @@ public class KidsAdaptiveSafetyFragment extends KidsAdaptiveBaseOnboardingFragme
                 getString(R.string.kids_adaptive_dont_want_answer)
         };
 
-        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(4); tlp.bottomMargin = dp(2);
+        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(20); tlp.bottomMargin = dp(14);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_safety_title), 20), tlp);
-        container.addView(KidsAdaptiveUiHelpers.subtitle(requireContext(), getString(R.string.kids_adaptive_safety_subtitle)), matchWrap());
+        
+        LinearLayout.LayoutParams stlp = matchWrap(); stlp.bottomMargin = dp(20);
+        container.addView(KidsAdaptiveUiHelpers.subtitle(requireContext(), getString(R.string.kids_adaptive_safety_subtitle)), stlp);
 
         KidsAdaptiveChoiceCardView[] cards = new KidsAdaptiveChoiceCardView[IDS.length];
         for (int i = 0; i < IDS.length; i++) {
             KidsAdaptiveChoiceCardView card = new KidsAdaptiveChoiceCardView(requireContext());
             card.setEmoji("");
             card.setLabel(labels[i]);
+            card.setCardIndex(i);
             card.setSelectedState(IDS[i].equals(data().safetyFeeling));
             final int idx = i;
             card.setOnClickListener(v -> {
@@ -45,7 +48,7 @@ public class KidsAdaptiveSafetyFragment extends KidsAdaptiveBaseOnboardingFragme
                 for (int j = 0; j < cards.length; j++) cards[j].setSelectedState(j == idx);
             });
             cards[i] = card;
-            LinearLayout.LayoutParams lp = matchWrap(); lp.topMargin = dp(10);
+            LinearLayout.LayoutParams lp = matchWrap(); lp.topMargin = dp(14);
             container.addView(card, lp);
         }
     }

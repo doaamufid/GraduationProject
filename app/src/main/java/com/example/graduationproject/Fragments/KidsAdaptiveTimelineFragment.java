@@ -37,17 +37,18 @@ public class KidsAdaptiveTimelineFragment extends KidsAdaptiveBaseOnboardingFrag
                 KidsAdaptiveSceneIconView.Scene.MORNING, KidsAdaptiveSceneIconView.Scene.DAY, KidsAdaptiveSceneIconView.Scene.EVENING, KidsAdaptiveSceneIconView.Scene.NIGHT
         };
 
-        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(4); tlp.bottomMargin = dp(10);
+        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(20); tlp.bottomMargin = dp(16);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_timeline_title), 20), tlp);
 
         GridLayout grid = new GridLayout(requireContext());
         grid.setColumnCount(2);
-        container.addView(grid, matchWrap());
+        LinearLayout.LayoutParams glp = matchWrap(); glp.topMargin = dp(6);
+        container.addView(grid, glp);
 
         followupsHost = new LinearLayout(requireContext());
         followupsHost.setOrientation(LinearLayout.VERTICAL);
-        LinearLayout.LayoutParams flp = matchWrap(); flp.topMargin = dp(4);
-        container.addView(followupsHost, flp);
+        LinearLayout.LayoutParams fhlp = matchWrap(); fhlp.topMargin = dp(12);
+        container.addView(followupsHost, fhlp);
 
         KidsAdaptiveTimePeriodCardView[] cards = new KidsAdaptiveTimePeriodCardView[4];
         for (int i = 0; i < 4; i++) {
@@ -57,13 +58,13 @@ public class KidsAdaptiveTimelineFragment extends KidsAdaptiveBaseOnboardingFrag
             card.setSelectedState(data().difficultTimes.contains(PERIOD_IDS[i]));
             cards[i] = card;
 
-            GridLayout.LayoutParams glp = new GridLayout.LayoutParams();
-            glp.width = 0;
-            glp.height = GridLayout.LayoutParams.WRAP_CONTENT;
-            glp.columnSpec = GridLayout.spec(i % 2, 1f);
-            glp.rowSpec = GridLayout.spec(i / 2);
-            glp.setMargins(dp(6), dp(6), dp(6), dp(6));
-            grid.addView(card, glp);
+            GridLayout.LayoutParams cardLp = new GridLayout.LayoutParams();
+            cardLp.width = 0;
+            cardLp.height = GridLayout.LayoutParams.WRAP_CONTENT;
+            cardLp.columnSpec = GridLayout.spec(i % 2, 1f);
+            cardLp.rowSpec = GridLayout.spec(i / 2);
+            cardLp.setMargins(dp(8), dp(8), dp(8), dp(8));
+            grid.addView(card, cardLp);
 
             final int idx = i;
             card.setOnClickListener(v -> {
@@ -98,21 +99,21 @@ public class KidsAdaptiveTimelineFragment extends KidsAdaptiveBaseOnboardingFrag
             LinearLayout panel = new LinearLayout(requireContext());
             panel.setOrientation(LinearLayout.VERTICAL);
             panel.setBackgroundResource(R.drawable.kids_adaptive_bg_panel_soft);
-            int pad = dp(14);
+            int pad = dp(16);
             panel.setPadding(pad, pad, pad, pad);
-            LinearLayout.LayoutParams plp = matchWrap(); plp.topMargin = dp(4);
+            LinearLayout.LayoutParams plp = matchWrap(); plp.topMargin = dp(8);
             followupsHost.addView(panel, plp);
 
             TextView prompt = new TextView(requireContext());
             prompt.setText(prompts.get(periodId));
-            prompt.setTextSize(14);
+            prompt.setTextSize(14.5f);
             prompt.setTypeface(KidsAdaptiveTypefaces.heading(requireContext()), android.graphics.Typeface.BOLD);
             prompt.setTextColor(getResources().getColor(R.color.kids_adaptive_ink));
-            LinearLayout.LayoutParams promptLp = matchWrap(); promptLp.bottomMargin = dp(10);
+            LinearLayout.LayoutParams promptLp = matchWrap(); promptLp.bottomMargin = dp(12);
             panel.addView(prompt, promptLp);
 
             KidsAdaptiveFlowLayout wrapRow = new KidsAdaptiveFlowLayout(requireContext());
-            wrapRow.setSpacing(dp(8), dp(8));
+            wrapRow.setSpacing(dp(10), dp(10));
             panel.addView(wrapRow, matchWrap());
 
             for (String opt : options.get(periodId)) {

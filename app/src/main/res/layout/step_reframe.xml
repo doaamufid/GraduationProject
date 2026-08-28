@@ -120,63 +120,46 @@
             android:layout_marginBottom="12dp"
             android:orientation="horizontal">
 
-            <LinearLayout
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnReword"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
-                android:background="@drawable/bg_button_soft"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp">
+                app:backgroundTint="@color/white"
+                app:cornerRadius="30dp"
+                app:strokeColor="@color/border"
+                app:strokeWidth="1dp"
+                android:text="@string/reword_button"
+                android:textColor="@color/text_soft"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                app:icon="@drawable/ic_refresh"
+                app:iconGravity="textStart"
+                app:iconTint="@color/text_soft"
+                app:iconPadding="6dp"
+                android:textAllCaps="false"
+                android:elevation="2dp" />
 
-                <ImageView
-                    android:layout_width="16dp"
-                    android:layout_height="16dp"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/ic_refresh"
-                    app:tint="@color/text_soft"
-                    android:contentDescription="@null" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/reword_button"
-                    style="@style/Text.Soft"
-                    android:textStyle="bold" />
-            </LinearLayout>
-
-            <LinearLayout
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnSave"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="60dp"
                 android:layout_weight="1.4"
-                android:background="@drawable/bg_button_primary"
-                android:clickable="true"
-                android:focusable="true"
-                android:gravity="center"
-                android:orientation="horizontal"
-                android:paddingTop="14dp"
-                android:paddingBottom="14dp">
-
-                <ImageView
-                    android:layout_width="15dp"
-                    android:layout_height="15dp"
-                    android:layout_marginEnd="6dp"
-                    android:src="@drawable/ic_check"
-                    android:contentDescription="@null" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/save_button"
-                    style="@style/Text.Body"
-                    android:textStyle="bold" />
-            </LinearLayout>
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="30dp"
+                android:text="@string/save_button"
+                android:textColor="@color/white"
+                android:textStyle="bold"
+                android:textSize="13sp"
+                app:icon="@drawable/ic_check"
+                app:iconGravity="textStart"
+                app:iconTint="@color/white"
+                app:iconPadding="6dp"
+                android:textAllCaps="false"
+                android:elevation="4dp" />
         </LinearLayout>
 
         <TextView

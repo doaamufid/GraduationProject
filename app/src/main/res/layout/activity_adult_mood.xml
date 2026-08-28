@@ -13,7 +13,9 @@
     android:orientation="vertical"
     android:fitsSystemWindows="true"
     android:paddingHorizontal="20dp"
-    android:paddingBottom="18dp"
+    android:paddingBottom="56dp"
+    android:clipChildren="false"
+    android:clipToPadding="false"
     android:background="#EAEEF3">
 
     <!-- progress track -->
@@ -91,6 +93,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        android:layout_marginHorizontal="32dp"
         android:fillViewport="true"
         android:scrollbars="none">
 
@@ -106,20 +109,27 @@
     </HorizontalScrollView>
 
     <!-- continue button -->
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_continue"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="match_parent"
-        android:layout_height="56dp"
+        android:layout_height="54dp"
         android:layout_marginTop="20dp"
-        android:background="@drawable/bg_continue_button"
-        android:elevation="6dp"
+        android:layout_marginBottom="12dp"
+        android:layout_marginHorizontal="32dp"
+        app:backgroundTint="#FFFFFF"
+        app:cornerRadius="24dp"
+        app:elevation="8dp"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         android:text="@string/continue_label"
         android:textAllCaps="false"
         android:textColor="#0F172A"
         android:textSize="16sp"
         android:textStyle="bold"
-        android:drawableStart="@drawable/ic_arrow_continue"
-        android:drawablePadding="8dp"
+        app:icon="@drawable/ic_arrow_continue"
+        app:iconPadding="8dp"
+        app:iconGravity="textEnd"
         android:gravity="center" />
 
 </LinearLayout>

@@ -101,7 +101,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="التعميم المفرط"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:gravity="center" />
                     </LinearLayout>
 
                     <TextView
@@ -116,7 +118,7 @@
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
                         android:text="@string/badge_detected"
-                        android:textColor="@color/badge_text"
+                        android:textColor="@color/white"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         android:visibility="gone"
@@ -148,7 +150,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="الكل أو لا شيء"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:gravity="center" />
                     </LinearLayout>
 
                     <TextView
@@ -163,7 +167,7 @@
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
                         android:text="@string/badge_detected"
-                        android:textColor="@color/badge_text"
+                        android:textColor="@color/white"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         android:visibility="gone"
@@ -204,7 +208,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="التنبؤ بالفشل"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:gravity="center" />
                     </LinearLayout>
 
                     <TextView
@@ -219,7 +225,7 @@
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
                         android:text="@string/badge_detected"
-                        android:textColor="@color/badge_text"
+                        android:textColor="@color/white"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         android:visibility="gone"
@@ -251,7 +257,9 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="إهمال الإيجابيات"
-                            android:textStyle="bold" />
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:gravity="center" />
                     </LinearLayout>
 
                     <TextView
@@ -266,7 +274,7 @@
                         android:paddingTop="4dp"
                         android:paddingBottom="4dp"
                         android:text="@string/badge_detected"
-                        android:textColor="@color/badge_text"
+                        android:textColor="@color/white"
                         android:textSize="11sp"
                         android:textStyle="bold"
                         android:visibility="gone"
@@ -318,14 +326,23 @@
             </LinearLayout>
         </LinearLayout>
 
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnIdentifyNext"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/Button.Primary"
-            android:drawableStart="@drawable/ic_chevron_left"
-            android:drawablePadding="8dp"
-            android:text="@string/next_button" />
+            android:layout_height="60dp"
+            app:backgroundTint="@color/primary"
+            app:cornerRadius="30dp"
+            android:text="@string/next_button"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="15sp"
+            app:icon="@drawable/ic_chevron_left"
+            app:iconGravity="textStart"
+            app:iconTint="@color/white"
+            app:iconPadding="8dp"
+            android:textAllCaps="false"
+            android:elevation="4dp" />
 
     </LinearLayout>
 </ScrollView>

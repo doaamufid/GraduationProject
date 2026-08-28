@@ -10,14 +10,14 @@ public class SeedData {
 
     // Same category list as CATEGORIES (index 0 = "الكل" filter, used only in wall chips)
     public static final String[] CATEGORIES = new String[]{
-            "الكل", "قوة", "أمل", "صبر", "شكر", "سلام", "ثقة", "شجاعة",
+            "الأكثر إلهاما", "الكل", "قوة", "أمل", "صبر", "شكر", "سلام", "ثقة", "شجاعة",
             "تعافي", "احتواء", "تفاؤل", "راحة", "امتنان", "دعم", "تقبل", "نمو"
     };
 
     // gentle, non-suggestive emoji only
     public static final String[] MOOD_EMOJIS = new String[]{
             "🌸", "🌹", "🌻", "🌼", "🌷", "🪷", "🌞", "🌙", "⭐", "✨",
-            "🌈", "🦋", "🕊️", "🍃", "🌿", "☁️", "😊", "🙂", "😌", "🥰", "🤍", "💫"
+            "🌈", "🦋", "🕊️", "🍃", "🌿", "☁️", "😊", "🙂", "😌", "🥰", "🤍", "💫", "🎈", "🧸"
     };
 
     public static final String[] AVATARS = new String[]{"🌤️", "🌿", "🌊", "⭐", "🕊️", "🌸", "☀️", "🍃"};
@@ -25,6 +25,7 @@ public class SeedData {
     public static String getCategoryEmoji(String cat) {
         switch (cat) {
             case "الكل": return "⭐";
+            case "الأكثر إلهاما": return "✨";
             case "قوة": return "💪";
             case "أمل": return "🌈";
             case "صبر": return "⏳";

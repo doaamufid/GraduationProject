@@ -18,7 +18,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/info_title"
-        android:textColor="@color/cream"
+        android:textColor="@color/text_main"
         android:textSize="18sp"
         android:textStyle="bold"
         android:layout_marginBottom="12dp"/>
@@ -27,7 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/info_body"
-        android:textColor="@color/muted"
+        android:textColor="@color/text_soft"
         android:textSize="13.5sp"
         android:lineSpacingMultiplier="1.9"
         android:gravity="center"/>

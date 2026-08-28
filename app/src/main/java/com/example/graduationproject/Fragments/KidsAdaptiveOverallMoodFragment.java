@@ -35,6 +35,7 @@ public class KidsAdaptiveOverallMoodFragment extends KidsAdaptiveBaseOnboardingF
             KidsAdaptiveChoiceCardView card = new KidsAdaptiveChoiceCardView(requireContext());
             card.setEmoji(EMOJIS[i]);
             card.setLabel(labels[i]);
+            card.setCardIndex(i);
             card.setSelectedState(IDS[i].equals(data().overallMood));
             final int idx = i;
             card.setOnClickListener(v -> {
@@ -43,7 +44,7 @@ public class KidsAdaptiveOverallMoodFragment extends KidsAdaptiveBaseOnboardingF
             });
             cards[i] = card;
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-            lp.topMargin = dp(10);
+            lp.topMargin = dp(20);
             container.addView(card, lp);
         }
 
@@ -53,18 +54,19 @@ public class KidsAdaptiveOverallMoodFragment extends KidsAdaptiveBaseOnboardingF
         unsure.setAlpha(0.6f);
         unsure.setTextSize(14);
         unsure.setGravity(Gravity.CENTER);
-        unsure.setPadding(dp(6), dp(10), dp(6), dp(6));
+        unsure.setPadding(dp(6), dp(20), dp(6), dp(6));
         unsure.setOnClickListener(v -> {
             data().overallMood = "unsure";
             for (KidsAdaptiveChoiceCardView c : cards) c.setSelectedState(false);
         });
         LinearLayout.LayoutParams ulp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        ulp.topMargin = dp(10);
         container.addView(unsure, ulp);
     }
 
     private LinearLayout.LayoutParams titleParams() {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        lp.topMargin = dp(4); lp.bottomMargin = dp(6);
+        lp.topMargin = dp(14); lp.bottomMargin = dp(12);
         return lp;
     }
 }

@@ -1,13 +1,23 @@
 package com.example.graduationproject;
 
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -39,6 +49,21 @@ public class OneClickCalmActivity extends AppCompatActivity implements AppHost, 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        EdgeToEdge.enable(this,
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
+
         setContentView(R.layout.activity_once_click_calm);
 
         appSubtitle = findViewById(R.id.appSubtitle);
@@ -47,6 +72,19 @@ public class OneClickCalmActivity extends AppCompatActivity implements AppHost, 
         tabSimulate = findViewById(R.id.tabSimulate);
         toastView = findViewById(R.id.toastView);
         fragmentContainer = findViewById(R.id.fragmentContainer);
+
+        View navBlur = findViewById(R.id.system_nav_blur);
+        View rootColumn = findViewById(R.id.rootColumn);
+        ViewCompat.setOnApplyWindowInsetsListener(rootColumn, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(0, systemBars.top, 0, 0);
+
+            if (navBlur != null) {
+                navBlur.getLayoutParams().height = systemBars.bottom;
+                navBlur.requestLayout();
+            }
+            return insets;
+        });
 
         ImageButton btnInfo = findViewById(R.id.btnInfo);
         btnInfo.setOnClickListener(v -> new InfoDialogFragment().show(getSupportFragmentManager(), "info"));
@@ -106,7 +144,7 @@ public class OneClickCalmActivity extends AppCompatActivity implements AppHost, 
         for (int i = 0; i < tabs.length; i++) {
             boolean active = i == index;
             tabs[i].setBackgroundResource(active ? R.drawable.bg_tab_selected : 0);
-            tabs[i].setTextColor(getResources().getColor(active ? R.color.amber : R.color.mutedDim));
+            tabs[i].setTextColor(getResources().getColor(active ? R.color.primary : R.color.text_soft));
         }
     }
 

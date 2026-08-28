@@ -32,18 +32,22 @@ import java.util.List;
 public class WallFragment extends Fragment {
 
     private RecyclerView categoryRecycler;
-    private ViewPager2 topSlider;
-    private LinearLayout dotsContainer;
+    private ViewPager2 textSlider;
+    private ViewPager2 imageSlider;
+    private LinearLayout textDotsContainer;
+    private LinearLayout imageDotsContainer;
     private LinearLayout gridColumnRight;
     private LinearLayout gridColumnLeft;
+    private LinearLayout gridContainer;
     private TextView pinnedBadge;
     private ImageView pinnedBtnIcon;
 
     private final Handler autoScrollHandler = new Handler(Looper.getMainLooper());
-    private Runnable autoScrollRunnable;
+    private Runnable textAutoScrollRunnable;
+    private Runnable imageAutoScrollRunnable;
     private boolean autoScrollPaused = false;
-    private SliderAdapter sliderAdapter;
-    private List<Message> topSlides;
+    private List<Message> textSlides;
+    private List<Message> imageSlides;
 
     @Nullable
     @Override
@@ -63,12 +67,16 @@ public class WallFragment extends Fragment {
         categoryRecycler = view.findViewById(R.id.categoryRecycler);
         categoryRecycler.startAnimation(android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.slide_in_right));
 
-        view.findViewById(R.id.sliderContainer).startAnimation(android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.scale_in));
+        view.findViewById(R.id.textSliderContainer).startAnimation(android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.scale_in));
+        view.findViewById(R.id.imageSliderContainer).startAnimation(android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.scale_in));
 
-        topSlider = view.findViewById(R.id.topSlider);
-        dotsContainer = view.findViewById(R.id.dotsContainer);
+        textSlider = view.findViewById(R.id.textSlider);
+        imageSlider = view.findViewById(R.id.imageSlider);
+        textDotsContainer = view.findViewById(R.id.textDotsContainer);
+        imageDotsContainer = view.findViewById(R.id.imageDotsContainer);
         gridColumnRight = view.findViewById(R.id.gridColumnRight);
         gridColumnLeft = view.findViewById(R.id.gridColumnLeft);
+        gridContainer = view.findViewById(R.id.gridContainer);
         pinnedBadge = view.findViewById(R.id.pinnedBadge);
         pinnedBtnIcon = view.findViewById(R.id.pinnedBtnIcon);
 
@@ -84,7 +92,7 @@ public class WallFragment extends Fragment {
         });
 
         setupCategoryChips(activity);
-        setupSlider(activity);
+        setupSliders(activity);
         rebuildGrid();
         refreshPinnedBadge();
 
@@ -100,31 +108,51 @@ public class WallFragment extends Fragment {
         categoryRecycler.setAdapter(adapter);
     }
 
-    private void setupSlider(SalamCommunityActivity activity) {
-        topSlides = Repository.get().getTopSlides();
-        sliderAdapter = new SliderAdapter(topSlides, activity);
-        topSlider.setAdapter(sliderAdapter);
-        topSlider.setOffscreenPageLimit(3);
+    private void setupSliders(SalamCommunityActivity activity) {
+        List<Message> allTop = Repository.get().getTopSlides();
+        textSlides = new java.util.ArrayList<>();
+        imageSlides = new java.util.ArrayList<>();
 
-        topSlider.setPageTransformer((page, position) -> {
-            // Standard sliding animation without scaling or overlapping gaps
+        for (Message m : allTop) {
+            if (m.img == null || m.img.isEmpty()) {
+                textSlides.add(m);
+            } else {
+                imageSlides.add(m);
+            }
+        }
+
+        if (textSlides != null && !textSlides.isEmpty()) {
+            setupIndividualSlider(textSlider, textDotsContainer, textSlides, activity, true);
+        }
+
+        if (imageSlides != null && !imageSlides.isEmpty()) {
+            setupIndividualSlider(imageSlider, imageDotsContainer, imageSlides, activity, false);
+        }
+        
+        updateContentVisibility();
+    }
+
+    private void setupIndividualSlider(ViewPager2 slider, LinearLayout dots, List<Message> slides, SalamCommunityActivity activity, boolean isText) {
+        SliderAdapter adapter = new SliderAdapter(slides, activity);
+        slider.setAdapter(adapter);
+        slider.setOffscreenPageLimit(3);
+        slider.setPageTransformer((page, position) -> {
             page.setTranslationX(0);
             page.setScaleX(1f);
             page.setScaleY(1f);
             page.setAlpha(1f);
         });
 
-        buildDots(topSlides.size());
+        buildDots(dots, slides.size(), slider);
 
-        topSlider.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+        slider.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
             @Override
             public void onPageSelected(int position) {
-                updateActiveDot(position);
+                updateActiveDot(dots, position);
             }
         });
 
-        // pause autoscroll while the user is interacting, resume shortly after release
-        RecyclerView inner = (RecyclerView) topSlider.getChildAt(0);
+        RecyclerView inner = (RecyclerView) slider.getChildAt(0);
         if (inner != null) {
             inner.setOnTouchListener((v, event) -> {
                 if (event.getAction() == MotionEvent.ACTION_DOWN) {
@@ -136,21 +164,24 @@ public class WallFragment extends Fragment {
             });
         }
 
-        autoScrollRunnable = new Runnable() {
+        Runnable scroll = new Runnable() {
             @Override
             public void run() {
-                if (!autoScrollPaused && topSlides.size() > 1 && isAdded()) {
-                    int next = (topSlider.getCurrentItem() + 1) % topSlides.size();
-                    topSlider.setCurrentItem(next, true);
+                if (!autoScrollPaused && slides.size() > 1 && isAdded()) {
+                    int next = (slider.getCurrentItem() + 1) % slides.size();
+                    slider.setCurrentItem(next, true);
                 }
                 autoScrollHandler.postDelayed(this, 4200);
             }
         };
-        autoScrollHandler.postDelayed(autoScrollRunnable, 4200);
+        if (isText) textAutoScrollRunnable = scroll;
+        else imageAutoScrollRunnable = scroll;
+
+        autoScrollHandler.postDelayed(scroll, 4200);
     }
 
-    private void buildDots(int count) {
-        dotsContainer.removeAllViews();
+    private void buildDots(LinearLayout container, int count, ViewPager2 slider) {
+        container.removeAllViews();
         for (int i = 0; i < count; i++) {
             View dot = new View(requireContext());
             int size = dpToPx(6);
@@ -162,16 +193,16 @@ public class WallFragment extends Fragment {
             final int idx = i;
             dot.setOnClickListener(v -> {
                 autoScrollPaused = true;
-                topSlider.setCurrentItem(idx, true);
+                slider.setCurrentItem(idx, true);
                 autoScrollHandler.postDelayed(() -> autoScrollPaused = false, 4500);
             });
-            dotsContainer.addView(dot);
+            container.addView(dot);
         }
     }
 
-    private void updateActiveDot(int activeIndex) {
-        for (int i = 0; i < dotsContainer.getChildCount(); i++) {
-            View dot = dotsContainer.getChildAt(i);
+    private void updateActiveDot(LinearLayout container, int activeIndex) {
+        for (int i = 0; i < container.getChildCount(); i++) {
+            View dot = container.getChildAt(i);
             ViewGroup.LayoutParams lp = dot.getLayoutParams();
             boolean active = i == activeIndex;
             lp.width = dpToPx(active ? 18 : 6);
@@ -181,6 +212,7 @@ public class WallFragment extends Fragment {
     }
 
     private void rebuildGrid() {
+        updateContentVisibility();
         gridColumnRight.removeAllViews();
         gridColumnLeft.removeAllViews();
         List<Message> visible = Repository.get().getVisibleGrid();
@@ -200,6 +232,27 @@ public class WallFragment extends Fragment {
         }
     }
 
+    private void updateContentVisibility() {
+        String current = Repository.get().getCurrentCategory();
+        boolean isMostInspiring = current.equals("الأكثر إلهاما");
+
+        View root = getView();
+        if (root == null) return;
+
+        View textSliderContainer = root.findViewById(R.id.textSliderContainer);
+        View imageSliderContainer = root.findViewById(R.id.imageSliderContainer);
+
+        if (isMostInspiring) {
+            textSliderContainer.setVisibility(textSlides != null && !textSlides.isEmpty() ? View.VISIBLE : View.GONE);
+            imageSliderContainer.setVisibility(imageSlides != null && !imageSlides.isEmpty() ? View.VISIBLE : View.GONE);
+            gridContainer.setVisibility(View.GONE);
+        } else {
+            textSliderContainer.setVisibility(View.GONE);
+            imageSliderContainer.setVisibility(View.GONE);
+            gridContainer.setVisibility(View.VISIBLE);
+        }
+    }
+
     public void refreshPinnedBadge() {
         int count = Repository.get().pinnedCount();
         if (count > 0) {
@@ -215,7 +268,8 @@ public class WallFragment extends Fragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        if (autoScrollRunnable != null) autoScrollHandler.removeCallbacks(autoScrollRunnable);
+        if (textAutoScrollRunnable != null) autoScrollHandler.removeCallbacks(textAutoScrollRunnable);
+        if (imageAutoScrollRunnable != null) autoScrollHandler.removeCallbacks(imageAutoScrollRunnable);
     }
 
     private int dpToPx(int dp) {

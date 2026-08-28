@@ -20,22 +20,22 @@ public class KidsAdaptiveReadyFragment extends KidsAdaptiveBaseOnboardingFragmen
     @Override
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
         container.setGravity(Gravity.CENTER);
-        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, dp(380));
+        FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.MATCH_PARENT, dp(400));
         container.setLayoutParams(lp);
 
         KidsAdaptiveTeddyBuddyView hero = new KidsAdaptiveTeddyBuddyView(requireContext());
         hero.setReducedMotion(host.isReducedMotion());
         hero.setMood(KidsAdaptiveTeddyBuddyView.MOOD_CALM);
-        LinearLayout.LayoutParams heroLp = new LinearLayout.LayoutParams(dp(104), dp(104));
+        LinearLayout.LayoutParams heroLp = new LinearLayout.LayoutParams(dp(110), dp(110));
         heroLp.gravity = Gravity.CENTER_HORIZONTAL;
-        heroLp.bottomMargin = dp(12);
+        heroLp.bottomMargin = dp(32);
         container.addView(hero, heroLp);
 
         String nickname = data().nickname;
         String thanks = getString(R.string.kids_adaptive_ready_thanks) + (nickname != null && !nickname.trim().isEmpty() ? "، " + nickname.trim() : "") + " 🧸";
         LinearLayout.LayoutParams tlp = wrap();
         tlp.gravity = Gravity.CENTER_HORIZONTAL;
-        tlp.bottomMargin = dp(12);
+        tlp.bottomMargin = dp(24);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), thanks, 22), tlp);
 
         container.addView(KidsAdaptiveUiHelpers.body(requireContext(), getString(R.string.kids_adaptive_ready_body)), wrap());

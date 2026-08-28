@@ -8,14 +8,18 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="80dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:paddingHorizontal="20dp"
-            android:paddingBottom="32dp">
+            android:paddingBottom="32dp"
+            android:clipChildren="false"
+            android:clipToPadding="false">
 
             <!-- top bar -->
             <LinearLayout
@@ -270,22 +274,28 @@
                     android:textColor="@color/textSoft" />
             </LinearLayout>
 
-            <Button
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/submitBtn"
+                style="@style/Widget.MaterialComponents.Button"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingVertical="15dp"
-                android:background="@drawable/bg_pill_primary"
+                android:layout_height="56dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
+                app:backgroundTint="@color/primary"
+                app:cornerRadius="28dp"
                 android:text="@string/compose_submit"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="13sp"
-                android:drawableStart="@drawable/ic_send"
-                android:drawablePadding="8dp"
+                android:textSize="16sp"
+                app:icon="@drawable/ic_send"
+                app:iconGravity="textStart"
+                app:iconPadding="12dp"
+                app:iconTint="@color/white"
+                android:gravity="center"
+                android:elevation="6dp"
                 android:stateListAnimator="@null"
-                android:enabled="false"
-                android:alpha="0.4" />
+                android:enabled="false" />
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

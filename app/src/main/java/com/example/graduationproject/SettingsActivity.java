@@ -36,8 +36,6 @@ public class SettingsActivity extends AppCompatActivity {
     private final SettingsRepository repo = SettingsRepository.getInstance();
 
     private ToastController toastController;
-    private LinearLayout llThemeSwatches;
-    private List<ThemeOption> themeOptions;
     private TextView tvStatusClock;
     private final Handler clockHandler = new Handler(Looper.getMainLooper());
     private final Runnable clockRunnable = new Runnable() {
@@ -71,7 +69,6 @@ public class SettingsActivity extends AppCompatActivity {
         });
 
         toastController = new ToastController(findViewById(R.id.toastHost));
-        themeOptions = SettingsRepository.themes(this);
 
         bindHeaderActions();
         bindPrivacySection();
@@ -80,7 +77,6 @@ public class SettingsActivity extends AppCompatActivity {
         bindAiSection();
         bindSoundSection();
         bindDataSection();
-        bindAccessibilitySection();
         bindChildrenSection();
         bindSupportSection();
         bindDestructiveZone();
@@ -146,36 +142,14 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void bindCustomizationSection() {
-        llThemeSwatches = findViewById(R.id.llThemeSwatches);
-        buildThemeSwatches();
-
         SwitchMaterial swAutoDark = SettingsRowHelper.bindToggleRow(
                 findViewById(R.id.rowAutoDark), getString(R.string.auto_dark_title), getString(R.string.auto_dark_sub));
         swAutoDark.setChecked(repo.autoDark);
         swAutoDark.setOnCheckedChangeListener((b, checked) -> repo.autoDark = checked);
     }
 
-    private void buildThemeSwatches() {
-        llThemeSwatches.removeAllViews();
-        for (ThemeOption option : themeOptions) {
-            View swatch = LayoutInflater.from(this).inflate(R.layout.item_theme_swatch, llThemeSwatches, false);
-            View swatchBg = swatch.findViewById(R.id.swatchBg);
-            ImageView ivCheck = swatch.findViewById(R.id.ivSwatchCheck);
-
-            swatchBg.getBackground().mutate().setTint(option.colorInt);
-            ivCheck.setVisibility(option.key.equals(repo.theme) ? View.VISIBLE : View.INVISIBLE);
-
-            swatch.setOnClickListener(v -> {
-                repo.theme = option.key;
-                buildThemeSwatches();
-                applyThemeColors();
-            });
-
-            llThemeSwatches.addView(swatch);
-        }
-    }
-
     private void applyThemeColors() {
+        List<ThemeOption> themeOptions = SettingsRepository.themes(this);
         int colorInt = 0;
         for (ThemeOption opt : themeOptions) {
             if (opt.key.equals(repo.theme)) {
@@ -192,12 +166,10 @@ public class SettingsActivity extends AppCompatActivity {
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowAutoDark), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowCloudAI), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowBreathHaptic), colorInt);
-        SettingsRowHelper.setThemeColor(findViewById(R.id.rowReduceMotion), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowManageChildren), colorInt);
         SettingsRowHelper.setThemeColor(findViewById(R.id.rowFaq), colorInt);
 
         findViewById(R.id.resetRecsIconBg).getBackground().mutate().setTint(colorInt);
-        findViewById(R.id.exportIconBg).getBackground().mutate().setTint(colorInt);
     }
 
     private void bindAiSection() {
@@ -207,7 +179,7 @@ public class SettingsActivity extends AppCompatActivity {
         swCloudAI.setOnCheckedChangeListener((b, checked) -> repo.cloudAI = checked);
 
         findViewById(R.id.btnResetRecs).setOnClickListener(v ->
-                toastController.show(getString(R.string.toast_reset_recs)));
+                startActivity(new Intent(this, AdultOnboardingMainActivity.class)));
     }
 
     private void bindSoundSection() {
@@ -218,15 +190,6 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     private void bindDataSection() {
-        findViewById(R.id.btnExport).setOnClickListener(v ->
-                toastController.show(getString(R.string.toast_export_started)));
-    }
-
-    private void bindAccessibilitySection() {
-        SwitchMaterial swReduceMotion = SettingsRowHelper.bindToggleRow(
-                findViewById(R.id.rowReduceMotion), getString(R.string.reduce_motion_title), getString(R.string.reduce_motion_sub));
-        swReduceMotion.setChecked(repo.reduceMotion);
-        swReduceMotion.setOnCheckedChangeListener((b, checked) -> repo.reduceMotion = checked);
     }
 
     private void bindChildrenSection() {

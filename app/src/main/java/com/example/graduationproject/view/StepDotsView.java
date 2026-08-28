@@ -44,10 +44,10 @@ public class StepDotsView extends LinearLayout {
             shape.setShape(android.graphics.drawable.GradientDrawable.OVAL);
 
             int color;
-            if (isCardDot) color = getResources().getColor(R.color.amber);
-            else if (active) color = getResources().getColor(R.color.cream);
-            else if (done) color = Color.argb(140, 245, 238, 225);
-            else color = Color.argb(41, 245, 238, 225);
+            if (isCardDot) color = getResources().getColor(R.color.primary);
+            else if (active) color = getResources().getColor(R.color.text_main);
+            else if (done) color = Color.argb(140, 31, 58, 96);
+            else color = Color.argb(41, 31, 58, 96);
             shape.setColor(color);
             dot.setImageDrawable(shape);
 

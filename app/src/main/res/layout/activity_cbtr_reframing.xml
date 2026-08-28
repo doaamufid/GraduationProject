@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rootFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient_main">
+    android:background="@color/bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -28,7 +29,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:text="@string/clock_time"
-                android:textColor="@color/white"
+                android:textColor="@color/text_main"
                 android:textSize="12sp"
                 android:textStyle="bold" />
 
@@ -40,6 +41,7 @@
                 android:background="@android:color/transparent"
                 android:src="@drawable/ic_close"
                 android:padding="4dp"
+                app:tint="@color/primary"
                 android:contentDescription="@null" />
         </RelativeLayout>
 
@@ -60,8 +62,9 @@
                 android:id="@+id/btnBack"
                 android:layout_width="36dp"
                 android:layout_height="36dp"
-                android:background="@drawable/bg_circle_soft"
-                android:src="@drawable/ic_arrow_right"
+                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_arrow_left"
+                app:tint="@color/primary"
                 android:padding="9dp"
                 android:contentDescription="@null" />
 
@@ -73,7 +76,7 @@
                 android:layout_marginStart="-32dp"
                 android:gravity="center"
                 android:text="@string/entry_title"
-                android:textColor="@color/white"
+                android:textColor="@color/text_main"
                 android:textSize="13sp"
                 android:textStyle="bold" />
         </LinearLayout>

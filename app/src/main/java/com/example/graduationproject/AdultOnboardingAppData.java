@@ -67,6 +67,7 @@ public final class AdultOnboardingAppData {
     public static final Option[] GENDER_OPTIONS = new Option[]{
             new Option("female", "\uD83D\uDC69", R.string.adaptive_adult_onboarding_gender_female),
             new Option("male", "\uD83D\uDC68", R.string.adaptive_adult_onboarding_gender_male),
+            new Option("unspecified", "\uD83D\uDE36", R.string.adaptive_adult_onboarding_gender_prefer_not),
     };
 
     // ---- Overall mood ----

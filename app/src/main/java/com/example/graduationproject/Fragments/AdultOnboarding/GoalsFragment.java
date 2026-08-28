@@ -43,6 +43,6 @@ public class GoalsFragment extends BaseScreenFragment {
 
     @Override
     protected void populateFooter(LayoutInflater inflater, ViewGroup footer) {
-        footer.addView(Widgets.primaryButton(requireContext(), getString(R.string.adaptive_adult_onboarding_continue), false, () -> host.goNext()));
+        footer.addView(Widgets.footerButtons(requireContext(), getString(R.string.adaptive_adult_onboarding_continue), () -> host.goNext(), () -> host.goBack()));
     }
 }

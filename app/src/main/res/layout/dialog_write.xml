@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:text="@string/write_title"
-            android:textColor="@color/white"
+            android:textColor="@color/text_main"
             android:textSize="14sp"
             android:textStyle="bold" />
     </RelativeLayout>
@@ -69,7 +69,7 @@
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:text="@string/mode_voice"
-            android:textColor="@color/white"
+            android:textColor="@color/text_main"
             android:textSize="12sp"
             android:textStyle="bold" />
     </LinearLayout>
@@ -87,7 +87,7 @@
         android:inputType="textMultiLine"
         android:minLines="4"
         android:padding="16dp"
-        android:textColor="@color/white"
+        android:textColor="@color/text_main"
         android:textSize="13sp" />
 
     <!-- Voice-entry mode (hidden unless voice tab selected) -->
@@ -131,7 +131,7 @@
             android:textColorHint="@color/text_soft"
             android:inputType="text"
             android:padding="10dp"
-            android:textColor="@color/white"
+            android:textColor="@color/text_main"
             android:textSize="12sp" />
     </LinearLayout>
 
@@ -142,7 +142,7 @@
         android:layout_marginBottom="8dp"
         android:gravity="end"
         android:text="@string/emotions_label"
-        android:textColor="@color/white"
+        android:textColor="@color/text_main"
         android:textSize="11sp"
         android:textStyle="bold" />
 

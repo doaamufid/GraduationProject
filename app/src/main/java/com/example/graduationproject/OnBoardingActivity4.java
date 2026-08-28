@@ -5,11 +5,15 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.graduationproject.databinding.ActivityOnBoarding4Binding;
 
@@ -26,35 +30,56 @@ public class OnBoardingActivity4 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        androidx.activity.EdgeToEdge.enable(this);
+        EdgeToEdge.enable(this, 
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
         binding = ActivityOnBoarding4Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
-            androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom);
-            // Apply top padding to the skip button area or the first visible element
-            if (binding.tvSkip != null) {
-                binding.tvSkip.setPadding(0, systemBars.top, 0, 0);
-            }
-            return insets;
-        });
+        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> insets);
 
         setupAnimations();
 
-        binding.btnStart.setOnClickListener(v -> {
-            SharedPreferences preferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-            preferences.edit().putBoolean("isFirstRun", false).apply();
-
-            Intent intent = new Intent(OnBoardingActivity4.this, SplashSelectActivity.class);
+        binding.btnNext.setOnClickListener(v -> {
+            Intent intent = new Intent(OnBoardingActivity4.this, OnBoardingActivity5.class);
             startActivity(intent);
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
+            if (AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))) {
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            } else {
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
         });
 
+        binding.btnBack.setOnClickListener(v -> onBackPressed());
+
         if (binding.tvSkip != null) {
-            binding.tvSkip.setVisibility(android.view.View.GONE);
+            binding.tvSkip.setOnClickListener(v -> skipOnBoarding());
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))) {
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else {
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
+    }
+
+    private void skipOnBoarding() {
+        SharedPreferences preferences = getSharedPreferences("AppPrefs", MODE_PRIVATE);
+        preferences.edit().putBoolean("isFirstRun", false).apply();
+
+        Intent intent = new Intent(OnBoardingActivity4.this, SplashSelectActivity.class);
+        startActivity(intent);
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+        finish();
     }
 
     private void setupAnimations() {
@@ -66,8 +91,8 @@ public class OnBoardingActivity4 extends AppCompatActivity {
         binding.tvTitle.setTranslationY(50f);
         binding.tvDescription.setAlpha(0f);
         binding.tvDescription.setTranslationY(50f);
-        binding.btnStart.setAlpha(0f);
-        binding.btnStart.setTranslationY(100f);
+        binding.btnNext.setAlpha(0f);
+        binding.btnNext.setTranslationY(100f);
 
         // Illustration Animation
         ObjectAnimator imageAlpha = ObjectAnimator.ofFloat(binding.ivIllustration, "alpha", 0f, 1f);
@@ -93,8 +118,8 @@ public class OnBoardingActivity4 extends AppCompatActivity {
                 ObjectAnimator.ofFloat(binding.tvTitle, "translationY", 50f, 0f),
                 ObjectAnimator.ofFloat(binding.tvDescription, "alpha", 0f, 1f),
                 ObjectAnimator.ofFloat(binding.tvDescription, "translationY", 50f, 0f),
-                ObjectAnimator.ofFloat(binding.btnStart, "alpha", 0f, 1f),
-                ObjectAnimator.ofFloat(binding.btnStart, "translationY", 100f, 0f)
+                ObjectAnimator.ofFloat(binding.btnNext, "alpha", 0f, 1f),
+                ObjectAnimator.ofFloat(binding.btnNext, "translationY", 100f, 0f)
         );
         textSet.setDuration(800);
         textSet.setStartDelay(400);

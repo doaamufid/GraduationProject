@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FDFCF9"
+    android:background="@color/bg"
     tools:context=".bottomNavFragments.HomeFragment">
 
     <!-- Optional: Keep the subtle wave if desired, but I'll focus on the new UI -->
@@ -77,31 +77,16 @@
                         app:tint="@color/text_main"
                         android:contentDescription="Notifications" />
 
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    <ImageButton
+                        android:id="@+id/btnSwitchSection"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
                         android:layout_marginStart="12dp"
-                        android:background="@drawable/bg_pill_white"
-                        android:gravity="center"
-                        android:paddingHorizontal="12dp"
-                        android:paddingVertical="6dp">
-
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ic_flame"
-                            app:tint="#FF7043" />
-
-                        <TextView
-                            android:id="@+id/tvStreakCount"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="4dp"
-                            android:text="7"
-                            android:textColor="#212121"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-                    </LinearLayout>
+                        android:background="@drawable/bg_circle_white"
+                        android:src="@drawable/ic_users"
+                        android:padding="10dp"
+                        app:tint="@color/text_main"
+                        android:contentDescription="Switch Section" />
                 </LinearLayout>
             </RelativeLayout>
 
@@ -143,58 +128,78 @@
                     android:textStyle="bold" />
             </LinearLayout>
 
-            <!-- Feature Cards - Redesigned to be thinner and lighter -->
+            <!-- Feature Cards - Redesigned to match provided designs -->
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardCalm"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="140dp"
                 android:layout_marginTop="20dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#E1F1FF">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="20dp">
+                    android:background="@drawable/bg_home_card_blue">
 
-                    <ImageView
-                        android:id="@+id/ivCalmIllust"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/chat3"
-                        app:tint="#4A90E2"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
+                    <!-- Text block on the Right (Start) -->
                     <LinearLayout
+                        android:id="@+id/layoutTextCalm"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginStart="16dp"
+                        android:gravity="start"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ivCalmIcon"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ivCalmIllust"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp">
 
                         <TextView
                             android:id="@+id/tvCalmTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/home_calm_title_main"
-                            android:textColor="#1D3557"
-                            android:textSize="18sp"
+                            android:textColor="@color/white"
+                            android:textSize="19sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="4dp"
                             android:text="@string/home_calm_sub_main"
-                            android:textColor="#457B9D"
-                            android:textSize="13sp" />
+                            android:textColor="@color/white"
+                            android:alpha="0.8"
+                            android:textSize="13sp"
+                            android:gravity="start" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:background="@drawable/bg_pill_white"
+                            android:paddingHorizontal="22dp"
+                            android:paddingVertical="10dp"
+                            android:text="ابدأ التمرين"
+                            android:textColor="#1F3A60"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
+
+                    <!-- Heart Icon on the Left (End) -->
+                    <ImageView
+                        android:id="@+id/ivCalmIcon"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/ic_heart_outline"
+                        app:tint="@color/white"
+                        android:alpha="0.8"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginEnd="24dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
@@ -202,54 +207,74 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/cardBreathing"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"
+                android:layout_height="140dp"
                 android:layout_marginTop="16dp"
-                app:cardCornerRadius="24dp"
-                app:cardElevation="0dp"
-                app:cardBackgroundColor="#D4EDDA">
+                app:cardCornerRadius="16dp"
+                app:cardElevation="2dp">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:paddingHorizontal="20dp">
+                    android:background="#EAF3E7">
 
-                    <ImageView
-                        android:id="@+id/ivBreathingIllust"
-                        android:layout_width="60dp"
-                        android:layout_height="60dp"
-                        android:src="@drawable/ic_wind"
-                        app:tint="#2D6A4F"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
+                    <!-- Text block on the Right (Start) -->
                     <LinearLayout
+                        android:id="@+id/layoutTextBreathing"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:orientation="vertical"
-                        android:layout_marginStart="16dp"
+                        android:gravity="start"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/ivBreathingIcon"
+                        app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@id/ivBreathingIllust"
-                        app:layout_constraintTop_toTopOf="parent">
+                        android:layout_marginStart="24dp"
+                        android:layout_marginEnd="16dp">
 
                         <TextView
                             android:id="@+id/tvBreathingTitle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/home_breathing_title_main"
-                            android:textColor="#1B4332"
-                            android:textSize="18sp"
+                            android:textColor="#2D5B7B"
+                            android:textSize="19sp"
                             android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="2dp"
+                            android:layout_marginTop="4dp"
                             android:text="@string/home_breathing_sub_main"
-                            android:textColor="#409167"
-                            android:textSize="13sp" />
+                            android:textColor="#2D5B7B"
+                            android:alpha="0.75"
+                            android:textSize="13sp"
+                            android:gravity="start" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:background="@drawable/bg_pill_sage"
+                            android:paddingHorizontal="22dp"
+                            android:paddingVertical="10dp"
+                            android:text="ابدأ رحلة جديدة"
+                            android:textColor="@color/white"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
                     </LinearLayout>
+
+                    <!-- Arch/Trees Icon on the Left (End) -->
+                    <ImageView
+                        android:id="@+id/ivBreathingIcon"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
+                        android:src="@drawable/ic_trees"
+                        app:tint="#2E5B7B"
+                        android:alpha="0.6"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:layout_marginEnd="24dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>

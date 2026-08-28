@@ -60,11 +60,11 @@ public class CardsAdapter extends RecyclerView.Adapter<CardsAdapter.VH> {
         h.phraseText.setText(c.phrase);
         if (isActive) {
             h.statusText.setText(R.string.active_now_badge);
-            h.statusText.setTextColor(ctx.getResources().getColor(R.color.amber));
+            h.statusText.setTextColor(ctx.getResources().getColor(R.color.primary));
             h.rowRoot.setBackgroundResource(R.drawable.bg_card_active);
         } else {
             h.statusText.setText(R.string.tap_to_activate);
-            h.statusText.setTextColor(ctx.getResources().getColor(R.color.mutedDim));
+            h.statusText.setTextColor(ctx.getResources().getColor(R.color.text_soft));
             h.rowRoot.setBackgroundResource(R.drawable.bg_card);
         }
 

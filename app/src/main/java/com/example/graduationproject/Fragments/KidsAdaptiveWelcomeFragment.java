@@ -21,18 +21,18 @@ public class KidsAdaptiveWelcomeFragment extends KidsAdaptiveBaseOnboardingFragm
         container.setGravity(Gravity.CENTER);
         container.setOrientation(LinearLayout.VERTICAL);
         FrameLayout.LayoutParams lp = new FrameLayout.LayoutParams(
-                FrameLayout.LayoutParams.MATCH_PARENT, dp(420));
+                FrameLayout.LayoutParams.MATCH_PARENT, dp(440));
         container.setLayoutParams(lp);
 
         KidsAdaptiveTeddyBuddyView hero = new KidsAdaptiveTeddyBuddyView(requireContext());
         hero.setReducedMotion(host.isReducedMotion());
         hero.setMood(KidsAdaptiveTeddyBuddyView.MOOD_NEUTRAL);
-        LinearLayout.LayoutParams heroLp = new LinearLayout.LayoutParams(dp(120), dp(120));
+        LinearLayout.LayoutParams heroLp = new LinearLayout.LayoutParams(dp(130), dp(120));
         heroLp.gravity = Gravity.CENTER_HORIZONTAL;
-        heroLp.bottomMargin = dp(14);
+        heroLp.bottomMargin = dp(32);
         container.addView(hero, heroLp);
 
-        container.addView(centered(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_welcome_title), 28), 14));
+        container.addView(centered(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_welcome_title), 30), 24));
         container.addView(KidsAdaptiveUiHelpers.body(requireContext(), getString(R.string.kids_adaptive_welcome_body)));
     }
 

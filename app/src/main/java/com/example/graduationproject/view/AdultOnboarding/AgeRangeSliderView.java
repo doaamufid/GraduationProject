@@ -37,17 +37,22 @@ public class AgeRangeSliderView extends LinearLayout {
         pill.setTypeface(AdultOnboardingUiUtils.cairo(true));
         pill.setTextSize(14.5f);
         pill.setGravity(Gravity.CENTER);
-        int padH = AdultOnboardingUiUtils.dp(getContext(), 18), padV = AdultOnboardingUiUtils.dp(getContext(), 6);
+        int padH = AdultOnboardingUiUtils.dp(getContext(), 18), padV = AdultOnboardingUiUtils.dp(getContext(), 10);
         pill.setPadding(padH, padV, padH, padV);
+        pill.setIncludeFontPadding(false);
         GradientDrawable pillBg = new GradientDrawable();
         pillBg.setCornerRadius(999);
         pillBg.setColor(Color.argb(31, 255, 255, 255));
         pillBg.setStroke(d, Color.argb(51, 255, 255, 255));
         pill.setBackground(pillBg);
+        
         FrameLayout.LayoutParams flp = new FrameLayout.LayoutParams(FrameLayout.LayoutParams.WRAP_CONTENT, FrameLayout.LayoutParams.WRAP_CONTENT);
         flp.gravity = Gravity.CENTER;
+        flp.topMargin = AdultOnboardingUiUtils.dp(getContext(), 4);
         flp.bottomMargin = AdultOnboardingUiUtils.dp(getContext(), 10);
         pillWrap.addView(pill, flp);
+        pillWrap.setClipChildren(false);
+        pillWrap.setClipToPadding(false);
         addView(pillWrap);
 
         seekBar = new SeekBar(getContext());

@@ -4,6 +4,8 @@ import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
@@ -11,6 +13,7 @@ import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -33,16 +36,19 @@ public class OnBoardingLanguageActivity extends AppCompatActivity {
         AppLanguageManager.applySavedLanguage(this);
         selectedLanguage = AppLanguageManager.getSavedLanguage(this);
 
-        EdgeToEdge.enable(this);
+        EdgeToEdge.enable(this, 
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
         binding = ActivityOnBoardingLanguageBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         binding.getRoot().setLayoutDirection(AppLanguageManager.getLayoutDirection(this));
-        ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+        ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> insets);
 
         binding.cardArabic.setOnClickListener(v -> setSelectedLanguage(AppLanguageManager.LANGUAGE_ARABIC));
         binding.cardEnglish.setOnClickListener(v -> setSelectedLanguage(AppLanguageManager.LANGUAGE_ENGLISH));

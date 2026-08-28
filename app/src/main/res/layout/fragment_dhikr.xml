@@ -14,7 +14,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/dhikr_intro"
-            android:textColor="@color/muted"
+            android:textColor="@color/text_soft"
             android:textSize="13sp"
             android:lineSpacingMultiplier="1.4"
             android:layout_marginBottom="16dp"/>
@@ -30,7 +30,7 @@
             style="@style/GhostButton"
             android:layout_marginTop="16dp"
             android:background="@drawable/bg_btn_dashed"
-            android:textColor="@color/amber"
+            android:textColor="@color/text_main"
             android:text="@string/add_custom_dhikr"/>
     </LinearLayout>
 </ScrollView>

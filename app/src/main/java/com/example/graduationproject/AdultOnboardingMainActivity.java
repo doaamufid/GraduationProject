@@ -1,9 +1,13 @@
 package com.example.graduationproject;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
@@ -63,8 +67,14 @@ public class AdultOnboardingMainActivity extends AppCompatActivity implements Ad
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_RTL);
 
         // Initial system bar colors matching the first onboarding stage
-        getWindow().setStatusBarColor(AdultOnboardingAppData.NIGHT_DEEP);
-        getWindow().setNavigationBarColor(AdultOnboardingAppData.NIGHT);
+        EdgeToEdge.enable(this, 
+                SystemBarStyle.dark(Color.TRANSPARENT),
+                SystemBarStyle.dark(Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
         WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         if (controller != null) {
             controller.setAppearanceLightStatusBars(false);

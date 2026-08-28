@@ -45,7 +45,7 @@
                     android:id="@+id/tvActiveEnvName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/white"
+                    android:textColor="@color/text"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:layout_gravity="end"
@@ -55,7 +55,7 @@
                     android:id="@+id/tvTimerRange"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="#CCFFFFFF"
+                    android:textColor="@color/textSoft"
                     android:textSize="10sp"
                     android:layout_marginTop="2dp"
                     android:layout_gravity="end"
@@ -77,7 +77,7 @@
                     android:background="@drawable/bg_badge_overlay"
                     android:src="@drawable/ic_pause"
                     android:padding="8dp"
-                    app:tint="@color/white"
+                    app:tint="@color/text"
                     android:contentDescription="تشغيل/إيقاف مؤقت"/>
 
                 <ImageButton
@@ -88,7 +88,7 @@
                     android:background="@drawable/bg_badge_overlay"
                     android:src="@drawable/ic_close_small"
                     android:padding="8dp"
-                    app:tint="@color/white"
+                    app:tint="@color/text"
                     android:contentDescription="إلغاء المؤقت"/>
             </LinearLayout>
 

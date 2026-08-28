@@ -2,6 +2,7 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chat_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="locale"
@@ -178,6 +179,13 @@
         </LinearLayout>
 
     </LinearLayout>
+
+    <View
+        android:id="@+id/system_nav_blur"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:background="#B3FFFFFF" />
 
     <!-- Toast overlay -->
     <TextView

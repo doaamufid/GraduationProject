@@ -14,10 +14,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.StrengthsRepository;
@@ -73,8 +77,18 @@ public class StrenghtBankActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_strnght_bank);
+
+        View root = findViewById(R.id.bank_root_frame);
+        View contentContainer = findViewById(R.id.bank_content_container);
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            if (contentContainer != null) {
+                contentContainer.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            }
+            return insets;
+        });
 
         repo = StrengthsRepository.getInstance(this);
         toastController = new ToastController(findViewById(R.id.toastHost));

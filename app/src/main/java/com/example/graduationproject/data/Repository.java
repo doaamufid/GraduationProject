@@ -25,7 +25,7 @@ public class Repository {
     private final List<Long> order = new ArrayList<>();
     private final LinkedHashSet<Long> heartedIds = new LinkedHashSet<>();
     private final LinkedHashSet<Long> pinnedIds = new LinkedHashSet<>();
-    private String currentCategory = "الكل";
+    private String currentCategory = "الأكثر إلهاما";
 
     private Repository() {
         messages.addAll(SeedData.seed());
@@ -101,25 +101,22 @@ public class Repository {
         return out;
     }
 
-    /** Top 5 messages sorted by hearts desc, mirrors topSlides useMemo */
+    /** Top 10 messages sorted by hearts desc, mirrors topSlides useMemo */
     public List<Message> getTopSlides() {
         List<Message> copy = new ArrayList<>(messages);
         Collections.sort(copy, (a, b) -> Integer.compare(b.hearts, a.hearts));
-        if (copy.size() > 5) copy = copy.subList(0, 5);
+        if (copy.size() > 10) copy = copy.subList(0, 10);
         return copy;
     }
 
-    /** Grid list: order minus top-slide ids, filtered by current category */
+    /** Grid list: filtered by current category, empty if "الأكثر إلهاما" */
     public List<Message> getVisibleGrid() {
-        List<Message> top = getTopSlides();
-        List<Long> topIds = new ArrayList<>();
-        for (Message m : top) topIds.add(m.id);
-
         List<Message> out = new ArrayList<>();
+        if (currentCategory.equals("الأكثر إلهاما")) return out;
+
         for (Long id : order) {
             Message m = findById(id);
             if (m == null) continue;
-            if (topIds.contains(m.id)) continue;
             if (!currentCategory.equals("الكل") && !m.cat.equals(currentCategory)) continue;
             out.add(m);
         }

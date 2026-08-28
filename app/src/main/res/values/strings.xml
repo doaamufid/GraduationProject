@@ -836,6 +836,8 @@
     <string name="wall_title">رسائل من قلوب طيبة</string>
     <string name="wall_sub">كلام كتبه ناس زيك لبعض</string>
     <string name="top_impact">الأكثر أثراً</string>
+    <string name="top_impact_text">كلمات ملهمة</string>
+    <string name="top_impact_image">لحظات بالصور</string>
     <string name="fab_share">شارك كلمة تشجيع</string>
     <string name="community_person">شخص من المجتمع</string>
 
@@ -1395,15 +1397,15 @@
     <string name="adaptive_adult_onboarding_fear_unsure">لا أعرف</string>
     <string name="adaptive_adult_onboarding_fear_skip">أفضل عدم الإجابة</string>
 
-    <string name="adaptive_adult_onboarding_time_morning">الصباح</string>
-    <string name="adaptive_adult_onboarding_time_day">النهار</string>
-    <string name="adaptive_adult_onboarding_time_evening">المساء</string>
-    <string name="adaptive_adult_onboarding_time_night">الليل</string>
+    <string name="adaptive_adult_onboarding_time_morning">الصباح الباكر</string>
+    <string name="adaptive_adult_onboarding_time_day">وقت الظهيرة</string>
+    <string name="adaptive_adult_onboarding_time_evening">وقت المساء</string>
+    <string name="adaptive_adult_onboarding_time_night">آخر الليل</string>
 
-    <string name="adaptive_adult_onboarding_followup_night_prompt">عندما يأتي الليل، ماذا تشعر أكثر؟</string>
-    <string name="adaptive_adult_onboarding_followup_day_prompt">خلال النهار، ماذا تشعر أكثر؟</string>
-    <string name="adaptive_adult_onboarding_followup_morning_prompt">في الصباح، ماذا تشعر أكثر؟</string>
-    <string name="adaptive_adult_onboarding_followup_evening_prompt">في المساء، ماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_night_prompt">في آخر الليل، ماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_day_prompt">في وقت الظهيرة، ماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_morning_prompt">في الصباح الباكر، ماذا تشعر أكثر؟</string>
+    <string name="adaptive_adult_onboarding_followup_evening_prompt">في وقت المساء، ماذا تشعر أكثر؟</string>
 
     <string name="adaptive_adult_onboarding_option_loneliness">الوحدة</string>
     <string name="adaptive_adult_onboarding_option_fear">الخوف</string>
@@ -1475,14 +1477,16 @@
     <string name="onboarding_skip">تخطي</string>
     <string name="onboarding_next">التالي</string>
     <string name="onboarding_start">ابدأ الآن</string>
-    <string name="onboarding1_title">أهلاً بك في سلام</string>
-    <string name="onboarding1_desc">مساحتك الآمنة للدعم النفسي، في أي وقت وأي مكان.</string>
-    <string name="onboarding2_title">يعمل بدون إنترنت، وبياناتك لك وحدك</string>
-    <string name="onboarding2_desc">كل ما تكتبه أو تسجله يبقى مشفراً على جهازك فقط — لا أسماء حقيقية، لا مشاركة بيانات.</string>
-    <string name="onboarding3_title">رفيق يسمعك ويرافقك</string>
-    <string name="onboarding3_desc">تحدث، فضفض، وجرّب تمارين نفسية بسيطة تساعدك تتنفس وتهدأ خطوة بخطوة.</string>
-    <string name="onboarding4_title">معك دائماً في أصعب اللحظات</string>
-    <string name="onboarding4_desc">صندوق نجاة نفسي، بيئات هادئة، وتمارين جاهزة بضغطة واحدة وقت الحاجة.</string>
+    <string name="onboarding1_title">أهلاً بك في سلام 🌊</string>
+    <string name="onboarding1_desc">مساحة هادئة، خاصة تماماً، وبدون أي حكم على مشاعرك. كلها لك وحدك.</string>
+    <string name="onboarding2_title">خصوصيتك مو تفصيل، هي أساس</string>
+    <string name="onboarding2_desc">بدون اسمك الحقيقي، بدون رقم هاتف. كل كلمة تكتبينها مشفرة على جهازك بس — حتى فريقنا ما يقدر يوصلها.</string>
+    <string name="onboarding3_title">معك حتى لو انقطع النت</string>
+    <string name="onboarding3_desc">سلام يشتغل من دون إنترنت أبداً، ورفيقك جاهز يسمعك بأي وقت — بأسلوب هادئ مبني على أساليب علمية بسيطة (CBT).</string>
+    <string name="onboarding4_title">رفيق بجانبك، مو بديل عنك</string>
+    <string name="onboarding4_desc">سلام يدعمك، بس مو بديل عن مختص. وإذا حسينا إنك محتاجة مساعدة أكبر، بنوجهك فوراً لمصادر تقدر تساندك.\n\nوهذا شي نفتخر فيه، مو نخفيه 💙</string>
+    <string name="onboarding5_title">معك دائماً في أصعب اللحظات</string>
+    <string name="onboarding5_desc">صندوق نجاة نفسي، بيئات هادئة، وتمارين جاهزة بضغطة واحدة وقت الحاجة.</string>
 
     <!-- Language selection extension -->
     <string name="language_label_ar">اللغة</string>
@@ -1608,14 +1612,14 @@
 
     <!-- Screen 7: Timeline -->
     <string name="kids_adaptive_timeline_title">وقت إيش تكون مشاعرك أصعب؟</string>
-    <string name="kids_adaptive_period_morning">الصباح</string>
-    <string name="kids_adaptive_period_day">النهار</string>
-    <string name="kids_adaptive_period_evening">المساء</string>
-    <string name="kids_adaptive_period_night">الليل</string>
-    <string name="kids_adaptive_followup_night_prompt">لما يجي الليل، إيش تحس أكثر؟</string>
-    <string name="kids_adaptive_followup_day_prompt">خلال النهار، إيش تحس أكثر؟</string>
-    <string name="kids_adaptive_followup_morning_prompt">في الصباح، إيش تحس أكثر؟</string>
-    <string name="kids_adaptive_followup_evening_prompt">في المساء، إيش تحس أكثر؟</string>
+    <string name="kids_adaptive_period_morning">الصباح الباكر</string>
+    <string name="kids_adaptive_period_day">وقت الظهيرة</string>
+    <string name="kids_adaptive_period_evening">وقت المساء</string>
+    <string name="kids_adaptive_period_night">آخر الليل</string>
+    <string name="kids_adaptive_followup_night_prompt">في آخر الليل، إيش تحس أكثر؟</string>
+    <string name="kids_adaptive_followup_day_prompt">في وقت الظهيرة، إيش تحس أكثر؟</string>
+    <string name="kids_adaptive_followup_morning_prompt">في الصباح الباكر، إيش تحس أكثر؟</string>
+    <string name="kids_adaptive_followup_evening_prompt">في وقت المساء، إيش تحس أكثر؟</string>
 
     <!-- Screen 8: Helpful activities -->
     <string name="kids_adaptive_helpful_title">لما تحس بلحظة صعبة، إيش يساعدك؟</string>

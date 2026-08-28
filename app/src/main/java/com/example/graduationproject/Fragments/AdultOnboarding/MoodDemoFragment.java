@@ -79,23 +79,27 @@ public class MoodDemoFragment extends BaseScreenFragment {
             LinearLayout col = new LinearLayout(requireContext());
             col.setOrientation(LinearLayout.VERTICAL);
             col.setGravity(Gravity.CENTER);
-            col.setPadding(dp(2), dp(8), dp(2), dp(8));
+            col.setPadding(dp(4), dp(10), dp(4), dp(10));
+            
+            GradientDrawable bg = new GradientDrawable();
+            bg.setCornerRadius(dp(16));
             if (isSel) {
-                GradientDrawable bg = new GradientDrawable();
-                bg.setCornerRadius(dp(12));
-                bg.setColor(Color.WHITE);
-                bg.setStroke(dp(2), com.example.graduationproject.AdultOnboardingAppData.INK);
-                col.setBackground(bg);
+                // Light translucent white for selection to match other screens
+                bg.setColor(Color.argb(80, 255, 255, 255));
+            } else {
+                bg.setColor(Color.TRANSPARENT);
             }
+            col.setBackground(bg);
+            
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
-            lp.setMargins(dp(2), 0, dp(2), 0);
+            lp.setMargins(dp(4), 0, dp(4), 0);
             col.setLayoutParams(lp);
 
             TextView emoji = new TextView(requireContext());
             emoji.setText(f.emoji);
-            emoji.setTextSize(34); // Bigger icon
+            emoji.setTextSize(32); 
             emoji.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(48), dp(48));
+            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(44), dp(44));
             icLp.bottomMargin = dp(4);
             col.addView(emoji, icLp);
 
@@ -103,7 +107,7 @@ public class MoodDemoFragment extends BaseScreenFragment {
             label.setText(f.labelRes);
             label.setTextColor(com.example.graduationproject.AdultOnboardingAppData.INK);
             label.setAlpha(0.9f);
-            label.setTextSize(11f);
+            label.setTextSize(10.5f);
             label.setGravity(Gravity.CENTER);
             col.addView(label);
 
@@ -114,7 +118,6 @@ public class MoodDemoFragment extends BaseScreenFragment {
                 renderFaces();
                 updateStatus();
             });
-            col.animate().translationY(isSel ? -dp(4) : 0).scaleX(isSel ? 1.12f : 1f).scaleY(isSel ? 1.12f : 1f).setDuration(260).start();
             facesRow.addView(col);
         }
     }
@@ -127,6 +130,6 @@ public class MoodDemoFragment extends BaseScreenFragment {
 
     @Override
     protected void populateFooter(LayoutInflater inflater, ViewGroup footer) {
-        footer.addView(Widgets.primaryButton(requireContext(), getString(R.string.adaptive_adult_onboarding_continue), false, () -> host.goNext()));
+        footer.addView(Widgets.footerButtons(requireContext(), getString(R.string.adaptive_adult_onboarding_continue), () -> host.goNext(), () -> host.goBack()));
     }
 }

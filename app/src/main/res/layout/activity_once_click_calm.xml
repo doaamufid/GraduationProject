@@ -3,14 +3,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bgDeep">
+    android:background="@color/bg">
 
     <LinearLayout
         android:id="@+id/rootColumn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:background="@color/bgMid">
+        android:orientation="vertical">
 
         <!-- Header -->
         <LinearLayout
@@ -34,7 +33,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/app_name"
-                    android:textColor="@color/cream"
+                    android:textColor="@color/text_main"
                     android:textSize="17sp"
                     android:textStyle="bold"
                     android:fontFamily="sans-serif-medium"/>
@@ -44,31 +43,32 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:textColor="@color/mutedDim"
+                    android:textColor="@color/text_soft"
                     android:textSize="11.5sp"/>
             </LinearLayout>
 
             <ImageButton
                 android:id="@+id/btnInfo"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
-                android:background="@drawable/bg_icon_circle"
-                android:src="@android:drawable/ic_menu_help"
-                app:tint="@color/amber"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@drawable/bg_circle_white"
+                android:src="@drawable/ic_help_circle"
+                app:tint="@color/text_main"
                 android:contentDescription="@string/info_desc"
-                android:padding="6dp"
+                android:padding="10dp"
                 android:scaleType="fitCenter"/>
         </LinearLayout>
 
-        <!-- Tabs -->
         <LinearLayout
             android:id="@+id/tabBar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingStart="18dp"
-            android:paddingEnd="18dp"
-            android:paddingBottom="14dp"
+            android:layout_marginStart="18dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="14dp"
+            android:padding="4dp"
+            android:background="@drawable/bg_tab_bar"
             android:baselineAligned="false">
 
             <TextView
@@ -92,7 +92,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="#0FFFFFFF"/>
+            android:background="@color/border"/>
 
         <!-- Content -->
         <FrameLayout
@@ -102,19 +102,26 @@
             android:layout_weight="1"/>
     </LinearLayout>
 
+    <View
+        android:id="@+id/system_nav_blur"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:background="#CCE1F1FF" />
+
     <!-- Toast -->
     <TextView
         android:id="@+id/toastView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
-        android:layout_marginBottom="26dp"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/bg_toast"
         android:paddingStart="20dp"
         android:paddingEnd="20dp"
         android:paddingTop="10dp"
         android:paddingBottom="10dp"
-        android:textColor="@color/cream"
+        android:textColor="@color/white"
         android:textSize="13.5sp"
         android:textStyle="bold"
         android:visibility="gone"

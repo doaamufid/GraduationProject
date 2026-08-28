@@ -21,11 +21,14 @@ public class KidsAdaptivePrivacyFragment extends KidsAdaptiveBaseOnboardingFragm
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
         TextView title = KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_privacy_title), 22);
         LinearLayout.LayoutParams tlp = wrap();
-        tlp.bottomMargin = dp(6);
+        tlp.topMargin = dp(16);
+        tlp.bottomMargin = dp(14);
         container.addView(title, tlp);
 
         TextView subtitle = KidsAdaptiveUiHelpers.subtitle(requireContext(), getString(R.string.kids_adaptive_privacy_body));
-        container.addView(subtitle, matchWrap());
+        LinearLayout.LayoutParams stlp = matchWrap();
+        stlp.bottomMargin = dp(20);
+        container.addView(subtitle, stlp);
 
         String[] emojis = {"🔒", "🤍", "✏️", "🗑"};
         String[] texts = {
@@ -36,7 +39,7 @@ public class KidsAdaptivePrivacyFragment extends KidsAdaptiveBaseOnboardingFragm
         GridLayout grid = new GridLayout(requireContext());
         grid.setColumnCount(2);
         LinearLayout.LayoutParams glp = matchWrap();
-        glp.topMargin = dp(4);
+        glp.topMargin = dp(12);
         container.addView(grid, glp);
 
         for (int i = 0; i < 4; i++) {
@@ -44,7 +47,7 @@ public class KidsAdaptivePrivacyFragment extends KidsAdaptiveBaseOnboardingFragm
             card.setOrientation(LinearLayout.VERTICAL);
             card.setGravity(Gravity.CENTER);
             card.setBackgroundResource(R.drawable.kids_adaptive_bg_card_white);
-            int padH = dp(12), padV = dp(16);
+            int padH = dp(12), padV = dp(18);
             card.setPadding(padH, padV, padH, padV);
 
             GridLayout.LayoutParams glParams = new GridLayout.LayoutParams();
@@ -52,7 +55,7 @@ public class KidsAdaptivePrivacyFragment extends KidsAdaptiveBaseOnboardingFragm
             glParams.height = GridLayout.LayoutParams.WRAP_CONTENT;
             glParams.columnSpec = GridLayout.spec(i % 2, 1f);
             glParams.rowSpec = GridLayout.spec(i / 2);
-            glParams.setMargins(dp(6), dp(6), dp(6), dp(6));
+            glParams.setMargins(dp(8), dp(8), dp(8), dp(8));
             grid.addView(card, glParams);
 
             TextView emoji = new TextView(requireContext());
@@ -60,7 +63,7 @@ public class KidsAdaptivePrivacyFragment extends KidsAdaptiveBaseOnboardingFragm
             emoji.setTextSize(26);
             emoji.setGravity(Gravity.CENTER);
             LinearLayout.LayoutParams elp = wrap();
-            elp.bottomMargin = dp(6);
+            elp.bottomMargin = dp(8);
             card.addView(emoji, elp);
 
             TextView label = new TextView(requireContext());

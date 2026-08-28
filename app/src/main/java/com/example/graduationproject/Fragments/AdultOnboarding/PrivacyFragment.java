@@ -47,22 +47,21 @@ public class PrivacyFragment extends BaseScreenFragment {
                 dp(50), dp(50),
                 dp(30), dp(30)
             });
-            gd.setColor((int)c[2]);
-            gd.setStroke(dp(1), Color.argb(40, 0, 0, 0));
+            gd.setColor(Color.TRANSPARENT); // Removed colored background
             cell.setBackground(gd);
             cell.setPadding(dp(12), dp(22), dp(12), dp(22));
 
             TextView emoji = new TextView(requireContext());
             emoji.setText((String) c[0]);
-            emoji.setTextSize(38); // Bigger icon
+            emoji.setTextSize(24); // Minimized icon
             emoji.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(54), dp(54));
-            icLp.bottomMargin = dp(8);
+            LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(40), dp(40));
+            icLp.bottomMargin = dp(4);
             cell.addView(emoji, icLp);
 
             TextView label = new TextView(requireContext());
             label.setText((String) c[1]);
-            label.setTextColor(com.example.graduationproject.AdultOnboardingAppData.INK); // Changed to ink
+            label.setTextColor(Color.WHITE); // Changed from INK to WHITE to contrast better without background
             label.setTextSize(14f);
             label.setGravity(Gravity.CENTER);
             label.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.tajawal(true));
@@ -81,6 +80,9 @@ public class PrivacyFragment extends BaseScreenFragment {
 
     @Override
     protected void populateFooter(LayoutInflater inflater, ViewGroup footer) {
-        footer.addView(Widgets.primaryButton(requireContext(), getString(R.string.adaptive_adult_onboarding_privacy_button), false, () -> host.goNext()));
+        footer.addView(Widgets.footerButtons(requireContext(), 
+                getString(R.string.adaptive_adult_onboarding_privacy_button), 
+                () -> host.goNext(), 
+                () -> host.goBack()));
     }
 }

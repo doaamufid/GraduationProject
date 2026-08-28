@@ -61,7 +61,7 @@ public class DhikrAdapter extends RecyclerView.Adapter<DhikrAdapter.VH> {
         h.btnFavorite.setImageResource(d.favorite
                 ? android.R.drawable.btn_star_big_on
                 : android.R.drawable.btn_star_big_off);
-        h.btnFavorite.setColorFilter(ctx.getResources().getColor(d.favorite ? R.color.amber : R.color.mutedDim));
+        h.btnFavorite.setColorFilter(ctx.getResources().getColor(d.favorite ? R.color.primary : R.color.text_soft));
 
         h.rowCard.setBackgroundResource(d.favorite ? R.drawable.bg_card_active : R.drawable.bg_card);
 

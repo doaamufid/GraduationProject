@@ -2,29 +2,29 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/customBottomNav"
     android:layout_width="wrap_content"
-    android:layout_height="64dp"
+    android:layout_height="54dp"
     android:layout_gravity="center_horizontal"
-    android:layout_marginBottom="24dp"
+    android:layout_marginBottom="20dp"
     android:layout_marginHorizontal="24dp"
     android:background="@drawable/bg_bottom_nav_custom"
-    android:elevation="8dp"
+    android:elevation="4dp"
     android:orientation="horizontal"
     android:baselineAligned="false"
     android:gravity="center_vertical"
-    android:paddingHorizontal="12dp">
+    android:paddingHorizontal="10dp">
 
     <!-- Home -->
     <RelativeLayout
         android:id="@+id/nav_home"
-        android:layout_width="72dp"
+        android:layout_width="64dp"
         android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true">
 
         <View
             android:id="@+id/nav_home_bg"
-            android:layout_width="64dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
             android:layout_centerInParent="true"
             android:background="@drawable/nav_item_selected_bg"
             android:visibility="invisible" />
@@ -38,8 +38,8 @@
 
             <ImageView
                 android:id="@+id/nav_home_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/ic_home"
                 android:contentDescription="@null"
                 app:tint="@color/nav_item_colors" />
@@ -49,24 +49,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="الرئيسية"
-                android:textSize="11sp"
+                android:textSize="9.5sp"
                 android:textColor="@color/nav_item_colors"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="1dp"/>
         </LinearLayout>
     </RelativeLayout>
 
     <!-- Exercises -->
     <RelativeLayout
         android:id="@+id/nav_exercises"
-        android:layout_width="72dp"
+        android:layout_width="64dp"
         android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true">
 
         <View
             android:id="@+id/nav_exercises_bg"
-            android:layout_width="64dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
             android:layout_centerInParent="true"
             android:background="@drawable/nav_item_selected_bg"
             android:visibility="invisible" />
@@ -80,8 +80,8 @@
 
             <ImageView
                 android:id="@+id/nav_exercises_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/ic_activity"
                 android:contentDescription="@null"
                 app:tint="@color/nav_item_colors" />
@@ -91,24 +91,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="تمارين"
-                android:textSize="11sp"
+                android:textSize="9.5sp"
                 android:textColor="@color/nav_item_colors"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="1dp"/>
         </LinearLayout>
     </RelativeLayout>
 
     <!-- Companion -->
     <RelativeLayout
         android:id="@+id/nav_friend"
-        android:layout_width="72dp"
+        android:layout_width="64dp"
         android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true">
 
         <View
             android:id="@+id/nav_friend_bg"
-            android:layout_width="64dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
             android:layout_centerInParent="true"
             android:background="@drawable/nav_item_selected_bg"
             android:visibility="invisible" />
@@ -122,8 +122,8 @@
 
             <ImageView
                 android:id="@+id/nav_friend_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/ic_chat"
                 android:contentDescription="@null"
                 app:tint="@color/nav_item_colors" />
@@ -133,24 +133,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="رفيقي"
-                android:textSize="11sp"
+                android:textSize="9.5sp"
                 android:textColor="@color/nav_item_colors"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="1dp"/>
         </LinearLayout>
     </RelativeLayout>
 
     <!-- Profile -->
     <RelativeLayout
         android:id="@+id/nav_profile"
-        android:layout_width="72dp"
+        android:layout_width="64dp"
         android:layout_height="match_parent"
         android:clickable="true"
         android:focusable="true">
 
         <View
             android:id="@+id/nav_profile_bg"
-            android:layout_width="64dp"
-            android:layout_height="40dp"
+            android:layout_width="48dp"
+            android:layout_height="32dp"
             android:layout_centerInParent="true"
             android:background="@drawable/nav_item_selected_bg"
             android:visibility="invisible" />
@@ -164,8 +164,8 @@
 
             <ImageView
                 android:id="@+id/nav_profile_icon"
-                android:layout_width="24dp"
-                android:layout_height="24dp"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
                 android:src="@drawable/ic_user"
                 android:contentDescription="@null"
                 app:tint="@color/nav_item_colors" />
@@ -175,9 +175,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="أنا"
-                android:textSize="11sp"
+                android:textSize="9.5sp"
                 android:textColor="@color/nav_item_colors"
-                android:layout_marginTop="2dp"/>
+                android:layout_marginTop="1dp"/>
         </LinearLayout>
     </RelativeLayout>
 

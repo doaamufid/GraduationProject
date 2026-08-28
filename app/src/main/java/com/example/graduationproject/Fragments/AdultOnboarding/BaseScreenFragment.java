@@ -9,7 +9,10 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 
@@ -51,6 +54,8 @@ public abstract class BaseScreenFragment extends Fragment {
 
     protected String getCompanionMood() { return CompanionView.MOOD_NEUTRAL; }
 
+    protected boolean showShellCompanion() { return true; }
+
     protected boolean showSkip() { return true; }
 
     protected String getSkipLabel() { return getString(R.string.adaptive_adult_onboarding_skip); }
@@ -78,9 +83,17 @@ public abstract class BaseScreenFragment extends Fragment {
         btnBack = root.findViewById(R.id.btnBack);
         btnSkip = root.findViewById(R.id.btnSkip);
 
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            // Pushing buttons slightly higher above the task bar
+            footer.setPadding(footer.getPaddingLeft(), footer.getPaddingTop(), footer.getPaddingRight(), bars.bottom + dp(20));
+            return insets;
+        });
+
         int index = getScreenIndex();
         Stage stage = AdultOnboardingAppData.STAGES[AdultOnboardingAppData.stageForScreen(index)];
         skyView.setStage(stage, true);
+        companionView.setVisibility(showShellCompanion() ? View.VISIBLE : View.GONE);
         companionView.setReducedMotion(host.isReducedMotion());
         companionView.setMood(getCompanionMood());
         progressPath.setProgress(AdultOnboardingAppData.TOTAL_SCREENS, index);
@@ -88,7 +101,7 @@ public abstract class BaseScreenFragment extends Fragment {
         // Update status and navigation bar colors to match the sky gradient
         if (getActivity() != null) {
             getActivity().getWindow().setStatusBarColor(stage.fromColor);
-            getActivity().getWindow().setNavigationBarColor(stage.toColor);
+            getActivity().getWindow().setNavigationBarColor(stage.toColor); // Match bottom color
 
             // If text color is dark (INK), the background is light, so use dark icons.
             boolean isLightBackground = (stage.textColor == AdultOnboardingAppData.INK);

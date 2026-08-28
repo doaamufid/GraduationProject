@@ -1,8 +1,7 @@
 package com.example.graduationproject;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,7 +14,11 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.graduationproject.data.ReframingAppData;
 import com.google.android.flexbox.FlexboxLayout;
@@ -81,6 +84,21 @@ public class CBTRReframingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        EdgeToEdge.enable(this,
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
+
         setContentView(R.layout.activity_cbtr_reframing);
 
         contentContainer = findViewById(R.id.contentContainer);
@@ -223,7 +241,7 @@ public class CBTRReframingActivity extends AppCompatActivity {
         for (String emotion : ReframingAppData.EMOTIONS) {
             TextView chip = new TextView(this);
             chip.setText(emotion);
-            chip.setTextColor(getColorCompat(R.color.white));
+            chip.setTextColor(getColorCompat(R.color.text_main));
             chip.setTextSize(11);
             int padH = dp(12), padV = dp(7);
             chip.setPadding(padH, padV, padH, padV);
@@ -360,6 +378,7 @@ public class CBTRReframingActivity extends AppCompatActivity {
             boolean selected = entry.getKey().equals(pattern);
             entry.getValue()[0].setBackgroundResource(
                     selected ? R.drawable.bg_pattern_selected : R.drawable.bg_pattern_unselected);
+            ((TextView) entry.getValue()[1]).setTextColor(getColorCompat(selected ? R.color.white : R.color.text_main));
         }
         tvWhyExplain.setText(ReframingAppData.findPattern(pattern).explain);
     }
@@ -393,10 +412,13 @@ public class CBTRReframingActivity extends AppCompatActivity {
             entry.getValue().setOnClickListener(v -> {
                 answer = value;
                 for (Map.Entry<String, TextView> e2 : answerViews.entrySet()) {
+                    boolean isSel = e2.getKey().equals(answer);
                     e2.getValue().setBackgroundResource(
-                            e2.getKey().equals(answer) ? R.drawable.bg_answer_selected : R.drawable.bg_answer_unselected);
+                            isSel ? R.drawable.bg_answer_selected : R.drawable.bg_answer_unselected);
+                    e2.getValue().setTextColor(getColorCompat(isSel ? R.color.white : R.color.text_main));
                 }
                 btnNext.setEnabled(true);
+                btnNext.setAlpha(1f);
 
                 boolean showFollowUp = getString(R.string.answer_yes).equals(answer);
                 if (showFollowUp && etFollowUp.getVisibility() != View.VISIBLE) {

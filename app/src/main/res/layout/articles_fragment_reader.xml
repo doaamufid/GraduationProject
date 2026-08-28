@@ -57,7 +57,7 @@
                     android:layout_height="36dp"
                     android:background="@drawable/bg_circle_surface"
                     android:backgroundTint="#40FFFFFF"
-                    android:padding="11dp"
+                    android:padding="14dp"
                     android:src="@drawable/ic_arrow_right"
                     app:tint="@color/text" />
 
@@ -73,7 +73,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_circle_surface"
                     android:backgroundTint="#40FFFFFF"
-                    android:padding="11dp"
+                    android:padding="14dp"
                     android:src="@drawable/ic_heart_outline"
                     app:tint="@color/text" />
 
@@ -84,7 +84,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_circle_surface"
                     android:backgroundTint="#40FFFFFF"
-                    android:padding="11dp"
+                    android:padding="14dp"
                     android:src="@drawable/ic_bookmark"
                     app:tint="@color/text" />
 
@@ -99,7 +99,7 @@
                         android:layout_height="36dp"
                         android:background="@drawable/bg_circle_surface"
                         android:backgroundTint="#40FFFFFF"
-                        android:padding="11dp"
+                        android:padding="14dp"
                         android:src="@drawable/ic_file_text"
                         app:tint="@color/text" />
 
@@ -126,7 +126,7 @@
                     android:layout_marginStart="8dp"
                     android:background="@drawable/bg_circle_surface"
                     android:backgroundTint="#40FFFFFF"
-                    android:padding="11dp"
+                    android:padding="14dp"
                     android:src="@drawable/ic_settings"
                     app:tint="@color/text" />
             </LinearLayout>

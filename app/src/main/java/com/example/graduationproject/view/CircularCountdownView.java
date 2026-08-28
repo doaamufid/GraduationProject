@@ -36,14 +36,14 @@ public class CircularCountdownView extends View {
         float strokeW = dp(6);
         trackPaint.setStyle(Paint.Style.STROKE);
         trackPaint.setStrokeWidth(strokeW);
-        trackPaint.setColor(Color.argb(20, 255, 255, 255));
+        trackPaint.setColor(getResources().getColor(R.color.border));
 
         progressPaint.setStyle(Paint.Style.STROKE);
         progressPaint.setStrokeWidth(strokeW);
         progressPaint.setStrokeCap(Paint.Cap.ROUND);
-        progressPaint.setColor(getResources().getColor(R.color.amber));
+        progressPaint.setColor(getResources().getColor(R.color.primary));
 
-        textPaint.setColor(getResources().getColor(R.color.cream));
+        textPaint.setColor(getResources().getColor(R.color.text_main));
         textPaint.setTextAlign(Paint.Align.CENTER);
         textPaint.setTextSize(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_SP, 16, getResources().getDisplayMetrics()));
     }

@@ -14,6 +14,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import android.os.Build;
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
@@ -57,6 +60,15 @@ public class AdultMoodActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        EdgeToEdge.enable(this, 
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
         setContentView(R.layout.activity_adult_mood);
 
         rootLayout = findViewById(R.id.root_layout);
@@ -127,10 +139,7 @@ public class AdultMoodActivity extends AppCompatActivity {
 
     /** Keeps the status and navigation bars the same colour as the screen background. */
     private void applySystemBarColors(int color) {
-        getWindow().setStatusBarColor(color);
-        getWindow().setNavigationBarColor(color);
-
-        // All 7 mood backgrounds are light, so use dark icons for contrast.
+        // With EdgeToEdge.enable(), we just need to ensure the icons have the right contrast.
         WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
         controller.setAppearanceLightStatusBars(true);
         controller.setAppearanceLightNavigationBars(true);
@@ -184,7 +193,7 @@ public class AdultMoodActivity extends AppCompatActivity {
             boolean isSelected = (i == selected);
             int targetSize = dp(isSelected ? 42 : 36);
             float targetAlpha = isSelected ? 1f : 0.45f;
-            int targetIconColor = isSelected ? Color.WHITE : 0xFF26324A;
+            int targetIconColor = isSelected ? 0xFF0F172A : 0xFF26324A;
 
             if (animate) {
                 chip.animate().alpha(targetAlpha).setDuration(CHIP_ANIM_MS).start();

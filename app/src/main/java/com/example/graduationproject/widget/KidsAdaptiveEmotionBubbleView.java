@@ -2,7 +2,9 @@ package com.example.graduationproject.widget;
 
 import android.animation.ValueAnimator;
 import android.content.Context;
+import android.graphics.Color;
 import android.graphics.Typeface;
+import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
@@ -22,22 +24,32 @@ public class KidsAdaptiveEmotionBubbleView extends LinearLayout {
     private final TextView labelView;
     private boolean selected = false;
     private ValueAnimator bobAnimator;
+    private final GradientDrawable blobBg = new GradientDrawable();
 
     public KidsAdaptiveEmotionBubbleView(Context context, float bobDelaySeconds) {
         super(context);
         setOrientation(VERTICAL);
         setGravity(Gravity.CENTER);
-        int size = dp(96);
+        int size = dp(84); // Smaller size like adult
         setLayoutParams(new LayoutParams(size, size));
 
+        // Blob-like radius matching Adult version
+        blobBg.setCornerRadii(new float[]{
+                dp(35), dp(35),
+                dp(25), dp(25),
+                dp(40), dp(40),
+                dp(20), dp(20)
+        });
+        setBackground(blobBg);
+
         emojiView = new TextView(context);
-        emojiView.setTextSize(30);
+        emojiView.setTextSize(28); // Smaller icon like adult
         emojiView.setGravity(Gravity.CENTER);
         addView(emojiView);
 
         labelView = new TextView(context);
-        labelView.setTextSize(12);
-        labelView.setTypeface(KidsAdaptiveTypefaces.heading(context), Typeface.BOLD);
+        labelView.setTextSize(11.5f); // Smaller text like adult
+        labelView.setTypeface(KidsAdaptiveTypefaces.body(context));
         labelView.setTextColor(getResources().getColor(R.color.kids_adaptive_ink));
         labelView.setGravity(Gravity.CENTER);
         addView(labelView);
@@ -77,7 +89,12 @@ public class KidsAdaptiveEmotionBubbleView extends LinearLayout {
 
     private void applySelectedState(boolean sel, boolean animate) {
         this.selected = sel;
-        setBackgroundResource(sel ? R.drawable.kids_adaptive_bg_bubble_selected : R.drawable.kids_adaptive_bg_bubble_unselected);
+        if (sel) {
+            blobBg.setColor(Color.argb(80, 255, 255, 255)); // Translucent white selected
+        } else {
+            blobBg.setColor(Color.TRANSPARENT);
+        }
+        
         if (animate) {
             animate().scaleX(sel ? 1.08f : 1f).scaleY(sel ? 1.08f : 1f)
                     .setInterpolator(new OvershootInterpolator(1.6f))
@@ -89,3 +106,4 @@ public class KidsAdaptiveEmotionBubbleView extends LinearLayout {
         return (int) (v * getResources().getDisplayMetrics().density);
     }
 }
+

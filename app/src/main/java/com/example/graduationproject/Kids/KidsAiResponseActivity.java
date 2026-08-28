@@ -1,10 +1,17 @@
 package com.example.graduationproject.Kids;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.util.Log;
+import android.view.Window;
+import android.view.WindowManager;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
+
 import com.example.graduationproject.databinding.ActivityKidsAiResponseBinding;
 
 import java.util.Locale;
@@ -18,8 +25,24 @@ public class KidsAiResponseActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Enable Edge-to-Edge first
+        EdgeToEdge.enable(this);
+
         binding = ActivityKidsAiResponseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Match status bar and navigation bar with screen color (#FAF1E6)
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.parseColor("#FAF1E6"));
+        window.setNavigationBarColor(Color.parseColor("#FAF1E6"));
+
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(window, window.getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
 
         // استقبال نص الرد
         responseText = getIntent().getStringExtra("AI_RESPONSE");
@@ -30,7 +53,7 @@ public class KidsAiResponseActivity extends AppCompatActivity {
         // تهيئة محرك الصوت لقراءة الرد تلقائياً
         initTextToSpeech();
 
-        // 1. زر "احكي مع صديقك" -> يفتح شاشة الشات المباشر (مثل الصورة الأولى)
+        // 1. زر "احكي مع صديقك"
         binding.btnActionChat.setOnClickListener(v -> {
             stopSpeech();
             Intent intent = new Intent(KidsAiResponseActivity.this, KidsAiCompanionActivity.class);
@@ -54,6 +77,11 @@ public class KidsAiResponseActivity extends AppCompatActivity {
             startActivity(new Intent(KidsAiResponseActivity.this, KidsTreeActivity.class));
         });
 
+        binding.btnActionDraw.setOnClickListener(v -> {
+            stopSpeech();
+            startActivity(new Intent(KidsAiResponseActivity.this, DrawInstructionActivity.class));
+        });
+
         binding.btnActionBetter.setOnClickListener(v -> {
             stopSpeech();
             finish();
@@ -71,7 +99,6 @@ public class KidsAiResponseActivity extends AppCompatActivity {
                 int result = textToSpeech.setLanguage(new Locale("ar"));
                 if (result != TextToSpeech.LANG_MISSING_DATA && result != TextToSpeech.LANG_NOT_SUPPORTED) {
                     isTtsReady = true;
-                    // نطق الرد فور تجهيز محرك الصوت
                     speakText(responseText);
                 }
             }
