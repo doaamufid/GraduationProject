@@ -64,6 +64,7 @@ public class TimelineFragment extends BaseScreenFragment {
             glp.width = 0;
             glp.height = GridLayout.LayoutParams.WRAP_CONTENT;
             glp.columnSpec = GridLayout.spec(GridLayout.UNDEFINED, 1f);
+            glp.setGravity(android.view.Gravity.FILL_HORIZONTAL);
             glp.setMargins(dp(6), dp(6), dp(6), dp(6));
             grid.addView(card, glp);
         }
@@ -120,6 +121,6 @@ public class TimelineFragment extends BaseScreenFragment {
 
     @Override
     protected void populateFooter(LayoutInflater inflater, ViewGroup footer) {
-        footer.addView(Widgets.primaryButton(requireContext(), getString(R.string.adaptive_adult_onboarding_continue), false, () -> host.goNext()));
+        footer.addView(Widgets.footerButtons(requireContext(), getString(R.string.adaptive_adult_onboarding_continue), () -> host.goNext(), () -> host.goBack()));
     }
 }

@@ -105,6 +105,18 @@
                         android:textSize="11sp"
                         tools:text="غابة هادئة · FOREST"/>
 
+                    <ImageButton
+                        android:id="@+id/btnFullscreen"
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:layout_gravity="bottom|right"
+                        android:layout_margin="16dp"
+                        android:background="@drawable/bg_badge_overlay"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_headphones"
+                        app:tint="@color/white"
+                        android:contentDescription="@null"/>
+
                     <!-- Status Indicator (Playing/Paused) -->
                     <LinearLayout
                         android:layout_width="wrap_content"

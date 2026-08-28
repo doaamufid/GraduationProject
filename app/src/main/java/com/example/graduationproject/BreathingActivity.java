@@ -19,6 +19,7 @@ import android.view.animation.OvershootInterpolator;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -52,17 +53,39 @@ public class BreathingActivity extends AppCompatActivity {
     private int totalCycles = 5;
     private int currentCycleStep = 0; // 0: Inhale, 1: Hold1, 2: Exhale, 3: Hold2
 
+    private ObjectAnimator outerRotationAnimator;
+    private ObjectAnimator middleRotationAnimator;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        
+        // Match status bar and task bar with screen color
+        EdgeToEdge.enable(this,
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
         binding = ActivityBreathingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            // Apply padding to the root to handle navigation bar
             v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom);
-            binding.layoutHeader.setPadding(0, systemBars.top, 0, 0);
+            // Apply padding to header to handle status bar
+            binding.layoutHeader.setPadding(binding.layoutHeader.getPaddingLeft(), 
+                    systemBars.top, 
+                    binding.layoutHeader.getPaddingRight(), 
+                    binding.layoutHeader.getPaddingBottom());
+            
+            // Adjust height of layoutHeader to include status bar
+            binding.layoutHeader.getLayoutParams().height = (int) (65 * getResources().getDisplayMetrics().density) + systemBars.top;
+            binding.layoutHeader.requestLayout();
+            
             return insets;
         });
 
@@ -82,15 +105,31 @@ public class BreathingActivity extends AppCompatActivity {
         });
 
         startEntranceAnimations();
+        startContinuousRotations();
+    }
+
+    private void startContinuousRotations() {
+        outerRotationAnimator = ObjectAnimator.ofFloat(binding.imgOuterRing, "rotation", 0f, 360f);
+        outerRotationAnimator.setDuration(10000);
+        outerRotationAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        outerRotationAnimator.setInterpolator(new LinearInterpolator());
+
+        middleRotationAnimator = ObjectAnimator.ofFloat(binding.imgMiddleRing, "rotation", 0f, -360f);
+        middleRotationAnimator.setDuration(15000);
+        middleRotationAnimator.setRepeatCount(ValueAnimator.INFINITE);
+        middleRotationAnimator.setInterpolator(new LinearInterpolator());
+
+        outerRotationAnimator.start();
+        middleRotationAnimator.start();
     }
 
     private void setupModes() {
         breathingModes = new ArrayList<>();
-        breathingModes.add(new BreathingMode("Equal Breathing", "Balanced breathing helps you relax and concentrate.", new int[]{4, 0, 4, 0}, 3, R.drawable.calm, Color.parseColor("#FFF5E1")));
-        breathingModes.add(new BreathingMode("Box Breathing", "Box breathing is a powerful way of reducing stress.", new int[]{4, 4, 4, 4}, 4, R.drawable.body, Color.parseColor("#FFEBE1")));
-        breathingModes.add(new BreathingMode("478 Breathing", "4-7-8 breathing helps improve sleep.", new int[]{4, 7, 8, 0}, 5, R.drawable.smiley, Color.parseColor("#E1FFE1")));
-        breathingModes.add(new BreathingMode("7-11 Breathing", "7-11 breathing helps reduce anxiety and promote sleep.", new int[]{7, 0, 11, 0}, 7, R.drawable.sad, Color.parseColor("#E1F5FF")));
-        breathingModes.add(new BreathingMode("Custom Breathing", "Click to create your own breathing mode", new int[]{4, 2, 4, 2}, 2, R.drawable.avatar, Color.parseColor("#F5E1FF")));
+        breathingModes.add(new BreathingMode("التنفس المتساوي", "التنفس المتوازن يساعدك على الاسترخاء والتركيز.", new int[]{4, 0, 4, 0}, 3, R.drawable.calm, Color.parseColor("#FFF5E1")));
+        breathingModes.add(new BreathingMode("تنفس المربع", "تنفس المربع طريقة قوية لتقليل التوتر.", new int[]{4, 4, 4, 4}, 4, R.drawable.body, Color.parseColor("#FFEBE1")));
+        breathingModes.add(new BreathingMode("تنفس ٤٧٨", "تنفس ٤-٧-٨ يساعد على تحسين النوم.", new int[]{4, 7, 8, 0}, 5, R.drawable.smiley, Color.parseColor("#E1FFE1")));
+        breathingModes.add(new BreathingMode("تنفس ٧-١١", "تنفس ٧-١١ يساعد في تقليل القلق وتحسين النوم.", new int[]{7, 0, 11, 0}, 7, R.drawable.sad, Color.parseColor("#E1F5FF")));
+        breathingModes.add(new BreathingMode("تنفس مخصص", "اضغط لإنشاء نمط التنفس الخاص بك", new int[]{4, 2, 4, 2}, 2, R.drawable.avatar, Color.parseColor("#F5E1FF")));
     }
 
     private void startEntranceAnimations() {
@@ -322,7 +361,7 @@ public class BreathingActivity extends AppCompatActivity {
         binding.btnStartBreathing.setText("ابدأ الجلسة");
         binding.tvTimer.setText("4");
         binding.tvState.setText("شهيق");
-        binding.breathingProgress.setProgress(40);
+        // binding.breathingProgress.setProgress(40); // Removed as it's hidden
 
         binding.frameProgress.setScaleX(1.0f);
         binding.frameProgress.setScaleY(1.0f);
@@ -428,6 +467,12 @@ public class BreathingActivity extends AppCompatActivity {
     protected void onDestroy() {
         isSessionRunning = false;
         cancelAnimators();
+        if (outerRotationAnimator != null) {
+            outerRotationAnimator.cancel();
+        }
+        if (middleRotationAnimator != null) {
+            middleRotationAnimator.cancel();
+        }
         binding = null;
         super.onDestroy();
     }

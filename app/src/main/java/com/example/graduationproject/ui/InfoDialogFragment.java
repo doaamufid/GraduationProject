@@ -35,7 +35,8 @@ public class InfoDialogFragment extends DialogFragment {
         Dialog dialog = getDialog();
         if (dialog != null && dialog.getWindow() != null) {
             Window w = dialog.getWindow();
-            w.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            int width = (int) (getResources().getDisplayMetrics().widthPixels * 0.9);
+            w.setLayout(width, ViewGroup.LayoutParams.WRAP_CONTENT);
             w.setGravity(Gravity.CENTER);
             w.setBackgroundDrawableResource(android.R.color.transparent);
         }

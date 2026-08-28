@@ -35,6 +35,7 @@
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginBottom="4dp"
+                app:tint="@color/text_main"
                 tools:src="@drawable/ic_waves"
                 android:contentDescription="@null"/>
 
@@ -42,7 +43,7 @@
                 android:id="@+id/tvEnvLabel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
+                android:textColor="@color/text_main"
                 android:textStyle="bold"
                 android:textSize="11sp"
                 android:layout_marginBottom="1dp"
@@ -52,8 +53,8 @@
                 android:id="@+id/tvEnvTag"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:alpha="0.8"
+                android:textColor="@color/text_main"
+                android:alpha="0.6"
                 android:textStyle="bold"
                 android:textSize="8sp"
                 android:letterSpacing="0.05"

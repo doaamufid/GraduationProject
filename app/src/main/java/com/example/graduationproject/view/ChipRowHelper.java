@@ -55,7 +55,7 @@ public class ChipRowHelper {
         chip.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12.5f);
         chip.setTypeface(chip.getTypeface(), android.graphics.Typeface.BOLD);
         chip.setBackgroundResource(selected ? R.drawable.bg_chip_selected : R.drawable.bg_chip_plain);
-        chip.setTextColor(ctx.getResources().getColor(selected ? R.color.amber : R.color.muted));
+        chip.setTextColor(ctx.getResources().getColor(selected ? R.color.text_main : R.color.text_soft));
         chip.setGravity(Gravity.CENTER);
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);

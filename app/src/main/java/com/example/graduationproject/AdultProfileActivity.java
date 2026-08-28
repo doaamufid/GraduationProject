@@ -1,14 +1,20 @@
 package com.example.graduationproject;
 
 import android.content.Intent;
-import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -39,7 +45,30 @@ public class AdultProfileActivity extends AppCompatActivity implements ProfileNa
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        EdgeToEdge.enable(this, 
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+        
         setContentView(R.layout.activity_adult_profile);
+
+        View navBlur = findViewById(R.id.system_nav_blur);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.fragment_container), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(0, systemBars.top, 0, systemBars.bottom); // Padding for status and nav bars
+
+            if (navBlur != null) {
+                navBlur.getLayoutParams().height = systemBars.bottom;
+                navBlur.requestLayout();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    navBlur.setRenderEffect(android.graphics.RenderEffect.createBlurEffect(15f, 15f, android.graphics.Shader.TileMode.CLAMP));
+                }
+            }
+            return insets;
+        });
 
         txtToast = findViewById(R.id.txt_toast);
         findViewById(R.id.btn_settings).setOnClickListener(v -> {

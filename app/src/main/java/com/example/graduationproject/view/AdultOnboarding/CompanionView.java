@@ -121,12 +121,12 @@ public class CompanionView extends View {
 
         float cx = w / 2f;
         float cy = h / 2f + floatOffsetPx;
-        float baseR = getResources().getDisplayMetrics().density * 22f; // Fixed size for the orb core
+        float baseR = getResources().getDisplayMetrics().density * 42f; // Increased from 32f
         float r = baseR * pulseScale;
         int color = moodColor();
 
         // Soft outer glow (approximates box-shadow blur)
-        float glowR = r * (1.6f + 1.4f * pulseGlowBoost);
+        float glowR = r * (1.8f + 1.2f * pulseGlowBoost); // Adjusted glow range
         int glowAlpha = (int) (110 + 90 * pulseGlowBoost);
         RadialGradient glowShader = new RadialGradient(
                 cx, cy, glowR,

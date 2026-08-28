@@ -2,11 +2,14 @@ package com.example.graduationproject;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.WindowCompat;
@@ -115,31 +118,57 @@ public class MainActivity extends AppCompatActivity implements CardHost {
         super.onCreate(savedInstanceState);
         System.loadLibrary("rive-android");
 
-        // ضبط لون شريط الحالة والأسفل ليتناسق مع واجهة الرئيسية (اللون البيج الفاتح)
-        int navColor = android.graphics.Color.parseColor("#FDFCF9");
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(navColor);
-            getWindow().setNavigationBarColor(navColor);
-            
-            WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
-            controller.setAppearanceLightStatusBars(true);
-            controller.setAppearanceLightNavigationBars(true);
+        // Enable Edge-to-Edge with explicit transparent styles
+        EdgeToEdge.enable(this, 
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+        
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
         }
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
         
         binding.getRoot().setLayoutDirection(AppLanguageManager.getLayoutDirection(this));
 
         // Remove old BottomNavigationView setup and replace with custom one
         setupCustomNavigation();
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            findViewById(R.id.bottom_navigation_container).setRenderEffect(android.graphics.RenderEffect.createBlurEffect(15f, 15f, android.graphics.Shader.TileMode.CLAMP));
+        }
+
         // Handle window insets for bottom nav
         View navContainer = findViewById(R.id.bottom_navigation_container);
-        ViewCompat.setOnApplyWindowInsetsListener(navContainer, (v, insets) -> {
+        View frameLayout = findViewById(R.id.frameLayout);
+        View navBlur = findViewById(R.id.system_nav_blur);
+        ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(v.getPaddingLeft(), v.getPaddingTop(), v.getPaddingRight(), systemBars.bottom);
-            return insets;
+            // Apply top padding to frameLayout to avoid status bar overlap
+            frameLayout.setPadding(0, systemBars.top, 0, 0);
+            
+            // The container now covers the system navigation bar area
+            // We apply the systemBars.bottom as padding to the container 
+            // so that the included layout (floating nav) stays above it
+            navContainer.setPadding(0, 0, 0, systemBars.bottom);
+
+            // Set height of the system nav blur view to match the system navigation bar
+            if (navBlur != null) {
+                navBlur.getLayoutParams().height = systemBars.bottom;
+                navBlur.requestLayout();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+                    navBlur.setRenderEffect(android.graphics.RenderEffect.createBlurEffect(15f, 15f, android.graphics.Shader.TileMode.CLAMP));
+                }
+            }
+
+            return WindowInsetsCompat.CONSUMED;
         });
 
         // 📝 قراءة نوع الحساب المفعل حالياً لتحديد شكل الواجهة

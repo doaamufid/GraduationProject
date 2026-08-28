@@ -1,78 +1,90 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center"
-    android:paddingStart="32dp"
-    android:paddingEnd="32dp">
+    android:paddingHorizontal="32dp">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_marginBottom="24dp"
         android:text="✨"
-        android:textSize="48sp" />
+        android:textSize="56sp" />
 
     <TextView
         android:id="@+id/tvDoneTitle"
-        style="@style/Text.Title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:text="@string/completion_title" />
+        android:layout_marginBottom="12dp"
+        android:text="فكرة جديدة!"
+        android:textColor="#1F3A60"
+        android:textSize="24sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/tvDoneSubtitle"
-        style="@style/Text.Soft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="32dp"
         android:gravity="center"
-        android:text="@string/completion_subtitle" />
+        android:lineSpacingMultiplier="1.4"
+        android:text="رائع، لقد نجحتِ في موازنة فكرتك.\nتذكري دائماً أن المشاعر عابرة."
+        android:textColor="#8A9CB2"
+        android:textSize="16sp" />
 
-    <LinearLayout
+    <!-- Exercise Card -->
+    <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardDoneExercise"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
-        android:background="@drawable/bg_card_translucent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_marginBottom="40dp"
+        app:cardBackgroundColor="#F0F0F9"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp">
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:gravity="end"
-            android:text="@string/your_exercise_label"
-            android:textColor="@color/primary_light"
-            android:textSize="11sp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:padding="20dp">
 
-        <TextView
-            android:id="@+id/tvCompletionExercise"
-            style="@style/Text.Body"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            tools:text="تمرين اليوم" />
-    </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_gravity="end"
+                android:text="🏋️ تمرينك لليوم"
+                android:textColor="#7E81BA"
+                android:textSize="13sp"
+                android:textStyle="bold" />
 
-    <TextView
+            <TextView
+                android:id="@+id/tvCompletionExercise"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:textColor="#1F3A60"
+                android:textSize="14sp"
+                android:lineSpacingMultiplier="1.4"
+                tools:text="اكتبي ٣ أشياء إيجابية صارت اليوم، مهما كانت صغيرة" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnAnotherThought"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_button_soft"
-        android:clickable="true"
-        android:focusable="true"
-        android:paddingStart="32dp"
-        android:paddingEnd="32dp"
-        android:paddingTop="12dp"
-        android:paddingBottom="12dp"
-        android:text="@string/another_thought"
-        style="@style/Text.Soft"
-        android:textStyle="bold" />
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        app:backgroundTint="#7E81BA"
+        app:cornerRadius="30dp"
+        android:text="موازنة فكرة أخرى"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textAllCaps="false"
+        android:elevation="4dp" />
 
 </LinearLayout>

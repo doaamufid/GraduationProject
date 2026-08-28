@@ -34,7 +34,7 @@ public class FrequentEmotionsFragment extends BaseScreenFragment {
         flow.removeAllViews();
         for (Option em : AdultOnboardingAppData.EMOTIONS) {
             boolean selected = data.frequentEmotions.contains(em.id);
-            View bubble = Widgets.emotionBubble(requireContext(), em.emoji, getString(em.labelRes), selected, () -> {
+            View bubble = Widgets.emotionBubble(requireContext(), em.emoji, getString(em.labelRes), em.color, selected, () -> {
                 OnboardingData.toggle(data.frequentEmotions, em.id);
                 pulse();
                 render(flow);
@@ -45,6 +45,9 @@ public class FrequentEmotionsFragment extends BaseScreenFragment {
 
     @Override
     protected void populateFooter(LayoutInflater inflater, ViewGroup footer) {
-        footer.addView(Widgets.primaryButton(requireContext(), getString(R.string.adaptive_adult_onboarding_continue), false, () -> host.goNext()));
+        footer.addView(Widgets.footerButtons(requireContext(), 
+                getString(R.string.adaptive_adult_onboarding_continue), 
+                () -> host.goNext(), 
+                () -> host.goBack()));
     }
 }

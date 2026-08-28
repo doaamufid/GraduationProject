@@ -15,6 +15,7 @@ public class ReadyFragment extends BaseScreenFragment {
 
     @Override protected int getScreenIndex() { return 12; }
     @Override protected boolean showSkip() { return false; }
+    @Override protected boolean showShellCompanion() { return false; }
     @Override protected String getCompanionMood() { return CompanionView.MOOD_CALM; }
 
     @Override
@@ -24,7 +25,8 @@ public class ReadyFragment extends BaseScreenFragment {
         CompanionView big = new CompanionView(requireContext());
         big.setReducedMotion(host.isReducedMotion());
         big.setMood(CompanionView.MOOD_CALM);
-        LinearLayout.LayoutParams bigLp = new LinearLayout.LayoutParams(dp(110), dp(110)); // Bigger
+        // Increased size for the "blue moon" effect
+        LinearLayout.LayoutParams bigLp = new LinearLayout.LayoutParams(dp(260), dp(260));
         bigLp.gravity = Gravity.CENTER_HORIZONTAL;
         bigLp.topMargin = dp(24);
         content.addView(big, bigLp);
@@ -51,6 +53,9 @@ public class ReadyFragment extends BaseScreenFragment {
 
     @Override
     protected void populateFooter(LayoutInflater inflater, ViewGroup footer) {
-        footer.addView(Widgets.primaryButton(requireContext(), getString(R.string.adaptive_adult_onboarding_ready_button), true, () -> host.completeOnboarding()));
+        footer.addView(Widgets.footerButtons(requireContext(), 
+                getString(R.string.adaptive_adult_onboarding_ready_button), 
+                () -> host.completeOnboarding(), 
+                () -> host.goBack()));
     }
 }

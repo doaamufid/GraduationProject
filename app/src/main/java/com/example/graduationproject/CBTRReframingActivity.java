@@ -1,8 +1,7 @@
 package com.example.graduationproject;
 
-import android.content.Context;
-import android.content.res.Configuration;
-import android.content.res.Resources;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -15,7 +14,11 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.graduationproject.data.ReframingAppData;
 import com.google.android.flexbox.FlexboxLayout;
@@ -66,8 +69,10 @@ public class CBTRReframingActivity extends AppCompatActivity {
 
     // ---- Root chrome views ----
     private FrameLayout contentContainer;
-    private View headerTop;
     private View headerBack;
+    private com.example.graduationproject.view.ReframingStepIndicator stepIndicator;
+    private View layoutDetectedPattern;
+    private TextView tvDetectedPatternName;
     private FrameLayout dialogOverlay;
 
 
@@ -81,14 +86,30 @@ public class CBTRReframingActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        EdgeToEdge.enable(this,
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
+
         setContentView(R.layout.activity_cbtr_reframing);
 
         contentContainer = findViewById(R.id.contentContainer);
-        headerTop = findViewById(R.id.headerTop);
         headerBack = findViewById(R.id.headerBack);
+        stepIndicator = findViewById(R.id.stepIndicator);
+        layoutDetectedPattern = findViewById(R.id.layoutDetectedPattern);
+        tvDetectedPatternName = findViewById(R.id.tvDetectedPatternName);
         dialogOverlay = findViewById(R.id.dialogOverlay);
 
-        findViewById(R.id.btnClose).setOnClickListener(v -> restart());
         findViewById(R.id.btnBack).setOnClickListener(v -> restart());
 
         setupWriteDialog();
@@ -103,8 +124,27 @@ public class CBTRReframingActivity extends AppCompatActivity {
         stage = newStage;
 
         boolean isEntry = STAGE_ENTRY.equals(stage);
-        headerTop.setVisibility(isEntry ? View.GONE : View.VISIBLE);
+        boolean isDone = STAGE_DONE.equals(stage);
         headerBack.setVisibility(isEntry ? View.GONE : View.VISIBLE);
+        
+        if (stepIndicator != null) {
+            if (isEntry || isDone) {
+                stepIndicator.setVisibility(View.GONE);
+                if (layoutDetectedPattern != null) layoutDetectedPattern.setVisibility(View.GONE);
+            } else {
+                stepIndicator.setVisibility(View.VISIBLE);
+                if (layoutDetectedPattern != null) {
+                    layoutDetectedPattern.setVisibility(STAGE_IDENTIFY.equals(stage) ? View.VISIBLE : View.GONE);
+                    if (tvDetectedPatternName != null) {
+                        tvDetectedPatternName.setText(ReframingAppData.findPattern(detected).label);
+                    }
+                }
+                int step = 0;
+                if (STAGE_EXAMINE.equals(stage)) step = 1;
+                else if (STAGE_REFRAME.equals(stage)) step = 2;
+                stepIndicator.setStep(step);
+            }
+        }
 
         contentContainer.removeAllViews();
         int layoutRes;
@@ -223,7 +263,7 @@ public class CBTRReframingActivity extends AppCompatActivity {
         for (String emotion : ReframingAppData.EMOTIONS) {
             TextView chip = new TextView(this);
             chip.setText(emotion);
-            chip.setTextColor(getColorCompat(R.color.white));
+            chip.setTextColor(getColorCompat(R.color.text_main));
             chip.setTextSize(11);
             int padH = dp(12), padV = dp(7);
             chip.setPadding(padH, padV, padH, padV);
@@ -359,7 +399,8 @@ public class CBTRReframingActivity extends AppCompatActivity {
         for (Map.Entry<String, View[]> entry : patternViews.entrySet()) {
             boolean selected = entry.getKey().equals(pattern);
             entry.getValue()[0].setBackgroundResource(
-                    selected ? R.drawable.bg_pattern_selected : R.drawable.bg_pattern_unselected);
+                    selected ? R.drawable.bg_pattern_selected_purple : R.drawable.bg_pattern_unselected_gray);
+            ((TextView) entry.getValue()[1]).setTextColor(Color.parseColor(selected ? "#7E81BA" : "#1F3A60"));
         }
         tvWhyExplain.setText(ReframingAppData.findPattern(pattern).explain);
     }
@@ -393,10 +434,13 @@ public class CBTRReframingActivity extends AppCompatActivity {
             entry.getValue().setOnClickListener(v -> {
                 answer = value;
                 for (Map.Entry<String, TextView> e2 : answerViews.entrySet()) {
+                    boolean isSel = e2.getKey().equals(answer);
                     e2.getValue().setBackgroundResource(
-                            e2.getKey().equals(answer) ? R.drawable.bg_answer_selected : R.drawable.bg_answer_unselected);
+                            isSel ? R.drawable.bg_answer_selected : R.drawable.bg_answer_unselected);
+                    e2.getValue().setTextColor(getColorCompat(isSel ? R.color.white : R.color.text_main));
                 }
                 btnNext.setEnabled(true);
+                btnNext.setAlpha(1f);
 
                 boolean showFollowUp = getString(R.string.answer_yes).equals(answer);
                 if (showFollowUp && etFollowUp.getVisibility() != View.VISIBLE) {
@@ -432,7 +476,6 @@ public class CBTRReframingActivity extends AppCompatActivity {
     // =========================================================================================
 
     private void bindReframe(View root) {
-        TextView tvOriginal = root.findViewById(R.id.tvOriginalThought);
         TextView tvMirror = root.findViewById(R.id.tvMirrorText);
         LinearLayout dotsContainer = root.findViewById(R.id.dotsContainer);
         TextView tvExercise = root.findViewById(R.id.tvExercise);
@@ -440,12 +483,10 @@ public class CBTRReframingActivity extends AppCompatActivity {
         View btnSave = root.findViewById(R.id.btnSave);
         View btnBackToChat = root.findViewById(R.id.btnBackToChat);
 
-        root.findViewById(R.id.cardOriginal).startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_up));
         root.findViewById(R.id.cardMirror).startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_up));
         root.findViewById(R.id.cardExercise).startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_up));
         btnSave.startAnimation(AnimationUtils.loadAnimation(this, R.anim.fade_in_up));
 
-        tvOriginal.setText("\"" + thought + "\"");
         tvExercise.setText(ReframingAppData.EXERCISES.get(pattern));
 
         String[] reframes = ReframingAppData.REFRAMES.get(pattern);

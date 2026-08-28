@@ -13,7 +13,7 @@
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:background="@drawable/bg_circle_surface"
-        android:padding="11dp"
+        android:padding="13dp"
         android:src="@drawable/ic_arrow_right"
         android:contentDescription="@android:string/cancel" />
 

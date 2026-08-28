@@ -5,11 +5,15 @@ import android.animation.ObjectAnimator;
 import android.animation.ValueAnimator;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.OvershootInterpolator;
 
+import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.graduationproject.databinding.ActivityOnBoarding3Binding;
 
@@ -26,26 +30,44 @@ public class OnBoardingActivity3 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        androidx.activity.EdgeToEdge.enable(this);
+        EdgeToEdge.enable(this, 
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
+                SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
         binding = ActivityOnBoarding3Binding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> {
-            androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, 0, systemBars.right, systemBars.bottom);
-            binding.tvSkip.setPadding(0, systemBars.top, 0, 0);
-            return insets;
-        });
+        androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(binding.getRoot(), (v, insets) -> insets);
 
         setupAnimations();
 
         binding.btnNext.setOnClickListener(v -> {
             Intent intent = new Intent(OnBoardingActivity3.this, OnBoardingActivity4.class);
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            if (AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))) {
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+            } else {
+                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+            }
         });
 
         binding.tvSkip.setOnClickListener(v -> skipOnBoarding());
+        
+        binding.btnBack.setOnClickListener(v -> onBackPressed());
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        if (AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))) {
+            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+        } else {
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+        }
     }
 
     private void setupAnimations() {

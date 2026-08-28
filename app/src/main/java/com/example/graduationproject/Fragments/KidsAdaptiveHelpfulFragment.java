@@ -28,12 +28,12 @@ public class KidsAdaptiveHelpfulFragment extends KidsAdaptiveBaseOnboardingFragm
                 getString(R.string.kids_adaptive_help_activity), getString(R.string.kids_adaptive_help_unsure)
         };
 
-        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(4); tlp.bottomMargin = dp(2);
+        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(20); tlp.bottomMargin = dp(16);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_helpful_title), 20), tlp);
 
         GridLayout grid = new GridLayout(requireContext());
         grid.setColumnCount(2);
-        LinearLayout.LayoutParams glp = matchWrap(); glp.topMargin = dp(4);
+        LinearLayout.LayoutParams glp = matchWrap(); glp.topMargin = dp(10);
         container.addView(grid, glp);
 
         KidsAdaptiveOnboardingData data = data();
@@ -41,6 +41,7 @@ public class KidsAdaptiveHelpfulFragment extends KidsAdaptiveBaseOnboardingFragm
             KidsAdaptiveChoiceCardView card = new KidsAdaptiveChoiceCardView(requireContext());
             card.setEmoji(EMOJIS[i]);
             card.setLabel(labels[i]);
+            card.setCardIndex(i);
             card.setSelectedState(data.helpfulActivities.contains(IDS[i]));
 
             GridLayout.LayoutParams p = new GridLayout.LayoutParams();
@@ -48,7 +49,7 @@ public class KidsAdaptiveHelpfulFragment extends KidsAdaptiveBaseOnboardingFragm
             p.height = GridLayout.LayoutParams.WRAP_CONTENT;
             p.columnSpec = GridLayout.spec(i % 2, 1f);
             p.rowSpec = GridLayout.spec(i / 2);
-            p.setMargins(dp(5), dp(5), dp(5), dp(5));
+            p.setMargins(dp(10), dp(10), dp(10), dp(10));
             grid.addView(card, p);
 
             final int idx = i;

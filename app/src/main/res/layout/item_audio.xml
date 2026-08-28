@@ -50,11 +50,11 @@
 
     <ImageButton
         android:id="@+id/btnDelete"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@android:color/transparent"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:background="@drawable/bg_circle_white"
         android:src="@drawable/ic_trash_red"
-        android:padding="6dp"
+        android:padding="5dp"
         android:contentDescription="@null"/>
 
 </LinearLayout>

@@ -2,15 +2,20 @@ package com.example.graduationproject;
 
 import android.content.Intent;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
+import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
@@ -29,7 +34,9 @@ public class ReflectionActivity extends AppCompatActivity {
     private List<ReflectionCard> cards;
     private SceneView sceneView;
     private TextView txtTitle, txtTag, txtChip, txtNoteDate, txtNote, txtNext;
-    private LinearLayout btnNext;
+    private View btnNext;
+    private ImageView imgSceneIcon;
+    private ImageButton btnClose, btnSave;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable showNextButtonRunnable;
@@ -40,7 +47,14 @@ public class ReflectionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+        EdgeToEdge.enable(this, 
+                SystemBarStyle.dark(Color.TRANSPARENT),
+                SystemBarStyle.dark(Color.TRANSPARENT));
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
+            getWindow().setNavigationBarContrastEnforced(false);
+        }
+
         setContentView(R.layout.activity_reflection);
 
         if (getIntent() != null) {
@@ -61,6 +75,14 @@ public class ReflectionActivity extends AppCompatActivity {
 
         buildCards();
         bindViews();
+
+        btnClose.setOnClickListener(v -> finish());
+        btnSave.setOnClickListener(v -> {
+            // Optional: visual feedback for saving
+            v.animate().scaleX(1.2f).scaleY(1.2f).setDuration(100).withEndAction(() -> 
+                v.animate().scaleX(1.0f).scaleY(1.0f).setDuration(100).start()
+            ).start();
+        });
 
         // 1. اختيار بطاقة عشوائية في كل مرة
         int randomIdx = new Random().nextInt(cards.size());
@@ -100,10 +122,11 @@ public class ReflectionActivity extends AppCompatActivity {
 
     private void buildCards() {
         cards = new ArrayList<>();
-        cards.add(new ReflectionCard(SceneView.SCENE_MOUNTAIN, R.string.c1_title, R.string.c1_tag, R.string.c1_chip, R.string.c1_date, R.string.c1_note));
-        cards.add(new ReflectionCard(SceneView.SCENE_SEA, R.string.c2_title, R.string.c2_tag, R.string.c2_chip, R.string.c2_date, R.string.c2_note));
-        cards.add(new ReflectionCard(SceneView.SCENE_FOREST, R.string.c3_title, R.string.c3_tag, R.string.c3_chip, R.string.c3_date, R.string.c3_note));
-        cards.add(new ReflectionCard(SceneView.SCENE_DESERT, R.string.c4_title, R.string.c4_tag, R.string.c4_chip, R.string.c4_date, R.string.c4_note));
+        // All cards now follow the Magna City template style as requested
+        cards.add(new ReflectionCard(SceneView.SCENE_MOUNTAIN, R.string.c1_title, R.string.c1_tag, R.string.c1_chip, R.string.c1_date, R.string.c1_note, R.drawable.ic_sparkles));
+        cards.add(new ReflectionCard(SceneView.SCENE_SEA, R.string.c2_title, R.string.c2_tag, R.string.c2_chip, R.string.c2_date, R.string.c2_note, R.drawable.ic_sparkles));
+        cards.add(new ReflectionCard(SceneView.SCENE_FOREST, R.string.c3_title, R.string.c3_tag, R.string.c3_chip, R.string.c3_date, R.string.c3_note, R.drawable.ic_sparkles));
+        cards.add(new ReflectionCard(SceneView.SCENE_DESERT, R.string.c4_title, R.string.c4_tag, R.string.c4_chip, R.string.c4_date, R.string.c4_note, R.drawable.ic_sparkles));
     }
 
     private void bindViews() {
@@ -115,34 +138,26 @@ public class ReflectionActivity extends AppCompatActivity {
         txtNote = findViewById(R.id.txt_note);
         txtNext = findViewById(R.id.txt_next);
         btnNext = findViewById(R.id.btn_next);
-    }
-
-    private String getArabicString(int resId) {
-        // load the string from an Arabic-configured context to force Arabic text regardless of device locale
-        try {
-            Configuration conf = new Configuration(getResources().getConfiguration());
-            Locale ar = new Locale("ar");
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
-                conf.setLocale(ar);
-            } else {
-                conf.locale = ar;
-            }
-            return createConfigurationContext(conf).getResources().getString(resId);
-        } catch (Exception e) {
-            return getString(resId);
-        }
+        imgSceneIcon = findViewById(R.id.img_scene_icon);
+        btnClose = findViewById(R.id.btn_close);
+        btnSave = findViewById(R.id.btn_save);
     }
 
     private void renderCardInitial(int idx) {
         ReflectionCard card = cards.get(idx);
         sceneView.setSceneType(card.sceneType);
-        txtTitle.setText(getArabicString(card.titleRes));
-        txtTag.setText(getArabicString(card.tagRes).toUpperCase());
-        txtChip.setText(getArabicString(card.chipRes));
-        String noteDate = getArabicString(R.string.note_prefix) + " · " + getArabicString(card.dateRes);
-        txtNoteDate.setText(noteDate);
-        txtNote.setText(getArabicString(card.noteRes));
-        txtNext.setText(getArabicString(R.string.enter_button));
+        imgSceneIcon.setImageResource(card.iconRes);
+        
+        // Use standard getString to respect the updated English template content
+        txtTitle.setText(getString(card.titleRes));
+        txtTag.setText(getString(card.tagRes).toUpperCase());
+        txtChip.setText(getString(card.chipRes));
+        
+        // Hide date/prefix to match the clean screenshot look
+        txtNoteDate.setVisibility(View.GONE);
+        
+        txtNote.setText(getString(card.noteRes));
+        txtNext.setText(getString(R.string.enter_button));
     }
 
     private void cleanupHandler() {

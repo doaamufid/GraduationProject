@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/reflection_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layoutDirection="rtl"
-    android:background="@color/screen_bg">
+    android:layoutDirection="ltr"
+    android:background="@color/black">
 
     <!-- Full-bleed illustrated scene -->
     <com.example.graduationproject.ui.SceneView
@@ -14,180 +15,137 @@
         android:layout_height="match_parent" />
 
     <!-- Foreground content -->
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/content_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:padding="32dp">
 
-        <!-- Top bar -->
+        <!-- Top Right Close Button -->
+        <ImageButton
+            android:id="@+id/btn_close"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/bg_circle_translucent_dark"
+            android:padding="12dp"
+            android:scaleType="centerInside"
+            android:src="@drawable/ic_close"
+            app:tint="@color/white" />
+
+        <!-- Main Info Container (Bottom Left) -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:paddingTop="24dp">
+            android:layout_above="@id/bottom_bar"
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical">
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
-        </LinearLayout>
-
-        <!-- Title area -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="32dp">
+            <!-- Dynamic Icon -->
+            <ImageView
+                android:id="@+id/img_scene_icon"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginBottom="28dp"
+                android:src="@drawable/ic_sparkles"
+                app:tint="@color/white" />
 
             <TextView
                 android:id="@+id/txt_title"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:textStyle="bold"
-                android:textSize="@dimen/text_title"
+                android:textSize="54sp"
+                android:lineSpacingExtra="-10dp"
                 android:layout_marginBottom="4dp"
-                tools:text="سكون القمة" />
+                tools:text="Magna\nCity" />
 
             <TextView
                 android:id="@+id/txt_tag"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/white"
-                android:alpha="0.75"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_tag"
-                android:letterSpacing="0.12"
-                tools:text="لحظة تأمل" />
-
-        </LinearLayout>
-
-        <!-- Spacer -->
-        <View
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_weight="1" />
-
-        <!-- Ambiance chip -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="start"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:layout_marginBottom="16dp">
-
-            <TextView
-                android:id="@+id/txt_chip"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_pill_translucent"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:paddingTop="6dp"
-                android:paddingBottom="6dp"
-                android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_chip"
-                tools:text="🌫️ هادئ" />
-
-        </LinearLayout>
-
-        <!-- Diary note card -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="32dp">
-
-            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:layout_marginBottom="8dp">
-
-                <LinearLayout
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:orientation="horizontal"
-                    android:gravity="start|center_vertical">
-
-                    <TextView
-                        android:id="@+id/txt_note_date"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:alpha="0.7"
-                        android:textStyle="bold"
-                        android:textSize="@dimen/text_note_label"
-                        android:letterSpacing="0.05"
-                        android:layout_marginEnd="8dp"
-                        tools:text="ملاحظة اليوم · ٨ أبريل" />
-
-                    <TextView
-                        android:layout_width="28dp"
-                        android:layout_height="28dp"
-                        android:gravity="center"
-                        android:text="💧"
-                        android:textSize="13sp"
-                        android:background="@drawable/bg_circle_translucent_33" />
-
-                </LinearLayout>
-
-            </LinearLayout>
+                android:visibility="gone"
+                tools:text="لحظة تأمل" />
 
             <TextView
                 android:id="@+id/txt_note"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
                 android:textColor="@color/white"
-                android:textStyle="bold"
-                android:textSize="@dimen/text_note"
-                android:lineSpacingMultiplier="1.3"
+                android:alpha="0.85"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.25"
                 android:gravity="start"
-                tools:text="نص الملاحظة هنا" />
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/btn_next"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/bg_pill_white"
-            android:clickable="true"
-            android:focusable="true"
-            android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:paddingStart="24dp"
-            android:paddingTop="10dp"
-            android:paddingEnd="24dp"
-            android:paddingBottom="10dp">
+                tools:text="A premier destination set along some of the world's most beautiful coastline. Magna will be a new region from NEOM that defies imagination." />
 
             <TextView
-                android:id="@+id/txt_next"
+                android:id="@+id/txt_note_date"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/next_button"
-                android:textColor="@color/black_1a"
-                android:textSize="@dimen/text_button"
-                android:textStyle="bold" />
+                android:layout_marginTop="12dp"
+                android:textColor="@color/white"
+                android:alpha="0.5"
+                android:textSize="13sp"
+                android:visibility="gone"
+                tools:text="ملاحظة اليوم · ٨ أبريل" />
+
+            <TextView
+                android:id="@+id/txt_chip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
 
         </LinearLayout>
 
+        <!-- Bottom Action Bar -->
+        <LinearLayout
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
 
-    </LinearLayout>
+            <LinearLayout
+                android:id="@+id/btn_next"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_pill_white"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="32dp"
+                android:paddingEnd="32dp">
+
+                <TextView
+                    android:id="@+id/txt_next"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/black"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    tools:text="Invest Now" />
+
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_save"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/bg_circle_translucent_dark"
+                android:padding="18dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/ic_bookmark"
+                app:tint="@color/white" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
 
 </FrameLayout>

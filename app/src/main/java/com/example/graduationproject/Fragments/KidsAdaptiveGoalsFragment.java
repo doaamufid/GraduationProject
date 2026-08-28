@@ -26,11 +26,11 @@ public class KidsAdaptiveGoalsFragment extends KidsAdaptiveBaseOnboardingFragmen
                 getString(R.string.kids_adaptive_goal_habits), getString(R.string.kids_adaptive_goal_express), getString(R.string.kids_adaptive_goal_watch)
         };
 
-        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(4); tlp.bottomMargin = dp(10);
+        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(16); tlp.bottomMargin = dp(16);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_goals_title), 20), tlp);
 
         KidsAdaptiveFlowLayout flow = new KidsAdaptiveFlowLayout(requireContext());
-        flow.setSpacing(dp(10), dp(10));
+        flow.setSpacing(dp(14), dp(14));
         container.addView(flow, matchWrap());
 
         KidsAdaptiveOnboardingData data = data();
@@ -38,6 +38,7 @@ public class KidsAdaptiveGoalsFragment extends KidsAdaptiveBaseOnboardingFragmen
             KidsAdaptiveGoalChipView chip = new KidsAdaptiveGoalChipView(requireContext());
             chip.setEmoji(EMOJIS[i]);
             chip.setLabel(labels[i]);
+            chip.setChipIndex(i);
             chip.setSelectedState(data.goals.contains(labels[i]));
             final String label = labels[i];
             chip.setOnClickListener(v -> {

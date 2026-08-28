@@ -9,6 +9,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
+    <View
+        android:id="@+id/system_nav_blur"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="bottom"
+        android:background="#CCE1F1FF" />
+
     <FrameLayout
         android:id="@+id/toastOverlay"
         android:layout_width="match_parent"

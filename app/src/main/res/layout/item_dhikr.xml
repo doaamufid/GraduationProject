@@ -13,11 +13,11 @@
 
     <ImageButton
         android:id="@+id/btnStar"
-        android:layout_width="32dp"
-        android:layout_height="32dp"
-        android:background="@android:color/transparent"
+        android:layout_width="28dp"
+        android:layout_height="28dp"
+        android:background="@drawable/bg_circle_white"
         android:src="@drawable/ic_star_filled"
-        android:padding="6dp"
+        android:padding="7dp"
         android:contentDescription="@null"/>
 
     <TextView

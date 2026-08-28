@@ -28,17 +28,18 @@ public class KidsAdaptiveIntenseFearFragment extends KidsAdaptiveBaseOnboardingF
                 getString(R.string.kids_adaptive_fear_rarely), getString(R.string.kids_adaptive_unsure), getString(R.string.kids_adaptive_dont_want_answer)
         };
 
-        LinearLayout.LayoutParams blp = matchWrap(); blp.topMargin = dp(4);
+        LinearLayout.LayoutParams blp = matchWrap(); blp.topMargin = dp(20); blp.bottomMargin = dp(16);
         container.addView(KidsAdaptiveUiHelpers.body(requireContext(), getString(R.string.kids_adaptive_fear_body)), blp);
 
-        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(2); tlp.bottomMargin = dp(8);
-        container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_fear_title), 19), tlp);
+        LinearLayout.LayoutParams tlp = matchWrap(); tlp.bottomMargin = dp(20);
+        container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_fear_title), 20), tlp);
 
         KidsAdaptiveChoiceCardView[] cards = new KidsAdaptiveChoiceCardView[IDS.length];
         for (int i = 0; i < IDS.length; i++) {
             KidsAdaptiveChoiceCardView card = new KidsAdaptiveChoiceCardView(requireContext());
             card.setEmoji("");
             card.setLabel(labels[i]);
+            card.setCardIndex(i);
             card.setSelectedState(IDS[i].equals(data().intenseFearExperience));
             final int idx = i;
             card.setOnClickListener(v -> {
@@ -46,7 +47,7 @@ public class KidsAdaptiveIntenseFearFragment extends KidsAdaptiveBaseOnboardingF
                 for (int j = 0; j < cards.length; j++) cards[j].setSelectedState(j == idx);
             });
             cards[i] = card;
-            LinearLayout.LayoutParams lp = matchWrap(); lp.topMargin = dp(10);
+            LinearLayout.LayoutParams lp = matchWrap(); lp.topMargin = dp(14);
             container.addView(card, lp);
         }
     }

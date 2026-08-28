@@ -7,6 +7,10 @@ import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -64,6 +68,18 @@ public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsA
         profileStore = new ChildProfileStore(this);
         simulateReopenButton = findViewById(R.id.btn_simulate_reopen);
         simulateReopenButton.setOnClickListener(v -> simulateReopen());
+
+        View navBlur = findViewById(R.id.system_nav_blur);
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.fragment_container), (v, insets) -> {
+            androidx.core.graphics.Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(0, systemBars.top, 0, 0);
+
+            if (navBlur != null) {
+                navBlur.getLayoutParams().height = systemBars.bottom;
+                navBlur.requestLayout();
+            }
+            return insets;
+        });
 
         if (getIntent() != null) {
             childId = getIntent().getLongExtra("CHILD_ID", -1);
@@ -267,12 +283,29 @@ public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsA
      */
     private void applyStatusBarColor() {
         int color;
+        int bottomColor;
         if ("home".equals(phase)) {
             color = getResources().getColor(R.color.kids_adaptive_home_bg_from);
+            bottomColor = getResources().getColor(R.color.kids_adaptive_home_bg_to);
         } else {
             int stage = KidsAdaptiveStages.stageForScreen(index);
             color = KidsAdaptiveStages.FROM_COLORS[stage];
+            bottomColor = KidsAdaptiveStages.TO_COLORS[stage];
         }
         getWindow().setStatusBarColor(color);
+        getWindow().setNavigationBarColor(bottomColor);
+
+        View navBlur = findViewById(R.id.system_nav_blur);
+        if (navBlur != null) {
+            // Match the bottom color exactly as requested
+            navBlur.setBackgroundColor(bottomColor);
+        }
+
+        // All kids background stages are light, so always use dark icons for readability.
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
     }
 }

@@ -1,82 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rootFrame"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_gradient_main">
+    android:background="@color/bg">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:fitsSystemWindows="true">
+        android:fitsSystemWindows="true"
+        android:background="#F8F7FB">
 
-        <!-- Top status row: clock + close (X) button, hidden on entry screen -->
+        <!-- Header -->
         <RelativeLayout
-            android:id="@+id/headerTop"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
-            android:paddingTop="16dp"
-            android:paddingBottom="4dp"
-            android:visibility="gone">
-
-            <TextView
-                android:id="@+id/tvClock"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:text="@string/clock_time"
-                android:textColor="@color/white"
-                android:textSize="12sp"
-                android:textStyle="bold" />
-
-            <ImageButton
-                android:id="@+id/btnClose"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:layout_alignParentEnd="true"
-                android:background="@android:color/transparent"
-                android:src="@drawable/ic_close"
-                android:padding="4dp"
-                android:contentDescription="@null" />
-        </RelativeLayout>
-
-        <!-- Back row: back arrow + screen title, hidden on entry screen -->
-        <LinearLayout
             android:id="@+id/headerBack"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
             android:paddingStart="20dp"
             android:paddingEnd="20dp"
-            android:paddingTop="8dp"
-            android:paddingBottom="4dp"
-            android:visibility="gone">
+            android:paddingTop="16dp"
+            android:paddingBottom="8dp">
 
             <ImageButton
                 android:id="@+id/btnBack"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@drawable/bg_circle_soft"
-                android:src="@drawable/ic_arrow_right"
-                android:padding="9dp"
-                android:contentDescription="@null" />
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_circle_white"
+                android:contentDescription="@null"
+                android:padding="8dp"
+                android:scaleX="-1"
+                android:src="@drawable/ic_arrow_left"
+                app:tint="#1F3A60"
+                android:elevation="1dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvHeaderTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="إعادة الصياغة"
+                    android:textColor="#1F3A60"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CBT REFRAME"
+                    android:textColor="#8A9CB2"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.05" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <!-- Detected Pattern Badge Row -->
+        <RelativeLayout
+            android:id="@+id/layoutDetectedPattern"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="24dp"
+            android:layout_marginTop="8dp"
+            android:visibility="gone"
+            tools:visibility="visible">
 
             <TextView
-                android:id="@+id/tvHeaderTitle"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_marginStart="-32dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:text="نمط مُكتشف"
+                android:textColor="#8A9CB2"
+                android:textSize="12sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:background="@drawable/bg_badge_soft_purple"
                 android:gravity="center"
-                android:text="@string/entry_title"
-                android:textColor="@color/white"
-                android:textSize="13sp"
-                android:textStyle="bold" />
-        </LinearLayout>
+                android:paddingHorizontal="12dp"
+                android:paddingVertical="6dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginEnd="6dp"
+                    android:src="@drawable/ic_alert_triangle"
+                    app:tint="#7E81BA" />
+
+                <TextView
+                    android:id="@+id/tvDetectedPatternName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="التعميم المفرط"
+                    android:textColor="#7E81BA"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <com.example.graduationproject.view.ReframingStepIndicator
+            android:id="@+id/stepIndicator"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="16dp"
+            android:visibility="visible"/>
 
         <!-- Stage content container: entry / identify / examine / reframe / done get swapped in here -->
         <FrameLayout

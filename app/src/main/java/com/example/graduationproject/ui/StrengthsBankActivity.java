@@ -9,10 +9,14 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import androidx.activity.EdgeToEdge;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.StrengthsRepository;
@@ -38,8 +42,18 @@ public class StrengthsBankActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
+        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_strengths_bank);
+
+        View root = findViewById(R.id.bank_all_root);
+        View content = findViewById(R.id.bank_all_content);
+        ViewCompat.setOnApplyWindowInsetsListener(root, (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            if (content != null) {
+                content.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            }
+            return insets;
+        });
 
         repo = StrengthsRepository.getInstance(this);
         llBankCards = findViewById(R.id.llBankCards);

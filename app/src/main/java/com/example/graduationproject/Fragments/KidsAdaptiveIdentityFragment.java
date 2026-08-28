@@ -41,19 +41,14 @@ public class KidsAdaptiveIdentityFragment extends KidsAdaptiveBaseOnboardingFrag
     }
 
     @Override
-    protected void onPrimaryClick() {
-        // nickname text already committed via TextWatcher
-        host.goNext();
-    }
-
-    @Override
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
         TextView title = KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_identity_title), 22);
-        LinearLayout.LayoutParams tlp = wrap(); tlp.topMargin = dp(4);
+        LinearLayout.LayoutParams tlp = wrap(); tlp.topMargin = dp(20);
         container.addView(title, tlp);
 
         TextView subtitle = KidsAdaptiveUiHelpers.subtitle(requireContext(), getString(R.string.kids_adaptive_identity_subtitle));
-        container.addView(subtitle, matchWrap());
+        LinearLayout.LayoutParams stlp = matchWrap(); stlp.topMargin = dp(10);
+        container.addView(subtitle, stlp);
 
         EditText input = new EditText(requireContext());
         input.setHint(getString(R.string.kids_adaptive_identity_hint));
@@ -61,12 +56,12 @@ public class KidsAdaptiveIdentityFragment extends KidsAdaptiveBaseOnboardingFrag
         input.setGravity(Gravity.CENTER);
         input.setBackgroundResource(R.drawable.kids_adaptive_bg_text_input);
         input.setTypeface(KidsAdaptiveTypefaces.heading(requireContext()));
-        input.setTextSize(16);
+        input.setTextSize(14);
         input.setTextColor(getResources().getColor(R.color.kids_adaptive_ink));
-        int padH = dp(16), padV = dp(14);
+        int padH = dp(16), padV = dp(12);
         input.setPadding(padH, padV, padH, padV);
         input.setSingleLine(true);
-        LinearLayout.LayoutParams ilp = matchWrap(); ilp.topMargin = dp(10);
+        LinearLayout.LayoutParams ilp = matchWrap(); ilp.topMargin = dp(24);
         container.addView(input, ilp);
 
         greetingView = new TextView(requireContext());
@@ -75,7 +70,7 @@ public class KidsAdaptiveIdentityFragment extends KidsAdaptiveBaseOnboardingFrag
         greetingView.setTextColor(getResources().getColor(R.color.kids_adaptive_ink));
         greetingView.setGravity(Gravity.CENTER);
         updateGreeting(data().nickname);
-        LinearLayout.LayoutParams glp = matchWrap(); glp.topMargin = dp(6); glp.bottomMargin = dp(2);
+        LinearLayout.LayoutParams glp = matchWrap(); glp.topMargin = dp(14); glp.bottomMargin = dp(24);
         container.addView(greetingView, glp);
 
         input.addTextChangedListener(new TextWatcher() {
@@ -90,15 +85,9 @@ public class KidsAdaptiveIdentityFragment extends KidsAdaptiveBaseOnboardingFrag
             @Override public void afterTextChanged(Editable s) {}
         });
 
-        // divider
-        android.view.View divider = new android.view.View(requireContext());
-        divider.setBackgroundColor(getResources().getColor(R.color.kids_adaptive_ink_10));
-        LinearLayout.LayoutParams dlp = matchWrap(); dlp.height = dp(1); dlp.topMargin = dp(2); dlp.bottomMargin = dp(2);
-        container.addView(divider, dlp);
-
         // Age question
-        TextView ageQ = KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_age_question), 16);
-        LinearLayout.LayoutParams aqlp = matchWrap(); aqlp.bottomMargin = dp(10);
+        TextView ageQ = KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_age_question), 17);
+        LinearLayout.LayoutParams aqlp = matchWrap(); aqlp.topMargin = dp(24); aqlp.bottomMargin = dp(16);
         container.addView(ageQ, aqlp);
 
         ageLabel = new TextView(requireContext());
@@ -107,13 +96,13 @@ public class KidsAdaptiveIdentityFragment extends KidsAdaptiveBaseOnboardingFrag
         ageLabel.setTextColor(getResources().getColor(R.color.kids_adaptive_ink));
         ageLabel.setGravity(Gravity.CENTER);
         ageLabel.setBackgroundResource(R.drawable.kids_adaptive_bg_age_label_pill);
-        int alPadH = dp(20), alPadV = dp(6);
+        int alPadH = dp(20), alPadV = dp(7);
         ageLabel.setPadding(alPadH, alPadV, alPadH, alPadV);
         LinearLayout centerWrap = new LinearLayout(requireContext());
         centerWrap.setGravity(Gravity.CENTER);
         centerWrap.addView(ageLabel, new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        LinearLayout.LayoutParams cwlp = matchWrap(); cwlp.bottomMargin = dp(10);
+        LinearLayout.LayoutParams cwlp = matchWrap(); cwlp.bottomMargin = dp(16);
         container.addView(centerWrap, cwlp);
 
         SeekBar seekBar = new SeekBar(requireContext());
@@ -121,7 +110,6 @@ public class KidsAdaptiveIdentityFragment extends KidsAdaptiveBaseOnboardingFrag
         seekBar.setProgress(data().ageRangeIndex != null ? data().ageRangeIndex : 2);
         seekBar.setProgressDrawable(getResources().getDrawable(R.drawable.kids_adaptive_progress_age_slider));
         seekBar.setThumb(getResources().getDrawable(R.drawable.kids_adaptive_thumb_age_slider));
-        // Force LTR track like the source (`direction: ltr` on the slider wrapper)
         seekBar.setLayoutDirection(android.view.View.LAYOUT_DIRECTION_LTR);
         updateAgeLabel(data().ageRangeIndex != null ? data().ageRangeIndex : 2);
         container.addView(seekBar, matchWrap());
@@ -138,8 +126,8 @@ public class KidsAdaptiveIdentityFragment extends KidsAdaptiveBaseOnboardingFrag
         });
 
         // Gender question
-        TextView genderQ = KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_gender_question), 16);
-        LinearLayout.LayoutParams gqlp = matchWrap(); gqlp.topMargin = dp(6); gqlp.bottomMargin = dp(10);
+        TextView genderQ = KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_gender_question), 17);
+        LinearLayout.LayoutParams gqlp = matchWrap(); gqlp.topMargin = dp(28); gqlp.bottomMargin = dp(16);
         container.addView(genderQ, gqlp);
 
         LinearLayout genderRow = new LinearLayout(requireContext());
@@ -156,42 +144,41 @@ public class KidsAdaptiveIdentityFragment extends KidsAdaptiveBaseOnboardingFrag
         male.setLabel(getString(R.string.kids_adaptive_gender_male));
         male.setSelectedState("male".equals(data().gender));
 
+        KidsAdaptiveGenderCardView other = new KidsAdaptiveGenderCardView(requireContext());
+        other.setSymbol("😶");
+        other.setLabel(getString(R.string.kids_adaptive_gender_unspecified));
+        other.setSelectedState("unspecified".equals(data().gender));
+
         female.setOnClickListener(v -> {
             data().gender = "female";
             female.setSelectedState(true);
             male.setSelectedState(false);
+            other.setSelectedState(false);
             host.pulseTeddy();
         });
         male.setOnClickListener(v -> {
             data().gender = "male";
             male.setSelectedState(true);
             female.setSelectedState(false);
+            other.setSelectedState(false);
             host.pulseTeddy();
         });
-
-        LinearLayout.LayoutParams flp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        flp.setMarginEnd(dp(14));
-        genderRow.addView(female, flp);
-        genderRow.addView(male, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        container.addView(genderRow, matchWrap());
-
-        TextView unspecified = new TextView(requireContext());
-        boolean isUnspecified = "unspecified".equals(data().gender);
-        unspecified.setText(isUnspecified ? getString(R.string.kids_adaptive_gender_unspecified_selected) : getString(R.string.kids_adaptive_gender_unspecified));
-        unspecified.setTextColor(getResources().getColor(R.color.kids_adaptive_ink));
-        unspecified.setAlpha(0.6f);
-        unspecified.setTextSize(14);
-        unspecified.setPadding(dp(6), dp(6), dp(6), dp(6));
-        unspecified.setGravity(Gravity.CENTER);
-        LinearLayout.LayoutParams ulp = matchWrap(); ulp.topMargin = dp(4);
-        unspecified.setOnClickListener(v -> {
+        other.setOnClickListener(v -> {
             data().gender = "unspecified";
+            other.setSelectedState(true);
             female.setSelectedState(false);
             male.setSelectedState(false);
-            unspecified.setText(getString(R.string.kids_adaptive_gender_unspecified_selected));
             host.pulseTeddy();
         });
-        container.addView(unspecified, ulp);
+
+        LinearLayout.LayoutParams flp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
+        int m = dp(8);
+        flp.setMargins(m, 0, m, 0);
+        
+        genderRow.addView(female, flp);
+        genderRow.addView(male, flp);
+        genderRow.addView(other, flp);
+        container.addView(genderRow, matchWrap());
     }
 
     private void updateGreeting(String text) {

@@ -50,13 +50,13 @@ public class IdentityFragment extends BaseScreenFragment {
         nicknameInput.setHintTextColor(Color.argb(120, 33, 27, 51)); // Dark hint (Ink alpha)
         nicknameInput.setTextColor(com.example.graduationproject.AdultOnboardingAppData.INK); // Dark text
         nicknameInput.setGravity(Gravity.CENTER);
-        nicknameInput.setTextSize(18); // Slightly bigger
+        nicknameInput.setTextSize(16); // Thinner/Smaller text
         nicknameInput.setBackgroundResource(com.example.graduationproject.R.drawable.bg_input_field);
-        nicknameInput.setPadding(dp(16), dp(18), dp(16), dp(18)); // More padding
+        nicknameInput.setPadding(dp(16), dp(12), dp(16), dp(12)); // Reduced vertical padding
         nicknameInput.setSingleLine(true);
         nicknameInput.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.tajawal(true));
         if (data.nickname != null) nicknameInput.setText(data.nickname);
-        addToContent(content, nicknameInput, 14);
+        addToContent(content, nicknameInput, 10); // Reduced margin top
 
         greeting = new TextView(requireContext());
         greeting.setTextColor(AdultOnboardingAppData.CREAM);
@@ -75,26 +75,20 @@ public class IdentityFragment extends BaseScreenFragment {
             @Override public void afterTextChanged(Editable s) {}
         });
 
-        View divider = new View(requireContext());
-        divider.setBackgroundColor(Color.argb(31, 255, 255, 255));
-        LinearLayout.LayoutParams divLp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, dp(1));
-        divLp.topMargin = dp(10);
-        content.addView(divider, divLp);
-
         TextView ageHeading = new TextView(requireContext());
         ageHeading.setText(R.string.adaptive_adult_onboarding_identity_age_title);
         ageHeading.setTextColor(AdultOnboardingAppData.CREAM);
         ageHeading.setTextSize(15.5f);
         ageHeading.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.cairo(true));
         ageHeading.setGravity(Gravity.CENTER);
-        addToContent(content, ageHeading, 28);
+        addToContent(content, ageHeading, 20);
 
         AgeRangeSliderView ageSlider = new AgeRangeSliderView(requireContext());
         ageSlider.setIndex(data.ageRangeIndex != null ? data.ageRangeIndex : AdultOnboardingAppData.AGE_BRACKETS.length / 2);
         ageSlider.setOnAgeChange(idx -> {
             data.ageRangeIndex = idx;
         });
-        addToContent(content, ageSlider, 10);
+        addToContent(content, ageSlider, 8);
 
         TextView genderHeading = new TextView(requireContext());
         genderHeading.setText(R.string.adaptive_adult_onboarding_identity_gender_title);
@@ -102,14 +96,14 @@ public class IdentityFragment extends BaseScreenFragment {
         genderHeading.setTextSize(15.5f);
         genderHeading.setTypeface(com.example.graduationproject.AdultOnboardingUiUtils.cairo(true));
         genderHeading.setGravity(Gravity.CENTER);
-        addToContent(content, genderHeading, 14);
+        addToContent(content, genderHeading, 12);
 
         GenderPickerView genderPicker = new GenderPickerView(requireContext());
         genderPicker.setValueSilently(data.gender);
         genderPicker.setOnGenderChange(g -> {
             data.gender = g;
         });
-        addToContent(content, genderPicker, 10);
+        addToContent(content, genderPicker, 8);
     }
 
     private void updateGreeting() {
@@ -124,10 +118,13 @@ public class IdentityFragment extends BaseScreenFragment {
 
     @Override
     protected void populateFooter(LayoutInflater inflater, ViewGroup footer) {
-        footer.addView(Widgets.primaryButton(requireContext(), getString(R.string.adaptive_adult_onboarding_continue), false, () -> {
-            data.nickname = nicknameInput.getText().toString();
-            data.nicknameProvided = !data.nickname.trim().isEmpty();
-            host.goNext();
-        }));
+        footer.addView(Widgets.footerButtons(requireContext(), 
+                getString(R.string.adaptive_adult_onboarding_continue), 
+                () -> {
+                    data.nickname = nicknameInput.getText().toString();
+                    data.nicknameProvided = !data.nickname.trim().isEmpty();
+                    host.goNext();
+                }, 
+                () -> host.goBack()));
     }
 }

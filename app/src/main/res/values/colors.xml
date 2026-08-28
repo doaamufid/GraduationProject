@@ -316,7 +316,7 @@
     <color name="card_bg_08">#14FFFFFF</color>
     <color name="card_bg_10">#1AFFFFFF</color>
     <color name="overlay_dark">#8C000000</color>
-    <color name="badge_text">#0D1F33</color>
+    <color name="badge_text">#FFFFFF</color>
 
     <color name="bgAlt">#EAF0F6</color>
     <color name="primaryDark">#1F3A60</color>
@@ -474,5 +474,11 @@
     <color name="kids_adaptive_home_bg_from">#FFF3D6</color>
     <color name="kids_adaptive_home_bg_to">#FFD9A0</color>
     <color name="kids_adaptive_root_bg">#FFE9C4</color>
+
+    <!-- AI Feature Colors -->
+    <color name="ai_orb_text">#FFFFFF</color>
+    <color name="ai_bg_start">#1F3A60</color>
+    <color name="ai_bg_end">#2B2140</color>
+    <color name="ai_chip_bg">#1AFFFFFF</color>
 
 </resources>

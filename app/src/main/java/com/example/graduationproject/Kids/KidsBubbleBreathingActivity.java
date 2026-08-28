@@ -53,6 +53,19 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
+
+        // Match status bar and navigation bar with screen color (#FAF1E6)
+        android.view.Window window = getWindow();
+        window.addFlags(android.view.WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(android.graphics.Color.parseColor("#FAF1E6"));
+        window.setNavigationBarColor(android.graphics.Color.parseColor("#FAF1E6"));
+
+        androidx.core.view.WindowInsetsControllerCompat controller = androidx.core.view.WindowCompat.getInsetsController(window, window.getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
+
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
         binding = ActivityKidsBubbleBreathingBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());

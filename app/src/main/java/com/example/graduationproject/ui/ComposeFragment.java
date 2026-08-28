@@ -207,7 +207,7 @@ public class ComposeFragment extends Fragment {
         emojiOpen = !emojiOpen;
         emojiChevron.animate().rotation(emojiOpen ? 180f : 0f).setDuration(300).start();
 
-        int targetHeight = emojiOpen ? dpToPx(170) : 0;
+        int targetHeight = emojiOpen ? dpToPx(200) : 0;
         if (emojiOpen) {
             emojiFold.getChildAt(0).startAnimation(android.view.animation.AnimationUtils.loadAnimation(requireContext(), R.anim.slide_up_fade));
         }

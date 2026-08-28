@@ -26,7 +26,7 @@ public class KidsAdaptivePreviewFragment extends KidsAdaptiveBaseOnboardingFragm
 
     @Override
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
-        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(4); tlp.bottomMargin = dp(4);
+        LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(20); tlp.bottomMargin = dp(16);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_preview_title), 20), tlp);
 
         List<Card> cards = buildPreview();
@@ -35,37 +35,37 @@ public class KidsAdaptivePreviewFragment extends KidsAdaptiveBaseOnboardingFragm
             row.setOrientation(LinearLayout.HORIZONTAL);
             row.setGravity(Gravity.CENTER_VERTICAL);
             row.setBackgroundResource(R.drawable.kids_adaptive_bg_card_white);
-            int padH = dp(14), padV = dp(13);
+            int padH = dp(16), padV = dp(18);
             row.setPadding(padH, padV, padH, padV);
-            LinearLayout.LayoutParams rlp = matchWrap(); rlp.topMargin = dp(6);
+            LinearLayout.LayoutParams rlp = matchWrap(); rlp.topMargin = dp(12);
             container.addView(row, rlp);
 
             TextView emojiCircle = new TextView(requireContext());
             emojiCircle.setText(c.emoji);
-            emojiCircle.setTextSize(19);
+            emojiCircle.setTextSize(20);
             emojiCircle.setGravity(Gravity.CENTER);
             emojiCircle.setBackgroundResource(R.drawable.kids_adaptive_bg_bubble_selected);
-            LinearLayout.LayoutParams ep = new LinearLayout.LayoutParams(dp(42), dp(42));
-            ep.setMarginEnd(dp(12));
+            LinearLayout.LayoutParams ep = new LinearLayout.LayoutParams(dp(44), dp(44));
+            ep.setMarginEnd(dp(14));
             row.addView(emojiCircle, ep);
 
             TextView text = new TextView(requireContext());
             text.setText(c.text);
-            text.setTextSize(13.5f);
+            text.setTextSize(14f);
             text.setTypeface(KidsAdaptiveTypefaces.body(requireContext()));
             text.setTextColor(getResources().getColor(R.color.kids_adaptive_ink));
-            text.setLineSpacing(0f, 1.5f);
+            text.setLineSpacing(0f, 1.55f);
             LinearLayout.LayoutParams txp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             row.addView(text, txp);
 
             if (c.jump != null) {
                 TextView edit = new TextView(requireContext());
                 edit.setText(getString(R.string.kids_adaptive_preview_edit));
-                edit.setTextSize(11.5f);
+                edit.setTextSize(12f);
                 edit.setPaintFlags(edit.getPaintFlags() | android.graphics.Paint.UNDERLINE_TEXT_FLAG);
                 edit.setTextColor(getResources().getColor(R.color.kids_adaptive_ink));
-                edit.setAlpha(0.55f);
-                edit.setPadding(dp(6), dp(2), 0, dp(2));
+                edit.setAlpha(0.6f);
+                edit.setPadding(dp(8), dp(4), 0, dp(4));
                 final int jump = c.jump;
                 edit.setOnClickListener(v -> host.goTo(jump));
                 row.addView(edit, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
@@ -74,17 +74,18 @@ public class KidsAdaptivePreviewFragment extends KidsAdaptiveBaseOnboardingFragm
 
         TextView footnote = new TextView(requireContext());
         footnote.setText(getString(R.string.kids_adaptive_preview_footnote));
-        footnote.setTextSize(11.5f);
+        footnote.setTextSize(12f);
         footnote.setTypeface(KidsAdaptiveTypefaces.body(requireContext()));
         footnote.setTextColor(getResources().getColor(R.color.kids_adaptive_ink));
-        footnote.setAlpha(0.6f);
+        footnote.setAlpha(0.65f);
         footnote.setBackgroundResource(R.drawable.kids_adaptive_bg_footnote_pill);
-        int fpH = dp(16), fpV = dp(7);
+        int fpH = dp(18), fpV = dp(8);
         footnote.setPadding(fpH, fpV, fpH, fpV);
         LinearLayout centerWrap = new LinearLayout(requireContext());
         centerWrap.setGravity(Gravity.CENTER);
-        centerWrap.addView(footnote, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
-        LinearLayout.LayoutParams fwlp = matchWrap(); fwlp.topMargin = dp(4);
+        centerWrap.addView(footnote, new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        LinearLayout.LayoutParams fwlp = matchWrap(); fwlp.topMargin = dp(20);
         container.addView(centerWrap, fwlp);
     }
 

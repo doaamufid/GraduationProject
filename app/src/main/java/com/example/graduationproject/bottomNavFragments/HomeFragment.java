@@ -63,6 +63,7 @@ public class HomeFragment extends Fragment {
         View cardCalm = view.findViewById(R.id.cardCalm);
         View cardBreathing = view.findViewById(R.id.cardBreathing);
         View btnNotifications = view.findViewById(R.id.btnNotifications);
+        View btnSwitchSection = view.findViewById(R.id.btnSwitchSection);
 
         SharedPreferences prefs = requireContext().getSharedPreferences("UserPrefs", android.content.Context.MODE_PRIVATE);
         String userName = prefs.getString("user_name", "");
@@ -84,6 +85,12 @@ public class HomeFragment extends Fragment {
             } catch (ClassNotFoundException e) {
                 // Fallback if not found
             }
+        });
+
+        btnSwitchSection.setOnClickListener(v -> {
+            Intent intent = new Intent(getActivity(), com.example.graduationproject.SplashSelectActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         });
 
         // Keep wave animation
@@ -116,27 +123,41 @@ public class HomeFragment extends Fragment {
         int todayMoodColor = appPrefs.getInt("today_mood_color", 0xFFEAEEF3); // Default neutral
 
         Calendar cal = Calendar.getInstance();
-        int currentDayOfWeek = cal.get(Calendar.DAY_OF_WEEK); // Sunday = 1, Monday = 2...
-
-        SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", Locale.getDefault());
+        int todayDate = cal.get(Calendar.DAY_OF_YEAR);
+        
+        // Start from Sunday of the current week
         Calendar tempCal = (Calendar) cal.clone();
         tempCal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
         
-        // Mock data for other days to match image
-        int[] mockMoodColors = {0xFFDEF3EF, 0xFFFCF0C6, 0xFFDEF3E0, 0xFFF8DCDA, 0, 0, 0};
-        int[] mockMoodIcons = {R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, 0, 0, 0};
+        // Simulating some past moods to match the design style
+        int[] mockMoodColors = {0xFFDEF3EF, 0xFFFCF0C6, 0xFFDEF3E0, 0xFFF8DCDA, 0xFFDEF3EF, 0, 0};
+        int[] mockMoodIcons = {R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, 0, 0};
+
+        SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", new Locale("ar"));
 
         for (int i = 0; i < 7; i++) {
-            int dayIndex = (i + 1); // 1-7
-            boolean isToday = (dayIndex == currentDayOfWeek);
+            int dateVal = tempCal.get(Calendar.DAY_OF_MONTH);
+            int dayOfYear = tempCal.get(Calendar.DAY_OF_YEAR);
+            boolean isToday = (dayOfYear == todayDate);
             
             String dayName = dayFormat.format(tempCal.getTime());
-            String date = String.valueOf(tempCal.get(Calendar.DAY_OF_MONTH));
+            String dateStr = String.valueOf(dateVal);
             
-            int icon = isToday && !todayMoodId.isEmpty() ? R.drawable.ic_smile : mockMoodIcons[i];
-            int color = isToday && !todayMoodId.isEmpty() ? todayMoodColor : mockMoodColors[i];
+            int icon = 0;
+            int color = 0;
 
-            moodDays.add(new MoodDay(dayName, date, icon, color, isToday));
+            if (isToday) {
+                if (!todayMoodId.isEmpty()) {
+                    icon = R.drawable.ic_smile;
+                    color = todayMoodColor;
+                }
+            } else if (tempCal.before(cal)) {
+                // For past days in this week, show some mock icons/colors if we don't have real data
+                icon = mockMoodIcons[i % mockMoodIcons.length];
+                color = mockMoodColors[i % mockMoodColors.length];
+            }
+
+            moodDays.add(new MoodDay(dayName, dateStr, icon, color, isToday));
             tempCal.add(Calendar.DAY_OF_MONTH, 1);
         }
 
@@ -144,8 +165,15 @@ public class HomeFragment extends Fragment {
         rvWeeklyMood.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         rvWeeklyMood.setAdapter(weeklyMoodAdapter);
         
-        // Scroll to current day if needed
-        rvWeeklyMood.scrollToPosition(currentDayOfWeek - 1);
+        // Scroll to current day
+        rvWeeklyMood.post(() -> {
+            for (int i = 0; i < moodDays.size(); i++) {
+                if (moodDays.get(i).isCurrentDay()) {
+                    rvWeeklyMood.scrollToPosition(i);
+                    break;
+                }
+            }
+        });
     }
 
     private void setupFeatures() {

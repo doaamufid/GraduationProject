@@ -11,6 +11,9 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.DialogFragment;
 
 import com.example.graduationproject.R;
@@ -56,6 +59,12 @@ public class AnalysisResultDialogFragment extends DialogFragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                               @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_analysis_result, container, false);
+
+        ViewCompat.setOnApplyWindowInsetsListener(root.findViewById(R.id.analysis_root), (v, insets) -> {
+            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+            return insets;
+        });
 
         OldConversation data = StrengthsRepository.getInstance(requireContext()).oldConversation;
 

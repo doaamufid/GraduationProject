@@ -34,8 +34,22 @@ public class KidsTreeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
+        androidx.activity.EdgeToEdge.enable(this);
         binding = ActivityKidsTreeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Match status bar and navigation bar with screen color (#F4F8F3)
+        Window window = getWindow();
+        window.addFlags(android.view.WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(android.graphics.Color.parseColor("#F4F8F3"));
+        window.setNavigationBarColor(android.graphics.Color.parseColor("#F4F8F3"));
+
+        androidx.core.view.WindowInsetsControllerCompat controller = androidx.core.view.WindowCompat.getInsetsController(window, window.getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
 
         profileStore = new ChildProfileStore(this);
 

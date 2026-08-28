@@ -206,12 +206,12 @@ public class SceneView extends View {
         Paint scrimPaint = new Paint();
         scrimPaint.setShader(new LinearGradient(0, 0, 0, h,
                 new int[]{
-                        Color.parseColor("#22000000"),
+                        Color.parseColor("#44000000"),
                         Color.TRANSPARENT,
-                        Color.parseColor("#55000000"),
-                        Color.parseColor("#CC000000")
+                        Color.parseColor("#88000000"),
+                        Color.BLACK
                 },
-                new float[]{ 0f, 0.35f, 0.65f, 1f },
+                new float[]{ 0f, 0.3f, 0.6f, 1f },
                 Shader.TileMode.CLAMP));
         canvas.drawRect(0, 0, w, h, scrimPaint);
     }

@@ -5,8 +5,10 @@
         <item name="android:colorBackground">@color/bg</item>
         <item name="colorOnPrimary">@color/text_main</item>
         <item name="materialButtonStyle">@style/OutlinedButtonStyle</item>
-        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:layoutDirection">rtl</item>
         <item name="android:textDirection">rtl</item>
     </style>
@@ -17,11 +19,15 @@
         <item name="android:windowBackground">@color/bg_cream</item>
         <item name="android:statusBarColor">@color/bg_cream</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/bg_cream</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
     </style>
     <style name="Theme.DrawWithNoor" parent="Theme.MaterialComponents.Light.NoActionBar">
         <item name="android:windowBackground">@color/bg_cream</item>
         <item name="android:statusBarColor">@color/bg_cream</item>
         <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/bg_cream</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="colorPrimary">@color/orange_primary</item>
         <item name="colorPrimaryDark">@color/orange_primary_dark</item>
         <item name="android:fontFamily">sans-serif</item>
@@ -66,6 +72,7 @@
         <item name="colorAccent">@color/primary_light</item>
         <item name="android:windowBackground">@drawable/bg_app_gradient</item>
         <item name="android:statusBarColor">@color/grad_top</item>
+        <item name="android:navigationBarColor">@color/grad_bottom</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
     </style>
 
@@ -90,8 +97,10 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/primary</item>
         <item name="android:windowBackground">@color/bg</item>
-        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:layoutDirection">rtl</item>
         <item name="android:textDirection">rtl</item>
         <item name="android:textColorHint">@color/text_soft</item>
@@ -128,8 +137,10 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/primary</item>
         <item name="android:windowBackground">@color/bg</item>
-        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:layoutDirection">rtl</item>
         <item name="android:textDirection">rtl</item>
     </style>
@@ -141,6 +152,8 @@
         <item name="android:windowBackground">@color/profile_bg</item>
         <item name="android:statusBarColor">@color/profile_bg</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:navigationBarColor">@color/profile_bg</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:layoutDirection">rtl</item>
         <item name="android:textDirection">rtl</item>
         <item name="android:textColorHint">@color/text_soft</item>
@@ -206,8 +219,8 @@
         <item name="colorPrimaryDark">@color/grad_top</item>
         <item name="colorAccent">@color/primary_light</item>
         <item name="android:windowBackground">@drawable/bg_app_gradient</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:statusBarColor">@color/grad_top</item>
+        <item name="android:navigationBarColor">@color/grad_bottom</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
         <item name="android:textColorHint">@color/text_soft</item>
     </style>
@@ -231,17 +244,20 @@
         <item name="colorPrimary">@color/design_default_color_primary</item>
         <item name="android:windowBackground">@color/screen_bg</item>
         <item name="android:statusBarColor" tools:targetApi="21">@color/screen_bg</item>
+        <item name="android:navigationBarColor">@color/screen_bg</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">false</item>
         <!-- See res/font/README.txt to swap this for the exact "Cairo" font -->
         <item name="android:fontFamily">sans-serif</item>
     </style>
-    <style name="Theme.CBTReframing" parent="Theme.MaterialComponents.DayNight.NoActionBar">
-        <item name="android:windowBackground">@color/black_bg</item>
+    <style name="Theme.CBTReframing" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowBackground">@color/bg</item>
         <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/grad_top</item>
+        <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/primary_light</item>
-        <item name="android:statusBarColor">@color/grad_top</item>
-        <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
+        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:navigationBarColor">@color/bg</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:forceDarkAllowed" tools:targetApi="q">false</item>
         <item name="android:layoutDirection">rtl</item>
         <item name="android:textDirection">rtl</item>
@@ -252,7 +268,9 @@
         <item name="colorAccent">@color/primary</item>
         <item name="android:windowBackground">@color/outer_bg</item>
         <item name="android:statusBarColor" tools:targetApi="l">@color/outer_bg</item>
+        <item name="android:navigationBarColor">@color/outer_bg</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:fontFamily">sans-serif</item>
     </style>
     <style name="Theme.CalmApp" parent="Theme.MaterialComponents.DayNight.NoActionBar">
@@ -276,8 +294,10 @@
         <item name="colorPrimaryDark">@color/primary_dark</item>
         <item name="colorAccent">@color/primary</item>
         <item name="android:windowBackground">@color/bg</item>
-        <item name="android:statusBarColor">@color/bg</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:layoutDirection">rtl</item>
         <item name="android:textDirection">rtl</item>
         <item name="android:textColorHint">@color/text_soft</item>
@@ -288,7 +308,9 @@
         <item name="colorAccent">@color/kids_adaptive_coral</item>
         <item name="android:windowBackground">@color/kids_adaptive_root_bg</item>
         <item name="android:statusBarColor">@color/kids_adaptive_sun_soft</item>
+        <item name="android:navigationBarColor">@color/kids_adaptive_root_bg</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+        <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
     </style>
 
     <style name="kids_adaptive.Theme.SalamKids.Dialog" parent="Theme.MaterialComponents.Light.Dialog">

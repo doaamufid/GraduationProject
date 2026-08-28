@@ -41,11 +41,17 @@ public class WeeklyMoodAdapter extends RecyclerView.Adapter<WeeklyMoodAdapter.Vi
         if (item.getMoodIconRes() != 0) {
             holder.ivMoodIcon.setImageResource(item.getMoodIconRes());
             holder.cardMoodIcon.setCardBackgroundColor(item.getMoodColor());
-            holder.ivMoodIcon.setVisibility(View.VISIBLE);
+            holder.ivMoodIcon.setAlpha(1.0f);
+            holder.ivMoodIcon.setScaleX(1.0f);
+            holder.ivMoodIcon.setScaleY(1.0f);
         } else {
-            holder.ivMoodIcon.setVisibility(View.GONE);
-            holder.cardMoodIcon.setCardBackgroundColor(0xFFF5F5F5); // Neutral light gray
+            holder.ivMoodIcon.setImageResource(R.drawable.ic_lock);
+            holder.ivMoodIcon.setAlpha(0.2f); // Faded lock icon
+            holder.cardMoodIcon.setCardBackgroundColor(0x1A000000); // Very light gray transparent
+            holder.ivMoodIcon.setScaleX(0.7f); // Make lock a bit smaller
+            holder.ivMoodIcon.setScaleY(0.7f);
         }
+        holder.ivMoodIcon.setVisibility(View.VISIBLE);
 
         if (item.isCurrentDay()) {
             holder.itemView.setBackgroundResource(R.drawable.bg_mood_item_selected);

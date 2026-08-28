@@ -81,7 +81,7 @@ public class HealingEnvActivity extends AppCompatActivity {
             clockHandler.postDelayed(this, 60000L);
         }
     };
-    private ImageButton btnHeroPlayPause, btnPlayPause, btnPrev, btnNext;
+    private ImageButton btnHeroPlayPause, btnPlayPause, btnPrev, btnNext, btnFullscreen;
     private LinearLayout llEnvPicker, llLayers, llTimerChips;
     private androidx.cardview.widget.CardView cvActiveTimer;
     private TextView tvActiveEnvName, tvTimerRange;
@@ -136,6 +136,7 @@ public class HealingEnvActivity extends AppCompatActivity {
         btnPrev = findViewById(R.id.btnPrev);
         btnPlayPause = findViewById(R.id.btnPlayPause);
         btnNext = findViewById(R.id.btnNext);
+        btnFullscreen = findViewById(R.id.btnFullscreen);
         tvTimerStatus = findViewById(R.id.tvTimerStatus);
         tvEndedMessage = findViewById(R.id.tvEndedMessage);
 
@@ -159,6 +160,7 @@ public class HealingEnvActivity extends AppCompatActivity {
         btnPrev.setOnClickListener(v -> switchEnv(-1));
         btnNext.setOnClickListener(v -> switchEnv(1));
         btnStopActiveTimer.setOnClickListener(v -> stopTimerManually());
+        btnFullscreen.setOnClickListener(v -> openFullscreenPlayer());
         TapBounce.attach(btnPrev);
         TapBounce.attach(btnNext);
     }
@@ -326,6 +328,14 @@ public class HealingEnvActivity extends AppCompatActivity {
     private void renderStatusIndicator() {
         statusDot.setBackgroundResource(playing ? R.drawable.bg_status_dot_playing : R.drawable.bg_status_dot_paused);
         tvStatusLabel.setText(playing ? R.string.status_playing : R.string.status_paused);
+    }
+
+    private void openFullscreenPlayer() {
+        android.content.Intent intent = new android.content.Intent(this, HealingPlayerActivity.class);
+        intent.putExtra("env_idx", envIdx);
+        intent.putExtra("playing", playing);
+        intent.putExtra("elapsed", elapsed);
+        startActivity(intent);
     }
 
     private void togglePlaying() {

@@ -7,15 +7,15 @@ import android.widget.LinearLayout;
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.KidsAdaptiveOnboardingData;
 import com.example.graduationproject.util.KidsAdaptiveUiHelpers;
+import com.example.graduationproject.view.AdultOnboarding.FlowLayout;
 import com.example.graduationproject.widget.KidsAdaptiveEmotionBubbleView;
-import com.example.graduationproject.widget.KidsAdaptiveFlowLayout;
 
 public class KidsAdaptiveFrequentEmotionsFragment extends KidsAdaptiveBaseOnboardingFragment {
 
     private static final String[] IDS = {
             "tension", "fear", "sadness", "irritation", "anxiety", "terror", "loneliness", "exhaustion", "unsure", "okay"
     };
-    private static final String[] EMOJIS = {"😟", "😨", "😔", "😣", "😰", "😱", "😶", "😵", "🫥", "🌤"};
+    private static final String[] EMOJIS = {"\uD83D\uDE1F", "\uD83D\uDE28", "\uD83D\uDE14", "\uD83D\uDE16", "\uD83D\uDE30", "\uD83D\uDE31", "\uD83D\uDE36", "\uD83D\uDE35", "\uD83D\uDE36", "\uD83C\uDF24"};
 
     @Override public int getScreenIndex() { return 4; }
 
@@ -29,15 +29,19 @@ public class KidsAdaptiveFrequentEmotionsFragment extends KidsAdaptiveBaseOnboar
         };
 
         LinearLayout.LayoutParams tlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        tlp.topMargin = dp(4);
+        tlp.topMargin = dp(20);
+        tlp.bottomMargin = dp(10);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_emotions_title), 21), tlp);
-        container.addView(KidsAdaptiveUiHelpers.subtitle(requireContext(), getString(R.string.kids_adaptive_emotions_subtitle)),
-                new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT));
+        
+        LinearLayout.LayoutParams stlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        stlp.bottomMargin = dp(20);
+        container.addView(KidsAdaptiveUiHelpers.subtitle(requireContext(), getString(R.string.kids_adaptive_emotions_subtitle)), stlp);
 
-        KidsAdaptiveFlowLayout flow = new KidsAdaptiveFlowLayout(requireContext());
-        flow.setSpacing(dp(12), dp(12));
+        FlowLayout flow = new FlowLayout(requireContext());
+        flow.setSpacing(dp(18), dp(18));
+        flow.setGravityCenter(true);
         LinearLayout.LayoutParams flp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        flp.topMargin = dp(4);
+        flp.topMargin = dp(12);
         container.addView(flow, flp);
 
         KidsAdaptiveOnboardingData data = data();
@@ -52,7 +56,7 @@ public class KidsAdaptiveFrequentEmotionsFragment extends KidsAdaptiveBaseOnboar
                 bubble.setSelectedState(data().frequentEmotions.contains(IDS[idx]));
                 host.pulseTeddy();
             });
-            flow.addView(bubble, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
+            flow.addView(bubble);
         }
     }
 }

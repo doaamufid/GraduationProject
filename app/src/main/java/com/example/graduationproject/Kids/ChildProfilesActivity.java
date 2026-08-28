@@ -1,17 +1,21 @@
 package com.example.graduationproject.Kids;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.graduationproject.MainActivity;
 import com.example.graduationproject.adapters.ChildProfilesAdapter;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityChildProfilesBinding;
@@ -30,9 +34,23 @@ public class ChildProfilesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        
         EdgeToEdge.enable(this);
         binding = ActivityChildProfilesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        // Match system bars with screen background (#FFF8EE)
+        Window window = getWindow();
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        window.setStatusBarColor(Color.parseColor("#FFF8EE"));
+        window.setNavigationBarColor(Color.parseColor("#FFF8EE"));
+
+        WindowInsetsControllerCompat controller = WindowCompat.getInsetsController(window, window.getDecorView());
+        if (controller != null) {
+            controller.setAppearanceLightStatusBars(true);
+            controller.setAppearanceLightNavigationBars(true);
+        }
+
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
         childProfileStore = new ChildProfileStore(this);
         childProfileStore.migrateFromSharedPreferencesIfNeeded(this);
@@ -51,7 +69,6 @@ public class ChildProfilesActivity extends AppCompatActivity {
         adapter = new ChildProfilesAdapter(profiles, new ChildProfilesAdapter.OnChildProfileClickListener() {
             @Override
             public void onProfileClick(ChildProfile profile) {
-                // Save current child ID for context maintenance
                 getSharedPreferences("KidsApp", MODE_PRIVATE).edit()
                         .putLong("current_child_id", profile.getId())
                         .apply();
@@ -80,7 +97,9 @@ public class ChildProfilesActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        childProfileStore.close();
+        if (childProfileStore != null) {
+            childProfileStore.close();
+        }
         super.onDestroy();
     }
 
@@ -98,5 +117,4 @@ public class ChildProfilesActivity extends AppCompatActivity {
             });
         });
     }
-
 }

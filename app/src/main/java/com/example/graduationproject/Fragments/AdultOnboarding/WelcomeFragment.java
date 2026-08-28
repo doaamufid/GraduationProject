@@ -14,6 +14,7 @@ import com.example.graduationproject.view.AdultOnboarding.Widgets;
 public class WelcomeFragment extends BaseScreenFragment {
     @Override protected int getScreenIndex() { return 0; }
     @Override protected boolean showSkip() { return false; }
+    @Override protected boolean showShellCompanion() { return false; }
     @Override protected String getCompanionMood() { return CompanionView.MOOD_NEUTRAL; }
 
     @Override
@@ -24,7 +25,7 @@ public class WelcomeFragment extends BaseScreenFragment {
         CompanionView big = new CompanionView(requireContext());
         big.setReducedMotion(host.isReducedMotion());
         big.setMood(CompanionView.MOOD_NEUTRAL);
-        addToContent(content, big, 20, dp(120)); // Bigger
+        addToContent(content, big, 40, dp(150)); // Moved down a bit
 
         androidx.appcompat.widget.AppCompatTextView title = new androidx.appcompat.widget.AppCompatTextView(requireContext());
         title.setText(R.string.adaptive_adult_onboarding_welcome_title);
