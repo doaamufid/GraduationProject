@@ -63,6 +63,10 @@ public class VideoContentListFragment extends Fragment implements ContentAdapter
         ImageButton rightIcon = new ImageButton(requireContext());
         rightIcon.setBackgroundResource(R.drawable.bg_icon_button);
         rightIcon.setImageResource(isFav ? R.drawable.ic_heart : R.drawable.ic_bookmark);
+        if (!isFav) {
+            rightIcon.setImageTintList(android.content.res.ColorStateList.valueOf(
+                androidx.core.content.ContextCompat.getColor(requireContext(), R.color.text_main)));
+        }
         int pad = dp(8);
         rightIcon.setPadding(pad, pad, pad, pad);
         rightIcon.setLayoutParams(new ViewGroup.LayoutParams(dp(34), dp(34)));

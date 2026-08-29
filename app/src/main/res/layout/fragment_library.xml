@@ -27,7 +27,8 @@
             android:layout_centerVertical="true"
             android:background="@drawable/bg_circle_surface"
             android:padding="8dp"
-            android:src="@drawable/outline_arrow_forward_24"
+            android:src="@drawable/baseline_arrow_back_24"
+            app:tint="@color/text"
             android:contentDescription="@string/cd_back" />
 
         <LinearLayout
@@ -79,6 +80,7 @@
                 android:background="@drawable/bg_circle_surface"
                 android:padding="11dp"
                 android:src="@drawable/ic_bookmark"
+                app:tint="@color/text"
                 android:contentDescription="@string/content_desc_bookmark" />
         </LinearLayout>
     </RelativeLayout>

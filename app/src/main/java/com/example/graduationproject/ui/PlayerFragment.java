@@ -54,7 +54,8 @@ public class PlayerFragment extends Fragment {
     private boolean saved = false;
     private boolean showWhy = false;
 
-    private ImageButton btnSaveTop, btnLike, btnDislike;
+    private ImageButton btnLike, btnDislike;
+    private ImageButton btnFavTop, btnBookmarkTop;
     private LinearLayout groupReasons, btnWhy, llSuggestions;
     private FlexboxLayout flexReasons;
     private TextView tvWhyReason, tvContinueWatchingLabel;
@@ -76,23 +77,27 @@ public class PlayerFragment extends Fragment {
 
         toastController = new ToastController(root.findViewById(R.id.toastHost));
 
-        // Bookmark toggle button placed in the top bar's right slot.
-        btnSaveTop = new ImageButton(requireContext());
-        btnSaveTop.setBackgroundResource(R.drawable.bg_icon_button);
-        btnSaveTop.setImageResource(R.drawable.ic_bookmark_outline);
-        int pad = dp(11);
-        btnSaveTop.setPadding(pad, pad, pad, pad);
-        btnSaveTop.setLayoutParams(new ViewGroup.LayoutParams(dp(40), dp(40)));
-        btnSaveTop.setOnClickListener(v -> {
-            saved = !saved;
-            renderSaveButton();
-        });
-
         TopBarHelper.bind(root, getString(R.string.player_title), null,
                 () -> {
                     if (getActivity() != null) getActivity().onBackPressed();
-                }, btnSaveTop);
-        renderSaveButton();
+                }, null);
+
+        View topBar = root.findViewById(R.id.topBar);
+        btnFavTop = topBar.findViewById(R.id.btnFavTop);
+        btnBookmarkTop = topBar.findViewById(R.id.btnBookmarkTop);
+        topBar.findViewById(R.id.layoutTopActions).setVisibility(View.VISIBLE);
+
+        btnFavTop.setOnClickListener(v -> {
+            AppState.get().toggleContentSaved(item.id);
+            renderActionButtons();
+        });
+
+        btnBookmarkTop.setOnClickListener(v -> {
+            AppState.get().toggleContentBookmarked(item.id);
+            renderActionButtons();
+        });
+
+        renderActionButtons();
 
         setupVideoAspectRatio(root);
         setupWebView(root);
@@ -198,8 +203,13 @@ public class PlayerFragment extends Fragment {
         tvSrc.setText(item.src);
     }
 
-    private void renderSaveButton() {
-        btnSaveTop.setImageResource(saved ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
+    private void renderActionButtons() {
+        if (item == null) return;
+        boolean isFav = AppState.get().isContentSaved(item.id);
+        btnFavTop.setImageResource(isFav ? R.drawable.ic_heart : R.drawable.ic_heart_outline);
+        
+        boolean isBookmarked = AppState.get().isContentBookmarked(item.id);
+        btnBookmarkTop.setImageResource(isBookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
     }
 
     // ===================== FEEDBACK LOGIC =====================

@@ -30,6 +30,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
 
     public interface Listener {
         void onOpen(ContentItem item);
+        void onToggleFavorite(ContentItem item);
+        void onToggleBookmark(ContentItem item);
     }
 
     private final List<ContentItem> items = new ArrayList<>();
@@ -81,15 +83,33 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
             holder.tvAuthorInitial.setText(String.valueOf(item.src.trim().charAt(0)));
         }
 
-        // 5. Pulse Animation
+        // 5. Favorite & Bookmark States (NEW)
+        com.example.graduationproject.data.AppState state = com.example.graduationproject.data.AppState.get();
+        boolean isFav = state.isContentSaved(item.id);
+        holder.btnFavorite.setImageResource(isFav ? R.drawable.ic_heart : R.drawable.ic_heart_outline);
+        
+        boolean isBookmarked = state.isContentBookmarked(item.id);
+        holder.btnBookmark.setImageResource(isBookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
+
+        // 6. Pulse Animation
         startPulseAnimation(holder.vPulse1, 0);
         startPulseAnimation(holder.vPulse2, 1000);
 
-        // Click listener
+        // Click listeners
         holder.itemView.setOnClickListener(v -> {
             Animation press = AnimationUtils.loadAnimation(v.getContext(), R.anim.card_press);
             v.startAnimation(press);
             v.postDelayed(() -> listener.onOpen(item), 90);
+        });
+
+        holder.btnFavorite.setOnClickListener(v -> {
+            listener.onToggleFavorite(item);
+            notifyItemChanged(holder.getAdapterPosition());
+        });
+
+        holder.btnBookmark.setOnClickListener(v -> {
+            listener.onToggleBookmark(item);
+            notifyItemChanged(holder.getAdapterPosition());
         });
 
         // Entrance animation
@@ -132,6 +152,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
     static class VH extends RecyclerView.ViewHolder {
         ImageView ivCardBackground;
         TextView tvBrandLogo, tvDate, tvMainTitle, tvSubTitle, tvAuthorInitial;
+        android.widget.ImageButton btnFavorite, btnBookmark;
         View vPulse1, vPulse2;
 
         VH(@NonNull View itemView) {
@@ -142,6 +163,8 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
             tvMainTitle = itemView.findViewById(R.id.tvMainTitle);
             tvSubTitle = itemView.findViewById(R.id.tvSubTitle);
             tvAuthorInitial = itemView.findViewById(R.id.tvAuthorInitial);
+            btnFavorite = itemView.findViewById(R.id.btnFavorite);
+            btnBookmark = itemView.findViewById(R.id.btnBookmark);
             vPulse1 = itemView.findViewById(R.id.vPulse1);
             vPulse2 = itemView.findViewById(R.id.vPulse2);
         }

@@ -18,7 +18,7 @@
             android:layout_height="34dp"
             android:layout_gravity="start|center_vertical"
             android:background="@drawable/bg_icon_button"
-            android:src="@drawable/outline_arrow_forward_24"
+            android:src="@drawable/baseline_arrow_back_24"
             android:padding="8dp"
             app:tint="@color/text_main"
             android:contentDescription="@null"/>
@@ -34,7 +34,7 @@
                 android:id="@+id/tvTopBarTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_white"
+                android:textColor="@color/text_main"
                 android:textStyle="bold"
                 android:textSize="14sp"
                 tools:text="صندوق الطوارئ"/>
@@ -43,7 +43,7 @@
                 android:id="@+id/tvTopBarSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_soft_white"
+                android:textColor="@color/text_soft"
                 android:textSize="10sp"
                 android:visibility="gone"
                 tools:text="Listen · استمع"
@@ -56,7 +56,38 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|center_vertical"
             android:minWidth="34dp"
-            android:minHeight="34dp"/>
+            android:minHeight="34dp">
+
+            <LinearLayout
+                android:id="@+id/layoutTopActions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:visibility="gone"
+                tools:visibility="visible">
+
+                <ImageButton
+                    android:id="@+id/btnFavTop"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_heart_outline"
+                    app:tint="@color/text_main" />
+
+                <ImageButton
+                    android:id="@+id/btnBookmarkTop"
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_icon_button"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_bookmark_outline"
+                    app:tint="@color/text_main" />
+            </LinearLayout>
+        </FrameLayout>
 
     </FrameLayout>
 </merge>

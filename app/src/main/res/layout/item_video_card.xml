@@ -48,6 +48,40 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Action Buttons (Top Left) -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginStart="12dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/btnFavorite"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/bg_video_tag_pill"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_heart_outline"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="@null" />
+
+                <ImageButton
+                    android:id="@+id/btnBookmark"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:layout_marginStart="6dp"
+                    android:background="@drawable/bg_video_tag_pill"
+                    android:padding="7dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/ic_bookmark_outline"
+                    app:tint="#FFFFFF"
+                    android:contentDescription="@null" />
+            </LinearLayout>
+
             <!-- Centered Play Button Area with Pulse Rings -->
             <FrameLayout
                 android:id="@+id/playContainer"
