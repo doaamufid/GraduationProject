@@ -609,4 +609,6 @@
     <color name="my_future_msg_text_main">#3B3025</color>
     <color name="my_future_msg_text_soft">#8A7C6D</color>
     <color name="my_future_msg_white">#FFFFFF</color>
+    <color name="kids_mood_text_dark">#0F172A</color>
+    <color name="kids_mood_default_background">#FCE6D2</color>
 </resources>
