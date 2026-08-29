@@ -45,6 +45,8 @@ public class KidsAdaptiveOverallMoodFragment extends KidsAdaptiveBaseOnboardingF
             cards[i] = card;
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.topMargin = dp(20);
+            lp.leftMargin = dp(36);
+            lp.rightMargin = dp(36);
             container.addView(card, lp);
         }
 

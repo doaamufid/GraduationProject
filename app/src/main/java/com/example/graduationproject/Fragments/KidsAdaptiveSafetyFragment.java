@@ -48,7 +48,10 @@ public class KidsAdaptiveSafetyFragment extends KidsAdaptiveBaseOnboardingFragme
                 for (int j = 0; j < cards.length; j++) cards[j].setSelectedState(j == idx);
             });
             cards[i] = card;
-            LinearLayout.LayoutParams lp = matchWrap(); lp.topMargin = dp(14);
+            LinearLayout.LayoutParams lp = matchWrap();
+            lp.topMargin = dp(14);
+            lp.leftMargin = dp(36);
+            lp.rightMargin = dp(36);
             container.addView(card, lp);
         }
     }

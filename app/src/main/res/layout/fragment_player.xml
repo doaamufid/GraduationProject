@@ -29,7 +29,8 @@
                 android:layout_height="220dp"
                 android:layout_marginStart="20dp"
                 android:layout_marginEnd="20dp"
-                android:layout_marginBottom="32dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="24dp"
                 app:cardCornerRadius="28dp"
                 app:cardElevation="16dp"
                 app:cardBackgroundColor="#000000"
@@ -98,7 +99,7 @@
                     android:gravity="start"
                     android:textColor="@color/text_main"
                     android:textStyle="bold"
-                    android:textSize="24sp"
+                    android:textSize="26sp"
                     android:fontFamily="sans-serif-black"
                     tools:text="كيف تتعامل مع القلق؟"/>
 
@@ -108,8 +109,8 @@
                     android:layout_height="wrap_content"
                     android:gravity="start"
                     android:textColor="@color/text_soft"
-                    android:textSize="15sp"
-                    android:layout_marginTop="6dp"
+                    android:textSize="17sp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginBottom="24dp"
                     tools:text="منهج الصحة النفسية"/>
 
@@ -132,7 +133,7 @@
                         android:text="@string/feedback_question_content"
                         android:textColor="@color/text_soft"
                         android:textStyle="bold"
-                        android:textSize="12sp"/>
+                        android:textSize="14sp"/>
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -210,7 +211,7 @@
                         android:text="@string/why_suggested_content"
                         android:textColor="@color/sage"
                         android:textStyle="bold"
-                        android:textSize="12sp"/>
+                        android:textSize="14sp"/>
 
                     <ImageView
                         android:layout_width="16dp"
@@ -245,7 +246,7 @@
                         android:text="@string/continue_watching"
                         android:textColor="@color/text_main"
                         android:textStyle="bold"
-                        android:textSize="12sp"
+                        android:textSize="14sp"
                         android:gravity="end"
                         android:layout_marginBottom="8dp"
                         android:visibility="gone"/>

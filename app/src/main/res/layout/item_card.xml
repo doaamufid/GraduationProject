@@ -76,23 +76,25 @@
 
         <ImageButton
             android:id="@+id/btnEdit"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="@drawable/bg_circle_white"
+            app:backgroundTint="@color/white"
             android:src="@android:drawable/ic_menu_edit"
             app:tint="@color/text_soft"
-            android:padding="7dp"
+            android:padding="13dp"
             android:contentDescription="@string/edit_desc"/>
 
         <ImageButton
             android:id="@+id/btnDelete"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/bg_circle_white"
+            app:backgroundTint="@color/white"
             android:src="@android:drawable/ic_menu_delete"
             app:tint="@color/text_soft"
-            android:padding="7dp"
+            android:padding="13dp"
             android:contentDescription="@string/delete_desc"/>
     </LinearLayout>
 
@@ -106,22 +108,24 @@
 
         <ImageButton
             android:id="@+id/btnConfirmDelete"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:background="@drawable/bg_circle_white"
+            app:backgroundTint="@color/white"
             android:src="@android:drawable/ic_menu_send"
             app:tint="@color/text_soft"
-            android:padding="8dp"/>
+            android:padding="13dp"/>
 
         <ImageButton
             android:id="@+id/btnCancelDelete"
-            android:layout_width="28dp"
-            android:layout_height="28dp"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
             android:layout_marginStart="8dp"
             android:background="@drawable/bg_circle_white"
+            app:backgroundTint="@color/white"
             android:src="@android:drawable/ic_menu_close_clear_cancel"
             app:tint="@color/text_soft"
-            android:padding="8dp"/>
+            android:padding="13dp"/>
     </LinearLayout>
 
 </LinearLayout>

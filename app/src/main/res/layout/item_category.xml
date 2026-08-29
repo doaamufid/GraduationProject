@@ -29,7 +29,7 @@
             android:layout_margin="1.5dp"
             android:background="@drawable/bg_circle_bordered"
             android:gravity="center"
-            android:textSize="24sp"
+            android:textSize="26sp"
             tools:text="🌟" />
     </FrameLayout>
 
@@ -39,7 +39,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
         android:textStyle="bold"
-        android:textSize="12sp"
+        android:textSize="14sp"
         android:textColor="@color/text"
         tools:text="الكل" />
 
