@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingBottom="14dp">
+
+    <!-- Card -->
+    <FrameLayout
+        android:id="@+id/my_future_msg_card_touch"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginEnd="10dp"
+        android:background="?attr/selectableItemBackground">
+
+        <LinearLayout
+            android:id="@+id/my_future_msg_card_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/my_future_msg_bg_card_locked"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/my_future_msg_tv_card_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="end"
+                android:textColor="@color/my_future_msg_text_main"
+                android:textSize="@dimen/my_future_msg_text_size_medium"
+                android:textStyle="bold"
+                android:lineSpacingExtra="3dp"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/my_future_msg_tv_stat_created_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="يوم من الكتابة"
+                        android:textColor="@color/my_future_msg_text_soft"
+                        android:textSize="@dimen/my_future_msg_text_size_tiny"/>
+
+                    <TextView
+                        android:id="@+id/my_future_msg_tv_stat_created_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:textColor="@color/my_future_msg_text_main"
+                        android:textSize="@dimen/my_future_msg_text_size_small"
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:id="@+id/my_future_msg_iv_stat_created"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:src="@drawable/my_future_msg_ic_pen_line"
+                        app:tint="@color/my_future_msg_text_soft"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/my_future_msg_tv_stat_target_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="يوم متبقي"
+                        android:textColor="@color/my_future_msg_text_soft"
+                        android:textSize="@dimen/my_future_msg_text_size_tiny"/>
+
+                    <TextView
+                        android:id="@+id/my_future_msg_tv_stat_target_num"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:textColor="@color/my_future_msg_text_main"
+                        android:textSize="@dimen/my_future_msg_text_size_small"
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:id="@+id/my_future_msg_iv_stat_target"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:src="@drawable/my_future_msg_ic_clock"
+                        app:tint="@color/my_future_msg_text_soft"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="end"
+                    android:layout_marginBottom="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:text="كلمة"
+                        android:textColor="@color/my_future_msg_text_soft"
+                        android:textSize="@dimen/my_future_msg_text_size_tiny"/>
+
+                    <TextView
+                        android:id="@+id/my_future_msg_tv_stat_words"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="4dp"
+                        android:textColor="@color/my_future_msg_text_main"
+                        android:textSize="@dimen/my_future_msg_text_size_small"
+                        android:textStyle="bold"/>
+
+                    <ImageView
+                        android:id="@+id/my_future_msg_iv_stat_words"
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:src="@drawable/my_future_msg_ic_align_left"
+                        app:tint="@color/my_future_msg_text_soft"/>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/my_future_msg_row_read_again"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end|center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/my_future_msg_read_again"
+                    android:textColor="@color/my_future_msg_accent"
+                    android:textSize="@dimen/my_future_msg_text_size_tiny"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/my_future_msg_ic_arrow_left"
+                    app:tint="@color/my_future_msg_accent"/>
+            </LinearLayout>
+        </LinearLayout>
+    </FrameLayout>
+
+    <!-- Side tab with dashed rail behind it -->
+    <FrameLayout
+        android:layout_width="36dp"
+        android:layout_height="match_parent">
+
+        <View
+            android:layout_width="2dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/my_future_msg_divider_dashed"/>
+
+        <LinearLayout
+            android:id="@+id/my_future_msg_tab_container"
+            android:layout_width="36dp"
+            android:layout_height="match_parent"
+            android:background="@drawable/my_future_msg_bg_tab_locked"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingTop="16dp"
+            android:paddingBottom="16dp">
+
+            <ImageView
+                android:id="@+id/my_future_msg_iv_tab_icon"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/my_future_msg_ic_lock"
+                app:tint="@color/my_future_msg_text_soft"/>
+
+            <TextView
+                android:id="@+id/my_future_msg_tv_tab_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rotation="-90"
+                android:text="مقفلة"
+                android:textColor="@color/my_future_msg_text_soft"
+                android:textSize="@dimen/my_future_msg_text_size_micro"
+                android:textStyle="bold"/>
+        </LinearLayout>
+    </FrameLayout>
+</LinearLayout>

@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/my_future_msg_bg_row_surface"
+    android:padding="14dp"
+    android:layout_marginBottom="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="top">
+
+        <FrameLayout
+            android:id="@+id/my_future_msg_btn_view_row"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="?attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="end">
+
+                <TextView
+                    android:id="@+id/my_future_msg_tv_row_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="3dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:gravity="end"
+                    android:textColor="@color/my_future_msg_text_main"
+                    android:textSize="@dimen/my_future_msg_text_size_small"
+                    android:textStyle="bold"/>
+
+                <TextView
+                    android:id="@+id/my_future_msg_tv_row_sub"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:textColor="@color/my_future_msg_text_soft"
+                    android:textSize="@dimen/my_future_msg_text_size_micro"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="1dp"/>
+
+        <FrameLayout
+            android:id="@+id/my_future_msg_circle_icon"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/my_future_msg_bg_circle_icon_locked">
+
+            <ImageView
+                android:id="@+id/my_future_msg_iv_row_icon"
+                android:layout_width="13dp"
+                android:layout_height="13dp"
+                android:layout_gravity="center"
+                android:src="@drawable/my_future_msg_ic_lock"
+                app:tint="@color/my_future_msg_text_soft"/>
+        </FrameLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/my_future_msg_border"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="end|center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/my_future_msg_btn_edit_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/my_future_msg_edit"
+                    android:textColor="@color/my_future_msg_text_soft"
+                    android:textSize="@dimen/my_future_msg_text_size_micro"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/my_future_msg_ic_pencil"
+                    app:tint="@color/my_future_msg_text_soft"/>
+            </LinearLayout>
+        </FrameLayout>
+
+        <View
+            android:layout_width="4dp"
+            android:layout_height="1dp"/>
+
+        <FrameLayout
+            android:id="@+id/my_future_msg_btn_delete_row"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackground">
+
+            <LinearLayout
+                android:id="@+id/my_future_msg_delete_chip_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="6dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/my_future_msg_tv_delete_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="4dp"
+                    android:text="@string/my_future_msg_delete"
+                    android:textColor="@color/my_future_msg_text_soft"
+                    android:textSize="@dimen/my_future_msg_text_size_micro"
+                    android:textStyle="bold"/>
+
+                <ImageView
+                    android:id="@+id/my_future_msg_iv_delete_icon"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:src="@drawable/my_future_msg_ic_trash"
+                    app:tint="@color/my_future_msg_text_soft"/>
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</LinearLayout>

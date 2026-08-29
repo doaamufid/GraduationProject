@@ -203,17 +203,6 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
-            android:name=".FutureActivity"
-            android:exported="false"
-            android:label="@string/title_activity_future"
-            android:theme="@style/Theme.GraduationProject"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.AllMessagesActivity"
-            android:exported="false"
-            android:theme="@style/Theme.GraduationProject"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
             android:name=".SalamCommunityActivity"
             android:exported="false" />
         <activity
@@ -259,6 +248,14 @@
         <activity
             android:name=".OneClickCalmActivity"
             android:exported="false" />
+        <activity
+            android:name=".MyFutureMsgMainActivity"
+            android:exported="false"
+            android:theme="@style/my_future_msg_theme_future_message" />
+        <activity
+            android:name=".MyFutureMsgAllMessagesActivity"
+            android:exported="false"
+            android:theme="@style/my_future_msg_theme_future_message" />
 
         <activity
             android:name=".ui.ProfileActivity"

@@ -1,0 +1,7 @@
+﻿<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="line">
+    <stroke
+        android:width="2dp"
+        android:color="@color/my_future_msg_border"
+        android:dashWidth="6dp"
+        android:dashGap="5dp"/>
+</shape>

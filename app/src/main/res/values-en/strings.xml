@@ -157,48 +157,6 @@
     <string name="btn_another_exercise">Another Exercise</string>
 
     <string name="emoji_leaf">🌿</string>
-    <string name="title_activity_future">FutureActivity</string>
-
-    <string name="main_title_future">Message to Myself</string>
-    <string name="main_subtitle_future">Your message today swims toward your next day</string>
-    <string name="empty_timeline">You haven\'t written any message to yourself yet — tap + and start your first message</string>
-    <string name="arrived_label">Arrived</string>
-    <string name="days_left_format">%1$s days</string>
-
-    <string name="prev_messages_title">Previous Messages</string>
-    <string name="view_all">View All</string>
-    <string name="no_arrived_yet">No messages have reached you yet</string>
-
-    <!-- Compose dialog -->
-    <string name="compose_title_new">New message to myself</string>
-    <string name="compose_title_edit">Edit message</string>
-    <string name="compose_subtitle">Write now, receive it at the time you choose</string>
-    <string name="compose_hint">What would you like to say to yourself in the future?</string>
-    <string name="when_label">When would you like to receive it?</string>
-    <string name="option_custom_date">Specific Date</string>
-    <string name="option_week">A Week</string>
-    <string name="option_month">A Month</string>
-    <string name="option_3m">3 Months</string>
-    <string name="option_year">A Year</string>
-    <string name="save_new">Save message and close</string>
-    <string name="save_edit">Save changes</string>
-
-    <!-- Message detail -->
-    <string name="arrived_from_format">A message you sent to yourself on %1$s</string>
-    <string name="close_action">Close</string>
-    <string name="locked_title">This message is still locked</string>
-    <string name="locked_sub_format">Will reach you on %1$s — %2$s days left</string>
-
-    <!-- All messages screen -->
-    <string name="all_messages_title">All My Messages</string>
-    <string name="no_messages_yet">You haven\'t written any message yet</string>
-    <string name="locked_row_label">Locked message — its time hasn\'t come yet</string>
-    <string name="arrived_on_format">Arrived on %1$s</string>
-    <string name="due_on_format">Reaches you on %1$s · %2$s days left</string>
-    <string name="delete_confirm_action">Tap to confirm</string>
-    <string name="edit_action">Edit</string>
-
-    <string name="created_now">Now</string>
 
     <string name="main_title_habits">My Daily Habits</string>
     <string name="main_sub_habits">Your simple daily commitment makes a difference</string>
@@ -866,4 +824,55 @@
     <string name="kids_routine_static_item_shower">Took a shower</string>
     <string name="kids_routine_static_item_story">Listened to a story</string>
     <string name="kids_routine_static_item_sleep">Slept</string>
+
+    <string name="exercises_grounding_title">Grounding 5-4-3-2-1</string>
+    <string name="exercises_grounding_desc">Return to the present moment step by step</string>
+    <string name="exercises_breathing_title_main">Breathing</string>
+    <string name="exercises_breathing_desc_main">Calm your nervous system with a simple rhythm</string>
+    <string name="exercises_survival_box_title">Survival Box</string>
+    <string name="exercises_survival_box_desc">Everything that reassures you, in one place</string>
+    <string name="exercises_calm_card_title">Calming Card</string>
+    <string name="exercises_calm_card_desc">Your words and comforting image, in one touch</string>
+    <string name="exercises_strengths_title">My Strengths</string>
+    <string name="exercises_strengths_desc">Discover the strengths within you</string>
+    <string name="exercises_future_letter_title">Message to Myself</string>
+    <string name="exercises_future_letter_desc">Write a message to your bright future</string>
+    <string name="exercises_reframe_title">Reframing Thoughts</string>
+    <string name="exercises_reframe_desc">Challenge negative thoughts and transform them</string>
+    <string name="exercises_body_map_title">Body Map</string>
+    <string name="exercises_body_map_desc">Listen to what your body is telling you</string>
+    <string name="exercises_duration_1min">1 min</string>
+    <string name="exercises_duration_3min">3 min</string>
+    <string name="exercises_duration_5min">5 min</string>
+    <string name="exercises_duration_7min">7 min</string>
+    <string name="exercises_duration_10min">10 min</string>
+    <string name="my_future_msg_all_messages_title">All My Messages</string>
+    <string name="my_future_msg_app_name">A Message to Myself</string>
+    <string name="my_future_msg_clock_time">9:41</string>
+    <string name="my_future_msg_close">Close</string>
+    <string name="my_future_msg_compose_hint">What would you like to say to your future self?</string>
+    <string name="my_future_msg_compose_subtitle">Write it now, and receive it at the time you choose</string>
+    <string name="my_future_msg_compose_title_edit">Edit Message</string>
+    <string name="my_future_msg_compose_title_new">New Message to Myself</string>
+    <string name="my_future_msg_confirm_delete">Tap to confirm</string>
+    <string name="my_future_msg_delete">Delete</string>
+    <string name="my_future_msg_edit">Edit</string>
+    <string name="my_future_msg_empty_all">You haven’t written any messages yet</string>
+    <string name="my_future_msg_empty_home">You haven’t written a message to yourself yet — tap + to start your first one</string>
+    <string name="my_future_msg_locked_card_text">Locked message — it’s not time yet</string>
+    <string name="my_future_msg_locked_row_text">Locked message — it’s not time yet</string>
+    <string name="my_future_msg_locked_title">This message is still locked</string>
+    <string name="my_future_msg_no_arrived_yet">You haven’t received any messages yet</string>
+    <string name="my_future_msg_opt_3m">3 Months</string>
+    <string name="my_future_msg_opt_custom">Specific Date</string>
+    <string name="my_future_msg_opt_month">Month</string>
+    <string name="my_future_msg_opt_week">Week</string>
+    <string name="my_future_msg_opt_year">Year</string>
+    <string name="my_future_msg_read_again">Read Again</string>
+    <string name="my_future_msg_save_edit">Save Changes</string>
+    <string name="my_future_msg_save_new">Save &amp; Lock Message</string>
+    <string name="my_future_msg_section_prev_title">Previous Messages</string>
+    <string name="my_future_msg_subtitle">Each message reaches you at the right time</string>
+    <string name="my_future_msg_view_all">View All</string>
+    <string name="my_future_msg_when_label">When would you like to receive it?</string>
 </resources>
