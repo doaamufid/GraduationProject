@@ -131,10 +131,10 @@
 
                 <ImageButton
                     android:id="@+id/pinBtn"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:background="@drawable/bg_whitecc_circle"
-                    android:padding="6dp"
+                    android:padding="13dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_bookmark_outline"
                     android:contentDescription="@string/cd_pin" />
@@ -145,10 +145,10 @@
 
                 <ImageButton
                     android:id="@+id/shareBtn"
-                    android:layout_width="28dp"
-                    android:layout_height="28dp"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
                     android:background="@drawable/bg_whitecc_circle"
-                    android:padding="6dp"
+                    android:padding="13dp"
                     android:scaleType="fitCenter"
                     android:src="@drawable/ic_share"
                     android:contentDescription="@string/cd_share" />

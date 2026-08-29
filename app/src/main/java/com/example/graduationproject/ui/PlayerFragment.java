@@ -17,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.graduationproject.ContentItemHost;
+import com.example.graduationproject.data.AppState;
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.ContentItem;
 import com.example.graduationproject.models.ContentRepository;

@@ -51,7 +51,8 @@ public final class Widgets {
         row.setBackground(gd);
 
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-        lp.bottomMargin = dp(ctx, 6);
+        int marginH = dp(ctx, 36);
+        lp.setMargins(marginH, 0, marginH, dp(ctx, 6));
         row.setLayoutParams(lp);
 
         if (emoji != null) {

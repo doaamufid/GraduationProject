@@ -167,4 +167,16 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
             ((ContentItemHost) getActivity()).openPlayer(item);
         }
     }
+
+    @Override
+    public void onToggleFavorite(ContentItem item) {
+        AppState.get().toggleContentSaved(item.id);
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onToggleBookmark(ContentItem item) {
+        AppState.get().toggleContentBookmarked(item.id);
+        adapter.notifyDataSetChanged();
+    }
 }

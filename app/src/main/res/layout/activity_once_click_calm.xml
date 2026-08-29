@@ -49,13 +49,14 @@
 
             <ImageButton
                 android:id="@+id/btnInfo"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:background="@drawable/bg_circle_white"
+                app:backgroundTint="@color/white"
                 android:src="@drawable/ic_help_circle"
-                app:tint="@color/text_main"
+                app:tint="@color/text_soft"
                 android:contentDescription="@string/info_desc"
-                android:padding="6dp"
+                android:padding="13dp"
                 android:scaleType="fitCenter"/>
         </LinearLayout>
 
