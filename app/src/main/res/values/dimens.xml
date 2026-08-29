@@ -131,4 +131,15 @@
     <dimen name="kids_routine_text_sheet_title">16.5sp</dimen>
     <dimen name="kids_routine_text_celebrate_title">20sp</dimen>
     <dimen name="kids_routine_text_celebrate_sub">13.5sp</dimen>
+    <dimen name="my_future_msg_radius_card">22dp</dimen>
+    <dimen name="my_future_msg_radius_chip">14dp</dimen>
+    <dimen name="my_future_msg_radius_pill">30dp</dimen>
+    <dimen name="my_future_msg_radius_sheet">28dp</dimen>
+    <dimen name="my_future_msg_text_size_large">18sp</dimen>
+    <dimen name="my_future_msg_text_size_medium">17sp</dimen>
+    <dimen name="my_future_msg_text_size_micro">14sp</dimen>
+    <dimen name="my_future_msg_text_size_small">16sp</dimen>
+    <dimen name="my_future_msg_text_size_tiny">15sp</dimen>
+    <dimen name="my_future_msg_text_size_title">26sp</dimen>
+    <dimen name="my_future_msg_text_size_xlarge">19sp</dimen>
 </resources>

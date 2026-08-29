@@ -20,8 +20,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.graduationproject.BodyMapActivity;
 import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.CBTRReframingActivity;
-import com.example.graduationproject.FutureActivity;
 import com.example.graduationproject.GroundingExActivity;
+import com.example.graduationproject.MyFutureMsgMainActivity;
 import com.example.graduationproject.OneClickCalmActivity;
 import com.example.graduationproject.R;
 import com.example.graduationproject.StrenghtBankActivity;
@@ -156,7 +156,7 @@ public class ExercisesFragment extends Fragment {
                     break;
 
                 case 5: // رسالة لنفسي
-                    startActivity(new Intent(requireContext(), FutureActivity.class));
+                    startActivity(new Intent(requireContext(), MyFutureMsgMainActivity.class));
                     break;
 
                 case 6: // إعادة صياغة الأفكار (CBT Reframing)

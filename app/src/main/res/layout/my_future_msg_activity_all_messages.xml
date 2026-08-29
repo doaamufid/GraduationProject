@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:background="@color/my_future_msg_bg">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="20dp"
+        android:paddingEnd="20dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="12dp">
+
+        <FrameLayout
+            android:id="@+id/my_future_msg_btn_back"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/my_future_msg_bg_circle_surface"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:src="@drawable/my_future_msg_ic_arrow_right"
+                app:tint="@color/my_future_msg_text_main"/>
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/my_future_msg_all_messages_title"
+            android:textColor="@color/my_future_msg_text_main"
+            android:textSize="@dimen/my_future_msg_text_size_xlarge"
+            android:textStyle="bold"/>
+
+        <FrameLayout
+            android:id="@+id/my_future_msg_btn_add"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/my_future_msg_bg_circle_accent"
+            android:foreground="?attr/selectableItemBackgroundBorderless">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:src="@drawable/my_future_msg_ic_plus"/>
+        </FrameLayout>
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/my_future_msg_rv_all_messages"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipToPadding="false"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingBottom="28dp"
+            android:scrollbars="none"
+            android:layoutAnimation="@anim/layout_animation_fall_down"/>
+
+        <TextView
+            android:id="@+id/my_future_msg_empty_all_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:paddingTop="60dp"
+            android:text="@string/my_future_msg_empty_all"
+            android:textColor="@color/my_future_msg_text_soft"
+            android:textSize="@dimen/my_future_msg_text_size_small"
+            android:visibility="gone"/>
+    </FrameLayout>
+</LinearLayout>

@@ -157,48 +157,6 @@
     <string name="btn_another_exercise">تمرين آخر</string>
 
     <string name="emoji_leaf">🌿</string>
-    <string name="title_activity_future">FutureActivity</string>
-
-    <string name="main_title_future">رسالة إلى نفسي</string>
-    <string name="main_subtitle_future">رسالتك اليوم تسبح نحو يومك القادم</string>
-    <string name="empty_timeline">ما كتبت أي رسالة لنفسك بعد — اضغط + وابدأ أول رسالة</string>
-    <string name="arrived_label">وصلت</string>
-    <string name="days_left_format">%1$s يوم</string>
-
-    <string name="prev_messages_title">رسائل سابقة</string>
-    <string name="view_all">عرض الكل</string>
-    <string name="no_arrived_yet">لسا ما وصلتك أي رسالة</string>
-
-    <!-- Compose dialog -->
-    <string name="compose_title_new">رسالة جديدة لنفسي</string>
-    <string name="compose_title_edit">تعديل الرسالة</string>
-    <string name="compose_subtitle">اكتب الآن، تصلك في الوقت اللي تختاره</string>
-    <string name="compose_hint">وش تحب تقول لنفسك في المستقبل؟</string>
-    <string name="when_label">متى تحب تستلمها؟</string>
-    <string name="option_custom_date">تاريخ محدد</string>
-    <string name="option_week">أسبوع</string>
-    <string name="option_month">شهر</string>
-    <string name="option_3m">٣ أشهر</string>
-    <string name="option_year">سنة</string>
-    <string name="save_new">احفظ الرسالة وأغلقها</string>
-    <string name="save_edit">احفظ التعديلات</string>
-
-    <!-- Message detail -->
-    <string name="arrived_from_format">رسالة أرسلتها لنفسك %1$s</string>
-    <string name="close_action">إغلاق</string>
-    <string name="locked_title">هذي الرسالة لسا مقفلة</string>
-    <string name="locked_sub_format">بتوصلك بتاريخ %1$s — باقي %2$s يوم</string>
-
-    <!-- All messages screen -->
-    <string name="all_messages_title">كل رسائلي</string>
-    <string name="no_messages_yet">ما كتبت أي رسالة بعد</string>
-    <string name="locked_row_label">رسالة مقفلة — لسا ما جا وقتها</string>
-    <string name="arrived_on_format">وصلت بتاريخ %1$s</string>
-    <string name="due_on_format">توصلك بتاريخ %1$s · باقي %2$s يوم</string>
-    <string name="delete_confirm_action">اضغط للتأكيد</string>
-    <string name="edit_action">تعديل</string>
-
-    <string name="created_now">الآن</string>
 
     <string name="main_title_habits">عاداتي اليومية</string>
     <string name="main_sub_habits">التزامك اليومي البسيط يصنع فرقاً</string>
@@ -1539,9 +1497,6 @@
     <string name="exercises_duration_7min">٧ دقائق</string>
     <string name="exercises_duration_10min">١٠ دقائق</string>
 
-
-    <string name="kids_adaptive_app_name">سلام للأطفال</string>
-
     <!-- Common -->
     <string name="kids_adaptive_back_cd">رجوع</string>
     <string name="kids_adaptive_skip">تخطي</string>
@@ -1862,4 +1817,35 @@
     <string name="kids_routine_static_item_story">سمعت قصة</string>
     <string name="kids_routine_static_item_sleep">نمت</string>
 
+    <string name="my_future_msg_all_messages_title">كل رسائلي</string>
+    <string name="my_future_msg_app_name">رسالة إلى نفسي</string>
+    <string name="my_future_msg_clock_time">٩:٤١</string>
+    <string name="my_future_msg_close">إغلاق</string>
+    <string name="my_future_msg_compose_hint">وش تحب تقول لنفسك في المستقبل؟</string>
+    <string name="my_future_msg_compose_subtitle">اكتب الآن، تصلك في الوقت اللي تختاره</string>
+    <string name="my_future_msg_compose_title_edit">تعديل الرسالة</string>
+    <string name="my_future_msg_compose_title_new">رسالة جديدة لنفسي</string>
+    <string name="my_future_msg_confirm_delete">اضغط للتأكيد</string>
+    <string name="my_future_msg_delete">حذف</string>
+    <string name="my_future_msg_edit">تعديل</string>
+    <string name="my_future_msg_empty_all">ما كتبت أي رسالة بعد</string>
+    <string name="my_future_msg_empty_home">ما كتبت أي رسالة لنفسك بعد — اضغط + وابدأ أول رسالة</string>
+    <string name="my_future_msg_locked_card_text">رسالة مقفلة، لسا ما جا وقتها</string>
+    <string name="my_future_msg_locked_row_text">رسالة مقفلة — لسا ما جا وقتها</string>
+    <string name="my_future_msg_locked_title">هذي الرسالة لسا مقفلة</string>
+    <string name="my_future_msg_no_arrived_yet">لسا ما وصلتك أي رسالة</string>
+    <string name="my_future_msg_opt_3m">٣ أشهر</string>
+    <string name="my_future_msg_opt_custom">تاريخ محدد</string>
+    <string name="my_future_msg_opt_month">شهر</string>
+    <string name="my_future_msg_opt_week">أسبوع</string>
+    <string name="my_future_msg_opt_year">سنة</string>
+    <string name="my_future_msg_read_again">اقرأيها مجدداً</string>
+    <string name="my_future_msg_save_edit">احفظ التعديلات</string>
+    <string name="my_future_msg_save_new">احفظ الرسالة وأغلقها</string>
+    <string name="my_future_msg_section_prev_title">رسائل سابقة</string>
+    <string name="my_future_msg_subtitle">كل رسالة بتوصلك بوقتها المناسب</string>
+    <string name="my_future_msg_view_all">عرض الكل</string>
+    <string name="my_future_msg_when_label">متى تحب تستلمها؟</string>
+
+    <string name="kids_adaptive_app_name">سلام للأطفال</string>
 </resources>

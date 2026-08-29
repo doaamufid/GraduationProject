@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="@drawable/my_future_msg_bg_dialog_rounded"
+    padding="26dp">
+
+    <ImageView
+        android:id="@+id/my_future_msg_iv_detail_icon"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginBottom="12dp"
+        android:src="@drawable/my_future_msg_ic_lock"
+        app:tint="@color/my_future_msg_text_soft"/>
+
+    <TextView
+        android:id="@+id/my_future_msg_tv_detail_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="4dp"
+        android:gravity="center"
+        android:textColor="@color/my_future_msg_text_main"
+        android:textSize="@dimen/my_future_msg_text_size_large"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/my_future_msg_tv_detail_sub"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:gravity="center"
+        android:textColor="@color/my_future_msg_text_soft"
+        android:textSize="@dimen/my_future_msg_text_size_micro"/>
+
+    <TextView
+        android:id="@+id/my_future_msg_tv_detail_body"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:lineSpacingExtra="4dp"
+        android:textColor="@color/my_future_msg_text_main"
+        android:textSize="@dimen/my_future_msg_text_size_large"
+        android:textStyle="bold"
+        android:visibility="gone"/>
+
+    <FrameLayout
+        android:id="@+id/my_future_msg_btn_detail_close"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="120dp">
+
+        <TextView
+            android:id="@+id/my_future_msg_tv_detail_close_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="@drawable/my_future_msg_bg_button_neutral_pill"
+            android:paddingStart="26dp"
+            android:paddingEnd="26dp"
+            android:paddingTop="11dp"
+            android:paddingBottom="11dp"
+            android:text="@string/my_future_msg_close"
+            android:textColor="@color/my_future_msg_text_soft"
+            android:textSize="@dimen/my_future_msg_text_size_small"
+            android:textStyle="bold"/>
+    </FrameLayout>
+</LinearLayout>

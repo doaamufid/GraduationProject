@@ -329,5 +329,49 @@
     <style name="kids_routine_BottomSheetStyle" parent="Widget.MaterialComponents.BottomSheet.Modal">
         <item name="android:background">@android:color/transparent</item>
     </style>
-
+    <style name="my_future_msg_bottom_sheet_style" parent="Widget.MaterialComponents.BottomSheet.Modal">
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+    <style name="my_future_msg_compose_chip">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/my_future_msg_bg_chip_unselected</item>
+        <item name="android:paddingStart">14dp</item>
+        <item name="android:paddingEnd">14dp</item>
+        <item name="android:paddingTop">10dp</item>
+        <item name="android:paddingBottom">10dp</item>
+        <item name="android:drawablePadding">6dp</item>
+        <item name="android:textColor">@color/my_future_msg_text_soft</item>
+        <item name="android:textSize">@dimen/my_future_msg_text_size_small</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+    </style>
+    <style name="my_future_msg_dialog_fade_scale_animation">
+        <item name="android:windowEnterAnimation">@anim/dialog_fade_scale_in</item>
+        <item name="android:windowExitAnimation">@anim/dialog_fade_scale_out</item>
+    </style>
+    <style name="my_future_msg_theme_future_message" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/my_future_msg_accent</item>
+        <item name="colorPrimaryDark">@color/my_future_msg_accent</item>
+        <item name="colorAccent">@color/my_future_msg_accent</item>
+        <item name="android:windowBackground">@color/my_future_msg_bg</item>
+        <item name="android:statusBarColor">@color/my_future_msg_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
+        <item name="android:navigationBarColor">@color/my_future_msg_white</item>
+        <item name="android:windowLightNavigationBar">true</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="my_future_msg_theme_future_message_bottom_sheet" parent="Theme.MaterialComponents.Light.BottomSheetDialog">
+        <item name="bottomSheetStyle">@style/my_future_msg_bottom_sheet_style</item>
+    </style>
+    <style name="my_future_msg_theme_future_message_dialog" parent="Theme.MaterialComponents.Light.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowAnimationStyle">@style/my_future_msg_dialog_fade_scale_animation</item>
+        <item name="android:backgroundDimEnabled">true</item>
+        <item name="android:windowMinWidthMajor">85%</item>
+        <item name="android:windowMinWidthMinor">85%</item>
+    </style>
 </resources>

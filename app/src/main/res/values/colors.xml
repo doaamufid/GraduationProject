@@ -594,5 +594,19 @@
     <color name="kids_routine_sky2_bottom">#8B7BB8</color>
     <color name="kids_routine_sky3_top">#2B2456</color>
     <color name="kids_routine_sky3_bottom">#120E2A</color>
+    <color name="my_future_msg_accent">#D2574B</color>
+    <color name="my_future_msg_accent_border_soft">#44D2574B</color>
+    <color name="my_future_msg_accent_card_grad_end">#38D2574B</color>
+    <color name="my_future_msg_accent_card_grad_start">#1AD2574B</color>
+    <color name="my_future_msg_accent_soft">#F3DAD6</color>
+    <color name="my_future_msg_bg">#F7EDE2</color>
+    <color name="my_future_msg_bg_outer">#E9DECF</color>
+    <color name="my_future_msg_border">#EAD9C9</color>
+    <color name="my_future_msg_path">#AACFC3</color>
+    <color name="my_future_msg_path_dark">#8FB8AA</color>
+    <color name="my_future_msg_scrim">#7A3B3025</color>
+    <color name="my_future_msg_surface">#FFFFFF</color>
+    <color name="my_future_msg_text_main">#3B3025</color>
+    <color name="my_future_msg_text_soft">#8A7C6D</color>
+    <color name="my_future_msg_white">#FFFFFF</color>
 </resources>
-
