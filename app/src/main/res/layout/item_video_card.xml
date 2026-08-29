@@ -4,157 +4,165 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="wrap_content"
     android:layout_margin="12dp"
-    app:cardCornerRadius="28dp"
-    app:cardElevation="6dp"
-    app:cardBackgroundColor="@android:color/black"
+    app:cardCornerRadius="24dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@android:color/white"
     android:clickable="true"
     android:focusable="true"
     android:foreground="?android:attr/selectableItemBackground"
-    android:layoutDirection="locale">
+    android:layoutDirection="rtl">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <!-- Background Image -->
-        <ImageView
-            android:id="@+id/ivCardBackground"
+        <!-- Thumbnail Area -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:src="@drawable/fireplace"
-            tools:src="@tools:sample/backgrounds/scenic" />
+            android:layout_height="180dp">
 
-        <!-- Hazy/White bottom gradient for text contrast -->
-        <View
-            android:id="@+id/bottomScrim"
-            android:layout_width="match_parent"
-            android:layout_height="130dp"
-            android:background="@drawable/bg_bottom_scrim"
-            app:layout_constraintBottom_toBottomOf="parent" />
+            <ImageView
+                android:id="@+id/ivCardBackground"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                tools:src="@tools:sample/backgrounds/scenic" />
 
-        <!-- Top Start: Brand/Logo (NASA style) -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginTop="20dp"
-            android:orientation="vertical"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
+            <!-- Category Tag (Top Right) -->
             <TextView
                 android:id="@+id/tvBrandLogo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NASA"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_video_tag_pill"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="6dp"
+                android:text="تعلم"
                 android:textColor="#FFFFFF"
-                android:textSize="16sp"
+                android:textSize="13sp"
                 android:textStyle="bold"
-                android:letterSpacing="0.1"
-                tools:text="NASA" />
-        </LinearLayout>
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <!-- Top End Actions: Love and Bookmark (Left in RTL) -->
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="horizontal"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            <!-- Centered Play Button Area with Pulse Rings -->
+            <FrameLayout
+                android:id="@+id/playContainer"
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <ImageButton
-                android:id="@+id/btnFavorite"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:padding="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_heart_outline"
-                app:tint="#FFFFFF"
-                android:contentDescription="@string/fav_content" />
+                <!-- Animation Rings -->
+                <View
+                    android:id="@+id/vPulse1"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:alpha="0"
+                    android:background="@drawable/bg_video_pulse_ring" />
 
-            <ImageButton
-                android:id="@+id/btnBookmark"
-                android:layout_width="38dp"
-                android:layout_height="38dp"
-                android:layout_marginStart="4dp"
-                android:background="?android:attr/selectableItemBackgroundBorderless"
-                android:padding="8dp"
-                android:scaleType="fitCenter"
-                android:src="@drawable/ic_bookmark_outline"
-                app:tint="#FFFFFF"
-                android:contentDescription="@string/bookmark_content" />
-        </LinearLayout>
+                <View
+                    android:id="@+id/vPulse2"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:alpha="0"
+                    android:background="@drawable/bg_video_pulse_ring" />
 
-        <!-- Bottom Start: Main Title, Minutes & Subtitle -->
-        <LinearLayout
-            android:id="@+id/llBottomText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginBottom="24dp"
-            android:layout_marginEnd="16dp"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/btnLearnMore"
-            app:layout_constraintStart_toStartOf="parent">
+                <!-- Main Play Button -->
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_gravity="center"
+                    android:background="@drawable/bg_video_play_circle"
+                    android:elevation="4dp"
+                    android:padding="14dp"
+                    android:src="@drawable/ic_play"
+                    app:tint="@color/primary" />
+            </FrameLayout>
 
-            <TextView
-                android:id="@+id/tvMainTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Apollo 11"
-                android:textColor="#FFFFFF"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                tools:text="Apollo 11" />
-
+            <!-- Duration Label (Bottom Left in LTR, Bottom Right in RTL - keeping it Bottom Start for consistency with image) -->
             <TextView
                 android:id="@+id/tvDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="1dp"
-                android:text="31:40"
-                android:textColor="#CCFFFFFF"
-                android:textSize="12sp"
-                tools:text="31:40" />
-
-            <TextView
-                android:id="@+id/tvSubTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="One small step for man, one giant leap for mankind."
+                android:layout_marginStart="12dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/bg_video_duration_pill"
+                android:paddingHorizontal="8dp"
+                android:paddingVertical="4dp"
+                android:text="14:03"
                 android:textColor="#FFFFFF"
-                android:textSize="12sp"
-                android:alpha="0.85"
-                android:maxLines="2"
-                android:ellipsize="end"
-                tools:text="One small step for man, one giant leap for mankind." />
-        </LinearLayout>
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
 
-        <!-- Bottom End: Watch Now Pill Button -->
-        <TextView
-            android:id="@+id/btnLearnMore"
-            android:layout_width="wrap_content"
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Info Area -->
+        <RelativeLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="24dp"
-            android:layout_marginBottom="24dp"
-            android:background="@drawable/bg_dark_pill_button"
-            android:paddingHorizontal="18dp"
-            android:paddingVertical="8dp"
-            android:text="@string/watch_now"
-            android:textColor="#FFFFFF"
-            android:textSize="13sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            tools:text="Watch now" />
+            android:padding="12dp">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <!-- Author Circle (Right) -->
+            <FrameLayout
+                android:id="@+id/flAuthorCircle"
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_circle_primary">
+
+                <TextView
+                    android:id="@+id/tvAuthorInitial"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="ع"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <!-- Title & Stats (Left of author) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toStartOf="@id/flAuthorCircle"
+                android:layout_marginEnd="12dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvMainTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="علم الأعصاب ببساطة: شو بيصير بدماغك وقت التوتر؟"
+                    android:textColor="@color/text_main"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvSubTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="عقل وعلم • 76.3 ألف • قبل يوم"
+                    android:textColor="@color/text_soft"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
 </com.google.android.material.card.MaterialCardView>
