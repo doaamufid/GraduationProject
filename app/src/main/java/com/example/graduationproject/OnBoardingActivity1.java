@@ -47,15 +47,16 @@ public class OnBoardingActivity1 extends AppCompatActivity {
 
         binding.btnNext.setOnClickListener(v -> {
             Intent intent = new Intent(OnBoardingActivity1.this, OnBoardingActivity2.class);
-            startActivity(intent);
-            if (AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))) {
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-            } else {
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+            ActivityUtils.startActivityWithAnimation(this, intent);
         });
 
         binding.tvSkip.setOnClickListener(v -> skipOnBoarding());
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityUtils.applyBackTransition(this);
     }
 
     private void setupAnimations() {
@@ -122,8 +123,7 @@ public class OnBoardingActivity1 extends AppCompatActivity {
         preferences.edit().putBoolean("isFirstRun", false).apply();
 
         Intent intent = new Intent(OnBoardingActivity1.this, SplashSelectActivity.class);
-        startActivity(intent);
+        ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        finish();
     }
 }

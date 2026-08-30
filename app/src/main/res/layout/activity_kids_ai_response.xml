@@ -9,35 +9,40 @@
     android:layoutDirection="rtl"
     tools:context=".Kids.KidsAiResponseActivity">
 
-    <!-- Circle Back Button -->
-    <ImageButton
-        android:id="@+id/btn_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/bg_icon_button"
-        android:contentDescription="رجوع"
-        android:padding="10dp"
-        android:src="@drawable/outline_arrow_forward_24"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="#8B6F4D" />
-
-    <!-- Switch Profile Button -->
-    <ImageButton
-        android:id="@+id/btn_switch_profile"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="56dp"
+    <!-- Right Side: Action Icons -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:background="@drawable/bg_icon_button"
-        android:contentDescription="تبديل الحساب"
-        android:padding="10dp"
-        android:src="@drawable/ic_users"
+        android:layout_marginTop="56dp"
+        android:orientation="horizontal"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="#8B6F4D" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Icon 1: Switch Profile (Users) -->
+        <ImageButton
+            android:id="@+id/btn_switch_profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_icon_button"
+            android:contentDescription="تبديل الحساب"
+            android:padding="10dp"
+            android:src="@drawable/ic_users"
+            app:tint="#8B6F4D" />
+
+        <!-- Icon 2: Switch to Adults Home (Home/Refresh) -->
+        <ImageButton
+            android:id="@+id/btn_switch_mode"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_icon_button"
+            android:contentDescription="تبديل النمط"
+            android:padding="10dp"
+            android:src="@drawable/ic_refresh"
+            app:tint="#8B6F4D" />
+
+    </LinearLayout>
 
     <!-- Bear Avatar Head -->
     <ImageView
@@ -97,6 +102,15 @@
                 android:textColor="#598F7A"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+
+            <!-- Weekly Mood Section -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvWeeklyMood"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
             <!-- Title Question -->
             <TextView
@@ -345,6 +359,124 @@
                             android:insetTop="0dp"
                             android:insetBottom="0dp"
                             android:text="احكي"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:cornerRadius="14dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Card 5: ركني الهادئ -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="#FFF3E0"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🧘"
+                            android:textSize="52sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="ركني الهادئ"
+                            android:textColor="#E65100"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="٨٥٪ توافق"
+                            android:textColor="#EF6C00"
+                            android:textSize="11sp"
+                            android:alpha="0.8"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_action_calm_corner"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="16dp"
+                            android:backgroundTint="#5E35B1"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:text="استرخِ"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            android:textStyle="bold"
+                            app:cornerRadius="14dp" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Card 6: روتيني اليومي -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_margin="8dp"
+                    app:cardBackgroundColor="#F1F8E9"
+                    app:cardCornerRadius="24dp"
+                    app:cardElevation="4dp"
+                    app:strokeWidth="0dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="✨"
+                            android:textSize="52sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:text="روتيني البطل"
+                            android:textColor="#33691E"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="٧٠٪ توافق"
+                            android:textColor="#558B2F"
+                            android:textSize="11sp"
+                            android:alpha="0.8"/>
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_action_routine"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="16dp"
+                            android:backgroundTint="#5E35B1"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:text="افتح"
                             android:textAllCaps="false"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp"

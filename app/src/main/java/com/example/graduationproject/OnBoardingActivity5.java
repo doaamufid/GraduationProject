@@ -50,9 +50,8 @@ public class OnBoardingActivity5 extends AppCompatActivity {
             preferences.edit().putBoolean("isFirstRun", false).apply();
 
             Intent intent = new Intent(OnBoardingActivity5.this, SplashSelectActivity.class);
-            startActivity(intent);
+            ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
         });
 
         binding.btnBack.setOnClickListener(v -> {
@@ -63,11 +62,7 @@ public class OnBoardingActivity5 extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))) {
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else {
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        }
+        ActivityUtils.applyBackTransition(this);
     }
 
     private void setupAnimations() {

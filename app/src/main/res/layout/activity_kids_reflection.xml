@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/reflection_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    tools:context=".Kids.KidsReflectionActivity">
+
+    <!-- Match the Adaptive Onboarding background -->
+    <com.example.graduationproject.view.KidsAdaptiveSkyBackgroundView
+        android:id="@+id/sky_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Foreground content -->
+    <RelativeLayout
+        android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingStart="48dp"
+        android:paddingEnd="48dp"
+        android:paddingTop="32dp"
+        android:paddingBottom="32dp">
+
+        <!-- Main Info Container (Bottom Left) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/bottom_bar"
+            android:layout_marginBottom="40dp"
+            android:orientation="vertical">
+
+            <!-- Animated Bear instead of Sparkles -->
+            <com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView
+                android:id="@+id/bear_companion"
+                android:layout_width="88dp"
+                android:layout_height="88dp"
+                android:layout_marginBottom="20dp" />
+
+            <TextView
+                android:id="@+id/txt_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/kids_adaptive_ink"
+                android:textStyle="bold"
+                android:textSize="54sp"
+                android:lineSpacingExtra="-10dp"
+                android:layout_marginBottom="4dp"
+                tools:text="Magna\nCity" />
+
+            <TextView
+                android:id="@+id/txt_note"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:textColor="@color/kids_adaptive_ink"
+                android:alpha="0.85"
+                android:textSize="17sp"
+                android:lineSpacingMultiplier="1.25"
+                android:gravity="start"
+                tools:text="A premier destination set along some of the world's most beautiful coastline." />
+
+        </LinearLayout>
+
+        <!-- Bottom Action Bar -->
+        <LinearLayout
+            android:id="@+id/bottom_bar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="16dp"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:weightSum="2">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_next"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1.3"
+                android:backgroundTint="@color/kids_adaptive_sun"
+                app:cornerRadius="24dp"
+                android:textAllCaps="false"
+                android:textColor="#4A2A12"
+                android:textSize="16sp"
+                android:paddingTop="0dp"
+                android:paddingBottom="0dp"
+                android:elevation="4dp"
+                android:stateListAnimator="@null"
+                tools:text="Invest Now" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</FrameLayout>

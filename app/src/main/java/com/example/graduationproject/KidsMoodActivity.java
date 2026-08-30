@@ -4,9 +4,11 @@ import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.WindowInsetsController;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -14,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.graduationproject.models.KidsMood;
 import com.example.graduationproject.view.KidsMoodBearView;
@@ -47,6 +50,20 @@ public class KidsMoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kids_mood);
 
+        // Set Navigation Bar color to White
+        getWindow().setNavigationBarColor(Color.WHITE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            WindowInsetsController controller = getWindow().getInsetsController();
+            if (controller != null) {
+                controller.setSystemBarsAppearance(
+                        WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
+                        WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
+            }
+        } else {
+            new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView())
+                    .setAppearanceLightNavigationBars(true);
+        }
+
         rootLayout = findViewById(R.id.root_layout);
         progressFill = findViewById(R.id.progress_fill);
         heroCircle = findViewById(R.id.hero_circle);
@@ -58,8 +75,19 @@ public class KidsMoodActivity extends AppCompatActivity {
         buildSelectorChips();
         renderInstant(selectedIndex);
 
-        findViewById(R.id.btn_continue).setOnClickListener(v ->
-                Toast.makeText(this, R.string.kids_mood_saved_toast, Toast.LENGTH_SHORT).show());
+        findViewById(R.id.btn_continue).setOnClickListener(v -> {
+            Toast.makeText(this, R.string.kids_mood_saved_toast, Toast.LENGTH_SHORT).show();
+            android.content.Intent intent = new android.content.Intent(this, com.example.graduationproject.Kids.KidsAiResponseActivity.class);
+            // نص الرسالة من الصورة كما طلب المستخدم
+            intent.putExtra("AI_RESPONSE", "يا صغيري الجميل، لا تقلق، أنا هنا بجانبك أحضنك بقوة حتى تختفي كل الدموع وتعود لتبتسم.");
+            ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityUtils.applyBackTransition(this);
     }
 
     /** Same 7 moods / colours as KID_MOODS in the React source. */

@@ -163,7 +163,7 @@ public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsA
         }
 
         if (childId != -1) {
-            Intent intent = new Intent(this, com.example.graduationproject.ReflectionActivity.class);
+            Intent intent = new Intent(this, com.example.graduationproject.Kids.KidsReflectionActivity.class);
             intent.putExtra("FOR_KIDS", true);
             intent.putExtra("CHILD_ID", childId);
             intent.putExtra("CHILD_NAME", data.nickname);

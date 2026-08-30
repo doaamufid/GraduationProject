@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.graduationproject"
     xmlns:tools="http://schemas.android.com/tools">
 
     <uses-permission android:name="android.permission.INTERNET" />
@@ -19,6 +20,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
+
+        <activity
+            android:name=".KidsMoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KidsRoutineMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsReflectionActivity"
+            android:exported="false" />
 
         <!-- Word of the Week feature (new) -->
 
@@ -189,6 +200,7 @@
         <activity
             android:name=".AdultMoodActivity"
             android:exported="false" />
+
         <activity
             android:name=".AdultMoodStatsActivity"
             android:exported="false" />
@@ -240,6 +252,9 @@
             android:exported="false" />
         <activity
             android:name=".KidsAdaptiveMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KidsCalmCornerActivity"
             android:exported="false" />
         <activity
             android:name=".AiWelcomeActivity"

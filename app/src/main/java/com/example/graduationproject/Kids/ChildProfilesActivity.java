@@ -16,6 +16,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.example.graduationproject.ActivityUtils;
 import com.example.graduationproject.adapters.ChildProfilesAdapter;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityChildProfilesBinding;
@@ -61,8 +62,30 @@ public class ChildProfilesActivity extends AppCompatActivity {
             return insets;
         });
 
-        binding.btnBack.setOnClickListener(v -> finish());
+        binding.btnBack.setOnClickListener(v -> onBackPressed());
         setupProfilesList();
+        setupAnimations();
+    }
+
+    private void setupAnimations() {
+        binding.tvMascot.setAlpha(0f);
+        binding.tvMascot.setTranslationY(-30f);
+        binding.tvTitle.setAlpha(0f);
+        binding.tvTitle.setTranslationY(20f);
+        binding.tvSubtitle.setAlpha(0f);
+        binding.tvSubtitle.setTranslationY(20f);
+        binding.rvChildProfiles.setAlpha(0f);
+
+        binding.tvMascot.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(200).start();
+        binding.tvTitle.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(400).start();
+        binding.tvSubtitle.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(500).start();
+        binding.rvChildProfiles.animate().alpha(1f).setDuration(800).setStartDelay(600).start();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent intent = new Intent(this, com.example.graduationproject.SplashSelectActivity.class);
+        ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
     }
 
     private void setupProfilesList() {
@@ -73,11 +96,11 @@ public class ChildProfilesActivity extends AppCompatActivity {
                         .putLong("current_child_id", profile.getId())
                         .apply();
 
-                Intent intent = new Intent(ChildProfilesActivity.this, com.example.graduationproject.ReflectionActivity.class);
+                Intent intent = new Intent(ChildProfilesActivity.this, com.example.graduationproject.Kids.KidsReflectionActivity.class);
                 intent.putExtra("FOR_KIDS", true);
                 intent.putExtra("CHILD_ID", profile.getId());
                 intent.putExtra("CHILD_NAME", profile.getName());
-                startActivity(intent);
+                ActivityUtils.startActivityWithAnimation(ChildProfilesActivity.this, intent);
             }
 
             @Override
@@ -104,7 +127,7 @@ public class ChildProfilesActivity extends AppCompatActivity {
     }
 
     private void openNewProfileScreen() {
-        startActivity(new Intent(this, com.example.graduationproject.KidsAdaptiveMainActivity.class));
+        ActivityUtils.startActivityWithAnimation(this, new Intent(this, com.example.graduationproject.KidsAdaptiveMainActivity.class));
     }
 
     private void loadProfiles() {

@@ -1,16 +1,12 @@
-package com.example.graduationproject;
+package com.example.graduationproject.Kids;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.view.animation.AlphaAnimation;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -20,25 +16,28 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.graduationproject.ActivityUtils;
+import com.example.graduationproject.R;
 import com.example.graduationproject.models.ReflectionCard;
+import com.example.graduationproject.view.KidsAdaptiveSkyBackgroundView;
+import com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView;
 import com.example.graduationproject.ui.SceneView;
+import com.google.android.material.button.MaterialButton;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 import java.util.Random;
 
-public class ReflectionActivity extends AppCompatActivity {
+public class KidsReflectionActivity extends AppCompatActivity {
 
     private List<ReflectionCard> cards;
-    private SceneView sceneView;
-    private TextView txtTitle, txtTag, txtChip, txtNoteDate, txtNote, txtNext;
-    private View btnNext;
-    private ImageView imgSceneIcon;
+    private KidsAdaptiveSkyBackgroundView skyView;
+    private TextView txtTitle, txtNote;
+    private MaterialButton btnNext;
+    private KidsAdaptiveTeddyBuddyView bearCompanion;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
     private Runnable showNextButtonRunnable;
-    private boolean forKids = false;
     private long childId = -1;
     private String childName = "";
 
@@ -53,15 +52,13 @@ public class ReflectionActivity extends AppCompatActivity {
             getWindow().setNavigationBarContrastEnforced(false);
         }
 
-        setContentView(R.layout.activity_reflection);
+        setContentView(R.layout.activity_kids_reflection);
 
         if (getIntent() != null) {
-            forKids = getIntent().getBooleanExtra("FOR_KIDS", false);
             childId = getIntent().getLongExtra("CHILD_ID", -1);
             childName = getIntent().getStringExtra("CHILD_NAME");
         }
 
-        // تطبيق حواف الشاشة على محتوى الواجهة الأمامية فقط لتستمر الخلفية بالظهور تحت الـ Status Bar
         View contentContainer = findViewById(R.id.content_container);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.reflection_root), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -69,7 +66,7 @@ public class ReflectionActivity extends AppCompatActivity {
                 int sidePadding = (int) (48 * getResources().getDisplayMetrics().density);
                 contentContainer.setPadding(
                         systemBars.left + sidePadding,
-                        systemBars.top + systemBars.bottom, // Use top padding for status bar
+                        systemBars.top + systemBars.bottom,
                         systemBars.right + sidePadding,
                         systemBars.bottom + (int) (32 * getResources().getDisplayMetrics().density)
                 );
@@ -80,44 +77,29 @@ public class ReflectionActivity extends AppCompatActivity {
         buildCards();
         bindViews();
 
-        // 1. اختيار بطاقة عشوائية في كل مرة
+        // 1. Pick a random card
         int randomIdx = new Random().nextInt(cards.size());
         renderCardInitial(randomIdx);
 
-        // 2. إخفاء زر التالي في البداية
+        // 2. Button visibility logic
         btnNext.setVisibility(View.INVISIBLE);
         btnNext.setAlpha(0f);
 
-        // إظهار زر التالي بعد 4 ثوانٍ لضمان القراءة
         showNextButtonRunnable = () -> {
-            // ensure the button is on top and visible, then animate its alpha using ViewPropertyAnimator
             btnNext.bringToFront();
             btnNext.setVisibility(View.VISIBLE);
-            btnNext.setAlpha(0f);
             btnNext.animate().alpha(1f).setDuration(500).start();
         };
         handler.postDelayed(showNextButtonRunnable, 4000);
 
-        // 4. الانتقال إلى MainActivity بعد الضغط
         btnNext.setOnClickListener(v -> {
             cleanupHandler();
-
-            Intent intent;
-            if (forKids) {
-                intent = new Intent(ReflectionActivity.this, com.example.graduationproject.KidsMoodActivity.class);
-                intent.putExtra("CHILD_ID", childId);
-                intent.putExtra("CHILD_NAME", childName);
-            } else {
-                intent = new Intent(ReflectionActivity.this, MainActivity.class);
-            }
-            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            ActivityUtils.startActivityAndFinishWithAnimation(ReflectionActivity.this, intent);
+            navigateToMood();
         });
     }
 
     private void buildCards() {
         cards = new ArrayList<>();
-        // All cards now follow the Magna City template style as requested
         cards.add(new ReflectionCard(SceneView.SCENE_MOUNTAIN, R.string.c1_title, R.string.c1_tag, R.string.c1_chip, R.string.c1_date, R.string.c1_note, R.drawable.ic_sparkles));
         cards.add(new ReflectionCard(SceneView.SCENE_SEA, R.string.c2_title, R.string.c2_tag, R.string.c2_chip, R.string.c2_date, R.string.c2_note, R.drawable.ic_sparkles));
         cards.add(new ReflectionCard(SceneView.SCENE_FOREST, R.string.c3_title, R.string.c3_tag, R.string.c3_chip, R.string.c3_date, R.string.c3_note, R.drawable.ic_sparkles));
@@ -125,38 +107,45 @@ public class ReflectionActivity extends AppCompatActivity {
     }
 
     private void bindViews() {
-        sceneView = findViewById(R.id.scene_view);
+        skyView = findViewById(R.id.sky_view);
         txtTitle = findViewById(R.id.txt_title);
-        txtTag = findViewById(R.id.txt_tag);
-        txtChip = findViewById(R.id.txt_chip);
-        txtNoteDate = findViewById(R.id.txt_note_date);
         txtNote = findViewById(R.id.txt_note);
-        txtNext = findViewById(R.id.txt_next);
         btnNext = findViewById(R.id.btn_next);
-        imgSceneIcon = findViewById(R.id.img_scene_icon);
+        bearCompanion = findViewById(R.id.bear_companion);
     }
 
     private void renderCardInitial(int idx) {
         ReflectionCard card = cards.get(idx);
-        sceneView.setSceneType(card.sceneType);
-        imgSceneIcon.setImageResource(card.iconRes);
-        
-        // Use standard getString to respect the updated English template content
+        if (skyView != null) {
+            skyView.setStage(idx % 6); // Cyclically use onboarding sky stages
+        }
+        if (bearCompanion != null) {
+            bearCompanion.setMood(KidsAdaptiveTeddyBuddyView.MOOD_CALM);
+        }
         txtTitle.setText(getString(card.titleRes));
-        txtTag.setText(getString(card.tagRes).toUpperCase());
-        txtChip.setText(getString(card.chipRes));
-        
-        // Hide date/prefix to match the clean screenshot look
-        txtNoteDate.setVisibility(View.GONE);
-        
         txtNote.setText(getString(card.noteRes));
-        txtNext.setText(getString(R.string.enter_button));
+        btnNext.setText(getString(R.string.enter_button));
+    }
+
+    private void navigateToMood() {
+        Intent intent = new Intent(this, com.example.graduationproject.KidsMoodActivity.class);
+        intent.putExtra("CHILD_ID", childId);
+        intent.putExtra("CHILD_NAME", childName);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
     }
 
     private void cleanupHandler() {
         if (handler != null && showNextButtonRunnable != null) {
             handler.removeCallbacks(showNextButtonRunnable);
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        cleanupHandler();
+        super.onBackPressed();
+        ActivityUtils.applyBackTransition(this);
     }
 
     @Override

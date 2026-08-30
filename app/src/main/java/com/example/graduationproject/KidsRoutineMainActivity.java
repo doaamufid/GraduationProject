@@ -68,7 +68,7 @@ public class KidsRoutineMainActivity extends AppCompatActivity {
     private View mascotAvatar, cloud1, cloud2;
     private LinearLayout stickerShelf, stickerRow, routineListContainer;
     private View emptyState;
-    private ImageButton btnEdit, btnReset, btnAdd;
+    private ImageButton btnEdit, btnReset, btnAdd, btnBack;
 
     private final GradientDrawable headerGradient = new GradientDrawable();
     private final Map<String, View> cardViewsById = new LinkedHashMap<>();
@@ -124,6 +124,7 @@ public class KidsRoutineMainActivity extends AppCompatActivity {
         btnEdit = findViewById(R.id.btnEdit);
         btnReset = findViewById(R.id.btnReset);
         btnAdd = findViewById(R.id.btnAdd);
+        btnBack = findViewById(R.id.btnBack);
     }
 
     private void setupHeaderGradient() {
@@ -150,6 +151,8 @@ public class KidsRoutineMainActivity extends AppCompatActivity {
     }
 
     private void setupListeners() {
+        btnBack.setOnClickListener(v -> finish());
+
         btnEdit.setOnClickListener(v -> {
             editMode = !editMode;
             btnEdit.setBackgroundResource(editMode ? R.drawable.kids_routine_bg_small_fab_active : R.drawable.kids_routine_bg_small_fab);

@@ -121,14 +121,12 @@ public class HomeFragment extends Fragment {
         Calendar cal = Calendar.getInstance();
         int todayDate = cal.get(Calendar.DAY_OF_YEAR);
         
-        // Start from Sunday of the current week
+        // Start from Saturday of the current week
         Calendar tempCal = (Calendar) cal.clone();
-        tempCal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+        while (tempCal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY) {
+            tempCal.add(Calendar.DAY_OF_YEAR, -1);
+        }
         
-        // Simulating some past moods to match the design style
-        int[] mockMoodColors = {0xFFDEF3EF, 0xFFFCF0C6, 0xFFDEF3E0, 0xFFF8DCDA, 0xFFDEF3EF, 0, 0};
-        int[] mockMoodIcons = {R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, 0, 0};
-
         SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", new Locale("ar"));
 
         for (int i = 0; i < 7; i++) {
@@ -147,10 +145,6 @@ public class HomeFragment extends Fragment {
                     icon = R.drawable.ic_smile;
                     color = todayMoodColor;
                 }
-            } else if (tempCal.before(cal)) {
-                // For past days in this week, show some mock icons/colors if we don't have real data
-                icon = mockMoodIcons[i % mockMoodIcons.length];
-                color = mockMoodColors[i % mockMoodColors.length];
             }
 
             moodDays.add(new MoodDay(dayName, dateStr, icon, color, isToday));
