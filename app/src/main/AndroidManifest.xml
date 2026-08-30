@@ -131,7 +131,8 @@
             android:exported="false" />
         <activity
             android:name=".Kids.NewChildProfileActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".HealingEnvActivity"
             android:exported="false" />
@@ -300,7 +301,8 @@
             android:exported="false" />
         <activity
             android:name=".KidsAdaptiveMainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
         <activity
             android:name=".KidsCalmCornerActivity"
             android:exported="false" />
