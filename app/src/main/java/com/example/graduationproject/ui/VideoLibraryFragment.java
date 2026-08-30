@@ -72,6 +72,12 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
         buildChips();
         refreshList();
 
+        // Kids Cards Listeners
+        view.findViewById(R.id.cardRoutine).setOnClickListener(v ->
+                startActivity(new android.content.Intent(getActivity(), com.example.graduationproject.KidsRoutineMainActivity.class)));
+        view.findViewById(R.id.cardCalmCorner).setOnClickListener(v ->
+                startActivity(new android.content.Intent(getActivity(), com.example.graduationproject.KidsCalmCornerActivity.class)));
+
         // Header action buttons (like the articles library top bar)
         view.findViewById(R.id.btnFavContent).setOnClickListener(v ->
                 openContentList(VideoContentListFragment.MODE_FAVORITES));

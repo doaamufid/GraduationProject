@@ -5,62 +5,88 @@
     android:layout_height="match_parent"
     android:background="#FFF9EF">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Top bar: back + search -->
+        <!-- Right Side: Action Icons -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/ll_top_icons"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <!-- Icon 1: Switch Profile (Users) -->
             <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@android:color/transparent"
-                android:src="@android:drawable/ic_menu_close_clear_cancel"
-                android:contentDescription="رجوع" />
+                android:id="@+id/btn_switch_profile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_icon_button"
+                android:contentDescription="تبديل البروفايل"
+                android:padding="10dp"
+                android:src="@drawable/ic_users"
+                app:tint="#8B6F4D" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
+            <!-- Icon 2: Switch to Adults Home (Home/Refresh) -->
+            <ImageButton
+                android:id="@+id/btn_switch_mode"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_icon_button"
+                android:contentDescription="تبديل الوضع"
+                android:padding="10dp"
+                android:src="@drawable/ic_refresh"
+                app:tint="#8B6F4D" />
 
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@android:drawable/ic_menu_search"
-                android:contentDescription="بحث" />
         </LinearLayout>
 
-        <!-- 🌟 الأفاتار النصي المختار (تعديل الأفاتار بدلاً من الصورة الثابتة) -->
+        <!-- Left Side: Back Button -->
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_icon_button"
+            android:contentDescription="رجوع"
+            android:elevation="3dp"
+            android:padding="10dp"
+            android:src="@drawable/outline_arrow_forward_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#8B6F4D" />
+
+        <!-- 🌟 الأفاتار النصي المختار -->
         <TextView
             android:id="@+id/tvChildAvatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="80dp"
+            android:text="🐻"
             android:textSize="70sp"
-            android:text="🐻" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Greeting bubble -->
         <TextView
             android:id="@+id/txtGreeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_bubble_yellow"
             android:paddingHorizontal="18dp"
             android:paddingVertical="10dp"
             android:text="أنا هنا معك دائما 💛"
+            android:textColor="#5A4632"
             android:textSize="15sp"
-            android:textColor="#5A4632" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvChildAvatar" />
 
         <!-- Mood grid -->
         <GridLayout
@@ -68,9 +94,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:alignmentMode="alignMargins"
             android:columnCount="3"
             android:rowCount="2"
-            android:alignmentMode="alignMargins">
+            app:layout_constraintTop_toBottomOf="@id/txtGreeting">
 
             <TextView
                 android:id="@+id/moodHappy"
@@ -119,58 +146,475 @@
             android:enabled="false"
             android:text="تأكيد اختيار اليوم"
             android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/gridMoods" />
 
         <!-- Category cards -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:alignmentMode="alignMargins"
             android:columnCount="2"
-            android:rowCount="3"
-            android:alignmentMode="alignMargins">
+            app:layout_constraintTop_toBottomOf="@id/btnConfirmMood">
 
-            <TextView
+            <!-- Card 1: Safety Team -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardSafetyTeam"
-                style="@style/CategoryCard"
-                android:background="@drawable/bg_card_green"
-                android:text="🏠&#10;فريق الأمان" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#D0F2E9"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🏠"
+                        android:textSize="44sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/card_safety_team"
+                        android:textColor="#2B3350"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="95% تطابق"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="10k بطل"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#6C5CE7"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/card_add_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 2: Breathe -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardBreathe"
-                style="@style/CategoryCard"
-                android:background="@drawable/bg_card_blue"
-                android:text="🫁&#10;تنفس مع الهدهاد" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#D1EDFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🫁"
+                        android:textSize="44sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/card_breathe"
+                        android:textColor="#2B3350"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="88% تطابق"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="15k بطل"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#6C5CE7"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/card_add_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 3: Comfort -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardComfort"
-                style="@style/CategoryCard"
-                android:background="@drawable/bg_card_purple"
-                android:text="🌈&#10;البيات المريحة" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#E7DBFF"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌈"
+                        android:textSize="44sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/card_comfort"
+                        android:textColor="#2B3350"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="92% تطابق"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="12k بطل"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#6C5CE7"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/card_add_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 4: Play -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardPlayBushes"
-                style="@style/CategoryCard"
-                android:background="@drawable/bg_card_orange"
-                android:text="🌳&#10;شجيرات اللعبة" />
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#FFD7D0"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
 
-            <TextView
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌳"
+                        android:textSize="44sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/card_play"
+                        android:textColor="#2B3350"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="85% تطابق"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="20k بطل"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#6C5CE7"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/card_add_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 5: Routine -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRoutine"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#E2F2D5"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="📅"
+                        android:textSize="44sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/card_routine"
+                        android:textColor="#2B3350"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="90% تطابق"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8k بطل"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#6C5CE7"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/card_add_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 6: Calm Corner -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardCalmCorner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#FFE0EA"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🌟"
+                        android:textSize="44sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/card_calm_corner"
+                        android:textColor="#2B3350"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="85% تطابق"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="5k بطل"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#6C5CE7"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/card_add_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 7: Videos -->
+            <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardVideos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnSpan="2"
                 android:layout_columnWeight="1"
-                android:layout_gravity="fill_horizontal"
-                android:layout_marginTop="14dp"
-                android:background="@drawable/bg_card_videos"
-                android:gravity="center"
-                android:padding="18dp"
-                android:text="🎬  قصص وفيديوهات"
-                android:textColor="#5A4632"
-                android:textSize="17sp"
-                android:textStyle="bold" />
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#FFF0B3"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="🎬"
+                        android:textSize="44sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/card_videos"
+                        android:textColor="#2B3350"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="98% تطابق"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="50k بطل"
+                        android:textColor="#802B3350"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#6C5CE7"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/card_add_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
         </GridLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

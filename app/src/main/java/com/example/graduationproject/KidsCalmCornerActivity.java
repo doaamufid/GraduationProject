@@ -3,9 +3,11 @@ package com.example.graduationproject;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.Window;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
@@ -17,7 +19,7 @@ import com.example.graduationproject.util.kidsCalmAnimUtils;
 import com.example.graduationproject.util.kidsCalmAppState;
 
 /** Mirrors the top-level React <App> component: header, tabs, toast, info modal. */
-public class kidsCalmKidsCalmCornerActivity extends AppCompatActivity implements
+public class KidsCalmCornerActivity extends AppCompatActivity implements
         kidsCalmGalleryFragment.Host, kidsCalmWordsFragment.Host, kidsCalmAdventureFragment.Host, kidsCalmAppState.Listener {
 
     private static final String TAB_GALLERY = "gallery";
@@ -63,6 +65,8 @@ public class kidsCalmKidsCalmCornerActivity extends AppCompatActivity implements
         findViewById(R.id.infoButton).setOnClickListener(v ->
                 new kidsCalmInfoDialog().show(getSupportFragmentManager(), "info"));
 
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+
         tabGallery.setOnClickListener(v -> switchTab(TAB_GALLERY));
         tabWords.setOnClickListener(v -> switchTab(TAB_WORDS));
         tabSimulate.setOnClickListener(v -> switchTab(TAB_SIMULATE));
@@ -82,7 +86,20 @@ public class kidsCalmKidsCalmCornerActivity extends AppCompatActivity implements
 
         updateTabStyles();
         updateStars();
+        updateNavigationBar();
         kidsCalmAppState.get().addListener(this);
+    }
+
+    private void updateNavigationBar() {
+        Window window = getWindow();
+        int navColor = getColor(R.color.kids_calm_skyTop);
+        window.setNavigationBarColor(navColor);
+
+        WindowInsetsControllerCompat controller = new WindowInsetsControllerCompat(window, window.getDecorView());
+        double luminance = (0.299 * android.graphics.Color.red(navColor) +
+                0.587 * android.graphics.Color.green(navColor) +
+                0.114 * android.graphics.Color.blue(navColor)) / 255.0;
+        controller.setAppearanceLightNavigationBars(luminance > 0.5);
     }
 
     @Override

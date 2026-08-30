@@ -4,9 +4,12 @@ import android.animation.ArgbEvaluator;
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowInsetsController;
 import android.view.animation.DecelerateInterpolator;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
@@ -14,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.graduationproject.models.KidsMood;
 import com.example.graduationproject.view.KidsMoodBearView;
@@ -47,6 +51,20 @@ public class KidsMoodActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_kids_mood);
 
+        // Set Navigation Bar color to White
+        getWindow().setNavigationBarColor(Color.WHITE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            WindowInsetsController controller = getWindow().getInsetsController();
+            if (controller != null) {
+                controller.setSystemBarsAppearance(
+                        WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS,
+                        WindowInsetsController.APPEARANCE_LIGHT_NAVIGATION_BARS);
+            }
+        } else {
+            new WindowInsetsControllerCompat(getWindow(), getWindow().getDecorView())
+                    .setAppearanceLightNavigationBars(true);
+        }
+
         rootLayout = findViewById(R.id.root_layout);
         progressFill = findViewById(R.id.progress_fill);
         heroCircle = findViewById(R.id.hero_circle);
@@ -58,8 +76,17 @@ public class KidsMoodActivity extends AppCompatActivity {
         buildSelectorChips();
         renderInstant(selectedIndex);
 
-        findViewById(R.id.btn_continue).setOnClickListener(v ->
-                Toast.makeText(this, R.string.kids_mood_saved_toast, Toast.LENGTH_SHORT).show());
+        findViewById(R.id.btn_continue).setOnClickListener(v -> {
+            Toast.makeText(this, R.string.kids_mood_saved_toast, Toast.LENGTH_SHORT).show();
+            android.content.Intent intent = new android.content.Intent(this, com.example.graduationproject.Kids.MoodCheckInActivity.class);
+            ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
+        });
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        ActivityUtils.applyBackTransition(this);
     }
 
     /** Same 7 moods / colours as KID_MOODS in the React source. */
@@ -108,6 +135,7 @@ public class KidsMoodActivity extends AppCompatActivity {
         KidsMood mood = moods.get(index);
         rootLayout.setBackgroundColor(mood.bgColor);
         getWindow().setStatusBarColor(mood.bgColor);
+        updateNavigationBar(mood.bgColor);
         progressFill.setBackground(ovalOrRect(mood.accentColor, false));
         heroBear.setMoodType(mood.bearType);
         moodLabel.setText(mood.label);
@@ -124,6 +152,7 @@ public class KidsMoodActivity extends AppCompatActivity {
                 c -> {
                     rootLayout.setBackgroundColor(c);
                     getWindow().setStatusBarColor(c);
+                    updateNavigationBar(c);
                 });
         animateColor(from.accentColor, to.accentColor,
                 c -> progressFill.setBackground(ovalOrRect(c, false)));
@@ -131,6 +160,18 @@ public class KidsMoodActivity extends AppCompatActivity {
         moodLabel.setText(to.label);
         bounceBear(to.bearType);
         updateChipStyles(newIndex, true);
+    }
+
+    private void updateNavigationBar(int color) {
+        Window window = getWindow();
+        window.setNavigationBarColor(color);
+
+        double luminance = (0.299 * android.graphics.Color.red(color) +
+                0.587 * android.graphics.Color.green(color) +
+                0.114 * android.graphics.Color.blue(color)) / 255.0;
+
+        WindowInsetsControllerCompat controller = new WindowInsetsControllerCompat(window, window.getDecorView());
+        controller.setAppearanceLightNavigationBars(luminance > 0.5);
     }
 
     private void bounceBear(String newType) {

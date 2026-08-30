@@ -73,6 +73,8 @@ dependencies {
     implementation libs.lottie
     implementation libs.rive.android
     implementation libs.glide
+    implementation libs.room.common.jvm
+    implementation libs.room.runtime
     implementation libs.shimmer
 
     implementation libs.ui
@@ -100,6 +102,7 @@ dependencies {
     androidTestImplementation libs.ext.junit
     androidTestImplementation libs.espresso.core
     androidTestImplementation libs.ui.test.junit4
+    annotationProcessor libs.room.compiler
     debugImplementation libs.ui.test.manifest
     debugImplementation libs.ui.tooling
 }

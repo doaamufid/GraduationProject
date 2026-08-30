@@ -47,12 +47,7 @@ public class OnBoardingActivity4 extends AppCompatActivity {
 
         binding.btnNext.setOnClickListener(v -> {
             Intent intent = new Intent(OnBoardingActivity4.this, OnBoardingActivity5.class);
-            startActivity(intent);
-            if (AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))) {
-                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-            } else {
-                overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            }
+            ActivityUtils.startActivityWithAnimation(this, intent);
         });
 
         binding.btnBack.setOnClickListener(v -> onBackPressed());
@@ -65,11 +60,7 @@ public class OnBoardingActivity4 extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))) {
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else {
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        }
+        ActivityUtils.applyBackTransition(this);
     }
 
     private void skipOnBoarding() {
@@ -77,9 +68,8 @@ public class OnBoardingActivity4 extends AppCompatActivity {
         preferences.edit().putBoolean("isFirstRun", false).apply();
 
         Intent intent = new Intent(OnBoardingActivity4.this, SplashSelectActivity.class);
-        startActivity(intent);
+        ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
         overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-        finish();
     }
 
     private void setupAnimations() {
@@ -93,6 +83,8 @@ public class OnBoardingActivity4 extends AppCompatActivity {
         binding.tvDescription.setTranslationY(50f);
         binding.btnNext.setAlpha(0f);
         binding.btnNext.setTranslationY(100f);
+        binding.btnBack.setAlpha(0f);
+        binding.btnBack.setTranslationY(100f);
 
         // Illustration Animation
         ObjectAnimator imageAlpha = ObjectAnimator.ofFloat(binding.ivIllustration, "alpha", 0f, 1f);
@@ -119,7 +111,9 @@ public class OnBoardingActivity4 extends AppCompatActivity {
                 ObjectAnimator.ofFloat(binding.tvDescription, "alpha", 0f, 1f),
                 ObjectAnimator.ofFloat(binding.tvDescription, "translationY", 50f, 0f),
                 ObjectAnimator.ofFloat(binding.btnNext, "alpha", 0f, 1f),
-                ObjectAnimator.ofFloat(binding.btnNext, "translationY", 100f, 0f)
+                ObjectAnimator.ofFloat(binding.btnNext, "translationY", 100f, 0f),
+                ObjectAnimator.ofFloat(binding.btnBack, "alpha", 0f, 1f),
+                ObjectAnimator.ofFloat(binding.btnBack, "translationY", 100f, 0f)
         );
         textSet.setDuration(800);
         textSet.setStartDelay(400);

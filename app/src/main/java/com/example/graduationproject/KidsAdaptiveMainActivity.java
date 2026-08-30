@@ -14,6 +14,7 @@ import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.graduationproject.data.ActiveChildManager;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.dialogs.KidsAdaptiveResumeDialogFragment;
 import com.example.graduationproject.Fragments.KidsAdaptiveBaseOnboardingFragment;
@@ -65,7 +66,7 @@ public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsA
         setContentView(R.layout.kids_adaptive_activity_main);
 
         prefs = new KidsAdaptivePrefsManager(this);
-        profileStore = new ChildProfileStore(this);
+        profileStore = ChildProfileStore.getInstance(this);
         simulateReopenButton = findViewById(R.id.btn_simulate_reopen);
         simulateReopenButton.setOnClickListener(v -> simulateReopen());
 
@@ -171,10 +172,13 @@ public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsA
                     data.gender != null ? data.gender : "غير محدد",
                     avatar // حقل الأفاتار المحفوظ
             );
+
+            // ✅ تعيين الطفل الجديد كطفل نشط في ActiveChildManager
+            ActiveChildManager.setActiveChildId(this, childId);
         }
 
         if (childId != -1) {
-            Intent intent = new Intent(this, com.example.graduationproject.ReflectionActivity.class);
+            Intent intent = new Intent(this, com.example.graduationproject.Kids.KidsReflectionActivity.class);
             intent.putExtra("FOR_KIDS", true);
             intent.putExtra("CHILD_ID", childId);
             intent.putExtra("CHILD_NAME", data.nickname);
@@ -234,9 +238,7 @@ public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsA
 
     @Override
     protected void onDestroy() {
-        if (profileStore != null) {
-            profileStore.close();
-        }
+        // نستخدم Singleton، لذا لا نغلقه هنا
         super.onDestroy();
     }
 

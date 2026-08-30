@@ -66,8 +66,6 @@ public class SplashSelectActivity extends AppCompatActivity {
 
         startEntranceAnimations();
 
-        binding.btnBack.setOnClickListener(v -> finish());
-
         getOnBackPressedDispatcher().addCallback(this, new OnBackPressedCallback(true) {
             @Override
             public void handleOnBackPressed() {

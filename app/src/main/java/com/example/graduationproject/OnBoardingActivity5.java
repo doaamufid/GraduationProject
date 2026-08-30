@@ -50,9 +50,8 @@ public class OnBoardingActivity5 extends AppCompatActivity {
             preferences.edit().putBoolean("isFirstRun", false).apply();
 
             Intent intent = new Intent(OnBoardingActivity5.this, SplashSelectActivity.class);
-            startActivity(intent);
+            ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
             overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
         });
 
         binding.btnBack.setOnClickListener(v -> {
@@ -63,11 +62,7 @@ public class OnBoardingActivity5 extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this))) {
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-        } else {
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-        }
+        ActivityUtils.applyBackTransition(this);
     }
 
     private void setupAnimations() {
@@ -81,6 +76,8 @@ public class OnBoardingActivity5 extends AppCompatActivity {
         binding.tvDescription.setTranslationY(50f);
         binding.btnStart.setAlpha(0f);
         binding.btnStart.setTranslationY(100f);
+        binding.btnBack.setAlpha(0f);
+        binding.btnBack.setTranslationY(100f);
 
         // Illustration Animation
         ObjectAnimator imageAlpha = ObjectAnimator.ofFloat(binding.ivIllustration, "alpha", 0f, 1f);
@@ -107,7 +104,9 @@ public class OnBoardingActivity5 extends AppCompatActivity {
                 ObjectAnimator.ofFloat(binding.tvDescription, "alpha", 0f, 1f),
                 ObjectAnimator.ofFloat(binding.tvDescription, "translationY", 50f, 0f),
                 ObjectAnimator.ofFloat(binding.btnStart, "alpha", 0f, 1f),
-                ObjectAnimator.ofFloat(binding.btnStart, "translationY", 100f, 0f)
+                ObjectAnimator.ofFloat(binding.btnStart, "translationY", 100f, 0f),
+                ObjectAnimator.ofFloat(binding.btnBack, "alpha", 0f, 1f),
+                ObjectAnimator.ofFloat(binding.btnBack, "translationY", 100f, 0f)
         );
         textSet.setDuration(800);
         textSet.setStartDelay(400);

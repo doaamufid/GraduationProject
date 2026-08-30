@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.graduationproject"
     xmlns:tools="http://schemas.android.com/tools">
 
-    <!-- إذن المايك لتسجيل الصوت في شات الأطفال -->
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <!-- Allow network image loading (Glide, Picasso, etc.) -->
     <uses-permission android:name="android.permission.INTERNET" />
-    <!-- إذن الكاميرا (ميزة ارسم مع نور) -->
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
-    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+
     <application
         android:name=".GraduationProjectApplication"
         android:allowBackup="true"
@@ -23,88 +22,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
 
-        <!-- Kids Features -->
-        <activity
-            android:name=".Kids.StoryPlaybackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.SoundsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.MyWordsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.CelebrationActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.PlaybackActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.RecordingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.GalleryActivity" />
-        <activity
-            android:name=".Kids.WordOfWeekActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.VideosActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.VideoDetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.MessagesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.MoodCheckInActivity"
-            android:exported="false" />
-        <activity android:name=".Kids.FeaturedChildActivity" />
-        <activity
-            android:name=".Kids.KidsAiResponseActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.KidsAiCompanionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.ChildProfilesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.DrawInstructionActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.UploadPhotoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.ConfirmPhotoActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.ProcessingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.ResultActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.KidsAiChatActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.KidsBubbleBreathingActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.NewChildProfileActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.KidsTreeIntroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.KidsTreeActivity"
-            android:exported="false" />
-        <activity android:name=".Kids.FavoriteStoriesActivity" />
-        <activity
-            android:name=".Kids.KidsTreeLevelUpActivity"
-            android:exported="false" />
-
-        <!-- Main / Splash Activities -->
+        <!-- Splash & Onboarding -->
         <activity
             android:name=".SplashActivity"
             android:exported="true">
@@ -145,7 +63,112 @@
             android:name=".AdultOnboardingMainActivity"
             android:exported="false" />
 
-        <!-- General Activities -->
+        <!-- Kids Features -->
+        <activity
+            android:name=".KidsMoodActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KidsRoutineMainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsReflectionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.StoryPlaybackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.SoundsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.MyWordsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.CelebrationActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.PlaybackActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.RecordingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.GalleryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.WordOfWeekActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.VideosActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.VideoDetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.MessagesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.MoodCheckInActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.FeaturedChildActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsAiResponseActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Kids.KidsAiCompanionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ChildProfilesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.DrawInstructionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.UploadPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ConfirmPhotoActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ProcessingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.ResultActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsAiChatActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".Kids.KidsBubbleBreathingActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.NewChildProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".Kids.KidsTreeIntroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsTreeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.FavoriteStoriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsTreeLevelUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KidsAdaptiveMainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".KidsCalmCornerActivity"
+            android:exported="false" />
+
+        <!-- Adult / General Features -->
         <activity
             android:name=".VideoLibraryActivity"
             android:exported="false" />
@@ -159,15 +182,13 @@
             android:name=".HealingEnvActivity"
             android:exported="false" />
         <activity
-            android:name=".HealingEnvironmentActivity"
-            android:exported="false" />
-        <activity
             android:name=".HealingPlayerActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".CbtChatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ReframingActivity"
             android:exported="false" />
@@ -179,10 +200,12 @@
             android:exported="true" />
         <activity
             android:name=".ChatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ChatMainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MoodDashboardActivity"
             android:exported="false" />
@@ -219,12 +242,6 @@
             android:name=".ReflectionActivity"
             android:exported="false" />
         <activity
-            android:name=".FutureActivity"
-            android:exported="false"
-            android:label="@string/title_activity_future"
-            android:theme="@style/Theme.GraduationProject"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
             android:name=".SalamCommunityActivity"
             android:exported="false" />
         <activity
@@ -245,32 +262,10 @@
         <activity
             android:name=".OneClickCalmActivity"
             android:exported="false" />
-
-        <!-- UI Package Activities -->
-        <activity
-            android:name=".ui.AISuggestionsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.AllMessagesActivity"
-            android:exported="false"
-            android:theme="@style/Theme.GraduationProject"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".ui.StrengthsBankActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.settings.ChildProfilesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".KidsAdaptiveMainActivity"
-            android:exported="false" />
         <activity
             android:name=".AiWelcomeActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="false" />
         <activity
             android:name=".MyFutureMsgMainActivity"
             android:exported="false"
@@ -279,6 +274,20 @@
             android:name=".MyFutureMsgAllMessagesActivity"
             android:exported="false"
             android:theme="@style/my_future_msg_theme_future_message" />
+
+        <!-- UI Package Activities -->
+        <activity
+            android:name=".ui.AISuggestionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.StrengthsBankActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.settings.ChildProfilesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.ProfileActivity"
             android:exported="false"
@@ -295,5 +304,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
+
     </application>
+
 </manifest>

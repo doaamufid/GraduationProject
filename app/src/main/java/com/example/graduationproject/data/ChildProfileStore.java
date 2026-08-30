@@ -14,6 +14,7 @@ import com.example.graduationproject.models.SoundItem;
 import com.example.graduationproject.models.VideoItem;
 
 import net.sqlcipher.database.SQLiteDatabase;
+import net.sqlcipher.database.SQLiteDatabaseHook;
 import net.sqlcipher.database.SQLiteOpenHelper;
 
 import org.json.JSONArray;
@@ -86,22 +87,45 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     }
 
     public ChildProfileStore(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
+        super(context, DATABASE_NAME, null, DATABASE_VERSION, new SQLiteDatabaseHook() {
+            @Override
+            public void preKey(SQLiteDatabase database) {
+            }
+
+            @Override
+            public void postKey(SQLiteDatabase database) {
+                // ✅ محاولة ترحيل قاعدة البيانات إذا كانت قادمة من إصدار أقدم من SQLCipher (3.x -> 4.x)
+                // يجب أن تتم هذه العملية فوراً بعد إدخال المفتاح وقبل أي عملية أخرى
+                try {
+                    database.rawExecSQL("PRAGMA cipher_migrate;");
+                } catch (Exception e) {
+                    Log.e("ChildProfileStore", "Migration failed in hook: " + e.getMessage());
+                }
+            }
+        });
+
         // ⭐ تحميل مكتبات SQLCipher المشفرة
         SQLiteDatabase.loadLibs(context);
-        
+
         // ✅ حماية ضد أخطاء التشفير أو التلف (مثل SQL logic error أو file is not a database)
         try {
-            // محاولة فتح قاعدة البيانات للتحقق من التشفير
+            // محاولة فتح قاعدة البيانات للتحقق من التشفير والمهاجرة
             SQLiteDatabase db = getWritableDatabase(DATABASE_PASSPHRASE);
         } catch (Exception e) {
             Log.e("ChildProfileStore", "Database initialization failed: " + e.getMessage());
-            // إذا فشل الفتح بسبب التشفير (SQL logic error) أو تلف الملف، نقوم بحذفه لإعادة إنشائه
-            if (e.getMessage() != null && (e.getMessage().contains("file is not a database") || 
-                                         e.getMessage().contains("SQL logic error") ||
-                                         e.getMessage().contains("code 1"))) {
+            String errorMsg = e.getMessage();
+            if (errorMsg != null && (errorMsg.contains("file is not a database") ||
+                    errorMsg.contains("SQL logic error") ||
+                    errorMsg.contains("code 1") ||
+                    errorMsg.contains("file is encrypted"))) {
                 Log.e("ChildProfileStore", "Deleting incompatible or corrupted database for reset.");
-                context.deleteDatabase(DATABASE_NAME);
+                try {
+                    close(); // إغلاق الهيلبر أولاً
+                    context.deleteDatabase(DATABASE_NAME);
+                    Log.i("ChildProfileStore", "Database deleted successfully. It will be recreated on next access.");
+                } catch (Exception deleteError) {
+                    Log.e("ChildProfileStore", "Failed to delete database: " + deleteError.getMessage());
+                }
             }
         }
     }
@@ -110,12 +134,6 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     public void onConfigure(SQLiteDatabase db) {
         super.onConfigure(db);
         db.setForeignKeyConstraintsEnabled(true);
-        // ✅ محاولة ترحيل قاعدة البيانات إذا كانت قادمة من إصدار أقدم من SQLCipher (3.x -> 4.x)
-        try {
-            db.rawExecSQL("PRAGMA cipher_migrate;");
-        } catch (Exception e) {
-            Log.e("ChildProfileStore", "Migration failed: " + e.getMessage());
-        }
     }
 
     @Override
