@@ -1,5 +1,6 @@
 package com.example.graduationproject.adapters;
 
+import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -7,6 +8,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.R;
@@ -42,26 +44,31 @@ public class kidsCalmWordAdapter extends RecyclerView.Adapter<kidsCalmWordAdapte
     @Override
     public void onBindViewHolder(@NonNull VH h, int position) {
         kidsCalmWordModel w = data.get(position);
+        Context context = h.itemView.getContext();
+
         h.emoji.setText(w.emoji);
         h.text.setText(w.text);
 
         h.emoji.setBackgroundResource(w.favorite ? R.drawable.kids_calm_bg_emoji_option_selected : R.drawable.kids_calm_bg_emoji_option);
         h.itemView.setBackgroundResource(w.favorite ? R.drawable.kids_calm_bg_list_item_active : R.drawable.kids_calm_bg_list_item_idle);
-        h.heart.setText(w.favorite
-                ? h.itemView.getContext().getString(R.string.kids_calm_heart_filled)
-                : h.itemView.getContext().getString(R.string.kids_calm_heart_empty));
-        h.heart.setTextColor(h.itemView.getResources().getColor(w.favorite ? R.color.kids_calm_pink : R.color.kids_calm_cardBorder));
+
+        // إصلاح مشكلة setText(ambiguous) وتمرير resource ID المباشر
+        int stringResId = w.favorite ? R.string.kids_calm_heart_filled : R.string.kids_calm_heart_empty;
+        h.heart.setText(stringResId);
+
+        // إصلاح دالة الألوان لتجنب Deprecated warning
+        int colorResId = w.favorite ? R.color.kids_calm_pink : R.color.kids_calm_cardBorder;
+        h.heart.setTextColor(ContextCompat.getColor(context, colorResId));
 
         if (w.favorite) {
             kidsCalmDurationOption dur = kidsCalmAppState.get().durByKey(w.durKey);
             h.durLabel.setVisibility(View.VISIBLE);
-            int resId = h.itemView.getContext().getResources()
-                    .getIdentifier(dur.labelResName, "string", h.itemView.getContext().getPackageName());
-            String label = resId != 0 ? h.itemView.getContext().getString(resId) : dur.key;
+            int resId = context.getResources().getIdentifier(dur.labelResName, "string", context.getPackageName());
+            String label = resId != 0 ? context.getString(resId) : dur.key;
             h.durLabel.setText(dur.emoji + " " + label);
 
             h.durWrapper.setVisibility(View.VISIBLE);
-            kidsCalmDurChipsHelper.render(h.durChips, h.itemView.getContext(), w.durKey,
+            kidsCalmDurChipsHelper.render(h.durChips, context, w.durKey,
                     key -> listener.onChangeDuration(w, key));
         } else {
             h.durLabel.setVisibility(View.GONE);

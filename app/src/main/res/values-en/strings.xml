@@ -909,7 +909,6 @@
     <string name="mood_happy">I feel happy</string>
     <string name="mood_overjoyed">I feel completely joyful</string>
     <string name="adaptive_adult_onboarding_app_name">Salam</string>
-    <string name="adaptive_adult_onboarding_welcome_title">Welcome to Salam 🤍</string>
     <string name="adaptive_adult_onboarding_welcome_body">A private space to help you understand your feelings and find simple ways to feel calm.</string>
     <string name="adaptive_adult_onboarding_welcome_button">Let\'s start calmly</string>
     <string name="adaptive_adult_onboarding_privacy_title">Before we begin…</string>
@@ -1310,7 +1309,6 @@
     <string name="kids_calm_icon_delete">🗑</string>
     <string name="kids_calm_icon_confirm">✓</string>
     <string name="kids_calm_icon_cancel">✕</string>
-    <string name="kids_calm_heart_filled">♥</string>
     <string name="kids_calm_heart_empty">♡</string>
     <string name="kids_calm_stars_default">2</string>
     <string name="kids_calm_card_phrase_placeholder">Choose a sweet word…</string>

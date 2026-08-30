@@ -36,8 +36,6 @@ android {
         }
     }
 
-
-
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -76,6 +74,10 @@ dependencies {
     implementation("androidx.recyclerview:recyclerview:1.3.2")
     implementation(libs.flexbox)
 
+    // Room
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+
     // Navigation
     implementation("androidx.navigation:navigation-fragment-ktx:2.8.0")
     implementation("androidx.navigation:navigation-ui-ktx:2.8.0")
@@ -111,6 +113,7 @@ dependencies {
     implementation(libs.firebase.ai)
     implementation("com.google.firebase:firebase-appcheck-debug")
     implementation("androidx.work:work-runtime:2.9.0")
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.compose.bom))
