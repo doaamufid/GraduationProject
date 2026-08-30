@@ -7,7 +7,7 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
-// قراءة ملف local.properties
+// Read local.properties for Gemini API Key
 val localProperties = Properties()
 val localPropertiesFile = rootProject.file("local.properties")
 if (localPropertiesFile.exists()) {
@@ -16,8 +16,7 @@ if (localPropertiesFile.exists()) {
 
 android {
     namespace = "com.example.graduationproject"
-    compileSdk = 36
-    buildToolsVersion = "35.0.0"
+    compileSdk = 36 // Back to 36 as required by dependencies
 
     defaultConfig {
         applicationId = "com.example.graduationproject"
@@ -29,14 +28,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
 
         // Gemini API Key
-        buildConfigField("String", "GEMINI_API_KEY", "\"${localProperties.getProperty("GEMINI_API_KEY")}\"")
+        buildConfigField("String", "GEMINI_API_KEY", "\"${localProperties.getProperty("GEMINI_API_KEY", "")}\"")
 
         ndk {
             abiFilters.addAll(setOf("armeabi-v7a", "arm64-v8a", "x86", "x86_64"))
         }
     }
-
-
 
     buildTypes {
         release {
@@ -61,19 +58,18 @@ android {
 }
 
 dependencies {
-    // AndroidX Core & Activity
-    implementation("androidx.core:core:1.18.0")
-    implementation("androidx.core:core-ktx:1.18.0")
-    implementation("androidx.activity:activity:1.10.1")
-    implementation("androidx.activity:activity-ktx:1.10.1")
-    implementation("androidx.appcompat:appcompat:1.7.1")
+    // AndroidX Core & Activity using Version Catalog
+    implementation(libs.core.ktx)
+    implementation(libs.appcompat)
+    implementation(libs.activity)
+    implementation(libs.activity.ktx)
+    implementation(libs.constraintlayout)
+    implementation(libs.cardview)
+    implementation(libs.recyclerview)
     implementation(libs.lifecycle.runtime.ktx)
 
     // UI Layouts & Components
-    implementation("com.google.android.material:material:1.12.0")
-    implementation("androidx.cardview:cardview:1.0.0")
-    implementation("androidx.constraintlayout:constraintlayout:2.1.4")
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation(libs.material)
     implementation(libs.flexbox)
 
     // Navigation
@@ -91,11 +87,10 @@ dependencies {
     // Animations & Visuals
     implementation(libs.lottie)
     implementation(libs.rive.android)
-    implementation("com.facebook.shimmer:shimmer:0.5.0")
+    implementation(libs.shimmer)
 
     // Images
     implementation(libs.glide)
-    implementation(libs.shimmer)
     annotationProcessor(libs.glide.compiler)
 
     // Charts & Engage
@@ -110,7 +105,14 @@ dependencies {
     implementation(platform(libs.firebase.bom))
     implementation(libs.firebase.ai)
     implementation("com.google.firebase:firebase-appcheck-debug")
-    implementation("androidx.work:work-runtime:2.9.0")
+    
+    // Database & SQLCipher (From Groovy build.gradle)
+    implementation(libs.sqlcipher.android)
+    implementation(libs.sqlite)
+
+    // Work Manager
+    implementation(libs.work.runtime)
+
     // Testing
     testImplementation(libs.junit)
     androidTestImplementation(platform(libs.compose.bom))

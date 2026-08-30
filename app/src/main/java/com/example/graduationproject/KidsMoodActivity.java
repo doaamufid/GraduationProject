@@ -78,9 +78,7 @@ public class KidsMoodActivity extends AppCompatActivity {
 
         findViewById(R.id.btn_continue).setOnClickListener(v -> {
             Toast.makeText(this, R.string.kids_mood_saved_toast, Toast.LENGTH_SHORT).show();
-            android.content.Intent intent = new android.content.Intent(this, com.example.graduationproject.Kids.KidsAiResponseActivity.class);
-            // نص الرسالة من الصورة كما طلب المستخدم
-            intent.putExtra("AI_RESPONSE", "يا صغيري الجميل، لا تقلق، أنا هنا بجانبك أحضنك بقوة حتى تختفي كل الدموع وتعود لتبتسم.");
+            android.content.Intent intent = new android.content.Intent(this, com.example.graduationproject.Kids.MoodCheckInActivity.class);
             ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
         });
     }

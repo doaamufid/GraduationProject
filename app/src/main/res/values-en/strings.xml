@@ -1,5 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
+    <string name="back">Back</string>
     <string name="app_name">salam</string>
     <string name="salam_title">SALAM</string>
     <string name="mental_health_subtitle">MENTAL HEALTH · PEACE OF MIND</string>
@@ -1605,7 +1606,7 @@
     <string name="home_feature_reports_desc">View your mood reports</string>
     <string name="home_feature_community_title">Salam Community</string>
     <string name="home_feature_community_desc">Connect with the community</string>
-    ```xml
+
     <string name="kids_reminder_channel_name">Daily Salam Reminder</string>
     <string name="kids_reminder_channel_description">A daily reminder asking the child how they feel</string>
     <string name="kids_reminder_title">Hello, little one! 💛</string>
@@ -1683,4 +1684,35 @@
     <string name="top_impact_image">Inspiring Image</string>
     <string name="start_btn">Start</string>
     <string name="search_hint_content">Search for articles or videos...</string>
+    <!-- Weekly Word Screen -->
+    <string name="header_title">My Words</string>
+    <!-- Library (Videos/Listen) -->
+    <string name="library_content_title">Visual Content</string>
+    <string name="library_content_sub">Listen</string>
+    <!-- Profile screen -->
+    <string name="profile_header_title">Journey Profile</string>
+    <!-- Video library -->
+    <string name="unbookmark_content">Remove from Saved</string>
+    <string name="fav_content_title">Favorite Content</string>
+    <string name="bookmark_content_list_title">Saved Content</string>
+
+    <string name="unfav_content">Remove from Favorites</string>
+
+    <string name="bookmarks_section_title">Saved Items</string>
+    <string name="bookmark_videos_title">Saved Videos</string>
+    <string name="bookmark_articles_sub">Read them later in the Articles Library</string>
+    <string name="bookmark_videos_sub">Watch them later in the Videos section</string>
+    <string name="watch_now">Watch Now</string>
+    <string name="language_label_ar">Language</string>
+    <string name="language_select_ar">Select</string>
+    <string name="language_selected_ar">Selected</string>
+    <string name="language_label_en">Language</string>
+    <string name="language_select_en">Select</string>
+    <string name="language_selected_en">Selected</string>
+    <string name="badge_ideas_label">10 Balanced Ideas</string>
+    <string name="badge_week_label">A Full Week</string>
+    <string name="badge_month_label">30 Days With Us</string>
+    <string name="badge_message_label">A Message to the Future</string>
+    <string name="switch_profile">Switch Profile</string>
+    <string name="switch_mode">Switch Mode</string>
 </resources>

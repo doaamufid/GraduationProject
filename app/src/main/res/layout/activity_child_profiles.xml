@@ -5,16 +5,67 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_child_profiles"
+    android:background="#FAF1E6"
+    android:layoutDirection="rtl"
     tools:context=".Kids.ChildProfilesActivity">
 
-    <TextView
-        android:id="@+id/tv_bear_avatar2"
+    <!-- Right Side: Action Icons -->
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="🐻"
-        android:textSize="72sp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="56dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Icon 1: Switch Profile (Users) - In this activity it could refresh or just be there for design -->
+        <ImageButton
+            android:id="@+id/btn_switch_profile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_icon_button"
+            android:contentDescription="@string/switch_profile"
+            android:padding="10dp"
+            android:src="@drawable/ic_users"
+            app:tint="#8B6F4D" />
+
+        <!-- Icon 2: Switch to Adults Home (Home/Refresh) -->
+        <ImageButton
+            android:id="@+id/btn_switch_mode"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_icon_button"
+            android:contentDescription="@string/switch_mode"
+            android:padding="10dp"
+            android:src="@drawable/ic_refresh"
+            app:tint="#8B6F4D" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="52dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:padding="12dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#8B6F4D" />
+
+    <!-- Bear Avatar Head -->
+    <ImageView
+        android:id="@+id/iv_bear_face"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="48dp"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_bear_face"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -23,21 +74,20 @@
         android:id="@+id/tv_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="@string/kids_title_select"
         android:textColor="#F47C2B"
         android:textSize="26sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_bear_avatar2" />
+        app:layout_constraintTop_toBottomOf="@+id/iv_bear_face" />
 
     <TextView
         android:id="@+id/tv_subtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:text="@string/kids_subtitle_select"
         android:textColor="#7E654D"
         android:textSize="15sp"
@@ -50,12 +100,12 @@
         android:id="@+id/rv_child_profiles"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="24dp"
         android:layout_marginTop="24dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
         android:clipToPadding="false"
-        android:paddingBottom="60dp"
-        app:layout_constraintBottom_toTopOf="@id/tv_privacy_note"
+        android:paddingBottom="80dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/tv_subtitle"
@@ -64,12 +114,13 @@
     <TextView
         android:id="@+id/tv_privacy_note"
         android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="24dp"
         android:background="@drawable/bg_child_lock_banner"
         android:gravity="center"
+        android:paddingVertical="10dp"
         android:text="@string/kids_privacy_banner"
         android:textColor="#8B6F4D"
         android:textSize="13sp"

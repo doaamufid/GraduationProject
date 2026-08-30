@@ -76,6 +76,8 @@ public class OnBoardingActivity5 extends AppCompatActivity {
         binding.tvDescription.setTranslationY(50f);
         binding.btnStart.setAlpha(0f);
         binding.btnStart.setTranslationY(100f);
+        binding.btnBack.setAlpha(0f);
+        binding.btnBack.setTranslationY(100f);
 
         // Illustration Animation
         ObjectAnimator imageAlpha = ObjectAnimator.ofFloat(binding.ivIllustration, "alpha", 0f, 1f);
@@ -102,7 +104,9 @@ public class OnBoardingActivity5 extends AppCompatActivity {
                 ObjectAnimator.ofFloat(binding.tvDescription, "alpha", 0f, 1f),
                 ObjectAnimator.ofFloat(binding.tvDescription, "translationY", 50f, 0f),
                 ObjectAnimator.ofFloat(binding.btnStart, "alpha", 0f, 1f),
-                ObjectAnimator.ofFloat(binding.btnStart, "translationY", 100f, 0f)
+                ObjectAnimator.ofFloat(binding.btnStart, "translationY", 100f, 0f),
+                ObjectAnimator.ofFloat(binding.btnBack, "alpha", 0f, 1f),
+                ObjectAnimator.ofFloat(binding.btnBack, "translationY", 100f, 0f)
         );
         textSet.setDuration(800);
         textSet.setStartDelay(400);
