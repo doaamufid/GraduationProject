@@ -1,6 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources>
-    <string name="back">Back</string>
     <string name="app_name">salam</string>
     <string name="salam_title">SALAM</string>
     <string name="mental_health_subtitle">MENTAL HEALTH · PEACE OF MIND</string>
@@ -227,16 +226,6 @@
     <string name="message_arrived_fmt">Arrived on %1$s</string>
     <string name="message_locked_fmt">Arrives on %1$s · %2$s days left</string>
     <string name="delete_button">Delete</string>
-    <string name="kids_reflection_btn">Let\'s Start!</string>
-    <string name="kids_reflection_c1_title">You are a true hero</string>
-    <string name="kids_reflection_c1_note">Today is the beginning of a new and beautiful adventure in your colorful world.</string>
-    <string name="kids_reflection_c2_title">Your light shines on the world</string>
-    <string name="kids_reflection_c2_note">Your small smile makes everything around you brighter and happier.</string>
-    <string name="kids_reflection_c3_title">Your heart is brave and big</string>
-    <string name="kids_reflection_c3_note">Do not be afraid of big dreams, for you are capable of achieving all you wish for.</string>
-    <string name="kids_reflection_c4_title">Your friend Noor is with you</string>
-    <string name="kids_reflection_c4_note">Always remember that I am here by your side, dreaming, playing, and growing together every day.</string>
-
     <string name="confirm_delete_short">Tap to confirm</string>
     <string name="message_locked_title">This Message Is Still Locked</string>
     <string name="close_button">Close</string>
@@ -920,7 +909,6 @@
     <string name="mood_happy">I feel happy</string>
     <string name="mood_overjoyed">I feel completely joyful</string>
     <string name="adaptive_adult_onboarding_app_name">Salam</string>
-    <string name="adaptive_adult_onboarding_welcome_title">Welcome to Salam 🤍</string>
     <string name="adaptive_adult_onboarding_welcome_body">A private space to help you understand your feelings and find simple ways to feel calm.</string>
     <string name="adaptive_adult_onboarding_welcome_button">Let\'s start calmly</string>
     <string name="adaptive_adult_onboarding_privacy_title">Before we begin…</string>
@@ -1308,7 +1296,6 @@
     <string name="kids_calm_toast_word_saved">💛 Your word is saved!</string>
 
     <string name="kids_calm_cd_info">Explain to me</string>
-    <string name="kids_calm_cd_back">Back</string>
     <string name="kids_calm_cd_photo">Photo</string>
 
     <!-- Icons / symbols reused around the UI -->
@@ -1322,7 +1309,6 @@
     <string name="kids_calm_icon_delete">🗑</string>
     <string name="kids_calm_icon_confirm">✓</string>
     <string name="kids_calm_icon_cancel">✕</string>
-    <string name="kids_calm_heart_filled">♥</string>
     <string name="kids_calm_heart_empty">♡</string>
     <string name="kids_calm_stars_default">2</string>
     <string name="kids_calm_card_phrase_placeholder">Choose a sweet word…</string>
@@ -1606,7 +1592,7 @@
     <string name="home_feature_reports_desc">View your mood reports</string>
     <string name="home_feature_community_title">Salam Community</string>
     <string name="home_feature_community_desc">Connect with the community</string>
-
+    ```xml
     <string name="kids_reminder_channel_name">Daily Salam Reminder</string>
     <string name="kids_reminder_channel_description">A daily reminder asking the child how they feel</string>
     <string name="kids_reminder_title">Hello, little one! 💛</string>
@@ -1684,35 +1670,4 @@
     <string name="top_impact_image">Inspiring Image</string>
     <string name="start_btn">Start</string>
     <string name="search_hint_content">Search for articles or videos...</string>
-    <!-- Weekly Word Screen -->
-    <string name="header_title">My Words</string>
-    <!-- Library (Videos/Listen) -->
-    <string name="library_content_title">Visual Content</string>
-    <string name="library_content_sub">Listen</string>
-    <!-- Profile screen -->
-    <string name="profile_header_title">Journey Profile</string>
-    <!-- Video library -->
-    <string name="unbookmark_content">Remove from Saved</string>
-    <string name="fav_content_title">Favorite Content</string>
-    <string name="bookmark_content_list_title">Saved Content</string>
-
-    <string name="unfav_content">Remove from Favorites</string>
-
-    <string name="bookmarks_section_title">Saved Items</string>
-    <string name="bookmark_videos_title">Saved Videos</string>
-    <string name="bookmark_articles_sub">Read them later in the Articles Library</string>
-    <string name="bookmark_videos_sub">Watch them later in the Videos section</string>
-    <string name="watch_now">Watch Now</string>
-    <string name="language_label_ar">Language</string>
-    <string name="language_select_ar">Select</string>
-    <string name="language_selected_ar">Selected</string>
-    <string name="language_label_en">Language</string>
-    <string name="language_select_en">Select</string>
-    <string name="language_selected_en">Selected</string>
-    <string name="badge_ideas_label">10 Balanced Ideas</string>
-    <string name="badge_week_label">A Full Week</string>
-    <string name="badge_month_label">30 Days With Us</string>
-    <string name="badge_message_label">A Message to the Future</string>
-    <string name="switch_profile">Switch Profile</string>
-    <string name="switch_mode">Switch Mode</string>
 </resources>

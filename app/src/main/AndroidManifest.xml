@@ -1,21 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.graduationproject"
     xmlns:tools="http://schemas.android.com/tools">
-    <!-- إذن المايك لتسجيل الصوت في شات الأطفال -->
-    <uses-permission android:name="android.permission.RECORD_AUDIO" />
-    <!-- Allow network image loading (Glide, Picasso, etc.) -->
 
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
-
-    <!-- إذن الكاميرا (ميزة ارسم مع نور) -->
-
-
 
     <application
         android:name=".GraduationProjectApplication"
@@ -28,6 +22,48 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.GraduationProject">
 
+        <!-- Splash & Onboarding -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".SplashSelectActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".OnBoardingLanguageActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".OnBoardingActivity1"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".OnBoardingActivity2"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".OnBoardingActivity3"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".OnBoardingActivity4"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".OnBoardingActivity5"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".AdultOnboardingMainActivity"
+            android:exported="false" />
+
+        <!-- Kids Features -->
         <activity
             android:name=".KidsMoodActivity"
             android:exported="false" />
@@ -37,8 +73,9 @@
         <activity
             android:name=".Kids.KidsReflectionActivity"
             android:exported="false" />
-
-        <!-- Word of the Week feature (new) -->
+        <activity
+            android:name=".Kids.StoryPlaybackActivity"
+            android:exported="false" />
         <activity
             android:name=".Kids.SoundsActivity"
             android:exported="false" />
@@ -52,10 +89,10 @@
             android:name=".Kids.PlaybackActivity"
             android:exported="false" />
         <activity
-            android:name=".Kids.StoryPlaybackActivity"
+            android:name=".Kids.RecordingActivity"
             android:exported="false" />
         <activity
-            android:name=".Kids.RecordingActivity"
+            android:name=".Kids.GalleryActivity"
             android:exported="false" />
         <activity
             android:name=".Kids.WordOfWeekActivity"
@@ -66,7 +103,6 @@
         <activity
             android:name=".Kids.VideoDetailActivity"
             android:exported="false" />
-
         <activity
             android:name=".Kids.MessagesActivity"
             android:exported="false" />
@@ -74,30 +110,17 @@
             android:name=".Kids.MoodCheckInActivity"
             android:exported="false" />
         <activity
+            android:name=".Kids.FeaturedChildActivity"
+            android:exported="false" />
+        <activity
             android:name=".Kids.KidsAiResponseActivity"
             android:exported="false" />
         <activity
             android:name=".Kids.KidsAiCompanionActivity"
             android:exported="false" />
-
-        <!-- شاشة البداية الرئيسية SplashActivity -->
-        <activity
-            android:name=".SplashActivity"
-            android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity
-            android:name=".OnBoardingLanguageActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Kids.ChildProfilesActivity"
             android:exported="false" />
-
-        <!-- Draw-with-Noor feature (new) -->
         <activity
             android:name=".Kids.DrawInstructionActivity"
             android:exported="false" />
@@ -113,16 +136,6 @@
         <activity
             android:name=".Kids.ResultActivity"
             android:exported="false" />
-
-        <activity
-            android:name=".VideoLibraryActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ExerciseTimerActivity"
-            android:exported="false" />
-        <activity
-            android:name=".MindfulnessQuotesActivity"
-            android:exported="false" />
         <activity
             android:name=".Kids.KidsAiChatActivity"
             android:exported="false" />
@@ -134,45 +147,38 @@
             android:exported="false"
             android:windowSoftInputMode="adjustPan" />
         <activity
+            android:name=".Kids.KidsTreeIntroActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsTreeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.FavoriteStoriesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".Kids.KidsTreeLevelUpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".KidsAdaptiveMainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name=".KidsCalmCornerActivity"
+            android:exported="false" />
+
+        <!-- Adult / General Features -->
+        <activity
+            android:name=".VideoLibraryActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ExerciseTimerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MindfulnessQuotesActivity"
+            android:exported="false" />
+        <activity
             android:name=".HealingEnvActivity"
             android:exported="false" />
-
-
-
-        <!-- Word of the Week feature (new) -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        <!-- Draw-with-Noor feature (new) -->
-
-
-
-
-
-
-
-
-
-
-        <activity
-            android:name=".HealingEnvironmentActivity"
-            android:exported="false" />
-
         <activity
             android:name=".HealingPlayerActivity"
             android:exported="false"
@@ -215,28 +221,6 @@
             android:name=".AnimationDemoActivity"
             android:exported="false"
             android:label="Animation Demo" />
-
-
-        <activity
-            android:name=".OnBoardingActivity1"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".OnBoardingActivity2"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".OnBoardingActivity3"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".OnBoardingActivity4"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-        <activity
-            android:name=".OnBoardingActivity5"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".GroundingExActivity"
             android:exported="false" />
@@ -244,25 +228,14 @@
             android:name=".DailyHabitsActivity"
             android:exported="false" />
         <activity
-            android:name=".AdultOnboardingMainActivity"
-            android:exported="false" />
-        <activity
             android:name=".AdultMoodActivity"
             android:exported="false" />
-
         <activity
             android:name=".AdultMoodStatsActivity"
             android:exported="false" />
         <activity
             android:name=".ReflectionActivity"
             android:exported="false" />
-        <activity
-            android:name=".ui.AISuggestionsActivity"
-            android:exported="false" />
-        <activity
-            android:name=".SplashSelectActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".SalamCommunityActivity"
             android:exported="false" />
@@ -282,37 +255,12 @@
             android:name=".StrenghtBankActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.StrengthsBankActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.profile.settings.ChildProfilesActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.MainActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.KidsTreeIntroActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.KidsTreeActivity"
-            android:exported="false" />
-        <activity
-            android:name=".Kids.KidsTreeLevelUpActivity"
-            android:exported="false" />
-        <activity
-            android:name=".KidsAdaptiveMainActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustPan" />
-        <activity
-            android:name=".KidsCalmCornerActivity"
+            android:name=".OneClickCalmActivity"
             android:exported="false" />
         <activity
             android:name=".AiWelcomeActivity"
             android:exported="false"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity
-            android:name=".OneClickCalmActivity"
-            android:exported="false" />
         <activity
             android:name=".MyFutureMsgMainActivity"
             android:exported="false"
@@ -322,12 +270,26 @@
             android:exported="false"
             android:theme="@style/my_future_msg_theme_future_message" />
 
+        <!-- UI Package Activities -->
+        <activity
+            android:name=".ui.AISuggestionsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.StrengthsBankActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.profile.settings.ChildProfilesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.MainActivity"
+            android:exported="false" />
         <activity
             android:name=".ui.ProfileActivity"
             android:exported="false"
             android:theme="@style/Theme.JourneyProfile"
             android:windowSoftInputMode="adjustResize" />
 
+        <!-- Providers -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.fileprovider"
@@ -337,7 +299,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
 
     </application>
 

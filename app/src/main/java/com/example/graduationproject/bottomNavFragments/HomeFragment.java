@@ -113,30 +113,32 @@ public class HomeFragment extends Fragment {
 
     private void setupWeeklyMood() {
         moodDays.clear();
-        
+
         SharedPreferences appPrefs = requireContext().getSharedPreferences("AppPrefs", android.content.Context.MODE_PRIVATE);
         String todayMoodId = appPrefs.getString("today_mood_id", "");
         int todayMoodColor = appPrefs.getInt("today_mood_color", 0xFFEAEEF3); // Default neutral
 
         Calendar cal = Calendar.getInstance();
         int todayDate = cal.get(Calendar.DAY_OF_YEAR);
-        
-        // Start from Saturday of the current week
+
+        // Start from Sunday of the current week
         Calendar tempCal = (Calendar) cal.clone();
-        while (tempCal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY) {
-            tempCal.add(Calendar.DAY_OF_YEAR, -1);
-        }
-        
+        tempCal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
+
+        // Simulating some past moods to match the design style
+        int[] mockMoodColors = {0xFFDEF3EF, 0xFFFCF0C6, 0xFFDEF3E0, 0xFFF8DCDA, 0xFFDEF3EF, 0, 0};
+        int[] mockMoodIcons = {R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, 0, 0};
+
         SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", new Locale("ar"));
 
         for (int i = 0; i < 7; i++) {
             int dateVal = tempCal.get(Calendar.DAY_OF_MONTH);
             int dayOfYear = tempCal.get(Calendar.DAY_OF_YEAR);
             boolean isToday = (dayOfYear == todayDate);
-            
+
             String dayName = dayFormat.format(tempCal.getTime());
             String dateStr = String.valueOf(dateVal);
-            
+
             int icon = 0;
             int color = 0;
 
@@ -145,6 +147,10 @@ public class HomeFragment extends Fragment {
                     icon = R.drawable.ic_smile;
                     color = todayMoodColor;
                 }
+            } else if (tempCal.before(cal)) {
+                // For past days in this week, show some mock icons/colors if we don't have real data
+                icon = mockMoodIcons[i % mockMoodIcons.length];
+                color = mockMoodColors[i % mockMoodColors.length];
             }
 
             moodDays.add(new MoodDay(dayName, dateStr, icon, color, isToday));
@@ -154,7 +160,7 @@ public class HomeFragment extends Fragment {
         weeklyMoodAdapter = new WeeklyMoodAdapter(requireContext(), moodDays);
         rvWeeklyMood.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false));
         rvWeeklyMood.setAdapter(weeklyMoodAdapter);
-        
+
         // Scroll to current day
         rvWeeklyMood.post(() -> {
             for (int i = 0; i < moodDays.size(); i++) {

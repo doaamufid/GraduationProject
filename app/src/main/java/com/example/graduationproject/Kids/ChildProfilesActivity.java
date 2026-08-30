@@ -1,6 +1,7 @@
 package com.example.graduationproject.Kids;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
@@ -35,14 +36,12 @@ public class ChildProfilesActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        // Enable Edge-to-Edge first
+        
         EdgeToEdge.enable(this);
-
         binding = ActivityChildProfilesBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Make status bar and navigation bar transparent
+        // Match system bars with screen background (#FFF8EE)
         Window window = getWindow();
         window.setFlags(WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -127,6 +126,10 @@ public class ChildProfilesActivity extends AppCompatActivity {
         adapter = new ChildProfilesAdapter(profiles, new ChildProfilesAdapter.OnChildProfileClickListener() {
             @Override
             public void onProfileClick(ChildProfile profile) {
+                getSharedPreferences("KidsApp", MODE_PRIVATE).edit()
+                        .putLong("current_child_id", profile.getId())
+                        .putString("current_child_name", profile.getName())
+                        .apply();
                 ActiveChildManager.setActiveChildId(ChildProfilesActivity.this, profile.getId());
 
                 Intent intent = new Intent(ChildProfilesActivity.this, com.example.graduationproject.Kids.KidsReflectionActivity.class);
@@ -153,8 +156,9 @@ public class ChildProfilesActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        // لا نقوم بإغلاق قاعدة البيانات هنا لأننا نستخدم Singleton (getInstance)
-        // قد يتم استخدامه في شاشات أخرى
+        if (childProfileStore != null) {
+            childProfileStore.close();
+        }
         super.onDestroy();
     }
 
