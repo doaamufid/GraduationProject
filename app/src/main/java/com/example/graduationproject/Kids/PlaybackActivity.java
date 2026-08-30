@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.graduationproject.R;
+import com.example.graduationproject.data.ActiveChildManager;
+import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.data.RecordingStorage;
 import com.example.graduationproject.models.Recording;
 
@@ -91,8 +93,16 @@ public class PlaybackActivity extends AppCompatActivity {
         boolean moved = tempFile.renameTo(permanentFile);
         String finalPath = moved ? permanentFile.getAbsolutePath() : tempFilePath;
 
+        // RecordingStorage بيحدد الـ childId تلقائياً من الطفل النشط حالياً
+        // (ActiveChildManager) وقت الحفظ، فما في داعي نمرره يدوياً هون.
         Recording recording = new Recording(phrase, finalPath, System.currentTimeMillis());
         new RecordingStorage(this).saveRecording(recording);
+
+        // نجمة "الطفل المميز" - النشاط اكتمل بمجرد ما انحفظ التسجيل
+        long currentChildId = ActiveChildManager.getActiveChildId(this);
+        if (currentChildId != ActiveChildManager.NO_ACTIVE_CHILD) {
+            new ChildProfileStore(this).addStar(currentChildId);
+        }
 
         // TODO: فعّلي مؤشر تحميل (progress bar) هون عشان الطفل يعرف إنه في انتظار الرد
         File audioFileForAnalysis = new File(finalPath);
@@ -104,12 +114,10 @@ public class PlaybackActivity extends AppCompatActivity {
 
             @Override
             public void onError(String errorMessage) {
-                // ما في نت أو صار خطأ - منعرض رسالة افتراضية بدل ما نعلّق الطفل بالانتظار
                 goToCelebration(getString(R.string.default_audio_label));
             }
         });
     }
-
     private void goToCelebration(String feedback) {
         runOnUiThread(() -> {
             Intent intent = new Intent(PlaybackActivity.this, CelebrationActivity.class);

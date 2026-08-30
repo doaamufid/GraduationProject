@@ -34,6 +34,7 @@ public class VideosActivity extends AppCompatActivity {
 
         setupVideosGrid();     // 1) أنشئ videoAdapter أولاً
         setupCategoryFilter(); // 2) بعدين استخدمه بأمان جوا filterVideos()
+        setupFavoritesButton(); // 3) ربط زر النجمة بشاشة المفضلة
     }
 
     private void setupCategoryFilter() {
@@ -65,6 +66,17 @@ public class VideosActivity extends AppCompatActivity {
             startActivity(intent);
         });
         binding.videosRecycler.setAdapter(videoAdapter);
+    }
+
+    /**
+     * يربط زر النجمة (المفضلة) بالشريط العلوي مع شاشة FavoriteStoriesActivity.
+     * ملاحظة: لازم اسم الـ id هون (favoritesEntryButton) يطابق بالضبط
+     * اسم الـ id يلي حاطاه على الزر جوا activity_videos.xml عندك.
+     * لو الاسم مختلف، بدّلي "favoritesEntryButton" بنفس الاسم يلي عندك بالـ XML.
+     */
+    private void setupFavoritesButton() {
+        binding.favoritesEntryButton.setOnClickListener(v ->
+                startActivity(new Intent(VideosActivity.this, FavoriteStoriesActivity.class)));
     }
 
     private void filterVideos(String category) {

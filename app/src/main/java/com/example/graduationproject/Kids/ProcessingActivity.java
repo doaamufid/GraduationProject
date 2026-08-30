@@ -4,14 +4,14 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.ImageView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graduationproject.R;
+import com.example.graduationproject.data.ActiveChildManager;
+import com.example.graduationproject.data.ChildProfileStore;
 
 import java.io.IOException;
 import java.util.concurrent.ExecutorService;
@@ -71,7 +71,24 @@ public class ProcessingActivity extends AppCompatActivity {
                     runOnUiThread(() -> goToResult(getFallbackFeedback()));
                 }
             });
+
         });
+    }
+
+    private void goToResult(String feedbackText) {
+        // نجمة "الطفل المميز" - النشاط اكتمل سواء نجح تحليل Gemini أو لأ
+        long currentChildId = ActiveChildManager.getActiveChildId(this);
+        if (currentChildId != ActiveChildManager.NO_ACTIVE_CHILD) {
+            new ChildProfileStore(this).addStar(currentChildId);
+        }
+
+        Intent intent = new Intent(ProcessingActivity.this, ResultActivity.class);
+        if (photoUriString != null) {
+            intent.putExtra("photo_uri", photoUriString);
+        }
+        intent.putExtra("feedback_text", feedbackText);
+        startActivity(intent);
+        finish();
     }
 
     /**
@@ -111,15 +128,6 @@ public class ProcessingActivity extends AppCompatActivity {
         return "رسمتك حلوة كتير يا بطل! 🌟 أنا فخورة فيك ومبسوطة إنك شاركتني إياها 💛";
     }
 
-    private void goToResult(String feedbackText) {
-        Intent intent = new Intent(ProcessingActivity.this, ResultActivity.class);
-        if (photoUriString != null) {
-            intent.putExtra("photo_uri", photoUriString);
-        }
-        intent.putExtra("feedback_text", feedbackText);
-        startActivity(intent);
-        finish();
-    }
 
     @Override
     protected void onDestroy() {

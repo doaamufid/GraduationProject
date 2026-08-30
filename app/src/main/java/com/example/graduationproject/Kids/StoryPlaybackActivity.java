@@ -15,6 +15,8 @@ import android.widget.VideoView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.graduationproject.data.FavoriteStoryDbHelper;
+
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
@@ -24,11 +26,19 @@ import java.util.UUID;
  * شاشة "الفيديو المولّد": بدل فيديو حقيقي، بتعرض قصة قصيرة يولّدها Gemini
  * حسب التصنيف، وبتقرأها بصوت عالي عن طريق TextToSpeech، مع خلفية فيديو
  * صامتة متكررة (loop) مرتبطة بنفس التصنيف.
+ *
+ * هاي الشاشة صارت تشتغل بحالتين:
+ * 1) توليد قصة جديدة من Gemini (لما توصل من شاشة الفيديوهات العادية).
+ * 2) عرض قصة محفوظة مسبقاً من المفضلة (لما توصل من شاشة المفضلة، عن طريق EXTRA_STORY_TEXT).
+ *
+ * وفيها زر قلب (favoriteButton) لإضافة/إزالة القصة الحالية من المفضلة.
  */
 public class StoryPlaybackActivity extends AppCompatActivity {
 
     public static final String EXTRA_CATEGORY = "extra_category";
     public static final String EXTRA_TITLE = "extra_title";
+    // يُستخدم فقط لما نفتح الشاشة من قائمة المفضلة، لعرض نص قصة محفوظة بدل توليد قصة جديدة
+    public static final String EXTRA_STORY_TEXT = "extra_story_text";
 
     private static final String UTTERANCE_ID = "story_utterance";
 
@@ -47,15 +57,20 @@ public class StoryPlaybackActivity extends AppCompatActivity {
     private ScrollView storyScroll;
     private TextView storyTextView;
     private ImageButton backButton;
+    private ImageButton favoriteButton;
     private Button replayButton;
     private Button newStoryButton;
 
     private GeminiService geminiService;
+    private FavoriteStoryDbHelper favoriteDbHelper;
     private TextToSpeech textToSpeech;
     private boolean ttsReady = false;
 
     private String category;
     private String currentStoryText;
+
+    private long currentFavoriteId = -1;
+    private boolean isCurrentFavorite = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +87,24 @@ public class StoryPlaybackActivity extends AppCompatActivity {
         }
 
         geminiService = new GeminiService();
+        favoriteDbHelper = new FavoriteStoryDbHelper(this);
 
         setupBackgroundVideo();
         setupTextToSpeech();
         setupClickListeners();
 
-        generateNewStory();
+        String savedStory = getIntent().getStringExtra(EXTRA_STORY_TEXT);
+        if (savedStory != null && !savedStory.isEmpty()) {
+            // جاي من شاشة المفضلة: نعرض القصة المحفوظة مباشرة، بدون توليد جديد من Gemini
+            currentStoryText = savedStory;
+            showStory(savedStory);
+            updateFavoriteState();
+            if (ttsReady) {
+                speakStory(savedStory);
+            }
+        } else {
+            generateNewStory();
+        }
     }
 
     /**
@@ -95,6 +122,7 @@ public class StoryPlaybackActivity extends AppCompatActivity {
         storyScroll = findViewById(getResources().getIdentifier("storyScroll", "id", getPackageName()));
         storyTextView = findViewById(getResources().getIdentifier("storyTextView", "id", getPackageName()));
         backButton = findViewById(getResources().getIdentifier("backButton", "id", getPackageName()));
+        favoriteButton = findViewById(getResources().getIdentifier("favoriteButton", "id", getPackageName()));
         replayButton = findViewById(getResources().getIdentifier("replayButton", "id", getPackageName()));
         newStoryButton = findViewById(getResources().getIdentifier("newStoryButton", "id", getPackageName()));
     }
@@ -166,6 +194,8 @@ public class StoryPlaybackActivity extends AppCompatActivity {
     private void setupClickListeners() {
         backButton.setOnClickListener(v -> finish());
 
+        favoriteButton.setOnClickListener(v -> toggleFavorite());
+
         replayButton.setOnClickListener(v -> {
             if (currentStoryText != null) {
                 speakStory(currentStoryText);
@@ -184,6 +214,7 @@ public class StoryPlaybackActivity extends AppCompatActivity {
                 runOnUiThread(() -> {
                     currentStoryText = message;
                     showStory(message);
+                    updateFavoriteState();
 
                     if (ttsReady) {
                         speakStory(message);
@@ -202,6 +233,44 @@ public class StoryPlaybackActivity extends AppCompatActivity {
                 });
             }
         });
+    }
+
+    /**
+     * يضيف القصة الحالية للمفضلة أو يحذفها منها، ويحدّث شكل زر القلب فوراً.
+     */
+    private void toggleFavorite() {
+        if (currentStoryText == null) return;
+
+        if (isCurrentFavorite) {
+            favoriteDbHelper.removeFavoriteById(currentFavoriteId);
+            isCurrentFavorite = false;
+            currentFavoriteId = -1;
+            favoriteButton.setColorFilter(getResources().getColor(android.R.color.darker_gray));
+            Toast.makeText(this, "تمت الإزالة من المفضلة", Toast.LENGTH_SHORT).show();
+        } else {
+            String title = getIntent().getStringExtra(EXTRA_TITLE);
+            if (title == null || title.isEmpty()) {
+                title = category;
+            }
+            currentFavoriteId = favoriteDbHelper.addFavorite(category, title, currentStoryText);
+            isCurrentFavorite = true;
+            favoriteButton.setColorFilter(getResources().getColor(android.R.color.holo_red_light));
+            Toast.makeText(this, "تمت الإضافة إلى المفضلة", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    /**
+     * يتحقق إذا القصة المعروضة حالياً موجودة أصلاً بالمفضلة، ويلوّن زر القلب حسب الحالة.
+     */
+    private void updateFavoriteState() {
+        if (currentStoryText == null) return;
+
+        long id = favoriteDbHelper.findFavoriteId(category, currentStoryText);
+        isCurrentFavorite = id != -1;
+        currentFavoriteId = id;
+
+        favoriteButton.setColorFilter(getResources().getColor(
+                isCurrentFavorite ? android.R.color.holo_red_light : android.R.color.darker_gray));
     }
 
     private void speakStory(String text) {

@@ -8,7 +8,7 @@ import android.widget.TextView;
 
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.Article;
-import com.example.graduationproject.models.ArticleRepository;
+import com.example.graduationproject.data.ArticleRepository;
 import com.example.graduationproject.models.CategoryStyle;
 import com.example.graduationproject.widget.TapBounce;
 
