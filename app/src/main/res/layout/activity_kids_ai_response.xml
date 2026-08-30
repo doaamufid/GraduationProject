@@ -25,7 +25,23 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="#8B6F4D" />
 
-    <!-- Soft backdrop circle behind the bear avatar for visual depth -->
+    <!-- Switch Profile Button -->
+    <ImageButton
+        android:id="@+id/btn_switch_profile"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginStart="20dp"
+        android:background="@drawable/bg_icon_button"
+        android:contentDescription="تبديل الحساب"
+        android:elevation="3dp"
+        android:padding="10dp"
+        android:src="@android:drawable/ic_menu_myplaces"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#8B6F4D" />
+
+    <!-- Soft backdrop circle behind the bear avatar -->
     <View
         android:id="@+id/view_avatar_backdrop"
         android:layout_width="120dp"
@@ -36,9 +52,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Bear Avatar Head (عنصر واحد فقط) -->
+    <!-- Bear Avatar Head (محدث بـ tv_bear_avatar3) -->
     <TextView
-        android:id="@+id/tv_bear_avatar"
+        android:id="@+id/tv_bear_avatar3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
@@ -57,9 +73,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_bear_avatar">
+        app:layout_constraintTop_toBottomOf="@id/tv_bear_avatar3">
 
-        <!-- Response Content Layout -->
         <LinearLayout
             android:id="@+id/group_response_state"
             android:layout_width="match_parent"
@@ -69,7 +84,6 @@
             android:paddingHorizontal="24dp"
             android:paddingBottom="28dp">
 
-            <!-- Speech Bubble Card -->
             <TextView
                 android:id="@+id/tv_ai_response_text"
                 android:layout_width="match_parent"
@@ -86,7 +100,6 @@
                 android:textSize="17sp"
                 android:textStyle="bold" />
 
-            <!-- Listen Button Pill -->
             <TextView
                 android:id="@+id/btn_listen_voice"
                 android:layout_width="wrap_content"
@@ -103,7 +116,6 @@
                 android:textSize="14sp"
                 android:textStyle="bold" />
 
-            <!-- Title Question -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -114,7 +126,6 @@
                 android:textSize="15sp"
                 android:textStyle="bold" />
 
-            <!-- Option 1: خذ نفس معي -->
             <TextView
                 android:id="@+id/btn_action_breath"
                 android:layout_width="match_parent"
@@ -129,7 +140,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Option 2: ارسم كيف حاسس -->
             <TextView
                 android:id="@+id/btn_action_draw"
                 android:layout_width="match_parent"
@@ -144,7 +154,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Option 3: شوف شجرتك -->
             <TextView
                 android:id="@+id/btn_action_tree"
                 android:layout_width="match_parent"
@@ -159,7 +168,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Option 4: احكي مع صديقك -->
             <TextView
                 android:id="@+id/btn_action_chat"
                 android:layout_width="match_parent"
@@ -174,7 +182,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Option 5: خلص، أنا أحسن الحين -->
             <TextView
                 android:id="@+id/btn_action_better"
                 android:layout_width="match_parent"

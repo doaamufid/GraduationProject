@@ -1169,4 +1169,541 @@
     <string name="adaptive_adult_onboarding_age_45_54">45–54</string>
     <string name="adaptive_adult_onboarding_age_55_plus">55 فأكثر</string>
     <string name="adaptive_adult_onboarding_gender_female">أنثى</string>
-</resources>
+    <string name="home_greeting_morning">صباح الخير</string>
+    <string name="home_feature_videos_title">فيديوهات</string>
+    <string name="home_feature_videos_desc">وصف الفيديوهات</string>
+    <string name="home_feature_audio_title">صوتيات</string>
+    <string name="home_feature_audio_desc">وصف الصوتيات</string>
+    <string name="home_feature_articles_title">مقالات</string>
+    <string name="home_feature_articles_desc">وصف المقالات</string>
+    <string name="home_feature_habits_title">عادات</string>
+    <string name="home_feature_habits_desc">وصف العادات</string>
+    <string name="home_feature_reports_title">تقارير</string>
+    <string name="home_feature_reports_desc">وصف التقارير</string>
+    <string name="home_feature_community_title">مجتمع</string>
+    <string name="home_feature_community_desc">وصف المجتمع</string>
+    <!-- تمارين الـ Exercises -->
+    <string name="exercises_grounding_title">تمرين التقريض 5-4-3-2-1</string>
+    <string name="exercises_grounding_desc">عد إلى اللحظة الحالية خطوة بخطوة</string>
+    <string name="exercises_breathing_title_main">التنفس</string>
+    <string name="exercises_breathing_desc_main">هدئ جهازك العصبي بإيقاع بسيط</string>
+    <string name="exercises_survival_box_title">صندوق الأمان</string>
+    <string name="exercises_survival_box_desc">كل ما يطمئنك في مكان واحد</string>
+    <string name="exercises_calm_card_title">بطاقة التهدئة</string>
+    <string name="exercises_calm_card_desc">كلماتك وصورتك المريحة بلمسة واحدة</string>
+    <string name="exercises_strengths_title">نقاط قوتي</string>
+    <string name="exercises_strengths_desc">اكتشف مكامن القوة في داخلك</string>
+    <string name="exercises_future_letter_title">رسالة إلى نفسي</string>
+    <string name="exercises_future_letter_desc">اكتب رسالة لمستقبلك المشرق</string>
+    <string name="exercises_reframe_title">إعادة تأطير الأفكار</string>
+    <string name="exercises_reframe_desc">تحدَّ الأفكار السلبية وحوّلها لغيرها</string>
+    <string name="exercises_body_map_title">خريطة الجسد</string>
+    <string name="exercises_body_map_desc">استمع لما يحاول جسدك إخبارك به</string>
+    <string name="exercises_duration_1min">دقيقة واحدة</string>
+    <string name="exercises_duration_3min">3 دقائق</string>
+    <string name="exercises_duration_5min">5 دقائق</string>
+    <string name="exercises_duration_7min">7 دقائق</string>
+    <string name="exercises_duration_10min">10 دقائق</string>
+    <!-- Adult Stats Mood -->
+    <string name="adult_stats_mood_awful">سيء جداً</string>
+    <string name="adult_stats_mood_sad">حزين</string>
+    <string name="adult_stats_mood_low">منخفض</string>
+    <string name="adult_stats_mood_neutral">محايد</string>
+    <string name="adult_stats_mood_calm">هادئ</string>
+    <string name="adult_stats_mood_happy">سعيد</string>
+    <string name="adult_stats_mood_overjoyed">سعيد جداً</string>
+
+    <!-- Notification Strings -->
+    <string name="adult_notif_n7_title">أذكار المساء</string>
+    <string name="adult_notif_n7_desc">حان وقت أذكار المساء معنا</string>
+    <string name="adult_notif_n7_time">الأحد</string>
+
+    <!-- Kids Routine -->
+    <string name="kids_routine_app_name">روتين نور اليومي</string>
+    <string name="kids_routine_cd_back">رجوع</string>
+    <string name="kids_routine_cd_edit">تعديل الروتين</string>
+    <string name="kids_routine_cd_reset">إعادة ضبط اليوم</string>
+    <string name="kids_routine_cd_add">إضافة خطوة جديدة</string>
+    <string name="kids_routine_cd_delete">حذف النشاط</string>
+    <string name="kids_routine_your_stars">نجومك</string>
+    <string name="kids_routine_progress_fmt">%1$d من %2$d خطوات</string>
+    <string name="kids_routine_progress_done_suffix"> ✅</string>
+    <string name="kids_routine_empty_title">لا توجد خطوات بعد. اضغط + لإضافة أول خطوة!</string>
+    <string name="kids_routine_sheet_title">خطوة جديدة</string>
+    <string name="kids_routine_input_hint">اسم الخطوة، مثلاً: رتبت سريري</string>
+    <string name="kids_routine_btn_add_confirm">إضافة إلى الروتين</string>
+    <string name="kids_routine_celebrate_title">لقد أنهيت روتين اليوم!</string>
+    <string name="kids_routine_celebrate_sub">أنا فخور بك جداً يا بطل 💛 واصل على هذا النحو كل يوم</string>
+    <string name="kids_routine_celebrate_streak_fmt">%1$d أيام متتالية</string>
+    <string name="kids_routine_btn_ok_star">فهمت 🌟</string>
+    <string name="kids_routine_period_morning">الصباح</string>
+    <string name="kids_routine_period_noon">الظهر</string>
+    <string name="kids_routine_period_evening">المساء</string>
+    <string name="kids_routine_greet_empty">أضف خطوتك الأولى يا بطل! 🌟</string>
+    <string name="kids_routine_greet_start">صباح الخير يا بطل! جاهز لنبدأ يومنا؟</string>
+    <string name="kids_routine_greet_mid">رائع! استمر خطوة بخطوة 💪</string>
+    <string name="kids_routine_greet_half">ماشاء الله! قطعت نصف الطريق 🌈</string>
+    <string name="kids_routine_greet_done">أنهيت يومك بالكامل! فخور بك جداً 🌟</string>
+    <string name="kids_routine_chip_morning">🌅 الصباح</string>
+    <string name="kids_routine_chip_noon">☀️ الظهر</string>
+    <string name="kids_routine_chip_evening">🌙 المساء</string>
+    <string name="kids_routine_static_item_wake_up">استيقظت</string>
+    <string name="kids_routine_static_item_brush_teeth">نظفت أسناني</string>
+    <string name="kids_routine_static_item_breakfast">تناولت الفطور</string>
+    <string name="kids_routine_static_item_get_dressed">ارتديت ملابسي</string>
+    <string name="kids_routine_static_item_play_draw">لعبت ورسمت</string>
+    <string name="kids_routine_static_item_lunch">تناولت الغداء</string>
+    <string name="kids_routine_static_item_shower">استحممت</string>
+    <string name="kids_routine_static_item_story">استمعت لقصة</string>
+    <string name="kids_routine_static_item_sleep">نمت</string>
+
+    <!-- My Future Msg -->
+    <string name="my_future_msg_all_messages_title">كل رسائلي</string>
+    <string name="my_future_msg_app_name">رسالة إلى نفسي</string>
+    <string name="my_future_msg_clock_time">9:41</string>
+    <string name="my_future_msg_close">إغلاق</string>
+    <string name="my_future_msg_compose_hint">ماذا تحب أن تقول لنفسك المستقبليّة؟</string>
+    <string name="my_future_msg_compose_subtitle">اكتبها الآن، واستلمها في الوقت الذي تختاره</string>
+    <string name="my_future_msg_compose_title_edit">تعديل الرسالة</string>
+    <string name="my_future_msg_compose_title_new">رسالة جديدة لنفسي</string>
+    <string name="my_future_msg_confirm_delete">اضغط للتأكيد</string>
+    <string name="my_future_msg_delete">حذف</string>
+    <string name="my_future_msg_edit">تعديل</string>
+    <string name="my_future_msg_empty_all">لم تكتب أي رسائل بعد</string>
+    <string name="my_future_msg_empty_home">لم تكتب رسالة لنفسك بعد — اضغط + لبدء أول رسالة</string>
+    <string name="my_future_msg_locked_card_text">رسالة مقفلة — لم يحن وقتها بعد</string>
+    <string name="my_future_msg_locked_row_text">رسالة مقفلة — لم يحن وقتها بعد</string>
+    <string name="my_future_msg_locked_title">هذه الرسالة ما زالت مقفلة</string>
+    <string name="my_future_msg_no_arrived_yet">لم تتلق أي رسائل بعد</string>
+    <string name="my_future_msg_opt_3m">3 أشهر</string>
+    <string name="my_future_msg_opt_custom">تاريخ محدد</string>
+    <string name="my_future_msg_opt_month">شهر</string>
+    <string name="my_future_msg_opt_week">أسبوع</string>
+    <string name="my_future_msg_opt_year">سنة</string>
+    <string name="my_future_msg_read_again">قراءة مجدداً</string>
+    <string name="my_future_msg_save_edit">حفظ التغيرات</string>
+    <string name="my_future_msg_save_new">حفظ وقفل الرسالة</string>
+    <string name="my_future_msg_section_prev_title">الرسائل السابقة</string>
+    <string name="my_future_msg_subtitle">كل رسالة تصلك في الوقت المناسب</string>
+    <string name="my_future_msg_view_all">عرض الكل</string>
+    <string name="my_future_msg_when_label">متى تحب أن تتلقاها؟</string>
+
+    <!-- Kids Mood -->
+    <string name="kids_mood_app_name">مزاجي (للأطفال)</string>
+    <string name="kids_mood_entry_title">مذكرتي الجديدة 🧸</string>
+    <string name="kids_mood_big_question">كيف تشعر اليوم يا بطل؟</string>
+    <string name="kids_mood_continue_label">فلنبدأ! 🎉</string>
+    <string name="kids_mood_saved_toast">تم حفظ مزاجك ✅</string>
+    <string name="kids_mood_awful">أنالم متضايق جداً</string>
+    <string name="kids_mood_low">لا أشعر أنني بخير</string>
+    <string name="kids_mood_neutral">أنا بخير</string>
+    <string name="kids_mood_calm">أنا بحالة جيدة!</string>
+    <string name="kids_mood_overjoyed">أنا سعيد جداً جداً!</string>
+    <!-- Kids Adaptive Onboarding -->
+    <string name="kids_adaptive_btn_continue">متابعة</string>
+    <string name="kids_adaptive_skip">تخطي</string>
+    <string name="kids_adaptive_btn_ready">أنا جاهز!</string>
+    <string name="kids_adaptive_btn_start">ابدأ الرحلة 🚀</string>
+    <string name="kids_adaptive_btn_save">حفظ</string>
+    <string name="kids_adaptive_btn_done">تم 🎉</string>
+    <string name="kids_adaptive_btn_next">التالي</string>
+    <string name="kids_adaptive_btn_back">السابق</string>
+    <!-- Kids Adaptive Ready Fragment -->
+    <string name="kids_adaptive_ready_cta">أنا جاهز!</string>
+    <string name="kids_adaptive_ready_thanks">شكراً لك!</string>
+    <string name="kids_adaptive_ready_body">أنت الآن جاهز لبدء رحلتك الاستكشافية معنا</string>
+    <!-- Kids Adaptive Helpful Fragment -->
+    <string name="kids_adaptive_help_audio">استماع إلى صوت هادئ</string>
+    <string name="kids_adaptive_help_breathing">تمرين تنفس عميق</string>
+    <string name="kids_adaptive_help_spiritual">أذكار وطمأنينة</string>
+    <string name="kids_adaptive_help_writing">كتابة ورسم</string>
+    <string name="kids_adaptive_help_talking">الحديث مع شخص أثق به</string>
+    <string name="kids_adaptive_help_movement">حركة وتمارين خفيفة</string>
+    <string name="kids_adaptive_help_activity">نشاط مسلي</string>
+    <string name="kids_adaptive_help_unsure">لست متأكداً بعد</string>
+    <string name="kids_adaptive_helpful_title">ما الذي يساعدك أكثر الآن؟</string>
+    <!-- Kids Adaptive Intense Fear Fragment -->
+    <string name="kids_adaptive_fear_yes_sometimes">نعم، أحياناً</string>
+    <string name="kids_adaptive_fear_yes_often">نعم، كثيراً</string>
+    <string name="kids_adaptive_fear_rarely">نادراً</string>
+    <string name="kids_adaptive_unsure">لست متأكداً</string>
+    <string name="kids_adaptive_dont_want_answer">لا أود الإجابة الآن</string>
+    <string name="kids_adaptive_fear_body">هل تشعر بشيء يخيفك بشكل قوي في الوقت الحالي؟</string>
+    <string name="kids_adaptive_fear_title">مرحباً بك، كيف حال خوفك الآن؟</string>
+    <!-- Kids Adaptive Safety Fragment -->
+    <string name="kids_adaptive_safety_rarely">نادراً</string>
+    <string name="kids_adaptive_safety_sometimes">أحياناً</string>
+    <string name="kids_adaptive_safety_often">كثيراً</string>
+    <string name="kids_adaptive_safety_most">معظم الوقت</string>
+    <string name="kids_adaptive_safety_title">الشعور بالأمان</string>
+    <string name="kids_adaptive_safety_subtitle">هل تشعر بالأمان والراحة في مكانك الحالي؟</string>
+
+    <!-- Kids Calm Adventure Fragment -->
+    <string name="kids_calm_adv_intro">مرحباً بك في مغامرة الهدوء! اختر نشاطك المفضّل</string>
+    <string name="kids_calm_adv_balloon_hint">اضغط على البالون لتنفيخه ببطء</string>
+    <string name="kids_calm_adv_balloon_progress">مستوى التنفس</string>
+    <string name="kids_calm_adv_hunt_hint">ابحث عن العناصر المخبأة حولك</string>
+    <string name="kids_calm_icon_star">⭐</string>
+    <string name="kids_calm_adv_word_fav">مفضلة</string>
+    <string name="kids_calm_adv_word_generic">نشاط</string>
+
+    <!-- Kids Adaptive Privacy Fragment -->
+    <string name="kids_adaptive_privacy_cta">موافق ومتابعة</string>
+    <string name="kids_adaptive_privacy_title">الخصوصية والأمان</string>
+    <string name="kids_adaptive_privacy_body">معلوماتك ومشاراعك محفوطة بأمان تام ولن يراها أحد غيرك</string>
+    <string name="kids_adaptive_privacy_card_1">حماية البيانات</string>
+    <string name="kids_adaptive_privacy_card_2">سرية تامة</string>
+    <string name="kids_adaptive_privacy_card_3">مساحة آمنة</string>
+    <string name="kids_adaptive_privacy_card_4">تحكم كامل</string>
+    <!-- Kids Adaptive Goals Fragment -->
+    <string name="kids_adaptive_goal_calm">الشعور بالهدوء</string>
+    <string name="kids_adaptive_goal_stress">التعامل مع التوتر</string>
+    <string name="kids_adaptive_goal_understand">فهم مشاعري</string>
+    <string name="kids_adaptive_goal_organize">تنظيم يومي</string>
+    <string name="kids_adaptive_goal_sleep">نوم أفضل</string>
+    <string name="kids_adaptive_goal_alone">التعامل مع الوحدة</string>
+    <string name="kids_adaptive_goal_habits">بناء عادات صحية</string>
+    <string name="kids_adaptive_goal_express">التعبير عن نفسي</string>
+    <string name="kids_adaptive_goal_watch">متابعة تحسني</string>
+    <string name="kids_adaptive_goals_title">ما هي أهدافك معنا؟</string>
+
+    <!-- Kids Adaptive Identity Fragment -->
+    <string name="kids_adaptive_identity_title">من تكون؟</string>
+    <string name="kids_adaptive_identity_subtitle">دعنا نتعرف عليك أكثر</string>
+    <string name="kids_adaptive_identity_hint">اكتب اسمك أو لقبك المفصل</string>
+    <string name="kids_adaptive_age_question">كم عمرك يا بطل؟</string>
+    <string name="kids_adaptive_gender_question">الجنس</string>
+    <string name="kids_adaptive_gender_female">أنثى</string>
+    <string name="kids_adaptive_gender_male">ذكر</string>
+    <string name="kids_adaptive_gender_unspecified">أفضل عدم التحديد</string>
+    <string name="kids_adaptive_identity_greeting_prefix">أهلاً بك يا</string>
+
+    <!-- Preview Fragment -->
+    <string name="adaptive_adult_onboarding_goal">هدف الترحيب</string>
+
+    <!-- Kids Adaptive Mood Demo Fragment -->
+    <string name="kids_adaptive_demo_intro">تجربة تسجيل المزاج</string>
+    <string name="kids_adaptive_demo_question">كيف تشعر الآن؟</string>
+    <string name="kids_adaptive_demo_face_sad">حزين</string>
+    <string name="kids_adaptive_demo_face_low">منزعج</string>
+    <!-- Preview Fragment -->
+    <string name="adaptive_adult_onboarding_goal_explore">استكشاف التطبيق</string>
+
+    <!-- Kids Adaptive Mood Demo Fragment -->
+    <string name="kids_adaptive_demo_face_neutral">محايد</string>
+    <string name="kids_adaptive_demo_face_good">جيد</string>
+    <string name="kids_adaptive_demo_face_great">ممتاز</string>
+    <string name="kids_adaptive_demo_hint_after">كيف تشعر بعد التمرين؟</string>
+    <string name="kids_adaptive_demo_hint_before">كيف تشعر قبل بداية التمرين؟</string>
+
+    <!-- Kids Calm Gallery Fragment & Cards -->
+    <string name="kids_calm_gallery_hint">اختر بطاقتك المفضلة</string>
+    <string name="kids_calm_toast_card_selected">تم اختيار البطاقة</string>
+    <string name="kids_calm_toast_card_saved">تم حفظ البطاقة</string>
+    <string name="kids_calm_toast_card_deleted">تم حذف البطاقة</string>
+    <string name="kids_calm_toast_card_new">تمت إضافة بطاقة جديدة</string>
+    <string name="kids_calm_dialog_phrase_hint">اكتب عبارتك المشجعة هنا</string>
+    <string name="kids_calm_gallery_active_tag">مُفعلة</string>
+    <string name="kids_calm_gallery_pick_tag">اختر</string>
+
+    <!-- Kids Adaptive Frequent Emotions Fragment -->
+    <string name="kids_adaptive_em_tension">توتر</string>
+    <string name="kids_adaptive_em_fear">خوف</string>
+    <string name="kids_adaptive_em_sadness">حزن</string>
+    <string name="kids_adaptive_em_irritation">انزعاج</string>
+    <string name="kids_adaptive_em_anxiety">قلق</string>
+    <string name="kids_adaptive_em_terror">ذعر</string>
+    <!-- Kids Adaptive Frequent Emotions (المتبقية) -->
+    <string name="kids_adaptive_em_loneliness">الوحدة</string>
+    <string name="kids_adaptive_em_exhaustion">الإنهاك</string>
+    <string name="kids_adaptive_em_unsure">غير متأكد</string>
+    <string name="kids_adaptive_em_okay">بخير</string>
+    <string name="kids_adaptive_emotions_title">ما هي المشاعر الأكثر تكراراً؟</string>
+    <string name="kids_adaptive_emotions_subtitle">اختر المشاعر التي تراودك كثيراً</string>
+
+    <!-- Kids Adaptive Timeline Fragment -->
+    <string name="kids_adaptive_period_morning">الصباح</string>
+    <string name="kids_adaptive_period_day">النهار</string>
+    <string name="kids_adaptive_period_evening">المساء</string>
+    <string name="kids_adaptive_period_night">الليل</string>
+    <string name="kids_adaptive_timeline_title">متى تشعر بهذا غالباً؟</string>
+    <string name="kids_adaptive_followup_night_prompt">ما الذي يساعدك قبل النوم؟</string>
+    <string name="kids_adaptive_followup_day_prompt">ما الذي يساعدك خلال اليوم؟</string>
+    <string name="kids_adaptive_followup_morning_prompt">ما الذي يساعدك في بداية يومك؟</string>
+    <string name="kids_adaptive_followup_evening_prompt">ما الذي يساعدك في المساء؟</string>
+
+    <!-- Kids Adaptive Overall Mood Fragment -->
+    <string name="kids_adaptive_mood_calm">هادئ</string>
+    <string name="kids_adaptive_mood_pressured">مضغوط</string>
+    <string name="kids_adaptive_mood_hard">صعب</string>
+    <string name="kids_adaptive_overall_mood_title">كيف تصف شعورك العام هذا الأسبوع؟</string>
+
+    <!-- Kids Adaptive Preview Fragment -->
+    <string name="kids_adaptive_preview_title">ملخص إعداداتك</string>
+    <string name="kids_adaptive_preview_edit">تعديل</string>
+    <string name="kids_adaptive_preview_footnote">يمكنك تغيير هذه الإعدادات لاحقاً في أي وقت</string>
+    <string name="kids_adaptive_preview_night">إعدادات الليل</string>
+    <string name="kids_adaptive_preview_breathing">تمارين التنفس</string>
+    <string name="kids_adaptive_preview_spiritual">الأذكار</string>
+    <string name="kids_adaptive_preview_writing">الكتابة</string>
+    <!-- Kids Adaptive Preview Extra -->
+    <string name="kids_adaptive_preview_goals_prefix">الأهداف المحدد: </string>
+    <string name="kids_adaptive_preview_fallback">لا يوجد تحديد</string>
+
+    <!-- Kids Adaptive Home Fragment -->
+    <string name="kids_adaptive_home_greeting_label">أهلاً بك يا صديقي 🌟</string>
+    <string name="kids_adaptive_home_default_name">بطلنا</string>
+    <string name="kids_adaptive_home_suggested_now">المقترح لك الآن:</string>
+    <string name="kids_adaptive_home_restart">إعادة الاستكشاف</string>
+
+    <!-- Kids Adaptive Welcome Fragment -->
+    <string name="kids_adaptive_welcome_cta">ابدأ الآن</string>
+    <string name="kids_adaptive_welcome_title">أهلاً بك في مساحتك الآمنة</string>
+    <string name="kids_adaptive_welcome_body">مكانك المفضل للتعبير عن مشاعرك والشعور بالهدوء</string>
+
+    <!-- Kids Calm Words & Adapter -->
+    <string name="kids_calm_words_hint">اكتب كلمتك المشجعة...</string>
+    <string name="kids_calm_toast_word_saved">تم حفظ الكلمة بنجاح ✅</string>
+    <string name="kids_calm_heart_filled">❤️</string>
+    <string name="kids_calm_heart_empty">🤍</string>
+
+    <!-- Adult Mood Stats Days -->
+    <string name="adult_stats_day_sun">الأحد</string>
+    <string name="adult_stats_day_mon">الإثنين</string>
+    <string name="adult_stats_day_tue">الثلاثاء</string>
+    <string name="adult_stats_day_wed">الأربعاء</string>
+    <string name="adult_stats_day_thu">الخميس</string>
+    <string name="adult_stats_day_fri">الجمعة</string>
+    <string name="adult_stats_day_sat">السبت</string>
+    <!-- Kids Adaptive Resume Dialog -->
+    <string name="kids_adaptive_resume_title">متابعة الجلسة</string>
+    <string name="kids_adaptive_resume_body">هل تحب المتابعة من حيث توقفت في المرة الأخيرة؟</string>
+    <string name="kids_adaptive_resume_continue">متابعة</string>
+    <string name="kids_adaptive_resume_restart">البدء من جديد</string>
+
+    <!-- Kids Calm Card Edit Dialog -->
+    <string name="kids_calm_dialog_photo_btn_set">تغيير الصورة</string>
+    <string name="kids_calm_dialog_new_card_title">بطاقة جديدة</string>
+    <string name="kids_calm_dialog_edit_card_title">تعديل البطاقة</string>
+
+    <!-- Adult Notif Notifications Activity -->
+    <string name="adult_notif_group_today">اليوم</string>
+    <string name="adult_notif_n1_title">تذكير التنفس</string>
+    <string name="adult_notif_n1_desc">خذ دقيقة واحدة لتنفس عميق وهادئ</string>
+    <string name="adult_notif_n1_time">منذ 10 دقائق</string>
+    <string name="adult_notif_n2_title">مراجعة المزاج</string>
+    <string name="adult_notif_n2_desc">كيف تشعر في الوقت الحالي؟ سجل مزاجك الآن</string>
+    <string name="adult_notif_n2_time">منذ ساعة</string>
+    <string name="adult_notif_n3_title">رسالة اليوم</string>
+    <string name="adult_notif_n3_desc">تذكر دائماً أن تمنح نفسك بعض الراحة</string>
+    <string name="adult_notif_n3_time">منذ 3 ساعات</string>
+    <!-- Kids Calm Card Extra -->
+    <string name="kids_calm_dialog_photo_btn">اختيار صورة</string>
+
+    <!-- Adult Notif Notifications (الدفعة الأخيرة) -->
+    <string name="adult_notif_group_yesterday">أمس</string>
+    <string name="adult_notif_n4_title">تأمل سريع</string>
+    <string name="adult_notif_n4_desc">خصص 5 دقائق لتهدئة عقلك الآن</string>
+    <string name="adult_notif_n4_time">أمس</string>
+    <string name="adult_notif_n5_title">متابعة الأهداف</string>
+    <string name="adult_notif_n5_desc">ألقِ نظرة على تقدمك هذا الأسبوع</string>
+    <string name="adult_notif_n5_time">أمس</string>
+    <string name="adult_notif_group_this_week">هذا الأسبوع</string>
+    <string name="adult_notif_n6_title">تمارين خفيفة</string>
+    <string name="adult_notif_n6_desc">جرّب تمرين الحركة لرفع طاقتك</string>
+    <string name="adult_notif_n6_time">منذ 3 أيام</string>
+
+    <!-- Adult Onboarding App Data -->
+    <string name="adaptive_adult_onboarding_gender_male">ذكر</string>
+    <string name="adaptive_adult_onboarding_gender_prefer_not">أفضل عدم التحديد</string>
+    <string name="adaptive_adult_onboarding_mood_calm">هادئ</string>
+    <string name="adaptive_adult_onboarding_mood_pressured">مضغوط</string>
+    <string name="adaptive_adult_onboarding_mood_hard">صعب</string>
+    <string name="adaptive_adult_onboarding_emotion_tension">توتر</string>
+    <string name="adaptive_adult_onboarding_emotion_fear">خوف</string>
+    <string name="adaptive_adult_onboarding_emotion_sadness">حزن</string>
+    <string name="adaptive_adult_onboarding_emotion_irritation">انزعاج</string>
+    <string name="adaptive_adult_onboarding_emotion_anxiety">قلق</string>
+    <string name="adaptive_adult_onboarding_emotion_terror">ذعر</string>
+    <string name="adaptive_adult_onboarding_emotion_loneliness">وحدة</string>
+    <string name="adaptive_adult_onboarding_emotion_exhaustion">إرهاق</string>
+    <string name="adaptive_adult_onboarding_emotion_unsure">غير متأكد</string>
+    <!-- Adaptive Adult Onboarding App Data (المتبقي) -->
+
+    <!-- Adaptive Adult Onboarding App Data (المتبقي) -->
+    <string name="adaptive_adult_onboarding_emotion_okay">بخير</string>
+    <string name="adaptive_adult_onboarding_safety_rarely">نادراً</string>
+    <string name="adaptive_adult_onboarding_safety_sometimes">أحياناً</string>
+    <string name="adaptive_adult_onboarding_safety_often">كثيراً</string>
+    <string name="adaptive_adult_onboarding_safety_most">معظم الوقت</string>
+    <string name="adaptive_adult_onboarding_fear_yes_sometimes">نعم، أحياناً</string>
+    <string name="adaptive_adult_onboarding_fear_yes_often">نعم، كثيراً</string>
+    <string name="adaptive_adult_onboarding_fear_rarely">نادراً</string>
+    <string name="adaptive_adult_onboarding_fear_unsure">لست متأكداً</string>
+    <!-- Adult Onboarding Strings -->
+    <string name="adaptive_adult_onboarding_safety_skip">تخطي</string>
+    <string name="adaptive_adult_onboarding_fear_skip">تخطي</string>
+    <string name="adaptive_adult_onboarding_time_morning">صباحاً</string>
+    <string name="adaptive_adult_onboarding_time_day">ظهراً</string>
+    <string name="adaptive_adult_onboarding_time_evening">مساءً</string>
+    <string name="adaptive_adult_onboarding_time_night">ليلاً</string>
+
+    <string name="adaptive_adult_onboarding_followup_night_prompt">كيف كان يومك؟</string>
+    <string name="adaptive_adult_onboarding_followup_day_prompt">كيف تجري أمورك؟</string>
+    <string name="adaptive_adult_onboarding_followup_morning_prompt">كيف تشعر هذا الصباح؟</string>
+    <string name="adaptive_adult_onboarding_followup_evening_prompt">كيف تصف أداءك اليوم؟</string>
+
+    <string name="adaptive_adult_onboarding_option_loneliness">الوحدة</string>
+    <string name="adaptive_adult_onboarding_option_fear">الخوف</string>
+    <string name="adaptive_adult_onboarding_option_overthinking">التفكير الزائد</string>
+    <string name="adaptive_adult_onboarding_option_anxiety">القلق</string>
+    <string name="adaptive_adult_onboarding_option_sadness">الحزن</string>
+    <string name="adaptive_adult_onboarding_option_insomnia">الأرق</string>
+    <string name="adaptive_adult_onboarding_option_tension">الترقب والتوتر</string>
+    <string name="adaptive_adult_onboarding_option_exhaustion">الإرهاق</string>
+    <string name="adaptive_adult_onboarding_option_pressure">الضغط النفسي</string>
+    <string name="adaptive_adult_onboarding_option_focus">شتات التركيز</string>
+    <string name="adaptive_adult_onboarding_option_tiredness">التعب</string>
+    <string name="adaptive_adult_onboarding_option_dread">الخوف المستقبل</string>
+    <string name="adaptive_adult_onboarding_option_starting">صعوبة البدايات</string>
+    <string name="adaptive_adult_onboarding_option_rest">قلة الراحة</string>
+    <!-- Adult Onboarding Helpful & Goals -->
+    <string name="adaptive_adult_onboarding_helpful_audio">الاستماع للمقاطع الصوتية</string>
+    <string name="adaptive_adult_onboarding_helpful_breathing">تمارين التنفس</string>
+    <string name="adaptive_adult_onboarding_helpful_spiritual">الروحانيات والذكر</string>
+    <string name="adaptive_adult_onboarding_helpful_writing">الكتابة والتفريغ</string>
+    <string name="adaptive_adult_onboarding_helpful_talking">الحديث مع شخص مقرب</string>
+    <string name="adaptive_adult_onboarding_helpful_movement">الحركة والتمدد</string>
+    <string name="adaptive_adult_onboarding_helpful_activity">الأنشطة التفاعلية</string>
+    <string name="adaptive_adult_onboarding_helpful_unsure">لست متأكداً بعد</string>
+
+    <string name="adaptive_adult_onboarding_goal_calm">الوصول للشعور بالهدوء</string>
+    <string name="adaptive_adult_onboarding_goal_stress">تخفيف الضغط والقلق</string>
+    <string name="adaptive_adult_onboarding_goal_understand">فهم مشاعري بشكل أفضل</string>
+    <string name="adaptive_adult_onboarding_goal_routine">بناء روتين يومي مريح</string>
+    <string name="adaptive_adult_onboarding_goal_sleep">تحسين جودة النوم</string>
+    <string name="adaptive_adult_onboarding_goal_loneliness">تقليل الشعور بالوحدة</string>
+    <string name="adaptive_adult_onboarding_goal_habits">اكتساب عادات صحية</string>
+    <string name="adaptive_adult_onboarding_goal_express">التعبير عن ذاتي بحرية</string>
+
+    <string name="adaptive_adult_onboarding_face_sad">حزين جداً</string>
+    <string name="adaptive_adult_onboarding_face_low">غير مرتاح</string>
+    <string name="adaptive_adult_onboarding_face_neutral">محايد</string>
+    <string name="adaptive_adult_onboarding_face_good">جيد</string>
+    <string name="adaptive_adult_onboarding_face_great">ممتاز جداً</string>
+
+    <string name="new_child_banner_title">إضافة طفل جديد</string>
+    <string name="loading_phrase">جاري التحميل...</string>
+
+        <!-- Onboarding Strings -->
+        <string name="onboarding_skip">تخطي</string>
+        <string name="onboarding_next">التالي</string>
+        <string name="onboarding_start">ابدأ الآن</string>
+        <string name="onboarding1_title">أهلاً بك</string>
+        <string name="onboarding1_desc">وصف الشاشة الأولى</string>
+        <string name="onboarding2_title">العنوان الثاني</string>
+        <string name="onboarding2_desc">وصف الشاشة الثانية</string>
+        <string name="onboarding3_title">العنوان الثالث</string>
+        <string name="onboarding3_desc">وصف الشاشة الثالثة</string>
+        <string name="onboarding4_title">العنوان الرابع</string>
+        <string name="onboarding4_desc">وصف الشاشة الرابعة</string>
+        <string name="onboarding5_title">العنوان الخامس</string>
+        <string name="onboarding5_desc">وصف الشاشة الخامسة</string>
+
+        <!-- Adult Stats Strings -->
+        <string name="adult_stats_tab_day">يوم</string>
+        <string name="adult_stats_tab_week">أسبوع</string>
+        <string name="adult_stats_tab_month">شهر</string>
+        <string name="adult_stats_screen_title">الإحصائيات</string>
+        <string name="adult_stats_screen_subtitle">متابعة الحالة</string>
+        <string name="adult_stats_app_name">تطبيقي</string>
+        <string name="adult_stats_chart_hint">الرسم البياني</string>
+
+        <!-- Adult Notif Strings -->
+        <string name="adult_notif_cd_back">رجوع</string>
+        <string name="adult_notif_cd_options">خيارات</string>
+        <string name="adult_notif_mark_all_read">تحديد الكل كقراءة</string>
+        <string name="adult_notif_notifications_title">الإشعارات</string>
+
+        <!-- Dialect Strings -->
+        <string name="dialect_title">اللهجة</string>
+        <string name="dialect_dialog_title">اختر اللهجة</string>
+        <string name="dialect_standard">الفصحى</string>
+        <string name="dialect_egyptian">المصرية</string>
+        <string name="dialect_gulf">الخليجية</string>
+        <string name="dialect_levantine">الشامية</string>
+
+        <!-- Other Missing Strings -->
+        <string name="exercises_future_letter">رسالة للمستقبل</string>
+        <string name="kids_adaptive_app_name">تطبيق الأطفال</string>
+        <string name="kids_adaptive_back_cd">رجوع</string>
+        <string name="kids_adaptive_gender_unspecified_selected">غير محدد</string>
+        <string name="kids_adaptive_simulate_reopen">إعادة فتح</string>
+        <string name="kids_adaptive_simulate_reopen_cd">إعادة فتح</string>
+        <!-- Onboarding Strings -->
+    <!-- Language Selection -->
+    <string name="language_name_ar">العربية</string>
+    <string name="language_name_en">English</string>
+
+    <!-- Home Fragment -->
+    <string name="home_check_in_label">تسجيل اليوم</string>
+    <string name="home_session_title">جلسة اليوم</string>
+    <string name="home_calm_title_main">ركن الهدوء</string>
+    <string name="home_calm_sub_main">استمتع بلحظات مريحة</string>
+    <string name="home_breathing_title_main">تمارين التنفس</string>
+    <string name="home_breathing_sub_main">خذ نفساً عميقاً</string>
+    <string name="home_explore_title_main">استكشف</string>
+
+    <!-- Kids Calm Corner -->
+    <string name="kids_calm_icon_mascot">🦊</string>
+    <string name="kids_calm_app_name">ركن الهدوء للأطفال</string>
+    <string name="kids_calm_app_subtitle">مساحتك الخاصة للراحة</string>
+    <string name="kids_calm_stars_default">⭐ 0</string>
+    <string name="kids_calm_cd_info">معلومات</string>
+    <string name="kids_calm_icon_info">ℹ️</string>
+    <string name="kids_calm_tab_gallery">المعرض</string>
+    <string name="kids_calm_tab_words">الكلمات</string>
+    <string name="kids_calm_tab_simulate">المحاكاة</string>
+    <string name="kids_calm_dialog_phrase_label">العبارة</string>
+    <string name="kids_calm_adv_back">رجوع</string>
+    <string name="kids_calm_adv_balloon_sub">بالون الهدوء</string>
+    <string name="kids_calm_adv_card_ready">بطاقتك جاهزة</string>
+    <string name="kids_calm_adv_done">تم</string>
+    <string name="kids_calm_adv_go_gallery">الانتقال للمعرض</string>
+    <string name="kids_calm_adv_hunt_found">تم العثور عليه</string>
+    <string name="kids_calm_adv_no_card_msg">لا توجد بطاقات</string>
+    <string name="kids_calm_adv_no_words">لا توجد كلمات</string>
+    <string name="kids_calm_adv_star_earned">حصلت على نجمة!</string>
+    <string name="kids_calm_adv_start">ابدأ</string>
+    <string name="kids_calm_card_phrase_placeholder">اكتب عبارتك هنا...</string>
+    <string name="kids_calm_cd_photo">صورة</string>
+    <string name="kids_calm_dialog_cancel">إلغاء</string>
+    <string name="kids_calm_dialog_dur_label">المدة</string>
+    <string name="kids_calm_dialog_emoji_label">الرمز التعبيري</string>
+    <string name="kids_calm_dialog_new_word_title">إضافة كلمة جديدة</string>
+    <string name="kids_calm_dialog_preview_label">معاينة</string>
+    <string name="kids_calm_dialog_save_card">حفظ البطاقة</string>
+    <string name="kids_calm_dialog_save_word">حفظ الكلمة</string>
+    <string name="kids_calm_dialog_sticker_label">ملصق</string>
+    <string name="kids_calm_dialog_word_hint">أدخل الكلمة...</string>
+    <string name="kids_calm_dialog_word_label">الكلمة</string>
+    <string name="kids_calm_dur_long">طويل</string>
+    <string name="kids_calm_dur_medium">متوسط</string>
+    <string name="kids_calm_dur_short">قصير</string>
+    <string name="kids_calm_gallery_active_label">البطاقة النشطة</string>
+    <string name="kids_calm_gallery_all_cards">جميع البطاقات</string>
+    <string name="kids_calm_gallery_empty">المعرض فارغ</string>
+    <string name="kids_calm_gallery_new_card">بطاقة جديدة</string>
+    <string name="kids_calm_icon_balloon">🎈</string>
+    <string name="kids_calm_icon_cancel">❌</string>
+    <string name="kids_calm_icon_compass">🧭</string>
+    <string name="kids_calm_icon_confirm">✅</string>
+    <string name="kids_calm_icon_delete">🗑️</string>
+    <string name="kids_calm_icon_edit">✏️</string>
+    <string name="children_count_fmt">%1$s %2$s</string>
+    <string name="kids_calm_icon_rocket">🚀</string>
+    <string name="kids_calm_info_body">تعليمات ومعلومات استخدام ركن الهدوء</string>
+    <string name="kids_calm_info_ok">حسناً</string>
+    <string name="kids_calm_info_title">معلومات</string>
+    <string name="kids_calm_words_new">كلمة جديدة</string>
+    </resources>

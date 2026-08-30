@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.speech.tts.UtteranceProgressListener;
-import android.view.View;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -39,18 +38,24 @@ public class WordOfWeekActivity extends AppCompatActivity {
 
         childId = getChildId();
 
-        // 🌟 تحميل الأفاتار الخاص بكِ
+        // 🌟 تحميل الأفاتار الخاص بالطفل
         loadChildAvatar();
 
-        currentPhrase = getString(R.string.default_phrase);
+        currentPhrase = "أنا شجاع وقوي، وأقدر أتخطى أي شيء صعب";
 
         phraseText = findViewById(R.id.phraseText);
-        phraseText.setText(getString(R.string.loading_phrase));
+        if (phraseText != null) {
+            try {
+                phraseText.setText(getString(R.string.loading_phrase));
+            } catch (Exception e) {
+                phraseText.setText("جاري التحميل...");
+            }
+        }
 
-        // جلب الجملة من Gemini (من كود صديقتك)
+        // جلب الجملة من Gemini
         loadPhraseFromGemini();
 
-        // تهيئة محرك Natively TextToSpeech
+        // تهيئة محرك TextToSpeech
         textToSpeech = new TextToSpeech(this, status -> {
             if (status == TextToSpeech.SUCCESS && textToSpeech != null) {
                 textToSpeech.setLanguage(new Locale("ar"));
@@ -61,15 +66,19 @@ public class WordOfWeekActivity extends AppCompatActivity {
         });
 
         listenFirstVoiceButton = findViewById(R.id.listenFirstVoiceButton);
-        listenFirstVoiceButton.setOnClickListener(v -> speakPhrase());
+        if (listenFirstVoiceButton != null) {
+            listenFirstVoiceButton.setOnClickListener(v -> speakPhrase());
+        }
 
         ImageButton micButton = findViewById(R.id.micButton);
-        micButton.setOnClickListener(v -> {
-            Intent intent = new Intent(WordOfWeekActivity.this, RecordingActivity.class);
-            intent.putExtra(EXTRA_PHRASE, currentPhrase);
-            intent.putExtra("CHILD_ID", childId);
-            startActivity(intent);
-        });
+        if (micButton != null) {
+            micButton.setOnClickListener(v -> {
+                Intent intent = new Intent(WordOfWeekActivity.this, RecordingActivity.class);
+                intent.putExtra(EXTRA_PHRASE, currentPhrase);
+                intent.putExtra("CHILD_ID", childId);
+                startActivity(intent);
+            });
+        }
     }
 
     private void loadPhraseFromGemini() {
@@ -78,13 +87,19 @@ public class WordOfWeekActivity extends AppCompatActivity {
             public void onSuccess(String message) {
                 runOnUiThread(() -> {
                     currentPhrase = message;
-                    phraseText.setText(currentPhrase);
+                    if (phraseText != null) {
+                        phraseText.setText(currentPhrase);
+                    }
                 });
             }
 
             @Override
             public void onError(String errorMessage) {
-                runOnUiThread(() -> phraseText.setText(currentPhrase));
+                runOnUiThread(() -> {
+                    if (phraseText != null) {
+                        phraseText.setText(currentPhrase);
+                    }
+                });
             }
         });
     }
@@ -94,7 +109,9 @@ public class WordOfWeekActivity extends AppCompatActivity {
             return;
         }
 
-        listenFirstVoiceButton.setEnabled(false);
+        if (listenFirstVoiceButton != null) {
+            listenFirstVoiceButton.setEnabled(false);
+        }
 
         textToSpeech.setOnUtteranceProgressListener(new UtteranceProgressListener() {
             @Override
@@ -102,19 +119,27 @@ public class WordOfWeekActivity extends AppCompatActivity {
 
             @Override
             public void onDone(String utteranceId) {
-                runOnUiThread(() -> listenFirstVoiceButton.setEnabled(true));
+                runOnUiThread(() -> {
+                    if (listenFirstVoiceButton != null) {
+                        listenFirstVoiceButton.setEnabled(true);
+                    }
+                });
             }
 
             @Override
             public void onError(String utteranceId) {
-                runOnUiThread(() -> listenFirstVoiceButton.setEnabled(true));
+                runOnUiThread(() -> {
+                    if (listenFirstVoiceButton != null) {
+                        listenFirstVoiceButton.setEnabled(true);
+                    }
+                });
             }
         });
 
         textToSpeech.speak(currentPhrase, TextToSpeech.QUEUE_FLUSH, null, "phrase_utterance");
     }
 
-    // 🌟 دالة تحميل الأفاتار الخاصة بكِ
+    // 🌟 دالة تحميل الأفاتار وآمنة من ناحية الـ IDs
     private void loadChildAvatar() {
         ChildProfileStore store = new ChildProfileStore(this);
         try {
@@ -123,11 +148,18 @@ public class WordOfWeekActivity extends AppCompatActivity {
                 if (profile.getId() == childId) {
                     String avatar = profile.getAvatar();
                     if (avatar != null && !avatar.trim().isEmpty()) {
-                        TextView tvAvatar1 = findViewById(R.id.mascotFox);
-                        TextView tvAvatar2 = findViewById(R.id.mascotFoxtwo);
+                        // استخدام أسماء الأقسام البرمجية المتاحة دون التسبب بإغلاق الشاشة
+                        int mascotId1 = getResources().getIdentifier("mascotFox", "id", getPackageName());
+                        int mascotId2 = getResources().getIdentifier("mascotFoxtwo", "id", getPackageName());
 
-                        if (tvAvatar1 != null) tvAvatar1.setText(avatar);
-                        if (tvAvatar2 != null) tvAvatar2.setText(avatar);
+                        if (mascotId1 != 0) {
+                            TextView tv1 = findViewById(mascotId1);
+                            if (tv1 != null) tv1.setText(avatar);
+                        }
+                        if (mascotId2 != 0) {
+                            TextView tv2 = findViewById(mascotId2);
+                            if (tv2 != null) tv2.setText(avatar);
+                        }
                     }
                     break;
                 }

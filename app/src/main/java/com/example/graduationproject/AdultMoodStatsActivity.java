@@ -1,4 +1,3 @@
-
 package com.example.graduationproject;
 
 import android.animation.ValueAnimator;
@@ -17,18 +16,15 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.graduationproject.data.ChildProfileStore;
+import com.example.graduationproject.data.profile.ArabicDateUtils;
 import com.example.graduationproject.ui.AdultMoodResult;
 import com.example.graduationproject.widget.AdultChartView;
 import com.example.graduationproject.widget.AdultFaceView;
-import com.example.graduationproject.data.profile.ArabicDateUtils;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-/**
- * Reports & Stats Screen.
- * Contains Mood Stats, Activity Stats, Personal Archive, and Children's Reports.
- */
 public class AdultMoodStatsActivity extends AppCompatActivity {
 
     private static class Range {
@@ -45,13 +41,17 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
     private AdultChartView chartView;
     private AdultFaceView scrubFace;
     private TextView scrubLabel, scrubSub, tabDay, tabWeek, tabMonth;
+    private TextView txtChildrenCount;
 
+    private ChildProfileStore dbStore;
     private static final long TAB_ANIM_MS = 300;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_adult_mood_stats);
+
+        dbStore = new ChildProfileStore(this);
 
         findViewById(R.id.btn_back).setOnClickListener(v -> finish());
 
@@ -64,6 +64,7 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
         tabDay = findViewById(R.id.tab_day);
         tabWeek = findViewById(R.id.tab_week);
         tabMonth = findViewById(R.id.tab_month);
+        txtChildrenCount = findViewById(R.id.txt_children_count);
 
         buildRanges();
 
@@ -94,22 +95,45 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
 
         renderStats();
         renderArchiveLinks();
+        updateChildrenCount(); // 👈 تحديث عدد الأطفال الحقيقي
 
         findViewById(R.id.btn_children_link).setOnClickListener(v -> {
-            // Open AdultProfileActivity and navigate to children
             Intent intent = new Intent(this, AdultProfileActivity.class);
             intent.putExtra("navigate_to", "children");
             startActivity(intent);
         });
     }
 
+    // 🔹 دالة جلب عدد الأطفال وتحديث النص بالحساب الحقيقي
+    private void updateChildrenCount() {
+        int count = dbStore.getChildrenCount();
+        String formattedCount = ArabicDateUtils.toAr(count);
+
+        if (count == 1) {
+            txtChildrenCount.setText("طفل واحد مسجل");
+        } else if (count == 2) {
+            txtChildrenCount.setText("طفلان مسجلان");
+        } else if (count >= 3 && count <= 10) {
+            txtChildrenCount.setText(getString(R.string.children_count_fmt, formattedCount, "أطفال مسجلين"));
+        } else {
+            txtChildrenCount.setText(getString(R.string.children_count_fmt, formattedCount, "طفلاً مسجلاً"));
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // إعادة تحديث العدد عند العودة من إضافة/حذف طفل
+        updateChildrenCount();
+    }
+
     private void renderStats() {
         LinearLayout statsRow = findViewById(R.id.stats_row);
         statsRow.removeAllViews();
-        String[][] stats = { 
+        String[][] stats = {
                 { ArabicDateUtils.toAr(47), getString(R.string.stat_days_active) },
                 { ArabicDateUtils.toAr(12), getString(R.string.stat_streak) },
-                { ArabicDateUtils.toAr(69), getString(R.string.stat_sessions) } 
+                { ArabicDateUtils.toAr(69), getString(R.string.stat_sessions) }
         };
 
         for (String[] stat : stats) {
@@ -229,5 +253,13 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
             segmentIndicator.setLayoutParams(lp);
         });
         anim.start();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dbStore != null) {
+            dbStore.close();
+        }
     }
 }

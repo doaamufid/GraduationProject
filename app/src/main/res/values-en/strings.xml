@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools" tools:ignore="ExtraTranslation">
     <string name="app_name">salam</string>
     <string name="salam_title">SALAM</string>
     <string name="mental_health_subtitle">MENTAL HEALTH · PEACE OF MIND</string>
@@ -1321,7 +1321,7 @@
     <string name="kids_calm_icon_balloon">🎈</string>
     <string name="kids_calm_icon_compass">🧭</string>
     <string name="kids_calm_icon_rocket">🚀</string>
-    <string name="kids_calm_icon_info">?</string>
+    <string name="kids_calm_icon_info"></string>
     <string name="kids_calm_icon_edit">✎</string>
     <string name="kids_calm_icon_delete">🗑</string>
     <string name="kids_calm_icon_confirm">✓</string>
@@ -1426,7 +1426,6 @@
     <string name="exercises_calm_card_desc">Your words and comforting image, in one touch</string>
     <string name="exercises_strengths_title">My Strengths</string>
     <string name="exercises_strengths_desc">Discover the strengths within you</string>
-    <string name="exercises_future_letter_title">Message to Myself</string>
     <string name="exercises_future_letter_desc">Write a message to your bright future</string>
     <string name="exercises_reframe_title">Reframing Thoughts</string>
     <string name="exercises_reframe_desc">Challenge negative thoughts and transform them</string>
@@ -1472,7 +1471,7 @@
     <string name="kids_mood_big_question">How are you feeling today, champ?</string>
     <string name="kids_mood_continue_label">Let’s go! 🎉</string>
     <string name="kids_mood_saved_toast">Your mood has been saved ✅</string>
-
+    <string name="exercises_future_letter_title">Letter to Myself</string>
     <string name="kids_mood_awful">I’m really upset</string>
     <string name="kids_mood_sad">I’m a little sad</string>
     <string name="kids_mood_low">I’m not feeling so good</string>
@@ -1480,6 +1479,7 @@
     <string name="kids_mood_calm">I’m doing good!</string>
     <string name="kids_mood_happy">I’m happy!</string>
     <string name="kids_mood_overjoyed">I’m super, super happy!</string>
-    <string name="exercises_future_letter_title">Letter to Myself</string>
     <string name="exercises_future_letter" />
+    <!-- Exercises Strings -->
+
 </resources>

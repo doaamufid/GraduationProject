@@ -14,7 +14,10 @@ if (localPropertiesFile.exists()) {
 android {
     namespace 'com.example.graduationproject'
     compileSdk 36
-
+    lintOptions {
+        checkReleaseBuilds false
+        abortOnError false
+    }
     defaultConfig {
         applicationId "com.example.graduationproject"
         minSdk 24

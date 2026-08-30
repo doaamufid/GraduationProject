@@ -31,7 +31,7 @@ import java.util.Locale;
  * Java/XML port of ConnectedProfileFlow (JSX root router).
  * Screens: home | thoughts | strengths | messages | children | childDetail
  */
-public class AdultProfileActivity extends AppCompatActivity implements ProfileNavigator {
+public class  AdultProfileActivity extends AppCompatActivity implements ProfileNavigator {
 
     private TextView txtToast;
     private final Handler handler = new Handler(Looper.getMainLooper());

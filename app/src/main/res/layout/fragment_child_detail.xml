@@ -101,14 +101,17 @@
                     android:textSize="@dimen/text_title"
                     tools:text="يوسف — ١٠ سنوات"/>
 
+                <!-- 🟢 تم إضاقة عنصر txt_hero_last_active المطابق لكود Java -->
                 <TextView
                     android:id="@+id/txt_hero_last_active"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/white"
-                    android:alpha="0.85"
-                    android:textSize="@dimen/text_small"
-                    tools:text="آخر نشاط: اليوم · ٣:٣٠ م"/>
+                    android:alpha="0.8"
+                    android:textSize="@dimen/text_tiny"
+                    android:layout_marginTop="2dp"
+                    tools:text="آخر نشاط: اليوم ٤:٣٠ م"/>
+
             </LinearLayout>
         </LinearLayout>
 

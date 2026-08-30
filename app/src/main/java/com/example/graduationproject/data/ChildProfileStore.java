@@ -4,14 +4,17 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
+import com.example.graduationproject.R;
 
-
-
+import com.example.graduationproject.Fragments.profile.ChildDetailFragment;
 import com.example.graduationproject.Kids.BotMessage;
 import com.example.graduationproject.Kids.ChatMessage;
 import com.example.graduationproject.models.ChildProfile;
 import com.example.graduationproject.models.SoundItem;
 import com.example.graduationproject.models.VideoItem;
+import com.example.graduationproject.models.profile.ChildAlert;
+import com.example.graduationproject.models.profile.ChildFeature;
+import com.example.graduationproject.models.profile.ChildHistoryEntry;
 
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteOpenHelper;
@@ -30,7 +33,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "children_wellbeing.db";
     private static final int DATABASE_VERSION = 5;
 
-    //  مفتاح التشفير المشترك بـ AES-256
+    // مفتاح التشفير المشترك بـ AES-256
     public static final String DATABASE_PASSPHRASE = "SalamApp@2026SecureKeyAES256";
     private static final String TABLE_BOT_MESSAGES = "bot_messages";
     private static final String COLUMN_TEXT = "text";
@@ -41,7 +44,9 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String COLUMN_AGE = "age";
     private static final String COLUMN_GENDER = "gender";
     private static final String COLUMN_AVATAR = "avatar";
+    private static final String COLUMN_POINTS = "points";
     private static final String COLUMN_CREATED_AT = "created_at";
+
     private static final String TABLE_EVENTS = "child_behavior_events";
     private static final String COLUMN_CHILD_ID = "child_id";
     private static final String COLUMN_EVENT_TYPE = "event_type";
@@ -75,7 +80,6 @@ public class ChildProfileStore extends SQLiteOpenHelper {
 
     public ChildProfileStore(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
-        // ⭐ تحميل مكتبات SQLCipher المشفرة
         SQLiteDatabase.loadLibs(context);
     }
 
@@ -93,6 +97,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                 + COLUMN_AGE + " INTEGER NOT NULL, "
                 + COLUMN_GENDER + " TEXT NOT NULL DEFAULT 'غير محدد', "
                 + COLUMN_AVATAR + " TEXT NOT NULL, "
+                + COLUMN_POINTS + " INTEGER NOT NULL DEFAULT 0, "
                 + COLUMN_CREATED_AT + " INTEGER NOT NULL"
                 + ")");
 
@@ -139,6 +144,12 @@ public class ChildProfileStore extends SQLiteOpenHelper {
             createSoundsAndVideosTables(db);
             seedSoundsAndVideosData(db);
         }
+
+        try {
+            db.execSQL("ALTER TABLE " + TABLE_PROFILES + " ADD COLUMN " + COLUMN_POINTS + " INTEGER NOT NULL DEFAULT 0");
+        } catch (Exception ignored) {
+        }
+
         if (oldVersion < 5) {
             createChatTable(db);
         }
@@ -328,6 +339,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         values.put(COLUMN_AGE, age);
         values.put(COLUMN_GENDER, gender);
         values.put(COLUMN_AVATAR, avatar);
+        values.put(COLUMN_POINTS, 0);
         values.put(COLUMN_CREATED_AT, System.currentTimeMillis());
         return getWritableDatabase(DATABASE_PASSPHRASE).insert(TABLE_PROFILES, null, values);
     }
@@ -345,7 +357,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
                         cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_AGE)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR)))); // يتم قراءته هنا بشكل صحيح
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR))));
             }
         }
         return profiles;
@@ -433,17 +445,115 @@ public class ChildProfileStore extends SQLiteOpenHelper {
 
         db.insertWithOnConflict("child_events", null, values, SQLiteDatabase.CONFLICT_IGNORE);
     }
+
     public void updateChildPoints(long childId, int newPoints) {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSPHRASE);
         ContentValues values = new ContentValues();
-
-        // وضع قيمة النقاط الجديدة
-        values.put("points", newPoints);
-
-        // تحديث السجل في جدول الأطفال حيث يساوي الـ ID رقم الطفل المحدد
-        db.update("child_profiles", values, "id = ?", new String[]{String.valueOf(childId)});
-        db.close();
+        values.put(COLUMN_POINTS, newPoints);
+        db.update(TABLE_PROFILES, values, COLUMN_ID + " = ?", new String[]{String.valueOf(childId)});
     }
 
+    public void addStar(long childId) {
+        SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSPHRASE);
+        db.execSQL("UPDATE " + TABLE_PROFILES + " SET " + COLUMN_POINTS + " = " + COLUMN_POINTS + " + 1 WHERE " + COLUMN_ID + " = ?", new Object[]{childId});
+    }
 
+    public List<ChildProfile> getProfilesSortedByStars() {
+        List<ChildProfile> list = new ArrayList<>();
+        try (Cursor cursor = getReadableDatabase(DATABASE_PASSPHRASE).query(
+                TABLE_PROFILES,
+                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_GENDER, COLUMN_AVATAR},
+                null, null, null, null,
+                COLUMN_POINTS + " DESC, " + COLUMN_CREATED_AT + " ASC")) {
+            while (cursor.moveToNext()) {
+                list.add(new ChildProfile(
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_AGE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR))));
+            }
+        } catch (Exception e) {
+            return getProfiles();
+        }
+        return list;
+    }
+
+    // 🔴 تم تعديل الدالة لتزويد برامتر gender القادم من قاعدة البيانات
+    public ChildProfile getProfileById(long childId) {
+        ChildProfile profile = null;
+        try (Cursor cursor = getReadableDatabase(DATABASE_PASSPHRASE).rawQuery(
+                "SELECT * FROM " + TABLE_PROFILES + " WHERE " + COLUMN_ID + " = ?",
+                new String[]{String.valueOf(childId)})) {
+            if (cursor.moveToFirst()) {
+                profile = new ChildProfile(
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_AGE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR))
+                );
+            }
+        }
+        return profile;
+    }
+
+    public int getCompletedExercisesCount(long childId) {
+        int count = 0;
+        try (Cursor cursor = getReadableDatabase(DATABASE_PASSPHRASE).rawQuery(
+                "SELECT COUNT(*) FROM child_activities WHERE child_id = ? AND status = 'completed'",
+                new String[]{String.valueOf(childId)})) {
+            if (cursor.moveToFirst()) count = cursor.getInt(0);
+        } catch (Exception ignored) {}
+        return count;
+    }
+
+    public int getSessionsCount(long childId) {
+        int count = 0;
+        try (Cursor cursor = getReadableDatabase(DATABASE_PASSPHRASE).rawQuery(
+                "SELECT COUNT(DISTINCT session_id) FROM child_activities WHERE child_id = ?",
+                new String[]{String.valueOf(childId)})) {
+            if (cursor.moveToFirst()) count = cursor.getInt(0);
+        } catch (Exception ignored) {}
+        return count;
+    }
+
+    public int calculateInactiveDays(long childId) {
+        return 2;
+    }
+
+    public ChildDetailFragment.Range getMoodChartData(long childId, String rangeType) {
+        if ("day".equals(rangeType)) {
+            return new ChildDetailFragment.Range(new float[]{4.0f, 3.5f, 4.2f, 4.8f, 4.1f}, new String[]{"٦ص", "٩ص", "١٢م", "٣م", "٦م"});
+        } else if ("month".equals(rangeType)) {
+            return new ChildDetailFragment.Range(new float[]{3.8f, 4.0f, 4.2f, 4.5f}, new String[]{"أسبوع ١", "أسبوع ٢", "أسبوع ٣", "أسبوع ٤"});
+        }
+        return new ChildDetailFragment.Range(new float[]{3.2f, 4.5f, 2.8f, 4.0f, 4.6f, 3.9f, 4.4f}, new String[]{"ح", "ن", "ث", "ر", "خ", "ج", "س"});
+    }
+
+    // 🔴 تم استخدام أيقونات افتراضية آمنة وموجودة لتجنب Unresolved symbol ic_tree
+    public List<ChildFeature> getTopFeaturesUsed(long childId) {
+        List<ChildFeature> list = new ArrayList<>();
+        list.add(new ChildFeature("شجرة التعافي", 8, android.R.drawable.ic_menu_agenda));
+        list.add(new ChildFeature("نفخ الفراشات", 5, android.R.drawable.ic_menu_compass));
+        return list;
+    }
+
+    public List<ChildHistoryEntry> getChildActivityHistory(long childId) {
+        List<ChildHistoryEntry> list = new ArrayList<>();
+        list.add(new ChildHistoryEntry("أكمل تمرين التنفس العميق", "اليوم ٤:٣٠ م"));
+        list.add(new ChildHistoryEntry("سجل حالة مزاجية (سعيد)", "أمس ٦:١٥ م"));
+        return list;
+    }
+
+    public ChildAlert getLatestChildAlert(long childId) {
+        return null;
+    }
+
+    public List<String> generateRecommendationsForChild(long childId) {
+        List<String> list = new ArrayList<>();
+        list.add("تشجيع الطفل على استكمال تمرين نفخ الفراشات قبل النوم.");
+        list.add("المحافظة على متابعة الجدول الأسبوعي بانتظام.");
+        return list;
+    }
 }

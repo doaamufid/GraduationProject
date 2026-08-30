@@ -4,9 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
-
 import androidx.activity.EdgeToEdge;
-import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
@@ -42,7 +40,7 @@ public class KidsAiResponseActivity extends AppCompatActivity {
             controller.setAppearanceLightNavigationBars(true);
         }
 
-        // 🌟 قراءة أفاتار الطفل المختار وتحديث الواجهة
+        // قراءة أفاتار الطفل المختار وتحديث الواجهة
         loadChildAvatarFromDatabase();
 
         // استقبال نص الرد
@@ -50,15 +48,8 @@ public class KidsAiResponseActivity extends AppCompatActivity {
         if (responseText != null && !responseText.isEmpty()) {
             binding.tvAiResponseText.setText(responseText);
         }
-binding.btnActionDraw.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent intent=new Intent(KidsAiResponseActivity.this,DrawInstructionActivity.class);
-        startActivity(intent);
-        finish();
-    }
-});
-        // تهيئة محرك الصوت لقراءة الرد تلقائياً
+
+        // تهيئة محرك الصوت
         initTextToSpeech();
 
         // 1. زر "احكي مع صديقك"
@@ -88,6 +79,7 @@ binding.btnActionDraw.setOnClickListener(new View.OnClickListener() {
         binding.btnActionDraw.setOnClickListener(v -> {
             stopSpeech();
             startActivity(new Intent(KidsAiResponseActivity.this, DrawInstructionActivity.class));
+            finish();
         });
 
         binding.btnBack.setOnClickListener(v -> {
@@ -103,9 +95,6 @@ binding.btnActionDraw.setOnClickListener(new View.OnClickListener() {
         });
     }
 
-    /**
-     * جلب أفاتار الطفل المختار مباشرة من قاعدة البيانات المشفرة
-     */
     private void loadChildAvatarFromDatabase() {
         long childId = getChildId();
 
