@@ -5,9 +5,8 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_screen_gradient"
+    android:background="#FAF1E6"
     android:layoutDirection="rtl"
-    android:textDirection="rtl"
     tools:context=".Kids.KidsAiResponseActivity">
 
     <!-- Circle Back Button -->
@@ -37,7 +36,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Bear Avatar Head -->
+    <!-- Bear Avatar Head (عنصر واحد فقط) -->
     <TextView
         android:id="@+id/tv_bear_avatar"
         android:layout_width="wrap_content"
@@ -49,7 +48,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Scrollable content so nothing gets cut off on smaller screens -->
+    <!-- Scrollable content -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -82,7 +81,7 @@
                 android:lineSpacingExtra="4dp"
                 android:paddingHorizontal="22dp"
                 android:paddingVertical="20dp"
-                android:text="يا بطلي الجميل، حتى النجوم الجصيلة تحتاج للراحة أحياناً. وأنا هنا لأحضنك وأحميك حتى تصبح أفضل."
+                android:text="يا بطلي الجميل، حتى النجوم الجميلة تحتاج للراحة أحياناً. وأنا هنا لأحضنك وأحميك حتى تصبح أفضل."
                 android:textColor="#3D291F"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -160,7 +159,6 @@
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Option 4: احكي مع دبدوب (محادثة مفتوحة) -->
             <!-- Option 4: احكي مع صديقك -->
             <TextView
                 android:id="@+id/btn_action_chat"

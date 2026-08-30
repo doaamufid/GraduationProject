@@ -27,7 +27,7 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
-            android:text="رسائل دبدوب نور 🧸"
+            android:text="رسائل صديقك لك "
             android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#4A3B2A" />

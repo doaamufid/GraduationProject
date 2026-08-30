@@ -1,11 +1,12 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
 import com.example.graduationproject.R;
 import com.example.graduationproject.util.KidsAdaptiveUiHelpers;
-import com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView;
 import com.example.graduationproject.widget.KidsAdaptiveChoiceCardView;
 
 public class KidsAdaptiveIntenseFearFragment extends KidsAdaptiveBaseOnboardingFragment {
@@ -13,7 +14,12 @@ public class KidsAdaptiveIntenseFearFragment extends KidsAdaptiveBaseOnboardingF
     private static final String[] IDS = {"yes_sometimes", "yes_often", "rarely", "unsure", "skip"};
 
     @Override public int getScreenIndex() { return 6; }
-    @Override protected String getCompanionMood() { return KidsAdaptiveTeddyBuddyView.MOOD_CALM; }
+
+    // 🌟 استرجاع مظهر الأفاتار المختار ديناميكياً
+    @Override
+    protected String getCompanionMood() {
+        return data().getAvatarMoodFromSelection();
+    }
 
     @Override
     protected void onSkipClick() {
@@ -45,6 +51,18 @@ public class KidsAdaptiveIntenseFearFragment extends KidsAdaptiveBaseOnboardingF
             card.setOnClickListener(v -> {
                 data().intenseFearExperience = IDS[idx];
                 for (int j = 0; j < cards.length; j++) cards[j].setSelectedState(j == idx);
+
+                // 🌟 نبض الأفاتار تفاعلياً مع اختيار الطفل
+                if (host != null) {
+                    host.pulseTeddy();
+                }
+
+                // 🌟 التأكد من حفظ الأفاتار المختار في SharedPreferences
+                String chosenAvatar = data().demoMoodSelected;
+                if (chosenAvatar != null && !chosenAvatar.trim().isEmpty()) {
+                    SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+                    prefs.edit().putString("current_child_avatar", chosenAvatar).apply();
+                }
             });
             cards[i] = card;
             LinearLayout.LayoutParams lp = matchWrap();

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,10 +17,12 @@ import androidx.core.content.ContextCompat;
 import com.example.graduationproject.R;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityMoodCheckInBinding;
+import com.example.graduationproject.models.ChildProfile;
+
+import java.util.List;
 
 public class MoodCheckInActivity extends AppCompatActivity {
 
-    // TODO: عدّلي هذا الاسم لو اسم المفتاح عندك تختلف
     public static final String EXTRA_CHILD_ID = "CHILD_ID";
 
     private ActivityMoodCheckInBinding binding;
@@ -35,18 +38,18 @@ public class MoodCheckInActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // بدل setContentView(R.layout...)، منستخدم الـ binding
         binding = ActivityMoodCheckInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         childProfileStore = new ChildProfileStore(this);
 
-        // نجيب رقم الطفل من الشاشة اللي قبلها
-        currentChildId = getIntent().getLongExtra(EXTRA_CHILD_ID, -1);
-        findViewById(R.id.btnFeaturedChild).setOnClickListener(v -> {
-            startActivity(new Intent(this, FeaturedChildActivity.class));
-        });
-        // ربط كل عناصر المزاج الستة (هلق عن طريق binding مباشرة، بدون findViewById)
+        // جلب معرف الطفل مع القيمة الافتراضية الصريحة لمنع حدوث Crash
+        currentChildId = getChildId();
+
+        // 🌟 تحميل الأفاتار النصي الخاِص بكِ وتحديث الواجهة والفقاعة
+        loadChildAvatar();
+
+        // ربط عناصر المزاج
         moodViews = new TextView[]{
                 binding.moodHappy,
                 binding.moodSad,
@@ -63,31 +66,69 @@ public class MoodCheckInActivity extends AppCompatActivity {
 
         binding.btnConfirmMood.setOnClickListener(v -> onConfirmClicked());
         binding.btnBack.setOnClickListener(v -> finish());
+
+        // التنقل بين الشاشات مع إرسال ID الطفل (من كود صديقتك)
         binding.cardVideos.setOnClickListener(v -> {
             Intent intent = new Intent(this, VideosActivity.class);
-            startActivity(intent);
-        });
-        // بطاقات التصنيفات (لسا placeholder، رح نربطها بواجهاتها لما نوصلها)
-        binding.cardSafetyTeam.setOnClickListener(v -> {
-            Intent intent = new Intent(this, DrawInstructionActivity.class);
-            startActivity(intent);
-        });
-        binding.cardBreathe.setOnClickListener(v -> {
-            Intent intent = new Intent(this, KidsAiChatActivity.class);
-            startActivity(intent);
-        });
-        binding.cardComfort.setOnClickListener(v -> {
-            Intent intent = new Intent(this, SoundsActivity.class);
-            startActivity(intent);
-        });
-        binding.cardPlayBushes.setOnClickListener(v -> {
-            Intent intent = new Intent(this, WordOfWeekActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
             startActivity(intent);
         });
 
-        // --- إضافة الإشعارات: جدولة التذكير + طلب الإذن ---
+        binding.cardSafetyTeam.setOnClickListener(v -> {
+            Intent intent = new Intent(this, DrawInstructionActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
+        binding.cardBreathe.setOnClickListener(v -> {
+            Intent intent = new Intent(this, KidsAiChatActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
+        binding.cardComfort.setOnClickListener(v -> {
+            Intent intent = new Intent(this, SoundsActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
+        binding.cardPlayBushes.setOnClickListener(v -> {
+            Intent intent = new Intent(this, WordOfWeekActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
+        // جدولة التذكيرات والإشعارات
         KidsReminderScheduler.scheduleReminder(this);
         requestNotificationPermissionIfNeeded();
+    }
+
+    // 🌟 دالة قراءة الأفاتار وتحديث الـ TextView الخاص بكِ (tvChildAvatar)
+    private void loadChildAvatar() {
+        if (childProfileStore == null || currentChildId == -1L) return;
+
+        try {
+            List<ChildProfile> profiles = childProfileStore.getProfiles();
+            for (ChildProfile profile : profiles) {
+                if (profile.getId() == currentChildId) {
+                    String avatar = profile.getAvatar();
+                    if (avatar != null && !avatar.trim().isEmpty()) {
+                        // تحديث عنصر الأفاتار الخاص بكِ
+                        binding.tvChildAvatar.setText(avatar);
+                        // تحديث نص الترحيب بنفس الأفاتار
+                        binding.txtGreeting.setText("أنا " + avatar + " معك دائماً 💛");
+                    }
+                    break;
+                }
+            }
+        } catch (Exception e) {
+            Log.e("MoodCheckIn", "Error loading child avatar: " + e.getMessage());
+        }
+    }
+
+    private long getChildId() {
+        long id = getIntent().getLongExtra(EXTRA_CHILD_ID, -1L);
+        return (id == -1L) ? 1L : id;
     }
 
     private void requestNotificationPermissionIfNeeded() {
@@ -103,17 +144,14 @@ public class MoodCheckInActivity extends AppCompatActivity {
     private void onMoodSelected(View view) {
         TextView clicked = (TextView) view;
 
-        // نشيل التحديد عن أي اختيار سابق
         if (selectedMoodView != null) {
             selectedMoodView.setSelected(false);
         }
 
-        // نحدد الاختيار الجديد
         clicked.setSelected(true);
         selectedMoodView = clicked;
         selectedMoodValue = String.valueOf(clicked.getTag());
 
-        // نفعّل زر التأكيد
         binding.btnConfirmMood.setEnabled(true);
     }
 
@@ -123,12 +161,7 @@ public class MoodCheckInActivity extends AppCompatActivity {
             return;
         }
 
-        if (currentChildId == -1) {
-            Toast.makeText(this, "لم يتم تحديد الطفل", Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        binding.btnConfirmMood.setEnabled(false); // منع دوس مزدوج
+        binding.btnConfirmMood.setEnabled(false);
 
         childProfileStore.addBehaviorEvent(
                 currentChildId,
@@ -153,6 +186,7 @@ public class MoodCheckInActivity extends AppCompatActivity {
                     Intent intent = new Intent(MoodCheckInActivity.this, MessagesActivity.class);
                     intent.putExtra(MessagesActivity.EXTRA_CHILD_ID, currentChildId);
                     startActivity(intent);
+                    finish();
                 });
             }
 
@@ -170,6 +204,9 @@ public class MoodCheckInActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        binding = null; // تجنب تسريب الذاكرة
+        if (childProfileStore != null) {
+            childProfileStore.close();
+        }
+        binding = null;
     }
 }

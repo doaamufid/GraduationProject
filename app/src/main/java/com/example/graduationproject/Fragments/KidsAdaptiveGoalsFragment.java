@@ -1,5 +1,7 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
@@ -16,7 +18,7 @@ public class KidsAdaptiveGoalsFragment extends KidsAdaptiveBaseOnboardingFragmen
     private static final String[] EMOJIS = {"🌤", "🫁", "🧠", "🗓️", "🌙", "🤍", "🌱", "✍️", "🧭"};
 
     @Override public int getScreenIndex() { return 9; }
-    @Override protected String getCompanionMood() { return KidsAdaptiveTeddyBuddyView.MOOD_WARM; }
+    @Override protected String getCompanionMood() { return data().getAvatarMoodFromSelection(); }
 
     @Override
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
@@ -44,6 +46,18 @@ public class KidsAdaptiveGoalsFragment extends KidsAdaptiveBaseOnboardingFragmen
             chip.setOnClickListener(v -> {
                 KidsAdaptiveOnboardingData.toggle(data().goals, label);
                 chip.setSelectedState(data().goals.contains(label));
+
+                // 🌟 نبض الأفاتار تفاعلياً عند اختيار الأهداف
+                if (host != null) {
+                    host.pulseTeddy();
+                }
+
+                // 🌟 التأكد من حفظ الأفاتار المختار في SharedPreferences
+                String chosenAvatar = data().demoMoodSelected;
+                if (chosenAvatar != null && !chosenAvatar.trim().isEmpty()) {
+                    SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+                    prefs.edit().putString("current_child_avatar", chosenAvatar).apply();
+                }
             });
             flow.addView(chip, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
         }

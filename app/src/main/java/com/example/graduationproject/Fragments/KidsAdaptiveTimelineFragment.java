@@ -1,5 +1,7 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.GridLayout;
@@ -26,6 +28,12 @@ public class KidsAdaptiveTimelineFragment extends KidsAdaptiveBaseOnboardingFrag
     private LinearLayout followupsHost;
 
     @Override public int getScreenIndex() { return 7; }
+
+    // 🌟 استرجاع مظهر الأفاتار/الدب المختار ديناميكياً ليظهر في أعلى الشاشة
+    @Override
+    protected String getCompanionMood() {
+        return data().getAvatarMoodFromSelection();
+    }
 
     @Override
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
@@ -71,6 +79,14 @@ public class KidsAdaptiveTimelineFragment extends KidsAdaptiveBaseOnboardingFrag
                 KidsAdaptiveOnboardingData.toggle(data().difficultTimes, PERIOD_IDS[idx]);
                 card.setSelectedState(data().difficultTimes.contains(PERIOD_IDS[idx]));
                 rebuildFollowups(periodLabels);
+
+                // 🌟 نبض الأفاتار تفاعلياً عند اختيار الفترة
+                if (host != null) {
+                    host.pulseTeddy();
+                }
+
+                // 🌟 التأكد من حفظ الأفاتار المختار في SharedPreferences
+                saveAvatarToPrefs();
             });
         }
 
@@ -123,9 +139,23 @@ public class KidsAdaptiveTimelineFragment extends KidsAdaptiveBaseOnboardingFrag
                 tag.setOnClickListener(v -> {
                     KidsAdaptiveOnboardingData.toggle(fieldSet, opt);
                     tag.setSelectedState(fieldSet.contains(opt));
+
+                    // 🌟 نبض الأفاتار وحفظ الخيار
+                    if (host != null) {
+                        host.pulseTeddy();
+                    }
+                    saveAvatarToPrefs();
                 });
                 wrapRow.addView(tag, new ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT));
             }
+        }
+    }
+
+    private void saveAvatarToPrefs() {
+        String chosenAvatar = data().demoMoodSelected;
+        if (chosenAvatar != null && !chosenAvatar.trim().isEmpty()) {
+            SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+            prefs.edit().putString("current_child_avatar", chosenAvatar).apply();
         }
     }
 

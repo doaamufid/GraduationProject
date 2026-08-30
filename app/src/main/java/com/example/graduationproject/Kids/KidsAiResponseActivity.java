@@ -1,28 +1,20 @@
 package com.example.graduationproject.Kids;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.view.Window;
-import android.view.WindowManager;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
-import androidx.recyclerview.widget.LinearLayoutManager;
 
-import com.example.graduationproject.ActivityUtils;
-import com.example.graduationproject.R;
-import com.example.graduationproject.adapters.WeeklyMoodAdapter;
+import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityKidsAiResponseBinding;
-import com.example.graduationproject.models.MoodDay;
+import com.example.graduationproject.models.ChildProfile;
 
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
 
@@ -31,20 +23,15 @@ public class KidsAiResponseActivity extends AppCompatActivity {
     private TextToSpeech textToSpeech;
     private boolean isTtsReady = false;
     private String responseText = "";
-    private final List<MoodDay> moodDays = new ArrayList<>();
-    private WeeklyMoodAdapter weeklyMoodAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Enable Edge-to-Edge first
         EdgeToEdge.enable(this);
-
         binding = ActivityKidsAiResponseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Make status bar and navigation bar transparent
         android.view.Window window = getWindow();
         window.setFlags(android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -54,6 +41,9 @@ public class KidsAiResponseActivity extends AppCompatActivity {
             controller.setAppearanceLightStatusBars(true);
             controller.setAppearanceLightNavigationBars(true);
         }
+
+        // 🌟 قراءة أفاتار الطفل المختار وتحديث الواجهة
+        loadChildAvatarFromDatabase();
 
         // استقبال نص الرد
         responseText = getIntent().getStringExtra("AI_RESPONSE");
@@ -78,7 +68,7 @@ binding.btnActionDraw.setOnClickListener(new View.OnClickListener() {
             if (!responseText.isEmpty()) {
                 intent.putExtra("INITIAL_MESSAGE", responseText);
             }
-            ActivityUtils.startActivityWithAnimation(this, intent);
+            startActivity(intent);
         });
 
         // 2. زر إعادة الاستماع للصوت
@@ -87,152 +77,70 @@ binding.btnActionDraw.setOnClickListener(new View.OnClickListener() {
         // 3. باقي أزرار الأنشطة
         binding.btnActionBreath.setOnClickListener(v -> {
             stopSpeech();
-            ActivityUtils.startActivityWithAnimation(this, new Intent(KidsAiResponseActivity.this, KidsBubbleBreathingActivity.class));
+            startActivity(new Intent(KidsAiResponseActivity.this, KidsBubbleBreathingActivity.class));
         });
 
         binding.btnActionTree.setOnClickListener(v -> {
             stopSpeech();
-            ActivityUtils.startActivityWithAnimation(this, new Intent(KidsAiResponseActivity.this, KidsTreeActivity.class));
+            startActivity(new Intent(KidsAiResponseActivity.this, KidsTreeActivity.class));
         });
 
         binding.btnActionDraw.setOnClickListener(v -> {
             stopSpeech();
-            ActivityUtils.startActivityWithAnimation(this, new Intent(KidsAiResponseActivity.this, DrawInstructionActivity.class));
+            startActivity(new Intent(KidsAiResponseActivity.this, DrawInstructionActivity.class));
         });
 
-        binding.btnActionCalmCorner.setOnClickListener(v -> {
+        binding.btnBack.setOnClickListener(v -> {
             stopSpeech();
-            ActivityUtils.startActivityWithAnimation(this, new Intent(KidsAiResponseActivity.this, com.example.graduationproject.KidsCalmCornerActivity.class));
+            finish();
         });
 
-        binding.btnActionRoutine.setOnClickListener(v -> {
+        binding.btnSwitchProfile.setOnClickListener(v -> {
             stopSpeech();
-            ActivityUtils.startActivityWithAnimation(this, new Intent(KidsAiResponseActivity.this, com.example.graduationproject.KidsRoutineMainActivity.class));
-        });
-
-        setupWeeklyMood();
-        setupAnimations();
-    }
-
-    private void setupWeeklyMood() {
-        moodDays.clear();
-
-        android.content.SharedPreferences appPrefs = getSharedPreferences("AppPrefs", MODE_PRIVATE);
-        String todayMoodId = appPrefs.getString("today_mood_id", "");
-        int todayMoodColor = appPrefs.getInt("today_mood_color", 0xFFEAEEF3); // Default neutral
-
-        Calendar cal = Calendar.getInstance();
-        int todayDate = cal.get(Calendar.DAY_OF_YEAR);
-
-        // Start from Saturday of the current week
-        Calendar tempCal = (Calendar) cal.clone();
-        while (tempCal.get(Calendar.DAY_OF_WEEK) != Calendar.SATURDAY) {
-            tempCal.add(Calendar.DAY_OF_YEAR, -1);
-        }
-
-        SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", new Locale("ar"));
-
-        for (int i = 0; i < 7; i++) {
-            int dateVal = tempCal.get(Calendar.DAY_OF_MONTH);
-            int dayOfYear = tempCal.get(Calendar.DAY_OF_YEAR);
-            boolean isToday = (dayOfYear == todayDate);
-
-            String dayName = dayFormat.format(tempCal.getTime());
-            String dateStr = String.valueOf(dateVal);
-
-            int icon = 0;
-            int color = 0;
-
-            if (isToday) {
-                if (!todayMoodId.isEmpty()) {
-                    icon = R.drawable.ic_smile;
-                    color = todayMoodColor;
-                }
-            }
-
-            moodDays.add(new MoodDay(dayName, dateStr, icon, color, isToday));
-            tempCal.add(Calendar.DAY_OF_MONTH, 1);
-        }
-
-        weeklyMoodAdapter = new WeeklyMoodAdapter(this, moodDays);
-        binding.rvWeeklyMood.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false));
-        binding.rvWeeklyMood.setAdapter(weeklyMoodAdapter);
-
-        // Scroll to current day
-        binding.rvWeeklyMood.post(() -> {
-            for (int i = 0; i < moodDays.size(); i++) {
-                if (moodDays.get(i).isCurrentDay()) {
-                    binding.rvWeeklyMood.scrollToPosition(i);
-                    break;
-                }
-            }
+            Intent intent = new Intent(KidsAiResponseActivity.this, ChildProfilesActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         });
     }
 
-    private void setupAnimations() {
-        // Initial state
-        binding.ivBearFace.setAlpha(0f);
-        binding.ivBearFace.setTranslationY(-50f);
-        binding.tvAiResponseText.setAlpha(0f);
-        binding.tvAiResponseText.setTranslationY(50f);
-        binding.btnListenVoice.setAlpha(0f);
-        binding.btnListenVoice.setTranslationY(30f);
-        binding.rvWeeklyMood.setAlpha(0f);
-        binding.scrollView.setAlpha(0f);
+    /**
+     * جلب أفاتار الطفل المختار مباشرة من قاعدة البيانات المشفرة
+     */
+    private void loadChildAvatarFromDatabase() {
+        long childId = getChildId();
 
-        binding.btnSwitchMode.setAlpha(0f);
-        binding.btnSwitchProfile.setAlpha(0f);
-
-        // Bear Animation
-        binding.ivBearFace.animate()
-                .alpha(1f)
-                .translationY(0f)
-                .setDuration(800)
-                .setStartDelay(200)
-                .setInterpolator(new android.view.animation.DecelerateInterpolator())
-                .start();
-
-        // Top bar icons animation
-        binding.btnSwitchMode.animate().alpha(1f).setDuration(500).setStartDelay(100).start();
-        binding.btnSwitchProfile.animate().alpha(1f).setDuration(500).setStartDelay(100).start();
-
-        // Response Bubble Animation
-        binding.tvAiResponseText.animate()
-                .alpha(1f)
-                .translationY(0f)
-                .setDuration(800)
-                .setStartDelay(400)
-                .setInterpolator(new android.view.animation.DecelerateInterpolator())
-                .start();
-
-        // Weekly mood fade in
-        binding.rvWeeklyMood.animate()
-                .alpha(1f)
-                .setDuration(800)
-                .setStartDelay(500)
-                .start();
-
-        // Listen button Animation
-        binding.btnListenVoice.animate()
-                .alpha(1f)
-                .translationY(0f)
-                .setDuration(600)
-                .setStartDelay(600)
-                .start();
-
-        // Scroll View (contains cards) fade in
-        binding.scrollView.animate()
-                .alpha(1f)
-                .setDuration(1000)
-                .setStartDelay(500)
-                .start();
+        if (childId != -1L) {
+            ChildProfileStore store = new ChildProfileStore(this);
+            try {
+                List<ChildProfile> profiles = store.getProfiles();
+                for (ChildProfile profile : profiles) {
+                    if (profile.getId() == childId) {
+                        String avatar = profile.getAvatar();
+                        if (avatar != null && !avatar.trim().isEmpty()) {
+                            binding.tvBearAvatar3.setText(avatar);
+                        } else {
+                            binding.tvBearAvatar3.setText("🐻");
+                        }
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                Log.e("KidsAiResponse", "Error loading avatar: " + e.getMessage());
+            } finally {
+                store.close();
+            }
+        }
     }
 
-    @Override
-    public void onBackPressed() {
-        stopSpeech();
-        super.onBackPressed();
-        ActivityUtils.applyBackTransition(this);
+    private long getChildId() {
+        long id = getIntent().getLongExtra("CHILD_ID", -1L);
+        if (id == -1L) {
+            id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
+        }
+        if (id == -1L) {
+            id = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", -1L);
+        }
+        return id;
     }
 
     private void initTextToSpeech() {

@@ -138,11 +138,21 @@ public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsA
         simulateReopenButton.setVisibility(View.GONE);
 
         if (childId == -1) {
-            // Save new profile if we came directly from "Add Child"
-            String avatar = "🦊";
-            if ("female".equals(data.gender)) avatar = "👧";
-            else if ("male".equals(data.gender)) avatar = "🧒";
+            // 1. تحديد الشخصية/الأفاتار المخزن من شاشة الهوية
+            String avatar = data.demoMoodSelected;
 
+            // في حال لم يختر الطفل أي شكل، يتم تعيين شكل افتراضي حسب جنسه
+            if (avatar == null || avatar.trim().isEmpty()) {
+                if ("female".equals(data.gender)) {
+                    avatar = "🎀";
+                } else if ("male".equals(data.gender)) {
+                    avatar = "⭐";
+                } else {
+                    avatar = "🧸";
+                }
+            }
+
+            // 2. تحديد العمر بناءً على الاختيار
             int age = 10;
             if (data.ageRangeIndex != null) {
                 switch (data.ageRangeIndex) {
@@ -154,11 +164,12 @@ public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsA
                 }
             }
 
+            // 3. الحفظ النهائي في قاعدة البيانات ChildProfileStore
             childId = profileStore.addProfile(
                     data.nickname != null && !data.nickname.trim().isEmpty() ? data.nickname : "صديق سلام",
                     age,
                     data.gender != null ? data.gender : "غير محدد",
-                    avatar
+                    avatar // حقل الأفاتار المحفوظ
             );
         }
 
@@ -167,6 +178,7 @@ public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsA
             intent.putExtra("FOR_KIDS", true);
             intent.putExtra("CHILD_ID", childId);
             intent.putExtra("CHILD_NAME", data.nickname);
+            intent.putExtra("CHILD_AVATAR", data.demoMoodSelected);
             startActivity(intent);
             finish();
             return;

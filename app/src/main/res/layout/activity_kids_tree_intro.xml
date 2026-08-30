@@ -8,13 +8,14 @@
     android:orientation="vertical"
     android:padding="24dp">
 
+    <!-- 🌟 الأفاتار الخاص بالطفل سيعرض هنا ديناميكياً بدلاً من الثعلب الثابت 🌟 -->
     <TextView
         android:id="@+id/tvFoxMascot"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="🦊\n🌱"
         android:gravity="center"
+        android:text="🌱"
         android:textSize="70sp" />
 
     <TextView

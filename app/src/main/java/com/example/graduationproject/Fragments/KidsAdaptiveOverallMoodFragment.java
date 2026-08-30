@@ -1,5 +1,7 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
@@ -17,6 +19,12 @@ public class KidsAdaptiveOverallMoodFragment extends KidsAdaptiveBaseOnboardingF
     @Override public int getScreenIndex() { return 3; }
 
     @Override
+    protected String getCompanionMood() {
+        // يمكنك توجيه حركة الأفاتار/الدب العلوية حسب خيار الطفل إذا أردت
+        return data().getAvatarMoodFromSelection();
+    }
+
+    @Override
     protected void onSkipClick() {
         data().overallMood = null;
         host.goNext();
@@ -25,7 +33,9 @@ public class KidsAdaptiveOverallMoodFragment extends KidsAdaptiveBaseOnboardingF
     @Override
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
         String[] labels = {
-                getString(R.string.kids_adaptive_mood_calm), getString(R.string.kids_adaptive_mood_pressured), getString(R.string.kids_adaptive_mood_hard)
+                getString(R.string.kids_adaptive_mood_calm),
+                getString(R.string.kids_adaptive_mood_pressured),
+                getString(R.string.kids_adaptive_mood_hard)
         };
 
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_overall_mood_title), 22), titleParams());
@@ -40,8 +50,23 @@ public class KidsAdaptiveOverallMoodFragment extends KidsAdaptiveBaseOnboardingF
             final int idx = i;
             card.setOnClickListener(v -> {
                 data().overallMood = IDS[idx];
-                for (int j = 0; j < cards.length; j++) if (cards[j] != null) cards[j].setSelectedState(j == idx);
+                for (int j = 0; j < cards.length; j++) {
+                    if (cards[j] != null) cards[j].setSelectedState(j == idx);
+                }
+
+                // 🌟 تحريك الأفاتار المختار لتفاعل ممتع مع الطفل
+                if (host != null) {
+                    host.pulseTeddy();
+                }
+
+                // 🌟 التأكد من حفظ الأفاتار المختار حال وجوده في SharedPreferences
+                String chosenAvatar = data().demoMoodSelected;
+                if (chosenAvatar != null && !chosenAvatar.trim().isEmpty()) {
+                    SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+                    prefs.edit().putString("current_child_avatar", chosenAvatar).apply();
+                }
             });
+
             cards[i] = card;
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
             lp.topMargin = dp(20);
@@ -60,7 +85,12 @@ public class KidsAdaptiveOverallMoodFragment extends KidsAdaptiveBaseOnboardingF
         unsure.setOnClickListener(v -> {
             data().overallMood = "unsure";
             for (KidsAdaptiveChoiceCardView c : cards) c.setSelectedState(false);
+
+            if (host != null) {
+                host.pulseTeddy();
+            }
         });
+
         LinearLayout.LayoutParams ulp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         ulp.topMargin = dp(10);
         container.addView(unsure, ulp);
@@ -68,7 +98,8 @@ public class KidsAdaptiveOverallMoodFragment extends KidsAdaptiveBaseOnboardingF
 
     private LinearLayout.LayoutParams titleParams() {
         LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
-        lp.topMargin = dp(14); lp.bottomMargin = dp(12);
+        lp.topMargin = dp(14);
+        lp.bottomMargin = dp(12);
         return lp;
     }
 }

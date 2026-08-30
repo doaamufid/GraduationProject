@@ -12,6 +12,7 @@ import com.example.graduationproject.adapters.CategoryAdapter;
 import com.example.graduationproject.adapters.VideoAdapter;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityVideosBinding;
+import com.example.graduationproject.models.ChildProfile;
 import com.example.graduationproject.models.VideoItem;
 
 import java.util.ArrayList;
@@ -22,6 +23,7 @@ public class VideosActivity extends AppCompatActivity {
     private ActivityVideosBinding binding;
     private ChildProfileStore dbStore;
     private VideoAdapter videoAdapter;
+    private long childId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +33,14 @@ public class VideosActivity extends AppCompatActivity {
         setContentView(binding.getRoot());
 
         dbStore = new ChildProfileStore(this);
+        childId = getChildId();
 
-        setupVideosGrid();     // 1) أنشئ videoAdapter أولاً
-        setupCategoryFilter(); // 2) بعدين استخدمه بأمان جوا filterVideos()
-        setupFavoritesButton(); // 3) ربط زر النجمة بشاشة المفضلة
+        // 🌟 تحميل الأفاتار الخاص بكِ
+        loadChildAvatar();
+
+        setupVideosGrid();      // 1) إنشاء المحول أولاً
+        setupCategoryFilter();  // 2) تطبيق الفلترة
+        setupFavoritesButton(); // 3) ربط زر شاشة المفضلة (من كود صديقتك)
     }
 
     private void setupCategoryFilter() {
@@ -50,7 +56,7 @@ public class VideosActivity extends AppCompatActivity {
         CategoryAdapter categoryAdapter = new CategoryAdapter(categories, this::filterVideos);
         binding.categoryRecycler.setAdapter(categoryAdapter);
 
-        // أول تصنيف محدد افتراضياً عند فتح الشاشة
+        // التصنيف الافتراضي
         filterVideos(categories.get(0));
     }
 
@@ -58,25 +64,25 @@ public class VideosActivity extends AppCompatActivity {
         binding.videosRecycler.setLayoutManager(new GridLayoutManager(this, 2));
 
         videoAdapter = new VideoAdapter(new ArrayList<>(), video -> {
-            // بدل تشغيل فيديو ثابت، نفتح شاشة القصة المولّدة من Gemini
-            // ونمررلها التصنيف بس (هي بتتكفل بتوليد القصة + التشغيل)
+            // فتح شاشة القصة المولّدة عبر Gemini مع تمرير البيانات و ID الطفل
             Intent intent = new Intent(VideosActivity.this, StoryPlaybackActivity.class);
             intent.putExtra(StoryPlaybackActivity.EXTRA_CATEGORY, video.getCategory());
             intent.putExtra(StoryPlaybackActivity.EXTRA_TITLE, video.getTitle());
+            intent.putExtra("CHILD_ID", childId);
             startActivity(intent);
         });
         binding.videosRecycler.setAdapter(videoAdapter);
     }
 
-    /**
-     * يربط زر النجمة (المفضلة) بالشريط العلوي مع شاشة FavoriteStoriesActivity.
-     * ملاحظة: لازم اسم الـ id هون (favoritesEntryButton) يطابق بالضبط
-     * اسم الـ id يلي حاطاه على الزر جوا activity_videos.xml عندك.
-     * لو الاسم مختلف، بدّلي "favoritesEntryButton" بنفس الاسم يلي عندك بالـ XML.
-     */
+    // 🌟 ربط زر المفضلة (من كود صديقتك)
     private void setupFavoritesButton() {
-        binding.favoritesEntryButton.setOnClickListener(v ->
-                startActivity(new Intent(VideosActivity.this, FavoriteStoriesActivity.class)));
+        if (binding.favoritesEntryButton != null) {
+            binding.favoritesEntryButton.setOnClickListener(v -> {
+                Intent intent = new Intent(VideosActivity.this, FavoriteStoriesActivity.class);
+                intent.putExtra("CHILD_ID", childId);
+                startActivity(intent);
+            });
+        }
     }
 
     private void filterVideos(String category) {
@@ -87,5 +93,36 @@ public class VideosActivity extends AppCompatActivity {
 
         binding.emptyStateText.setVisibility(filtered.isEmpty() ? View.VISIBLE : View.GONE);
         binding.videosRecycler.setVisibility(filtered.isEmpty() ? View.GONE : View.VISIBLE);
+    }
+
+    // 🌟 دالة تحميل الأفاتار الخاصة بكِ
+    private void loadChildAvatar() {
+        try {
+            List<ChildProfile> profiles = dbStore.getProfiles();
+            for (ChildProfile profile : profiles) {
+                if (profile.getId() == childId) {
+                    String avatar = profile.getAvatar();
+                    if (binding.bearIcon != null && avatar != null && !avatar.trim().isEmpty()) {
+                        binding.bearIcon.setText(avatar);
+                    }
+                    break;
+                }
+            }
+        } catch (Exception ignored) {
+        }
+    }
+
+    private long getChildId() {
+        long id = getIntent().getLongExtra("CHILD_ID", -1L);
+        return (id == -1L) ? 1L : id;
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dbStore != null) {
+            dbStore.close();
+        }
+        binding = null; // تفادي تسريب الذاكرة
     }
 }
