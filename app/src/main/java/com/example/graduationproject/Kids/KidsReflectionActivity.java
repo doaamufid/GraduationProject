@@ -100,10 +100,10 @@ public class KidsReflectionActivity extends AppCompatActivity {
 
     private void buildCards() {
         cards = new ArrayList<>();
-        cards.add(new ReflectionCard(SceneView.SCENE_MOUNTAIN, R.string.c1_title, R.string.c1_tag, R.string.c1_chip, R.string.c1_date, R.string.c1_note, R.drawable.ic_sparkles));
-        cards.add(new ReflectionCard(SceneView.SCENE_SEA, R.string.c2_title, R.string.c2_tag, R.string.c2_chip, R.string.c2_date, R.string.c2_note, R.drawable.ic_sparkles));
-        cards.add(new ReflectionCard(SceneView.SCENE_FOREST, R.string.c3_title, R.string.c3_tag, R.string.c3_chip, R.string.c3_date, R.string.c3_note, R.drawable.ic_sparkles));
-        cards.add(new ReflectionCard(SceneView.SCENE_DESERT, R.string.c4_title, R.string.c4_tag, R.string.c4_chip, R.string.c4_date, R.string.c4_note, R.drawable.ic_sparkles));
+        cards.add(new ReflectionCard(SceneView.SCENE_MOUNTAIN, R.string.kids_reflection_c1_title, 0, 0, 0, R.string.kids_reflection_c1_note, 0));
+        cards.add(new ReflectionCard(SceneView.SCENE_SEA, R.string.kids_reflection_c2_title, 0, 0, 0, R.string.kids_reflection_c2_note, 0));
+        cards.add(new ReflectionCard(SceneView.SCENE_FOREST, R.string.kids_reflection_c3_title, 0, 0, 0, R.string.kids_reflection_c3_note, 0));
+        cards.add(new ReflectionCard(SceneView.SCENE_DESERT, R.string.kids_reflection_c4_title, 0, 0, 0, R.string.kids_reflection_c4_note, 0));
     }
 
     private void bindViews() {
@@ -124,7 +124,7 @@ public class KidsReflectionActivity extends AppCompatActivity {
         }
         txtTitle.setText(getString(card.titleRes));
         txtNote.setText(getString(card.noteRes));
-        btnNext.setText(getString(R.string.enter_button));
+        btnNext.setText(getString(R.string.kids_reflection_btn));
     }
 
     private void navigateToMood() {

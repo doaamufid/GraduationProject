@@ -6,10 +6,11 @@
     android:layout_height="wrap_content"
     android:layout_marginBottom="9dp"
     android:background="@drawable/kids_routine_bg_card_white"
-    android:clipToOutline="true"
     android:foreground="?attr/selectableItemBackground"
     android:clickable="true"
-    android:focusable="true">
+    android:focusable="true"
+    android:clipChildren="false"
+    android:clipToPadding="false">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,14 +72,13 @@
         </FrameLayout>
     </LinearLayout>
 
-    <!-- delete badge, top-start corner, shown only in edit mode -->
     <ImageButton
         android:id="@+id/btnDeleteItem"
         android:layout_width="@dimen/kids_routine_delete_badge_size"
         android:layout_height="@dimen/kids_routine_delete_badge_size"
-        android:layout_gravity="top|start"
+        android:layout_gravity="top|end"
         android:layout_marginTop="-6dp"
-        android:layout_marginStart="-6dp"
+        android:layout_marginEnd="-6dp"
         android:background="@drawable/kids_routine_bg_delete_badge"
         android:src="@drawable/kids_routine_ic_close"
         android:padding="5dp"

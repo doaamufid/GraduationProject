@@ -278,6 +278,40 @@
     <string name="message_arrived_fmt">Arrived on %1$s</string>
     <string name="message_locked_fmt">Arrives on %1$s · %2$s days left</string>
     <string name="delete_button">Delete</string>
+    <string name="enter_button">Start Session</string>
+    <string name="kids_reflection_btn">Let\'s Start!</string>
+    <string name="kids_reflection_c1_title">You are a true hero</string>
+    <string name="kids_reflection_c1_note">Today is the beginning of a new and beautiful adventure in your colorful world.</string>
+    <string name="kids_reflection_c2_title">Your light shines on the world</string>
+    <string name="kids_reflection_c2_note">Your small smile makes everything around you brighter and happier.</string>
+    <string name="kids_reflection_c3_title">Your heart is brave and big</string>
+    <string name="kids_reflection_c3_note">Do not be afraid of big dreams, for you are capable of achieving all you wish for.</string>
+    <string name="kids_reflection_c4_title">Your friend Noor is with you</string>
+    <string name="kids_reflection_c4_note">Always remember that I am here by your side, dreaming, playing, and growing together every day.</string>
+
+    <string name="c1_title">Self\nReflection</string>
+    <string name="c1_tag">Moment of Clarity</string>
+    <string name="c1_chip">🌿 Calm</string>
+    <string name="c1_date">Today</string>
+    <string name="c1_note">Take a deep breath and feel the power within you. You are capable of overcoming all challenges with success and confidence.</string>
+
+    <string name="c2_title">Power of\nChange</string>
+    <string name="c2_tag">Think Deeply</string>
+    <string name="c2_chip">🌊 Peace</string>
+    <string name="c2_date">Today</string>
+    <string name="c2_note">Every small step you take today brings you closer to your big goals. Keep striving for the best.</string>
+
+    <string name="c3_title">Gratitude\nand Thanks</string>
+    <string name="c3_tag">Appreciation</string>
+    <string name="c3_chip">✨ Positive</string>
+    <string name="c3_date">Today</string>
+    <string name="c3_note">Think of three things you are grateful for in your life right now. Gratitude is the key to true happiness.</string>
+
+    <string name="c4_title">Clarity\nof Mind</string>
+    <string name="c4_tag">Balance</string>
+    <string name="c4_chip">🧘 Relax</string>
+    <string name="c4_date">Today</string>
+    <string name="c4_note">Allow your thoughts to leave in peace. Focus only on the current moment and on the calm of your regular breaths.</string>
     <string name="confirm_delete_short">Tap to confirm</string>
     <string name="message_locked_title">This Message Is Still Locked</string>
     <string name="close_button">Close</string>

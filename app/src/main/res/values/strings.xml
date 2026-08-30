@@ -668,36 +668,45 @@
 
 
     <string name="next_button">التالي</string>
-    <string name="enter_button">Invest Now</string>
+    <string name="enter_button">بدء الجلسة</string>
+    <string name="kids_reflection_btn">يلا نبدأ!</string>
+    <string name="kids_reflection_c1_title">أنت بطل حقيقي</string>
+    <string name="kids_reflection_c1_note">اليوم هو بداية لمغامرة جديدة وجميلة في عالمك الملون.</string>
+    <string name="kids_reflection_c2_title">نورك يضيء العالم</string>
+    <string name="kids_reflection_c2_note">ابتسامتك الصغيرة تجعل كل شيء من حولك أكثر إشراقاً وسعادة.</string>
+    <string name="kids_reflection_c3_title">قلبك شجاع وكبير</string>
+    <string name="kids_reflection_c3_note">لا تخف من الأحلام الكبيرة، فأنت قادر على تحقيق كل ما تتمنى.</string>
+    <string name="kids_reflection_c4_title">صديقك نور معك</string>
+    <string name="kids_reflection_c4_note">تذكر دائماً أنني هنا بجانبك، نحلم ونلعب ونكبر معاً كل يوم.</string>
     <string name="note_prefix">ملاحظة اليوم</string>
 
     <!-- Card 1 -->
-    <string name="c1_title">Magna\nCity</string>
-    <string name="c1_tag">لحظة تأمل</string>
-    <string name="c1_chip">🌫️ هادئ</string>
-    <string name="c1_date">٨ أبريل</string>
-    <string name="c1_note">A premier destination set along some of the world\'s most beautiful coastline. Magna will be a new region from NEOM that defies imagination. Across 120 kilometers of inspiring and unique coastline, a new kind</string>
+    <string name="c1_title">تأمل\nذاتك</string>
+    <string name="c1_tag">لحظة صفاء</string>
+    <string name="c1_chip">🌿 هدوء</string>
+    <string name="c1_date">اليوم</string>
+    <string name="c1_note">خذ نفساً عميقاً واستشعر القوة بداخلك. أنت قادر على تخطي كل التحديات بنجاح وثقة.</string>
 
     <!-- Card 2 -->
-    <string name="c2_title">Magna\nCity</string>
-    <string name="c2_tag">لحظة اتساع</string>
-    <string name="c2_chip">🌊 هدوء</string>
-    <string name="c2_date">٧ أبريل</string>
-    <string name="c2_note">A premier destination set along some of the world\'s most beautiful coastline. Magna will be a new region from NEOM that defies imagination. Across 120 kilometers of inspiring and unique coastline, a new kind</string>
+    <string name="c2_title">قوة\nالتغيير</string>
+    <string name="c2_tag">فكر بعمق</string>
+    <string name="c2_chip">🌊 سلام</string>
+    <string name="c2_date">اليوم</string>
+    <string name="c2_note">كل خطوة صغيرة تخطوها اليوم تقربك أكثر من أهدافك الكبيرة. استمر في السعي نحو الأفضل.</string>
 
     <!-- Card 3 -->
-    <string name="c3_title">Magna\nCity</string>
-    <string name="c3_tag">لحظة حضور</string>
-    <string name="c3_chip">🌿 سكينة</string>
-    <string name="c3_date">٦ أبريل</string>
-    <string name="c3_note">A premier destination set along some of the world\'s most beautiful coastline. Magna will be a new region from NEOM that defies imagination. Across 120 kilometers of inspiring and unique coastline, a new kind</string>
+    <string name="c3_title">امتنان\nوشكر</string>
+    <string name="c3_tag">تقدير</string>
+    <string name="c3_chip">✨ إيجابية</string>
+    <string name="c3_date">اليوم</string>
+    <string name="c3_note">فكر في ثلاثة أشياء تشعر بالامتنان لوجودها في حياتك الآن. الامتنان هو مفتاح السعادة الحقيقية.</string>
 
     <!-- Card 4 -->
-    <string name="c4_title">Magna\nCity</string>
-    <string name="c4_tag">لحظة صبر</string>
-    <string name="c4_chip">☀️ صبر</string>
-    <string name="c4_date">٥ أبريل</string>
-    <string name="c4_note">A premier destination set along some of the world\'s most beautiful coastline. Magna will be a new region from NEOM that defies imagination. Across 120 kilometers of inspiring and unique coastline, a new kind</string>
+    <string name="c4_title">صفاء\nالذهن</string>
+    <string name="c4_tag">توازن</string>
+    <string name="c4_chip">🧘 استرخاء</string>
+    <string name="c4_date">اليوم</string>
+    <string name="c4_note">اسمح لأفكارك بالرحيل بسلام. ركز فقط على اللحظة الحالية وعلى هدوء أنفاسك المنتظمة.</string>
 
 
     <string name="entry_title">إعادة الصياغة</string>
