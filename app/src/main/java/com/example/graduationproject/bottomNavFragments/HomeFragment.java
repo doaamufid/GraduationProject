@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.AdultMoodStatsActivity;
+import com.example.graduationproject.AdultNotifNotificationsActivity;
 import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.DailyHabitsActivity;
@@ -79,12 +80,7 @@ public class HomeFragment extends Fragment {
         cardCalm.setOnClickListener(v -> startActivity(new Intent(getActivity(), OneClickCalmActivity.class)));
         cardBreathing.setOnClickListener(v -> startActivity(new Intent(getActivity(), BreathingActivity.class)));
         btnNotifications.setOnClickListener(v -> {
-            try {
-                Class<?> notificationsClass = Class.forName("com.example.graduationproject.NotificationsActivity");
-                startActivity(new Intent(getActivity(), notificationsClass));
-            } catch (ClassNotFoundException e) {
-                // Fallback if not found
-            }
+            startActivity(new Intent(getActivity(), AdultNotifNotificationsActivity.class));
         });
 
         btnSwitchSection.setOnClickListener(v -> {

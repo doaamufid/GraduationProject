@@ -212,7 +212,7 @@
             android:name=".CBTRReframingActivity"
             android:exported="false" />
         <activity
-            android:name=".NotificationsActivity"
+            android:name=".AdultNotifNotificationsActivity"
             android:exported="false" />
         <activity
             android:name=".SettingsActivity"
