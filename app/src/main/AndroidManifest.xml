@@ -114,7 +114,8 @@
             android:exported="false" />
         <activity
             android:name=".Kids.KidsAiResponseActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Kids.KidsAiCompanionActivity"
             android:exported="false" />
@@ -138,7 +139,8 @@
             android:exported="false" />
         <activity
             android:name=".Kids.KidsAiChatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".Kids.KidsBubbleBreathingActivity"
             android:exported="false" />
@@ -185,7 +187,8 @@
             android:theme="@style/Theme.AppCompat.NoActionBar" />
         <activity
             android:name=".CbtChatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ReframingActivity"
             android:exported="false" />
@@ -197,10 +200,12 @@
             android:exported="true" />
         <activity
             android:name=".ChatActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".ChatMainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name=".MoodDashboardActivity"
             android:exported="false" />

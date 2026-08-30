@@ -19,6 +19,8 @@
         android:id="@+id/content_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipChildren="false"
+        android:clipToPadding="false"
         android:paddingStart="48dp"
         android:paddingEnd="48dp"
         android:paddingTop="32dp"
@@ -30,13 +32,15 @@
             android:layout_height="wrap_content"
             android:layout_above="@id/bottom_bar"
             android:layout_marginBottom="40dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:orientation="vertical">
 
             <!-- Animated Bear instead of Sparkles -->
             <com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView
                 android:id="@+id/bear_companion"
-                android:layout_width="88dp"
-                android:layout_height="88dp"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
                 android:layout_marginBottom="20dp" />
 
             <TextView

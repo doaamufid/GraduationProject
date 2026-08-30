@@ -125,8 +125,8 @@ public class ChatMainActivity extends AppCompatActivity {
         setContentView(R.layout.chat_activity_main);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.chat_root), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(0, systemBars.top, 0, systemBars.bottom); // Avoid status bar overlap
+            Insets insetsData = insets.getInsets(WindowInsetsCompat.Type.systemBars() | WindowInsetsCompat.Type.ime());
+            v.setPadding(0, insetsData.top, 0, insetsData.bottom);
             return insets;
         });
 
@@ -210,10 +210,19 @@ public class ChatMainActivity extends AppCompatActivity {
     }
 
     private void setupRecycler() {
-        recyclerMessages.setLayoutManager(new LinearLayoutManager(this));
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setStackFromEnd(true);
+        recyclerMessages.setLayoutManager(layoutManager);
         adapter = new ChatAdapter(this, messages, this::handleCardAction);
         adapter.setVoiceActionListener(this::onVoiceClicked);
         recyclerMessages.setAdapter(adapter);
+
+        // Scroll to bottom when keyboard opens
+        recyclerMessages.addOnLayoutChangeListener((v, left, top, right, bottom, oldLeft, oldTop, oldRight, oldBottom) -> {
+            if (bottom < oldBottom) {
+                recyclerMessages.postDelayed(this::scrollToBottom, 100);
+            }
+        });
     }
 
     private void setupInputBar() {

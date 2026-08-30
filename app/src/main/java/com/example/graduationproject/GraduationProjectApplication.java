@@ -27,6 +27,13 @@ public class GraduationProjectApplication extends Application {
 
         // Initialize Rive with Canvas renderer for better compatibility
         Rive.INSTANCE.init(this, RendererType.Canvas);
+
+        // Initialize SQLCipher libraries
+        try {
+            net.sqlcipher.database.SQLiteDatabase.loadLibs(this);
+        } catch (Exception e) {
+            Log.e(TAG, "Failed to load SQLCipher libraries", e);
+        }
     }
 
     // Removed forceArabicLocale() as language is now managed by AppLanguageManager

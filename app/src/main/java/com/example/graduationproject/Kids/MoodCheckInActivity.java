@@ -98,6 +98,18 @@ public class MoodCheckInActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.cardRoutine.setOnClickListener(v -> {
+            Intent intent = new Intent(this, com.example.graduationproject.KidsRoutineMainActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
+        binding.cardCalmCorner.setOnClickListener(v -> {
+            Intent intent = new Intent(this, com.example.graduationproject.KidsCalmCornerActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
         // جدولة التذكيرات والإشعارات
         KidsReminderScheduler.scheduleReminder(this);
         requestNotificationPermissionIfNeeded();

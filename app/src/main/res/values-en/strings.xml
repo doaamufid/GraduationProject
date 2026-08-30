@@ -1685,4 +1685,16 @@
     <string name="top_impact_image">Inspiring Image</string>
     <string name="start_btn">Start</string>
     <string name="search_hint_content">Search for articles or videos...</string>
+
+    <!-- Category Cards matching image -->
+    <string name="card_safety_team">Safety Team</string>
+    <string name="card_breathe">Breathe with Me</string>
+    <string name="card_comfort">Comfort Corner</string>
+    <string name="card_play">Game Bushes</string>
+    <string name="card_routine">Daily Routine</string>
+    <string name="card_calm_corner">Calm Corner</string>
+    <string name="card_videos">Stories &amp; Videos</string>
+    <string name="card_match_format">%1$d%% match</string>
+    <string name="card_learners_format">%1$s heroes</string>
+    <string name="card_add_button">Add</string>
 </resources>

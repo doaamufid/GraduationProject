@@ -130,7 +130,8 @@ public class KidsAdaptiveTeddyBuddyView extends View {
         float size = Math.min(w, h);
 
         canvas.save();
-        canvas.translate(w / 2f, h / 2f + idleTranslateY);
+        // Shifted down by dp(4) to avoid ear cropping when idleTranslateY is at its peak (-8dp)
+        canvas.translate(w / 2f, h / 2f + idleTranslateY + dp(4));
         canvas.rotate(idleRotateDeg);
         canvas.scale(pulseScale, pulseScale);
         canvas.translate(-size / 2f, -size / 2f);
