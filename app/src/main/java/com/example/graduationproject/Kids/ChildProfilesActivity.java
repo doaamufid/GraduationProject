@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.graduationproject.ActivityUtils;
 import com.example.graduationproject.adapters.ChildProfilesAdapter;
+import com.example.graduationproject.data.ActiveChildManager;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityChildProfilesBinding;
 import com.example.graduationproject.models.ChildProfile;
@@ -53,7 +54,7 @@ public class ChildProfilesActivity extends AppCompatActivity {
         }
 
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
-        childProfileStore = new ChildProfileStore(this);
+        childProfileStore = ChildProfileStore.getInstance(this);
         childProfileStore.migrateFromSharedPreferencesIfNeeded(this);
 
         binding.btnBack.setOnClickListener(v -> onBackPressed());
@@ -126,9 +127,7 @@ public class ChildProfilesActivity extends AppCompatActivity {
         adapter = new ChildProfilesAdapter(profiles, new ChildProfilesAdapter.OnChildProfileClickListener() {
             @Override
             public void onProfileClick(ChildProfile profile) {
-                getSharedPreferences("KidsApp", MODE_PRIVATE).edit()
-                        .putLong("current_child_id", profile.getId())
-                        .apply();
+                ActiveChildManager.setActiveChildId(ChildProfilesActivity.this, profile.getId());
 
                 Intent intent = new Intent(ChildProfilesActivity.this, com.example.graduationproject.Kids.KidsReflectionActivity.class);
                 intent.putExtra("FOR_KIDS", true);
@@ -154,9 +153,8 @@ public class ChildProfilesActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if (childProfileStore != null) {
-            childProfileStore.close();
-        }
+        // لا نقوم بإغلاق قاعدة البيانات هنا لأننا نستخدم Singleton (getInstance)
+        // قد يتم استخدامه في شاشات أخرى
         super.onDestroy();
     }
 

@@ -56,7 +56,7 @@ public class NewChildProfileActivity extends AppCompatActivity {
 
         getWindow().getDecorView().setLayoutDirection(View.LAYOUT_DIRECTION_LOCALE);
 
-        childProfileStore = new ChildProfileStore(this);
+        childProfileStore = ChildProfileStore.getInstance(this);
 
         ViewCompat.setOnApplyWindowInsetsListener(binding.main, (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -173,9 +173,7 @@ public class NewChildProfileActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
-        if (childProfileStore != null) {
-            childProfileStore.close();
-        }
+        // نستخدم Singleton
         super.onDestroy();
     }
 

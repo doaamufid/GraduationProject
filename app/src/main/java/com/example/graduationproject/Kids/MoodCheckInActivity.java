@@ -14,7 +14,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import com.example.graduationproject.ActivityUtils;
 import com.example.graduationproject.R;
+import com.example.graduationproject.SplashSelectActivity;
+import com.example.graduationproject.data.ActiveChildManager;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityMoodCheckInBinding;
 import com.example.graduationproject.models.ChildProfile;
@@ -41,10 +44,10 @@ public class MoodCheckInActivity extends AppCompatActivity {
         binding = ActivityMoodCheckInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        childProfileStore = new ChildProfileStore(this);
+        childProfileStore = ChildProfileStore.getInstance(this);
 
-        // جلب معرف الطفل مع القيمة الافتراضية الصريحة لمنع حدوث Crash
-        currentChildId = getChildId();
+        // جلب معرف الطفل النشط من ActiveChildManager
+        currentChildId = ActiveChildManager.getActiveChildId(this);
 
         // 🌟 تحميل الأفاتار النصي الخاِص بكِ وتحديث الواجهة والفقاعة
         loadChildAvatar();
@@ -66,6 +69,14 @@ public class MoodCheckInActivity extends AppCompatActivity {
 
         binding.btnConfirmMood.setOnClickListener(v -> onConfirmClicked());
         binding.btnBack.setOnClickListener(v -> finish());
+        binding.btnSwitchMode.setOnClickListener(v -> {
+            Intent intent = new Intent(this, SplashSelectActivity.class);
+            ActivityUtils.startActivityAndFinishWithAnimation(this, intent);
+        });
+        binding.btnSwitchProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(this, ChildProfilesActivity.class);
+            ActivityUtils.startActivityWithAnimation(this, intent);
+        });
 
         // التنقل بين الشاشات مع إرسال ID الطفل (من كود صديقتك)
         binding.cardVideos.setOnClickListener(v -> {
@@ -105,7 +116,7 @@ public class MoodCheckInActivity extends AppCompatActivity {
 
     // 🌟 دالة قراءة الأفاتار وتحديث الـ TextView الخاص بكِ (tvChildAvatar)
     private void loadChildAvatar() {
-        if (childProfileStore == null || currentChildId == -1L) return;
+        if (childProfileStore == null || currentChildId == ActiveChildManager.NO_ACTIVE_CHILD) return;
 
         try {
             List<ChildProfile> profiles = childProfileStore.getProfiles();
@@ -124,11 +135,6 @@ public class MoodCheckInActivity extends AppCompatActivity {
         } catch (Exception e) {
             Log.e("MoodCheckIn", "Error loading child avatar: " + e.getMessage());
         }
-    }
-
-    private long getChildId() {
-        long id = getIntent().getLongExtra(EXTRA_CHILD_ID, -1L);
-        return (id == -1L) ? 1L : id;
     }
 
     private void requestNotificationPermissionIfNeeded() {
@@ -204,9 +210,6 @@ public class MoodCheckInActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        if (childProfileStore != null) {
-            childProfileStore.close();
-        }
         binding = null;
     }
 }

@@ -5,62 +5,88 @@
     android:layout_height="match_parent"
     android:background="#FFF9EF">
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:padding="20dp">
 
-        <!-- Top bar: back + search -->
+        <!-- Right Side: Action Icons -->
         <LinearLayout
-            android:layout_width="match_parent"
+            android:id="@+id/ll_top_icons"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
             android:orientation="horizontal"
-            android:gravity="center_vertical">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
+            <!-- Icon 1: Switch Profile (Users) -->
             <ImageButton
-                android:id="@+id/btnBack"
-                android:layout_width="36dp"
-                android:layout_height="36dp"
-                android:background="@android:color/transparent"
-                android:src="@android:drawable/ic_menu_close_clear_cancel"
-                android:contentDescription="رجوع" />
+                android:id="@+id/btn_switch_profile"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_icon_button"
+                android:contentDescription="تبديل البروفايل"
+                android:padding="10dp"
+                android:src="@drawable/ic_users"
+                app:tint="#8B6F4D" />
 
-            <View
-                android:layout_width="0dp"
-                android:layout_height="1dp"
-                android:layout_weight="1" />
+            <!-- Icon 2: Switch to Adults Home (Home/Refresh) -->
+            <ImageButton
+                android:id="@+id/btn_switch_mode"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_icon_button"
+                android:contentDescription="تبديل الوضع"
+                android:padding="10dp"
+                android:src="@drawable/ic_refresh"
+                app:tint="#8B6F4D" />
 
-            <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
-                android:src="@android:drawable/ic_menu_search"
-                android:contentDescription="بحث" />
         </LinearLayout>
 
-        <!-- 🌟 الأفاتار النصي المختار (تعديل الأفاتار بدلاً من الصورة الثابتة) -->
+        <!-- Left Side: Back Button -->
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:layout_marginTop="28dp"
+            android:background="@drawable/bg_icon_button"
+            android:contentDescription="رجوع"
+            android:elevation="3dp"
+            android:padding="10dp"
+            android:src="@drawable/outline_arrow_forward_24"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="#8B6F4D" />
+
+        <!-- 🌟 الأفاتار النصي المختار -->
         <TextView
             android:id="@+id/tvChildAvatar"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="80dp"
+            android:text="🐻"
             android:textSize="70sp"
-            android:text="🐻" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <!-- Greeting bubble -->
         <TextView
             android:id="@+id/txtGreeting"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
             android:layout_marginTop="12dp"
             android:background="@drawable/bg_bubble_yellow"
             android:paddingHorizontal="18dp"
             android:paddingVertical="10dp"
             android:text="أنا هنا معك دائما 💛"
+            android:textColor="#5A4632"
             android:textSize="15sp"
-            android:textColor="#5A4632" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tvChildAvatar" />
 
         <!-- Mood grid -->
         <GridLayout
@@ -68,9 +94,10 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="20dp"
+            android:alignmentMode="alignMargins"
             android:columnCount="3"
             android:rowCount="2"
-            android:alignmentMode="alignMargins">
+            app:layout_constraintTop_toBottomOf="@id/txtGreeting">
 
             <TextView
                 android:id="@+id/moodHappy"
@@ -119,16 +146,18 @@
             android:enabled="false"
             android:text="تأكيد اختيار اليوم"
             android:textColor="@android:color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/gridMoods" />
 
         <!-- Category cards -->
         <GridLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="24dp"
+            android:alignmentMode="alignMargins"
             android:columnCount="2"
             android:rowCount="3"
-            android:alignmentMode="alignMargins">
+            app:layout_constraintTop_toBottomOf="@id/btnConfirmMood">
 
             <TextView
                 android:id="@+id/cardSafetyTeam"
@@ -172,5 +201,5 @@
 
         </GridLayout>
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

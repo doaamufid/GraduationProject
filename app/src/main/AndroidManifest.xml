@@ -52,6 +52,9 @@
             android:name=".Kids.PlaybackActivity"
             android:exported="false" />
         <activity
+            android:name=".Kids.StoryPlaybackActivity"
+            android:exported="false" />
+        <activity
             android:name=".Kids.RecordingActivity"
             android:exported="false" />
         <activity
