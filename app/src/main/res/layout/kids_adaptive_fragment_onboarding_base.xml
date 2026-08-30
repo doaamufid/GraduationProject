@@ -82,6 +82,7 @@
             android:paddingBottom="40dp"
             android:clipChildren="false"
             android:clipToPadding="false"
+            android:isScrollContainer="false"
             android:weightSum="2">
 
             <com.google.android.material.button.MaterialButton
