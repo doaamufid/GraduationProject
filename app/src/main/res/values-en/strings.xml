@@ -31,12 +31,12 @@
     <string name="kids_chat_back_desc">Back</string>
     <string name="kids_chat_nour_badge">I\'m here listening 💙</string>
     <string name="kids_chat_question_title">How are you feeling now?</string>
-    <string name="kids_mood_scared">Scared</string>
-    <string name="kids_mood_sad">Sad</string>
-    <string name="kids_mood_angry">Angry</string>
-    <string name="kids_mood_confused">Don\'t know</string>
-    <string name="kids_mood_tired">Tired</string>
-    <string name="kids_mood_happy">Happy</string>
+    <string name="kids_chat_mood_scared">Scared</string>
+    <string name="kids_chat_mood_sad">Sad</string>
+    <string name="kids_chat_mood_angry">Angry</string>
+    <string name="kids_chat_mood_confused">Don\'t know</string>
+    <string name="kids_chat_mood_tired">Tired</string>
+    <string name="kids_chat_mood_happy">Happy</string>
     <string name="close">Close</string>
     <string name="kids_chat_press_and_talk">Press and speak</string>
     <string name="kids_chat_switch_to_text">Or write</string>
@@ -875,4 +875,18 @@
     <string name="my_future_msg_subtitle">Each message reaches you at the right time</string>
     <string name="my_future_msg_view_all">View All</string>
     <string name="my_future_msg_when_label">When would you like to receive it?</string>
+    <string name="kids_mood_app_name">My Mood (Kids)</string>
+
+    <string name="kids_mood_entry_title">My New Journal 🧸</string>
+    <string name="kids_mood_big_question">How are you feeling today, champ?</string>
+    <string name="kids_mood_continue_label">Let’s go! 🎉</string>
+    <string name="kids_mood_saved_toast">Your mood has been saved ✅</string>
+
+    <string name="kids_mood_awful">I’m really upset</string>
+    <string name="kids_mood_sad">I’m a little sad</string>
+    <string name="kids_mood_low">I’m not feeling so good</string>
+    <string name="kids_mood_neutral">I’m okay</string>
+    <string name="kids_mood_calm">I’m doing good!</string>
+    <string name="kids_mood_happy">I’m happy!</string>
+    <string name="kids_mood_overjoyed">I’m super, super happy!</string>
 </resources>

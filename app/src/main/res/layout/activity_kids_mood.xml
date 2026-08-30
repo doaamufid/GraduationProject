@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/root_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:orientation="vertical"
+    android:fitsSystemWindows="true"
+    android:paddingHorizontal="20dp"
+    android:paddingBottom="18dp"
+    android:clipToPadding="false"
+    android:clipChildren="false"
+    android:background="#FCE6D2">
+
+    <!-- progress track -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="6dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_progress_track">
+
+        <View
+            android:id="@+id/progress_fill"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
+            android:background="@drawable/bg_progress_fill" />
+    </FrameLayout>
+
+    <!-- "يوميتي الجديدة 🧸" -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_marginBottom="14dp"
+        android:gravity="center"
+        android:text="@string/kids_mood_entry_title"
+        android:textColor="#0F172A"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <!-- "كيف حاسّ اليوم يا بطل؟" -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="22dp"
+        android:gravity="center"
+        android:text="@string/kids_mood_big_question"
+        android:textColor="#0F172A"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <!-- hero circle + label -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <FrameLayout
+            android:id="@+id/hero_circle"
+            android:layout_width="168dp"
+            android:layout_height="168dp"
+            android:background="@drawable/bg_hero_circle_kids">
+
+            <com.example.graduationproject.view.KidsMoodBearView
+                android:id="@+id/hero_bear"
+                android:layout_width="138dp"
+                android:layout_height="138dp"
+                android:layout_gravity="center" />
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/mood_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:textColor="#0F172A"
+            android:textSize="19sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- mood selector pill -->
+    <HorizontalScrollView
+        android:layout_width="350dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"
+        android:clipToPadding="false"
+        android:clipChildren="false"
+        android:fillViewport="true"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/selector_row"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@drawable/bg_selector_pill"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="12dp"
+            android:clipToPadding="false"
+            android:clipChildren="false"
+            android:gravity="center" />
+    </HorizontalScrollView>
+
+    <!-- continue button -->
+    <Button
+        android:id="@+id/btn_continue"
+        android:layout_width="350dp"
+        android:layout_height="58dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="8dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/bg_continue_button"
+        android:elevation="6dp"
+        android:text="@string/kids_mood_continue_label"
+        android:textAllCaps="false"
+        android:textColor="#0F172A"
+        android:textSize="17sp"
+        android:textStyle="bold"
+        android:gravity="center" />
+
+</LinearLayout>
