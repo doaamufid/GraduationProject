@@ -12,12 +12,11 @@
         android:padding="20dp">
 
         <!-- Top bar: back + search -->
-        <!-- Top bar: back + search -->
-        <LinearLayout android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:gravity="center_vertical"
-            xmlns:android="http://schemas.android.com/apk/res/android">
+            android:gravity="center_vertical">
 
             <ImageButton
                 android:id="@+id/btnBack"
@@ -32,46 +31,22 @@
                 android:layout_height="1dp"
                 android:layout_weight="1" />
 
-            <!-- زر الطفل المميز الجديد -->
-            <LinearLayout
-                android:id="@+id/btnFeaturedChild"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="center_vertical"
-                android:background="@drawable/bg_bubble_yellow"
-                android:paddingHorizontal="14dp"
-                android:paddingVertical="8dp"
-                android:clickable="true"
-                android:focusable="true">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🏆"
-                    android:textSize="18sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="4dp"
-                    android:text="الطفل المميز"
-                    android:textSize="13sp"
-                    android:textColor="#5A4632"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
-
+            <ImageView
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:src="@android:drawable/ic_menu_search"
+                android:contentDescription="بحث" />
         </LinearLayout>
-        <!-- Teddy avatar -->
-        <ImageView
-            android:id="@+id/imgTeddy"
-            android:layout_width="110dp"
-            android:layout_height="110dp"
+
+        <!-- 🌟 الأفاتار النصي المختار (تعديل الأفاتار بدلاً من الصورة الثابتة) -->
+        <TextView
+            android:id="@+id/tvChildAvatar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="12dp"
-            android:src="@drawable/teddy_avatar"
-            android:contentDescription="الدبدوب" />
+            android:textSize="70sp"
+            android:text="🐻" />
 
         <!-- Greeting bubble -->
         <TextView
@@ -131,7 +106,7 @@
                 android:id="@+id/moodUpset"
                 style="@style/MoodItem"
                 android:tag="محزون"
-                android:text="😔&#10;مكتئب" />
+                android:text="😔&#10;محزون" />
         </GridLayout>
 
         <!-- Confirm button -->
@@ -177,7 +152,7 @@
                 android:id="@+id/cardPlayBushes"
                 style="@style/CategoryCard"
                 android:background="@drawable/bg_card_orange"
-                android:text="📔&#10;كلماتك القوية"/>
+                android:text="🌳&#10;شجيرات اللعبة" />
 
             <TextView
                 android:id="@+id/cardVideos"

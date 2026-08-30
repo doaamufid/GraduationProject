@@ -7,24 +7,27 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.graduationproject.R;
 import com.example.graduationproject.data.ActiveChildManager;
 import com.example.graduationproject.data.ChildProfileStore;
+import com.example.graduationproject.models.ChildProfile;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ProcessingActivity extends AppCompatActivity {
 
     private static final String TAG = "ProcessingActivity";
-
-    // أقصى بعد للصورة قبل ما نبعتها لـ Gemini (تصغير يخفف حجم الطلب ويسرّع الرد)
     private static final int MAX_IMAGE_DIMENSION = 1024;
 
     private String photoUriString;
+    private long childId;
     private final ExecutorService bitmapExecutor = Executors.newSingleThreadExecutor();
     private GeminiService geminiService;
 
@@ -34,6 +37,7 @@ public class ProcessingActivity extends AppCompatActivity {
         setContentView(R.layout.activity_processing);
 
         geminiService = new GeminiService();
+        childId = getChildId();
 
         ImageView imgDrawingThumb = findViewById(R.id.imgDrawingThumb);
         photoUriString = getIntent().getStringExtra("photo_uri");
@@ -41,12 +45,15 @@ public class ProcessingActivity extends AppCompatActivity {
             imgDrawingThumb.setImageURI(Uri.parse(photoUriString));
         }
 
+        // 🌟 عرض أفاتار الطفل الخاص بكِ
+        loadChildAvatar();
+
+        // بدء تحليل الرسمة حقيقياً عبر الذكاء الاصطناعي
         startAnalysis();
     }
 
     private void startAnalysis() {
         if (photoUriString == null) {
-            // ما في صورة أصلاً، ما فيه داعي نكمل - نرجع فيدباك افتراضي مباشرة
             goToResult(getFallbackFeedback());
             return;
         }
@@ -71,12 +78,11 @@ public class ProcessingActivity extends AppCompatActivity {
                     runOnUiThread(() -> goToResult(getFallbackFeedback()));
                 }
             });
-
         });
     }
 
     private void goToResult(String feedbackText) {
-        // نجمة "الطفل المميز" - النشاط اكتمل سواء نجح تحليل Gemini أو لأ
+        // إضافة النجمة للطفل عند إتمام النشاط
         long currentChildId = ActiveChildManager.getActiveChildId(this);
         if (currentChildId != ActiveChildManager.NO_ACTIVE_CHILD) {
             new ChildProfileStore(this).addStar(currentChildId);
@@ -87,14 +93,11 @@ public class ProcessingActivity extends AppCompatActivity {
             intent.putExtra("photo_uri", photoUriString);
         }
         intent.putExtra("feedback_text", feedbackText);
+        intent.putExtra("CHILD_ID", childId);
         startActivity(intent);
         finish();
     }
 
-    /**
-     * يحمّل الصورة من الـ Uri ويصغّرها حتى ما تكون كبيرة أكتر من اللازم
-     * قبل ما نبعتها لـ Gemini
-     */
     private Bitmap loadBitmapFromUri(Uri uri) {
         try {
             Bitmap original = MediaStore.Images.Media.getBitmap(getContentResolver(), uri);
@@ -128,6 +131,31 @@ public class ProcessingActivity extends AppCompatActivity {
         return "رسمتك حلوة كتير يا بطل! 🌟 أنا فخورة فيك ومبسوطة إنك شاركتني إياها 💛";
     }
 
+    // 🌟 دالة جلب الأفاتار الخاصة بكِ
+    private void loadChildAvatar() {
+        ChildProfileStore store = new ChildProfileStore(this);
+        try {
+            List<ChildProfile> profiles = store.getProfiles();
+            for (ChildProfile profile : profiles) {
+                if (profile.getId() == childId) {
+                    String avatar = profile.getAvatar();
+                    TextView tvAvatar = findViewById(R.id.tvMascotAvatar);
+                    if (tvAvatar != null && avatar != null && !avatar.trim().isEmpty()) {
+                        tvAvatar.setText(avatar);
+                    }
+                    break;
+                }
+            }
+        } catch (Exception ignored) {
+        } finally {
+            store.close();
+        }
+    }
+
+    private long getChildId() {
+        long id = getIntent().getLongExtra("CHILD_ID", -1L);
+        return (id == -1L) ? 1L : id;
+    }
 
     @Override
     protected void onDestroy() {

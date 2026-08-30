@@ -8,7 +8,7 @@
     android:background="#FAF1E6"
     tools:context=".Kids.KidsBubbleBreathingActivity">
 
-    <!-- Back Arrow (جهة اليمين دائماً) -->
+    <!-- Back Arrow (جهة اليمين) -->
     <ImageButton
         android:id="@+id/btn_back"
         android:layout_width="40dp"
@@ -23,20 +23,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:tint="#8B6F4D" />
 
-    <TextView
-        android:id="@+id/btn_quiet_exit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-
-        android:text="@string/bubble_quiet_exit"
-        android:textColor="#8B6F4D"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="@id/btn_back"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@id/btn_back" />
 
     <LinearLayout
         android:id="@+id/layout_progress_info"
@@ -71,7 +57,7 @@
             android:visibility="gone" />
     </LinearLayout>
 
-    <!-- Canvas / Bear Drawing Area -->
+    <!-- Canvas / Drawing Area -->
     <com.example.graduationproject.Kids.KidsBubbleView
         android:id="@+id/bubble_view"
         android:layout_width="0dp"
@@ -80,6 +66,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/layout_progress_info" />
+
+    <!-- 🌟 Dynamic Child Avatar Text View 🌟 -->
+    <TextView
+        android:id="@+id/tv_child_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="🐻"
+        android:textSize="80sp"
+        app:layout_constraintBottom_toBottomOf="@id/bubble_view"
+        app:layout_constraintEnd_toEndOf="@id/bubble_view"
+        app:layout_constraintStart_toStartOf="@id/bubble_view"
+        app:layout_constraintTop_toTopOf="@id/bubble_view" />
 
     <!-- Bottom Container -->
     <LinearLayout
@@ -154,6 +152,7 @@
                 android:textColor="#FFFFFF"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/btn_go_to_tree"
                 android:layout_width="0dp"
@@ -179,15 +178,6 @@
                 android:textColor="#8B6F4D"
                 android:textSize="14sp"
                 android:textStyle="bold" />
-            <Button
-                android:id="@+id/btn_goTree"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="@string/see_your_tree"
-                android:backgroundTint="#4CAF50"
-                android:textColor="#FFFFFF"
-                android:textSize="16sp"
-                android:layout_marginTop="12dp" />
         </LinearLayout>
 
     </LinearLayout>

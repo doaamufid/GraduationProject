@@ -25,7 +25,6 @@ public class KidsBubbleView extends View {
 
     private final Paint textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     private final Paint bubblePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    private final Paint sparklePaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
     private Mode mode = Mode.WELCOME;
     private float progress;
@@ -47,7 +46,6 @@ public class KidsBubbleView extends View {
 
     private void init() {
         textPaint.setTextAlign(Paint.Align.CENTER);
-        sparklePaint.setTextAlign(Paint.Align.CENTER);
         setWillNotDraw(false);
     }
 
@@ -85,50 +83,51 @@ public class KidsBubbleView extends View {
     }
 
     private void drawWelcome(Canvas canvas, float centerX, float centerY) {
-        drawText(canvas, "🧸", centerX, centerY - dp(80), 38, "#9B6A3A");
+        // رسم فقاعات جمالية صغيرة خلف أفاتار الطفل
         drawBubble(canvas, centerX - dp(6), centerY - dp(24), dp(20));
         drawBubble(canvas, centerX + dp(28), centerY - dp(46), dp(11));
         drawBubble(canvas, centerX + dp(36), centerY - dp(12), dp(13));
     }
 
     private void drawReady(Canvas canvas, float centerX, float centerY) {
-        drawBubble(canvas, centerX, centerY - dp(26), dp(18));
-        drawText(canvas, "🧸", centerX, centerY + dp(48), 34, "#9B6A3A");
+        // رسم الفقاعة الأساسية حول الأفاتار
+        drawBubble(canvas, centerX, centerY, dp(45));
 
-        // استدعاء النص من ملف strings بدلاً من كتابته ثابتاً
+        // نص التوجيه أسفل الفقاعة
         String pressAndBlow = getContext().getString(R.string.bubble_canvas_press_blow);
         drawText(canvas, pressAndBlow, centerX, centerY + dp(92), 17, "#F47C2B");
     }
 
     private void drawInflating(Canvas canvas, float centerX, float centerY) {
-        float radius = dp(20) + progress * dp(54);
-        drawBubble(canvas, centerX, centerY - dp(28), radius);
-        drawText(canvas, progress > 0.55f ? "😤" : "😌", centerX, centerY + radius + dp(34), 34, "#5D4037");
+        // تكبير حجم الفقاعة مع تقدم عملية النفخ
+        float radius = dp(45) + progress * dp(55);
+        drawBubble(canvas, centerX, centerY, radius);
 
-        // استدعاء النص من ملف strings
+        // نص التشجيع "استمر..."
         String keepGoing = getContext().getString(R.string.bubble_canvas_keep_going);
-        drawText(canvas, keepGoing, centerX, centerY + radius + dp(72), 16, "#F47C2B");
+        drawText(canvas, keepGoing, centerX, centerY + radius + dp(40), 16, "#F47C2B");
     }
 
     private void drawReleased(Canvas canvas, float centerX, float centerY) {
+        // رسم فقاعات متناثرة عند إفلات النفخ
         drawBubble(canvas, centerX - dp(70), centerY + dp(70), dp(18));
         drawBubble(canvas, centerX - dp(22), centerY + dp(95), dp(24));
         drawBubble(canvas, centerX + dp(30), centerY + dp(66), dp(22));
         drawBubble(canvas, centerX + dp(82), centerY + dp(92), dp(20));
-        drawText(canvas, "✨🧸", centerX, centerY - dp(14), 40, "#FFC94A");
+        drawText(canvas, "✨", centerX, centerY - dp(60), 40, "#FFC94A");
     }
 
     private void drawCelebration(Canvas canvas, float centerX, float centerY) {
         drawText(canvas, "✨", centerX - dp(44), centerY - dp(40), 42, "#FFC94A");
-        drawText(canvas, "🧸", centerX, centerY + dp(6), 42, "#9B6A3A");
+        drawText(canvas, "✨", centerX + dp(44), centerY - dp(40), 42, "#FFC94A");
 
-        // استدعاء النص من ملف strings
         String flewAway = getContext().getString(R.string.bubble_canvas_flew_away);
-        drawText(canvas, flewAway, centerX, centerY + dp(62), 17, "#F47C2B");
+        drawText(canvas, flewAway, centerX, centerY + dp(80), 17, "#F47C2B");
     }
 
     private void drawDone(Canvas canvas, float centerX, float centerY) {
-        drawText(canvas, "🧸", centerX, centerY - dp(20), 48, "#9B6A3A");
+        // تزيين عند الانتهاء
+        drawText(canvas, "🌟", centerX, centerY - dp(60), 48, "#FFC94A");
     }
 
     private void drawBubble(Canvas canvas, float cx, float cy, float radius) {
@@ -139,8 +138,10 @@ public class KidsBubbleView extends View {
                 new int[]{Color.WHITE, Color.rgb(175, 230, 241), Color.rgb(132, 209, 232)},
                 new float[]{0f, 0.58f, 1f},
                 Shader.TileMode.CLAMP));
-        bubblePaint.setAlpha(215);
+        bubblePaint.setAlpha(200);
         canvas.drawCircle(cx, cy, radius, bubblePaint);
+
+        // انعكاس الضوء على الفقاعة
         bubblePaint.setShader(null);
         bubblePaint.setStyle(Paint.Style.STROKE);
         bubblePaint.setStrokeWidth(dp(2));

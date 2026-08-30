@@ -11,16 +11,19 @@ import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.graduationproject.R;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityKidsTreeBinding;
 import com.example.graduationproject.databinding.BottomSheetKidsActionsBinding;
+import com.example.graduationproject.models.ChildProfile;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class KidsTreeActivity extends AppCompatActivity {
@@ -34,12 +37,11 @@ public class KidsTreeActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         androidx.activity.EdgeToEdge.enable(this);
         binding = ActivityKidsTreeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Match status bar and navigation bar with screen color (#F4F8F3)
         Window window = getWindow();
         window.addFlags(android.view.WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(android.graphics.Color.parseColor("#F4F8F3"));
@@ -53,14 +55,11 @@ public class KidsTreeActivity extends AppCompatActivity {
 
         profileStore = new ChildProfileStore(this);
 
-        // 1. جلب بيانات الطفل بدقة لتجنب قيم null والحسابات المشتركة
         childId = getCurrentChildId();
         childName = getIntent().getStringExtra("CHILD_NAME");
 
-        // 2. ربط ومدير التقدم بالطفل الموحد بالمعرف وليس الاسم لضمان الخصوصية والتفرد
-        progressManager = new TreeProgressManager(this, String.valueOf(childId));
+        progressManager = new TreeProgressManager(this, childId);
 
-        // تسجيل الدخول اليومي
         trackDailyLogin();
 
         binding.btnBack.setOnClickListener(v -> finish());
@@ -73,14 +72,32 @@ public class KidsTreeActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-
-        // جلب الـ ID بضمان عدم كونه -1
         this.childId = getCurrentChildId();
+        this.progressManager = new TreeProgressManager(this, this.childId);
 
-        // إعادة بناء مدير النقاط بالمعرف الصحيح وتحديث الواجهة
-        this.progressManager = new TreeProgressManager(this, String.valueOf(this.childId));
+        // 🌟 تحديث الأفاتار على وسام صديق الطفل
+        if (binding.tvIconFriend != null) {
+            binding.tvIconFriend.setText(getDynamicAvatarEmoji());
+        }
 
         updateTreeDisplay();
+    }
+
+    // 🌟 دالة لجلب الأفاتار المختار للطفل من قاعدة البيانات
+    private String getDynamicAvatarEmoji() {
+        if (profileStore != null) {
+            try {
+                List<ChildProfile> profiles = profileStore.getProfiles();
+                for (ChildProfile profile : profiles) {
+                    if (profile.getId() == childId) {
+                        if (profile.getAvatar() != null && !profile.getAvatar().trim().isEmpty()) {
+                            return profile.getAvatar();
+                        }
+                    }
+                }
+            } catch (Exception ignored) {}
+        }
+        return "🐻"; // الافتراضي في حال عدم وجود أفاتار
     }
 
     private void trackDailyLogin() {
@@ -99,7 +116,6 @@ public class KidsTreeActivity extends AppCompatActivity {
                     .putBoolean("logged_today", true)
                     .apply();
 
-            // إضافة 10 نقاط دخول يومي مرة واحدة فقط
             progressManager.addPoints(10);
         }
     }
@@ -110,19 +126,24 @@ public class KidsTreeActivity extends AppCompatActivity {
     }
 
     private void updateTreeDisplay() {
-        // 1. ضمان الربط بنفس معرف الطفل الحالي (childId)
         if (progressManager == null) {
-            progressManager = new TreeProgressManager(this, String.valueOf(childId));
+            progressManager = new TreeProgressManager(this, childId);
         }
 
-        int points = progressManager.getPoints();
+        int points = progressManager.getStagePoints();
         int stageNumber = progressManager.getStageNumber();
         String stageName = progressManager.getStageName();
         int progressPercent = progressManager.getProgressPercentage();
 
-        // 2. تحديث النصوص والعدادات
         if (binding.tvPointsCount != null) {
             binding.tvPointsCount.setText("نقاط اليوم: " + points);
+        }
+
+        // إذا وصل الطفل لنقاط تؤهله للترقية ولم تفتح الشاشة بعد
+        if (progressManager.getProgressPercentage() >= 100) {
+            Intent intent = new Intent(this, KidsTreeLevelUpActivity.class);
+            intent.putExtra("CHILD_ID", childId);
+            startActivity(intent);
         }
         if (binding.tvStageTitle != null) {
             binding.tvStageTitle.setText(stageName);
@@ -134,7 +155,6 @@ public class KidsTreeActivity extends AppCompatActivity {
             binding.tvProgressPercent.setText("🌱 " + progressPercent + "% نمو " + stageName);
         }
 
-        // 3. تحديث أيقونة الشجرة الرئيسية حسب المرحلة
         if (binding.tvTreeEmoji != null) {
             switch (stageNumber) {
                 case 1: binding.tvTreeEmoji.setText("🌱"); break;
@@ -144,25 +164,21 @@ public class KidsTreeActivity extends AppCompatActivity {
             }
         }
 
-        // 4. تحديث مؤشر المراحل والأوسمة
         highlightCurrentStage(stageNumber);
         updateBadgesVisualState();
     }
+
     private void updateBadgesVisualState() {
-        // 1. وسام المُتأمل (تمرين التنفس)
         boolean hasBreathing = profileStore.hasCompletedEventToday(childId, "BREATHING_EXERCISE");
         applyBadgeStyle(binding.badgeMotamel, hasBreathing);
 
-        // 2. وسام اليومي (تسجيل الدخول اليومي)
         SharedPreferences streakPrefs = getSharedPreferences("KidsAppStreak_" + childId, Context.MODE_PRIVATE);
         boolean loggedToday = streakPrefs.getBoolean("logged_today", false);
         applyBadgeStyle(binding.badgeYawmi, loggedToday);
 
-        // 3. وسام المستمر (استمرار 3 أيام)
         boolean isConsistent = getStreakDays() >= 3;
         applyBadgeStyle(binding.badgeMostamer, isConsistent);
 
-        // 4. وسام صديق نور (محادثة الذكاء الاصطناعي اليومية)
         boolean hasChat = profileStore.hasCompletedEventToday(childId, "CHAT_SESSION");
         applyBadgeStyle(binding.badgeFriend, hasChat);
     }
@@ -211,8 +227,6 @@ public class KidsTreeActivity extends AppCompatActivity {
     }
 
     private void setupBadgeClickListeners() {
-
-        // 1. وسام مُتأمل (تمرين التنفس)
         binding.badgeMotamel.setOnClickListener(v -> {
             boolean isUnlocked = profileStore.hasCompletedEventToday(childId, "BREATHING_EXERCISE");
             String desc = isUnlocked
@@ -221,7 +235,6 @@ public class KidsTreeActivity extends AppCompatActivity {
             showBadgeStatusDialog("🧠", "وسام المُتأمل", desc, isUnlocked);
         });
 
-        // 2. وسام يومي (تسجيل الدخول اليومي)
         binding.badgeYawmi.setOnClickListener(v -> {
             SharedPreferences streakPrefs = getSharedPreferences("KidsAppStreak_" + childId, MODE_PRIVATE);
             boolean isUnlocked = streakPrefs.getBoolean("logged_today", false);
@@ -231,7 +244,6 @@ public class KidsTreeActivity extends AppCompatActivity {
             showBadgeStatusDialog("⭐", "وسام اليومي", desc, isUnlocked);
         });
 
-        // 3. وسام المستمر (استمرار 3 أيام)
         binding.badgeMostamer.setOnClickListener(v -> {
             int streakDays = getStreakDays();
             boolean isUnlocked = streakDays >= 3;
@@ -241,13 +253,14 @@ public class KidsTreeActivity extends AppCompatActivity {
             showBadgeStatusDialog("🔥", "وسام المستمر", desc, isUnlocked);
         });
 
-        // 4. وسام صديق نور (المحادثة مع الذكاء الاصطناعي)
+        // 🌟 وسام صديق الطفل المختار (يتغير إيموجي الأفاتار تلقائياً حسب الاختيار)
         binding.badgeFriend.setOnClickListener(v -> {
             boolean isUnlocked = profileStore.hasCompletedEventToday(childId, "CHAT_SESSION");
+            String avatar = getDynamicAvatarEmoji();
             String desc = isUnlocked
-                    ? "مذهل! لقد تحدثت مع صديقك نور اليوم وشاركته مشاعرك 🐻"
-                    : "تحدث مع صديقك الكرتوني نور اليوم للحصول على هذا الوسام! 🐻";
-            showBadgeStatusDialog("🐻", "وسام صديق نور", desc, isUnlocked);
+                    ? "مذهل! لقد تحدثت مع صديقك المفضل " + avatar + " اليوم وشاركته مشاعرك"
+                    : "تحدث مع صديقك المفضل " + avatar + " اليوم للحصول على هذا الوسام!";
+            showBadgeStatusDialog(avatar, "وسام صديق الطفل", desc, isUnlocked);
         });
     }
 
@@ -321,50 +334,45 @@ public class KidsTreeActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        sheetBinding.btnActionJournal.setOnClickListener(v -> dialog.dismiss());
+        // 🌟 ربط زر اليوميات/الرسومات لشاشة DrawInstructionActivity
+        sheetBinding.btnActionJournal.setOnClickListener(v -> {
+            dialog.dismiss();
+            Intent intent = new Intent(this, DrawInstructionActivity.class);
+            intent.putExtra("CHILD_ID", childId);
+            intent.putExtra("CHILD_NAME", childName);
+            startActivity(intent);
+        });
 
         dialog.show();
     }
 
     private long getCurrentChildId() {
-        // 1. القراءة من الـ Intent إذا كان موجوداً
         long id = getIntent().getLongExtra("CHILD_ID", -1L);
 
-        // 2. إذا لم يوجد في الـ Intent، نفحص الملفات الاحتياطية
         if (id == -1L) {
             id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
         }
-        if (id == -1L) {
-            id = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", -1L);
-        }
-        return (id == -1L) ? 1L : id; // إذا كان فارغاً تماماً يعتمد 1 كمعرف افتراضي
+
+        return id;
     }
+
     private void applyBadgeStyle(View badgeLayout, boolean isUnlocked) {
         if (badgeLayout == null) return;
 
         if (isUnlocked) {
-            badgeLayout.setAlpha(1.0f); // وضوح كامل
-            badgeLayout.setBackgroundResource(R.drawable.bg_badge_unlocked); // خلفية خضراء محددة
+            badgeLayout.setAlpha(1.0f);
+            badgeLayout.setBackgroundResource(R.drawable.bg_badge_unlocked);
         } else {
-            badgeLayout.setAlpha(0.4f); // شفافية (رمادي/خافت)
-            badgeLayout.setBackgroundResource(R.drawable.bg_badge_locked);   // خلفية مغلقة
+            badgeLayout.setAlpha(0.4f);
+            badgeLayout.setBackgroundResource(R.drawable.bg_badge_locked);
         }
     }
-    private void saveBreathingAchievement() {
-        long currentChildId = getCurrentChildId();
 
-        // إذا كان المعرف سالب 1 (أي لم يُمرر عبر Intent)، نجلب الطفل النشط حالياً
-        if (currentChildId == -1L) {
-            currentChildId = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", 1L);
+    @Override
+    protected void onDestroy() {
+        if (profileStore != null) {
+            profileStore.close();
         }
-
-        // 1. حفظ حدث إتمام التنفس في قاعدة البيانات
-        ChildProfileStore store = new ChildProfileStore(this);
-        store.addCompletedEvent(currentChildId, "BREATHING_EXERCISE");
-
-        // 2. إضافة النقاط لشجرة الطفل
-        TreeProgressManager progressManager = new TreeProgressManager(this, String.valueOf(currentChildId));
-        progressManager.addPoints(15);
+        super.onDestroy();
     }
-
 }

@@ -8,9 +8,11 @@ import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.graduationproject.R;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.LayoutVoiceRecordingBottomSheetBinding;
+import com.example.graduationproject.models.ChildProfile;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 import java.util.ArrayList;
@@ -37,8 +40,9 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
     private EditText etMessage;
     private ImageButton btnSend, btnMic, btnBack;
     private Button chipStory, chipRiddle, chipSad;
+    private TextView tvAvatarEmoji, tvCharacterName;
     private ChildProfileStore dbStore;
-    private long currentChildId = 1;
+    private long currentChildId = -1L;
     private ChatAdapter chatAdapter;
     private List<ChatMessage> messageList;
     private GeminiService geminiService;
@@ -68,11 +72,10 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        
+
         androidx.activity.EdgeToEdge.enable(this);
         setContentView(R.layout.activity_kids_ai_companion);
 
-        // Make status bar and navigation bar transparent
         android.view.Window window = getWindow();
         window.setFlags(android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -83,6 +86,8 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
             controller.setAppearanceLightNavigationBars(true);
         }
 
+        currentChildId = getChildId();
+
         initViews();
         setupChatRecyclerView();
 
@@ -90,21 +95,22 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
         setupSpeechRecognizer();
         dbStore = new ChildProfileStore(this);
 
+        // 🌟 تعيين اسم وشخصية/أفاتار الطفل مباشرة من قاعدة البيانات
+        loadChildProfileFromDatabase();
+
         // 1. استرجاع وتعبئة كل الرسائل المحفوظة في SQLite سابقاً
         List<ChatMessage> savedMessages = dbStore.getChatHistory(currentChildId);
         if (!savedMessages.isEmpty()) {
             messageList.addAll(savedMessages);
             chatAdapter.notifyDataSetChanged();
         } else {
-            // إذا كانت المرة الأولى
             addMessageToChat("أهلاً بك يا بطل! أنا صديقك دبدوب نور 🐻، عن ماذا تحب أن نتحدث اليوم؟", false);
         }
+
         // استقبال الرسالة الممررة من الشاشة السابقة إن وجدت
         String initialMessage = getIntent().getStringExtra("INITIAL_MESSAGE");
         if (initialMessage != null && !initialMessage.isEmpty()) {
             addMessageToChat(initialMessage, false);
-        } else {
-            addMessageToChat("أهلاً بك يا بطل! أنا صديقك دبدوب نور 🐻، عن ماذا تحب أن نتحدث اليوم؟", false);
         }
 
         btnSend.setOnClickListener(v -> sendMessage());
@@ -126,6 +132,43 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
         chipStory = findViewById(R.id.chipStory);
         chipRiddle = findViewById(R.id.chipRiddle);
         chipSad = findViewById(R.id.chipSad);
+        tvAvatarEmoji = findViewById(R.id.tvAvatarEmoji);
+        tvCharacterName = findViewById(R.id.tvCharacterName);
+    }
+
+    /**
+     * جلب اسم الطفل والأفاتار الخاص به من قاعدة البيانات المشفرة وتحديث الترويسة
+     */
+    private void loadChildProfileFromDatabase() {
+        if (currentChildId != -1L) {
+            try {
+                List<ChildProfile> profiles = dbStore.getProfiles();
+                for (ChildProfile profile : profiles) {
+                    if (profile.getId() == currentChildId) {
+                        if (profile.getName() != null && !profile.getName().trim().isEmpty()) {
+                            tvCharacterName.setText(profile.getName());
+                        }
+                        if (profile.getAvatar() != null && !profile.getAvatar().trim().isEmpty()) {
+                            tvAvatarEmoji.setText(profile.getAvatar());
+                        }
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                Log.e("KidsAiCompanion", "Error loading profile from database: " + e.getMessage());
+            }
+        }
+    }
+
+    private long getChildId() {
+        long id = getIntent().getLongExtra("CHILD_ID", -1L);
+        if (id == -1L) {
+            id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
+        }
+        if (id == -1L) {
+            id = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", -1L);
+        }
+        return id != -1L ? id : 1L;
     }
 
     private void setupChatRecyclerView() {
@@ -164,7 +207,6 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
         sheetBinding = LayoutVoiceRecordingBottomSheetBinding.inflate(getLayoutInflater());
         recordingBottomSheet.setContentView(sheetBinding.getRoot());
 
-        // أنيميشن نبض للمايك ليعلم الطفل أنه يسجل الآن
         ObjectAnimator scaleX = ObjectAnimator.ofFloat(sheetBinding.btnFinishRecording, "scaleX", 1f, 1.2f, 1f);
         ObjectAnimator scaleY = ObjectAnimator.ofFloat(sheetBinding.btnFinishRecording, "scaleY", 1f, 1.2f, 1f);
         scaleX.setRepeatCount(ValueAnimator.INFINITE);
@@ -244,38 +286,30 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
     }
 
     private void sendMessage() {
-        // إضافة حدث الشات للداتا بيز وإضافة النقاط (مرة واحدة في اليوم)
-        ChildProfileStore store = new ChildProfileStore(KidsAiCompanionActivity.this);
-        if (!store.hasCompletedEventToday(currentChildId, "CHAT_SESSION")) {
-            store.addCompletedEvent(currentChildId, "CHAT_SESSION");
+        if (!dbStore.hasCompletedEventToday(currentChildId, "CHAT_SESSION")) {
+            dbStore.addCompletedEvent(currentChildId, "CHAT_SESSION");
 
-            // إضافة نقاط الشجرة عبر TreeProgressManager
-            TreeProgressManager progressManager = new TreeProgressManager(KidsAiCompanionActivity.this, "Child_" + currentChildId);
-            progressManager.addPoints(15); // إضافة 15 نقطة لمحادثة الذكاء الاصطناعي
+            TreeProgressManager progressManager = new TreeProgressManager(KidsAiCompanionActivity.this, currentChildId);
+            progressManager.addPoints(15);
         }
         String text = etMessage.getText().toString().trim();
         if (text.isEmpty()) return;
 
-        // 1. إضافة رسالة الطفل لشاشة المحادثة
         addMessageToChat(text, true);
         etMessage.setText("");
 
-        // 2. إضافة رسالة مؤقتة تعبر عن التفكير ليفهم الطفل أن التطبيق يحمل الرد
         String loadingMessage = "دبدوب نور يفكر في الرد... 💭🐻";
         addMessageToChat(loadingMessage, false);
-        int loadingPosition = messageList.size() - 1; // حفظ مكان الفقرة المؤقتة
+        int loadingPosition = messageList.size() - 1;
 
-        // 3. إرسال المحادثة لـ Gemini
         geminiService.sendChatHistory(messageList, new GeminiService.GeminiCallback() {
             @Override
             public void onSuccess(String message) {
                 runOnUiThread(() -> {
-                    // استبدال رسالة التحميل بالرد الحقيقي
                     if (loadingPosition < messageList.size()) {
                         messageList.set(loadingPosition, new ChatMessage(message, false));
                         chatAdapter.notifyItemChanged(loadingPosition);
 
-                        // حفظ الرد الحقيقي فقط في قاعدة البيانات
                         dbStore.addChatMessage(currentChildId, message, false);
                     }
                 });
@@ -284,7 +318,6 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
             @Override
             public void onError(String errorMessage) {
                 runOnUiThread(() -> {
-                    // في حالة الخطأ استبدال التحميل برد اعتذار لطيف
                     if (loadingPosition < messageList.size()) {
                         String fallback = "أنا هنا معك يا صديقي، حدث خطأ بسيط بالاتصال! 🐻";
                         messageList.set(loadingPosition, new ChatMessage(fallback, false));
@@ -300,7 +333,6 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
         chatAdapter.notifyItemInserted(messageList.size() - 1);
         rvChatMessages.smoothScrollToPosition(messageList.size() - 1);
 
-        // حفظ رسائل الطفل فقط فوراً في SQLite
         if (isUser) {
             dbStore.addChatMessage(currentChildId, text, true);
         }
@@ -311,6 +343,14 @@ public class KidsAiCompanionActivity extends AppCompatActivity {
         super.onPause();
         if (speechHelper != null) {
             speechHelper.stopListening();
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (dbStore != null) {
+            dbStore.close();
         }
     }
 }

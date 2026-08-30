@@ -1,11 +1,13 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -21,42 +23,30 @@ import com.example.graduationproject.view.KidsAdaptiveProgressPathView;
 import com.example.graduationproject.view.KidsAdaptiveSkyBackgroundView;
 import com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView;
 
-/**
- * Mirrors <ScreenShell>: shared chrome for every onboarding screen (sky background,
- * back button, progress dots, skip link, teddy companion, scrollable content area,
- * primary footer button). Subclasses only populate the content container and
- * configure the footer/skip/teddy-mood behaviour for their specific screen.
- */
 public abstract class KidsAdaptiveBaseOnboardingFragment extends Fragment {
 
     protected KidsAdaptiveOnboardingHost host;
     protected LinearLayout contentContainer;
-    /** Public so KidsAdaptiveMainActivity (a different package) can trigger the selection "pulse". */
     public KidsAdaptiveTeddyBuddyView teddyHeader;
+    protected TextView avatarHeaderView; // 🌟 عرض الأفاتار النصي/الإيموجي بدلاً من الدب
     protected Button btnPrimary;
 
     public abstract int getScreenIndex();
-    /** Populate contentContainer with this screen's views. */
     protected abstract void buildContent(LinearLayout container, LayoutInflater inflater);
-    /** Called when the primary footer button is tapped (default: goNext). */
     protected void onPrimaryClick() { host.goNext(); }
-    /** Text shown on the footer button. */
     protected String getPrimaryButtonText() { return getString(R.string.kids_adaptive_btn_continue); }
-    /** Whether the skip link is shown at all. */
     protected boolean showSkip() { return true; }
-    /** Called when skip is tapped (default: goNext, matching most screens' `onSkip={nav.next}`). */
     protected void onSkipClick() { host.goNext(); }
     protected String getSkipLabel() { return getString(R.string.kids_adaptive_skip); }
-    /** Teddy's facial expression for this screen ("neutral" | "warm" | "calm"). */
     protected String getCompanionMood() { return KidsAdaptiveTeddyBuddyView.MOOD_NEUTRAL; }
-    /** Whether to show the top companion bear in the header. */
+
     protected boolean showHeaderTeddy() {
         int index = getScreenIndex();
-        return index != 0 && index != 12 && index != 4; // Hide on Welcome, Ready, and Frequent Emotions
+        return index != 0 && index != 12 && index != 4;
     }
 
     @Override
-    public void onAttach(@NonNull android.content.Context context) {
+    public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         if (context instanceof KidsAdaptiveOnboardingHost) {
             host = (KidsAdaptiveOnboardingHost) context;
@@ -94,10 +84,14 @@ public abstract class KidsAdaptiveBaseOnboardingFragment extends Fragment {
         }
 
         teddyHeader = root.findViewById(R.id.teddy_header);
-        teddyHeader.setReducedMotion(host != null && host.isReducedMotion());
-        teddyHeader.setMood(getCompanionMood());
-        // Show companion bear contextually
-        teddyHeader.setVisibility(showHeaderTeddy() ? View.VISIBLE : View.GONE);
+
+        // 🌟 إخفاء الدب الأصلي وتجهيز عرض الأفاتار المختار
+        if (teddyHeader != null) {
+            teddyHeader.setVisibility(View.GONE);
+        }
+
+        // 🌟 استدعاء الدالة بدون تمرير root لإنهاء الخطأ الأحادي
+        setupSelectedAvatarHeader();
 
         btnPrimary = root.findViewById(R.id.btn_primary);
         btnPrimary.setText(getPrimaryButtonText());
@@ -109,8 +103,50 @@ public abstract class KidsAdaptiveBaseOnboardingFragment extends Fragment {
         return root;
     }
 
+    public void setupSelectedAvatarHeader() {
+        if (teddyHeader == null) return;
+
+        // 1. إخفاء الدب الأصلي بوضوح لمنع الظهور المزدوج
+        teddyHeader.setVisibility(View.GONE);
+
+        if (!showHeaderTeddy()) {
+            if (avatarHeaderView != null) avatarHeaderView.setVisibility(View.GONE);
+            return;
+        }
+
+        // 2. جلب الأفاتار المختار من OnboardingData أو SharedPreferences
+        String selectedAvatar = data() != null ? data().demoMoodSelected : null;
+        if (selectedAvatar == null || selectedAvatar.trim().isEmpty()) {
+            SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+            selectedAvatar = prefs.getString("current_child_avatar", "🦁");
+        }
+
+        // 3. إنشاء الـ TextView مرة واحدة فقط وإضافته في مكان الدب
+        ViewGroup parent = (ViewGroup) teddyHeader.getParent();
+        if (parent != null && avatarHeaderView == null) {
+            avatarHeaderView = new TextView(requireContext());
+            avatarHeaderView.setTextSize(44);
+            avatarHeaderView.setGravity(Gravity.CENTER);
+
+            ViewGroup.LayoutParams lp = teddyHeader.getLayoutParams();
+            parent.addView(avatarHeaderView, parent.indexOfChild(teddyHeader), lp);
+        }
+
+        // 4. تحديث النص الظاهر للأفاتار
+        if (avatarHeaderView != null) {
+            avatarHeaderView.setText(selectedAvatar);
+            avatarHeaderView.setVisibility(View.VISIBLE);
+        }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        setupSelectedAvatarHeader();
+    }
+
     protected KidsAdaptiveOnboardingData data() {
-        return host.getData();
+        return host != null ? host.getData() : new KidsAdaptiveOnboardingData();
     }
 
     protected int dp(int v) {

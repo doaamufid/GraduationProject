@@ -2,38 +2,39 @@ package com.example.graduationproject.Kids;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import com.example.graduationproject.R;
 
 public class TreeProgressManager {
 
     private static final String PREF_NAME = "KidsTreePrefs";
     private static final String KEY_POINTS_PREFIX = "child_points_";
+    public static final int POINTS_PER_STAGE = 50;
 
     private final SharedPreferences prefs;
-    private final Context context;
-    private final String childName;
+    private final long childId;
 
-    public TreeProgressManager(Context context, String childName) {
-        this.context = context;
-        this.childName = (childName != null && !childName.trim().isEmpty()) ? childName.trim() : "default_child";
-        this.prefs = context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
-    }
-
-    public TreeProgressManager(Context context) {
-        this(context, "default_child");
+    public TreeProgressManager(Context context, long childId) {
+        this.childId = childId;
+        this.prefs = context.getApplicationContext().getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE);
     }
 
     private String getChildKey() {
-        return KEY_POINTS_PREFIX + childName;
+        return KEY_POINTS_PREFIX + childId; // 🌟 حفظ وقراءة النقاط بالـ ID الفريد فقط
     }
 
     public void addPoints(int pointsToAdd) {
-        int currentPoints = getPoints();
+        int currentPoints = getTotalPoints();
         prefs.edit().putInt(getChildKey(), currentPoints + pointsToAdd).apply();
     }
 
-    public int getPoints() {
+    public int getTotalPoints() {
         return prefs.getInt(getChildKey(), 0);
+    }
+
+    public int getStagePoints() {
+        if (getStageNumber() >= 4) {
+            return POINTS_PER_STAGE;
+        }
+        return getTotalPoints() % POINTS_PER_STAGE;
     }
 
     public void resetPoints() {
@@ -41,11 +42,11 @@ public class TreeProgressManager {
     }
 
     public int getStageNumber() {
-        int points = getPoints();
-        if (points < 50) return 1;  // البذرة (0 - 49 نقطة)
-        if (points < 150) return 2; // البرعم (50 - 149 نقطة)
-        if (points < 300) return 3; // الشجرة (150 - 299 نقطة)
-        return 4;                   // الشجرة المثمرة (300+ نقطة)
+        int total = getTotalPoints();
+        if (total < 50) return 1;
+        if (total < 100) return 2;
+        if (total < 150) return 3;
+        return 4;
     }
 
     public String getStageName() {
@@ -58,10 +59,7 @@ public class TreeProgressManager {
     }
 
     public int getProgressPercentage() {
-        int points = getPoints();
-        if (points < 50) return (points * 100) / 50;
-        if (points < 150) return ((points - 50) * 100) / 100;
-        if (points < 300) return ((points - 150) * 100) / 150;
-        return 100;
+        if (getStageNumber() >= 4) return 100;
+        return (getStagePoints() * 100) / POINTS_PER_STAGE;
     }
 }

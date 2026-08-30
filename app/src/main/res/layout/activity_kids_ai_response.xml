@@ -44,18 +44,19 @@
 
     </LinearLayout>
 
-    <!-- Bear Avatar Head -->
-    <ImageView
-        android:id="@+id/iv_bear_face"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="48dp"
-        android:src="@drawable/ic_bear_face"
+    <!-- Bear Avatar Head (عنصر واحد فقط) -->
+    <TextView
+        android:id="@+id/tv_bear_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="🐻"
+        android:textSize="72sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Response Content Layout -->
+    <!-- Scrollable content -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
@@ -81,9 +82,10 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/bg_kids_mood_card"
                 android:gravity="center"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="18dp"
-                android:text="يا بطلي الجميل، حتى النجوم الجصيلة تحتاج للراحة أحياناً. وأنا هنا لأحضنك وأحميك حتى تصبح أفضل."
+                android:lineSpacingExtra="4dp"
+                android:paddingHorizontal="22dp"
+                android:paddingVertical="20dp"
+                android:text="يا بطلي الجميل، حتى النجوم الجميلة تحتاج للراحة أحياناً. وأنا هنا لأحضنك وأحميك حتى تصبح أفضل."
                 android:textColor="#3D291F"
                 android:textSize="17sp"
                 android:textStyle="bold" />
@@ -142,12 +144,20 @@
                     app:cardElevation="4dp"
                     app:strokeWidth="0dp">
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+            <!-- Option 4: احكي مع صديقك -->
+            <TextView
+                android:id="@+id/btn_action_chat"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_kids_mood_card"
+                android:elevation="1dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="احكي مع صديقك 💬"
+                android:textColor="#3D291F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
                         <TextView
                             android:layout_width="wrap_content"

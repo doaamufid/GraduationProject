@@ -18,6 +18,9 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.graduationproject.R;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityKidsBubbleBreathingBinding;
+import com.example.graduationproject.models.ChildProfile;
+
+import java.util.List;
 
 public class KidsBubbleBreathingActivity extends AppCompatActivity {
     private static final int TARGET_BUBBLES = 5;
@@ -40,6 +43,11 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
             breathProgress = Math.min(1f, breathProgress + BREATH_PROGRESS_STEP);
             binding.bubbleView.setProgress(breathProgress);
 
+            // تكبير الأفاتار مع التنفس
+            float scale = 1.0f + (breathProgress * 0.4f);
+            binding.tvChildAvatar.setScaleX(scale);
+            binding.tvChildAvatar.setScaleY(scale);
+
             if (breathProgress >= 1f) {
                 finishOneBubble();
             } else {
@@ -54,7 +62,6 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
 
-        // Match status bar and navigation bar with screen color (#FAF1E6)
         android.view.Window window = getWindow();
         window.addFlags(android.view.WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(android.graphics.Color.parseColor("#FAF1E6"));
@@ -76,7 +83,10 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
             return insets;
         });
 
-        binding.btnGoTree.setOnClickListener(v -> {
+        // 🌟 تحميل أفاتار الطفل المختار من قاعدة البيانات
+        loadChildAvatar();
+
+        binding.btnGoToTree.setOnClickListener(v -> {
             Intent intent = new Intent(KidsBubbleBreathingActivity.this, KidsTreeActivity.class);
             intent.putExtra("CHILD_ID", getChildId());
             startActivity(intent);
@@ -92,7 +102,6 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
 
         binding.btnBack.setOnClickListener(v -> finish());
 
-        binding.btnQuietExit.setOnClickListener(v -> showDoneState());
 
         binding.btnBubblesAgain.setOnClickListener(v -> resetExercise());
 
@@ -107,6 +116,28 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         });
 
         showWelcomeState();
+    }
+
+    private void loadChildAvatar() {
+        long childId = getChildId();
+        if (childId != -1L) {
+            ChildProfileStore store = new ChildProfileStore(this);
+            try {
+                List<ChildProfile> profiles = store.getProfiles();
+                for (ChildProfile profile : profiles) {
+                    if (profile.getId() == childId) {
+                        if (profile.getAvatar() != null && !profile.getAvatar().trim().isEmpty()) {
+                            binding.tvChildAvatar.setText(profile.getAvatar());
+                        }
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                Log.e("KidsBubbleBreathing", "Error loading avatar: " + e.getMessage());
+            } finally {
+                store.close();
+            }
+        }
     }
 
     private boolean handlePrimaryTouch(MotionEvent event) {
@@ -131,8 +162,9 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         completedBubbles = 0;
         breathProgress = 0f;
         isHolding = false;
+        binding.tvChildAvatar.setScaleX(1.0f);
+        binding.tvChildAvatar.setScaleY(1.0f);
         binding.bubbleView.showMode(KidsBubbleView.Mode.WELCOME);
-        binding.btnQuietExit.setVisibility(View.GONE);
         binding.tvStars.setVisibility(View.GONE);
         binding.tvBreathHint.setVisibility(View.GONE);
         binding.tvInstructionTitle.setVisibility(View.VISIBLE);
@@ -148,7 +180,6 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
     private void showReadyState() {
         binding.btnPrimary.setSelected(true);
         binding.bubbleView.showMode(KidsBubbleView.Mode.READY);
-        binding.btnQuietExit.setVisibility(View.VISIBLE);
         binding.tvStars.setVisibility(View.VISIBLE);
         binding.tvBreathHint.setVisibility(View.VISIBLE);
         binding.tvInstructionTitle.setVisibility(View.GONE);
@@ -174,6 +205,8 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
 
         isHolding = false;
         handler.removeCallbacks(breathRunnable);
+        binding.tvChildAvatar.setScaleX(1.0f);
+        binding.tvChildAvatar.setScaleY(1.0f);
         if (breathProgress < 1f) {
             binding.bubbleView.showMode(KidsBubbleView.Mode.READY);
             binding.btnPrimary.setText(R.string.bubble_btn_hold);
@@ -183,6 +216,8 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
     private void finishOneBubble() {
         isHolding = false;
         handler.removeCallbacks(breathRunnable);
+        binding.tvChildAvatar.setScaleX(1.0f);
+        binding.tvChildAvatar.setScaleY(1.0f);
         completedBubbles++;
         updateStars();
 
@@ -196,13 +231,13 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         }
     }
 
-    // المكان الصحيح لحفظ الإنجاز والنقاط
     private void showDoneState() {
         isHolding = false;
         handler.removeCallbacks(breathRunnable);
+        binding.tvChildAvatar.setScaleX(1.0f);
+        binding.tvChildAvatar.setScaleY(1.0f);
         binding.bubbleView.showMode(KidsBubbleView.Mode.DONE);
 
-        binding.btnQuietExit.setVisibility(View.GONE);
         binding.tvStars.setVisibility(View.GONE);
         binding.tvBreathHint.setVisibility(View.GONE);
 
@@ -215,7 +250,6 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         binding.btnPrimary.setVisibility(View.GONE);
         binding.actionsRow.setVisibility(View.VISIBLE);
 
-        // --- حفظ الإنجاز وإضافة النقاط رسمياً ---
         saveBreathingAchievement();
     }
 
@@ -228,21 +262,17 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         }
 
         ChildProfileStore store = new ChildProfileStore(this);
-        // 1. تسجيل الحدث بالـ Long الموحد
         store.addCompletedEvent(currentChildId, "BREATHING_EXERCISE");
 
-        // 2. استخدام نفس المفتاح بالضبط للشجرة
-        TreeProgressManager progressManager = new TreeProgressManager(this, String.valueOf(currentChildId));
+        TreeProgressManager progressManager = new TreeProgressManager(this, currentChildId);
         progressManager.addPoints(15);
 
         // 3. نجمة "الطفل المميز" الجديدة
         store.addStar(currentChildId);
     }
     private long getChildId() {
-        // 1. القراءة من الـ Intent إذا كان موجوداً
         long id = getIntent().getLongExtra("CHILD_ID", -1L);
 
-        // 2. إذا لم يوجد في الـ Intent، نفحص الملفات الاحتياطية المشهورين بالتطبيق
         if (id == -1L) {
             id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
         }

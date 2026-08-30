@@ -1,5 +1,7 @@
 package com.example.graduationproject.models;
 
+import com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView;
+
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -53,6 +55,24 @@ public class KidsAdaptiveOnboardingData {
         d.moodCheckinEnabled = moodCheckinEnabled;
         d.onboardingCompleted = onboardingCompleted;
         return d;
+    }
+
+    /** 🌟 دالة تحويل الخيار المختار (sad, low, neutral, good, great) إلى مظهر الأفاتار المناسب */
+    public String getAvatarMoodFromSelection() {
+        if (demoMoodSelected == null || demoMoodSelected.trim().isEmpty()) {
+            return KidsAdaptiveTeddyBuddyView.MOOD_WARM;
+        }
+        switch (demoMoodSelected) {
+            case "sad":
+            case "low":
+                return KidsAdaptiveTeddyBuddyView.MOOD_CALM;
+            case "good":
+            case "great":
+                return KidsAdaptiveTeddyBuddyView.MOOD_WARM;
+            case "neutral":
+            default:
+                return KidsAdaptiveTeddyBuddyView.MOOD_NEUTRAL;
+        }
     }
 
     /** Equivalent of dispatch({type:'TOGGLE_ARRAY', field, value}). */

@@ -1,19 +1,18 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.graduationproject.R;
 import com.example.graduationproject.util.KidsAdaptiveTypefaces;
 import com.example.graduationproject.util.KidsAdaptiveUiHelpers;
-import com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView;
-import com.example.graduationproject.widget.KidsAdaptiveDemoFaceView;
 
 public class KidsAdaptiveMoodDemoFragment extends KidsAdaptiveBaseOnboardingFragment {
 
@@ -28,7 +27,8 @@ public class KidsAdaptiveMoodDemoFragment extends KidsAdaptiveBaseOnboardingFrag
 
     @Override
     protected String getCompanionMood() {
-        return data().demoMoodSelected != null ? KidsAdaptiveTeddyBuddyView.MOOD_WARM : KidsAdaptiveTeddyBuddyView.MOOD_NEUTRAL;
+        // 🌟 استخدام الدالة الجديدة من كلاس البيانات
+        return data().getAvatarMoodFromSelection();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class KidsAdaptiveMoodDemoFragment extends KidsAdaptiveBaseOnboardingFrag
         card.setOrientation(LinearLayout.VERTICAL);
         GradientDrawable gd = new GradientDrawable();
         gd.setCornerRadius(dp(20));
-        gd.setColor(Color.argb(160, 255, 255, 255)); // Matches adult demo card
+        gd.setColor(Color.argb(160, 255, 255, 255));
         gd.setStroke(dp(1), Color.argb(40, 0, 0, 0));
         card.setBackground(gd);
         int padH = dp(14), padV = dp(20);
@@ -84,29 +84,28 @@ public class KidsAdaptiveMoodDemoFragment extends KidsAdaptiveBaseOnboardingFrag
         for (int i = 0; i < IDS.length; i++) {
             final int idx = i;
             boolean isSel = IDS[idx].equals(data().demoMoodSelected);
-            
+
             LinearLayout col = new LinearLayout(requireContext());
             col.setOrientation(LinearLayout.VERTICAL);
             col.setGravity(Gravity.CENTER);
             col.setPadding(dp(4), dp(10), dp(4), dp(10));
-            
+
             GradientDrawable bg = new GradientDrawable();
             bg.setCornerRadius(dp(16));
             if (isSel) {
-                // Large light reddish selected background as in Image 8
-                bg.setColor(Color.argb(50, 201, 138, 138)); // ROSE at 20% alpha
+                bg.setColor(Color.argb(50, 201, 138, 138));
             } else {
                 bg.setColor(Color.TRANSPARENT);
             }
             col.setBackground(bg);
-            
+
             LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f);
             lp.setMargins(dp(2), 0, dp(2), 0);
             col.setLayoutParams(lp);
 
             TextView emoji = new TextView(requireContext());
             emoji.setText(EMOJIS[idx]);
-            emoji.setTextSize(30); 
+            emoji.setTextSize(30);
             emoji.setGravity(Gravity.CENTER);
             LinearLayout.LayoutParams icLp = new LinearLayout.LayoutParams(dp(44), dp(44));
             icLp.bottomMargin = dp(4);
@@ -122,8 +121,23 @@ public class KidsAdaptiveMoodDemoFragment extends KidsAdaptiveBaseOnboardingFrag
 
             col.setOnClickListener(v -> {
                 data().demoMoodSelected = IDS[idx];
-                teddyHeader.setMood(getCompanionMood());
-                host.pulseTeddy();
+
+                // 🌟 تحديث مظهر الدب العلوي فوراً
+                if (teddyHeader != null) {
+                    teddyHeader.setMood(data().getAvatarMoodFromSelection());
+                }
+
+                if (host != null) {
+                    host.pulseTeddy();
+                }
+
+                // 🌟 حفظ الاختيار فوراً في SharedPreferences
+                String chosenAvatar = data().demoMoodSelected;
+                if (chosenAvatar != null && !chosenAvatar.trim().isEmpty()) {
+                    SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+                    prefs.edit().putString("current_child_avatar", chosenAvatar).apply();
+                }
+
                 renderFaces();
                 updateHint();
             });

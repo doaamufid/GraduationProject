@@ -30,8 +30,10 @@ import androidx.core.view.WindowInsetsCompat;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityKidsAiChatBinding;
 import com.example.graduationproject.databinding.LayoutVoiceRecordingBottomSheetBinding;
+import com.example.graduationproject.models.ChildProfile;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
+import java.util.List;
 import java.util.Locale;
 
 public class KidsAiChatActivity extends AppCompatActivity {
@@ -77,12 +79,63 @@ public class KidsAiChatActivity extends AppCompatActivity {
             return insets;
         });
 
+        // 🌟 قراءة بروفايل الطفل المباشرة من قاعدة البيانات لتحديث الأفاتار
+        loadChildProfileFromDatabase();
+
         // Initialize Services
         geminiService = new GeminiService();
         initSpeechHelper();
 
         setupListeners();
         startEntranceAnimations();
+    }
+
+    /**
+     * جلب شخصية الطفل (الأفاتار) مباشرة من قاعدة البيانات المشفرة
+     */
+    /**
+     * جلب شخصية الطفل (الأفاتار) مباشرة من قاعدة البيانات
+     */
+    private void loadChildProfileFromDatabase() {
+        long childId = getChildId();
+
+        ChildProfileStore store = new ChildProfileStore(this);
+        try {
+            List<ChildProfile> profiles = store.getProfiles();
+            if (profiles.isEmpty()) return;
+
+            ChildProfile matchedProfile = null;
+
+            // 1. البحث عن الطفل بواسطة الـ ID
+            if (childId != -1L) {
+                for (ChildProfile profile : profiles) {
+                    if (profile.getId() == childId) {
+                        matchedProfile = profile;
+                        break;
+                    }
+                }
+            }
+
+            // 2. إذا لم يجد ID (مثلاً عند إنشاء طفل جديد فوراً)، يحضر آخر طفل تم إضافته
+            if (matchedProfile == null) {
+                matchedProfile = profiles.get(profiles.size() - 1);
+            }
+
+            // 3. عرض الأفاتار الخاص بالطفل
+            if (matchedProfile != null) {
+                String avatar = matchedProfile.getAvatar();
+                if (avatar != null && !avatar.trim().isEmpty()) {
+                    binding.tvBearAvatar.setText(avatar);
+                } else {
+                    binding.tvBearAvatar.setText("🐻");
+                }
+            }
+
+        } catch (Exception e) {
+            Log.e("KidsAiChatActivity", "Error loading profile: " + e.getMessage());
+        } finally {
+            store.close();
+        }
     }
 
     private void initSpeechHelper() {
@@ -373,11 +426,15 @@ public class KidsAiChatActivity extends AppCompatActivity {
         }
 
         ChildProfileStore store = new ChildProfileStore(this);
-        if (!store.hasCompletedEventToday(childId, "CHAT_SESSION")) {
-            store.addCompletedEvent(childId, "CHAT_SESSION");
-            // Use childId as string to keep points unique to this child
-            TreeProgressManager progressManager = new TreeProgressManager(this, String.valueOf(childId));
-            progressManager.addPoints(10);
+        try {
+            if (!store.hasCompletedEventToday(childId, "CHAT_SESSION")) {
+                store.addCompletedEvent(childId, "CHAT_SESSION");
+                // Use childId as string to keep points unique to this child
+                TreeProgressManager progressManager = new TreeProgressManager(this, childId);
+                progressManager.addPoints(10);
+            }
+        } finally {
+            store.close();
         }
     }
 
