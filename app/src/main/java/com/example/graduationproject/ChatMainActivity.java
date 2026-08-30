@@ -39,25 +39,22 @@ import com.example.graduationproject.models.ChatMessage;
 import com.example.graduationproject.models.ScriptNode;
 import com.example.graduationproject.models.ScriptReply;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
-
+import com.example.graduationproject.data.ChatDatabase;
+import com.example.graduationproject.data.ChatMessageDao;
+import com.example.graduationproject.data.ChatMessageEntity;
+import java.util.concurrent.Executor;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import java.util.Random;
+import java.util.concurrent.Executors;
 
 /**
  * Java/XML port of CompanionChatFlow (JSX), extended with working voice
- * messages: the mic records the user's voice, sends it into the chat as a
- * voice bubble, and bubble playback uses MediaPlayer.
- *
- * State mirrored from the original useState hooks:
- *   messages     -> `messages` (List<ChatMessage>)
- *   currentNode  -> `currentNode` (String, key into ConversationScript.NODES)
- *   typing       -> `typing` (boolean, drives the typing-indicator row)
- *   input        -> the EditText's own text (read directly, no separate field needed)
- *   toast        -> handled by showToast()/hideToast()
+ * messages, Room-based local storage (7-day retention), and Gemini AI
+ * replies for free-typed messages.
  */
 public class ChatMainActivity extends AppCompatActivity {
 
@@ -66,6 +63,11 @@ public class ChatMainActivity extends AppCompatActivity {
     private static long uid = 0;
     private static long nextId() { return ++uid; }
     private String now() { return getString(R.string.chat_now); }
+    private static final long RETENTION_MILLIS = 7L * 24 * 60 * 60 * 1000; // 7 أيام
+
+    private ChatMessageDao chatDao;
+    private com.example.graduationproject.SalamGeminiService geminiService;
+    private final Executor dbExecutor = Executors.newSingleThreadExecutor();
 
     @Override
     protected void attachBaseContext(android.content.Context newBase) {
@@ -112,14 +114,14 @@ public class ChatMainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this, 
+        EdgeToEdge.enable(this,
                 SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT),
                 SystemBarStyle.light(Color.TRANSPARENT, Color.TRANSPARENT));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.Q) {
             getWindow().setNavigationBarContrastEnforced(false);
         }
-        
+
         setContentView(R.layout.chat_activity_main);
 
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.chat_root), (v, insets) -> {
@@ -132,13 +134,63 @@ public class ChatMainActivity extends AppCompatActivity {
         setupRecycler();
         setupInputBar();
 
-        // Mirrors: useState([{ id: nextId(), from:"bot", text: SCRIPT.start.bot, time: now() }])
-        ScriptNode startNode = ConversationScript.NODES.get(ConversationScript.NODE_START);
-        messages.add(ChatMessage.bot(nextId(), getString(startNode.botResId), now(), startNode.cardType));
-        adapter.notifyItemInserted(0);
-        renderQuickReplies();
+        chatDao = ChatDatabase.getInstance(this).chatMessageDao();
+        geminiService = new com.example.graduationproject.SalamGeminiService();
+
+        loadMessagesFromDb();
     }
 
+    // ---------------------------------------------------------------
+    // Local storage (Room) - load, persist, retention cleanup
+    // ---------------------------------------------------------------
+    private void loadMessagesFromDb() {
+        dbExecutor.execute(() -> {
+            long threshold = System.currentTimeMillis() - RETENTION_MILLIS;
+            chatDao.deleteOlderThan(threshold);
+            List<ChatMessageEntity> saved = chatDao.getAll();
+
+            runOnUiThread(() -> {
+                if (saved.isEmpty()) {
+                    ScriptNode startNode = ConversationScript.NODES.get(ConversationScript.NODE_START);
+                    ChatMessage msg = ChatMessage.bot(nextId(), getString(startNode.botResId), now(), startNode.cardType);
+                    messages.add(msg);
+                    adapter.notifyItemInserted(0);
+                    persistMessage(msg);
+                } else {
+                    for (ChatMessageEntity e : saved) {
+                        messages.add(entityToChatMessage(e));
+                    }
+                    adapter.notifyDataSetChanged();
+                    scrollToBottom();
+                }
+                renderQuickReplies();
+            });
+        });
+    }
+
+    private ChatMessage entityToChatMessage(ChatMessageEntity e) {
+        if (e.audioPath != null) {
+            return ChatMessage.voice(nextId(), e.audioPath, e.audioDurationSec, e.time);
+        }
+        if (e.fromUser) {
+            return ChatMessage.user(nextId(), e.text, e.time);
+        }
+        return ChatMessage.bot(nextId(), e.text, e.time, e.cardType);
+    }
+
+    private void persistMessage(ChatMessage msg) {
+        dbExecutor.execute(() -> {
+            ChatMessageEntity e = new ChatMessageEntity();
+            e.fromUser = msg.fromUser;
+            e.text = msg.text;
+            e.time = msg.time;
+            e.timestamp = System.currentTimeMillis();
+            e.cardType = msg.cardType;
+            e.audioPath = msg.audioPath;
+            e.audioDurationSec = msg.audioDurationSec;
+            chatDao.insert(e);
+        });
+    }
 
     private void bindViews() {
         recyclerMessages = findViewById(R.id.recycler_messages);
@@ -273,11 +325,13 @@ public class ChatMainActivity extends AppCompatActivity {
         }
     }
 
-    /** Adds the recorded voice into the chat and triggers the bot's reply. */
+    /** Adds the recorded voice into the chat, persists it, and triggers the bot's reply. */
     private void sendVoiceMessage(String path, int durationSec) {
-        messages.add(ChatMessage.voice(nextId(), path, durationSec, now()));
+        ChatMessage voiceMsg = ChatMessage.voice(nextId(), path, durationSec, now());
+        messages.add(voiceMsg);
         adapter.notifyItemInserted(messages.size() - 1);
         scrollToBottom();
+        persistMessage(voiceMsg);
         pushBot(ConversationScript.NODE_FREE_REPLY); // exactly like a text send
         showToast(getString(R.string.chat_voice_sent_toast));
     }
@@ -370,18 +424,21 @@ public class ChatMainActivity extends AppCompatActivity {
         pushBot(next);
     }
 
+    /** Free-typed text now goes to Gemini instead of the fixed script. */
     private void handleSend() {
         String text = editInput.getText().toString();
         if (text.trim().isEmpty()) return;
         addUserMessage(text);
         editInput.setText("");
-        pushBot(ConversationScript.NODE_FREE_REPLY); // always freeReply, exactly like the JSX
+        pushBotFromGemini(text);
     }
 
     private void addUserMessage(String text) {
-        messages.add(ChatMessage.user(nextId(), text, now()));
+        ChatMessage msg = ChatMessage.user(nextId(), text, now());
+        messages.add(msg);
         adapter.notifyItemInserted(messages.size() - 1);
         scrollToBottom();
+        persistMessage(msg);
     }
 
     /** Mirrors pushBot(node): shows typing for 1100-1600ms, then appends the bot message. */
@@ -396,13 +453,49 @@ public class ChatMainActivity extends AppCompatActivity {
             setTypingIndicatorVisible(false);
 
             ScriptNode def = ConversationScript.NODES.get(node);
-            messages.add(ChatMessage.bot(nextId(), getString(def.botResId), now(), def.cardType));
+            ChatMessage botMsg = ChatMessage.bot(nextId(), getString(def.botResId), now(), def.cardType);
+            messages.add(botMsg);
             adapter.notifyItemInserted(messages.size() - 1);
             scrollToBottom();
+            persistMessage(botMsg);
 
             currentNode = node;
             renderQuickReplies();
         }, delay);
+    }
+
+    /** Sends the user's free-typed message to Gemini and appends the real AI reply. */
+    private void pushBotFromGemini(String userText) {
+        typing = true;
+        setTypingIndicatorVisible(true);
+        renderQuickReplies();
+
+        dbExecutor.execute(() -> {
+            List<ChatMessageEntity> history = chatDao.getAll();
+            geminiService.sendMessage(history, userText, new com.example.graduationproject.SalamGeminiService.GeminiCallback() {
+                @Override
+                public void onSuccess(String reply) {
+                    runOnUiThread(() -> finishGeminiReply(reply));
+                }
+
+                @Override
+                public void onError(String errorMessage) {
+                    runOnUiThread(() -> finishGeminiReply(errorMessage));
+                }
+            });
+        });
+    }
+
+    private void finishGeminiReply(String text) {
+        typing = false;
+        setTypingIndicatorVisible(false);
+
+        ChatMessage botMsg = ChatMessage.bot(nextId(), text, now(), null);
+        messages.add(botMsg);
+        adapter.notifyItemInserted(messages.size() - 1);
+        scrollToBottom();
+        persistMessage(botMsg);
+        renderQuickReplies();
     }
 
     // ---------------------------------------------------------------
