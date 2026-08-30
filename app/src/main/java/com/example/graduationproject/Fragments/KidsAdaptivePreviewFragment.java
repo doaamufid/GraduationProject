@@ -1,5 +1,7 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
@@ -8,7 +10,6 @@ import android.widget.TextView;
 import com.example.graduationproject.R;
 import com.example.graduationproject.util.KidsAdaptiveTypefaces;
 import com.example.graduationproject.util.KidsAdaptiveUiHelpers;
-import com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,10 +23,18 @@ public class KidsAdaptivePreviewFragment extends KidsAdaptiveBaseOnboardingFragm
 
     @Override public int getScreenIndex() { return 11; }
     @Override protected boolean showSkip() { return false; }
-    @Override protected String getCompanionMood() { return KidsAdaptiveTeddyBuddyView.MOOD_CALM; }
+
+    // 🌟 استرجاع مظهر الأفاتار/الدب المختار ديناميكياً بدلاً من MOOD_CALM
+    @Override
+    protected String getCompanionMood() {
+        return data().getAvatarMoodFromSelection();
+    }
 
     @Override
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
+        // 🌟 التأكد من المزامنة والحفظ النهائي للأفاتار المختار في SharedPreferences
+        saveAvatarToPrefs();
+
         LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(20); tlp.bottomMargin = dp(16);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_preview_title), 20), tlp);
 
@@ -67,9 +76,21 @@ public class KidsAdaptivePreviewFragment extends KidsAdaptiveBaseOnboardingFragm
                 edit.setAlpha(0.6f);
                 edit.setPadding(dp(8), dp(4), 0, dp(4));
                 final int jump = c.jump;
-                edit.setOnClickListener(v -> host.goTo(jump));
+                edit.setOnClickListener(v -> {
+                    if (host != null) {
+                        host.pulseTeddy();
+                        host.goTo(jump);
+                    }
+                });
                 row.addView(edit, new LinearLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
             }
+
+            // 🌟 إضافة تفاعل عند النقر على الكرت نفسه
+            row.setOnClickListener(v -> {
+                if (host != null) {
+                    host.pulseTeddy();
+                }
+            });
         }
 
         TextView footnote = new TextView(requireContext());
@@ -87,6 +108,14 @@ public class KidsAdaptivePreviewFragment extends KidsAdaptiveBaseOnboardingFragm
                 LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT));
         LinearLayout.LayoutParams fwlp = matchWrap(); fwlp.topMargin = dp(20);
         container.addView(centerWrap, fwlp);
+    }
+
+    private void saveAvatarToPrefs() {
+        String chosenAvatar = data().demoMoodSelected;
+        if (chosenAvatar != null && !chosenAvatar.trim().isEmpty()) {
+            SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+            prefs.edit().putString("current_child_avatar", chosenAvatar).apply();
+        }
     }
 
     private List<Card> buildPreview() {

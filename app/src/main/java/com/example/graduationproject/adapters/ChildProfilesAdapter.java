@@ -71,22 +71,35 @@ public class ChildProfilesAdapter extends RecyclerView.Adapter<RecyclerView.View
             Context context = binding.getRoot().getContext();
             binding.tvChildName.setText(profile.getName());
 
-            // تحويل قيمة الجنس المسجلة إلى نص مترجم تلقائياً
+            // 1. تحويل قيمة الجنس المسجلة إلى نص مترجم تلقائياً
             String rawGender = profile.getGender() != null ? profile.getGender().trim() : "";
             String genderText;
-            if ("boy".equalsIgnoreCase(rawGender) || "ولد".equalsIgnoreCase(rawGender)) {
+            if ("boy".equalsIgnoreCase(rawGender) || "male".equalsIgnoreCase(rawGender) || "ولد".equalsIgnoreCase(rawGender)) {
                 genderText = context.getString(R.string.gender_boy);
-            } else if ("girl".equalsIgnoreCase(rawGender) || "بنت".equalsIgnoreCase(rawGender)) {
+            } else if ("girl".equalsIgnoreCase(rawGender) || "female".equalsIgnoreCase(rawGender) || "بنت".equalsIgnoreCase(rawGender)) {
                 genderText = context.getString(R.string.gender_girl);
             } else {
-                genderText = rawGender;
+                genderText = rawGender.isEmpty() ? "غير محدد" : rawGender;
             }
 
-            // جلب صيغة النص المترجمة حسب لغة الجهاز (تستبدل العمر والجنس)
+            // 2. جلب صيغة النص المترجمة حسب لغة الجهاز (تستبدل العمر والجنس)
             String ageAndGender = context.getString(R.string.kids_age_gender_format, profile.getAge(), genderText);
             binding.tvChildAge.setText(ageAndGender);
 
-            binding.tvAvatar.setText(profile.getAvatar());
+            // 3. 🌟 إظهار شخصية/أفاتار الطفل مع حماية ضد القيمة الفارغة (Fallback)
+            String avatar = profile.getAvatar();
+            if (avatar == null || avatar.trim().isEmpty()) {
+                // شكل افتراضي بحسب الجنس إذا لم يتم اختيار أي شكل
+                if ("female".equalsIgnoreCase(rawGender) || "girl".equalsIgnoreCase(rawGender) || "بنت".equalsIgnoreCase(rawGender)) {
+                    avatar = "🎀";
+                } else if ("male".equalsIgnoreCase(rawGender) || "boy".equalsIgnoreCase(rawGender) || "ولد".equalsIgnoreCase(rawGender)) {
+                    avatar = "⭐";
+                } else {
+                    avatar = "🧸";
+                }
+            }
+
+            binding.tvAvatar.setText(avatar);
             binding.tvAvatar.setBackgroundResource(position % 2 == 0
                     ? R.drawable.bg_child_avatar_mint
                     : R.drawable.bg_child_avatar_pink);

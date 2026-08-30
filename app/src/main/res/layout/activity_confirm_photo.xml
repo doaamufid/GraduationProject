@@ -44,11 +44,13 @@
             android:paddingTop="28dp"
             android:paddingBottom="28dp">
 
-            <ImageView
-                android:layout_width="56dp"
-                android:layout_height="56dp"
+            <TextView
+                android:id="@+id/tv_child_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_bear_face"/>
+                android:text="🐻"
+                android:textSize="56sp" />
 
             <TextView
                 android:layout_width="match_parent"

@@ -1,11 +1,9 @@
 package com.example.graduationproject.Kids;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.speech.tts.TextToSpeech;
-import android.view.Window;
-import android.view.WindowManager;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import android.view.View;
@@ -13,8 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
+import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityKidsAiResponseBinding;
+import com.example.graduationproject.models.ChildProfile;
 
+import java.util.List;
 import java.util.Locale;
 
 public class KidsAiResponseActivity extends AppCompatActivity {
@@ -27,13 +28,10 @@ public class KidsAiResponseActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Enable Edge-to-Edge first
         EdgeToEdge.enable(this);
-
         binding = ActivityKidsAiResponseBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        // Make status bar and navigation bar transparent
         android.view.Window window = getWindow();
         window.setFlags(android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS,
                 android.view.WindowManager.LayoutParams.FLAG_LAYOUT_NO_LIMITS);
@@ -43,6 +41,9 @@ public class KidsAiResponseActivity extends AppCompatActivity {
             controller.setAppearanceLightStatusBars(true);
             controller.setAppearanceLightNavigationBars(true);
         }
+
+        // 🌟 قراءة أفاتار الطفل المختار وتحديث الواجهة
+        loadChildAvatarFromDatabase();
 
         // استقبال نص الرد
         responseText = getIntent().getStringExtra("AI_RESPONSE");
@@ -100,6 +101,46 @@ binding.btnActionDraw.setOnClickListener(new View.OnClickListener() {
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(intent);
         });
+    }
+
+    /**
+     * جلب أفاتار الطفل المختار مباشرة من قاعدة البيانات المشفرة
+     */
+    private void loadChildAvatarFromDatabase() {
+        long childId = getChildId();
+
+        if (childId != -1L) {
+            ChildProfileStore store = new ChildProfileStore(this);
+            try {
+                List<ChildProfile> profiles = store.getProfiles();
+                for (ChildProfile profile : profiles) {
+                    if (profile.getId() == childId) {
+                        String avatar = profile.getAvatar();
+                        if (avatar != null && !avatar.trim().isEmpty()) {
+                            binding.tvBearAvatar3.setText(avatar);
+                        } else {
+                            binding.tvBearAvatar3.setText("🐻");
+                        }
+                        break;
+                    }
+                }
+            } catch (Exception e) {
+                Log.e("KidsAiResponse", "Error loading avatar: " + e.getMessage());
+            } finally {
+                store.close();
+            }
+        }
+    }
+
+    private long getChildId() {
+        long id = getIntent().getLongExtra("CHILD_ID", -1L);
+        if (id == -1L) {
+            id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
+        }
+        if (id == -1L) {
+            id = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", -1L);
+        }
+        return id;
     }
 
     private void initTextToSpeech() {

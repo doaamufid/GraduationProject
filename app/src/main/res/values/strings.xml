@@ -21,7 +21,7 @@
     <string name="btn_send_to_noor">أرسلها لنور</string>
     <string name="btn_retake">صوّر غيرها</string>
     <!--  Screen 4: Processing  -->
-    <string name="processing_text">نور بيشوف رسمتك بعناية</string>
+    <string name="processing_text">صديقك بيشوف رسمتك بعناية</string>
     <!--  Screen 5: Result  -->
     <string name="result_message">واوا رسمتك قوية كتير 🎨 حسّيت فيها إحساسك، وأنا فخور فيك إنك عبّرت عنه!</string>
     <string name="got_star">حصلت على نجمة!</string>

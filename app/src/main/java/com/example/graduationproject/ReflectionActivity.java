@@ -171,4 +171,5 @@ public class ReflectionActivity extends AppCompatActivity {
         super.onDestroy();
         cleanupHandler();
     }
+
 }

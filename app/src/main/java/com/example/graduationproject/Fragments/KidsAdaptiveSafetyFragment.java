@@ -1,11 +1,12 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
 
 import com.example.graduationproject.R;
 import com.example.graduationproject.util.KidsAdaptiveUiHelpers;
-import com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView;
 import com.example.graduationproject.widget.KidsAdaptiveChoiceCardView;
 
 public class KidsAdaptiveSafetyFragment extends KidsAdaptiveBaseOnboardingFragment {
@@ -13,7 +14,12 @@ public class KidsAdaptiveSafetyFragment extends KidsAdaptiveBaseOnboardingFragme
     private static final String[] IDS = {"rarely", "sometimes", "often", "most", "skip"};
 
     @Override public int getScreenIndex() { return 5; }
-    @Override protected String getCompanionMood() { return KidsAdaptiveTeddyBuddyView.MOOD_CALM; }
+
+    // 🌟 استرجاع مظهر الأفاتار/الدب المختار ديناميكياً بدلاً من القيمة الثابتة
+    @Override
+    protected String getCompanionMood() {
+        return data().getAvatarMoodFromSelection();
+    }
 
     @Override
     protected void onSkipClick() {
@@ -31,7 +37,7 @@ public class KidsAdaptiveSafetyFragment extends KidsAdaptiveBaseOnboardingFragme
 
         LinearLayout.LayoutParams tlp = matchWrap(); tlp.topMargin = dp(20); tlp.bottomMargin = dp(14);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_safety_title), 20), tlp);
-        
+
         LinearLayout.LayoutParams stlp = matchWrap(); stlp.bottomMargin = dp(20);
         container.addView(KidsAdaptiveUiHelpers.subtitle(requireContext(), getString(R.string.kids_adaptive_safety_subtitle)), stlp);
 
@@ -46,6 +52,18 @@ public class KidsAdaptiveSafetyFragment extends KidsAdaptiveBaseOnboardingFragme
             card.setOnClickListener(v -> {
                 data().safetyFeeling = IDS[idx];
                 for (int j = 0; j < cards.length; j++) cards[j].setSelectedState(j == idx);
+
+                // 🌟 نبض الأفاتار تفاعلياً مع اختيار الطفل
+                if (host != null) {
+                    host.pulseTeddy();
+                }
+
+                // 🌟 التأكد من حفظ الأفاتار المختار في SharedPreferences
+                String chosenAvatar = data().demoMoodSelected;
+                if (chosenAvatar != null && !chosenAvatar.trim().isEmpty()) {
+                    SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+                    prefs.edit().putString("current_child_avatar", chosenAvatar).apply();
+                }
             });
             cards[i] = card;
             LinearLayout.LayoutParams lp = matchWrap();

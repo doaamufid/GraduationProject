@@ -23,11 +23,13 @@
             android:scaleType="centerCrop"/>
     </androidx.cardview.widget.CardView>
 
-    <ImageView
-        android:layout_width="64dp"
-        android:layout_height="64dp"
-        android:layout_marginTop="18dp"
-        android:src="@drawable/ic_bear_face"/>
+    <TextView
+        android:id="@+id/tvMascotAvatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="50sp"
+        android:text="🐻" />
 
     <TextView
         android:layout_width="wrap_content"

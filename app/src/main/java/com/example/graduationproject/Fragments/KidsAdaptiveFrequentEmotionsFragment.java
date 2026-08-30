@@ -1,7 +1,8 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.graduationproject.R;
@@ -19,6 +20,12 @@ public class KidsAdaptiveFrequentEmotionsFragment extends KidsAdaptiveBaseOnboar
 
     @Override public int getScreenIndex() { return 4; }
 
+    // 🌟 إضافة هذه الدالة لضمان ظهور مظهر الأفاتار المختار في أعلى هذه الشاشة
+    @Override
+    protected String getCompanionMood() {
+        return data().getAvatarMoodFromSelection();
+    }
+
     @Override
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
         String[] labels = {
@@ -32,7 +39,7 @@ public class KidsAdaptiveFrequentEmotionsFragment extends KidsAdaptiveBaseOnboar
         tlp.topMargin = dp(20);
         tlp.bottomMargin = dp(10);
         container.addView(KidsAdaptiveUiHelpers.title(requireContext(), getString(R.string.kids_adaptive_emotions_title), 21), tlp);
-        
+
         LinearLayout.LayoutParams stlp = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.WRAP_CONTENT);
         stlp.bottomMargin = dp(20);
         container.addView(KidsAdaptiveUiHelpers.subtitle(requireContext(), getString(R.string.kids_adaptive_emotions_subtitle)), stlp);
@@ -54,7 +61,18 @@ public class KidsAdaptiveFrequentEmotionsFragment extends KidsAdaptiveBaseOnboar
             bubble.setOnClickListener(v -> {
                 KidsAdaptiveOnboardingData.toggle(data().frequentEmotions, IDS[idx]);
                 bubble.setSelectedState(data().frequentEmotions.contains(IDS[idx]));
-                host.pulseTeddy();
+
+                // 🌟 تحريك الأفاتار المختار بالهيدر العلوي عند اختيار أي شعور
+                if (host != null) {
+                    host.pulseTeddy();
+                }
+
+                // 🌟 التأكد من حفظ الأفاتار المختار في SharedPreferences
+                String chosenAvatar = data().demoMoodSelected;
+                if (chosenAvatar != null && !chosenAvatar.trim().isEmpty()) {
+                    SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+                    prefs.edit().putString("current_child_avatar", chosenAvatar).apply();
+                }
             });
             flow.addView(bubble);
         }

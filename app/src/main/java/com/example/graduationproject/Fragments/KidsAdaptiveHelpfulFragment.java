@@ -1,5 +1,7 @@
 package com.example.graduationproject.Fragments;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.widget.GridLayout;
 import android.widget.LinearLayout;
@@ -7,7 +9,6 @@ import android.widget.LinearLayout;
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.KidsAdaptiveOnboardingData;
 import com.example.graduationproject.util.KidsAdaptiveUiHelpers;
-import com.example.graduationproject.view.KidsAdaptiveTeddyBuddyView;
 import com.example.graduationproject.widget.KidsAdaptiveChoiceCardView;
 
 public class KidsAdaptiveHelpfulFragment extends KidsAdaptiveBaseOnboardingFragment {
@@ -18,7 +19,12 @@ public class KidsAdaptiveHelpfulFragment extends KidsAdaptiveBaseOnboardingFragm
     private static final String[] EMOJIS = {"🎧", "🫁", "🕌", "✍️", "💬", "🚶", "🎮", "😶"};
 
     @Override public int getScreenIndex() { return 8; }
-    @Override protected String getCompanionMood() { return KidsAdaptiveTeddyBuddyView.MOOD_WARM; }
+
+    // 🌟 استرجاع مظهر الأفاتار/الدب المختار ديناميكياً ليظهر في أعلى الشاشة
+    @Override
+    protected String getCompanionMood() {
+        return data().getAvatarMoodFromSelection();
+    }
 
     @Override
     protected void buildContent(LinearLayout container, LayoutInflater inflater) {
@@ -56,6 +62,18 @@ public class KidsAdaptiveHelpfulFragment extends KidsAdaptiveBaseOnboardingFragm
             card.setOnClickListener(v -> {
                 KidsAdaptiveOnboardingData.toggle(data().helpfulActivities, IDS[idx]);
                 card.setSelectedState(data().helpfulActivities.contains(IDS[idx]));
+
+                // 🌟 نبض الأفاتار تفاعلياً عند اختيار الأنشطة
+                if (host != null) {
+                    host.pulseTeddy();
+                }
+
+                // 🌟 التأكد من حفظ الأفاتار المختار في SharedPreferences
+                String chosenAvatar = data().demoMoodSelected;
+                if (chosenAvatar != null && !chosenAvatar.trim().isEmpty()) {
+                    SharedPreferences prefs = requireContext().getSharedPreferences("KidsApp", Context.MODE_PRIVATE);
+                    prefs.edit().putString("current_child_avatar", chosenAvatar).apply();
+                }
             });
         }
     }

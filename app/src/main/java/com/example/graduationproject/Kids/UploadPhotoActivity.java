@@ -17,6 +17,7 @@ import androidx.core.content.ContextCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.graduationproject.R;
+import com.example.graduationproject.data.ChildProfileStore;
 
 import java.io.File;
 import java.io.IOException;
@@ -64,6 +65,7 @@ public class UploadPhotoActivity extends AppCompatActivity {
         btnCamera.setOnClickListener(v -> checkCameraPermissionAndLaunch());
         btnGallery.setOnClickListener(v -> pickImageLauncher.launch("image/*"));
         uploadBox.setOnClickListener(v -> pickImageLauncher.launch("image/*"));
+        loadChildAvatar();
     }
 
     private void checkCameraPermissionAndLaunch() {
@@ -96,6 +98,38 @@ public class UploadPhotoActivity extends AppCompatActivity {
 
         Intent intent = new Intent(UploadPhotoActivity.this, ConfirmPhotoActivity.class);
         intent.putExtra("photo_uri", uri.toString());
+        intent.putExtra("CHILD_ID", getChildId());
         startActivity(intent);
     }
+    private long getChildId() {
+        long id = getIntent().getLongExtra("CHILD_ID", -1L);
+        if (id == -1L) {
+            id = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
+        }
+        if (id == -1L) {
+            id = getSharedPreferences("KidsAppPrefs", MODE_PRIVATE).getLong("active_child_id", -1L);
+        }
+        return (id == -1L) ? 1L : id;
+    }
+    private void loadChildAvatar() {
+        long childId = getChildId(); // 🌟 إعطاء قيمة للـ childId
+        ChildProfileStore store = new ChildProfileStore(this);
+        try {
+            java.util.List<com.example.graduationproject.models.ChildProfile> profiles = store.getProfiles();
+            for (com.example.graduationproject.models.ChildProfile profile : profiles) {
+                if (profile.getId() == childId) {
+                    String avatar = profile.getAvatar();
+                    android.widget.TextView tvAvatar = findViewById(R.id.tvMascotAvatar);
+                    if (tvAvatar != null && avatar != null && !avatar.trim().isEmpty()) {
+                        tvAvatar.setText(avatar);
+                    }
+                    break;
+                }
+            }
+        } catch (Exception ignored) {
+        } finally {
+            store.close();
+        }
+    }
+
 }
