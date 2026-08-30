@@ -4,7 +4,6 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.Cursor;
-import com.example.graduationproject.R;
 
 import com.example.graduationproject.Fragments.profile.ChildDetailFragment;
 import com.example.graduationproject.Kids.BotMessage;
@@ -31,9 +30,8 @@ import java.util.Locale;
 
 public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "children_wellbeing.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
-    // مفتاح التشفير المشترك بـ AES-256
     public static final String DATABASE_PASSPHRASE = "SalamApp@2026SecureKeyAES256";
     private static final String TABLE_BOT_MESSAGES = "bot_messages";
     private static final String COLUMN_TEXT = "text";
@@ -145,9 +143,13 @@ public class ChildProfileStore extends SQLiteOpenHelper {
             seedSoundsAndVideosData(db);
         }
 
-        try {
-            db.execSQL("ALTER TABLE " + TABLE_PROFILES + " ADD COLUMN " + COLUMN_POINTS + " INTEGER NOT NULL DEFAULT 0");
-        } catch (Exception ignored) {
+        // 🟢 تحديث إضافة عمود points عند الانتقال للإصدار 6
+        if (oldVersion < 6) {
+            try {
+                db.execSQL("ALTER TABLE " + TABLE_PROFILES + " ADD COLUMN " + COLUMN_POINTS + " INTEGER NOT NULL DEFAULT 0");
+            } catch (Exception ignored) {
+                // العمود موجود بالفعل
+            }
         }
 
         if (oldVersion < 5) {
@@ -479,7 +481,6 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         return list;
     }
 
-    // 🔴 تم تعديل الدالة لتزويد برامتر gender القادم من قاعدة البيانات
     public ChildProfile getProfileById(long childId) {
         ChildProfile profile = null;
         try (Cursor cursor = getReadableDatabase(DATABASE_PASSPHRASE).rawQuery(
@@ -531,7 +532,6 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         return new ChildDetailFragment.Range(new float[]{3.2f, 4.5f, 2.8f, 4.0f, 4.6f, 3.9f, 4.4f}, new String[]{"ح", "ن", "ث", "ر", "خ", "ج", "س"});
     }
 
-    // 🔴 تم استخدام أيقونات افتراضية آمنة وموجودة لتجنب Unresolved symbol ic_tree
     public List<ChildFeature> getTopFeaturesUsed(long childId) {
         List<ChildFeature> list = new ArrayList<>();
         list.add(new ChildFeature("شجرة التعافي", 8, android.R.drawable.ic_menu_agenda));
@@ -556,4 +556,16 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         list.add("المحافظة على متابعة الجدول الأسبوعي بانتظام.");
         return list;
     }
+    public int getChildrenCount() {
+        int count = 0;
+        try (Cursor cursor = getReadableDatabase(DATABASE_PASSPHRASE).rawQuery("SELECT COUNT(*) FROM " + TABLE_PROFILES, null)) {
+            if (cursor.moveToFirst()) {
+                count = cursor.getInt(0);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return count;
+    }
+
 }
