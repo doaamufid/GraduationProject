@@ -1078,6 +1078,11 @@
     <string name="onboarding5_desc">A psychological survival box, calm environments, and exercises ready with one click when needed.</string>
     <string name="kids_adaptive_app_name">Salam for Kids</string>
 
+    <string name="switch_profile">Switch Profile</string>
+    <string name="switch_mode">Switch Mode</string>
+    <string name="back">Back</string>
+    <string name="kids_calm_cd_back">Back</string>
+
     <!-- Common -->
     <string name="kids_adaptive_back_cd">Back</string>
     <string name="kids_adaptive_skip">Skip</string>
@@ -1592,11 +1597,21 @@
     <string name="home_feature_reports_desc">View your mood reports</string>
     <string name="home_feature_community_title">Salam Community</string>
     <string name="home_feature_community_desc">Connect with the community</string>
-    ```xml
     <string name="kids_reminder_channel_name">Daily Salam Reminder</string>
     <string name="kids_reminder_channel_description">A daily reminder asking the child how they feel</string>
     <string name="kids_reminder_title">Hello, little one! 💛</string>
     <string name="kids_reminder_body">How are you feeling now? Do you need to use Salam, little one?</string>
+
+    <!-- Kids daily reflection screen -->
+    <string name="kids_reflection_c1_title">Stillness at the Summit 🏔️</string>
+    <string name="kids_reflection_c1_note">The mountain is big and I\'m little next to it — and that\'s totally okay! Take a deep breath, stop for a moment, and stay calm.</string>
+    <string name="kids_reflection_c2_title">A Far Horizon 🌊</string>
+    <string name="kids_reflection_c2_note">Like the wide sea, even if today was hard, tomorrow is bigger and brighter. Let yourself breathe peacefully.</string>
+    <string name="kids_reflection_c3_title">Forest Shade 🌿</string>
+    <string name="kids_reflection_c3_note">In the forest, everything slows down. You don\'t have to solve everything today — just be here with your feelings.</string>
+    <string name="kids_reflection_c4_title">Warm Sands ☀️</string>
+    <string name="kids_reflection_c4_note">Like the warm desert, some feelings need time to show up. Be patient — you\'re doing great! 💛</string>
+    <string name="kids_reflection_btn">Let\'s go!</string>
 
     <!-- Screen 1: Draw instruction -->
     <string name="draw_title">Draw on a piece of paper!</string>

@@ -4,6 +4,16 @@
     <string name="kids_reminder_channel_description">تذكير يومي يسأل الطفل كيف يشعر</string>
     <string name="kids_reminder_title">مرحباً يا صغيري! 💛</string>
     <string name="kids_reminder_body">كيف تشعر الآن؟ هل تحتاج إلى تطبيق سلام يا صغيري؟</string>
+    <!--  Kids daily reflection screen  -->
+    <string name="kids_reflection_c1_title">سكون في القمة 🏔️</string>
+    <string name="kids_reflection_c1_note">الجبل كبير وأنا قدامه صغير… وبس عادي! خذ نفساً عميقاً، وقف لحظة، وخلّي بالك هادي.</string>
+    <string name="kids_reflection_c2_title">أفق بعيد 🌊</string>
+    <string name="kids_reflection_c2_note">مثل البحر الواسع، حتى لو كان اليوم صعب، بكرة أكبر وأجمل. اترك نفسك تتنفس بهدوء.</string>
+    <string name="kids_reflection_c3_title">ظل الغابة 🌿</string>
+    <string name="kids_reflection_c3_note">في الغابة كل شيء يهدى ببطء. مو لازم تحل كل شيء اليوم، يكفي إنك تكون حاضر مع مشاعرك.</string>
+    <string name="kids_reflection_c4_title">دفء الرمال ☀️</string>
+    <string name="kids_reflection_c4_note">مثل الصحراء الدافئة، بعض المشاعر تحتاج وقت حتى تطلع. كن صبوراً، أنت تبلي بلاءً حسناً! 💛</string>
+    <string name="kids_reflection_btn">يلّا نكمل!</string>
     <!--  Screen 1: Draw instruction  -->
     <string name="draw_title">ارسم على ورقة عندك!</string>
     <string name="draw_subtitle">هلا نشوف إبداعك</string>
@@ -471,6 +481,11 @@
     <string name="faq_title">الأسئلة الشائعة</string>
     <string name="about_title">عن سلام</string>
     <string name="delete_everything_btn">حذف كل بياناتي نهائياً</string>
+
+    <string name="switch_profile">تبديل الملف الشخصي</string>
+    <string name="switch_mode">تبديل الوضع</string>
+    <string name="back">رجوع</string>
+    <string name="kids_calm_cd_back">رجوع</string>
 
     <!-- Language selection -->
     <string name="language_selection_title">اختر لغتك</string>
