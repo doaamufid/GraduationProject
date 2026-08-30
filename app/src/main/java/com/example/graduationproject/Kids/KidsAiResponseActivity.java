@@ -8,6 +8,7 @@ import android.view.Window;
 import android.view.WindowManager;
 
 import androidx.activity.EdgeToEdge;
+import android.view.View;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
@@ -48,7 +49,14 @@ public class KidsAiResponseActivity extends AppCompatActivity {
         if (responseText != null && !responseText.isEmpty()) {
             binding.tvAiResponseText.setText(responseText);
         }
-
+binding.btnActionDraw.setOnClickListener(new View.OnClickListener() {
+    @Override
+    public void onClick(View view) {
+        Intent intent=new Intent(KidsAiResponseActivity.this,DrawInstructionActivity.class);
+        startActivity(intent);
+        finish();
+    }
+});
         // تهيئة محرك الصوت لقراءة الرد تلقائياً
         initTextToSpeech();
 

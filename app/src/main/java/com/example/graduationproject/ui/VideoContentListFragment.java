@@ -72,7 +72,7 @@ public class VideoContentListFragment extends Fragment implements ContentAdapter
         rightIcon.setLayoutParams(new ViewGroup.LayoutParams(dp(34), dp(34)));
 
         TopBarHelper.bind(view,
-                getString(isFav ? R.string.fav_content_title : R.string.bookmark_content_list_title),
+                getString(isFav ? R.string.fav_content : R.string.bookmark_content),
                 null,
                 () -> requireActivity().onBackPressed(),
                 rightIcon);

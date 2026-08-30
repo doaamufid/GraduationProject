@@ -10,6 +10,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 
 import com.example.graduationproject.R;
+import com.example.graduationproject.data.ActiveChildManager;
+import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.data.RecordingStorage;
 import com.example.graduationproject.models.Recording;
 
@@ -19,7 +21,8 @@ import java.io.IOException;
 /**
  * شاشة "استمع لنفسك وأنت تقولها!".
  * بتشغل الملف المؤقت اللي انسجل بـ RecordingActivity، وتعطي خيارين:
- * - "أعجبني، احفظه": ننقل الملف من الكاش لمكان دائم ونحفظ بيانات التسجيل.
+ * - "أعجبني، احفظه": ننقل الملف من الكاش لمكان دائم، نحفظ بيانات التسجيل،
+ *   وبعدين نبعت الملف لـ Gemini يحلله ويعطينا فيدباك حقيقي قبل شاشة الاحتفال.
  * - "سجل مرة تانية": نحذف الملف المؤقت ونرجع لشاشة التسجيل.
  */
 public class PlaybackActivity extends AppCompatActivity {
@@ -90,12 +93,38 @@ public class PlaybackActivity extends AppCompatActivity {
         boolean moved = tempFile.renameTo(permanentFile);
         String finalPath = moved ? permanentFile.getAbsolutePath() : tempFilePath;
 
+        // RecordingStorage بيحدد الـ childId تلقائياً من الطفل النشط حالياً
+        // (ActiveChildManager) وقت الحفظ، فما في داعي نمرره يدوياً هون.
         Recording recording = new Recording(phrase, finalPath, System.currentTimeMillis());
         new RecordingStorage(this).saveRecording(recording);
 
-        Intent intent = new Intent(PlaybackActivity.this, CelebrationActivity.class);
-        startActivity(intent);
-        finish();
+        // نجمة "الطفل المميز" - النشاط اكتمل بمجرد ما انحفظ التسجيل
+        long currentChildId = ActiveChildManager.getActiveChildId(this);
+        if (currentChildId != ActiveChildManager.NO_ACTIVE_CHILD) {
+            new ChildProfileStore(this).addStar(currentChildId);
+        }
+
+        // TODO: فعّلي مؤشر تحميل (progress bar) هون عشان الطفل يعرف إنه في انتظار الرد
+        File audioFileForAnalysis = new File(finalPath);
+        new GeminiService().analyzeRecording(audioFileForAnalysis, phrase, new GeminiService.GeminiCallback() {
+            @Override
+            public void onSuccess(String feedback) {
+                goToCelebration(feedback);
+            }
+
+            @Override
+            public void onError(String errorMessage) {
+                goToCelebration(getString(R.string.default_audio_label));
+            }
+        });
+    }
+    private void goToCelebration(String feedback) {
+        runOnUiThread(() -> {
+            Intent intent = new Intent(PlaybackActivity.this, CelebrationActivity.class);
+            intent.putExtra(CelebrationActivity.EXTRA_FEEDBACK, feedback);
+            startActivity(intent);
+            finish();
+        });
     }
 
     private void recordAgain() {

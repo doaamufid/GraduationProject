@@ -43,6 +43,19 @@
                 android:textSize="20sp"
                 android:textStyle="bold" />
         </LinearLayout>
+
+        <!-- زر الدخول لشاشة القصص المفضلة -->
+        <ImageButton
+            android:id="@+id/favoritesEntryButton"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:background="@android:color/transparent"
+            android:contentDescription="القصص المفضلة"
+            android:src="@android:drawable/btn_star_big_on"
+            app:tint="#E57373" />
+
     </RelativeLayout>
 
     <!-- صف التصنيفات: لقة / صداقة / نوم / مشاعر -->

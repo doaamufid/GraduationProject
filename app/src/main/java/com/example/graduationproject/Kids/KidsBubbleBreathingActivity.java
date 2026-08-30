@@ -234,8 +234,10 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
         // 2. استخدام نفس المفتاح بالضبط للشجرة
         TreeProgressManager progressManager = new TreeProgressManager(this, String.valueOf(currentChildId));
         progressManager.addPoints(15);
-    }
 
+        // 3. نجمة "الطفل المميز" الجديدة
+        store.addStar(currentChildId);
+    }
     private long getChildId() {
         // 1. القراءة من الـ Intent إذا كان موجوداً
         long id = getIntent().getLongExtra("CHILD_ID", -1L);

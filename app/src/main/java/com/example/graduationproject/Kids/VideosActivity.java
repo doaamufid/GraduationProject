@@ -27,13 +27,14 @@ public class VideosActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        binding =ActivityVideosBinding.inflate(getLayoutInflater());
+        binding = ActivityVideosBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
         dbStore = new ChildProfileStore(this);
 
         setupVideosGrid();     // 1) أنشئ videoAdapter أولاً
         setupCategoryFilter(); // 2) بعدين استخدمه بأمان جوا filterVideos()
+        setupFavoritesButton(); // 3) ربط زر النجمة بشاشة المفضلة
     }
 
     private void setupCategoryFilter() {
@@ -57,15 +58,25 @@ public class VideosActivity extends AppCompatActivity {
         binding.videosRecycler.setLayoutManager(new GridLayoutManager(this, 2));
 
         videoAdapter = new VideoAdapter(new ArrayList<>(), video -> {
-            Intent intent = new Intent(VideosActivity.this, VideoDetailActivity.class);
-            intent.putExtra(VideoDetailActivity.EXTRA_TITLE, video.getTitle());
-            intent.putExtra(VideoDetailActivity.EXTRA_SUBTITLE, video.getSubtitle());
-            intent.putExtra(VideoDetailActivity.EXTRA_THUMBNAIL_NAME, video.getThumbnailName());
-            intent.putExtra(VideoDetailActivity.EXTRA_VIDEO_FILE, video.getVideoFile());
-            intent.putExtra(VideoDetailActivity.EXTRA_DURATION, video.getDuration());
+            // بدل تشغيل فيديو ثابت، نفتح شاشة القصة المولّدة من Gemini
+            // ونمررلها التصنيف بس (هي بتتكفل بتوليد القصة + التشغيل)
+            Intent intent = new Intent(VideosActivity.this, StoryPlaybackActivity.class);
+            intent.putExtra(StoryPlaybackActivity.EXTRA_CATEGORY, video.getCategory());
+            intent.putExtra(StoryPlaybackActivity.EXTRA_TITLE, video.getTitle());
             startActivity(intent);
         });
         binding.videosRecycler.setAdapter(videoAdapter);
+    }
+
+    /**
+     * يربط زر النجمة (المفضلة) بالشريط العلوي مع شاشة FavoriteStoriesActivity.
+     * ملاحظة: لازم اسم الـ id هون (favoritesEntryButton) يطابق بالضبط
+     * اسم الـ id يلي حاطاه على الزر جوا activity_videos.xml عندك.
+     * لو الاسم مختلف، بدّلي "favoritesEntryButton" بنفس الاسم يلي عندك بالـ XML.
+     */
+    private void setupFavoritesButton() {
+        binding.favoritesEntryButton.setOnClickListener(v ->
+                startActivity(new Intent(VideosActivity.this, FavoriteStoriesActivity.class)));
     }
 
     private void filterVideos(String category) {

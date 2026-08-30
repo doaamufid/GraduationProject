@@ -74,8 +74,8 @@ public class BadgeDialogFragment extends DialogFragment {
         return (color & 0x00FFFFFF) | (alpha << 24);
     }
 
-    @Override
-    public int getTheme() {
-        return R.style.Theme_JourneyProfile_Dialog;
-    }
+//    @Override
+//    public int getTheme() {
+//        return R.style.Theme_JourneyProfile_Dialog;
+//    }
 }

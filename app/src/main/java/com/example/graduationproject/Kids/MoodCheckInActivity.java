@@ -1,13 +1,19 @@
 package com.example.graduationproject.Kids;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import com.example.graduationproject.R;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityMoodCheckInBinding;
 
@@ -37,7 +43,9 @@ public class MoodCheckInActivity extends AppCompatActivity {
 
         // نجيب رقم الطفل من الشاشة اللي قبلها
         currentChildId = getIntent().getLongExtra(EXTRA_CHILD_ID, -1);
-
+        findViewById(R.id.btnFeaturedChild).setOnClickListener(v -> {
+            startActivity(new Intent(this, FeaturedChildActivity.class));
+        });
         // ربط كل عناصر المزاج الستة (هلق عن طريق binding مباشرة، بدون findViewById)
         moodViews = new TextView[]{
                 binding.moodHappy,
@@ -64,8 +72,10 @@ public class MoodCheckInActivity extends AppCompatActivity {
             Intent intent = new Intent(this, DrawInstructionActivity.class);
             startActivity(intent);
         });
-        binding.cardBreathe.setOnClickListener(v ->
-                Toast.makeText(this, "تنفس مع الهدهاد - قريبًا", Toast.LENGTH_SHORT).show());
+        binding.cardBreathe.setOnClickListener(v -> {
+            Intent intent = new Intent(this, KidsAiChatActivity.class);
+            startActivity(intent);
+        });
         binding.cardComfort.setOnClickListener(v -> {
             Intent intent = new Intent(this, SoundsActivity.class);
             startActivity(intent);
@@ -74,6 +84,20 @@ public class MoodCheckInActivity extends AppCompatActivity {
             Intent intent = new Intent(this, WordOfWeekActivity.class);
             startActivity(intent);
         });
+
+        // --- إضافة الإشعارات: جدولة التذكير + طلب الإذن ---
+        KidsReminderScheduler.scheduleReminder(this);
+        requestNotificationPermissionIfNeeded();
+    }
+
+    private void requestNotificationPermissionIfNeeded() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+            if (ContextCompat.checkSelfPermission(this, Manifest.permission.POST_NOTIFICATIONS)
+                    != PackageManager.PERMISSION_GRANTED) {
+                ActivityCompat.requestPermissions(this,
+                        new String[]{Manifest.permission.POST_NOTIFICATIONS}, 200);
+            }
+        }
     }
 
     private void onMoodSelected(View view) {
@@ -129,7 +153,6 @@ public class MoodCheckInActivity extends AppCompatActivity {
                     Intent intent = new Intent(MoodCheckInActivity.this, MessagesActivity.class);
                     intent.putExtra(MessagesActivity.EXTRA_CHILD_ID, currentChildId);
                     startActivity(intent);
-                    finish();
                 });
             }
 
@@ -143,6 +166,7 @@ public class MoodCheckInActivity extends AppCompatActivity {
             }
         });
     }
+
     @Override
     protected void onDestroy() {
         super.onDestroy();

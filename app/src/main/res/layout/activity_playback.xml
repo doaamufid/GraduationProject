@@ -70,7 +70,7 @@
         android:background="@drawable/bg_button_outline"
         android:text="@string/record_again"
         android:textAllCaps="false"
-        android:textColor="@color/orange_dark"
+        android:textColor="@color/white"
         android:textSize="15sp" />
 
 </LinearLayout>

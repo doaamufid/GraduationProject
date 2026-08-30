@@ -20,8 +20,10 @@ import java.util.List;
 /**
  * تخزين بسيط لقائمة التسجيلات المحفوظة (صندوق "كلماتي الحلوة").
  * ما بنستخدم قاعدة بيانات، بس ملف JSON صغير جوا مساحة التطبيق الداخلية.
- * لو حابب مستقبلاً تربطها بـ Room أو Firebase، بس بدّل هالكلاس وخلي الواجهة
- * (الدوال) زي ما هي عشان باقي الشاشات ما تتغير.
+ *
+ * كل التسجيلات (لكل الأطفال) محفوظة بنفس الملف، بس كل تسجيل معه childId
+ * يميّزه. getAllRecordings() بترجع بس تسجيلات الطفل النشط حالياً
+ * (حسب ActiveChildManager)، مش كل التسجيلات.
  */
 public class RecordingStorage {
 
@@ -34,15 +36,39 @@ public class RecordingStorage {
         this.context = context.getApplicationContext();
     }
 
-    /** يضيف تسجيل جديد لأول القائمة ويحفظها */
+    /**
+     * يضيف تسجيل جديد لأول القائمة ويحفظها.
+     * نحدد الـ childId هون تلقائياً من الطفل النشط حالياً، حتى ما تعتمد
+     * كل شاشة على تمريره يدوياً وتخطئ.
+     */
     public void saveRecording(Recording recording) {
-        List<Recording> current = getAllRecordings();
-        current.add(0, recording); // الأحدث فوق
-        writeAll(current);
+        long activeChildId = ActiveChildManager.getActiveChildId(context);
+        recording.setChildId(activeChildId);
+
+        List<Recording> all = readAllFromDisk();
+        all.add(0, recording); // الأحدث فوق
+        writeAll(all);
     }
 
-    /** يرجع كل التسجيلات المحفوظة، الأحدث أولاً */
+    /** يرجع تسجيلات الطفل النشط حالياً بس، الأحدث أولاً */
     public List<Recording> getAllRecordings() {
+        long activeChildId = ActiveChildManager.getActiveChildId(context);
+        return getRecordingsForChild(activeChildId);
+    }
+
+    /** يرجع تسجيلات طفل معيّن بالتحديد، الأحدث أولاً */
+    public List<Recording> getRecordingsForChild(long childId) {
+        List<Recording> filtered = new ArrayList<>();
+        for (Recording r : readAllFromDisk()) {
+            if (r.getChildId() == childId) {
+                filtered.add(r);
+            }
+        }
+        return filtered;
+    }
+
+    /** يقرأ كل التسجيلات المخزنة من الملف بدون أي فلترة (لكل الأطفال مع بعض) */
+    private List<Recording> readAllFromDisk() {
         List<Recording> list = new ArrayList<>();
         File file = new File(context.getFilesDir(), FILE_NAME);
         if (!file.exists()) {
@@ -59,7 +85,8 @@ public class RecordingStorage {
                 Recording r = new Recording(
                         obj.optString("phrase"),
                         obj.optString("filePath"),
-                        obj.optLong("savedAtMillis")
+                        obj.optLong("savedAtMillis"),
+                        obj.optLong("childId", -1L)
                 );
                 list.add(r);
             }
@@ -77,6 +104,7 @@ public class RecordingStorage {
                 obj.put("phrase", r.getPhrase());
                 obj.put("filePath", r.getFilePath());
                 obj.put("savedAtMillis", r.getSavedAtMillis());
+                obj.put("childId", r.getChildId());
                 array.put(obj);
             }
             try (FileOutputStream fos = context.openFileOutput(FILE_NAME, Context.MODE_PRIVATE)) {
