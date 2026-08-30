@@ -123,11 +123,8 @@ public class WordOfWeekActivity extends AppCompatActivity {
                 if (profile.getId() == childId) {
                     String avatar = profile.getAvatar();
                     if (avatar != null && !avatar.trim().isEmpty()) {
-                        TextView tvAvatar1 = findViewById(R.id.mascotFox);
-                        TextView tvAvatar2 = findViewById(R.id.mascotFoxtwo);
-
-                        if (tvAvatar1 != null) tvAvatar1.setText(avatar);
-                        if (tvAvatar2 != null) tvAvatar2.setText(avatar);
+                        TextView tvAvatar = findViewById(R.id.mascotFox);
+                        if (tvAvatar != null) tvAvatar.setText(avatar);
                     }
                     break;
                 }

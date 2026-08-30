@@ -25,10 +25,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
+import java.io.File;
+import android.util.Log;
 
 public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "children_wellbeing.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     //  مفتاح التشفير المشترك بـ AES-256
     public static final String DATABASE_PASSPHRASE = "SalamApp@2026SecureKeyAES256";
@@ -42,6 +44,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String COLUMN_GENDER = "gender";
     private static final String COLUMN_AVATAR = "avatar";
     private static final String COLUMN_CREATED_AT = "created_at";
+    private static final String COLUMN_POINTS = "points";
     private static final String TABLE_EVENTS = "child_behavior_events";
     private static final String COLUMN_CHILD_ID = "child_id";
     private static final String COLUMN_EVENT_TYPE = "event_type";
@@ -73,16 +76,46 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String COLUMN_VIDEO_FILE = "video_file";
     private static final String COLUMN_VIDEO_DURATION = "duration";
 
+    private static ChildProfileStore instance;
+
+    public static synchronized ChildProfileStore getInstance(Context context) {
+        if (instance == null) {
+            instance = new ChildProfileStore(context.getApplicationContext());
+        }
+        return instance;
+    }
+
     public ChildProfileStore(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         // ⭐ تحميل مكتبات SQLCipher المشفرة
         SQLiteDatabase.loadLibs(context);
+        
+        // ✅ حماية ضد أخطاء التشفير أو التلف (مثل SQL logic error أو file is not a database)
+        try {
+            // محاولة فتح قاعدة البيانات للتحقق من التشفير
+            SQLiteDatabase db = getWritableDatabase(DATABASE_PASSPHRASE);
+        } catch (Exception e) {
+            Log.e("ChildProfileStore", "Database initialization failed: " + e.getMessage());
+            // إذا فشل الفتح بسبب التشفير (SQL logic error) أو تلف الملف، نقوم بحذفه لإعادة إنشائه
+            if (e.getMessage() != null && (e.getMessage().contains("file is not a database") || 
+                                         e.getMessage().contains("SQL logic error") ||
+                                         e.getMessage().contains("code 1"))) {
+                Log.e("ChildProfileStore", "Deleting incompatible or corrupted database for reset.");
+                context.deleteDatabase(DATABASE_NAME);
+            }
+        }
     }
 
     @Override
     public void onConfigure(SQLiteDatabase db) {
         super.onConfigure(db);
         db.setForeignKeyConstraintsEnabled(true);
+        // ✅ محاولة ترحيل قاعدة البيانات إذا كانت قادمة من إصدار أقدم من SQLCipher (3.x -> 4.x)
+        try {
+            db.rawExecSQL("PRAGMA cipher_migrate;");
+        } catch (Exception e) {
+            Log.e("ChildProfileStore", "Migration failed: " + e.getMessage());
+        }
     }
 
     @Override
@@ -93,7 +126,8 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                 + COLUMN_AGE + " INTEGER NOT NULL, "
                 + COLUMN_GENDER + " TEXT NOT NULL DEFAULT 'غير محدد', "
                 + COLUMN_AVATAR + " TEXT NOT NULL, "
-                + COLUMN_CREATED_AT + " INTEGER NOT NULL"
+                + COLUMN_CREATED_AT + " INTEGER NOT NULL, "
+                + COLUMN_POINTS + " INTEGER DEFAULT 0"
                 + ")");
 
         db.execSQL("CREATE TABLE " + TABLE_EVENTS + " ("
@@ -141,6 +175,12 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         }
         if (oldVersion < 5) {
             createChatTable(db);
+        }
+        if (oldVersion < 6) {
+            try {
+                // التأكد من عدم تكرار إضافة العمود إذا كان موجوداً بالفعل
+                db.execSQL("ALTER TABLE " + TABLE_PROFILES + " ADD COLUMN " + COLUMN_POINTS + " INTEGER DEFAULT 0");
+            } catch (Exception ignored) {}
         }
     }
 
@@ -336,7 +376,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         List<ChildProfile> profiles = new ArrayList<>();
         try (Cursor cursor = getReadableDatabase(DATABASE_PASSPHRASE).query(
                 TABLE_PROFILES,
-                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_GENDER, COLUMN_AVATAR},
+                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_GENDER, COLUMN_AVATAR, COLUMN_POINTS},
                 null, null, null, null,
                 COLUMN_CREATED_AT + " ASC")) {
             while (cursor.moveToNext()) {
@@ -345,10 +385,36 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
                         cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_AGE)),
                         cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
-                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR)))); // يتم قراءته هنا بشكل صحيح
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_POINTS))));
             }
         }
         return profiles;
+    }
+
+    public List<ChildProfile> getProfilesSortedByStars() {
+        List<ChildProfile> profiles = new ArrayList<>();
+        try (Cursor cursor = getReadableDatabase(DATABASE_PASSPHRASE).query(
+                TABLE_PROFILES,
+                new String[]{COLUMN_ID, COLUMN_NAME, COLUMN_AGE, COLUMN_GENDER, COLUMN_AVATAR, COLUMN_POINTS},
+                null, null, null, null,
+                COLUMN_POINTS + " DESC")) {
+            while (cursor.moveToNext()) {
+                profiles.add(new ChildProfile(
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_AGE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_POINTS))));
+            }
+        }
+        return profiles;
+    }
+
+    public void addStar(long childId) {
+        SQLiteDatabase db = getWritableDatabase(DATABASE_PASSPHRASE);
+        db.execSQL("UPDATE " + TABLE_PROFILES + " SET " + COLUMN_POINTS + " = " + COLUMN_POINTS + " + 1 WHERE " + COLUMN_ID + " = " + childId);
     }
 
     public long addBehaviorEvent(long childId, String eventType, String eventValue, String notes, long occurredAt) {
@@ -425,24 +491,23 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSPHRASE);
         ContentValues values = new ContentValues();
 
-        String today = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault()).format(new Date());
+        values.put(COLUMN_CHILD_ID, childId);
+        values.put(COLUMN_EVENT_TYPE, eventType);
+        values.put(COLUMN_OCCURRED_AT, System.currentTimeMillis());
+        values.put(COLUMN_NOTES, "تم تسجيل الحدث");
 
-        values.put("child_id", childId);
-        values.put("event_type", eventType);
-        values.put("event_date", today);
-
-        db.insertWithOnConflict("child_events", null, values, SQLiteDatabase.CONFLICT_IGNORE);
+        db.insert(TABLE_EVENTS, null, values);
     }
+
     public void updateChildPoints(long childId, int newPoints) {
         SQLiteDatabase db = this.getWritableDatabase(DATABASE_PASSPHRASE);
         ContentValues values = new ContentValues();
 
         // وضع قيمة النقاط الجديدة
-        values.put("points", newPoints);
+        values.put(COLUMN_POINTS, newPoints);
 
-        // تحديث السجل في جدول الأطفال حيث يساوي الـ ID رقم الطفل المحدد
-        db.update("child_profiles", values, "id = ?", new String[]{String.valueOf(childId)});
-        db.close();
+        // تحديث السجل في جدول الأطفال
+        db.update(TABLE_PROFILES, values, COLUMN_ID + " = ?", new String[]{String.valueOf(childId)});
     }
 
 
