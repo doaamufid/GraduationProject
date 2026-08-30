@@ -11,7 +11,7 @@
     <uses-permission android:name="android.permission.VIBRATE" />
 
     <uses-feature android:name="android.hardware.camera" android:required="false" />
-
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
     <application
         android:name=".GraduationProjectApplication"
         android:allowBackup="true"
@@ -59,6 +59,7 @@
         <activity
             android:name=".Kids.MoodCheckInActivity"
             android:exported="false" />
+        <activity android:name=".Kids.FeaturedChildActivity" />
         <activity
             android:name=".Kids.KidsAiResponseActivity"
             android:exported="false" />
@@ -98,6 +99,7 @@
         <activity
             android:name=".Kids.KidsTreeActivity"
             android:exported="false" />
+        <activity android:name=".Kids.FavoriteStoriesActivity" />
         <activity
             android:name=".Kids.KidsTreeLevelUpActivity"
             android:exported="false" />

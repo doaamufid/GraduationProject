@@ -23,7 +23,7 @@ import java.util.List;
 public class ChildProfileStore extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "children_wellbeing.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 6;
 
     private static final String TABLE_BOT_MESSAGES = "bot_messages";
     private static final String COLUMN_TEXT = "text";
@@ -60,7 +60,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String COLUMN_SOUND_FILE = "audio_file";
     private static final String COLUMN_SOUND_TYPE = "sound_type";
     private static final String COLUMN_SOUND_ORDER = "sort_order";
-
+    private static final String COLUMN_STARS = "stars";
     // جدول الفيديوهات
     private static final String TABLE_VIDEOS = "videos";
     private static final String COLUMN_VIDEO_TITLE = "title";
@@ -89,6 +89,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                 + COLUMN_AGE + " INTEGER NOT NULL, "
                 + COLUMN_GENDER + " TEXT NOT NULL DEFAULT 'غير محدد', "
                 + COLUMN_AVATAR + " TEXT NOT NULL, "
+                + COLUMN_STARS + " INTEGER NOT NULL DEFAULT 0, "
                 + COLUMN_CREATED_AT + " INTEGER NOT NULL"
                 + ")");
 
@@ -147,6 +148,12 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         if (oldVersion < 5) {
             createChatTable(db);
         }
+
+        if (oldVersion < 6) {
+            db.execSQL("ALTER TABLE " + TABLE_PROFILES
+                    + " ADD COLUMN " + COLUMN_STARS
+                    + " INTEGER NOT NULL DEFAULT 0");
+        }
     }
 
     private void createSoundsAndVideosTables(SQLiteDatabase db) {
@@ -188,7 +195,7 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         insertVideo(db, "قصة وقت النوم", null, "نوم",
                 "thumb_sleep", "#8E7CC3", "sleep_story_video", "5:12");
 
-        insertVideo(db, "كيف أحب نفساتي", null, "مشاعر",
+        insertVideo(db, "كيف أحب نفسي", null, "مشاعر",
                 "thumb_feelings", "#F2C94C", "feelings_video", "4:30");
 
         insertVideo(db, "أصدقائي وأنا", "قصة عن الصداقة الحلوة", "صداقة",
@@ -458,7 +465,8 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                         COLUMN_NAME,
                         COLUMN_AGE,
                         COLUMN_GENDER,
-                        COLUMN_AVATAR
+                        COLUMN_AVATAR,
+                        COLUMN_STARS
                 },
                 null,
                 null,
@@ -469,23 +477,84 @@ public class ChildProfileStore extends SQLiteOpenHelper {
             while (cursor.moveToNext()) {
 
                 profiles.add(new ChildProfile(
-                        cursor.getLong(
-                                cursor.getColumnIndexOrThrow(COLUMN_ID)),
-                        cursor.getString(
-                                cursor.getColumnIndexOrThrow(COLUMN_NAME)),
-                        cursor.getInt(
-                                cursor.getColumnIndexOrThrow(COLUMN_AGE)),
-                        cursor.getString(
-                                cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
-                        cursor.getString(
-                                cursor.getColumnIndexOrThrow(COLUMN_AVATAR))
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_AGE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_STARS))
                 ));
             }
         }
 
         return profiles;
     }
+    // ==================== النجوم (Featured Child) ====================
 
+    /**
+     * تضيف نجمة وحدة للطفل. بتنادى بعد كل نشاط (رسمة / تسجيل / فقاعات).
+     */
+    public void addStar(long childId) {
+        getWritableDatabase().execSQL(
+                "UPDATE " + TABLE_PROFILES
+                        + " SET " + COLUMN_STARS + " = " + COLUMN_STARS + " + 1"
+                        + " WHERE " + COLUMN_ID + " = ?",
+                new Object[]{childId}
+        );
+    }
+
+    public int getStars(long childId) {
+        try (Cursor cursor = getReadableDatabase().query(
+                TABLE_PROFILES,
+                new String[]{COLUMN_STARS},
+                COLUMN_ID + " = ?",
+                new String[]{String.valueOf(childId)},
+                null, null, null)) {
+
+            if (cursor.moveToFirst()) {
+                return cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_STARS));
+            }
+            return 0;
+        }
+    }
+
+    /**
+     * ترجع كل الأطفال مرتبين تنازلياً حسب عدد النجوم - لشاشة "الطفل المميز".
+     */
+    public List<ChildProfile> getProfilesSortedByStars() {
+
+        List<ChildProfile> profiles = new ArrayList<>();
+
+        try (Cursor cursor = getReadableDatabase().query(
+                TABLE_PROFILES,
+                new String[]{
+                        COLUMN_ID,
+                        COLUMN_NAME,
+                        COLUMN_AGE,
+                        COLUMN_GENDER,
+                        COLUMN_AVATAR,
+                        COLUMN_STARS
+                },
+                null,
+                null,
+                null,
+                null,
+                COLUMN_STARS + " DESC, " + COLUMN_CREATED_AT + " ASC")) {
+
+            while (cursor.moveToNext()) {
+                profiles.add(new ChildProfile(
+                        cursor.getLong(cursor.getColumnIndexOrThrow(COLUMN_ID)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_NAME)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_AGE)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_GENDER)),
+                        cursor.getString(cursor.getColumnIndexOrThrow(COLUMN_AVATAR)),
+                        cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_STARS))
+                ));
+            }
+        }
+
+        return profiles;
+    }
     // ==================== الأحداث ====================
 
     public long addBehaviorEvent(long childId,

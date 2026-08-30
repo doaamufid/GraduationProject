@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.KidsAdaptiveMainActivity;
 import com.example.graduationproject.R;
+import com.example.graduationproject.data.ActiveChildManager;
 import com.example.graduationproject.data.ChildProfileStore;
 import com.example.graduationproject.databinding.ActivityNewChildProfileBinding;
 
@@ -186,6 +187,12 @@ public class NewChildProfileActivity extends AppCompatActivity {
         }
 
         long newChildId = childProfileStore.addProfile(name, selectedAge, selectedGender, selectedAvatar);
+
+        // البروفايل الجديد يصير هو الطفل النشط حالياً فوراً، عن طريق المصدر
+        // الموحّد ActiveChildManager. بدون هالسطر، أي رسمة أو تسجيل يعملها
+        // الطفل بعد إنشاء البروفايل رح ينخزن بـ childId = -1 (غير محدد).
+        ActiveChildManager.setActiveChildId(this, newChildId);
+
         setResult(RESULT_OK);
 
         Intent intent = new Intent(this, KidsAdaptiveMainActivity.class);

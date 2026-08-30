@@ -24,6 +24,10 @@ import java.util.List;
 /**
  * يخزن كل رسمة + تحليلها كسجل منفصل محليًا (صورة كملف + بيانات JSON بالـ SharedPreferences)
  * حتى تنعرض لاحقًا بشاشة المعرض/History.
+ *
+ * كل السجلات (لكل الأطفال) محفوظة بنفس مفتاح الـ JSON، بس كل سجل معه childId
+ * يميّزه. getAllResults() بترجع بس رسومات الطفل النشط حالياً
+ * (حسب ActiveChildManager)، مش كل الرسومات.
  */
 public class LocalStorageHelper {
 
@@ -34,9 +38,11 @@ public class LocalStorageHelper {
     private static final String JSON_IMAGE_PATH = "imagePath";
     private static final String JSON_FEEDBACK = "feedbackText";
     private static final String JSON_TIMESTAMP = "timestamp";
+    private static final String JSON_CHILD_ID = "childId";
 
     /**
      * يحفظ صورة جديدة (نسخة محلية) + نص التحليل كسجل جديد بالقائمة.
+     * نحدد الـ childId هون تلقائياً من الطفل النشط حالياً.
      */
     public static void saveResult(Context context, Uri sourceUri, String feedbackText) {
         long timestamp = System.currentTimeMillis();
@@ -49,14 +55,34 @@ public class LocalStorageHelper {
             return;
         }
 
-        List<DrawingResult> results = getAllResults(context);
-        results.add(0, new DrawingResult(savedImagePath, feedbackText, timestamp));
+        long activeChildId = ActiveChildManager.getActiveChildId(context);
 
-        saveResultsList(context, results);
+        List<DrawingResult> allResults = readAllFromDisk(context);
+        allResults.add(0, new DrawingResult(savedImagePath, feedbackText, timestamp, activeChildId));
+
+        saveResultsList(context, allResults);
     }
 
-    /** يرجع كل السجلات المحفوظة، الأحدث أولاً */
+    /** يرجع رسومات الطفل النشط حالياً بس، الأحدث أولاً */
     public static List<DrawingResult> getAllResults(Context context) {
+        long activeChildId = ActiveChildManager.getActiveChildId(context);
+        return getResultsForChild(context, activeChildId);
+    }
+
+    /** يرجع رسومات طفل معيّن بالتحديد، الأحدث أولاً */
+    public static List<DrawingResult> getResultsForChild(Context context, long childId) {
+        List<DrawingResult> filtered = new ArrayList<>();
+        for (DrawingResult r : readAllFromDisk(context)) {
+            if (r.getChildId() == childId) {
+                filtered.add(r);
+            }
+        }
+        Collections.sort(filtered, (a, b) -> Long.compare(b.getTimestamp(), a.getTimestamp()));
+        return filtered;
+    }
+
+    /** يقرأ كل السجلات المخزنة بدون أي فلترة (لكل الأطفال مع بعض) */
+    private static List<DrawingResult> readAllFromDisk(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
         String json = prefs.getString(KEY_RESULTS_JSON, null);
 
@@ -70,14 +96,14 @@ public class LocalStorageHelper {
                 results.add(new DrawingResult(
                         obj.getString(JSON_IMAGE_PATH),
                         obj.getString(JSON_FEEDBACK),
-                        obj.getLong(JSON_TIMESTAMP)
+                        obj.getLong(JSON_TIMESTAMP),
+                        obj.optLong(JSON_CHILD_ID, -1L)
                 ));
             }
         } catch (JSONException e) {
             Log.e(TAG, "خطأ بقراءة السجلات المحفوظة: " + e.getMessage(), e);
         }
 
-        Collections.sort(results, (a, b) -> Long.compare(b.getTimestamp(), a.getTimestamp()));
         return results;
     }
 
@@ -89,6 +115,7 @@ public class LocalStorageHelper {
                 obj.put(JSON_IMAGE_PATH, r.getImagePath());
                 obj.put(JSON_FEEDBACK, r.getFeedbackText());
                 obj.put(JSON_TIMESTAMP, r.getTimestamp());
+                obj.put(JSON_CHILD_ID, r.getChildId());
                 array.put(obj);
             }
         } catch (JSONException e) {

@@ -5,79 +5,83 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAF1E6"
+    android:background="@drawable/bg_screen_gradient"
     android:layoutDirection="rtl"
+    android:textDirection="rtl"
     tools:context=".Kids.KidsAiResponseActivity">
 
     <!-- Circle Back Button -->
     <ImageButton
         android:id="@+id/btn_back"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="56dp"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="20dp"
         android:background="@drawable/bg_icon_button"
         android:contentDescription="رجوع"
+        android:elevation="3dp"
         android:padding="10dp"
         android:src="@drawable/outline_arrow_forward_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:tint="#8B6F4D" />
 
-    <!-- Switch Profile Button -->
-    <ImageButton
-        android:id="@+id/btn_switch_profile"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginStart="20dp"
-        android:background="@drawable/bg_icon_button"
-        android:contentDescription="تبديل الحساب"
-        android:padding="10dp"
-        android:src="@drawable/ic_users"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:tint="#8B6F4D" />
-
-    <!-- Bear Avatar Head -->
-    <ImageView
-        android:id="@+id/iv_bear_face"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:layout_marginTop="48dp"
-        android:src="@drawable/ic_bear_face"
+    <!-- Soft backdrop circle behind the bear avatar for visual depth -->
+    <View
+        android:id="@+id/view_avatar_backdrop"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginTop="34dp"
+        android:background="@drawable/bg_avatar_backdrop"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Response Content Layout -->
+    <!-- Bear Avatar Head -->
+    <TextView
+        android:id="@+id/tv_bear_avatar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="🐻"
+        android:textSize="72sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Scrollable content so nothing gets cut off on smaller screens -->
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/scroll_view"
-        android:layout_width="match_parent"
+        android:layout_width="0dp"
         android:layout_height="0dp"
         android:clipToPadding="false"
-        android:paddingBottom="40dp"
+        android:scrollbars="none"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/iv_bear_face">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_bear_avatar">
 
+        <!-- Response Content Layout -->
         <LinearLayout
             android:id="@+id/group_response_state"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
             android:orientation="vertical"
-            android:paddingHorizontal="24dp">
+            android:paddingHorizontal="24dp"
+            android:paddingBottom="28dp">
 
             <!-- Speech Bubble Card -->
             <TextView
                 android:id="@+id/tv_ai_response_text"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="18dp"
                 android:background="@drawable/bg_kids_mood_card"
+                android:elevation="4dp"
                 android:gravity="center"
-                android:paddingHorizontal="20dp"
-                android:paddingVertical="18dp"
+                android:lineSpacingExtra="4dp"
+                android:paddingHorizontal="22dp"
+                android:paddingVertical="20dp"
                 android:text="يا بطلي الجميل، حتى النجوم الجصيلة تحتاج للراحة أحياناً. وأنا هنا لأحضنك وأحميك حتى تصبح أفضل."
                 android:textColor="#3D291F"
                 android:textSize="17sp"
@@ -89,10 +93,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:background="#D8EBE4"
+                android:background="@drawable/bg_pill_listen"
+                android:elevation="2dp"
+                android:foreground="?attr/selectableItemBackground"
                 android:gravity="center"
-                android:paddingHorizontal="22dp"
-                android:paddingVertical="10dp"
+                android:paddingHorizontal="24dp"
+                android:paddingVertical="11dp"
                 android:text="اسمع رد نور 🔊"
                 android:textColor="#598F7A"
                 android:textSize="14sp"
@@ -103,259 +109,90 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
+                android:layout_marginBottom="4dp"
                 android:text="وش نحب نسوي الحين؟"
+                android:textColor="#8B6F4D"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <!-- Option 1: خذ نفس معي -->
+            <TextView
+                android:id="@+id/btn_action_breath"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_option_orange"
+                android:elevation="1dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="خذ نفس معي 🫧"
+                android:textColor="#E07026"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Option 2: ارسم كيف حاسس -->
+            <TextView
+                android:id="@+id/btn_action_draw"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_option_green"
+                android:elevation="1dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="ارسم كيف حاسس 🎨"
+                android:textColor="#427A65"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Option 3: شوف شجرتك -->
+            <TextView
+                android:id="@+id/btn_action_tree"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_option_lime"
+                android:elevation="1dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="شوف شجرتك 🌳"
+                android:textColor="#4A6B22"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Option 4: احكي مع دبدوب (محادثة مفتوحة) -->
+            <!-- Option 4: احكي مع صديقك -->
+            <TextView
+                android:id="@+id/btn_action_chat"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_kids_mood_card"
+                android:elevation="1dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="احكي مع صديقك 💬"
+                android:textColor="#3D291F"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Option 5: خلص، أنا أحسن الحين -->
+            <TextView
+                android:id="@+id/btn_action_better"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_kids_mood_card"
+                android:elevation="1dp"
+                android:foreground="?attr/selectableItemBackground"
+                android:gravity="center"
+                android:text="خلص، أنا أحسن الحين 💛"
                 android:textColor="#8B6F4D"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
-            <!-- Cards Grid (2 Columns) -->
-            <GridLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:columnCount="2"
-                android:alignmentMode="alignMargins"
-                android:columnOrderPreserved="false">
-
-                <!-- Card 1: خذ نفس معي -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="#E1F5FE"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="4dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="🫧"
-                            android:textSize="52sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="خذ نفس معي"
-                            android:textColor="#01579B"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="٧٥٪ توافق"
-                            android:textColor="#0277BD"
-                            android:textSize="11sp"
-                            android:alpha="0.8"/>
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_action_breath"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginTop="16dp"
-                            android:backgroundTint="#5E35B1"
-                            android:insetTop="0dp"
-                            android:insetBottom="0dp"
-                            android:text="ابدأ"
-                            android:textAllCaps="false"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="14dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Card 2: ارسم كيف حاسس -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="#FFEBEE"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="4dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="🎨"
-                            android:textSize="52sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="ارسم مشاعرك"
-                            android:textColor="#B71C1C"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="٨٠٪ توافق"
-                            android:textColor="#C62828"
-                            android:textSize="11sp"
-                            android:alpha="0.8"/>
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_action_draw"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginTop="16dp"
-                            android:backgroundTint="#5E35B1"
-                            android:insetTop="0dp"
-                            android:insetBottom="0dp"
-                            android:text="ارسم"
-                            android:textAllCaps="false"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="14dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Card 3: شوف شجرتك -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="#F3E5F5"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="4dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="🌳"
-                            android:textSize="52sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="شوف شجرتك"
-                            android:textColor="#4A148C"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="٦٥٪ توافق"
-                            android:textColor="#6A1B9A"
-                            android:textSize="11sp"
-                            android:alpha="0.8"/>
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_action_tree"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginTop="16dp"
-                            android:backgroundTint="#5E35B1"
-                            android:insetTop="0dp"
-                            android:insetBottom="0dp"
-                            android:text="اذهب"
-                            android:textAllCaps="false"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="14dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-                <!-- Card 4: احكي معي -->
-                <com.google.android.material.card.MaterialCardView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_columnWeight="1"
-                    android:layout_margin="8dp"
-                    app:cardBackgroundColor="#E8F5E9"
-                    app:cardCornerRadius="24dp"
-                    app:cardElevation="4dp"
-                    app:strokeWidth="0dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
-                        android:orientation="vertical"
-                        android:padding="16dp">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="💬"
-                            android:textSize="52sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="12dp"
-                            android:text="احكي معي"
-                            android:textColor="#1B5E20"
-                            android:textSize="15sp"
-                            android:textStyle="bold" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:text="٩٠٪ توافق"
-                            android:textColor="#2E7D32"
-                            android:textSize="11sp"
-                            android:alpha="0.8"/>
-
-                        <com.google.android.material.button.MaterialButton
-                            android:id="@+id/btn_action_chat"
-                            android:layout_width="match_parent"
-                            android:layout_height="44dp"
-                            android:layout_marginTop="16dp"
-                            android:backgroundTint="#5E35B1"
-                            android:insetTop="0dp"
-                            android:insetBottom="0dp"
-                            android:text="احكي"
-                            android:textAllCaps="false"
-                            android:textColor="#FFFFFF"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            app:cornerRadius="14dp" />
-                    </LinearLayout>
-                </com.google.android.material.card.MaterialCardView>
-
-            </GridLayout>
-
         </LinearLayout>
+
     </androidx.core.widget.NestedScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

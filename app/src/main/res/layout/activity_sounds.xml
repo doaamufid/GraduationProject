@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F5F0E6">
+    android:background="@drawable/bg_screen_gradient_sounds">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,15 +14,18 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp">
+            android:layout_marginBottom="20dp">
 
             <ImageView
                 android:id="@+id/backButton"
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentStart="true"
-                android:src="@drawable/ic_arrow_back"
-                android:contentDescription="رجوع" />
+                android:background="@drawable/bg_back_button_circle"
+                android:contentDescription="رجوع"
+                android:elevation="2dp"
+                android:padding="8dp"
+                android:src="@drawable/ic_arrow_back" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -38,19 +41,27 @@
             android:layout_width="match_parent"
             android:layout_height="180dp"
             app:cardCornerRadius="20dp"
-            app:cardElevation="4dp"
-            android:layout_marginBottom="20dp">
+            app:cardElevation="6dp"
+            android:layout_marginBottom="24dp">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="#EAF6F3">
+                android:background="@drawable/bg_play_card_gradient">
+
+                <!-- هالة ناعمة خلف زر التشغيل تعطي إحساس عمق -->
+                <View
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/bg_play_button_halo" />
 
                 <ImageView
                     android:id="@+id/playPauseButton"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:layout_centerInParent="true"
+                    android:foreground="?attr/selectableItemBackgroundBorderless"
                     android:src="@drawable/ic_play_circle_white"
                     android:contentDescription="تشغيل" />
             </RelativeLayout>
@@ -69,8 +80,9 @@
                 android:layout_height="70dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="6dp"
+                android:foreground="?attr/selectableItemBackground"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
+                app:cardElevation="3dp"
                 app:cardBackgroundColor="#FFFFFF">
 
                 <LinearLayout
@@ -83,7 +95,9 @@
                         android:id="@+id/soundIcon0"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:layout_marginEnd="8dp" />
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_icon_circle_peach"
+                        android:padding="6dp" />
 
                     <TextView
                         android:id="@+id/soundLabel0"
@@ -100,8 +114,9 @@
                 android:layout_height="70dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="6dp"
+                android:foreground="?attr/selectableItemBackground"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
+                app:cardElevation="3dp"
                 app:cardBackgroundColor="#FFFFFF">
 
                 <LinearLayout
@@ -114,7 +129,9 @@
                         android:id="@+id/soundIcon1"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:layout_marginEnd="8dp" />
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_icon_circle_mint"
+                        android:padding="6dp" />
 
                     <TextView
                         android:id="@+id/soundLabel1"
@@ -131,8 +148,9 @@
                 android:layout_height="70dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="6dp"
+                android:foreground="?attr/selectableItemBackground"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
+                app:cardElevation="3dp"
                 app:cardBackgroundColor="#FFFFFF">
 
                 <LinearLayout
@@ -145,7 +163,9 @@
                         android:id="@+id/soundIcon2"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:layout_marginEnd="8dp" />
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_icon_circle_lavender"
+                        android:padding="6dp" />
 
                     <TextView
                         android:id="@+id/soundLabel2"
@@ -162,8 +182,9 @@
                 android:layout_height="70dp"
                 android:layout_columnWeight="1"
                 android:layout_margin="6dp"
+                android:foreground="?attr/selectableItemBackground"
                 app:cardCornerRadius="16dp"
-                app:cardElevation="2dp"
+                app:cardElevation="3dp"
                 app:cardBackgroundColor="#FFFFFF">
 
                 <LinearLayout
@@ -176,7 +197,9 @@
                         android:id="@+id/soundIcon3"
                         android:layout_width="28dp"
                         android:layout_height="28dp"
-                        android:layout_marginEnd="8dp" />
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_icon_circle_sky"
+                        android:padding="6dp" />
 
                     <TextView
                         android:id="@+id/soundLabel3"
@@ -192,6 +215,9 @@
             android:id="@+id/circleSoundsRecycler"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:clipToPadding="false"
+            android:paddingHorizontal="4dp"
             android:orientation="horizontal" />
 
     </LinearLayout>
