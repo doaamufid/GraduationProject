@@ -94,13 +94,6 @@ binding.btnActionDraw.setOnClickListener(new View.OnClickListener() {
             stopSpeech();
             finish();
         });
-
-        binding.btnSwitchProfile.setOnClickListener(v -> {
-            stopSpeech();
-            Intent intent = new Intent(KidsAiResponseActivity.this, ChildProfilesActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            startActivity(intent);
-        });
     }
 
     /**
@@ -117,9 +110,9 @@ binding.btnActionDraw.setOnClickListener(new View.OnClickListener() {
                     if (profile.getId() == childId) {
                         String avatar = profile.getAvatar();
                         if (avatar != null && !avatar.trim().isEmpty()) {
-                            binding.tvBearAvatar3.setText(avatar);
+                            binding.tvBearAvatar.setText(avatar);
                         } else {
-                            binding.tvBearAvatar3.setText("🐻");
+                            binding.tvBearAvatar.setText("🐻");
                         }
                         break;
                     }
