@@ -26,7 +26,7 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
     private static final int TARGET_BUBBLES = 5;
     private static final long BREATH_TICK_MS = 100L;
     private static final float BREATH_PROGRESS_STEP = 0.08f;
-
+    long childId;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private ActivityKidsBubbleBreathingBinding binding;
     private int completedBubbles;
@@ -119,7 +119,7 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
     }
 
     private void loadChildAvatar() {
-        long childId = getChildId();
+         childId = getChildId();
         if (childId != -1L) {
             ChildProfileStore store = new ChildProfileStore(this);
             try {
@@ -260,15 +260,19 @@ public class KidsBubbleBreathingActivity extends AppCompatActivity {
             Log.w("KidsBubbleBreathing", "Child ID is invalid (-1), skipping achievement saving");
             return;
         }
-
-        ChildProfileStore store = new ChildProfileStore(this);
+        if (currentChildId == -1L) return;
+        ChildProfileStore store = ChildProfileStore.getInstance(this); // استخدام السينجلتون مباشرة
         store.addCompletedEvent(currentChildId, "BREATHING_EXERCISE");
+        store.recordEvent(currentChildId, "CALM_CORNER");
+        // 1. تسليط نقاط وإنجاز التمرين
 
         TreeProgressManager progressManager = new TreeProgressManager(this, currentChildId);
         progressManager.addPoints(15);
-
-        // 3. نجمة "الطفل المميز" الجديدة
+        // 2. إضافة نجمة وتحديث تفضيلات الطفل
         store.addStar(currentChildId);
+        android.content.SharedPreferences prefs = getSharedPreferences("child_stats_" + currentChildId, MODE_PRIVATE);
+        int currentCount = prefs.getInt("completed_exercises", 0);
+        prefs.edit().putInt("completed_exercises", currentCount + 1).apply();
     }
     private long getChildId() {
         long id = getIntent().getLongExtra("CHILD_ID", -1L);

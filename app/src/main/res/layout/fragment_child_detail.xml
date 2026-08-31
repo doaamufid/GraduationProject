@@ -108,7 +108,7 @@
                     android:textColor="@color/white"
                     android:alpha="0.85"
                     android:textSize="@dimen/text_small"
-                    tools:text="آخر نشاط: اليوم · ٣:٣٠ م"/>
+                    tools:text="آخر نشاط: اليوم "/>
             </LinearLayout>
         </LinearLayout>
 
@@ -176,7 +176,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="مزاجه هالشهر 🧸"
+                android:text="مزاجه  🧸"
                 android:textColor="@color/text_main"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_body"

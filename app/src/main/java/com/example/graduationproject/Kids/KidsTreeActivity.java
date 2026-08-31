@@ -41,7 +41,6 @@ public class KidsTreeActivity extends AppCompatActivity {
         androidx.activity.EdgeToEdge.enable(this);
         binding = ActivityKidsTreeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
         Window window = getWindow();
         window.addFlags(android.view.WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         window.setStatusBarColor(android.graphics.Color.parseColor("#F4F8F3"));
@@ -54,9 +53,14 @@ public class KidsTreeActivity extends AppCompatActivity {
         }
 
         profileStore = new ChildProfileStore(this);
-
         childId = getCurrentChildId();
         childName = getIntent().getStringExtra("CHILD_NAME");
+        ChildProfileStore.getInstance(this).recordEvent(childId, "RECOVERY_TREE"); // 👈 childId هنا تكون قيمتها تساوي 0 أو -1 !
+        childId = getCurrentChildId(); // 👈 القيمة الحقيقية تجلب في هذا السطر
+
+        if (childId != -1L) {
+            profileStore.recordEvent(childId, "RECOVERY_TREE");
+        }
 
         progressManager = new TreeProgressManager(this, childId);
 
@@ -67,6 +71,9 @@ public class KidsTreeActivity extends AppCompatActivity {
 
         setupBadgeClickListeners();
         setupStageClickListeners();
+
+
+
     }
 
     @Override

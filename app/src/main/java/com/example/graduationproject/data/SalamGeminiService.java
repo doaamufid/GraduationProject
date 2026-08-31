@@ -31,21 +31,36 @@ public class SalamGeminiService {
     private static final String MODEL_NAME = "gemini-3.5-flash-lite"; 
     private final GenerativeModelFutures model;
     private final Executor executor = Executors.newSingleThreadExecutor();
-    private final ChatSafetyRuleScreener safetyScreener;
-    private final Context context;
+    private ChatSafetyRuleScreener safetyScreener;
+    private Context context;
 
     public interface GeminiCallback {
         void onSuccess(String message);
         void onError(String errorMessage);
     }
 
-    public SalamGeminiService(Context context) {
-        this.context = context.getApplicationContext();
-        this.safetyScreener = new ChatSafetyRuleScreener(this.context);
-        
+    public interface ChildAnalysisCallback {
+        void onSuccess(String recommendationsJson);
+        void onError(String errorMessage);
+    }
+
+    public interface ChildMoodAnalysisCallback {
+        void onSuccess(float[] dayScores, float[] weekScores, float[] monthScores);
+        void onError(String errorMessage);
+    }
+
+    // Constructor بدون Context لدعم الشاشات القديمة (شغل زميلاتك)
+    public SalamGeminiService() {
         GenerativeModel gm = FirebaseAI.getInstance(GenerativeBackend.googleAI())
                 .generativeModel(MODEL_NAME);
         this.model = GenerativeModelFutures.from(gm);
+    }
+
+    // Constructor مع Context لدعم الشات وميزات الأمان الجديدة
+    public SalamGeminiService(Context context) {
+        this();
+        this.context = context.getApplicationContext();
+        this.safetyScreener = new ChatSafetyRuleScreener(this.context);
     }
 
     public void getSuggestedContent(List<CandidateItem> shortlist, String moodId, GeminiCallback callback) {
@@ -99,18 +114,15 @@ public class SalamGeminiService {
         }, executor);
     }
 
-    /**
-     * بيبعت رسالة المستخدم الجديدة مع آخر جزء من سجل المحادثة (للسياق).
-     */
     public void sendMessage(List<ChatMessageEntity> history, String userMessage, GeminiCallback callback) {
-        // Step 1: Local Safety Screening
-        ChatSafetyRuleScreener.ScreenResult result = safetyScreener.screen(userMessage);
-        if (result != ChatSafetyRuleScreener.ScreenResult.NORMAL) {
-            callback.onSuccess(getStaticSafetyResponse(result));
-            return;
+        if (safetyScreener != null) {
+            ChatSafetyRuleScreener.ScreenResult result = safetyScreener.screen(userMessage);
+            if (result != ChatSafetyRuleScreener.ScreenResult.NORMAL) {
+                callback.onSuccess(getStaticSafetyResponse(result));
+                return;
+            }
         }
 
-        // Step 3 & 5: Generation Config with Schema
         Schema responseSchema = Schema.obj(Map.of(
                 "replyText", Schema.str(),
                 "suggestedExerciseType", Schema.enumeration(Arrays.asList(
@@ -134,30 +146,30 @@ public class SalamGeminiService {
             @Override
             public void onSuccess(GenerateContentResponse result) {
                 String resultText = result.getText();
-        try {
-            if (resultText.startsWith("{")) {
-                JSONObject json = new JSONObject(resultText);
-                String reply = json.optString("replyText", "");
+                try {
+                    if (resultText != null && resultText.startsWith("{")) {
+                        JSONObject json = new JSONObject(resultText);
+                        String reply = json.optString("replyText", "");
 
-                // Step 5: Post-check AI reply for safety patterns
-                ChatSafetyRuleScreener.ScreenResult replySafety = safetyScreener.screen(reply);
-                if (replySafety != ChatSafetyRuleScreener.ScreenResult.NORMAL) {
-                    callback.onSuccess(getStaticSafetyResponse(replySafety));
-                    return;
+                        if (safetyScreener != null) {
+                            ChatSafetyRuleScreener.ScreenResult replySafety = safetyScreener.screen(reply);
+                            if (replySafety != ChatSafetyRuleScreener.ScreenResult.NORMAL) {
+                                callback.onSuccess(getStaticSafetyResponse(replySafety));
+                                return;
+                            }
+                        }
+                        callback.onSuccess(resultText.trim());
+                    } else {
+                        JSONObject fallbackJson = new JSONObject();
+                        fallbackJson.put("replyText", resultText != null ? resultText.trim() : "");
+                        fallbackJson.put("suggestedExerciseType", "NONE");
+                        callback.onSuccess(fallbackJson.toString());
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "JSON parse error: " + e.getMessage());
+                    callback.onError("حدث خطأ في معالجة الرد.");
                 }
-                callback.onSuccess(resultText.trim());
-            } else {
-                // If AI returns raw text despite schema, wrap it in JSON format expected by UI
-                JSONObject fallbackJson = new JSONObject();
-                fallbackJson.put("replyText", resultText.trim());
-                fallbackJson.put("suggestedExerciseType", "NONE");
-                callback.onSuccess(fallbackJson.toString());
             }
-        } catch (Exception e) {
-            Log.e(TAG, "JSON parse error: " + e.getMessage());
-            callback.onError("حدث خطأ في معالجة الرد.");
-        }
-    }
 
             @Override
             public void onFailure(Throwable t) {
@@ -226,10 +238,94 @@ public class SalamGeminiService {
         }, executor);
     }
 
+    // 🟢 إضافة دوال تحليل وتوصيات الأطفال الخاصة بزميلاتك
+    public void generateChildReport(String childName, int childAge, int completedExercises, ChildAnalysisCallback callback) {
+        String prompt = "أنت أخصائي نفسي وتربوي للأطفال. قم بتحليل حالة الطفل التالية وإعطاء توصيات مختصرة:\n" +
+                "اسم الطفل: " + childName + "\n" +
+                "العمر: " + childAge + " سنوات\n" +
+                "عدد التمارين المنجزة مؤخراً: " + completedExercises + "\n\n" +
+                "المطلوب: اذكر 2 إلى 3 توصيات تربوية/نفسية قصيرة جداً ومباشرة للأهل للتعامل مع الطفل.\n" +
+                "اكتب كل توصية في سطر منفصل ابدأ بكلمة '-' بدون مقدمات أو خاتمة.";
+
+        Content content = new Content.Builder().addText(prompt).build();
+        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
+
+        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
+            @Override
+            public void onSuccess(GenerateContentResponse result) {
+                String resultText = result.getText();
+                if (resultText != null && !resultText.trim().isEmpty()) {
+                    callback.onSuccess(resultText.trim());
+                } else {
+                    callback.onError("تعذر تحليل البيانات حالياً.");
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e(TAG, "خطأ أثناء تحليل بيانات الطفل: " + t.getMessage(), t);
+                callback.onError("فشل الاتصال أثناء جلب التوصيات.");
+            }
+        }, executor);
+    }
+
+    public void generateChildMoodData(String childName, int childAge, ChildMoodAnalysisCallback callback) {
+        String prompt = "أنت أخصائي نفسي للأطفال. قم بتوليد تقييم تقريبي لمزاج الطفل " + childName + " (العمر: " + childAge + " سنوات) " +
+                "على شكل درجات من 1.0 إلى 5.0 لثلاث فترات زمنية.\n\n" +
+                "المطلوب إرجاع النص بصيغة JSON فقط وبدون أي كلام إضافي بالشكل التالي:\n" +
+                "{\n" +
+                "  \"day\": [3.5, 4.0, 3.2, 4.5, 4.8, 4.0, 4.2, 3.9],\n" +
+                "  \"week\": [3.2, 4.5, 2.8, 4.0, 4.6, 3.9, 4.4],\n" +
+                "  \"month\": [3.6, 4.1, 3.9, 4.4, 4.0]\n" +
+                "}";
+
+        Content content = new Content.Builder().addText(prompt).build();
+        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
+
+        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
+            @Override
+            public void onSuccess(GenerateContentResponse result) {
+                try {
+                    String text = result.getText();
+                    if (text != null) {
+                        int start = text.indexOf("{");
+                        int end = text.lastIndexOf("}") + 1;
+                        if (start >= 0 && end > start) {
+                            text = text.substring(start, end);
+                        }
+                        org.json.JSONObject json = new org.json.JSONObject(text);
+
+                        float[] day = parseJsonArray(json.getJSONArray("day"));
+                        float[] week = parseJsonArray(json.getJSONArray("week"));
+                        float[] month = parseJsonArray(json.getJSONArray("month"));
+
+                        callback.onSuccess(day, week, month);
+                    } else {
+                        callback.onError("فشل في استخراج بيانات المزاج");
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "خطأ في تحليل JSON المزاج: " + e.getMessage(), e);
+                    callback.onError("خطأ في معالجة البيانات");
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                callback.onError(t.getMessage());
+            }
+        }, executor);
+    }
+
+    private float[] parseJsonArray(org.json.JSONArray array) throws org.json.JSONException {
+        float[] result = new float[array.length()];
+        for (int i = 0; i < array.length(); i++) {
+            result[i] = (float) array.getDouble(i);
+        }
+        return result;
+    }
+
     private String buildPrompt(List<ChatMessageEntity> history, String userMessage) {
         StringBuilder sb = new StringBuilder();
-        
-        // Step 2: System Instruction
         sb.append("إنتِ \"سلام\" — رفيق داعم نفسياً بالمحادثة، مو معالج نفسي ومو بديل عن مختص.\n")
                 .append("أسلوبك دافئ، بسيط، بعيد عن اللغة الطبية أو الرسمية.\n\n")
                 .append("قواعد صارمة، بدون أي استثناء مهما كان سياق المحادثة:\n")
@@ -243,31 +339,30 @@ public class SalamGeminiService {
                 .append("الأنواع المتاحة: BREATHING, GROUNDING, CBT_REFRAME, BODY_MAP, FUTURE_LETTER.\n")
                 .append("لو ما في تمرين واضح يناسب، اتركيه NONE — ما تفرضي تمرين كل رسالة.\n\n");
 
-        // Step 4: Personalization Context
-        android.content.SharedPreferences appPrefs = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
-        android.content.SharedPreferences userPrefs = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
-        
-        String todayMoodId = appPrefs.getString("today_mood_id", "");
-        String userName = userPrefs.getString("user_name", "");
-        
-        if (!userName.isEmpty()) {
-            sb.append("اسم المستخدم: ").append(userName).append(". ");
-        }
+        if (context != null) {
+            android.content.SharedPreferences appPrefs = context.getSharedPreferences("AppPrefs", Context.MODE_PRIVATE);
+            android.content.SharedPreferences userPrefs = context.getSharedPreferences("UserPrefs", Context.MODE_PRIVATE);
+            
+            String todayMoodId = appPrefs.getString("today_mood_id", "");
+            String userName = userPrefs.getString("user_name", "");
+            
+            if (!userName.isEmpty()) {
+                sb.append("اسم المستخدم: ").append(userName).append(". ");
+            }
 
-        String moodLabel = mapMoodIdToArabicLabel(todayMoodId);
-        if (moodLabel != null) {
-            sb.append("سياق المستخدم الحالي: يشعر بـ ").append(moodLabel).append(" اليوم.\n\n");
+            String moodLabel = mapMoodIdToArabicLabel(todayMoodId);
+            if (moodLabel != null) {
+                sb.append("سياق المستخدم الحالي: يشعر بـ ").append(moodLabel).append(" اليوم.\n\n");
+            }
         }
 
         sb.append("سجل المحادثة:\n");
 
-        // نأخذ فقط آخر 10 رسائل نصية كسياق حتى ما يطول البرومبت
         int start = Math.max(0, history.size() - 10);
         for (int i = start; i < history.size(); i++) {
             ChatMessageEntity m = history.get(i);
-            if (m.text == null) continue; // تجاهل الرسائل الصوتية بالسياق
+            if (m.text == null) continue;
             
-            // If the message was structured JSON, try to extract replyText
             String text = m.text;
             if (text.startsWith("{")) {
                 try {
@@ -282,7 +377,7 @@ public class SalamGeminiService {
     }
 
     private String mapMoodIdToArabicLabel(String moodId) {
-        if (moodId == null) return null;
+        if (moodId == null || context == null) return null;
         switch (moodId) {
             case "awful": return context.getString(R.string.mood_awful);
             case "sad": return context.getString(R.string.mood_sad);
