@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_marginBottom="8dp">
+
+    <!-- bot bubbles align to the end (right) per the original CSS .theirs { align-self:flex-end } -->
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end"
+        android:layout_marginStart="34dp"
+        android:orientation="vertical"
+        android:gravity="end">
+
+        <FrameLayout
+            android:id="@+id/bubbleTouchWrap"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:id="@+id/reactionBar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="top|end"
+                android:layout_marginBottom="46dp"
+                android:background="@drawable/adult_chat_bg_reaction_bar"
+                android:orientation="horizontal"
+                android:padding="5dp"
+                android:visibility="gone">
+
+                <TextView android:id="@+id/actRephrase" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:padding="8dp" android:text="أعد الصياغة" android:textColor="@color/adult_chat_text_mid" android:textSize="11.5sp" android:textStyle="bold" />
+                <TextView android:id="@+id/actExplain" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:padding="8dp" android:text="اشرح أكثر" android:textColor="@color/adult_chat_text_mid" android:textSize="11.5sp" android:textStyle="bold" />
+                <View android:layout_width="1dp" android:layout_height="16dp" android:background="#408F7DE6" android:layout_gravity="center_vertical" android:layout_marginStart="2dp" android:layout_marginEnd="2dp"/>
+                <TextView android:id="@+id/actRateUp" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:padding="6dp" android:text="👍" android:textSize="15sp" />
+                <TextView android:id="@+id/actRateDown" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:padding="6dp" android:text="👎" android:textSize="15sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/bubbleContainer"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/adult_chat_bg_bubble_bot"
+                android:orientation="vertical"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp">
+
+                <TextView
+                    android:id="@+id/txtMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/adult_chat_text_dark"
+                    android:textSize="13.5sp"
+                    android:lineSpacingMultiplier="1.3" />
+            </LinearLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="4dp"
+            android:paddingEnd="4dp">
+
+            <TextView android:id="@+id/txtRatedTag" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textSize="11sp" android:visibility="gone" android:layout_marginEnd="4dp" />
+            <TextView android:id="@+id/txtTime" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:textColor="@color/adult_chat_text_faint" android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- suggestion card slot: one of item_card_*.xml gets inflated here -->
+        <FrameLayout
+            android:id="@+id/cardSlot"
+            android:layout_width="270dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp" />
+    </LinearLayout>
+</LinearLayout>

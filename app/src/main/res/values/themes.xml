@@ -265,12 +265,12 @@
         <item name="android:textDirection">rtl</item>
     </style>
     <style name="Theme.CompanionChat" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="colorPrimary">@color/primary</item>
-        <item name="colorPrimaryDark">@color/primary_dark</item>
-        <item name="colorAccent">@color/primary</item>
-        <item name="android:windowBackground">@color/outer_bg</item>
-        <item name="android:statusBarColor" tools:targetApi="l">@color/outer_bg</item>
-        <item name="android:navigationBarColor">@color/outer_bg</item>
+        <item name="colorPrimary">@color/adult_chat_purple_deep</item>
+        <item name="colorPrimaryDark">@color/adult_chat_purple_deep</item>
+        <item name="colorAccent">@color/adult_chat_purple_pale</item>
+        <item name="android:windowBackground">@color/adult_chat_bg_mid</item>
+        <item name="android:statusBarColor" tools:targetApi="21">@color/adult_chat_bg_top</item>
+        <item name="android:navigationBarColor">@color/adult_chat_bg_mid</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
         <item name="android:windowLightNavigationBar" tools:targetApi="27">true</item>
         <item name="android:fontFamily">sans-serif</item>

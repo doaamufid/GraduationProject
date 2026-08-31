@@ -144,6 +144,10 @@
     <string name="suggest_habits">Suggest habits for me ✨</string>
     <string name="add_manually">Add habit manually</string>
     <string name="streak_format">%1$d days streak</string>
+    <!-- AI suggestions -->
+    <string name="ai_suggestions_title">Smart suggestions for your habits</string>
+    <string name="ai_suggestions_banner">Based on your mood and recent conversations, these are habits that might help you — choose what suits you</string>
+    <string name="add_selected_format">Add selected habits (%1$d)</string>
     <!-- Habit dialog -->
     <string name="habit_new_title">New Habit</string>
     <string name="habit_edit_title">Edit Habit</string>
@@ -156,10 +160,7 @@
     <!-- Time wheel -->
     <string name="choose_time">Choose Time</string>
     <string name="time_done">Done</string>
-    <!-- AI suggestions -->
-    <string name="ai_suggestions_title">Smart suggestions for your habits</string>
-    <string name="ai_suggestions_banner">Based on your mood and recent conversations, these are habits that might help you — choose what suits you</string>
-    <string name="add_selected_format">Add selected habits (%1$d)</string>
+
     <string name="member_since">With you since May 12, 2026</string>
     <string name="privacy_note">Your privacy is fully protected — no real data is stored</string>
     <string name="stat_days_active">Active Days</string>
@@ -1695,10 +1696,13 @@
     <string name="card_add_button">Add</string>
 
     <string name="qoute_feature_app_name">سلام</string>
-
     <string name="ai_suggestions_content_title">Smart Suggestions for You</string>
     <string name="suggested_articles_title">Suggested Articles 📖</string>
     <string name="suggested_videos_title">Videos &amp; Podcasts 🎥</string>
     <string name="ai_suggested_feature_title">Smart Suggestions</string>
     <string name="ai_suggested_feature_desc">AI-powered recommendations</string>
+    <string name="home_feature_chat_title">Smart Companion</string>
+    <string name="home_feature_chat_desc">Comforting chat with your companion</string>
+    <string name="hub_title">Hub</string>
+    <string name="hub_subtitle">Discover all features</string>
 </resources>

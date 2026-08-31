@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/sessionRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/breathing_feat_breathe_light_bg1">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- top bar -->
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:id="@+id/btnSettings"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentStart="true"
+                android:gravity="center"
+                android:orientation="vertical">
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⋮" android:textSize="20sp" android:id="@+id/dotsIcon"/>
+                <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="اعدادات الجلسة" android:textSize="10sp" android:id="@+id/settingsLabel"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/modeIconBadge"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:background="@drawable/bg_pill_accent"
+                    android:gravity="center"
+                    android:textColor="@color/white"
+                    android:textSize="13sp"
+                    tools:text="▢" />
+
+                <TextView
+                    android:id="@+id/modeNameText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:textColor="@color/green_deep"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    tools:text="تنفس المربع" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="تمرين للتنفس الواعي"
+                    android:textColor="@color/hub_desc"
+                    android:textSize="10sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/btnCloseSession"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_pill_white"
+                    android:gravity="center"
+                    android:text="✕"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/btnSoundToggle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🔊"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </RelativeLayout>
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <!-- HOME PANEL -->
+            <ScrollView
+                android:id="@+id/homePanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="center_horizontal"
+                    android:padding="24dp">
+
+                    <TextView
+                        android:id="@+id/homeStreakPill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:background="@drawable/bg_pill_white"
+                        android:paddingHorizontal="14dp"
+                        android:paddingVertical="5dp"
+                        android:textColor="#E4685C"
+                        android:textStyle="bold"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        tools:text="🔥 3 أيام متتالية" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="خذ نفساً معي"
+                        android:textColor="@color/green_deep"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/homeModeInfo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/hub_sub"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        tools:text="النمط: تنفس المربع (4-4-4-4)" />
+
+                    <TextView
+                        android:id="@+id/homeModeDesc"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
+                        android:textColor="@color/hub_desc"
+                        android:textSize="12sp"
+                        tools:text="تنفس المربع طريقة قوية لتقليل التوتر" />
+
+                    <TextView
+                        android:id="@+id/homeGoal"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/hub_desc"
+                        android:textSize="11.5sp"
+                        android:textStyle="bold"
+                        tools:text="🎯 الهدف: 4 دقائق (15 دورة)" />
+
+                    <com.example.graduationproject.view.BreathingFeatBreathingCircleView
+                        android:id="@+id/homeCircle"
+                        android:layout_width="220dp"
+                        android:layout_height="220dp"
+                        android:layout_marginTop="34dp" />
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        app:cardBackgroundColor="@color/green_soft"
+                        app:cardCornerRadius="18dp"
+                        app:cardElevation="4dp"
+                        xmlns:app="http://schemas.android.com/apk/res-auto">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="18dp">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="بطاقتك الشخصية"
+                                android:textColor="#5F8A6E"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/homeQuote"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:textColor="@color/green_deep"
+                                android:textSize="14.5sp"
+                                android:textStyle="bold"
+                                tools:text="&quot;خذ وقتك، ما فيه استعجال&quot;" />
+                        </LinearLayout>
+                    </androidx.cardview.widget.CardView>
+
+                    <TextView
+                        android:id="@+id/btnStartSession"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="28dp"
+                        android:background="@drawable/bg_pill_accent"
+                        android:gravity="center"
+                        android:paddingVertical="15dp"
+                        android:textColor="@color/white"
+                        android:textSize="15.5sp"
+                        android:textStyle="bold"
+                        tools:text="يلا نبدأ رحلة الهدوء 🌿" />
+
+                </LinearLayout>
+            </ScrollView>
+
+            <!-- SESSION PANEL -->
+            <LinearLayout
+                android:id="@+id/sessionPanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center_horizontal"
+                android:padding="26dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="خذ نفساً معي"
+                    android:textColor="@color/green_deep"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/sessionCycleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:textColor="@color/hub_sub"
+                    android:textSize="13.5sp"
+                    android:textStyle="bold"
+                    tools:text="دورة 1 من 15" />
+
+                <com.example.graduationproject.view.BreathingFeatBreathingCircleView
+                    android:id="@+id/sessionCircle"
+                    android:layout_width="240dp"
+                    android:layout_height="240dp"
+                    android:layout_marginTop="30dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="30dp">
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="6dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentStart="true"
+                            android:text="@string/breathing_feat_session_progress"
+                            android:textColor="@color/hub_sub"
+                            android:textSize="11.5sp" />
+                        <TextView
+                            android:id="@+id/sessionPercentText"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:textColor="@color/hub_sub"
+                            android:textSize="11.5sp"
+                            tools:text="42%" />
+                    </RelativeLayout>
+
+                    <ProgressBar
+                        android:id="@+id/sessionProgressBar"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:max="100"
+                        android:progressTint="@color/accent_green_1" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/btnStopSession"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="26dp"
+                    android:background="@drawable/bg_pill_white"
+                    android:gravity="center"
+                    android:paddingVertical="15dp"
+                    android:text="@string/breathing_feat_stop_session"
+                    android:textColor="@color/green_deep"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- CELEBRATE PANEL -->
+            <LinearLayout
+                android:id="@+id/celebratePanel"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="30dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="🌿"
+                    android:textSize="52sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:text="@string/breathing_feat_celebrate_title"
+                    android:textColor="@color/green_deep"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/breathing_feat_celebrate_desc"
+                    android:textColor="@color/hub_sub"
+                    android:textSize="14sp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:orientation="horizontal">
+
+                    <TextView android:id="@+id/statMinutes" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp" android:background="@drawable/bg_hub_item" android:padding="14dp" android:gravity="center"
+                        tools:text="⏱\n2.0\nدقيقة" />
+                    <TextView android:id="@+id/statCycles" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp" android:background="@drawable/bg_hub_item" android:padding="14dp" android:gravity="center"
+                        tools:text="🔁\n15\nدورة" />
+                    <TextView android:id="@+id/statStreak" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                        android:background="@drawable/bg_hub_item" android:padding="14dp" android:gravity="center"
+                        tools:text="🔥\n3\nأيام" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </FrameLayout>
+    </LinearLayout>
+</FrameLayout>

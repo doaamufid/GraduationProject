@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/adult_chat_bg_popup"
+    android:elevation="10dp"
+    android:orientation="horizontal"
+    android:padding="8dp">
+
+    <TextView android:id="@+id/optSupportive" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:background="@drawable/adult_chat_bg_tone_opt" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="8dp" android:paddingBottom="8dp"
+        android:text="داعم" android:textColor="@color/adult_chat_text_mid" android:textSize="12sp" android:textStyle="bold"/>
+
+    <TextView android:id="@+id/optDirect" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginStart="6dp" android:background="@drawable/adult_chat_bg_tone_opt" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="8dp" android:paddingBottom="8dp"
+        android:text="مباشر" android:textColor="@color/adult_chat_text_mid" android:textSize="12sp" android:textStyle="bold"/>
+
+    <TextView android:id="@+id/optOptimistic" android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:layout_marginStart="6dp" android:background="@drawable/adult_chat_bg_tone_opt" android:paddingStart="12dp" android:paddingEnd="12dp" android:paddingTop="8dp" android:paddingBottom="8dp"
+        android:text="متفائل" android:textColor="@color/adult_chat_text_mid" android:textSize="12sp" android:textStyle="bold"/>
+</LinearLayout>

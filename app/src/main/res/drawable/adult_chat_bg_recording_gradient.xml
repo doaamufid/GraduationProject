@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
+    <gradient android:angle="270" android:startColor="@color/adult_chat_dark_bg_1" android:centerColor="@color/adult_chat_dark_bg_2" android:endColor="@color/adult_chat_dark_bg_3" />
+</shape>

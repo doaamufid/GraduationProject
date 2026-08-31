@@ -195,6 +195,10 @@
     <string name="suggest_habits">اقترح لي عادات ✨</string>
     <string name="add_manually">أضف عادة يدوياً</string>
     <string name="streak_format">%1$d يوم متتالي</string>
+    <!-- AI suggestions -->
+    <string name="ai_suggestions_title">اقتراحات ذكية لعاداتك</string>
+    <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
+    <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
     <!-- Habit dialog -->
     <string name="habit_new_title">عادة جديدة</string>
     <string name="habit_edit_title">تعديل العادة</string>
@@ -207,10 +211,7 @@
     <!-- Time wheel -->
     <string name="choose_time">اختر الوقت</string>
     <string name="time_done">تم</string>
-    <!-- AI suggestions -->
-    <string name="ai_suggestions_title">اقتراحات ذكية لعاداتك</string>
-    <string name="ai_suggestions_banner">بناءً على مزاجك ومحادثاتك الأخيرة، هذي عادات ممكن تساعدك — اختار الي يناسبك</string>
-    <string name="add_selected_format">أضف العادات المحددة (%1$d)</string>
+
     <!-- Library -->
     <string name="library_title">مكتبة المقالات الذكية</string>
     <string name="library_sub">ARTICLES · المقالات</string>
@@ -1649,4 +1650,65 @@
     <string name="suggested_videos_title">فيديوهات وبودكاست 🎥</string>
     <string name="ai_suggested_feature_title">اقتراحات ذكية</string>
     <string name="ai_suggested_feature_desc">مقترحات مدعومة بالذكاء الاصطناعي</string>
+    <string name="home_feature_chat_title">الرفيق الذكي</string>
+    <string name="home_feature_chat_desc">دردشة مريحة مع رفيقك</string>
+
+
+    <string name="hub_title">معرض الشاشات</string>
+    <string name="hub_subtitle">اختر شاشة لتجربتها</string>
+
+    <string name="item_daily_title">بطاقة العادات — أطفال</string>
+    <string name="item_daily_desc">قنفذ / دبدوب / فراشة يتقدّم مع كل عادة</string>
+    <string name="item_adult_title">بطاقة العادات — كبار</string>
+    <string name="item_adult_desc">متسلّق يصعد الجبل مع كل عادة، نهار↔ليل حقيقي</string>
+    <string name="item_breathe_title">بطاقة روتين التنفس</string>
+    <string name="item_breathe_desc">٤ تمارين تنفس، مربوطة فعليًا بجلسات حقيقية</string>
+
+    <string name="back_to_home">→ رجوع للرئيسية</string>
+
+    <string name="kids_habit_prog_habits_of_day">عادات اليوم</string>
+    <string name="kids_habit_prog_not_started_yet">لسه ما بدأنا... يلا نوقظه!</string>
+    <string name="kids_habit_prog_all_done">أنجزت كل عاداتك! 🌟</string>
+    <string name="kids_habit_prog_keep_going">كمّل خطواتك اليوم</string>
+    <string name="kids_habit_prog_well_done">🎉 أحسنت!</string>
+
+    <string name="adult_habit_prog_stage_start">ابدأ يومك</string>
+    <string name="adult_habit_prog_stage_done">أنجزت يومك، ليلة هنيئة</string>
+    <string name="adult_habit_prog_stage_early">بداية الطريق</string>
+    <string name="adult_habit_prog_stage_mid">في المسار الصحيح</string>
+    <string name="adult_habit_prog_stage_near">قريب من القمة</string>
+    <string name="adult_habit_prog_today_track">مسار اليوم</string>
+    <string name="adult_habit_prog_completed_habits">عادات مكتملة</string>
+    <string name="adult_habit_prog_summit_reached">🏔 أنجزت يومك</string>
+
+    <string name="breathing_feat_routine_title_progress">خذي وقتك مع كل تمرين</string>
+    <string name="breathing_feat_routine_title_done">أنجزتِ روتين تنفسك اليوم 🌿</string>
+    <string name="breathing_feat_routine_quote">"التنفس هو أول هدية تعطينها لنفسك اليوم"</string>
+    <string name="breathing_feat_start_next_fmt">ابدئي: %1$s ✨</string>
+    <string name="breathing_feat_redo_any">أعيدي أي تمرين 🌿</string>
+
+    <string name="breathing_feat_mode_equal">التنفس المتساوي</string>
+    <string name="breathing_feat_mode_equal_desc">التنفس المتوازن يساعدك على الاسترخاء والتركيز</string>
+    <string name="breathing_feat_mode_box">تنفس المربع</string>
+    <string name="breathing_feat_mode_box_desc">تنفس المربع طريقة قوية لتقليل التوتر</string>
+    <string name="breathing_feat_mode_478">تنفس 478</string>
+    <string name="breathing_feat_mode_478_desc">تنفس 4-7-8 يساعد على تحسين النوم</string>
+    <string name="breathing_feat_mode_711">تنفس 7-11</string>
+    <string name="breathing_feat_mode_711_desc">تنفس 7-11 يساعد في تقليل القلق وتحسين النوم</string>
+
+    <string name="breathing_feat_phase_in">شهيق</string>
+    <string name="breathing_feat_phase_hold">حبس</string>
+    <string name="breathing_feat_phase_out">زفير</string>
+
+    <string name="breathing_feat_stop_session">إيقاف الجلسة</string>
+    <string name="breathing_feat_session_progress">تقدم الجلسة</string>
+    <string name="breathing_feat_celebrate_title">أحسنتِ صنعاً</string>
+    <string name="breathing_feat_celebrate_desc">أنهيتِ جلستك بنجاح، جسمك وعقلك يشكرانك على هذه اللحظة من الهدوء</string>
+    <string name="breathing_feat_minutes_label">دقيقة</string>
+    <string name="breathing_feat_cycles_label">دورة</string>
+    <string name="breathing_feat_days_label">أيام</string>
+
+    <string name="breathing_feat_dark_mode_toggle">🌙 داكن</string>
+    <string name="breathing_feat_light_mode_toggle">☀️ فاتح</string>
+
 </resources>

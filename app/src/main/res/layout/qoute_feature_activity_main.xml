@@ -13,8 +13,8 @@
         android:layout_height="match_parent"
         android:layout_gravity="center"
         android:background="@drawable/qoute_feature_bg_phone_frame"
-        android:clipChildren="true"
-        android:clipToPadding="true">
+        android:clipChildren="false"
+        android:clipToPadding="false">
 
         <!-- Background image with Ken Burns animation -->
         <ImageView
@@ -56,6 +56,8 @@
             android:orientation="vertical"
             android:paddingHorizontal="26dp"
             android:paddingBottom="30dp"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent">
@@ -93,7 +95,9 @@
                 android:id="@+id/quoteCard"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:minHeight="96dp">
+                android:minHeight="96dp"
+                android:clipChildren="false"
+                android:clipToPadding="false">
 
                 <View
                     android:id="@+id/breathGlow"

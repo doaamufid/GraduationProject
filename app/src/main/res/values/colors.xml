@@ -597,5 +597,81 @@
 
     <color name="qoute_feature_toast_bg">#EB14100C</color>
     <color name="qoute_feature_toast_border">#59CFA35C</color>
+
+    <color name="adult_chat_bg_top">#F6F1FB</color>
+    <color name="adult_chat_bg_mid">#EEE7FB</color>
+    <color name="adult_chat_bg_bottom">#EFE9FB</color>
+
+    <color name="adult_chat_purple_light">#B8A4EC</color>
+    <color name="adult_chat_purple_mid">#8F7DE6</color>
+    <color name="adult_chat_purple_deep">#8A6FE0</color>
+    <color name="adult_chat_purple_pale">#B28FE8</color>
+    <color name="adult_chat_purple_glow">#966AE6</color>
+
+    <color name="adult_chat_text_dark">#3A2E57</color>
+    <color name="adult_chat_text_mid">#4A3B6B</color>
+    <color name="adult_chat_text_soft">#6D5F92</color>
+    <color name="adult_chat_text_faint">#9B8FC2</color>
+    <color name="adult_chat_text_placeholder">#A99CD0</color>
+
+    <color name="adult_chat_white_85">#D9FFFFFF</color>
+    <color name="adult_chat_white_75">#BFFFFFFF</color>
+    <color name="adult_chat_white_65">#A6FFFFFF</color>
+    <color name="adult_chat_white_60">#99FFFFFF</color>
+
+    <color name="adult_chat_bubble_user_start">#B28FE8</color>
+    <color name="adult_chat_bubble_user_end">#8A6FE0</color>
+    <color name="adult_chat_bubble_bot">#BFFFFFFF</color>
+
+    <color name="adult_chat_streak_text">#A9631F</color>
+    <color name="adult_chat_streak_bg">#59FFC878</color>
+
+    <color name="adult_chat_danger">#C94F4F</color>
+
+    <color name="adult_chat_dark_bg_1">#2C1A4D</color>
+    <color name="adult_chat_dark_bg_2">#1A0F30</color>
+    <color name="adult_chat_dark_bg_3">#120A22</color>
+    <color name="adult_chat_dark_text">#E4DCFA</color>
+    <color name="adult_chat_dark_text_soft">#CABDF0</color>
+    <color name="adult_chat_dark_hint">#B7A6E6</color>
+    <color name="adult_chat_warn_red">#F0A6A6</color>
+
+    <color name="adult_chat_transparent">#00000000</color>
+    <color name="adult_chat_toast_bg">#EB3A2E57</color>
+
+    <!-- Hub -->
+    <color name="hub_bg_top">#EEF7E2</color>
+    <color name="hub_bg_bottom">#DCEFC9</color>
+    <color name="hub_title">#2F4D43</color>
+    <color name="hub_sub">#4F7364</color>
+    <color name="hub_desc">#7A9284</color>
+    <color name="hub_arrow">#6FAE6F</color>
+
+    <!-- Kids daily card -->
+    <color name="green_deep">#2F4B2A</color>
+    <color name="green_mid">#5FA83A</color>
+    <color name="green_soft">#DCEFC7</color>
+    <color name="kids_habit_prog_sand">#F4E4C1</color>
+    <color name="kids_habit_prog_sand_dark">#E0C88F</color>
+    <color name="kids_habit_prog_coral">#FF8FA0</color>
+    <color name="kids_habit_prog_sun_color">#FFD35C</color>
+
+    <!-- Adult card -->
+    <color name="adult_habit_prog_adult_card_light">#F6F1E7</color>
+    <color name="adult_habit_prog_adult_card_dark">#14151F</color>
+    <color name="adult_habit_prog_adult_text_light">#20263B</color>
+    <color name="adult_habit_prog_adult_text_dark">#F4E9DA</color>
+    <color name="adult_habit_prog_adult_gold">#B8823B</color>
+
+    <!-- Breathing -->
+    <color name="accent_green_1">#6FAE6F</color>
+    <color name="accent_green_2">#9ED6A0</color>
+    <color name="breathing_feat_breathe_light_bg1">#DFEADD</color>
+    <color name="breathing_feat_breathe_light_bg2">#F2F4E9</color>
+    <color name="breathing_feat_breathe_dark_bg1">#0E1A13</color>
+    <color name="breathing_feat_breathe_dark_bg2">#0A1610</color>
+
+    <color name="transparent">#00000000</color>
+
 </resources>
 

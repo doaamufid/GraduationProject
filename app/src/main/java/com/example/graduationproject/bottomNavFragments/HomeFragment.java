@@ -16,8 +16,10 @@ import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.graduationproject.AdultChatMainActivity;
 import com.example.graduationproject.AdultMoodStatsActivity;
 import com.example.graduationproject.AdultNotifNotificationsActivity;
+import com.example.graduationproject.HubActivity;
 import com.example.graduationproject.ArticlesActivity;
 import com.example.graduationproject.BreathingActivity;
 import com.example.graduationproject.DailyHabitsActivity;
@@ -174,19 +176,20 @@ public class HomeFragment extends Fragment {
 
     private void setupFeatures() {
         featureList.clear();
-        featureList.add(new HomeFeature(R.drawable.ic_zap, R.drawable.bg_icon_orange, getString(R.string.ai_suggested_feature_title), getString(R.string.ai_suggested_feature_desc)));
+        featureList.add(new HomeFeature(R.drawable.ic_chat, R.drawable.bg_icon_orange, getString(R.string.home_feature_chat_title), getString(R.string.home_feature_chat_desc)));
         featureList.add(new HomeFeature(R.drawable.video, R.drawable.bg_icon_purple, getString(R.string.home_feature_videos_title), getString(R.string.home_feature_videos_desc)));
         featureList.add(new HomeFeature(R.drawable.audio, R.drawable.bg_icon_green, getString(R.string.home_feature_audio_title), getString(R.string.home_feature_audio_desc)));
         featureList.add(new HomeFeature(R.drawable.ic_heart_filled_red, R.drawable.bg_icon_pink, getString(R.string.home_feature_articles_title), getString(R.string.home_feature_articles_desc)));
         featureList.add(new HomeFeature(R.drawable.habits, R.drawable.bg_icon_orange, getString(R.string.home_feature_habits_title), getString(R.string.home_feature_habits_desc)));
         featureList.add(new HomeFeature(R.drawable.report, R.drawable.bg_icon_blue, getString(R.string.home_feature_reports_title), getString(R.string.home_feature_reports_desc)));
+        featureList.add(new HomeFeature(R.drawable.ic_home, R.drawable.bg_icon_green, getString(R.string.hub_title), getString(R.string.hub_subtitle)));
         featureList.add(new HomeFeature(R.drawable.ic_users, R.drawable.bg_icon_purple, getString(R.string.home_feature_community_title), getString(R.string.home_feature_community_desc)));
 
         featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
             HomeFeature feature = featureList.get(position);
             String title = feature.getTitle();
-            if (title.equals(getString(R.string.ai_suggested_feature_title))) {
-                startActivity(new Intent(getActivity(), com.example.graduationproject.ui.AISuggestionsActivity.class));
+            if (title.equals(getString(R.string.home_feature_chat_title))) {
+                startActivity(new Intent(getActivity(), AdultChatMainActivity.class));
             } else if (title.equals(getString(R.string.home_feature_videos_title))) {
                 startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
             } else if (title.equals(getString(R.string.home_feature_audio_title))) {
@@ -197,6 +200,8 @@ public class HomeFragment extends Fragment {
                 startActivity(new Intent(getActivity(), DailyHabitsActivity.class));
             } else if (title.equals(getString(R.string.home_feature_reports_title))) {
                 startActivity(new Intent(getActivity(), AdultMoodStatsActivity.class));
+            } else if (title.equals(getString(R.string.hub_title))) {
+                startActivity(new Intent(getActivity(), HubActivity.class));
             } else if (title.equals(getString(R.string.home_feature_community_title))) {
                 startActivity(new Intent(getActivity(), SalamCommunityActivity.class));
             }

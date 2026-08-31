@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#11131F">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:padding="20dp">
+
+        <TextView
+            android:id="@+id/btnBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:layout_marginBottom="14dp"
+            android:background="@android:color/transparent"
+            android:paddingHorizontal="16dp"
+            android:paddingVertical="8dp"
+            android:text="@string/back_to_home"
+            android:textColor="#F4E9DA"
+            android:textStyle="bold" />
+
+        <com.example.graduationproject.view.AdultHabitProgAdultProgressCardView
+            android:id="@+id/adultCardView"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_marginBottom="22dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:gravity="center"
+            android:text="معاينة تفاعلية — لون السماء يتبع ساعة جهازك الآن"
+            android:textColor="#9AA1BE"
+            android:textSize="12sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginBottom="12dp">
+
+            <Button android:id="@+id/btnMinusHabit" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="− عادة" android:textAllCaps="false" android:background="@android:color/transparent" android:textColor="#F4E9DA" android:layout_marginEnd="8dp"/>
+            <Button android:id="@+id/btnReset" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="إعادة" android:textAllCaps="false" android:background="@android:color/transparent" android:textColor="#9AA1BE" android:layout_marginEnd="8dp"/>
+            <Button android:id="@+id/btnPlusHabit" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="+ عادة" android:textAllCaps="false" android:background="@drawable/bg_pill_accent" android:textColor="#171B30" android:layout_marginEnd="8dp"/>
+            <Button android:id="@+id/btnSound" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="🔊" android:textAllCaps="false" android:background="@android:color/transparent" android:textColor="#F4E9DA"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center">
+
+            <Button android:id="@+id/btnMinusTotal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="− عدد" android:textAllCaps="false" android:background="@android:color/transparent" android:textColor="#F4E9DA" android:layout_marginEnd="8dp"/>
+            <Button android:id="@+id/btnPlusTotal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="+ عدد" android:textAllCaps="false" android:background="@drawable/bg_pill_accent" android:textColor="#171B30"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

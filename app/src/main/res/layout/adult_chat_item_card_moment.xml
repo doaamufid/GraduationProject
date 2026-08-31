@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/adult_chat_bg_card"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="12dp">
+
+    <FrameLayout
+        android:layout_width="34dp"
+        android:layout_height="34dp">
+        <com.example.graduationproject.ui.AdultChatOrbView
+            android:id="@+id/orbMoment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:textColor="@color/adult_chat_purple_mid" android:textSize="10sp" android:textStyle="bold" android:text="لحظة هدوء"/>
+        <TextView android:id="@+id/txtTrail" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:textColor="@color/adult_chat_text_dark" android:textSize="12.5sp" android:textStyle="bold" android:text="تنفّس · تأريض · ذكر"/>
+    </LinearLayout>
+
+    <ImageView android:layout_width="15dp" android:layout_height="15dp" android:src="@drawable/adult_chat_ic_chevron"/>
+</LinearLayout>

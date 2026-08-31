@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/recordingRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/adult_chat_bg_recording_gradient"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingStart="18dp"
+        android:paddingEnd="18dp"
+        android:paddingTop="16dp">
+
+        <ImageButton
+            android:id="@+id/btnRecClose"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_alignParentStart="true"
+            android:background="@drawable/adult_chat_bg_rec_round_cancel"
+            android:padding="8dp"
+            android:src="@drawable/adult_chat_ic_close_light" />
+
+        <TextView
+            android:id="@+id/txtRecTimer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:letterSpacing="0.05"
+            android:text="00:00"
+            android:textColor="@color/adult_chat_dark_text"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtRecLocked"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/adult_chat_bg_locked_tag"
+            android:paddingStart="11dp"
+            android:paddingEnd="11dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            android:text="🔒 مقفول"
+            android:textColor="@color/adult_chat_dark_text_soft"
+            android:textSize="11.5sp"
+            android:textStyle="bold"
+            android:visibility="invisible" />
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="220dp"
+            android:layout_height="220dp">
+
+            <View android:id="@+id/sonarRing1" android:layout_width="150dp" android:layout_height="150dp"
+                android:layout_gravity="center" android:background="@drawable/adult_chat_ring_stroke_light" />
+            <View android:id="@+id/sonarRing2" android:layout_width="150dp" android:layout_height="150dp"
+                android:layout_gravity="center" android:background="@drawable/adult_chat_ring_stroke_light" />
+            <View android:id="@+id/sonarRing3" android:layout_width="150dp" android:layout_height="150dp"
+                android:layout_gravity="center" android:background="@drawable/adult_chat_ring_stroke_light" />
+
+            <FrameLayout
+                android:id="@+id/recOrbScaleContainer"
+                android:layout_width="140dp"
+                android:layout_height="140dp"
+                android:layout_gravity="center">
+                <com.example.graduationproject.ui.AdultChatOrbView
+                    android:id="@+id/orbRecording"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
+            </FrameLayout>
+        </FrameLayout>
+
+        <LinearLayout
+            android:id="@+id/dragHints"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="🔒&#10;اسحب لفوق للقفل"
+                android:textColor="@color/adult_chat_dark_hint"
+                android:textSize="10.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDragCancelHint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="اسحب لليسار للإلغاء ⟵"
+                android:textColor="@color/adult_chat_dark_text_soft"
+                android:textSize="10.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/txtRecCaption"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1.6"
+            android:paddingStart="40dp"
+            android:paddingEnd="40dp"
+            android:text="جاري الاستماع إليك... تحدّث بحريّة"
+            android:textColor="@color/adult_chat_dark_text_soft"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="34dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnRecCancelRound"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginEnd="34dp"
+            android:background="@drawable/adult_chat_bg_rec_round_cancel"
+            android:padding="15dp"
+            android:src="@drawable/adult_chat_ic_close_light" />
+
+        <FrameLayout
+            android:id="@+id/micIndicatorWrap"
+            android:layout_width="64dp"
+            android:layout_height="64dp">
+            <ImageView
+                android:id="@+id/micIndicator"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/adult_chat_bg_rec_mic_indicator"
+                android:padding="20dp"
+                android:src="@drawable/adult_chat_ic_mic" />
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/btnRecSendRound"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginStart="34dp"
+            android:background="@drawable/adult_chat_bg_rec_round_send"
+            android:padding="15dp"
+            android:src="@drawable/adult_chat_ic_send" />
+    </LinearLayout>
+</LinearLayout>

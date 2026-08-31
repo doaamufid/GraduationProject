@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.graduationproject"
     xmlns:tools="http://schemas.android.com/tools">
-
+    <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -143,6 +143,12 @@
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
         <activity
+            android:name=".KidsHabitProgDailyCardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AdultHabitProgAdultCardActivity"
+            android:exported="false" />
+        <activity
             android:name=".Kids.KidsBubbleBreathingActivity"
             android:exported="false" />
         <activity
@@ -202,6 +208,12 @@
             android:name=".BreathingActivity"
             android:exported="true" />
         <activity
+            android:name=".BreathingFeatBreatheRoutineActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BreathingFeatBreatheSessionActivity"
+            android:exported="false" />
+        <activity
             android:name=".ChatActivity"
             android:exported="false"
             android:windowSoftInputMode="adjustResize" />
@@ -254,6 +266,13 @@
             android:name=".CBTRReframingActivity"
             android:exported="false" />
         <activity
+            android:name=".AdultChatMainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name=".HubActivity"
+            android:exported="false" />
+        <activity
             android:name=".AdultNotifNotificationsActivity"
             android:exported="false" />
         <activity
@@ -279,9 +298,11 @@
             android:theme="@style/my_future_msg_theme_future_message" />
 
         <!-- UI Package Activities -->
+
         <activity
             android:name=".ui.AISuggestionsActivity"
             android:exported="false" />
+
         <activity
             android:name=".ui.StrengthsBankActivity"
             android:exported="false" />
