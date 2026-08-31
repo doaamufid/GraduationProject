@@ -23,8 +23,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.graduationproject.ProfileNavigator;
 import com.example.graduationproject.R;
-import com.example.graduationproject.SalamGeminiService;
 import com.example.graduationproject.data.ChildProfileStore;
+import com.example.graduationproject.data.SalamGeminiService;
 import com.example.graduationproject.models.ChildProfile;
 import com.example.graduationproject.models.profile.ChildAlert;
 import com.example.graduationproject.models.profile.ChildDetail;
@@ -414,5 +414,15 @@ public class ChildDetailFragment extends Fragment {
 
     private int withAlpha(int color, int alpha0to255) {
         return Color.argb(alpha0to255, Color.red(color), Color.green(color), Color.blue(color));
+    }
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (getView() != null && getArguments() != null) {
+            long childId = getArguments().getLong(ARG_CHILD_ID, -1);
+            if (childId != -1) {
+                loadRealChildDetails(getView(), (ProfileNavigator) requireActivity(), childId);
+            }
+        }
     }
 }
