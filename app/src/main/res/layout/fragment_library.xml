@@ -29,9 +29,11 @@
             android:contentDescription="@string/cd_back" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:layout_marginStart="50dp"
+            android:layout_marginEnd="90dp"
             android:orientation="vertical"
             android:gravity="center">
 
@@ -62,22 +64,24 @@
 
             <ImageButton
                 android:id="@+id/btnFavContent"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_circle_surface"
-                android:padding="11dp"
+                android:padding="8dp"
                 android:src="@drawable/ic_heart"
+                android:scaleType="fitCenter"
                 android:contentDescription="@string/content_desc_fav" />
 
             <ImageButton
                 android:id="@+id/btnBookmarkContent"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
                 android:background="@drawable/bg_circle_surface"
-                android:padding="11dp"
+                android:padding="8dp"
                 android:src="@drawable/ic_bookmark"
-                app:tint="@color/text"
+                android:scaleType="fitCenter"
+                app:tint="@color/black"
                 android:contentDescription="@string/content_desc_bookmark" />
         </LinearLayout>
     </RelativeLayout>

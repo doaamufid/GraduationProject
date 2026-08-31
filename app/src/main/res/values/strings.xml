@@ -72,7 +72,7 @@
     <string name="permission_needed">لازم إذن المايكروفون عشان تسجل صوتك</string>
     <string name="default_phrase">أنا شجاع وقوي، وأقدر آتخطى أي شي صعب</string>
     <string name="summary_title">صندوق الطوارئ</string>
-    <string name="summary_tag">SAFE SPACE · صندوق النجاة</string>
+    <string name="summary_tag">صندوق النجاة</string>
     <string name="summary_headline">صندوق النجاة النفسي</string>
     <string name="summary_sub">افتحه في لحظات الضيق الشديد</string>
     <string name="open_box_title">افتح الصندوق الآن</string>
@@ -214,7 +214,7 @@
 
     <!-- Library -->
     <string name="library_title">مكتبة المقالات الذكية</string>
-    <string name="library_sub">ARTICLES · المقالات</string>
+    <string name="library_sub">المقالات</string>
     <string name="search_hint">ابحث في المكتبة...</string>
     <string name="read_now">قراءة الآن</string>
     <string name="featured_badge">مقترح لك اليوم ✨</string>
@@ -232,7 +232,7 @@
     <string name="toast_reason_thanks">شكراً! هذا يساعدنا نحسّن اقتراحاتك القادمة</string>
     <string name="cat_all">الكل</string>
     <string name="visual_content_title">محتوى مرئي</string>
-    <string name="visual_content_sub">Listen · استمع</string>
+    <string name="visual_content_sub">استمع</string>
     <string name="player_title">يشغّل الآن</string>
     <string name="why_suggested_content">ليش اقترحنا هذا لك؟</string>
     <string name="feedback_question_content">شو رأيك بهذا المحتوى؟</string>

@@ -78,7 +78,7 @@
                 android:text="الأحد"
                 android:textColor="@color/qoute_feature_gold_light"
                 android:textStyle="bold"
-                android:textSize="40sp"
+                android:textSize="32sp"
                 android:layout_marginBottom="6dp" />
 
             <TextView

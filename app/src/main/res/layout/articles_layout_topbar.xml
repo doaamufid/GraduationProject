@@ -10,11 +10,12 @@
 
     <ImageButton
         android:id="@+id/btnBack"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
         android:background="@drawable/bg_circle_surface"
-        android:padding="13dp"
+        android:padding="8dp"
         android:src="@drawable/ic_arrow_right"
+        android:scaleType="fitCenter"
         android:contentDescription="@android:string/cancel" />
 
     <LinearLayout

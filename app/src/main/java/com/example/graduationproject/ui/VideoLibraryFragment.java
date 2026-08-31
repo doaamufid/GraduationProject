@@ -78,15 +78,7 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
         recyclerVideos = view.findViewById(R.id.recyclerVideos);
         EditText etSearch = view.findViewById(R.id.etSearch);
 
-        View topBar = view.findViewById(R.id.topBar);
-        if (topBar != null) {
-            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(topBar, (v, insets) -> {
-                androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
-                v.setPadding(v.getPaddingLeft(), systemBars.top + (int) (24 * v.getResources().getDisplayMetrics().density),
-                        v.getPaddingRight(), v.getPaddingBottom());
-                return insets;
-            });
-        }
+        // Removed TopBar inset listener as activity_video_library.xml uses fitsSystemWindows="true"
 
         // Back button (top bar)
         view.findViewById(R.id.btnBack).setOnClickListener(v ->

@@ -59,15 +59,7 @@ public class LibraryFragment extends Fragment implements ArticleAdapter.Listener
         recyclerArticles = view.findViewById(R.id.recyclerArticles);
         EditText etSearch = view.findViewById(R.id.etSearch);
 
-        View topBar = view.findViewById(R.id.topBar);
-        if (topBar != null) {
-            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(topBar, (v, insets) -> {
-                androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
-                v.setPadding(v.getPaddingLeft(), systemBars.top + (int) (24 * v.getResources().getDisplayMetrics().density),
-                        v.getPaddingRight(), v.getPaddingBottom());
-                return insets;
-            });
-        }
+        // Removed TopBar inset listener as activity_articles.xml uses fitsSystemWindows="true"
 
         recyclerArticles.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new ArticleAdapter(this);

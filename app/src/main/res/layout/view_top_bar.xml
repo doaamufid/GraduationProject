@@ -24,9 +24,11 @@
             android:contentDescription="@null"/>
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
+            android:layout_marginStart="60dp"
+            android:layout_marginEnd="60dp"
             android:orientation="vertical"
             android:gravity="center">
 
@@ -37,7 +39,7 @@
                 android:textColor="@color/text_main"
                 android:textStyle="bold"
                 android:textSize="14sp"
-                tools:text="صندوق الطوارئ"/>
+                tools:text="عنوان الشاشة"/>
 
             <TextView
                 android:id="@+id/tvTopBarSubtitle"
@@ -46,7 +48,7 @@
                 android:textColor="@color/text_soft"
                 android:textSize="10sp"
                 android:visibility="gone"
-                tools:text="Listen · استمع"
+                tools:text="استمع"
                 tools:visibility="visible"/>
         </LinearLayout>
 

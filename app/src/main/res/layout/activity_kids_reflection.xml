@@ -49,10 +49,10 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/kids_adaptive_ink"
                 android:textStyle="bold"
-                android:textSize="54sp"
-                android:lineSpacingExtra="-10dp"
+                android:textSize="48sp"
+                android:lineSpacingExtra="0dp"
                 android:layout_marginBottom="4dp"
-                tools:text="Magna\nCity" />
+                tools:text="سكون في القمة" />
 
             <TextView
                 android:id="@+id/txt_note"
@@ -64,7 +64,7 @@
                 android:textSize="17sp"
                 android:lineSpacingMultiplier="1.25"
                 android:gravity="start"
-                tools:text="A premier destination set along some of the world's most beautiful coastline." />
+                tools:text="خذ نفساً عميقاً، وقف لحظة، وخلّي بالك هادي." />
 
         </LinearLayout>
 
