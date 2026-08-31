@@ -10,8 +10,8 @@
     <color name="border">#D1E8F2</color>
     <color name="accent">#D35D4B</color>
     <color name="accent_soft">#F2D8D5</color>
-    <color name="text_main">#2D5B7B</color>
-    <color name="text_soft">#6A8CA3</color>
+    <color name="text_main">#1A3A5A</color>
+    <color name="text_soft">#4A607A</color>
 
     <!-- Timeline / River colors -->
     <color name="path_color">#D0E4D9</color>
@@ -28,7 +28,7 @@
     <color name="wave_mid">#A8CDE0</color>
     <color name="wave_light">#C5DFF0</color>
     <color name="text_dark">#2C5F7A</color>
-    <color name="text_subtitle">#7FA8BF</color>
+    <color name="text_subtitle">#4A607A</color>
     <color name="btn_outline">#2C5F7A</color>
 
     <!-- Purple & Teal Shades -->
@@ -46,7 +46,7 @@
     <color name="bg_cream">#FBF6EC</color>
     <color name="card_white">#FFFFFF</color>
     <color name="text_primary">#3A3A3A</color>
-    <color name="text_secondary">#9A9A9A</color>
+    <color name="text_secondary">#4A4A4A</color>
     <color name="accent_orange">#F2984B</color>
     <color name="sound_card_top">#6FBCAE</color>
     <color name="sound_card_bottom">#E4D2A6</color>
@@ -56,7 +56,7 @@
     <color name="orange_dark">#E07B39</color>
     <color name="pink_primary">#F2A6A6</color>
     <color name="pink_dark">#E88888</color>
-    <color name="text_gray">#8A7A70</color>
+    <color name="text_gray">#5A5A5A</color>
     <color name="star_gold">#F5C34C</color>
     <color name="star_empty">#EAD9C4</color>
     <color name="heart_red">#EF6C6C</color>
@@ -72,7 +72,7 @@
     <color name="orange_light">#FFE7D1</color>
     <color name="orange_light_border">#FFD6AE</color>
     <color name="text_brown">#8A6E52</color>
-    <color name="text_muted">#B0987F</color>
+    <color name="text_muted">#6B5E50</color>
 
     <!-- Bear Theme -->
     <color name="bear_body">#C98A4B</color>
@@ -142,7 +142,7 @@
     <color name="sage">#8FA998</color>
     <color name="green">#4CAF7D</color>
     <color name="text_main_alt">#1F3A60</color>
-    <color name="text_soft_alt2">#5C7290</color>
+    <color name="text_soft_alt2">#3A4E66</color>
     <color name="border_alt">#DCE6EF</color>
 
     <!-- Alpha / Transparency Variants -->
@@ -286,7 +286,7 @@
     <color name="bgAlt">#EAF0F6</color>
     <color name="primaryDark">#1F3A60</color>
     <color name="text">#1F3A60</color>
-    <color name="textSoft">#5C7290</color>
+    <color name="textSoft">#3A4E66</color>
     <color name="outerBg">#E9ECF3</color>
     <color name="white88">#E0FFFFFF</color>
     <color name="white_cc">#CCFFFFFF</color>
@@ -604,7 +604,7 @@
 
     <color name="adult_chat_purple_light">#B8A4EC</color>
     <color name="adult_chat_purple_mid">#8F7DE6</color>
-    <color name="adult_chat_purple_deep">#8A6FE0</color>
+    <color name="adult_chat_purple_deep">#3A2E57</color>
     <color name="adult_chat_purple_pale">#B28FE8</color>
     <color name="adult_chat_purple_glow">#966AE6</color>
 

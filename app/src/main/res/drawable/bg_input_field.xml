@@ -3,6 +3,6 @@
     <solid android:color="#E6F8F2E6" /> <!-- 90% opaque warm cream -->
     <stroke
         android:width="1.5dp"
-        android:color="#40211B33" /> <!-- faint ink border -->
+        android:color="#8A7C6D" /> <!-- darker grey border -->
     <corners android:radius="30dp" />
 </shape>
