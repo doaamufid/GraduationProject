@@ -1066,27 +1066,6 @@
     <string name="subtitle_cards">بطاقة واحدة محفوظة</string>
     <string name="subtitle_cards_plural">%1$d بطاقات محفوظة</string>
 
-    <string name="c1_title">سكون في القمة</string>
-    <string name="c1_tag">لحظة تأمل</string>
-    <string name="c1_chip">🌫️ هدوء</string>
-    <string name="c1_date">٨ أبريل</string>
-    <string name="c1_note">أحياناً يكون أقوى شعور هو إدراك مدى صغرك أمام شيء أعظم منك. خذ نفساً. مسموح لك أن تكون ساكناً الآن.</string>
-    <string name="c2_title">أفق بعيد</string>
-    <string name="c2_tag">لحظة اتساع</string>
-    <string name="c2_chip">🌊 سلام</string>
-    <string name="c2_date">٧ أبريل</string>
-    <string name="c2_note">العالم يمكن أن يكون أكبر من مشكلة اليوم. امنح نفسك بعض المساحة، حتى لو كانت صغيرة، للتنفس بحرية.</string>
-    <string name="c3_title">ظل الغابة</string>
-    <string name="c3_tag">لحظة حضور</string>
-    <string name="c3_chip">🌿 سكينة</string>
-    <string name="c3_date">٦ أبريل</string>
-    <string name="c3_note">ليس عليك حل كل شيء اليوم. يكفي أن تكون حاضراً في هذه اللحظة، تسمع وتشعر.</string>
-    <string name="c4_title">دفء الرمال</string>
-    <string name="c4_tag">لحظة صبر</string>
-    <string name="c4_chip">☀️ صبر</string>
-    <string name="c4_date">٥ أبريل</string>
-    <string name="c4_note">بعض الأشياء تحتاج وقتاً لتكشف عن نفسها، مثل الصحراء التي تبدو فارغة لكنها تخفي حياة تحت السطح.</string>
-    <string name="enter_button">ادخل مساحتك</string>
     <string name="toast_copy_fail">فشل نسخ الرسالة</string>
 
     <string name="delete_step1_title">حذف جميع بياناتك نهائياً؟</string>
@@ -1643,4 +1622,6 @@
     <string name="card_match_format">%1$d%% تطابق</string>
     <string name="card_learners_format">%1$s بطل</string>
     <string name="card_add_button">أضف</string>
+
+    <string name="qoute_feature_app_name">Salam</string>
 </resources>
