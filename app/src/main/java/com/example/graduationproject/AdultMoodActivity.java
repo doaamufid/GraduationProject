@@ -24,6 +24,7 @@ import androidx.core.view.WindowInsetsControllerCompat;
 import com.example.graduationproject.view.FaceView;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 /**
@@ -85,9 +86,18 @@ public class AdultMoodActivity extends AppCompatActivity {
         findViewById(R.id.btn_continue).setOnClickListener(v -> {
             // Save selected mood for Home screen
             com.example.graduationproject.models.Mood mood = moods.get(selectedIndex);
+            
+            // Save today's mood specifically
+            Calendar cal = Calendar.getInstance();
+            int dayOfYear = cal.get(Calendar.DAY_OF_YEAR);
+            int year = cal.get(Calendar.YEAR);
+            String moodKey = "mood_" + year + "_" + dayOfYear;
+
             getSharedPreferences("AppPrefs", MODE_PRIVATE).edit()
                     .putString("today_mood_id", mood.id)
                     .putInt("today_mood_color", mood.circleColor)
+                    .putString(moodKey + "_id", mood.id)
+                    .putInt(moodKey + "_color", mood.circleColor)
                     .apply();
 
             startActivity(new Intent(this, QouteFeatureMainActivity.class));

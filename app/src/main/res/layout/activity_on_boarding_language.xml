@@ -5,7 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_onboarding_blue"
-    android:padding="24dp"
+    android:paddingStart="24dp"
+    android:paddingEnd="24dp"
+    android:paddingTop="64dp"
+    android:paddingBottom="48dp"
     android:clipChildren="false"
     android:clipToPadding="false"
     tools:context=".OnBoardingLanguageActivity">

@@ -6,6 +6,9 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.style.RelativeSizeSpan;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
@@ -75,6 +78,7 @@ public class MoodCheckInActivity extends AppCompatActivity {
         View.OnClickListener moodClickListener = this::onMoodSelected;
         for (TextView moodView : moodViews) {
             moodView.setOnClickListener(moodClickListener);
+            enlargeEmoji(moodView);
         }
 
         binding.btnConfirmMood.setOnClickListener(v -> onConfirmClicked());
@@ -141,16 +145,29 @@ public class MoodCheckInActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.cardAiResponse.setOnClickListener(v -> {
-            Intent intent = new Intent(this, KidsAiResponseActivity.class);
+        binding.cardAiChat.setOnClickListener(v -> {
+            Intent intent = new Intent(this, KidsAiCompanionActivity.class);
             intent.putExtra(EXTRA_CHILD_ID, currentChildId);
-            intent.putExtra("AI_RESPONSE", getString(R.string.card_ai_response_default));
             startActivity(intent);
         });
 
         // جدولة التذكيرات والإشعارات
         KidsReminderScheduler.scheduleReminder(this);
         requestNotificationPermissionIfNeeded();
+    }
+
+    private void enlargeEmoji(TextView textView) {
+        String text = textView.getText().toString();
+        if (text.isEmpty()) return;
+
+        SpannableString spannable = new SpannableString(text);
+        // Find the index of the newline character to separate emoji from text
+        int newlineIndex = text.indexOf('\n');
+        if (newlineIndex > 0) {
+            // Apply 2.0x size to the emoji part (before the newline)
+            spannable.setSpan(new RelativeSizeSpan(2.0f), 0, newlineIndex, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            textView.setText(spannable);
+        }
     }
 
     // 🌟 دالة قراءة الأفاتار وتحديث الـ TextView الخاص بكِ (tvChildAvatar)

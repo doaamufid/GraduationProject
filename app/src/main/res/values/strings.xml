@@ -77,13 +77,13 @@
     <string name="summary_sub">افتحه في لحظات الضيق الشديد</string>
     <string name="open_box_title">افتح الصندوق الآن</string>
     <string name="open_box_sub">عرض كل ما يريحك في ثانية واحدة</string>
-    <string name="cat_audio_tag">AUDIO · صوتي</string>
-    <string name="cat_audio_title">تسجيلات صوتية</string>
-    <string name="cat_photos_tag">PHOTOS · صور</string>
+    <string name="cat_audio_tag">تسجيلات صوتية مهدئة تخفف من حدة القلق.</string>
+    <string name="cat_audio_title">صوتيات</string>
+    <string name="cat_photos_tag">البحث عن الراحة في ذكرياتك وصور الطبيعة.</string>
     <string name="cat_photos_title">صور مريحة</string>
-    <string name="cat_love_tag">LOVE · محبة</string>
+    <string name="cat_love_tag">رسائل مليئة بالدعم والمحبة ممن يهتمون بك.</string>
     <string name="cat_love_title">رسائل محبة</string>
-    <string name="cat_dhikr_tag">DHIKR · ذكر</string>
+    <string name="cat_dhikr_tag">كلمات تذكرك بالله وتمنح قلبك السكينة.</string>
     <string name="cat_dhikr_title">أذكار مفضلة</string>
     <string name="empty_category">لسا ما أضفت شي هنا</string>
     <string name="count_messages">%1$d رسائل</string>
@@ -498,6 +498,12 @@
 
     <!-- Aliases for HomeFragment and more -->
     <string name="home_greeting_morning">صباح الخير</string>
+    <string name="home_greeting_evening">مساء الخير</string>
+    <string name="clear_chat_title">حذف المحادثة</string>
+    <string name="clear_chat_message">هل أنت متأكد من رغبتك في حذف كل تاريخ المحادثة؟ لا يمكن التراجع عن هذا الإجراء.</string>
+    <string name="clear_chat_confirm">حذف الكل</string>
+    <string name="clear_chat_cancel">إلغاء</string>
+    <string name="clear_chat_success">تم حذف المحادثة بنجاح</string>
     <string name="home_feature_videos_title">مرئيات</string>
     <string name="home_feature_videos_desc">شاهد فيديوهات مهدئة</string>
     <string name="home_feature_audio_title">صوتيات</string>
@@ -1668,6 +1674,39 @@
     <string name="item_breathe_desc">٤ تمارين تنفس، مربوطة فعليًا بجلسات حقيقية</string>
 
     <string name="back_to_home">→ رجوع للرئيسية</string>
+
+    <!-- One Click Calm Strings -->
+    <string name="occ_app_title">ركن الهدوء</string>
+    <string name="occ_tab_gallery">🎨 بطاقاتي</string>
+    <string name="occ_tab_dhikr">💬 أذكاري</string>
+    <string name="occ_tab_simulate">🚀 سيناريو الأزمة</string>
+    <string name="occ_subtitle_dhikr">ذكر واحد مفضل</string>
+    <string name="occ_subtitle_dhikr_plural">%1$d أذكار مفضلة</string>
+    <string name="occ_subtitle_simulate">سيناريو الأزمة</string>
+    <string name="occ_subtitle_cards">بطاقة واحدة محفوظة</string>
+    <string name="occ_subtitle_cards_plural">%1$d بطاقات محفوظة</string>
+
+    <!-- Grounding Exercise Strings -->
+    <string name="grounding_ex_see_tag">تشاهد · SEE</string>
+    <string name="grounding_ex_see_title">٥ أشياء تراها</string>
+    <string name="grounding_ex_see_question">انظري حواليك والمسي بعينك ٥ أشياء — بس اضغطي، ما تحتاجين تكتبين</string>
+
+    <string name="grounding_ex_touch_tag">تلمس · TOUCH</string>
+    <string name="grounding_ex_touch_title">٤ أشياء تلمسها</string>
+    <string name="grounding_ex_touch_question">لاحظي ٤ أشياء تقدرين تلمسينها الآن</string>
+
+    <string name="grounding_ex_hear_tag">تسمع · HEAR</string>
+    <string name="grounding_ex_hear_title">٣ أصوات تسمعها</string>
+    <string name="grounding_ex_hear_question">أنصتي لـ٣ أصوات حواليك</string>
+
+    <string name="grounding_ex_smell_tag">تشم · SMELL</string>
+    <string name="grounding_ex_smell_title">رائحتان</string>
+    <string name="grounding_ex_smell_question">لاحظي رائحتين قريبتين منك</string>
+
+    <string name="grounding_ex_taste_tag">تتذوق · TASTE</string>
+    <string name="grounding_ex_taste_title">طعم واحد</string>
+    <string name="grounding_ex_taste_question">استحضري طعماً واحداً بفمك الآن</string>
+
 
     <string name="kids_habit_prog_habits_of_day">عادات اليوم</string>
     <string name="kids_habit_prog_not_started_yet">لسه ما بدأنا... يلا نوقظه!</string>

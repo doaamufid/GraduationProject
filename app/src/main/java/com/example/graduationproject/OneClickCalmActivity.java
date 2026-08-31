@@ -155,16 +155,16 @@ public class OneClickCalmActivity extends AppCompatActivity implements AppHost, 
         switch (currentTab) {
             case 1: {
                 int favCount = repo.getFavoriteDhikr().size();
-                int res = favCount == 1 ? R.string.subtitle_dhikr : R.string.subtitle_dhikr_plural;
+                int res = favCount == 1 ? R.string.occ_subtitle_dhikr : R.string.occ_subtitle_dhikr_plural;
                 appSubtitle.setText(getString(res, favCount));
                 break;
             }
             case 2:
-                appSubtitle.setText(R.string.subtitle_simulate);
+                appSubtitle.setText(R.string.occ_subtitle_simulate);
                 break;
             default: {
                 int cardCount = repo.getCards().size();
-                int res = cardCount == 1 ? R.string.subtitle_cards : R.string.subtitle_cards_plural;
+                int res = cardCount == 1 ? R.string.occ_subtitle_cards : R.string.occ_subtitle_cards_plural;
                 appSubtitle.setText(getString(res, cardCount));
             }
         }

@@ -145,6 +145,31 @@ public class AdultChatMainActivity extends AppCompatActivity implements AdultCha
         chatDao = ChatDatabase.getInstance(this).chatMessageDao();
         geminiService = new SalamGeminiService(this);
         loadMessagesFromDb();
+
+        findViewById(R.id.btnClearChat).setOnClickListener(v -> {
+            new androidx.appcompat.app.AlertDialog.Builder(this)
+                    .setTitle("حذف المحادثة")
+                    .setMessage("هل أنت متأكد من رغبتك في حذف كل تاريخ المحادثة؟ لا يمكن التراجع عن هذا الإجراء.")
+                    .setPositiveButton("حذف الكل", (dialog, which) -> {
+                        dbExecutor.execute(() -> {
+                            chatDao.deleteAll();
+                            mainHandler.post(() -> {
+                                adapter.clearAll();
+                                currentNode = "start";
+                                setupWelcome();
+                                screenIsChat = false;
+                                welcomeScreen.setVisibility(View.VISIBLE);
+                                chatScreen.setVisibility(View.GONE);
+                                topbarTitle.setVisibility(View.GONE);
+                                orbFlyContainer.setScaleX(1f); orbFlyContainer.setScaleY(1f);
+                                orbFlyContainer.setAlpha(1f); orbFlyContainer.setTranslationX(0); orbFlyContainer.setTranslationY(0);
+                                showToast("تم حذف المحادثة بنجاح");
+                            });
+                        });
+                    })
+                    .setNegativeButton("إلغاء", null)
+                    .show();
+        });
     }
 
     private void bindViews() {

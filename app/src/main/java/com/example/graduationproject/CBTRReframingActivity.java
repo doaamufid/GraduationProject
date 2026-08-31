@@ -17,7 +17,10 @@ import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
 import androidx.activity.SystemBarStyle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsCompat;
 import androidx.core.view.WindowInsetsControllerCompat;
 
 import com.example.graduationproject.data.ReframingAppData;
@@ -228,6 +231,14 @@ public class CBTRReframingActivity extends AppCompatActivity {
 
     private void setupWriteDialog() {
         View dialogRoot = findViewById(R.id.writeDialogInclude);
+        View dialogContent = dialogRoot.findViewById(R.id.dialogContent);
+
+        // Handle insets for Edge-to-Edge: ensure the dialog content doesn't hide behind the navigation bar
+        ViewCompat.setOnApplyWindowInsetsListener(dialogContent, (v, insets) -> {
+            Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+            v.setPadding(v.getPaddingLeft(), v.getPaddingTop(), v.getPaddingRight(), dp(20) + bars.bottom);
+            return insets;
+        });
 
         findViewById(R.id.btnCloseDialog).setOnClickListener(v -> closeWriteDialog());
         dialogOverlay.setOnClickListener(v -> closeWriteDialog()); // tap outside sheet == onClose

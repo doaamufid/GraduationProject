@@ -1,5 +1,7 @@
 package com.example.graduationproject.models;
 
+import com.example.graduationproject.R;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -34,6 +36,20 @@ public final class SurvivalBoxRepository {
     private final List<DhikrItem> dhikr = new ArrayList<>();
 
     private SurvivalBoxRepository() {
+        // Add dummy data
+        addAudio("ماما", 60);
+        addAudio("قرآن - سورة الفاتحة", 30);
+        
+        // Use local resource URIs for dummy photos
+        String pkg = "com.example.graduationproject";
+        addPhoto("android.resource://" + pkg + "/" + R.drawable.nature1, "هدوء الطبيعة");
+        addPhoto("android.resource://" + pkg + "/" + R.drawable.nature2, "سكينة");
+        addPhoto("android.resource://" + pkg + "/" + R.drawable.nature3, "تأمل");
+        
+        addLove("أنا فخور بك جداً", "صديق");
+        addLove("أنت شخص رائع وتستحق كل الخير", "نفسي");
+        
+        setDhikr(Arrays.asList("سبحان الله وبحمده", "لا إله إلا الله", "الحمد لله"));
     }
 
     public static synchronized SurvivalBoxRepository getInstance() {

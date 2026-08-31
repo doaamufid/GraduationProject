@@ -125,32 +125,31 @@ public class HomeFragment extends Fragment {
         Calendar tempCal = (Calendar) cal.clone();
         tempCal.set(Calendar.DAY_OF_WEEK, Calendar.SUNDAY);
 
-        // Simulating some past moods to match the design style
-        int[] mockMoodColors = {0xFFDEF3EF, 0xFFFCF0C6, 0xFFDEF3E0, 0xFFF8DCDA, 0xFFDEF3EF, 0, 0};
-        int[] mockMoodIcons = {R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, R.drawable.ic_smile, 0, 0};
-
         SimpleDateFormat dayFormat = new SimpleDateFormat("EEE", new Locale("ar"));
 
         for (int i = 0; i < 7; i++) {
             int dateVal = tempCal.get(Calendar.DAY_OF_MONTH);
-            int dayOfYear = tempCal.get(Calendar.DAY_OF_YEAR);
-            boolean isToday = (dayOfYear == todayDate);
+            int dayOfYearIdx = tempCal.get(Calendar.DAY_OF_YEAR);
+            int yearIdx = tempCal.get(Calendar.YEAR);
+            boolean isToday = (dayOfYearIdx == todayDate);
 
             String dayName = dayFormat.format(tempCal.getTime());
             String dateStr = String.valueOf(dateVal);
 
+            String moodKey = "mood_" + yearIdx + "_" + dayOfYearIdx;
+            String moodId = appPrefs.getString(moodKey + "_id", "");
+            int moodColor = appPrefs.getInt(moodKey + "_color", 0);
+
             int icon = 0;
             int color = 0;
 
-            if (isToday) {
-                if (!todayMoodId.isEmpty()) {
-                    icon = R.drawable.ic_smile;
-                    color = todayMoodColor;
-                }
-            } else if (tempCal.before(cal)) {
-                // For past days in this week, show some mock icons/colors if we don't have real data
-                icon = mockMoodIcons[i % mockMoodIcons.length];
-                color = mockMoodColors[i % mockMoodColors.length];
+            if (!moodId.isEmpty()) {
+                icon = R.drawable.ic_smile; // Always use smile icon if mood exists
+                color = moodColor;
+            } else if (tempCal.after(cal)) {
+                // Future days stay locked (default 0)
+            } else {
+                // Past days without input also stay empty or locked
             }
 
             moodDays.add(new MoodDay(dayName, dateStr, icon, color, isToday));

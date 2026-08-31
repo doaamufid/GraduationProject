@@ -41,6 +41,12 @@ public class MyFutureMsgRepository {
 
         myFutures.add(new MyFutureMsg(3, "تذكر دائماً سبب بدئك. النجاح ليس بعيداً كما تظن.",
             "منذ يومين", MyFutureMsgDateUtils.myFutureMsgAddDays(myFutureMsgNow, -2), MyFutureMsgDateUtils.myFutureMsgAddDays(myFutureMsgNow, 210), false));
+
+        myFutures.add(new MyFutureMsg(4, "ملاحظة لنفسي: أنتِ قاعدة تبلين بلاءً حسناً، استمري في تمارين التنفس.",
+            "اليوم", myFutureMsgNow, MyFutureMsgDateUtils.myFutureMsgAddDays(myFutureMsgNow, 7), false));
+
+        myFutures.add(new MyFutureMsg(5, "رسالة تشجيع ليوم الامتحان: لا تتوترين، سويتي اللي عليك والباقي على الله.",
+            "منذ ساعة", myFutureMsgNow, MyFutureMsgDateUtils.myFutureMsgAddDays(myFutureMsgNow, 15), false));
     }
 
     public List<MyFutureMsg> myFutureMsgGetMessages() {

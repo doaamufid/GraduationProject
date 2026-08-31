@@ -58,7 +58,7 @@ public class SummaryFragment extends Fragment {
             return insets;
         });
 
-        TopBarHelper.bind(root, "صندوق النجاة", () -> {
+        TopBarHelper.bind(root, getString(R.string.summary_title), () -> {
             if (getActivity() != null) getActivity().finish();
         }, null);
 
@@ -149,25 +149,25 @@ public class SummaryFragment extends Fragment {
         llCategories.removeAllViews();
 
         addCategoryRow(
-                "تسجيلات صوتية مهدئة تخفف من حدة القلق.", "صوتيات",
+                getString(R.string.cat_audio_tag), getString(R.string.cat_audio_title),
                 R.drawable.audio, R.drawable.bg_cat_audio,
                 () -> openBrowse(new BrowseAudioFragment())
         );
 
         addCategoryRow(
-                "البحث عن الراحة في ذكرياتك وصور الطبيعة.", "صور مريحة",
-                R.drawable.body_map, R.drawable.bg_cat_photos,
+                getString(R.string.cat_photos_tag), getString(R.string.cat_photos_title),
+                R.drawable.ic_image, R.drawable.bg_cat_photos,
                 () -> openBrowse(new BrowsePhotosFragment())
         );
 
         addCategoryRow(
-                "رسائل مليئة بالدعم والمحبة ممن يهتمون بك.", "رسائل محبة",
+                getString(R.string.cat_love_tag), getString(R.string.cat_love_title),
                 R.drawable.ic_heart_filled_white, R.drawable.bg_cat_love,
                 () -> openBrowse(new BrowseLoveFragment())
         );
 
         addCategoryRow(
-                "كلمات تذكرك بالله وتمنح قلبك السكينة.", "أذكار مفضلة",
+                getString(R.string.cat_dhikr_tag), getString(R.string.cat_dhikr_title),
                 R.drawable.ic_sparkles, R.drawable.bg_cat_dhikr,
                 () -> openBrowse(new BrowseDhikrFragment())
         );

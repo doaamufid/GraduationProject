@@ -45,7 +45,7 @@
                     android:id="@+id/appTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/app_name"
+                    android:text="@string/occ_app_title"
                     android:textColor="@color/text_main"
                     android:textSize="17sp"
                     android:textStyle="bold"
@@ -88,19 +88,19 @@
             <TextView
                 android:id="@+id/tabGallery"
                 style="@style/TabButtonStyle"
-                android:text="@string/tab_gallery"/>
+                android:text="@string/occ_tab_gallery"/>
 
             <TextView
                 android:id="@+id/tabDhikr"
                 style="@style/TabButtonStyle"
                 android:layout_marginStart="6dp"
-                android:text="@string/tab_dhikr"/>
+                android:text="@string/occ_tab_dhikr"/>
 
             <TextView
                 android:id="@+id/tabSimulate"
                 style="@style/TabButtonStyle"
                 android:layout_marginStart="6dp"
-                android:text="@string/tab_simulate"/>
+                android:text="@string/occ_tab_simulate"/>
         </LinearLayout>
 
         <View

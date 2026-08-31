@@ -64,6 +64,12 @@ public class AdultChatChatAdapter extends RecyclerView.Adapter<RecyclerView.View
     public void setCompanionName(String name) { this.companionName = name; }
     public void setTone(String tone) { this.tone = tone; }
 
+    public void clearAll() {
+        messages.clear();
+        typing = false;
+        notifyDataSetChanged();
+    }
+
     public void submit(AdultChatChatMessage msg) {
         messages.add(msg);
         notifyItemInserted(messages.size() - 1 + (typing ? 1 : 0));

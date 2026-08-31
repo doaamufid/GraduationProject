@@ -245,11 +245,12 @@
                     android:orientation="vertical"
                     android:padding="16dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🫁"
-                        android:textSize="44sp" />
+                    <ImageView
+                        android:layout_width="60dp"
+                        android:layout_height="60dp"
+                        android:contentDescription="@string/card_breathe"
+                        android:src="@drawable/ic_bubble_icon"
+                        app:tint="#5A8EC8" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -480,9 +481,9 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 8: AI Response -->
+            <!-- Card 7: AI Chat (New) -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardAiResponse"
+                android:id="@+id/cardAiChat"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
@@ -503,14 +504,14 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/card_ai_response_icon"
+                        android:text="💬"
                         android:textSize="44sp" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="12dp"
-                        android:text="@string/card_ai_response_title"
+                        android:text="احكي مع صديقك"
                         android:textColor="#2B3350"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -531,12 +532,11 @@
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 7: Videos -->
+            <!-- Card 8: Videos -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardVideos"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_columnSpan="2"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
                 android:clickable="true"
@@ -564,7 +564,7 @@
                         android:layout_marginTop="12dp"
                         android:text="@string/card_videos"
                         android:textColor="#2B3350"
-                        android:textSize="17sp"
+                        android:textSize="16sp"
                         android:textStyle="bold" />
 
                     <com.google.android.material.button.MaterialButton
@@ -578,7 +578,7 @@
                         android:insetBottom="0dp"
                         android:text="@string/card_add_button"
                         android:textColor="@android:color/white"
-                        android:textSize="14sp"
+                        android:textSize="13sp"
                         app:cornerRadius="12dp" />
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>

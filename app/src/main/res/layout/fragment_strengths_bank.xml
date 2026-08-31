@@ -132,7 +132,7 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:gravity="center_vertical"
-                    android:background="@drawable/bg_pill_flat"
+                    android:background="@drawable/bg_pill_light_blue"
                     android:paddingStart="12dp"
                     android:paddingEnd="12dp"
                     android:paddingTop="8dp"
@@ -153,7 +153,9 @@
                         android:layout_width="13dp"
                         android:layout_height="13dp"
                         android:src="@drawable/ic_plus"
-                        android:contentDescription="@null"/>
+                        android:contentDescription="@null"
+                        app:tint="@color/text_main"
+                        xmlns:app="http://schemas.android.com/apk/res-auto"/>
                 </LinearLayout>
 
                 <View android:layout_width="0dp" android:layout_height="1dp" android:layout_weight="1"/>
@@ -179,8 +181,8 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
-                android:background="@drawable/bg_button_primary"
-                android:textColor="@color/white"
+                android:background="@drawable/bg_button_light_blue"
+                android:textColor="@color/text_main"
                 android:textAllCaps="false"
                 android:textStyle="bold"
                 android:textSize="@dimen/text_title"

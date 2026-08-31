@@ -1582,6 +1582,12 @@
     <string name="created_now">Now</string>
     <!-- Aliases for HomeFragment and more -->
     <string name="home_greeting_morning">Good morning</string>
+    <string name="home_greeting_evening">Good evening</string>
+    <string name="clear_chat_title">Clear Chat</string>
+    <string name="clear_chat_message">Are you sure you want to delete all chat history? This action cannot be undone.</string>
+    <string name="clear_chat_confirm">Clear All</string>
+    <string name="clear_chat_cancel">Cancel</string>
+    <string name="clear_chat_success">Chat history cleared successfully</string>
     <string name="home_feature_videos_title">Videos</string>
     <string name="home_feature_videos_desc">Watch calming videos</string>
     <string name="home_feature_audio_title">Audio</string>
@@ -1714,6 +1720,39 @@
     <string name="item_breathe_desc">4 breathing exercises, actually connected to real sessions</string>
 
     <string name="back_to_home">→ Back to Home</string>
+
+    <!-- One Click Calm Strings -->
+    <string name="occ_app_title">Calm Corner</string>
+    <string name="occ_tab_gallery">🎨 My Cards</string>
+    <string name="occ_tab_dhikr">💬 My Dhikr</string>
+    <string name="occ_tab_simulate">🚀 Crisis Scenario</string>
+    <string name="occ_subtitle_dhikr">1 favorite dhikr</string>
+    <string name="occ_subtitle_dhikr_plural">%1$d favorite dhikr</string>
+    <string name="occ_subtitle_simulate">Crisis Scenario</string>
+    <string name="occ_subtitle_cards">1 card saved</string>
+    <string name="occ_subtitle_cards_plural">%1$d cards saved</string>
+
+    <!-- Grounding Exercise Strings -->
+    <string name="grounding_ex_see_tag">SEE · تشاهد</string>
+    <string name="grounding_ex_see_title">5 things you see</string>
+    <string name="grounding_ex_see_question">Look around and touch 5 things with your eyes — just tap, no need to write</string>
+
+    <string name="grounding_ex_touch_tag">TOUCH · تلمس</string>
+    <string name="grounding_ex_touch_title">4 things you touch</string>
+    <string name="grounding_ex_touch_question">Notice 4 things you can touch now</string>
+
+    <string name="grounding_ex_hear_tag">HEAR · تسمع</string>
+    <string name="grounding_ex_hear_title">3 sounds you hear</string>
+    <string name="grounding_ex_hear_question">Listen to 3 sounds around you</string>
+
+    <string name="grounding_ex_smell_tag">SMELL · تشم</string>
+    <string name="grounding_ex_smell_title">2 smells</string>
+    <string name="grounding_ex_smell_question">Notice 2 smells near you</string>
+
+    <string name="grounding_ex_taste_tag">TASTE · تتذوق</string>
+    <string name="grounding_ex_taste_title">1 taste</string>
+    <string name="grounding_ex_taste_question">Recall 1 taste in your mouth now</string>
+
 
     <string name="kids_habit_prog_habits_of_day">Today’s Habits</string>
     <string name="kids_habit_prog_not_started_yet">We haven’t started yet... let’s wake it up!</string>

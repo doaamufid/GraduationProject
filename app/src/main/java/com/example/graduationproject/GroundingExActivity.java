@@ -187,9 +187,9 @@ public class GroundingExActivity extends AppCompatActivity {
         tvStepCounter.setText(getString(R.string.step_counter_format, stepIdx + 1, senses.size()));
 
         tvEmoji.setText(step.emoji);
-        tvTag.setText(step.tag);
-        tvTitle.setText(step.title);
-        tvQuestion.setText(step.question);
+        tvTag.setText(getString(step.tagRes));
+        tvTitle.setText(getString(step.titleRes));
+        tvQuestion.setText(getString(step.questionRes));
 
         buildTapCounter(step);
         renderTapCounter();

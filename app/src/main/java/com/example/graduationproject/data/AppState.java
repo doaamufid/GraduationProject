@@ -30,7 +30,47 @@ public class AppState {
     private final List<Highlight> highlights = new ArrayList<>();
     private final List<SavedQuote> savedQuotes = new ArrayList<>();
 
-    private AppState() {}
+    private AppState() {
+        seed();
+    }
+
+    private void seed() {
+        // Dummy Article Favorites (Saved)
+        savedIds.add(1); // كيف تتعاملين مع الحزن بدون قمعه؟
+        savedIds.add(3); // التعميم المفرط: لما يقول عقلك 'دايماً' و'أبداً'
+
+        // Dummy Article Bookmarks
+        bookmarkedIds.add(2); // ٧ تقنيات للتنفس في الأزمات الأكثر قراءة
+        bookmarkedIds.add(8); // خمس خطوات توقف دوامة الأفكار القلقة
+
+        // Dummy Video Favorites (Saved)
+        savedContentIds.add(1); // كيف تتعامل مع القلق؟
+        savedContentIds.add(3); // تقنية التنفس العميق
+
+        // Dummy Video Bookmarks
+        bookmarkedContentIds.add(2); // نوم أفضل في ٣ خطوات
+        bookmarkedContentIds.add(5); // العلاقات الصحية
+
+        // Dummy Highlights
+        highlights.add(new Highlight(System.currentTimeMillis() + 1, 1, "كيف تتعاملين مع الحزن بدون قمعه؟", 0,
+                "قمع الحزن ما يخليه يختفي، بس يأجّله لوقت ثاني وبشكل أثقل.",
+                0xFFFFEB3B, "هذي النقطة دايماً أنساها وأحاول أكتم مشاعري.", false, "أمس"));
+
+        highlights.add(new Highlight(System.currentTimeMillis() + 2, 2, "٧ تقنيات للتنفس في الأزمات الأكثر قراءة", 1,
+                "شهيق ٤ ثواني، حبس النفس ٧ ثواني، زفير بطيء ٨ ثواني.",
+                0xFF81C784, "أجربها لما أحس بضيق مفاجئ.", false, "قبل يومين"));
+
+        highlights.add(new Highlight(System.currentTimeMillis() + 3, 3, "التعميم المفرط", 0,
+                "الكلمات المطلقة هذي نادراً ما تكون دقيقة فعلياً.",
+                0xFF64B5F6, null, false, "منذ ساعة"));
+
+        // Dummy Saved Quotes
+        savedQuotes.add(new SavedQuote(System.currentTimeMillis() + 4, 1, "كيف تتعاملين مع الحزن بدون قمعه؟",
+                "أول خطوة صحية هي الاعتراف بالشعور بدون حكم عليه", "أمس"));
+
+        savedQuotes.add(new SavedQuote(System.currentTimeMillis() + 5, 8, "خمس خطوات توقف دوامة الأفكار القلقة",
+                "سمّي اللي يصير — قولي لنفسك بصوت أو بصمت 'أنا الحين بدوامة قلق'.", "منذ يومين"));
+    }
 
     // ---- favorites (heart on article cards) ----
     public boolean isSaved(int articleId) {

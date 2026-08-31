@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Window;
 import android.view.WindowManager;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import androidx.activity.EdgeToEdge;
@@ -49,6 +50,17 @@ public class DrawInstructionActivity extends AppCompatActivity {
             intent.putExtra("CHILD_ID", getChildId());
             startActivity(intent);
         });
+
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+
+        View btnStart = findViewById(R.id.btnStart);
+        if (btnStart != null) {
+            btnStart.setVisibility(View.VISIBLE);
+            btnStart.setOnClickListener(v -> {
+                // Already here, maybe just scroll down or provide feedback
+                android.widget.Toast.makeText(this, "ابدأ الرسم الآن 🎨", android.widget.Toast.LENGTH_SHORT).show();
+            });
+        }
     }
 
     private void loadChildAvatarFromDatabase(TextView avatarTextView) {

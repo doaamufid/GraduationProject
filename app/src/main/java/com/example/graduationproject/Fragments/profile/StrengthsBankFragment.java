@@ -308,10 +308,10 @@ public class StrengthsBankFragment extends Fragment {
             chip.setText(s);
             boolean selected = s.equals(pickedSuggestion);
             if (selected) {
-                chip.setBackground(rounded(ContextCompat.getColor(requireContext(), R.color.primary), 100));
-                chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.white));
+                chip.setBackground(rounded(ContextCompat.getColor(requireContext(), R.color.icon_bg_blue), 100));
+                chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_main));
             } else {
-                chip.setBackgroundResource(R.drawable.bg_pill_flat);
+                chip.setBackgroundResource(R.drawable.bg_pill_light_blue);
                 chip.setTextColor(ContextCompat.getColor(requireContext(), R.color.text_main));
             }
             chip.setOnClickListener(v -> {
