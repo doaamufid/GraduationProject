@@ -74,7 +74,7 @@
                         android:background="@drawable/bg_circle_white"
                         android:src="@drawable/ic_bell"
                         android:padding="10dp"
-                        app:tint="@color/text_main"
+                        app:tint="#1A1A1A"
                         android:contentDescription="Notifications" />
 
                     <ImageButton
@@ -85,7 +85,7 @@
                         android:background="@drawable/bg_circle_white"
                         android:src="@drawable/ic_users"
                         android:padding="10dp"
-                        app:tint="@color/text_main"
+                        app:tint="#1A1A1A"
                         android:contentDescription="Switch Section" />
                 </LinearLayout>
             </RelativeLayout>

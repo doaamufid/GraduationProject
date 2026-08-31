@@ -80,6 +80,24 @@ public class MoodCheckInActivity extends AppCompatActivity {
         binding.btnConfirmMood.setOnClickListener(v -> onConfirmClicked());
         binding.btnBack.setOnClickListener(v -> finish());
 
+        // Navigation for top action buttons
+        binding.btnSwitchMode.setOnClickListener(v -> {
+            Intent intent = new Intent(this, com.example.graduationproject.SplashSelectActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
+        });
+
+        binding.btnSwitchProfile.setOnClickListener(v -> {
+            Intent intent = new Intent(this, com.example.graduationproject.Kids.ChildProfilesActivity.class);
+            startActivity(intent);
+        });
+
+        binding.btnAiChat.setOnClickListener(v -> {
+            Intent intent = new Intent(this, KidsAiCompanionActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
         // التنقل بين الشاشات مع إرسال ID الطفل (من كود صديقتك)
         binding.cardVideos.setOnClickListener(v -> {
             Intent intent = new Intent(this, VideosActivity.class);
@@ -120,6 +138,13 @@ public class MoodCheckInActivity extends AppCompatActivity {
         binding.cardCalmCorner.setOnClickListener(v -> {
             Intent intent = new Intent(this, com.example.graduationproject.KidsCalmCornerActivity.class);
             intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
+        binding.cardAiResponse.setOnClickListener(v -> {
+            Intent intent = new Intent(this, KidsAiResponseActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            intent.putExtra("AI_RESPONSE", getString(R.string.card_ai_response_default));
             startActivity(intent);
         });
 

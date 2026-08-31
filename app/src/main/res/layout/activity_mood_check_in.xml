@@ -37,10 +37,22 @@
                 android:id="@+id/btn_switch_mode"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
+                android:layout_marginEnd="8dp"
                 android:background="@drawable/bg_icon_button"
                 android:contentDescription="تبديل الوضع"
                 android:padding="10dp"
                 android:src="@drawable/ic_refresh"
+                app:tint="#8B6F4D" />
+
+            <!-- Icon 3: AI Chat -->
+            <ImageButton
+                android:id="@+id/btn_ai_chat"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_icon_button"
+                android:contentDescription="دردشة الذكاء الاصطناعي"
+                android:padding="10dp"
+                android:src="@drawable/ic_chat"
                 app:tint="#8B6F4D" />
 
         </LinearLayout>
@@ -401,13 +413,6 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/home_feature_habits_desc"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
@@ -459,12 +464,56 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="44dp"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="#6C5CE7"
+                        android:clickable="false"
+                        android:focusable="false"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/card_add_button"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"
+                        app:cornerRadius="12dp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 8: AI Response -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardAiResponse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_columnWeight="1"
+                android:layout_margin="8dp"
+                android:clickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#E0F7FA"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/home_feature_audio_desc"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
+                        android:text="@string/card_ai_response_icon"
+                        android:textSize="44sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/card_ai_response_title"
+                        android:textColor="#2B3350"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
 
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"

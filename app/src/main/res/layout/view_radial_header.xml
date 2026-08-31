@@ -34,7 +34,7 @@
                 android:id="@+id/tvDiscoveredCount"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/text_white"
+                android:textColor="@color/adult_chat_text_dark"
                 android:textStyle="bold"
                 android:textSize="28sp"
                 tools:text="12"
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/discovered_label"
-                android:textColor="@color/text_soft"
+                android:textColor="@color/adult_chat_purple_mid"
                 android:textSize="11sp"/>
         </LinearLayout>
     </FrameLayout>

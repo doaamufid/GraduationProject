@@ -91,10 +91,13 @@ public class BodyMapGuideDialogFragment extends DialogFragment {
             binding.btnNext.setVisibility(View.GONE);
             binding.gridOptions.setVisibility(View.VISIBLE);
             binding.ivGuideIcon.setImageResource(R.drawable.body_map);
+            binding.ivGuideIcon.setImageTintList(null);
         } else {
             binding.btnNext.setVisibility(View.VISIBLE);
             binding.gridOptions.setVisibility(View.GONE);
             binding.ivGuideIcon.setImageResource(R.drawable.air);
+            binding.ivGuideIcon.setImageTintList(android.content.res.ColorStateList.valueOf(
+                    androidx.core.content.ContextCompat.getColor(requireContext(), R.color.primary)));
         }
     }
 

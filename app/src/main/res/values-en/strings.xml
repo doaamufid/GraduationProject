@@ -1761,4 +1761,7 @@
     <string name="breathing_feat_light_mode_toggle">☀️ Light</string>
     <string name="kids_calm_heart_filled">♥</string>
     <string name="adaptive_adult_onboarding_welcome_title">Welcome to Salam 🤍</string>
+    <string name="card_ai_response_title">Nour\'s Reply</string>
+    <string name="card_ai_response_icon">🧸</string>
+    <string name="card_ai_response_default">Welcome champ! I\'m here to listen and help you 💛</string>
 </resources>

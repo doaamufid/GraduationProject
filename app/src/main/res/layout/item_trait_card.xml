@@ -90,7 +90,7 @@
                     android:id="@+id/tvTraitLabel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_main"
+                    android:textColor="@color/adult_chat_text_dark"
                     android:textStyle="bold"
                     android:textSize="15sp"
                     android:layout_marginEnd="6dp"
@@ -115,8 +115,8 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textColor="@color/text_soft"
-                    android:textSize="12sp"
+                    android:textColor="@color/adult_chat_purple_deep"
+                    android:textSize="12.5sp"
                     android:gravity="start"
                     tools:text="&quot;رغم كل شيء واصلت&quot;"/>
 
@@ -124,8 +124,8 @@
                     android:id="@+id/tvCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_soft"
-                    android:textSize="11sp"
+                    android:textColor="@color/adult_chat_purple_deep"
+                    android:textSize="11.5sp"
                     android:layout_marginStart="6dp"
                     tools:text="٨ مرات"/>
             </LinearLayout>

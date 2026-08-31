@@ -523,16 +523,16 @@
     <string name="exercises_strengths_title">نقاط قوتي</string>
     <string name="exercises_strengths_desc">اكتشف نقاط القوة الكامنة فيك</string>
     <string name="exercises_future_letter_title">رسالة لنفسي</string>
-    <string name="exercises_future_letter_desc">Write a message to your bright future</string>
+    <string name="exercises_future_letter_desc">اكتب رسالة لمستقبلك المشرق</string>
     <string name="exercises_reframe_title">إعادة صياغة الأفكار</string>
-    <string name="exercises_reframe_desc">Challenge negative thoughts and transform them</string>
-    <string name="exercises_body_map_title">Body Map</string>
-    <string name="exercises_body_map_desc">Listen to what your body is telling you</string>
-    <string name="exercises_duration_1min">1 min</string>
-    <string name="exercises_duration_3min">3 min</string>
-    <string name="exercises_duration_5min">5 min</string>
-    <string name="exercises_duration_7min">7 min</string>
-    <string name="exercises_duration_10min">10 min</string>
+    <string name="exercises_reframe_desc">تحدَّ الأفكار السلبية وحوّلها</string>
+    <string name="exercises_body_map_title">خريطة الجسد</string>
+    <string name="exercises_body_map_desc">استمع لما يحاول جسدك إخبارك به</string>
+    <string name="exercises_duration_1min">١ دقيقة</string>
+    <string name="exercises_duration_3min">٣ دقائق</string>
+    <string name="exercises_duration_5min">٥ دقائق</string>
+    <string name="exercises_duration_7min">٧ دقائق</string>
+    <string name="exercises_duration_10min">١٠ دقائق</string>
 
     <!-- Kids Adaptive -->
     <string name="kids_adaptive_resume_title">هل تريد المتابعة؟</string>
@@ -1643,6 +1643,9 @@
     <string name="card_match_format">%1$d%% تطابق</string>
     <string name="card_learners_format">%1$s بطل</string>
     <string name="card_add_button">أضف</string>
+    <string name="card_ai_response_title">رد نور</string>
+    <string name="card_ai_response_icon">🧸</string>
+    <string name="card_ai_response_default">أهلاً بك يا بطل! أنا هنا لأسمعك وأساعدك 💛</string>
 
     <string name="qoute_feature_app_name">Salam</string>
     <string name="ai_suggestions_content_title">مقترحات ذكية لك</string>

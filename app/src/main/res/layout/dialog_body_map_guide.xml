@@ -31,8 +31,7 @@
             android:id="@+id/ivGuideIcon"
             android:layout_width="120dp"
             android:layout_height="120dp"
-            android:src="@drawable/air"
-            app:tint="@color/primary" />
+            android:src="@drawable/air" />
 
         <TextView
             android:id="@+id/tvGuideText"
@@ -70,7 +69,9 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:text="الرأس والرقبة"
-                app:cornerRadius="12dp" />
+                android:textColor="@color/text_main"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/text_main" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnChest"
@@ -80,7 +81,9 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:text="الصدر"
-                app:cornerRadius="12dp" />
+                android:textColor="@color/text_main"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/text_main" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnShoulders"
@@ -90,7 +93,9 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:text="الأكتاف"
-                app:cornerRadius="12dp" />
+                android:textColor="@color/text_main"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/text_main" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btnStomach"
@@ -100,7 +105,9 @@
                 android:layout_columnWeight="1"
                 android:layout_margin="4dp"
                 android:text="المعدة"
-                app:cornerRadius="12dp" />
+                android:textColor="@color/text_main"
+                app:cornerRadius="12dp"
+                app:strokeColor="@color/text_main" />
         </GridLayout>
 
     </LinearLayout>
