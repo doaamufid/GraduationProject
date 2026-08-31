@@ -141,18 +141,21 @@
 
     </LinearLayout>
 
-    <androidx.appcompat.widget.AppCompatButton
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btnContinue"
+        style="@style/Widget.MaterialComponents.Button"
         android:layout_width="0dp"
-        android:layout_height="50dp"
+        android:layout_height="48dp"
         android:layout_marginHorizontal="30dp"
         android:layout_marginBottom="24dp"
-        android:background="@drawable/rounded_button_bg"
-        android:backgroundTint="@color/primary"
+        app:backgroundTint="@color/primary"
+        app:cornerRadius="24dp"
         android:text="@string/continue_label"
         android:textColor="@android:color/white"
         android:textSize="18sp"
         android:textStyle="bold"
+        android:insetTop="0dp"
+        android:insetBottom="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

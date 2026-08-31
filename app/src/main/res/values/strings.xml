@@ -1624,4 +1624,9 @@
     <string name="card_add_button">أضف</string>
 
     <string name="qoute_feature_app_name">Salam</string>
+    <string name="ai_suggestions_content_title">مقترحات ذكية لك</string>
+    <string name="suggested_articles_title">مقالات مقترحة 📖</string>
+    <string name="suggested_videos_title">فيديوهات وبودكاست 🎥</string>
+    <string name="ai_suggested_feature_title">اقتراحات ذكية</string>
+    <string name="ai_suggested_feature_desc">مقترحات مدعومة بالذكاء الاصطناعي</string>
 </resources>

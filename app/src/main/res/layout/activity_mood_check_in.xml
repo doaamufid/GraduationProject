@@ -137,16 +137,20 @@
         </GridLayout>
 
         <!-- Confirm button -->
-        <Button
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnConfirmMood"
+            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="match_parent"
-            android:layout_height="52dp"
+            android:layout_height="48dp"
             android:layout_marginTop="18dp"
-            android:background="@drawable/bg_button_orange"
+            app:backgroundTint="#FF9800"
+            app:cornerRadius="24dp"
             android:enabled="false"
             android:text="تأكيد اختيار اليوم"
             android:textColor="@android:color/white"
             android:textSize="16sp"
+            android:insetTop="0dp"
+            android:insetBottom="0dp"
             app:layout_constraintTop_toBottomOf="@id/gridMoods" />
 
         <!-- Category cards -->

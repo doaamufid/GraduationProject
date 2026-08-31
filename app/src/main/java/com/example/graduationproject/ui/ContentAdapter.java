@@ -69,6 +69,14 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
 
         // 2. Metadata
         holder.tvBrandLogo.setText(item.type);
+
+        if (item.reason != null && !item.reason.isEmpty()) {
+            holder.tvSuggestionReason.setVisibility(View.VISIBLE);
+            holder.tvSuggestionReason.setText(item.reason);
+        } else {
+            holder.tvSuggestionReason.setVisibility(View.GONE);
+        }
+
         holder.tvDate.setText(item.duration);
 
         // 3. Title & Subtitle (Stats)
@@ -99,17 +107,23 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
         holder.itemView.setOnClickListener(v -> {
             Animation press = AnimationUtils.loadAnimation(v.getContext(), R.anim.card_press);
             v.startAnimation(press);
-            v.postDelayed(() -> listener.onOpen(item), 90);
+            if (listener != null) {
+                v.postDelayed(() -> listener.onOpen(item), 90);
+            }
         });
 
         holder.btnFavorite.setOnClickListener(v -> {
-            listener.onToggleFavorite(item);
-            notifyItemChanged(holder.getAdapterPosition());
+            if (listener != null) {
+                listener.onToggleFavorite(item);
+                notifyItemChanged(holder.getAdapterPosition());
+            }
         });
 
         holder.btnBookmark.setOnClickListener(v -> {
-            listener.onToggleBookmark(item);
-            notifyItemChanged(holder.getAdapterPosition());
+            if (listener != null) {
+                listener.onToggleBookmark(item);
+                notifyItemChanged(holder.getAdapterPosition());
+            }
         });
 
         // Entrance animation
@@ -151,7 +165,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
 
     static class VH extends RecyclerView.ViewHolder {
         ImageView ivCardBackground;
-        TextView tvBrandLogo, tvDate, tvMainTitle, tvSubTitle, tvAuthorInitial;
+        TextView tvBrandLogo, tvDate, tvMainTitle, tvSubTitle, tvAuthorInitial, tvSuggestionReason;
         android.widget.ImageButton btnFavorite, btnBookmark;
         View vPulse1, vPulse2;
 
@@ -167,6 +181,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
             btnBookmark = itemView.findViewById(R.id.btnBookmark);
             vPulse1 = itemView.findViewById(R.id.vPulse1);
             vPulse2 = itemView.findViewById(R.id.vPulse2);
+            tvSuggestionReason = itemView.findViewById(R.id.tvSuggestionReason);
         }
     }
 }

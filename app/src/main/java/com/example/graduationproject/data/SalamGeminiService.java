@@ -1,4 +1,4 @@
-package com.example.graduationproject;
+package com.example.graduationproject.data;
 
 import android.util.Log;
 import com.google.firebase.ai.FirebaseAI;
@@ -7,14 +7,21 @@ import com.google.firebase.ai.type.GenerativeBackend;
 import com.google.firebase.ai.java.GenerativeModelFutures;
 import com.google.firebase.ai.type.Content;
 import com.google.firebase.ai.type.GenerateContentResponse;
+import com.google.firebase.ai.type.GenerationConfig;
+import com.google.firebase.ai.type.Schema;
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;
 import com.google.common.util.concurrent.ListenableFuture;
 import com.example.graduationproject.data.ChatMessageEntity;
 
+import java.util.Map;
 import java.util.List;
 import java.util.concurrent.Executor;
 import java.util.concurrent.Executors;
+
+import com.example.graduationproject.models.CandidateItem;
+import java.util.Arrays;
+import java.util.ArrayList;
 
 public class SalamGeminiService {
     private static final String TAG = "SalamGeminiService";
@@ -31,6 +38,57 @@ public class SalamGeminiService {
         GenerativeModel gm = FirebaseAI.getInstance(GenerativeBackend.googleAI())
                 .generativeModel(MODEL_NAME);
         this.model = GenerativeModelFutures.from(gm);
+    }
+
+    public void getSuggestedContent(List<CandidateItem> shortlist, String moodId, GeminiCallback callback) {
+        Schema itemSchema = Schema.obj(Map.of(
+                "type", Schema.enumeration(Arrays.asList("article", "video")),
+                "id", Schema.str(),
+                "reason", Schema.str()
+        ));
+        Schema responseSchema = Schema.array(itemSchema);
+
+        GenerationConfig config = new GenerationConfig.Builder()
+                .setResponseMimeType("application/json")
+                .setResponseSchema(responseSchema)
+                .build();
+
+        GenerativeModel gm = FirebaseAI.getInstance(GenerativeBackend.googleAI())
+                .generativeModel(MODEL_NAME, config);
+        GenerativeModelFutures suggestionsModel = GenerativeModelFutures.from(gm);
+
+        StringBuilder candidatesText = new StringBuilder();
+        for (CandidateItem item : shortlist) {
+            candidatesText.append(item.type).append(" id=").append(item.id)
+                    .append(" category=").append(item.category)
+                    .append(" title=").append(item.title).append("\n");
+        }
+
+        String prompt = "بناءً على مزاج المستخدم (" + moodId + ")، اختاري ٢ مقالة و٢ فيديو بالضبط "
+                + "من القائمة التالية فقط (ممنوع ذكر أي id مو موجود بالقائمة):\n"
+                + candidatesText
+                + "\nلكل عنصر مختار، اكتبي سبب قصير بالعربي ليش يناسب حالته الآن.";
+
+        Content content = new Content.Builder().addText(prompt).build();
+        ListenableFuture<GenerateContentResponse> response = suggestionsModel.generateContent(content);
+
+        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
+            @Override
+            public void onSuccess(GenerateContentResponse result) {
+                String resultText = result.getText();
+                if (resultText != null && !resultText.trim().isEmpty()) {
+                    callback.onSuccess(resultText.trim());
+                } else {
+                    callback.onError("Empty response");
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e(TAG, "Error generating suggestions: " + t.getMessage(), t);
+                callback.onError(t.getMessage());
+            }
+        }, executor);
     }
 
     /**
@@ -56,6 +114,43 @@ public class SalamGeminiService {
             public void onFailure(Throwable t) {
                 Log.e(TAG, "خطأ من Gemini: " + t.getMessage(), t);
                 callback.onError("في مشكلة بالاتصال، حاول مرة تانية.");
+            }
+        }, executor);
+    }
+
+    public void generateStructuredQuote(String prompt, GeminiCallback callback) {
+        Schema quoteSchema = Schema.obj(Map.of(
+                "ar", Schema.str(),
+                "en", Schema.str()
+        ));
+
+        GenerationConfig config = new GenerationConfig.Builder()
+                .setResponseMimeType("application/json")
+                .setResponseSchema(quoteSchema)
+                .build();
+
+        GenerativeModel gm = FirebaseAI.getInstance(GenerativeBackend.googleAI())
+                .generativeModel(MODEL_NAME, config);
+        GenerativeModelFutures quoteModel = GenerativeModelFutures.from(gm);
+
+        Content content = new Content.Builder().addText(prompt).build();
+        ListenableFuture<GenerateContentResponse> response = quoteModel.generateContent(content);
+
+        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
+            @Override
+            public void onSuccess(GenerateContentResponse result) {
+                String resultText = result.getText();
+                if (resultText != null && !resultText.trim().isEmpty()) {
+                    callback.onSuccess(resultText.trim());
+                } else {
+                    callback.onError("Empty response");
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e(TAG, "Error generating quote: " + t.getMessage(), t);
+                callback.onError(t.getMessage());
             }
         }, executor);
     }

@@ -1675,4 +1675,9 @@
 
     <string name="qoute_feature_app_name">سلام</string>
 
+    <string name="ai_suggestions_content_title">Smart Suggestions for You</string>
+    <string name="suggested_articles_title">Suggested Articles 📖</string>
+    <string name="suggested_videos_title">Videos &amp; Podcasts 🎥</string>
+    <string name="ai_suggested_feature_title">Smart Suggestions</string>
+    <string name="ai_suggested_feature_desc">AI-powered recommendations</string>
 </resources>

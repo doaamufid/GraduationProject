@@ -66,7 +66,7 @@ public class ChatMainActivity extends AppCompatActivity {
     private static final long RETENTION_MILLIS = 7L * 24 * 60 * 60 * 1000; // 7 أيام
 
     private ChatMessageDao chatDao;
-    private com.example.graduationproject.SalamGeminiService geminiService;
+    private com.example.graduationproject.data.SalamGeminiService geminiService;
     private final Executor dbExecutor = Executors.newSingleThreadExecutor();
 
     @Override
@@ -135,7 +135,7 @@ public class ChatMainActivity extends AppCompatActivity {
         setupInputBar();
 
         chatDao = ChatDatabase.getInstance(this).chatMessageDao();
-        geminiService = new com.example.graduationproject.SalamGeminiService();
+        geminiService = new com.example.graduationproject.data.SalamGeminiService();
 
         loadMessagesFromDb();
     }
@@ -481,7 +481,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
         dbExecutor.execute(() -> {
             List<ChatMessageEntity> history = chatDao.getAll();
-            geminiService.sendMessage(history, userText, new com.example.graduationproject.SalamGeminiService.GeminiCallback() {
+            geminiService.sendMessage(history, userText, new com.example.graduationproject.data.SalamGeminiService.GeminiCallback() {
                 @Override
                 public void onSuccess(String reply) {
                     runOnUiThread(() -> finishGeminiReply(reply));

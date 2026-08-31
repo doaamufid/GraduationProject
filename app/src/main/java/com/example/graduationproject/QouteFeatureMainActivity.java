@@ -30,6 +30,7 @@ import com.example.graduationproject.util.QouteFeatureLangStrings;
 import com.example.graduationproject.util.QouteFeatureUtils;
 import com.example.graduationproject.view.QouteFeatureParticleView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -90,12 +91,25 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
         allQuotes = QouteFeatureQuoteRepository.all();
         historyManager = new QouteFeatureHistoryManager(this);
 
-        // pick the first quote respecting the no-repeat history (like the useEffect in JS)
-        history = historyManager.loadHistory();
-        QouteFeatureHistoryManager.Pick pick = historyManager.pickNextEntry(allQuotes, history);
-        currentEntry = pick.entry;
-        history = pick.nextHistory;
-        historyManager.saveHistory(history);
+        List<String> imageUrls = new ArrayList<>();
+        for (QouteFeatureQuoteEntry q : allQuotes) imageUrls.add(q.imgUrl);
+
+        com.example.graduationproject.data.SalamGeminiService geminiService = new com.example.graduationproject.data.SalamGeminiService();
+        QouteFeatureAiQuoteProvider aiProvider = new QouteFeatureAiQuoteProvider(this, geminiService);
+        QouteFeatureQuoteEntry aiQuote = aiProvider.getTodaysCachedQuote(imageUrls);
+
+        if (aiQuote != null) {
+            currentEntry = aiQuote;
+            history = historyManager.loadHistory();
+        } else {
+            history = historyManager.loadHistory();
+            QouteFeatureHistoryManager.Pick pick = historyManager.pickNextEntry(allQuotes, history);
+            currentEntry = pick.entry;
+            history = pick.nextHistory;
+            historyManager.saveHistory(history);
+        }
+
+        aiProvider.generateAndCacheForNextTime();
 
         applyEntryVisuals();
         updateLangUI();
