@@ -777,6 +777,26 @@
     <string name="chat_dhikr_toast">أذكار</string>
     <string name="chat_article_toast">مقالة</string>
 
+    <string name="chat_grounding_kicker">تمرين تأريض</string>
+    <string name="chat_grounding_title">تمرين ٥-٤-٣-٢-١ 🧘</string>
+    <string name="chat_grounding_desc">عد للحظة الحاضرة بالتركيز على حواسك الخمس</string>
+    <string name="chat_grounding_button">ابدأ التأريض</string>
+
+    <string name="chat_cbt_reframe_kicker">إعادة صياغة</string>
+    <string name="chat_cbt_reframe_title">تغيير زاوية الرؤية 🔍</string>
+    <string name="chat_cbt_reframe_desc">لنفحص هذه الفكرة معاً ونبحث عن نظرة أكثر توازناً</string>
+    <string name="chat_cbt_reframe_button">أعد صياغة الفكرة</string>
+
+    <string name="chat_body_map_kicker">خريطة الجسد</string>
+    <string name="chat_body_map_title">استمع لجسدك 🧍</string>
+    <string name="chat_body_map_desc">حدد مكان التوتر في جسدك وحاول تحريره</string>
+    <string name="chat_body_map_button">افتح الخريطة</string>
+
+    <string name="chat_future_letter_kicker">رسالة للمستقبل</string>
+    <string name="chat_future_letter_title">رسالة إلى نفسي القادمة ✉️</string>
+    <string name="chat_future_letter_desc">اكتب لنفسك كلمات تشجيع ستصلك في الوقت الذي تختاره</string>
+    <string name="chat_future_letter_button">اكتب الرسالة</string>
+
     <string name="chat_node_start_bot">مرحباً، كيف تشعر؟</string>
     <string name="chat_reply_start_anxious">قلق</string>
     <string name="chat_reply_start_distress">منزعج</string>

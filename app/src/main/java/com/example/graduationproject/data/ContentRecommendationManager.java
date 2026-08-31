@@ -21,20 +21,26 @@ public class ContentRecommendationManager {
     private static final String KEY_LAST_TIME = "last_rec_time";
     private static final String KEY_LAST_MOOD = "last_rec_mood";
 
-    public static List<CandidateItem> getShortlist(String moodId) {
+    public static List<CandidateItem> getShortlist(Context context, String moodId) {
         List<CandidateItem> shortlist = new ArrayList<>();
+        ContentFeedbackStore feedbackStore = new ContentFeedbackStore(context);
+        java.util.Set<String> disliked = feedbackStore.getRecentlyDislikedKeys(30);
         
         // Match articles
         for (Article a : ArticleRepository.getAll()) {
             if (isCategoryMatch(a.category, moodId)) {
-                shortlist.add(new CandidateItem("article", a.id, a.title, a.category));
+                if (!disliked.contains("article:" + a.id)) {
+                    shortlist.add(new CandidateItem("article", a.id, a.title, a.category));
+                }
             }
         }
         
         // Match videos
         for (ContentItem v : ContentRepository.getAllItems()) {
             if (isCategoryMatch(v.category, moodId)) {
-                shortlist.add(new CandidateItem("video", v.id, v.title, v.category));
+                if (!disliked.contains("video:" + v.id)) {
+                    shortlist.add(new CandidateItem("video", v.id, v.title, v.category));
+                }
             }
         }
         

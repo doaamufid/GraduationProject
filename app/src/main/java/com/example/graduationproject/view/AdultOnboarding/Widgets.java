@@ -299,7 +299,8 @@ public final class Widgets {
 
         btn.setElevation(dp(ctx, 1.5f));
         btn.setTranslationZ(0);
-        btn.setPadding(dp(ctx, 16), dp(ctx, 12), dp(ctx, 16), dp(ctx, 12));
+        btn.setPadding(dp(ctx, 16), 0, dp(ctx, 16), 0);
+        btn.setCornerRadius(dp(ctx, 24));
 
         android.widget.FrameLayout.LayoutParams lp = new android.widget.FrameLayout.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, dp(ctx, 48));

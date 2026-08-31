@@ -64,6 +64,16 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
         recyclerVideos = view.findViewById(R.id.recyclerVideos);
         EditText etSearch = view.findViewById(R.id.etSearch);
 
+        View topBar = view.findViewById(R.id.topBar);
+        if (topBar != null) {
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(topBar, (v, insets) -> {
+                androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
+                v.setPadding(v.getPaddingLeft(), systemBars.top + (int) (8 * v.getResources().getDisplayMetrics().density),
+                        v.getPaddingRight(), v.getPaddingBottom());
+                return insets;
+            });
+        }
+
         // Back button (top bar)
         view.findViewById(R.id.btnBack).setOnClickListener(v ->
                 requireActivity().onBackPressed());
@@ -75,11 +85,6 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
         buildChips();
         refreshList();
 
-        // Kids Cards Listeners
-        view.findViewById(R.id.cardRoutine).setOnClickListener(v ->
-                startActivity(new android.content.Intent(getActivity(), com.example.graduationproject.KidsRoutineMainActivity.class)));
-        view.findViewById(R.id.cardCalmCorner).setOnClickListener(v ->
-                startActivity(new android.content.Intent(getActivity(), com.example.graduationproject.KidsCalmCornerActivity.class)));
 
         // Header action buttons (like the articles library top bar)
         view.findViewById(R.id.btnFavContent).setOnClickListener(v ->
@@ -105,8 +110,8 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
                 .getString("today_mood_id", "neutral");
 
         if (ContentRecommendationManager.shouldRefresh(requireContext(), moodId)) {
-            new SalamGeminiService().getSuggestedContent(
-                    ContentRecommendationManager.getShortlist(moodId),
+            new SalamGeminiService(requireContext()).getSuggestedContent(
+                    ContentRecommendationManager.getShortlist(requireContext(), moodId),
                     moodId,
                     new SalamGeminiService.GeminiCallback() {
                         @Override

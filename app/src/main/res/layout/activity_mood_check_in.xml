@@ -197,20 +197,6 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="95% تطابق"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="10k بطل"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
@@ -261,20 +247,6 @@
                         android:textColor="#2B3350"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="88% تطابق"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="15k بطل"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"
@@ -327,20 +299,6 @@
                         android:textSize="16sp"
                         android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="92% تطابق"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="12k بطل"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"
                         android:layout_height="44dp"
@@ -391,20 +349,6 @@
                         android:textColor="#2B3350"
                         android:textSize="16sp"
                         android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="85% تطابق"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="20k بطل"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"
@@ -573,20 +517,6 @@
                         android:textColor="#2B3350"
                         android:textSize="17sp"
                         android:textStyle="bold" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="98% تطابق"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="50k بطل"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
 
                     <com.google.android.material.button.MaterialButton
                         android:layout_width="match_parent"

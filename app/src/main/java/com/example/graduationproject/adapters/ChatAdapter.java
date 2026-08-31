@@ -170,6 +170,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             case "breathing": layoutRes = R.layout.chat_card_breathing; break;
             case "dhikr": layoutRes = R.layout.chat_card_dhikr; break;
             case "article": layoutRes = R.layout.chat_card_article; break;
+            case "grounding": layoutRes = R.layout.chat_card_grounding; break;
+            case "cbt_reframe": layoutRes = R.layout.chat_card_cbt_reframe; break;
+            case "body_map": layoutRes = R.layout.chat_card_body_map; break;
+            case "future_letter": layoutRes = R.layout.chat_card_future_letter; break;
             default: vh.cardContainer.setVisibility(View.GONE); return;
         }
 

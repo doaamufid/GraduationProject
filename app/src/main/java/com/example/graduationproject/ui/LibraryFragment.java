@@ -59,6 +59,16 @@ public class LibraryFragment extends Fragment implements ArticleAdapter.Listener
         recyclerArticles = view.findViewById(R.id.recyclerArticles);
         EditText etSearch = view.findViewById(R.id.etSearch);
 
+        View topBar = view.findViewById(R.id.topBar);
+        if (topBar != null) {
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(topBar, (v, insets) -> {
+                androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
+                v.setPadding(v.getPaddingLeft(), systemBars.top + (int) (8 * v.getResources().getDisplayMetrics().density),
+                        v.getPaddingRight(), v.getPaddingBottom());
+                return insets;
+            });
+        }
+
         recyclerArticles.setLayoutManager(new LinearLayoutManager(getContext()));
         adapter = new ArticleAdapter(this);
         recyclerArticles.setAdapter(adapter);
@@ -99,8 +109,8 @@ public class LibraryFragment extends Fragment implements ArticleAdapter.Listener
                 .getString("today_mood_id", "neutral");
 
         if (ContentRecommendationManager.shouldRefresh(requireContext(), moodId)) {
-            new SalamGeminiService().getSuggestedContent(
-                    ContentRecommendationManager.getShortlist(moodId),
+            new SalamGeminiService(requireContext()).getSuggestedContent(
+                    ContentRecommendationManager.getShortlist(requireContext(), moodId),
                     moodId,
                     new SalamGeminiService.GeminiCallback() {
                         @Override

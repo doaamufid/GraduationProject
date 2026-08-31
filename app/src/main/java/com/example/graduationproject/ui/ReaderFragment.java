@@ -57,6 +57,7 @@ public class ReaderFragment extends Fragment {
     private final ReaderSettings settings = new ReaderSettings();
     private final Handler handler = new Handler(Looper.getMainLooper());
     private String feedback = null; // null | "up" | "down"
+    private com.example.graduationproject.data.ContentFeedbackStore feedbackStore;
 
     private View root;
     private View heroContainer, heroFade;
@@ -100,12 +101,22 @@ public class ReaderFragment extends Fragment {
         }
 
         bindViews(view);
+        feedbackStore = new com.example.graduationproject.data.ContentFeedbackStore(requireContext());
         setupHero(view);
         setupMeta(view);
         setupBody();
-        setupRelatedExercise(view);
         setupFeedback();
         
+        View topBar = view.findViewById(R.id.topBar);
+        if (topBar != null) {
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(topBar, (v, insets) -> {
+                androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
+                v.setPadding(v.getPaddingLeft(), systemBars.top + (int) (14 * v.getResources().getDisplayMetrics().density),
+                        v.getPaddingRight(), v.getPaddingBottom());
+                return insets;
+            });
+        }
+
         NestedScrollView scrollView = view.findViewById(R.id.scrollView);
         if (scrollView != null) {
             scrollView.setOnScrollChangeListener((NestedScrollView.OnScrollChangeListener) (v, scrollX, scrollY, oldScrollX, oldScrollY) -> {
@@ -428,6 +439,11 @@ public class ReaderFragment extends Fragment {
             chip.setTextSize(TypedValue.COMPLEX_UNIT_SP, 11);
             chip.setCloseIconVisible(false);
             chip.setCheckable(false);
+            chip.setOnClickListener(v -> {
+                feedbackStore.saveFeedback("article", article.id, false, reason);
+                groupReasons.setVisibility(View.GONE);
+                showToast(getString(R.string.toast_dislike_reason));
+            });
             chipGroupReasons.addView(chip);
         }
     }
@@ -449,7 +465,10 @@ public class ReaderFragment extends Fragment {
         btnThumbDown.setColorFilter(down ? Color.WHITE : getResources().getColor(R.color.textSoft));
 
         groupReasons.setVisibility(down ? View.VISIBLE : View.GONE);
-        if (up) showToast(getString(R.string.toast_liked));
+        if (up) {
+            feedbackStore.saveFeedback("article", article.id, true, null);
+            showToast(getString(R.string.toast_liked));
+        }
     }
 
     private void showToast(String message) {

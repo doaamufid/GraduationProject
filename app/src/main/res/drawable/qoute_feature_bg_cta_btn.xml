@@ -6,5 +6,5 @@
         android:type="linear"
         android:startColor="@color/qoute_feature_gold_light"
         android:endColor="@color/qoute_feature_gold" />
-    <corners android:radius="40dp" />
+    <corners android:radius="24dp" />
 </shape>
