@@ -385,4 +385,9 @@
         <item name="android:navigationBarColor">@color/qoute_feature_bg_dark_bottom</item>
         <item name="android:windowLightStatusBar">false</item>
     </style>
+    <style name="Theme.HabitBreathe" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/green_mid</item>
+        <item name="colorPrimaryDark">@color/green_deep</item>
+        <item name="android:windowBackground">@color/hub_bg_top</item>
+    </style>
 </resources>

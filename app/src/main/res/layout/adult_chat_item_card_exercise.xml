@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/adult_chat_bg_card"
+    android:orientation="horizontal"
+    android:padding="14dp">
+
+    <FrameLayout
+        android:layout_width="46dp"
+        android:layout_height="46dp">
+        <View android:id="@+id/iconPulseRing" android:layout_width="46dp" android:layout_height="46dp"
+            android:layout_gravity="center" android:background="@drawable/adult_chat_bg_icon_circle" android:alpha="0.35"/>
+        <ImageView android:layout_width="44dp" android:layout_height="44dp" android:layout_gravity="center"
+            android:background="@drawable/adult_chat_bg_icon_circle" android:padding="12dp" android:src="@drawable/adult_chat_ic_wind"/>
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content" android:orientation="horizontal" android:gravity="center_vertical">
+            <TextView android:id="@+id/txtTitle" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1"
+                android:textColor="@color/adult_chat_text_dark" android:textSize="14.5sp" android:textStyle="bold" android:text="تنفّس الصندوق"/>
+            <TextView android:id="@+id/txtDuration" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:background="@drawable/adult_chat_bg_duration_pill" android:paddingStart="9dp" android:paddingEnd="9dp" android:paddingTop="3dp" android:paddingBottom="3dp"
+                android:textColor="@color/adult_chat_purple_mid" android:textSize="10.5sp" android:textStyle="bold" android:text="٤ دقائق"/>
+        </LinearLayout>
+
+        <TextView android:id="@+id/txtBadge" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="2dp" android:letterSpacing="0.06" android:textColor="@color/adult_chat_text_placeholder" android:textSize="9.5sp" android:textStyle="bold" android:text="BREATHING EXERCISE"/>
+
+        <TextView android:id="@+id/txtDesc" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="2dp" android:layout_marginBottom="4dp" android:lineSpacingMultiplier="1.5"
+            android:textColor="@color/adult_chat_text_soft" android:textSize="12sp" android:text="تمرين ٤ دقائق لإعادة ضبط جهازك العصبي بإيقاع بسيط."/>
+
+        <TextView android:id="@+id/btnCta" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:background="@drawable/adult_chat_bg_cta_primary" android:gravity="center" android:padding="11dp"
+            android:textColor="#FFFFFF" android:textSize="13sp" android:textStyle="bold" android:text="ابدأ التمرين"/>
+    </LinearLayout>
+</LinearLayout>

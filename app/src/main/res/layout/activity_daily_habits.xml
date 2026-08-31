@@ -123,6 +123,8 @@
                     </FrameLayout>
                 </LinearLayout>
 
+
+
                 <!-- AI suggest card -->
                 <LinearLayout
                     android:id="@+id/btnSuggest"

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_hub_gradient"
+    android:layoutDirection="rtl">
+
+    <!-- Header: Action Icons -->
+    <LinearLayout
+        android:id="@+id/headerActions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="56dp"
+        android:orientation="horizontal"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <!-- Icon 1: Select Child Activity (Users) -->
+        <ImageButton
+            android:id="@+id/btn_select_child"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/bg_icon_button"
+            android:contentDescription="@string/switch_profile"
+            android:padding="10dp"
+            android:src="@drawable/ic_users"
+            app:tint="#8B6F4D" />
+
+        <!-- Icon 2: Switch Mode / Splash (Refresh) -->
+        <ImageButton
+            android:id="@+id/btn_switch_mode"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bg_icon_button"
+            android:contentDescription="@string/switch_mode"
+            android:padding="10dp"
+            android:src="@drawable/ic_refresh"
+            app:tint="#8B6F4D" />
+
+    </LinearLayout>
+
+    <ImageButton
+        android:id="@+id/btnBack"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="52dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:contentDescription="@string/back"
+        android:padding="12dp"
+        android:src="@drawable/ic_back"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:tint="#8B6F4D" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintTop_toBottomOf="@id/headerActions"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal"
+            android:padding="20dp">
+
+            <com.example.graduationproject.view.KidsHabitProgDailyProgressCardView
+                android:id="@+id/dailyCardView"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:layout_marginBottom="22dp" />
+
+            <!-- ... (rest of the buttons) -->
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="12dp">
+
+                <Button android:id="@+id/btnHedgehog" style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🦔 قنفذ" android:textAllCaps="false" android:background="@drawable/bg_pill_white" android:layout_marginEnd="8dp" android:textColor="@color/green_mid"/>
+                <Button android:id="@+id/btnBear" style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🐻 دبدوب" android:textAllCaps="false" android:background="@drawable/bg_pill_white" android:layout_marginEnd="8dp" android:textColor="@color/green_mid"/>
+                <Button android:id="@+id/btnButterfly" style="?android:attr/borderlessButtonStyle"
+                    android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🦋 فراشة" android:textAllCaps="false" android:background="@drawable/bg_pill_white" android:textColor="@color/green_mid"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_marginBottom="12dp">
+
+                <Button android:id="@+id/btnMinusHabit" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="− عادة" android:textAllCaps="false" android:background="@drawable/bg_pill_white" android:textColor="@color/green_mid" android:layout_marginEnd="8dp"/>
+                <Button android:id="@+id/btnReset" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="إعادة" android:textAllCaps="false" android:background="@drawable/bg_pill_accent" android:textColor="@color/white" android:layout_marginEnd="8dp"/>
+                <Button android:id="@+id/btnPlusHabit" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="+ عادة" android:textAllCaps="false" android:background="@drawable/bg_pill_accent" android:textColor="@color/white" android:layout_marginEnd="8dp"/>
+                <Button android:id="@+id/btnSound" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="🔊" android:textAllCaps="false" android:background="@drawable/bg_pill_white"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <Button android:id="@+id/btnMinusTotal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="− عدد" android:textAllCaps="false" android:background="@drawable/bg_pill_white" android:textColor="@color/green_mid" android:layout_marginEnd="8dp"/>
+                <Button android:id="@+id/btnPlusTotal" android:layout_width="wrap_content" android:layout_height="wrap_content"
+                    android:text="+ عدد" android:textAllCaps="false" android:background="@drawable/bg_pill_accent" android:textColor="@color/white"/>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

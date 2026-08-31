@@ -23,8 +23,8 @@ import androidx.fragment.app.Fragment;
 
 import com.example.graduationproject.ProfileNavigator;
 import com.example.graduationproject.R;
-import com.example.graduationproject.SalamGeminiService;
 import com.example.graduationproject.data.ChildProfileStore;
+import com.example.graduationproject.data.SalamGeminiService;
 import com.example.graduationproject.models.ChildProfile;
 import com.example.graduationproject.models.profile.ChildAlert;
 import com.example.graduationproject.models.profile.ChildDetail;

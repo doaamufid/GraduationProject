@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layoutDirection="rtl"
+    android:background="#D8CFEA">
+
+    <!-- ===================== phone frame (mirrors .cc-phone: max-width 390, rounded, gradient bg) ===================== -->
+    <FrameLayout
+        android:id="@+id/phoneFrame"
+        android:layout_width="390dp"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:background="@drawable/bg_app_gradient">
+
+        <!-- ambient aurora blobs -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <View android:id="@+id/blob1" android:layout_width="220dp" android:layout_height="220dp"
+                android:layout_marginStart="-40dp" android:layout_marginTop="-60dp"
+                android:background="@drawable/bg_aurora_blob1"/>
+            <View android:id="@+id/blob2" android:layout_width="220dp" android:layout_height="220dp"
+                android:layout_gravity="bottom|end" android:layout_marginEnd="-30dp" android:layout_marginBottom="-70dp"
+                android:background="@drawable/bg_aurora_blob2"/>
+            <View android:id="@+id/blob3" android:layout_width="220dp" android:layout_height="220dp"
+                android:layout_gravity="center" android:background="@drawable/bg_aurora_blob3"/>
+        </FrameLayout>
+
+        <!-- dust motes layer -->
+        <FrameLayout
+            android:id="@+id/dustLayer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clipChildren="true" />
+
+        <!-- ===================== content layer ===================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <!-- top bar -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
+                android:paddingTop="14dp"
+                android:paddingBottom="6dp">
+
+                <ImageButton
+                    android:id="@+id/btnBack"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/adult_chat_bg_icon_btn"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/adult_chat_ic_back" />
+
+                <LinearLayout
+                    android:id="@+id/topbarTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:visibility="gone">
+
+                    <FrameLayout
+                        android:id="@+id/btnOrbHeader"
+                        android:layout_width="30dp"
+                        android:layout_height="30dp">
+                        <com.example.graduationproject.ui.AdultChatOrbView
+                            android:id="@+id/orbHeader"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/txtCompanionName"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="الرفيق"
+                            android:textColor="@color/adult_chat_text_dark"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtCompanionStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="متصل الآن"
+                            android:textColor="@color/adult_chat_purple_mid"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/txtStreak"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/adult_chat_bg_streak_badge"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingBottom="5dp"
+                    android:textColor="@color/adult_chat_streak_text"
+                    android:textSize="12sp"
+                    android:textStyle="bold"
+                    android:visibility="gone"
+                    tools:text="🔥 3" />
+            </RelativeLayout>
+
+            <!-- swaps between welcome screen and chat screen -->
+            <FrameLayout
+                android:id="@+id/screenContainer"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <include
+                    android:id="@+id/welcomeScreen"
+                    layout="@layout/adult_chat_layout_welcome" />
+
+                <include
+                    android:id="@+id/chatScreen"
+                    layout="@layout/adult_chat_layout_chat"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <!-- shared input bar -->
+            <include
+                android:id="@+id/inputBar"
+                layout="@layout/adult_chat_view_input_bar" />
+
+            <View
+                android:layout_width="130dp"
+                android:layout_height="4dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="2dp"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/adult_chat_bg_home_indicator" />
+        </LinearLayout>
+
+        <!-- recording overlay -->
+        <include
+            android:id="@+id/recordingOverlay"
+            layout="@layout/adult_chat_view_recording_overlay"
+            android:visibility="gone" />
+
+        <!-- one-click-calm overlay -->
+        <include
+            android:id="@+id/calmOverlay"
+            layout="@layout/adult_chat_view_calm_overlay"
+            android:visibility="gone" />
+
+        <!-- toast -->
+        <TextView
+            android:id="@+id/toastView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="92dp"
+            android:background="@drawable/adult_chat_bg_toast"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:textColor="#FFFFFF"
+            android:textSize="12.5sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </FrameLayout>
+</FrameLayout>

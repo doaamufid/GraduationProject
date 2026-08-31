@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true">
+        <shape android:shape="rectangle">
+            <gradient android:angle="135" android:startColor="@color/adult_chat_purple_pale" android:endColor="@color/adult_chat_purple_deep" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+    <item>
+        <shape android:shape="rectangle">
+            <solid android:color="#1F8F7DE6" />
+            <corners android:radius="12dp" />
+        </shape>
+    </item>
+</selector>
