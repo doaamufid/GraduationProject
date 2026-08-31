@@ -4,15 +4,15 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layoutDirection="rtl"
-    android:background="#D8CFEA">
+    android:background="?android:attr/windowBackground">
 
     <!-- ===================== phone frame (mirrors .cc-phone: max-width 390, rounded, gradient bg) ===================== -->
     <FrameLayout
         android:id="@+id/phoneFrame"
-        android:layout_width="390dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:background="@drawable/bg_app_gradient">
+        android:background="@android:color/transparent">
 
         <!-- ambient aurora blobs -->
         <FrameLayout

@@ -1705,4 +1705,60 @@
     <string name="home_feature_chat_desc">Comforting chat with your companion</string>
     <string name="hub_title">Hub</string>
     <string name="hub_subtitle">Discover all features</string>
+
+    <string name="item_daily_title">Habit Card — Kids</string>
+    <string name="item_daily_desc">Hedgehog / Teddy Bear / Butterfly progresses with each habit</string>
+    <string name="item_adult_title">Habit Card — Adults</string>
+    <string name="item_adult_desc">A climber ascends the mountain with each habit, with real day ↔ night progression</string>
+    <string name="item_breathe_title">Breathing Routine Card</string>
+    <string name="item_breathe_desc">4 breathing exercises, actually connected to real sessions</string>
+
+    <string name="back_to_home">→ Back to Home</string>
+
+    <string name="kids_habit_prog_habits_of_day">Today’s Habits</string>
+    <string name="kids_habit_prog_not_started_yet">We haven’t started yet... let’s wake it up!</string>
+    <string name="kids_habit_prog_all_done">You completed all your habits! 🌟</string>
+    <string name="kids_habit_prog_keep_going">Keep going with your steps today</string>
+    <string name="kids_habit_prog_well_done">🎉 Well done!</string>
+
+    <string name="adult_habit_prog_stage_start">Start Your Day</string>
+    <string name="adult_habit_prog_stage_done">You completed your day, have a peaceful night</string>
+    <string name="adult_habit_prog_stage_early">The Beginning of the Journey</string>
+    <string name="adult_habit_prog_stage_mid">On the Right Track</string>
+    <string name="adult_habit_prog_stage_near">Almost at the Summit</string>
+    <string name="adult_habit_prog_today_track">Today’s Path</string>
+    <string name="adult_habit_prog_completed_habits">Completed Habits</string>
+    <string name="adult_habit_prog_summit_reached">🏔 You Completed Your Day</string>
+
+    <string name="breathing_feat_routine_title_progress">Take Your Time With Each Exercise</string>
+    <string name="breathing_feat_routine_title_done">You Completed Your Breathing Routine Today 🌿</string>
+    <string name="breathing_feat_routine_quote">"Breathing is the first gift you give yourself today"</string>
+    <string name="breathing_feat_start_next_fmt">Start: %1$s ✨</string>
+    <string name="breathing_feat_redo_any">Redo Any Exercise 🌿</string>
+
+    <string name="breathing_feat_mode_equal">Equal Breathing</string>
+    <string name="breathing_feat_mode_equal_desc">Balanced breathing helps you relax and focus</string>
+    <string name="breathing_feat_mode_box">Box Breathing</string>
+    <string name="breathing_feat_mode_box_desc">Box breathing is a powerful way to reduce stress</string>
+    <string name="breathing_feat_mode_478">4-7-8 Breathing</string>
+    <string name="breathing_feat_mode_478_desc">4-7-8 breathing can help improve sleep</string>
+    <string name="breathing_feat_mode_711">7-11 Breathing</string>
+    <string name="breathing_feat_mode_711_desc">7-11 breathing can help reduce anxiety and improve sleep</string>
+
+    <string name="breathing_feat_phase_in">Inhale</string>
+    <string name="breathing_feat_phase_hold">Hold</string>
+    <string name="breathing_feat_phase_out">Exhale</string>
+
+    <string name="breathing_feat_stop_session">Stop Session</string>
+    <string name="breathing_feat_session_progress">Session Progress</string>
+    <string name="breathing_feat_celebrate_title">Well Done</string>
+    <string name="breathing_feat_celebrate_desc">You successfully completed your session. Your body and mind thank you for this moment of calm</string>
+    <string name="breathing_feat_minutes_label">Minutes</string>
+    <string name="breathing_feat_cycles_label">Cycles</string>
+    <string name="breathing_feat_days_label">Days</string>
+
+    <string name="breathing_feat_dark_mode_toggle">🌙 Dark</string>
+    <string name="breathing_feat_light_mode_toggle">☀️ Light</string>
+    <string name="kids_calm_heart_filled">♥</string>
+    <string name="adaptive_adult_onboarding_welcome_title">Welcome to Salam 🤍</string>
 </resources>

@@ -94,7 +94,7 @@ public class MoodCheckInActivity extends AppCompatActivity {
         });
 
         binding.cardBreathe.setOnClickListener(v -> {
-            Intent intent = new Intent(this, KidsAiChatActivity.class);
+            Intent intent = new Intent(this, KidsBubbleBreathingActivity.class);
             intent.putExtra(EXTRA_CHILD_ID, currentChildId);
             startActivity(intent);
         });
@@ -106,7 +106,7 @@ public class MoodCheckInActivity extends AppCompatActivity {
         });
 
         binding.cardPlayBushes.setOnClickListener(v -> {
-            Intent intent = new Intent(this, WordOfWeekActivity.class);
+            Intent intent = new Intent(this, KidsTreeActivity.class);
             intent.putExtra(EXTRA_CHILD_ID, currentChildId);
             startActivity(intent);
         });
