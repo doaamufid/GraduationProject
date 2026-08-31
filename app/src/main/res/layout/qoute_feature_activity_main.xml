@@ -4,19 +4,17 @@
     android:id="@+id/outerRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/qoute_feature_bg_outer_radial"
-    android:padding="16dp">
+    android:background="@drawable/qoute_feature_bg_outer_radial">
 
     <!-- ============ PHONE FRAME ============ -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/phoneFrame"
-        android:layout_width="380dp"
-        android:layout_height="800dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
         android:background="@drawable/qoute_feature_bg_phone_frame"
         android:clipChildren="true"
-        android:clipToPadding="true"
-        android:elevation="24dp">
+        android:clipToPadding="true">
 
         <!-- Background image with Ken Burns animation -->
         <ImageView
@@ -49,70 +47,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
-        <!-- Brand mark (centered top) -->
-        <TextView
-            android:id="@+id/brandMark"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
-            android:text="سلام"
-            android:textColor="@color/qoute_feature_gold_light"
-            android:textSize="20sp"
-            android:textStyle="italic"
-            android:letterSpacing="0.1"
-            android:alpha="0.9"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
-
-        <!-- Top row: language pill + shuffle button -->
-        <LinearLayout
-            android:id="@+id/langPill"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="26dp"
-            android:layout_marginStart="22dp"
-            android:orientation="horizontal"
-            android:gravity="center_vertical"
-            android:paddingHorizontal="14dp"
-            android:paddingVertical="8dp"
-            android:background="@drawable/qoute_feature_bg_lang_pill"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent">
-
-            <ImageView
-                android:layout_width="14dp"
-                android:layout_height="14dp"
-                android:layout_marginEnd="6dp"
-                android:src="@drawable/qoute_feature_ic_languages" />
-
-            <TextView
-                android:id="@+id/langPillText"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="EN"
-                android:textColor="@color/qoute_feature_cream"
-                android:textSize="12sp"
-                android:letterSpacing="0.05" />
-        </LinearLayout>
-
-        <FrameLayout
-            android:id="@+id/shuffleBtn"
-            android:layout_width="42dp"
-            android:layout_height="42dp"
-            android:layout_marginTop="26dp"
-            android:layout_marginEnd="22dp"
-            android:background="@drawable/qoute_feature_bg_shuffle_btn"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <ImageView
-                android:layout_width="17dp"
-                android:layout_height="17dp"
-                android:layout_gravity="center"
-                android:src="@drawable/qoute_feature_ic_refresh" />
-        </FrameLayout>
 
         <!-- ============ BOTTOM CONTENT ============ -->
         <LinearLayout
@@ -191,18 +125,18 @@
                 <Button
                     android:id="@+id/ctaBtn"
                     android:layout_width="220dp"
-                    android:layout_height="wrap_content"
+                    android:layout_height="48dp"
                     android:text="دخول"
                     android:textColor="@color/qoute_feature_cta_text"
                     android:textStyle="bold"
-                    android:textSize="14sp"
+                    android:textSize="16sp"
                     android:letterSpacing="0.1"
-                    android:paddingVertical="10dp"
+                    android:paddingVertical="0dp"
                     android:background="@drawable/qoute_feature_bg_cta_btn"
                     app:backgroundTint="@null"
                     android:insetTop="0dp"
                     android:insetBottom="0dp"
-                    android:elevation="6dp"
+                    android:elevation="4dp"
                     android:alpha="0"
                     android:visibility="invisible" />
             </LinearLayout>

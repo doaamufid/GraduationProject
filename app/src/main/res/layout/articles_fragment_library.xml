@@ -5,11 +5,9 @@
     android:orientation="vertical"
     android:background="@color/bg">
 
-    <!-- status-bar spacer -->
-    <View android:layout_width="match_parent" android:layout_height="24dp" />
-
     <!-- Header: Title and Buttons in the same bar -->
     <RelativeLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"

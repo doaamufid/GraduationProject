@@ -7,13 +7,9 @@
     android:background="@color/bg"
     android:layoutDirection="locale">
 
-    <!-- status-bar spacer -->
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="24dp" />
-
     <!-- Header: back button + centered Title and Buttons in the same bar (like the articles library) -->
     <RelativeLayout
+        android:id="@+id/topBar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingHorizontal="20dp"
@@ -111,78 +107,6 @@
             android:orientation="horizontal" />
     </HorizontalScrollView>
 
-    <!-- Kids Special Cards -->
-    <LinearLayout
-        android:id="@+id/llKidsCards"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:paddingHorizontal="20dp"
-        android:layout_marginBottom="16dp"
-        android:weightSum="2">
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardRoutine"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:layout_marginEnd="8dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="2dp"
-            app:strokeWidth="0dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="#E8F5E9">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🌅"
-                    android:textSize="28sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/kids_routine_app_name"
-                    android:textColor="#2E7D32"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:gravity="center" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-
-        <com.google.android.material.card.MaterialCardView
-            android:id="@+id/cardCalmCorner"
-            android:layout_width="0dp"
-            android:layout_height="100dp"
-            android:layout_weight="1"
-            android:layout_marginStart="8dp"
-            app:cardCornerRadius="20dp"
-            app:cardElevation="2dp"
-            app:strokeWidth="0dp">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:gravity="center"
-                android:background="#E3F2FD">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="🧘"
-                    android:textSize="28sp" />
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/kids_calm_app_name"
-                    android:textColor="#1565C0"
-                    android:textStyle="bold"
-                    android:textSize="14sp"
-                    android:gravity="center" />
-            </LinearLayout>
-        </com.google.android.material.card.MaterialCardView>
-    </LinearLayout>
 
     <!-- Video / podcast list -->
     <androidx.recyclerview.widget.RecyclerView

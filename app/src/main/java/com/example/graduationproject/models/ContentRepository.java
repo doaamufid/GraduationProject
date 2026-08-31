@@ -18,27 +18,26 @@ public final class ContentRepository {
             "طويل زيادة", "مو مناسب لمزاجي الآن", "أفضل صوت بدل فيديو", "محتوى مكرر", "غير ذلك"
     );
 
-    // Verified, genuinely appropriate, publicly embeddable video from a real
-    // health institution - kept identical to the original DEMO_VIDEO_ID.
-    private static final String DEMO_VIDEO_ID = "mAdwqHl7sac"; // UC San Diego Health
+    // Verified, genuinely appropriate, publicly embeddable video ID.
+    private static final String DEMO_VIDEO_ID = "7lE0V8aF9D4";
 
     private static final List<ContentItem> ITEMS = new ArrayList<>();
 
     static {
         ITEMS.add(new ContentItem(1, "كيف تتعامل مع القلق؟", "منهج الصحة النفسية", "فيديو", true,
-                "١٢:٣٤", "قلق", DEMO_VIDEO_ID, Color.parseColor("#2E5C86"), Color.parseColor("#1F3A60"),
+                "١٢:٣٤", "قلق", "7lE0V8aF9D4", Color.parseColor("#2E5C86"), Color.parseColor("#1F3A60"),
                 "لأنك سجّلت مزاج \"قلق\" ٣ مرات هالأسبوع"));
         ITEMS.add(new ContentItem(2, "نوم أفضل في ٣ خطوات", "بودكاست سلامة", "بودكاست", false,
-                "٢٣:٠٠", "نوم", DEMO_VIDEO_ID, Color.parseColor("#5C7C6E"), Color.parseColor("#3F5A4D"),
+                "٢٣:٠٠", "نوم", "7lE0V8aF9D4", Color.parseColor("#5C7C6E"), Color.parseColor("#3F5A4D"),
                 "بناءً على استخدامك لأذكار النوم مؤخراً"));
         ITEMS.add(new ContentItem(3, "تقنية التنفس العميق", "د. نورا العلي", "فيديو", true,
-                "٨:١٥", "قلق", DEMO_VIDEO_ID, Color.parseColor("#C97B6B"), Color.parseColor("#A85C4E"),
+                "٨:١٥", "قلق", "7lE0V8aF9D4", Color.parseColor("#C97B6B"), Color.parseColor("#A85C4E"),
                 "مكمّلة لتمارين التنفس اللي تسويها"));
         ITEMS.add(new ContentItem(4, "الصدمة والشفاء", "أصوات النفس", "بودكاست", false,
-                "٣١:٤٠", "صدمة", DEMO_VIDEO_ID, Color.parseColor("#4A7B8C"), Color.parseColor("#2E5A6B"),
+                "٣١:٤٠", "صدمة", "7lE0V8aF9D4", Color.parseColor("#4A7B8C"), Color.parseColor("#2E5A6B"),
                 "من مكتبتنا المفحوصة لموضوع الصدمة"));
         ITEMS.add(new ContentItem(5, "العلاقات الصحية", "مركز الأمل", "فيديو", true,
-                "١٤:٠٢", "علاقات", DEMO_VIDEO_ID, Color.parseColor("#3A5FA0"), Color.parseColor("#1F3A60"),
+                "١٤:٠٢", "علاقات", "7lE0V8aF9D4", Color.parseColor("#3A5FA0"), Color.parseColor("#1F3A60"),
                 "مقترحة ضمن تصنيف العلاقات"));
     }
 

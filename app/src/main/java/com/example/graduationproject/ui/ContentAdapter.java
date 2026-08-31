@@ -61,14 +61,33 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
     public void onBindViewHolder(@NonNull VH holder, int position) {
         ContentItem item = items.get(position);
 
-        // 1. Background Gradient
+        // 1. Background (Gradient + YouTube Thumbnail)
         GradientDrawable gradient = new GradientDrawable(
                 GradientDrawable.Orientation.TL_BR,
                 new int[]{item.gradStart, item.gradEnd});
-        holder.ivCardBackground.setImageDrawable(gradient);
+        
+        if (item.videoId != null && !item.videoId.isEmpty()) {
+            String thumbnailUrl = "https://img.youtube.com/vi/" + item.videoId.trim() + "/hqdefault.jpg";
+            com.bumptech.glide.Glide.with(holder.itemView.getContext())
+                    .load(thumbnailUrl)
+                    .placeholder(gradient)
+                    .error(gradient)
+                    .centerCrop()
+                    .into(holder.ivCardBackground);
+        } else {
+            holder.ivCardBackground.setImageDrawable(gradient);
+        }
 
         // 2. Metadata
         holder.tvBrandLogo.setText(item.type);
+
+        if (item.reason != null && !item.reason.isEmpty()) {
+            holder.tvSuggestionReason.setVisibility(View.VISIBLE);
+            holder.tvSuggestionReason.setText(item.reason);
+        } else {
+            holder.tvSuggestionReason.setVisibility(View.GONE);
+        }
+
         holder.tvDate.setText(item.duration);
 
         // 3. Title & Subtitle (Stats)
@@ -99,17 +118,23 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
         holder.itemView.setOnClickListener(v -> {
             Animation press = AnimationUtils.loadAnimation(v.getContext(), R.anim.card_press);
             v.startAnimation(press);
-            v.postDelayed(() -> listener.onOpen(item), 90);
+            if (listener != null) {
+                v.postDelayed(() -> listener.onOpen(item), 90);
+            }
         });
 
         holder.btnFavorite.setOnClickListener(v -> {
-            listener.onToggleFavorite(item);
-            notifyItemChanged(holder.getAdapterPosition());
+            if (listener != null) {
+                listener.onToggleFavorite(item);
+                notifyItemChanged(holder.getAdapterPosition());
+            }
         });
 
         holder.btnBookmark.setOnClickListener(v -> {
-            listener.onToggleBookmark(item);
-            notifyItemChanged(holder.getAdapterPosition());
+            if (listener != null) {
+                listener.onToggleBookmark(item);
+                notifyItemChanged(holder.getAdapterPosition());
+            }
         });
 
         // Entrance animation
@@ -151,7 +176,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
 
     static class VH extends RecyclerView.ViewHolder {
         ImageView ivCardBackground;
-        TextView tvBrandLogo, tvDate, tvMainTitle, tvSubTitle, tvAuthorInitial;
+        TextView tvBrandLogo, tvDate, tvMainTitle, tvSubTitle, tvAuthorInitial, tvSuggestionReason;
         android.widget.ImageButton btnFavorite, btnBookmark;
         View vPulse1, vPulse2;
 
@@ -167,6 +192,7 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
             btnBookmark = itemView.findViewById(R.id.btnBookmark);
             vPulse1 = itemView.findViewById(R.id.vPulse1);
             vPulse2 = itemView.findViewById(R.id.vPulse2);
+            tvSuggestionReason = itemView.findViewById(R.id.tvSuggestionReason);
         }
     }
 }

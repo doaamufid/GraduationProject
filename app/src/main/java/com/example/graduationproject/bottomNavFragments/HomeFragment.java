@@ -174,6 +174,7 @@ public class HomeFragment extends Fragment {
 
     private void setupFeatures() {
         featureList.clear();
+        featureList.add(new HomeFeature(R.drawable.ic_zap, R.drawable.bg_icon_orange, getString(R.string.ai_suggested_feature_title), getString(R.string.ai_suggested_feature_desc)));
         featureList.add(new HomeFeature(R.drawable.video, R.drawable.bg_icon_purple, getString(R.string.home_feature_videos_title), getString(R.string.home_feature_videos_desc)));
         featureList.add(new HomeFeature(R.drawable.audio, R.drawable.bg_icon_green, getString(R.string.home_feature_audio_title), getString(R.string.home_feature_audio_desc)));
         featureList.add(new HomeFeature(R.drawable.ic_heart_filled_red, R.drawable.bg_icon_pink, getString(R.string.home_feature_articles_title), getString(R.string.home_feature_articles_desc)));
@@ -184,7 +185,9 @@ public class HomeFragment extends Fragment {
         featureAdapter = new HomeFeatureAdapter(requireContext(), featureList, position -> {
             HomeFeature feature = featureList.get(position);
             String title = feature.getTitle();
-            if (title.equals(getString(R.string.home_feature_videos_title))) {
+            if (title.equals(getString(R.string.ai_suggested_feature_title))) {
+                startActivity(new Intent(getActivity(), com.example.graduationproject.ui.AISuggestionsActivity.class));
+            } else if (title.equals(getString(R.string.home_feature_videos_title))) {
                 startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
             } else if (title.equals(getString(R.string.home_feature_audio_title))) {
                 startActivity(new Intent(getActivity(), HealingEnvActivity.class));

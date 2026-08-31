@@ -25,6 +25,9 @@ public class VideoLibraryActivity extends AppCompatActivity implements ContentIt
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        androidx.activity.EdgeToEdge.enable(this,
+                androidx.activity.SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT),
+                androidx.activity.SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT));
         super.onCreate(savedInstanceState);
 
         // Arabic + RTL by default; English + LTR when the saved app language is English
@@ -34,15 +37,6 @@ public class VideoLibraryActivity extends AppCompatActivity implements ContentIt
 
         // Force this window's direction (the app theme hardcodes RTL globally)
         applyWindowDirection();
-
-        // ضبط لون شريط الحالة ليكون اللون الأزرق الفاتح (مثل الخلفية)
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
-            getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg));
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.M) {
-                // شريط الحالة فاتح، لذا نجعل الأيقونات داكنة
-                getWindow().getDecorView().setSystemUiVisibility(android.view.View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
-            }
-        }
 
         if (savedInstanceState == null) {
             getSupportFragmentManager()

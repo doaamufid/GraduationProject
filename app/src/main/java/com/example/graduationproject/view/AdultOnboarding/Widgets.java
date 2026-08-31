@@ -299,10 +299,11 @@ public final class Widgets {
 
         btn.setElevation(dp(ctx, 1.5f));
         btn.setTranslationZ(0);
-        btn.setPadding(dp(ctx, 16), dp(ctx, 12), dp(ctx, 16), dp(ctx, 12));
+        btn.setPadding(dp(ctx, 16), 0, dp(ctx, 16), 0);
+        btn.setCornerRadius(dp(ctx, 24));
 
         android.widget.FrameLayout.LayoutParams lp = new android.widget.FrameLayout.LayoutParams(
-                ViewGroup.LayoutParams.MATCH_PARENT, dp(ctx, 46));
+                ViewGroup.LayoutParams.MATCH_PARENT, dp(ctx, 48));
         btn.setLayoutParams(lp);
         btn.setInsetTop(0);
         btn.setInsetBottom(0);
@@ -345,7 +346,7 @@ public final class Widgets {
         
         btnBack.setElevation(dp(ctx, 1));
         
-        LinearLayout.LayoutParams lpBack = new LinearLayout.LayoutParams(0, dp(ctx, 44), 0.8f);
+        LinearLayout.LayoutParams lpBack = new LinearLayout.LayoutParams(0, dp(ctx, 48), 0.8f);
         lpBack.setMarginEnd(dp(ctx, 10));
         row.addView(btnBack, lpBack);
         btnBack.setOnClickListener(v -> onBack.run());
@@ -358,7 +359,7 @@ public final class Widgets {
         btnNext.setPadding(dp(ctx, 12), 0, dp(ctx, 12), 0);
         btnNext.setTextSize(15);
         
-        LinearLayout.LayoutParams lpNext = new LinearLayout.LayoutParams(0, dp(ctx, 44), 1.2f);
+        LinearLayout.LayoutParams lpNext = new LinearLayout.LayoutParams(0, dp(ctx, 48), 1.2f);
         btnNext.setLayoutParams(lpNext);
         row.addView(btnNext);
 

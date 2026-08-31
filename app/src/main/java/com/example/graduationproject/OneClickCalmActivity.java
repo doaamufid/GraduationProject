@@ -89,6 +89,8 @@ public class OneClickCalmActivity extends AppCompatActivity implements AppHost, 
         ImageButton btnInfo = findViewById(R.id.btnInfo);
         btnInfo.setOnClickListener(v -> new InfoDialogFragment().show(getSupportFragmentManager(), "info"));
 
+        findViewById(R.id.btnBack).setOnClickListener(v -> onBackPressed());
+
         tabGallery.setOnClickListener(v -> switchTab(0));
         tabDhikr.setOnClickListener(v -> switchTab(1));
         tabSimulate.setOnClickListener(v -> switchTab(2));

@@ -665,6 +665,27 @@
     <string name="chat_article_title">How to deal with sadness without suppressing it?</string>
     <string name="chat_article_button">Read now →</string>
     <string name="chat_article_toast">Opening the article...</string>
+
+    <string name="chat_grounding_kicker">GROUNDING EXERCISE</string>
+    <string name="chat_grounding_title">5-4-3-2-1 Exercise 🧘</string>
+    <string name="chat_grounding_desc">Return to the present by focusing on your five senses</string>
+    <string name="chat_grounding_button">Start Grounding</string>
+
+    <string name="chat_cbt_reframe_kicker">REFRAMING</string>
+    <string name="chat_cbt_reframe_title">Change of Perspective 🔍</string>
+    <string name="chat_cbt_reframe_desc">Let\'s examine this thought together and look for a more balanced view</string>
+    <string name="chat_cbt_reframe_button">Reframe Thought</string>
+
+    <string name="chat_body_map_kicker">BODY MAP</string>
+    <string name="chat_body_map_title">Listen to Your Body 🧍</string>
+    <string name="chat_body_map_desc">Locate tension in your body and try to release it</string>
+    <string name="chat_body_map_button">Open Map</string>
+
+    <string name="chat_future_letter_kicker">FUTURE LETTER</string>
+    <string name="chat_future_letter_title">Letter to My Future Self ✉️</string>
+    <string name="chat_future_letter_desc">Write yourself encouraging words to be received when you choose</string>
+    <string name="chat_future_letter_button">Write Letter</string>
+
     <!-- Conversation Nodes -->
     <string name="chat_node_start_bot">Hello, I\'m here with you. How are you feeling today?</string>
     <string name="chat_reply_start_anxious">I feel some anxiety today</string>
@@ -1675,4 +1696,9 @@
 
     <string name="qoute_feature_app_name">سلام</string>
 
+    <string name="ai_suggestions_content_title">Smart Suggestions for You</string>
+    <string name="suggested_articles_title">Suggested Articles 📖</string>
+    <string name="suggested_videos_title">Videos &amp; Podcasts 🎥</string>
+    <string name="ai_suggested_feature_title">Smart Suggestions</string>
+    <string name="ai_suggested_feature_desc">AI-powered recommendations</string>
 </resources>

@@ -25,6 +25,9 @@ public class MainActivity extends AppCompatActivity implements ContentItemHost {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        androidx.activity.EdgeToEdge.enable(this,
+                androidx.activity.SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT),
+                androidx.activity.SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT));
         super.onCreate(savedInstanceState);
 
         // Arabic + RTL by default; English + LTR when the saved app language is English
