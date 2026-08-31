@@ -119,7 +119,8 @@ public class SeedData {
             int color = android.graphics.Color.parseColor("#5B8FD1");
             return new ChildDetail(
                     1, ctx.getString(R.string.child_youssef), 10, "🧒", color, ctx.getString(R.string.child_detail_active_today),
-                    new ChildStats(12, 18, 0),
+                    // 🟢 التمرير بـ 4 معاملات: (التمارين، الجلسات، زيارات شجرة التعافي، زيارات ركن الهدوء)
+                    new ChildStats(1, 1, 1, 1),
                     new int[]{ 3, 4, 2, 5, 4, 6, 5 }, days,
                     Arrays.asList(
                             new ChildFeature(ctx.getString(R.string.feature_safe_room), 18, R.drawable.ic_home),
@@ -147,7 +148,8 @@ public class SeedData {
             int color = android.graphics.Color.parseColor("#E0668A");
             return new ChildDetail(
                     2, ctx.getString(R.string.child_sara), 6, "👧", color, ctx.getString(R.string.child_detail_active_yesterday),
-                    new ChildStats(6, 9, 1),
+                    // 🟢 التمرير بـ 4 معاملات: (التمارين، الجلسات، زيارات شجرة التعافي، زيارات ركن الهدوء)
+                    new ChildStats(1, 1, 1, 1),
                     new int[]{ 5, 6, 6, 4, 6, 7, 6 }, days,
                     Arrays.asList(
                             new ChildFeature(ctx.getString(R.string.feature_recovery_tree), 9, R.drawable.ic_sparkles),

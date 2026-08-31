@@ -12,6 +12,7 @@ import com.example.graduationproject.Kids.ChatMessage;
 import com.example.graduationproject.models.ChildProfile;
 import com.example.graduationproject.models.SoundItem;
 import com.example.graduationproject.models.VideoItem;
+import com.example.graduationproject.models.profile.ChildStats;
 
 import net.sqlcipher.database.SQLiteDatabase;
 import net.sqlcipher.database.SQLiteDatabaseHook;
@@ -31,7 +32,7 @@ import android.util.Log;
 
 public class ChildProfileStore extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "children_wellbeing.db";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 10;
 
     //  مفتاح التشفير المشترك بـ AES-256
     public static final String DATABASE_PASSPHRASE = "SalamApp@2026SecureKeyAES256";
@@ -527,6 +528,53 @@ public class ChildProfileStore extends SQLiteOpenHelper {
         // تحديث السجل في جدول الأطفال
         db.update(TABLE_PROFILES, values, COLUMN_ID + " = ?", new String[]{String.valueOf(childId)});
     }
+    public ChildStats getRealChildStats(long childId) {
+        SQLiteDatabase db = getReadableDatabase(DATABASE_PASSPHRASE);
+        String childIdStr = String.valueOf(childId);
 
+        // 1. حساب التمارين المكتملة (تمت إضافة BREATHING_EXERCISE إلى القائمة)
+        Cursor c1 = db.rawQuery(
+                "SELECT COUNT(*) FROM " + TABLE_EVENTS +
+                        " WHERE " + COLUMN_CHILD_ID + " = ? AND (" +
+                        COLUMN_EVENT_TYPE + " = 'EXERCISE' OR " +
+                        COLUMN_EVENT_TYPE + " = 'EXERCISE_COMPLETED' OR " +
+                        COLUMN_EVENT_TYPE + " = 'BREATHING_EXERCISE')",
+                new String[]{childIdStr});
+        int exercises = 0;
+        if (c1.moveToFirst()) exercises = c1.getInt(0);
+        c1.close();
+
+        // 2. حساب عدد الأيام الفردية التي فتح فيها الطفل التطبيق (الجلسات)
+        Cursor c2 = db.rawQuery(
+                "SELECT COUNT(DISTINCT DATE(" + COLUMN_OCCURRED_AT + " / 1000, 'unixepoch', 'localtime')) FROM " + TABLE_EVENTS +
+                        " WHERE " + COLUMN_CHILD_ID + " = ?",
+                new String[]{childIdStr});
+        int sessions = 0;
+        if (c2.moveToFirst()) sessions = c2.getInt(0);
+        c2.close();
+
+        // 3. حساب عدد مرات زيارة شجرة التعافي
+        Cursor c3 = db.rawQuery(
+                "SELECT COUNT(*) FROM " + TABLE_EVENTS +
+                        " WHERE " + COLUMN_CHILD_ID + " = ? AND " + COLUMN_EVENT_TYPE + " = 'RECOVERY_TREE'",
+                new String[]{childIdStr});
+        int recoveryTreeVisits = 0;
+        if (c3.moveToFirst()) recoveryTreeVisits = c3.getInt(0);
+        c3.close();
+
+        // 4. حساب عدد مرات استخدام ركن الهدوء / التنفس (تمت إضافة BREATHING_EXERCISE هنا أيضاً)
+        Cursor c4 = db.rawQuery(
+                "SELECT COUNT(*) FROM " + TABLE_EVENTS +
+                        " WHERE " + COLUMN_CHILD_ID + " = ? AND (" +
+                        COLUMN_EVENT_TYPE + " = 'BREATHING' OR " +
+                        COLUMN_EVENT_TYPE + " = 'CALM_CORNER' OR " +
+                        COLUMN_EVENT_TYPE + " = 'BREATHING_EXERCISE')",
+                new String[]{childIdStr});
+        int calmCornerVisits = 0;
+        if (c4.moveToFirst()) calmCornerVisits = c4.getInt(0);
+        c4.close();
+
+        return new ChildStats(exercises, sessions, recoveryTreeVisits, calmCornerVisits);
+    }
 
 }

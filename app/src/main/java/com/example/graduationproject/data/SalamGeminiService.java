@@ -77,4 +77,98 @@ public class SalamGeminiService {
         sb.append("المستخدم: ").append(userMessage).append("\nسلام:");
         return sb.toString();
     }
+    public interface ChildAnalysisCallback {
+        void onSuccess(String recommendationsJson);
+        void onError(String errorMessage);
+    }
+
+    public void generateChildReport(String childName, int childAge, int completedExercises, ChildAnalysisCallback callback) {
+        String prompt = "أنت أخصائي نفسي وتربوي للأطفال. قم بتحليل حالة الطفل التالية وإعطاء توصيات مختصرة:\n" +
+                "اسم الطفل: " + childName + "\n" +
+                "العمر: " + childAge + " سنوات\n" +
+                "عدد التمارين المنجزة مؤخراً: " + completedExercises + "\n\n" +
+                "المطلوب: اذكر 2 إلى 3 توصيات تربوية/نفسية قصيرة جداً ومباشرة للأهل للتعامل مع الطفل.\n" +
+                "اكتب كل توصية في سطر منفصل ابدأ بكلمة '-' بدون مقدمات أو خاتمة.";
+
+        Content content = new Content.Builder().addText(prompt).build();
+        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
+
+        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
+            @Override
+            public void onSuccess(GenerateContentResponse result) {
+                String resultText = result.getText();
+                if (resultText != null && !resultText.trim().isEmpty()) {
+                    callback.onSuccess(resultText.trim());
+                } else {
+                    callback.onError("تعذر تحليل البيانات حالياً.");
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e(TAG, "خطأ أثناء تحليل بيانات الطفل: " + t.getMessage(), t);
+                callback.onError("فشل الاتصال أثناء جلب التوصيات.");
+            }
+        }, executor);
+    }
+    public interface ChildMoodAnalysisCallback {
+        void onSuccess(float[] dayScores, float[] weekScores, float[] monthScores);
+        void onError(String errorMessage);
+    }
+
+    public void generateChildMoodData(String childName, int childAge, ChildMoodAnalysisCallback callback) {
+        String prompt = "أنت أخصائي نفسي للأطفال. قم بتوليد تقييم تقريبي لمزاج الطفل " + childName + " (العمر: " + childAge + " سنوات) " +
+                "على شكل درجات من 1.0 إلى 5.0 لثلاث فترات زمنية.\n\n" +
+                "المطلوب إرجاع النص بصيغة JSON فقط وبدون أي كلام إضافي بالشكل التالي:\n" +
+                "{\n" +
+                "  \"day\": [3.5, 4.0, 3.2, 4.5, 4.8, 4.0, 4.2, 3.9],\n" +
+                "  \"week\": [3.2, 4.5, 2.8, 4.0, 4.6, 3.9, 4.4],\n" +
+                "  \"month\": [3.6, 4.1, 3.9, 4.4, 4.0]\n" +
+                "}";
+
+        Content content = new Content.Builder().addText(prompt).build();
+        ListenableFuture<GenerateContentResponse> response = model.generateContent(content);
+
+        Futures.addCallback(response, new FutureCallback<GenerateContentResponse>() {
+            @Override
+            public void onSuccess(GenerateContentResponse result) {
+                try {
+                    String text = result.getText();
+                    if (text != null) {
+                        // تنظيف النص للحصول على الـ JSON فقط
+                        int start = text.indexOf("{");
+                        int end = text.lastIndexOf("}") + 1;
+                        if (start >= 0 && end > start) {
+                            text = text.substring(start, end);
+                        }
+                        org.json.JSONObject json = new org.json.JSONObject(text);
+
+                        float[] day = parseJsonArray(json.getJSONArray("day"));
+                        float[] week = parseJsonArray(json.getJSONArray("week"));
+                        float[] month = parseJsonArray(json.getJSONArray("month"));
+
+                        callback.onSuccess(day, week, month);
+                    } else {
+                        callback.onError("فشل في استخراج بيانات المزاج");
+                    }
+                } catch (Exception e) {
+                    Log.e(TAG, "خطأ في تحليل JSON المزاج: " + e.getMessage(), e);
+                    callback.onError("خطأ في معالجة البيانات");
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                callback.onError(t.getMessage());
+            }
+        }, executor);
+    }
+
+    private float[] parseJsonArray(org.json.JSONArray array) throws org.json.JSONException {
+        float[] result = new float[array.length()];
+        for (int i = 0; i < array.length(); i++) {
+            result[i] = (float) array.getDouble(i);
+        }
+        return result;
+    }
 }

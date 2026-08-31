@@ -1,4 +1,3 @@
-
 package com.example.graduationproject;
 
 import android.animation.ValueAnimator;
@@ -17,13 +16,17 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 
+import com.example.graduationproject.data.ChildProfileStore;
+import com.example.graduationproject.data.profile.ArabicDateUtils;
+import com.example.graduationproject.models.ChildProfile;
 import com.example.graduationproject.ui.AdultMoodResult;
 import com.example.graduationproject.widget.AdultChartView;
 import com.example.graduationproject.widget.AdultFaceView;
-import com.example.graduationproject.data.profile.ArabicDateUtils;
 
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
 /**
  * Reports & Stats Screen.
@@ -44,7 +47,7 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
     private LinearLayout segmentButtons;
     private AdultChartView chartView;
     private AdultFaceView scrubFace;
-    private TextView scrubLabel, scrubSub, tabDay, tabWeek, tabMonth;
+    private TextView scrubLabel, scrubSub, tabDay, tabWeek, tabMonth, txtChildrenCount;
 
     private static final long TAB_ANIM_MS = 300;
 
@@ -64,6 +67,7 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
         tabDay = findViewById(R.id.tab_day);
         tabWeek = findViewById(R.id.tab_week);
         tabMonth = findViewById(R.id.tab_month);
+        txtChildrenCount = findViewById(R.id.txt_children_count);
 
         buildRanges();
 
@@ -94,22 +98,51 @@ public class AdultMoodStatsActivity extends AppCompatActivity {
 
         renderStats();
         renderArchiveLinks();
+        loadRealChildrenCount();
 
         findViewById(R.id.btn_children_link).setOnClickListener(v -> {
-            // Open AdultProfileActivity and navigate to children
             Intent intent = new Intent(this, AdultProfileActivity.class);
             intent.putExtra("navigate_to", "children");
             startActivity(intent);
         });
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        // إعادة التحميل للتأكد من تحديث الرقم عند العودة من إضافة/حذف طفل
+        loadRealChildrenCount();
+    }
+
+    private void loadRealChildrenCount() {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            ChildProfileStore store = ChildProfileStore.getInstance(this);
+            List<ChildProfile> profiles = store.getProfiles();
+            int count = profiles != null ? profiles.size() : 0;
+
+            runOnUiThread(() -> {
+                if (txtChildrenCount != null) {
+                    if (count == 0) {
+                        txtChildrenCount.setText("لا يوجد أطفال مضافين");
+                    } else if (count == 1) {
+                        txtChildrenCount.setText("طفل واحد مضاف");
+                    } else if (count == 2) {
+                        txtChildrenCount.setText("طفلان مضافان");
+                    } else {
+                        txtChildrenCount.setText(ArabicDateUtils.toAr(count) + " أطفال مضافين");
+                    }
+                }
+            });
+        });
+    }
+
     private void renderStats() {
         LinearLayout statsRow = findViewById(R.id.stats_row);
         statsRow.removeAllViews();
-        String[][] stats = { 
+        String[][] stats = {
                 { ArabicDateUtils.toAr(47), getString(R.string.stat_days_active) },
                 { ArabicDateUtils.toAr(12), getString(R.string.stat_streak) },
-                { ArabicDateUtils.toAr(69), getString(R.string.stat_sessions) } 
+                { ArabicDateUtils.toAr(69), getString(R.string.stat_sessions) }
         };
 
         for (String[] stat : stats) {

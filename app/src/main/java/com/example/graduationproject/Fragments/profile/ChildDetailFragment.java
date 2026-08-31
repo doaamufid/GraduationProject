@@ -1,10 +1,10 @@
-
 package com.example.graduationproject.Fragments.profile;
 
 import android.animation.ValueAnimator;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,20 +23,23 @@ import androidx.fragment.app.Fragment;
 
 import com.example.graduationproject.ProfileNavigator;
 import com.example.graduationproject.R;
-import com.example.graduationproject.data.profile.SeedData;
+import com.example.graduationproject.SalamGeminiService;
+import com.example.graduationproject.data.ChildProfileStore;
+import com.example.graduationproject.models.ChildProfile;
 import com.example.graduationproject.models.profile.ChildAlert;
 import com.example.graduationproject.models.profile.ChildDetail;
 import com.example.graduationproject.models.profile.ChildFeature;
 import com.example.graduationproject.models.profile.ChildHistoryEntry;
+import com.example.graduationproject.models.profile.ChildStats;
 import com.example.graduationproject.ui.AdultMoodResult;
 import com.example.graduationproject.widget.AdultChartView;
 
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.concurrent.Executors;
 
-/**
- * Child Detail Screen with interactive bear-themed mood chart.
- */
 public class ChildDetailFragment extends Fragment {
 
     private static final String ARG_CHILD_ID = "child_id";
@@ -45,18 +48,19 @@ public class ChildDetailFragment extends Fragment {
     private boolean alertOpen = false;
 
     private static class Range {
-        final float[] scores;
+        float[] scores;
         final String[] labels;
         Range(float[] scores, String[] labels) { this.scores = scores; this.labels = labels; }
     }
 
     private final Map<String, Range> ranges = new LinkedHashMap<>();
-    private String currentRange = "week";
+    private String currentRange = "day";
 
     private View segmentIndicator;
     private LinearLayout segmentButtons;
     private AdultChartView chartView;
     private TextView scrubLabel, scrubSub, tabDay, tabWeek, tabMonth;
+    private SalamGeminiService geminiService;
 
     public static ChildDetailFragment newInstance(long childId) {
         ChildDetailFragment f = new ChildDetailFragment();
@@ -69,7 +73,7 @@ public class ChildDetailFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup parent,
-                              @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_child_detail, parent, false);
     }
 
@@ -77,23 +81,140 @@ public class ChildDetailFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         ProfileNavigator activity = (ProfileNavigator) requireActivity();
+        geminiService = new SalamGeminiService();
 
         long childId = getArguments() != null ? getArguments().getLong(ARG_CHILD_ID) : -1;
-        ChildDetail child = SeedData.getChildDetail(requireContext(), childId);
-        if (child == null) { activity.showChildren(); return; }
 
         ImageButton btnBack = view.findViewById(R.id.btn_back);
-        btnBack.setOnClickListener(v -> activity.showChildren());
+        if (btnBack != null) {
+            btnBack.setOnClickListener(v -> activity.showChildren());
+        }
 
-        bindHeader(view, child);
-        bindHero(view, child);
-        bindStats(view, child);
-        bindFeatures(view, child);
-        bindAlert(view, child);
-        bindRecommendations(view, child);
-        bindHistory(view, child);
+        loadRealChildDetails(view, activity, childId);
+    }
 
-        initMoodChart(view, child);
+    private void loadRealChildDetails(View view, ProfileNavigator activity, long childId) {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            ChildProfileStore store = ChildProfileStore.getInstance(requireContext());
+
+            ChildProfile targetProfile = null;
+            for (ChildProfile p : store.getProfiles()) {
+                if (p.getId() == childId) {
+                    targetProfile = p;
+                    break;
+                }
+            }
+
+            if (targetProfile == null) {
+                if (getActivity() != null) {
+                    getActivity().runOnUiThread(activity::showChildren);
+                }
+                return;
+            }
+
+            final ChildProfile finalProfile = targetProfile;
+
+            // 🟢🟢 هنا استخدمنا الدالة التي قمتِ بكتابتها لجلب الإحصائيات الحقيقية من SQL
+            ChildStats stats = store.getRealChildStats(finalProfile.getId());
+// 🟢 ربط الميزات الأثر استخداماً بالأرقام الحقيقية من قاعدة البيانات
+            List<ChildFeature> features = new ArrayList<>();
+            features.add(new ChildFeature("ركن الهدوء", stats.getCalmCornerVisits(), android.R.drawable.ic_menu_compass));
+            features.add(new ChildFeature("شجرة التعافي", stats.getRecoveryTreeVisits(), android.R.drawable.ic_menu_agenda));
+
+            List<ChildHistoryEntry> history = new ArrayList<>();
+            history.add(new ChildHistoryEntry("أكمل تمرين الاسترخاء", "اليوم ٥:٠٠ م"));
+
+            List<String> recommendations = new ArrayList<>();
+            recommendations.add("جاري تحليل حالة المزاج والتوصيات آلياً...");
+
+            ChildDetail childDetail = new ChildDetail(
+                    finalProfile.getId(),
+                    finalProfile.getName(),
+                    finalProfile.getAge(),
+                    finalProfile.getAvatar(),
+                    Color.parseColor("#4DD0C1"),
+                    "نشط الآن",
+                    stats, // 👈 تم تمرير البيانات الحقيقية المحسوبة من الدالة
+                    new int[]{4, 3, 5, 4, 5},
+                    new String[]{"أحد", "إثنين", "ثلاثاء", "أربعاء", "خميس"},
+                    features,
+                    null,
+                    recommendations,
+                    history
+            );
+
+            if (getActivity() != null) {
+                getActivity().runOnUiThread(() -> {
+                    bindHeader(view, childDetail);
+                    bindHero(view, childDetail);
+                    bindStats(view, childDetail); // 👈 عرض الأرقام الحقيقية فوراً
+                    bindFeatures(view, childDetail);
+                    bindAlert(view, childDetail);
+                    bindRecommendations(view, childDetail);
+                    bindHistory(view, childDetail);
+                    initMoodChart(view, childDetail);
+                });
+            }
+
+            // 🤖 1. جلب بيانات المزاج للشارت من الـ AI
+            geminiService.generateChildMoodData(finalProfile.getName(), finalProfile.getAge(), new SalamGeminiService.ChildMoodAnalysisCallback() {
+                @Override
+                public void onSuccess(float[] dayScores, float[] weekScores, float[] monthScores) {
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(() -> {
+                            ranges.get("day").scores = dayScores;
+                            ranges.get("week").scores = weekScores;
+                            ranges.get("month").scores = monthScores;
+
+                            Range current = ranges.get(currentRange);
+                            if (current != null) {
+                                chartView.setData(current.scores, current.labels);
+                            }
+                        });
+                    }
+                }
+
+                @Override
+                public void onError(String errorMessage) {
+                    Log.e("ChildDetailFragment", "فشل جلب نقاط شارت AI: " + errorMessage);
+                }
+            });
+
+            // 🤖 2. إرسال عدد التمارين الحقيقي (stats.exercises) لـ Gemini AI
+            // 🤖 إرسال عدد التمارين الحقيقي باستعمال الدالة getExercises()
+            geminiService.generateChildReport(finalProfile.getName(), finalProfile.getAge(), stats.getExercises(), new SalamGeminiService.ChildAnalysisCallback() {
+                @Override
+                public void onSuccess(String recommendationsText) {
+                    List<String> aiRecommendations = new ArrayList<>();
+                    String[] lines = recommendationsText.split("\n");
+                    for (String line : lines) {
+                        String cleaned = line.replace("-", "").trim();
+                        if (!cleaned.isEmpty()) {
+                            aiRecommendations.add(cleaned);
+                        }
+                    }
+
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(() -> {
+                            childDetail.recommendations.clear();
+                            childDetail.recommendations.addAll(aiRecommendations);
+                            bindRecommendations(view, childDetail);
+                        });
+                    }
+                }
+
+                @Override
+                public void onError(String errorMessage) {
+                    if (getActivity() != null) {
+                        getActivity().runOnUiThread(() -> {
+                            childDetail.recommendations.clear();
+                            childDetail.recommendations.add("تعذر تحميل التوصيات الآلية حالياً.");
+                            bindRecommendations(view, childDetail);
+                        });
+                    }
+                }
+            });
+        });
     }
 
     private void bindHeader(View root, ChildDetail child) {
@@ -117,9 +238,8 @@ public class ChildDetailFragment extends Fragment {
     }
 
     private void bindStats(View root, ChildDetail child) {
-        ((TextView) root.findViewById(R.id.txt_stat_exercises)).setText(String.valueOf(child.stats.exercises));
-        ((TextView) root.findViewById(R.id.txt_stat_sessions)).setText(String.valueOf(child.stats.sessions));
-        ((TextView) root.findViewById(R.id.txt_stat_inactive)).setText(String.valueOf(child.stats.inactiveDays));
+        ((TextView) root.findViewById(R.id.txt_stat_exercises)).setText(String.valueOf(child.stats.getExercises()));
+        ((TextView) root.findViewById(R.id.txt_stat_sessions)).setText(String.valueOf(child.stats.getSessions()));
     }
 
     private void initMoodChart(View view, ChildDetail child) {
@@ -157,20 +277,19 @@ public class ChildDetailFragment extends Fragment {
                         chartView.setData(ranges.get(currentRange).scores, ranges.get(currentRange).labels);
                     }
                 });
-        
-        // Kids chart colors: Turquoise/Green
+
         chartView.setDotHighlightColor(child.color);
     }
 
     private void buildRanges() {
         ranges.put("day", new Range(
-                new float[]{4.0f, 3.8f, 4.2f, 3.5f, 4.8f, 4.5f, 4.1f, 4.3f},
+                new float[]{3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f},
                 new String[]{"١٢ص", "٣ص", "٦ص", "٩ص", "١٢م", "٣م", "٦م", "٩م"}));
         ranges.put("week", new Range(
-                new float[]{3.2f, 4.5f, 2.8f, 4.0f, 4.6f, 3.9f, 4.4f},
+                new float[]{3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f, 3.0f},
                 new String[]{"ح", "ن", "ث", "ر", "خ", "ج", "س"}));
         ranges.put("month", new Range(
-                new float[]{3.6f, 4.1f, 3.9f, 4.4f, 4.0f},
+                new float[]{3.0f, 3.0f, 3.0f, 3.0f, 3.0f},
                 new String[]{"أسبوع ١", "أسبوع ٢", "أسبوع ٣", "أسبوع ٤", "أسبوع ٥"}));
     }
 
@@ -184,7 +303,7 @@ public class ChildDetailFragment extends Fragment {
         tabDay.setTextColor(Color.parseColor(key.equals("day") ? "#0F172A" : "#8598AC"));
         tabWeek.setTextColor(Color.parseColor(key.equals("week") ? "#0F172A" : "#8598AC"));
         tabMonth.setTextColor(Color.parseColor(key.equals("month") ? "#0F172A" : "#8598AC"));
-        
+
         tabDay.setTypeface(null, key.equals("day") ? android.graphics.Typeface.BOLD : android.graphics.Typeface.NORMAL);
         tabWeek.setTypeface(null, key.equals("week") ? android.graphics.Typeface.BOLD : android.graphics.Typeface.NORMAL);
         tabMonth.setTypeface(null, key.equals("month") ? android.graphics.Typeface.BOLD : android.graphics.Typeface.NORMAL);
