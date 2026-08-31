@@ -1753,4 +1753,7 @@
     <string name="breathing_feat_dark_mode_toggle">🌙 داكن</string>
     <string name="breathing_feat_light_mode_toggle">☀️ فاتح</string>
 
+    <string name="btn_send">إرسال</string>
+    <string name="send_label">Send</string>
+
 </resources>

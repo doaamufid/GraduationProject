@@ -1803,4 +1803,7 @@
     <string name="card_ai_response_title">Nour\'s Reply</string>
     <string name="card_ai_response_icon">🧸</string>
     <string name="card_ai_response_default">Welcome champ! I\'m here to listen and help you 💛</string>
+
+    <string name="btn_send">Send</string>
+    <string name="send_label">Send</string>
 </resources>

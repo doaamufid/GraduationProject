@@ -107,8 +107,9 @@ dependencies {
     // Firebase & Gemini AI Logic
     implementation platform(libs.firebase.bom)
     implementation libs.firebase.ai
+    implementation libs.firebase.appcheck.playintegrity
+    implementation libs.firebase.appcheck.debug
     implementation "com.google.guava:guava:31.0.1-android"
-    implementation "com.google.firebase:firebase-appcheck-debug"
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation 'net.zetetic:android-database-sqlcipher:4.5.4@aar'
     implementation 'androidx.sqlite:sqlite:2.3.1'

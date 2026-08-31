@@ -30,10 +30,7 @@ public class ArticlesActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int bgColor = androidx.core.content.ContextCompat.getColor(this, R.color.bg);
-        androidx.activity.EdgeToEdge.enable(this,
-                androidx.activity.SystemBarStyle.light(bgColor, bgColor),
-                androidx.activity.SystemBarStyle.light(bgColor, bgColor));
+        androidx.activity.EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_articles);
 

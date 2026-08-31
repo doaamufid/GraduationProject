@@ -52,17 +52,6 @@
             android:textSize="14sp" />
     </LinearLayout>
 
-    <!-- Weekly Mood Section -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvWeeklyMood"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginHorizontal="12dp"
-        android:clipToPadding="false"
-        android:overScrollMode="never"
-        app:layout_constraintTop_toBottomOf="@id/layoutHeaderContent" />
-
     <!-- Scrollable Categories -->
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -71,7 +60,7 @@
         android:clipToPadding="false"
         android:paddingBottom="100dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/rvWeeklyMood">
+        app:layout_constraintTop_toBottomOf="@id/layoutHeaderContent">
 
         <LinearLayout
             android:id="@+id/llCategories"

@@ -11,12 +11,34 @@ import java.util.Locale;
 import app.rive.runtime.kotlin.core.Rive;
 import app.rive.runtime.kotlin.core.RendererType;
 
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.appcheck.FirebaseAppCheck;
+import com.google.firebase.appcheck.debug.DebugAppCheckProviderFactory;
+import com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory;
+
 public class GraduationProjectApplication extends Application {
     private static final String TAG = "GraduationApp";
 
     @Override
     public void onCreate() {
         super.onCreate();
+
+        // Initialize Firebase
+        FirebaseApp.initializeApp(this);
+
+        // Initialize App Check
+        FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.getInstance();
+        if (BuildConfig.DEBUG) {
+            firebaseAppCheck.installAppCheckProviderFactory(
+                    DebugAppCheckProviderFactory.getInstance()
+            );
+            Log.d(TAG, "Firebase App Check (Debug Provider) initialized");
+        } else {
+            firebaseAppCheck.installAppCheckProviderFactory(
+                    PlayIntegrityAppCheckProviderFactory.getInstance()
+            );
+            Log.d(TAG, "Firebase App Check (Play Integrity) initialized");
+        }
 
         // Apply saved language preference
         try {

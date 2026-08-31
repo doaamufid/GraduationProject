@@ -84,7 +84,7 @@ public class CBTRReframingActivity extends AppCompatActivity {
     private EditText etThoughtText, etThoughtVoiceAlt;
     private View voiceModeContainer;
     private FlexboxLayout emotionsContainer;
-    private Button btnAnalyze;
+    private Button btnAnalyze, btnSend;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -250,6 +250,7 @@ public class CBTRReframingActivity extends AppCompatActivity {
         voiceModeContainer = dialogRoot.findViewById(R.id.voiceModeContainer);
         emotionsContainer = dialogRoot.findViewById(R.id.emotionsContainer);
         btnAnalyze = dialogRoot.findViewById(R.id.btnAnalyze);
+        btnSend = dialogRoot.findViewById(R.id.btnSend);
 
         tabText.setOnClickListener(v -> setWriteMode("text"));
         tabVoice.setOnClickListener(v -> setWriteMode("voice"));
@@ -299,6 +300,11 @@ public class CBTRReframingActivity extends AppCompatActivity {
             String text = activeWriteText();
             if (!text.isEmpty()) submitWrite(text);
         });
+
+        btnSend.setOnClickListener(v -> {
+            String text = activeWriteText();
+            if (!text.isEmpty()) submitWrite(text);
+        });
     }
 
     private String activeWriteText() {
@@ -310,7 +316,9 @@ public class CBTRReframingActivity extends AppCompatActivity {
     }
 
     private void refreshAnalyzeButtonState() {
-        btnAnalyze.setEnabled(!activeWriteText().isEmpty());
+        boolean hasText = !activeWriteText().isEmpty();
+        btnAnalyze.setEnabled(hasText);
+        btnSend.setEnabled(hasText);
     }
 
     private void setWriteMode(String mode) {

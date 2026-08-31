@@ -13,22 +13,56 @@
         android:orientation="vertical"
         android:layoutDirection="rtl">
 
-        <!-- Header Row -->
+        <!-- Top Bar -->
         <RelativeLayout
             android:id="@+id/header_container"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingStart="20dp"
-            android:paddingEnd="20dp"
-            android:paddingTop="36dp"
+            android:paddingHorizontal="20dp"
+            android:paddingTop="20dp"
             android:paddingBottom="12dp">
 
+            <!-- Back Button -->
+            <ImageButton
+                android:id="@+id/btnBack"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/bg_icon_circle_overlay"
+                android:src="@drawable/ic_arrow_right"
+                android:padding="10dp"
+                android:contentDescription="@null"
+                app:tint="@color/text_white"
+                xmlns:app="http://schemas.android.com/apk/res-auto"/>
+
+            <!-- Action Buttons -->
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
+                android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:orientation="horizontal">
+
+                <!-- Add Trait Button -->
+                <TextView
+                    android:id="@+id/btnAddTraitHeader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:background="@drawable/bg_button_bordered"
+                    android:text="@string/add_trait_btn"
+                    android:textColor="@color/text_white"
+                    android:textStyle="bold"
+                    android:textSize="13sp"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp"
+                    android:drawableStart="@drawable/ic_plus"
+                    android:drawablePadding="8dp"
+                    android:clickable="true"
+                    android:focusable="true"/>
 
                 <!-- Bank Button -->
                 <LinearLayout
@@ -53,26 +87,6 @@
                         android:textStyle="bold"
                         android:textSize="13sp"/>
                 </LinearLayout>
-
-                <!-- Add Trait Button -->
-                <TextView
-                    android:id="@+id/btnAddTraitHeader"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="10dp"
-                    android:background="@drawable/bg_button_bordered"
-                    android:text="@string/add_trait_btn"
-                    android:textColor="@color/text_white"
-                    android:textStyle="bold"
-                    android:textSize="13sp"
-                    android:paddingStart="16dp"
-                    android:paddingEnd="16dp"
-                    android:paddingTop="8dp"
-                    android:paddingBottom="8dp"
-                    android:drawableStart="@drawable/ic_plus"
-                    android:drawablePadding="8dp"
-                    android:clickable="true"
-                    android:focusable="true"/>
 
             </LinearLayout>
 
@@ -166,7 +180,7 @@
                         android:layout_weight="1"
                         android:gravity="start"
                         android:text="@string/highlight_this_month"
-                        android:textColor="@color/text_soft"
+                        android:textColor="@color/white"
                         android:textSize="12sp"/>
                 </LinearLayout>
 

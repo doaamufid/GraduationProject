@@ -21,14 +21,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.fragment.app.Fragment;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.graduationproject.R;
 import com.example.graduationproject.MainActivity;
 import com.example.graduationproject.SurvivalBoxActivity;
-import com.example.graduationproject.adapters.WeeklyMoodAdapter;
-import com.example.graduationproject.models.MoodDay;
 import com.example.graduationproject.models.SurvivalBoxRepository;
 import com.example.graduationproject.Fragments.BrowseAudioFragment;
 import com.example.graduationproject.Fragments.BrowseDhikrFragment;
@@ -40,9 +36,7 @@ import com.example.graduationproject.dialogs.AddLoveDialogFragment;
 import com.example.graduationproject.dialogs.AddPhotoDialogFragment;
 
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
-import java.util.Random;
 
 /**
  * Enhanced SummaryFragment with light theme and full animations.
@@ -86,7 +80,6 @@ public class SummaryFragment extends Fragment {
             }
         });
 
-        setupWeeklyMood(root);
         setupDialogListeners();
         renderCategories();
         startEntranceAnimations(root);
@@ -99,24 +92,28 @@ public class SummaryFragment extends Fragment {
                 AddAudioDialogFragment.REQUEST_KEY, this, (key, bundle) -> {
                     repo.addAudio(bundle.getString(AddAudioDialogFragment.KEY_LABEL),
                             bundle.getInt(AddAudioDialogFragment.KEY_DURATION));
-                    renderCategories();
+                    setupDialogListeners();
+        renderCategories();
                 });
         getParentFragmentManager().setFragmentResultListener(
                 AddPhotoDialogFragment.REQUEST_KEY, this, (key, bundle) -> {
                     repo.addPhoto(bundle.getString(AddPhotoDialogFragment.KEY_URI),
                             bundle.getString(AddPhotoDialogFragment.KEY_CAPTION));
-                    renderCategories();
+                    setupDialogListeners();
+        renderCategories();
                 });
         getParentFragmentManager().setFragmentResultListener(
                 AddLoveDialogFragment.REQUEST_KEY, this, (key, bundle) -> {
                     repo.addLove(bundle.getString(AddLoveDialogFragment.KEY_TEXT),
                             bundle.getString(AddLoveDialogFragment.KEY_SOURCE));
-                    renderCategories();
+                    setupDialogListeners();
+        renderCategories();
                 });
         getParentFragmentManager().setFragmentResultListener(
                 AddDhikrDialogFragment.REQUEST_KEY, this, (key, bundle) -> {
                     repo.setDhikr(bundle.getStringArrayList(AddDhikrDialogFragment.KEY_TEXTS));
-                    renderCategories();
+                    setupDialogListeners();
+        renderCategories();
                 });
     }
 
@@ -151,49 +148,6 @@ public class SummaryFragment extends Fragment {
         btnOpenBox.animate().alpha(1f).translationY(0f).setDuration(600).setStartDelay(1000).setInterpolator(new OvershootInterpolator()).start();
 
         headerSet.start();
-    }
-
-    private void setupWeeklyMood(View root) {
-        RecyclerView rvWeeklyMood = root.findViewById(R.id.rvWeeklyMood);
-        if (rvWeeklyMood == null) return;
-
-        List<MoodDay> dummyMoods = new ArrayList<>();
-        Calendar cal = Calendar.getInstance();
-
-        // 7 days ending today
-        String[] daysAr = {"ح", "ن", "ث", "ر", "خ", "ج", "س"};
-        cal.add(Calendar.DAY_OF_YEAR, -6);
-
-        Random random = new Random();
-        for (int i = 0; i < 7; i++) {
-            int dayOfWeek = cal.get(Calendar.DAY_OF_WEEK) - 1;
-            String dayName = daysAr[dayOfWeek];
-            String date = String.valueOf(cal.get(Calendar.DAY_OF_MONTH));
-            boolean isToday = i == 6;
-
-            int icon = 0;
-            int color = 0;
-            // Dummy logic: set moods for past days, maybe skip some
-            if (i < 6 && random.nextBoolean()) {
-                int type = random.nextInt(4);
-                if (type == 0) { icon = R.drawable.ic_smile; color = Color.parseColor("#FFD93D"); }
-                else if (type == 1) { icon = R.drawable.ic_heart; color = Color.parseColor("#FF6B6B"); }
-                else if (type == 2) { icon = R.drawable.ic_sparkles; color = Color.parseColor("#6BCB77"); }
-                else { icon = R.drawable.ic_zap; color = Color.parseColor("#4D96FF"); }
-            }
-
-            dummyMoods.add(new MoodDay(dayName, date, icon, color, isToday));
-            cal.add(Calendar.DAY_OF_YEAR, 1);
-        }
-
-        WeeklyMoodAdapter adapter = new WeeklyMoodAdapter(requireContext(), dummyMoods);
-        rvWeeklyMood.setLayoutManager(new LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false) {
-            @Override
-            public boolean canScrollHorizontally() {
-                return false; // User said don't make it scrollable
-            }
-        });
-        rvWeeklyMood.setAdapter(adapter);
     }
 
     private void renderCategories() {

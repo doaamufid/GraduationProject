@@ -3,7 +3,6 @@ package com.example.graduationproject;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentManager;
 
 import com.example.graduationproject.models.ContentItem;
@@ -25,10 +24,7 @@ public class VideoLibraryActivity extends AppCompatActivity implements ContentIt
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        int bgColor = ContextCompat.getColor(this, R.color.bg);
-        androidx.activity.EdgeToEdge.enable(this,
-                androidx.activity.SystemBarStyle.light(bgColor, bgColor),
-                androidx.activity.SystemBarStyle.light(bgColor, bgColor));
+        androidx.activity.EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
 
         // Arabic + RTL by default; English + LTR when the saved app language is English

@@ -111,7 +111,7 @@ public class ReaderFragment extends Fragment {
         if (topBar != null) {
             androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(topBar, (v, insets) -> {
                 androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
-                v.setPadding(v.getPaddingLeft(), systemBars.top + (int) (14 * v.getResources().getDisplayMetrics().density),
+                v.setPadding(v.getPaddingLeft(), systemBars.top + (int) (24 * v.getResources().getDisplayMetrics().density),
                         v.getPaddingRight(), v.getPaddingBottom());
                 return insets;
             });

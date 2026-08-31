@@ -133,6 +133,8 @@ public class StrenghtBankActivity extends AppCompatActivity {
     }
 
     private void setListeners() {
+        findViewById(R.id.btnBack).setOnClickListener(v -> finish());
+
         findViewById(R.id.btnAddTraitHeader).setOnClickListener(v -> {
             if (getSupportFragmentManager().findFragmentByTag("add_trait") == null) {
                 AddTraitDialogFragment.newInstance().show(getSupportFragmentManager(), "add_trait");
