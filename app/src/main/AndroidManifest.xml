@@ -239,7 +239,7 @@
             android:name=".AdultMoodStatsActivity"
             android:exported="false" />
         <activity
-            android:name=".ReflectionActivity"
+            android:name=".QouteFeatureMainActivity"
             android:exported="false" />
         <activity
             android:name=".SalamCommunityActivity"

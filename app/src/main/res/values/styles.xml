@@ -379,4 +379,10 @@
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowLightStatusBar">true</item>
     </style>
+    <style name="qoute_feature_Theme.Salam" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/qoute_feature_bg_dark_bottom</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@color/qoute_feature_bg_dark_bottom</item>
+        <item name="android:windowLightStatusBar">false</item>
+    </style>
 </resources>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <gradient
+        android:angle="270"
+        android:type="linear"
+        android:startColor="@color/qoute_feature_overlay_top"
+        android:centerColor="@color/qoute_feature_overlay_mid"
+        android:centerY="0.35"
+        android:endColor="@color/qoute_feature_overlay_bottom" />
+</shape>

@@ -90,7 +90,7 @@ public class AdultMoodActivity extends AppCompatActivity {
                     .putInt("today_mood_color", mood.circleColor)
                     .apply();
 
-            startActivity(new Intent(this, ReflectionActivity.class));
+            startActivity(new Intent(this, QouteFeatureMainActivity.class));
         });
     }
 

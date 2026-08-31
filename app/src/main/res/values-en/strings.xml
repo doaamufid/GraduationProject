@@ -494,32 +494,7 @@
         <item>55+</item>
     </string-array>
     <string name="next_button">Next</string>
-    <string name="enter_button">Enter Your Space</string>
     <string name="note_prefix">Today\'s Note</string>
-    <!-- Card 1 -->
-    <string name="c1_title">Stillness at the Summit</string>
-    <string name="c1_tag">A Moment of Reflection</string>
-    <string name="c1_chip">🌫️ Calm</string>
-    <string name="c1_date">April 8</string>
-    <string name="c1_note">Sometimes the strongest feeling is realizing how small you are in front of something greater than yourself. Take a breath. You’re allowed to be still right now.</string>
-    <!-- Card 2 -->
-    <string name="c2_title">Distant Horizon</string>
-    <string name="c2_tag">A Moment of Expansion</string>
-    <string name="c2_chip">🌊 Peace</string>
-    <string name="c2_date">April 7</string>
-    <string name="c2_note">The world can feel bigger than today’s problem. Give yourself some space, even if it’s small, to breathe freely.</string>
-    <!-- Card 3 -->
-    <string name="c3_title">Forest Shade</string>
-    <string name="c3_tag">A Moment of Presence</string>
-    <string name="c3_chip">🌿 Serenity</string>
-    <string name="c3_date">April 6</string>
-    <string name="c3_note">You don’t have to solve everything today. It’s enough to be present in this moment, listening and feeling.</string>
-    <!-- Card 4 -->
-    <string name="c4_title">Warmth of the Sands</string>
-    <string name="c4_tag">A Moment of Patience</string>
-    <string name="c4_chip">☀️ Patience</string>
-    <string name="c4_date">April 5</string>
-    <string name="c4_note">Some things need time to reveal themselves, like a desert that looks empty but holds life beneath the surface.</string>
     <string name="entry_title">Reframing</string>
     <string name="entry_subtitle">Share an annoying thought you have now, and let\'s see it from another angle together</string>
     <string name="entry_from_chat">Use a thought from your last chat</string>
@@ -1697,4 +1672,7 @@
     <string name="card_match_format">%1$d%% match</string>
     <string name="card_learners_format">%1$s heroes</string>
     <string name="card_add_button">Add</string>
+
+    <string name="qoute_feature_app_name">سلام</string>
+
 </resources>

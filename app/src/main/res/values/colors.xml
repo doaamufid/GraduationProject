@@ -573,4 +573,29 @@
     <color name="my_future_msg_white">#FFFFFF</color>
     <color name="kids_mood_text_dark">#0F172A</color>
     <color name="kids_mood_default_background">#FCE6D2</color>
+    <color name="qoute_feature_gold">#CFA35C</color>
+    <color name="qoute_feature_gold_light">#F0CF8F</color>
+    <color name="qoute_feature_cream">#F6F1E7</color>
+    <color name="qoute_feature_muted">#B8F6F1E7</color>
+    <color name="qoute_feature_glow">#59CFA35C</color>
+
+    <color name="qoute_feature_bg_dark_top">#1A1512</color>
+    <color name="qoute_feature_bg_dark_bottom">#050403</color>
+
+    <color name="qoute_feature_overlay_top">#8C050403</color>
+    <color name="qoute_feature_overlay_mid">#0D050403</color>
+    <color name="qoute_feature_overlay_bottom">#F0050403</color>
+
+    <color name="qoute_feature_phone_bg">#0B0908</color>
+    <color name="qoute_feature_cta_text">#241B0D</color>
+
+    <color name="qoute_feature_icon_btn_bg">#0FFFFFFF</color>
+    <color name="qoute_feature_icon_btn_border">#1FFFFFFF</color>
+
+    <color name="qoute_feature_lang_pill_bg">#730A0907</color>
+    <color name="qoute_feature_lang_pill_border">#59CFA35C</color>
+
+    <color name="qoute_feature_toast_bg">#EB14100C</color>
+    <color name="qoute_feature_toast_border">#59CFA35C</color>
 </resources>
+
