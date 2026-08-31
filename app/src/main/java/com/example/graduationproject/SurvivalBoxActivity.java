@@ -16,10 +16,9 @@ public class SurvivalBoxActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         
-        int screenColor = androidx.core.content.ContextCompat.getColor(this, R.color.bg);
         EdgeToEdge.enable(this, 
-                androidx.activity.SystemBarStyle.light(screenColor, screenColor),
-                androidx.activity.SystemBarStyle.light(screenColor, screenColor));
+                androidx.activity.SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT),
+                androidx.activity.SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT));
 
         setContentView(R.layout.activity_survival_box);
         
