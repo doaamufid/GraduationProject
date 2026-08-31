@@ -3,6 +3,7 @@ package com.example.graduationproject.ui;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,8 +26,19 @@ import com.example.graduationproject.models.ContentRepository;
 import com.example.graduationproject.data.ContentRecommendationManager;
 import com.example.graduationproject.data.SalamGeminiService;
 import com.example.graduationproject.models.CandidateItem;
+import com.example.graduationproject.data.YouTubeApiService;
+import com.example.graduationproject.models.YouTubeResponse;
+import com.example.graduationproject.BuildConfig;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Video-library list screen.
@@ -38,12 +50,14 @@ import java.util.List;
  */
 public class VideoLibraryFragment extends Fragment implements ContentAdapter.Listener {
 
+    private static final String DEBUG_TAG = "YouTubeDebug";
     private String activeCategory = "الكل";
     private String query = "";
 
     private LinearLayout chipContainer;
     private RecyclerView recyclerVideos;
     private ContentAdapter adapter;
+    private YouTubeApiService youtubeApi;
 
     public static VideoLibraryFragment newInstance() {
         return new VideoLibraryFragment();
@@ -82,6 +96,7 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
         adapter = new ContentAdapter(this);
         recyclerVideos.setAdapter(adapter);
 
+        initRetrofit();
         buildChips();
         refreshList();
 
@@ -182,8 +197,142 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
         }
     }
 
+    private void initRetrofit() {
+        Retrofit retrofit = new Retrofit.Builder()
+                .baseUrl("https://www.googleapis.com/")
+                .addConverterFactory(GsonConverterFactory.create())
+                .build();
+        youtubeApi = retrofit.create(YouTubeApiService.class);
+    }
+
+    private void fetchYouTubeVideos(String query) {
+        String apiKey = BuildConfig.YOUTUBE_API_KEY;
+        if (apiKey == null || apiKey.isEmpty() || apiKey.equals("YOUR_API_KEY_HERE")) {
+            return;
+        }
+
+        youtubeApi.getEmbeddableVideos("snippet", query, "video", "true", 10, apiKey)
+                .enqueue(new Callback<YouTubeResponse>() {
+                    @Override
+                    public void onResponse(Call<YouTubeResponse> call, Response<YouTubeResponse> response) {
+                        if (response.isSuccessful() && response.body() != null && response.body().items != null) {
+                            validateAndDisplayVideos(response.body().items);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<YouTubeResponse> call, Throwable t) {
+                        Log.e(DEBUG_TAG, "Search failed: " + t.getMessage());
+                    }
+                });
+    }
+
+    private void validateAndDisplayVideos(List<YouTubeResponse.YouTubeItem> searchItems) {
+        String apiKey = BuildConfig.YOUTUBE_API_KEY;
+        StringBuilder idsBuilder = new StringBuilder();
+        for (YouTubeResponse.YouTubeItem item : searchItems) {
+            String vid = item.getVideoId();
+            if (vid != null) {
+                if (idsBuilder.length() > 0) idsBuilder.append(",");
+                idsBuilder.append(vid);
+            }
+        }
+
+        if (idsBuilder.length() == 0) {
+            adapter.submitList(new ArrayList<>());
+            return;
+        }
+
+        youtubeApi.getVideoDetails("status", idsBuilder.toString(), apiKey)
+                .enqueue(new Callback<YouTubeResponse>() {
+                    @Override
+                    public void onResponse(Call<YouTubeResponse> call, Response<YouTubeResponse> response) {
+                        List<ContentItem> finalItems = new ArrayList<>();
+                        Set<String> validVideoIds = new HashSet<>();
+
+                        if (response.isSuccessful() && response.body() != null && response.body().items != null) {
+                            for (YouTubeResponse.YouTubeItem detail : response.body().items) {
+                                String vid = detail.getVideoId();
+                                boolean isPublic = detail.status != null && "public".equals(detail.status.privacyStatus);
+                                boolean isEmbeddable = detail.status != null && detail.status.embeddable;
+                                
+                                if (vid != null && isPublic && isEmbeddable) {
+                                    validVideoIds.add(vid);
+                                } else {
+                                    Log.d(DEBUG_TAG, "Rejecting video: " + vid + " (Public=" + isPublic + ", Embeddable=" + isEmbeddable + ")");
+                                }
+                            }
+
+                            int i = 0;
+                            for (YouTubeResponse.YouTubeItem searchItem : searchItems) {
+                                String vid = searchItem.getVideoId();
+                                if (validVideoIds.contains(vid)) {
+                                    finalItems.add(mapToContentItem(searchItem, i++));
+                                }
+                            }
+                        } else {
+                            // On validation API error, don't incorrectly classify all as unavailable.
+                            // Requirements: Follow existing error pattern and proceed with search results.
+                            Log.e(DEBUG_TAG, "Validation response unsuccessful. Code: " + response.code());
+                            int i = 0;
+                            for (YouTubeResponse.YouTubeItem searchItem : searchItems) {
+                                finalItems.add(mapToContentItem(searchItem, i++));
+                            }
+                        }
+
+                        if (getActivity() != null) {
+                            getActivity().runOnUiThread(() -> adapter.submitList(finalItems));
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<YouTubeResponse> call, Throwable t) {
+                        Log.e(DEBUG_TAG, "Validation failed: " + t.getMessage());
+                        List<ContentItem> fallbackItems = new ArrayList<>();
+                        int i = 0;
+                        for (YouTubeResponse.YouTubeItem searchItem : searchItems) {
+                            fallbackItems.add(mapToContentItem(searchItem, i++));
+                        }
+                        if (getActivity() != null) {
+                            getActivity().runOnUiThread(() -> adapter.submitList(fallbackItems));
+                        }
+                    }
+                });
+    }
+
+    private ContentItem mapToContentItem(YouTubeResponse.YouTubeItem item, int index) {
+        String vid = item.getVideoId();
+        String high = (item.snippet.thumbnails != null && item.snippet.thumbnails.high != null) ? item.snippet.thumbnails.high.url : null;
+        String med = (item.snippet.thumbnails != null && item.snippet.thumbnails.medium != null) ? item.snippet.thumbnails.medium.url : null;
+        String def = (item.snippet.thumbnails != null && item.snippet.thumbnails.defaultThumb != null) ? item.snippet.thumbnails.defaultThumb.url : null;
+
+        Log.d(DEBUG_TAG, "Mapping result - videoId: " + vid + ", highUrl: " + high);
+
+        return new ContentItem(
+                2000 + index,
+                item.snippet.title,
+                item.snippet.channelTitle != null ? item.snippet.channelTitle : "YouTube",
+                "فيديو",
+                true,
+                "YouTube",
+                activeCategory,
+                vid,
+                high,
+                med,
+                def,
+                android.graphics.Color.parseColor("#2E5C86"),
+                android.graphics.Color.parseColor("#1F3A60"),
+                ""
+        );
+    }
+
     /** Filter ContentRepository by active category + search query, then push to adapter. */
     private void refreshList() {
+        if (!query.isEmpty()) {
+            fetchYouTubeVideos(query);
+            return;
+        }
+
         List<ContentItem> base = ContentRepository.filterByCategory(activeCategory);
         List<ContentRecommendationManager.RecommendationResponse> recs = ContentRecommendationManager.getCachedRecommendations(requireContext());
 
@@ -201,8 +350,7 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
 
             ContentItem processedItem = item;
             if (reason != null) {
-                processedItem = new ContentItem(item.id, item.title, item.src, item.type, item.isVideo, item.duration,
-                        item.category, item.videoId, item.gradStart, item.gradEnd, "🤖 " + reason);
+                processedItem = new ContentItem(item, item.videoId, item.thumbnailUrl, item.mediumThumbnailUrl, item.defaultThumbnailUrl, "🤖 " + reason);
             }
 
             if (query.isEmpty()) {

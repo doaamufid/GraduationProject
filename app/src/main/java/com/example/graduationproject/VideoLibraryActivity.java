@@ -25,9 +25,10 @@ public class VideoLibraryActivity extends AppCompatActivity implements ContentIt
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        int bgColor = ContextCompat.getColor(this, R.color.bg);
         androidx.activity.EdgeToEdge.enable(this,
-                androidx.activity.SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT),
-                androidx.activity.SystemBarStyle.light(android.graphics.Color.TRANSPARENT, android.graphics.Color.TRANSPARENT));
+                androidx.activity.SystemBarStyle.light(bgColor, bgColor),
+                androidx.activity.SystemBarStyle.light(bgColor, bgColor));
         super.onCreate(savedInstanceState);
 
         // Arabic + RTL by default; English + LTR when the saved app language is English

@@ -37,11 +37,11 @@
                 app:strokeColor="#EEF6FC"
                 app:strokeWidth="2.5dp">
 
-                <WebView
-                    android:id="@+id/webViewPlayer"
+                <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
+                    android:id="@+id/youtubePlayerView"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="#000000" />
+                    app:enableAutomaticInitialization="false" />
 
             </com.google.android.material.card.MaterialCardView>
 

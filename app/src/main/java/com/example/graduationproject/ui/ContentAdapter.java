@@ -2,6 +2,7 @@ package com.example.graduationproject.ui;
 
 import android.content.Context;
 import android.graphics.drawable.GradientDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,11 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.RequestBuilder;
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.ContentItem;
+import com.example.graduationproject.util.YouTubeUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,6 +31,8 @@ import java.util.List;
  * library cards (thumbnail + gradient + play icon + metadata).
  */
 public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
+
+    private static final String DEBUG_TAG = "YouTubeDebug";
 
     public interface Listener {
         void onOpen(ContentItem item);
@@ -61,20 +67,42 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
     public void onBindViewHolder(@NonNull VH holder, int position) {
         ContentItem item = items.get(position);
 
-        // 1. Background (Gradient + YouTube Thumbnail)
+        // Define a placeholder/fallback gradient based on item colors
         GradientDrawable gradient = new GradientDrawable(
                 GradientDrawable.Orientation.TL_BR,
                 new int[]{item.gradStart, item.gradEnd});
-        
-        if (item.videoId != null && !item.videoId.isEmpty()) {
-            String thumbnailUrl = "https://img.youtube.com/vi/" + item.videoId.trim() + "/hqdefault.jpg";
-            com.bumptech.glide.Glide.with(holder.itemView.getContext())
-                    .load(thumbnailUrl)
+        gradient.setCornerRadius(24 * holder.itemView.getContext().getResources().getDisplayMetrics().density);
+
+        // 1. Background (YouTube Thumbnail)
+        if (item.videoId != null && !item.videoId.trim().isEmpty()) {
+            
+            // Requirements: Use API thumbnail URLs with Glide fallbacks (High -> Medium -> Default)
+            String high = item.thumbnailUrl;
+            String med = item.mediumThumbnailUrl;
+            String def = item.defaultThumbnailUrl;
+
+            Log.d(DEBUG_TAG, "Loading thumbnails for " + item.videoId + " - High: " + high + ", Med: " + med + ", Def: " + def);
+
+            RequestBuilder<android.graphics.drawable.Drawable> defaultRequest = Glide.with(holder.itemView.getContext())
+                    .load(def)
+                    .centerCrop()
+                    .error(gradient);
+
+            RequestBuilder<android.graphics.drawable.Drawable> mediumRequest = Glide.with(holder.itemView.getContext())
+                    .load(med)
+                    .centerCrop()
+                    .thumbnail(defaultRequest);
+
+            Glide.with(holder.itemView.getContext())
+                    .load(high)
                     .placeholder(gradient)
-                    .error(gradient)
+                    .thumbnail(mediumRequest)
+                    .diskCacheStrategy(com.bumptech.glide.load.engine.DiskCacheStrategy.ALL)
                     .centerCrop()
                     .into(holder.ivCardBackground);
+
         } else {
+            com.bumptech.glide.Glide.with(holder.itemView.getContext()).clear(holder.ivCardBackground);
             holder.ivCardBackground.setImageDrawable(gradient);
         }
 

@@ -143,8 +143,9 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
                 android:src="@drawable/ic_user"
                 android:contentDescription="@null"/>
 
@@ -207,8 +208,9 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
-                android:layout_width="28dp"
-                android:layout_height="28dp"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
                 android:src="@drawable/ic_bear_face"
                 android:contentDescription="@null"/>
 
