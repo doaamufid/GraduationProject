@@ -62,6 +62,16 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.VH> {
         holder.waveArt.setColors(ArticleCategory.gradientColors(holder.itemView.getContext(), a.category));
         holder.tvCategory.setText(ArticleCategory.getLabel(a.category) + "  ·  " + ArticleCategory.englishLabel(a.category));
         holder.tvTitle.setText(a.title);
+
+        if (a.reason != null && !a.reason.isEmpty()) {
+            holder.tvSuggestionReason.setVisibility(View.VISIBLE);
+            holder.tvSuggestionReason.setText(a.reason);
+            holder.vSpacer.setVisibility(View.GONE);
+        } else {
+            holder.tvSuggestionReason.setVisibility(View.GONE);
+            holder.vSpacer.setVisibility(View.VISIBLE);
+        }
+
         holder.tvRatingBadge.setText("♥ rating " + a.rating);
         holder.tvExerciseBadge.setVisibility(a.hasExercise ? View.VISIBLE : View.GONE);
         holder.tvPrice.setText(a.price);
@@ -74,20 +84,28 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.VH> {
         holder.itemView.setOnClickListener(v -> {
             Animation press = AnimationUtils.loadAnimation(v.getContext(), R.anim.card_press);
             v.startAnimation(press);
-            v.postDelayed(() -> listener.onOpen(a), 90);
+            if (listener != null) {
+                v.postDelayed(() -> listener.onOpen(a), 90);
+            }
         });
 
         holder.btnFavorite.setOnClickListener(v -> {
-            listener.onToggleFavorite(a);
-            notifyItemChanged(holder.getAdapterPosition());
+            if (listener != null) {
+                listener.onToggleFavorite(a);
+                notifyItemChanged(holder.getAdapterPosition());
+            }
         });
 
         holder.btnBookmark.setOnClickListener(v -> {
-            listener.onToggleBookmark(a);
-            notifyItemChanged(holder.getAdapterPosition());
+            if (listener != null) {
+                listener.onToggleBookmark(a);
+                notifyItemChanged(holder.getAdapterPosition());
+            }
         });
 
-        holder.btnReadNow.setOnClickListener(v -> listener.onOpen(a));
+        holder.btnReadNow.setOnClickListener(v -> {
+            if (listener != null) listener.onOpen(a);
+        });
     }
 
     @Override
@@ -97,8 +115,9 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.VH> {
 
     static class VH extends RecyclerView.ViewHolder {
         WaveArtView waveArt;
-        TextView tvCategory, tvTitle, tvRatingBadge, tvExerciseBadge, tvPrice, tvTime, tvRating, btnReadNow;
+        TextView tvCategory, tvTitle, tvRatingBadge, tvExerciseBadge, tvPrice, tvTime, tvRating, btnReadNow, tvSuggestionReason;
         ImageButton btnFavorite, btnBookmark;
+        View vSpacer;
 
         VH(@NonNull View itemView) {
             super(itemView);
@@ -113,6 +132,8 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.VH> {
             btnReadNow = itemView.findViewById(R.id.btnReadNow);
             btnFavorite = itemView.findViewById(R.id.btnFavorite);
             btnBookmark = itemView.findViewById(R.id.btnBookmark);
+            tvSuggestionReason = itemView.findViewById(R.id.tvSuggestionReason);
+            vSpacer = itemView.findViewById(R.id.spacer);
         }
     }
 }

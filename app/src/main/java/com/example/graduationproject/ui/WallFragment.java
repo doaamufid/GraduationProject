@@ -82,6 +82,7 @@ public class WallFragment extends Fragment {
 
         view.findViewById(R.id.pinnedBtn).setOnClickListener(v -> activity.showPinned());
         view.findViewById(R.id.mineBtn).setOnClickListener(v -> activity.showMine());
+        view.findViewById(R.id.btnBack).setOnClickListener(v -> activity.onBackPressed());
 
         View shuffleBtn = view.findViewById(R.id.shuffleBtn);
         ImageView shuffleIcon = view.findViewById(R.id.shuffleIcon);

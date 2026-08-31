@@ -54,6 +54,7 @@ public class PlayerFragment extends Fragment {
     private String selectedReason = null;
     private boolean saved = false;
     private boolean showWhy = false;
+    private com.example.graduationproject.data.ContentFeedbackStore feedbackStore;
 
     private ImageButton btnLike, btnDislike;
     private ImageButton btnFavTop, btnBookmarkTop;
@@ -76,6 +77,7 @@ public class PlayerFragment extends Fragment {
             return root;
         }
 
+        feedbackStore = new com.example.graduationproject.data.ContentFeedbackStore(requireContext());
         toastController = new ToastController(root.findViewById(R.id.toastHost));
 
         TopBarHelper.bind(root, getString(R.string.player_title), null,
@@ -185,11 +187,33 @@ public class PlayerFragment extends Fragment {
         settings.setJavaScriptEnabled(true);
         settings.setDomStorageEnabled(true);
         settings.setMediaPlaybackRequiresUserGesture(false);
+
+        // Advanced WebView settings for smooth YouTube playback
+        settings.setAllowContentAccess(true);
+        settings.setAllowFileAccess(true);
+        settings.setDatabaseEnabled(true);
+        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
+        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        
+        // Critical for some YouTube restrictions
+        settings.setUserAgentString(settings.getUserAgentString().replace("wv", "")); 
+
+        webView.setWebChromeClient(new android.webkit.WebChromeClient());
+        webView.setWebViewClient(new android.webkit.WebViewClient());
+
         webView.setBackgroundColor(android.graphics.Color.BLACK);
 
-        String src = "https://www.youtube-nocookie.com/embed/" + item.videoId
-                + "?rel=0&modestbranding=1&iv_load_policy=3&playsinline=1";
-        webView.loadUrl(src);
+        // Ensure the ID is clean
+        String vid = item.videoId != null ? item.videoId.trim() : "";
+        
+        // Use a simpler embed URL with common parameters
+        String url = "https://www.youtube.com/embed/" + vid 
+                + "?autoplay=1&rel=0&showinfo=0&enablejsapi=1&origin=https://www.youtube.com";
+        
+        java.util.Map<String, String> extraHeaders = new java.util.HashMap<>();
+        extraHeaders.put("Referer", "https://www.youtube.com");
+        
+        webView.loadUrl(url, extraHeaders);
     }
 
     private void bindContentInfo(View root) {
@@ -219,6 +243,7 @@ public class PlayerFragment extends Fragment {
     private void handleUp() {
         feedback = "up";
         showReasons = false;
+        feedbackStore.saveFeedback("video", item.id, true, null);
         renderFeedbackButtons();
         renderReasonsPanel(false);
         toastController.show(getString(R.string.toast_like));
@@ -236,6 +261,7 @@ public class PlayerFragment extends Fragment {
     private void pickReason(String reason) {
         selectedReason = reason;
         showReasons = false;
+        feedbackStore.saveFeedback("video", item.id, false, reason);
         renderReasonChipsSelection();
         renderReasonsPanel(false);
         toastController.show(getString(R.string.toast_dislike_reason));

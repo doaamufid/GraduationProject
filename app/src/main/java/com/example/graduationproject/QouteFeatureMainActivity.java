@@ -30,6 +30,7 @@ import com.example.graduationproject.util.QouteFeatureLangStrings;
 import com.example.graduationproject.util.QouteFeatureUtils;
 import com.example.graduationproject.view.QouteFeatureParticleView;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -50,10 +51,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
     private ImageView bgImage;
     private View overlay;
     private QouteFeatureParticleView particleView;
-    private TextView brandMark;
-    private LinearLayout langPill;
-    private TextView langPillText;
-    private FrameLayout shuffleBtn;
     private TextView greetLine, dayLine, dateLine, quoteText;
     private View breathGlow;
     private Button ctaBtn;
@@ -65,7 +62,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
     // ---- animators kept so we can restart / cancel them ----
     private Animator kenBurnsAnimator;
     private Animator breathAnimator;
-    private Animator shufflePulseAnimator;
     private Animator ctaPulseAnimator;
 
     private final Handler handler = new Handler(Looper.getMainLooper());
@@ -90,22 +86,32 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
         allQuotes = QouteFeatureQuoteRepository.all();
         historyManager = new QouteFeatureHistoryManager(this);
 
-        // pick the first quote respecting the no-repeat history (like the useEffect in JS)
-        history = historyManager.loadHistory();
-        QouteFeatureHistoryManager.Pick pick = historyManager.pickNextEntry(allQuotes, history);
-        currentEntry = pick.entry;
-        history = pick.nextHistory;
-        historyManager.saveHistory(history);
+        List<String> imageUrls = new ArrayList<>();
+        for (QouteFeatureQuoteEntry q : allQuotes) imageUrls.add(q.imgUrl);
+
+        com.example.graduationproject.data.SalamGeminiService geminiService = new com.example.graduationproject.data.SalamGeminiService(this);
+        QouteFeatureAiQuoteProvider aiProvider = new QouteFeatureAiQuoteProvider(this, geminiService);
+        QouteFeatureQuoteEntry aiQuote = aiProvider.getTodaysCachedQuote(imageUrls);
+
+        if (aiQuote != null) {
+            currentEntry = aiQuote;
+            history = historyManager.loadHistory();
+        } else {
+            history = historyManager.loadHistory();
+            QouteFeatureHistoryManager.Pick pick = historyManager.pickNextEntry(allQuotes, history);
+            currentEntry = pick.entry;
+            history = pick.nextHistory;
+            historyManager.saveHistory(history);
+        }
+
+        aiProvider.generateAndCacheForNextTime();
 
         applyEntryVisuals();
         updateLangUI();
         startClock();
         scheduleCtaReveal();
         startBreathingGlow();
-        startShufflePulse();
 
-        shuffleBtn.setOnClickListener(v -> onShuffleClicked());
-        langPill.setOnClickListener(v -> onLanguageToggle());
         likeBtn.setOnClickListener(v -> onLikeClicked());
         shareBtn.setOnClickListener(v -> onShareClicked());
         saveBtn.setOnClickListener(v -> onSaveClicked());
@@ -122,10 +128,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
         bgImage = findViewById(R.id.bgImage);
         overlay = findViewById(R.id.overlay);
         particleView = findViewById(R.id.particleView);
-        brandMark = findViewById(R.id.brandMark);
-        langPill = findViewById(R.id.langPill);
-        langPillText = findViewById(R.id.langPillText);
-        shuffleBtn = findViewById(R.id.shuffleBtn);
         greetLine = findViewById(R.id.greetLine);
         dayLine = findViewById(R.id.dayLine);
         dateLine = findViewById(R.id.dateLine);
@@ -185,10 +187,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
     }
 
     private void onShuffleClicked() {
-        shuffleBtn.animate().scaleX(0.85f).scaleY(0.85f).setDuration(90)
-                .withEndAction(() -> shuffleBtn.animate().scaleX(1f).scaleY(1f).setDuration(140).start())
-                .start();
-
         liked = false;
         refreshLikeIcon();
 
@@ -215,11 +213,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
     //  LANGUAGE TOGGLE
     // =====================================================================
 
-    private void onLanguageToggle() {
-        isArabic = !isArabic;
-        updateLangUI();
-    }
-
     private void updateLangUI() {
         int direction = isArabic ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR;
         phoneFrame.setLayoutDirection(direction);
@@ -228,8 +221,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
         Typeface enFontItalic = QouteFeatureUtils.getFont(this, "cormorant_italic.ttf");
         Typeface enFontBold = QouteFeatureUtils.getFont(this, "cormorant_bold.ttf");
 
-        brandMark.setText(QouteFeatureLangStrings.brand(isArabic));
-        langPillText.setText(isArabic ? "EN" : "AR");
         ctaBtn.setText(QouteFeatureLangStrings.more(isArabic));
 
         quoteText.setText(isArabic ? currentEntry.ar : currentEntry.en);
@@ -332,18 +323,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
         breathAnimator = anim;
     }
 
-    /** Mirrors @keyframes pulseGlow on the shuffle button — 4s glow intensity loop. */
-    private void startShufflePulse() {
-        PropertyValuesHolder elevation = PropertyValuesHolder.ofFloat(View.TRANSLATION_Z, 4f, 12f);
-        ObjectAnimator anim = ObjectAnimator.ofPropertyValuesHolder(shuffleBtn, elevation);
-        anim.setDuration(2000);
-        anim.setRepeatMode(ObjectAnimator.REVERSE);
-        anim.setRepeatCount(ObjectAnimator.INFINITE);
-        anim.setInterpolator(new AccelerateDecelerateInterpolator());
-        anim.start();
-        shufflePulseAnimator = anim;
-    }
-
     // =====================================================================
     //  LIKE / SHARE / SAVE
     // =====================================================================
@@ -417,7 +396,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
         toastHandler.removeCallbacksAndMessages(null);
         if (kenBurnsAnimator != null) kenBurnsAnimator.cancel();
         if (breathAnimator != null) breathAnimator.cancel();
-        if (shufflePulseAnimator != null) shufflePulseAnimator.cancel();
         if (ctaPulseAnimator != null) ctaPulseAnimator.cancel();
     }
 }

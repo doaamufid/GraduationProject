@@ -1,6 +1,7 @@
 package com.example.graduationproject;
 
 import android.Manifest;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.media.MediaPlayer;
@@ -66,7 +67,7 @@ public class ChatMainActivity extends AppCompatActivity {
     private static final long RETENTION_MILLIS = 7L * 24 * 60 * 60 * 1000; // 7 أيام
 
     private ChatMessageDao chatDao;
-    private com.example.graduationproject.SalamGeminiService geminiService;
+    private com.example.graduationproject.data.SalamGeminiService geminiService;
     private final Executor dbExecutor = Executors.newSingleThreadExecutor();
 
     @Override
@@ -135,7 +136,7 @@ public class ChatMainActivity extends AppCompatActivity {
         setupInputBar();
 
         chatDao = ChatDatabase.getInstance(this).chatMessageDao();
-        geminiService = new com.example.graduationproject.SalamGeminiService();
+        geminiService = new com.example.graduationproject.data.SalamGeminiService(this);
 
         loadMessagesFromDb();
     }
@@ -398,9 +399,27 @@ public class ChatMainActivity extends AppCompatActivity {
     // ---------------------------------------------------------------
     private void handleCardAction(String cardType) {
         switch (cardType) {
-            case "breathing": showToast(getString(R.string.chat_breathing_toast)); break;
-            case "dhikr": showToast(getString(R.string.chat_dhikr_toast)); break;
-            case "article": showToast(getString(R.string.chat_article_toast)); break;
+            case "breathing":
+                startActivity(new Intent(this, BreathingActivity.class));
+                break;
+            case "grounding":
+                startActivity(new Intent(this, GroundingExActivity.class));
+                break;
+            case "cbt_reframe":
+                startActivity(new Intent(this, CBTRReframingActivity.class));
+                break;
+            case "body_map":
+                startActivity(new Intent(this, BodyMapActivity.class));
+                break;
+            case "future_letter":
+                startActivity(new Intent(this, MyFutureMsgMainActivity.class));
+                break;
+            case "dhikr":
+                showToast(getString(R.string.chat_dhikr_toast));
+                break;
+            case "article":
+                showToast(getString(R.string.chat_article_toast));
+                break;
         }
     }
 
@@ -481,7 +500,7 @@ public class ChatMainActivity extends AppCompatActivity {
 
         dbExecutor.execute(() -> {
             List<ChatMessageEntity> history = chatDao.getAll();
-            geminiService.sendMessage(history, userText, new com.example.graduationproject.SalamGeminiService.GeminiCallback() {
+            geminiService.sendMessage(history, userText, new com.example.graduationproject.data.SalamGeminiService.GeminiCallback() {
                 @Override
                 public void onSuccess(String reply) {
                     runOnUiThread(() -> finishGeminiReply(reply));
@@ -495,11 +514,47 @@ public class ChatMainActivity extends AppCompatActivity {
         });
     }
 
-    private void finishGeminiReply(String text) {
+    private void finishGeminiReply(String jsonString) {
         typing = false;
         setTypingIndicatorVisible(false);
 
-        ChatMessage botMsg = ChatMessage.bot(nextId(), text, now(), null);
+        String text = jsonString;
+        String exerciseType = null;
+
+        android.content.SharedPreferences prefs = getSharedPreferences("ChatPrefs", MODE_PRIVATE);
+        int messagesSinceLastExercise = prefs.getInt("msgs_since_exercise", 0);
+
+        try {
+            if (jsonString.startsWith("{")) {
+                org.json.JSONObject json = new org.json.JSONObject(jsonString);
+                text = json.optString("replyText", jsonString);
+                String rawExercise = json.optString("suggestedExerciseType", "NONE");
+
+                // Extra check for valid exercise types
+                java.util.List<String> validExercises = java.util.Arrays.asList("BREATHING", "GROUNDING", "CBT_REFRAME", "BODY_MAP", "FUTURE_LETTER");
+                if (!validExercises.contains(rawExercise)) {
+                    rawExercise = "NONE";
+                }
+                
+                if (!"NONE".equals(rawExercise)) {
+                    // Density control: only show if at least 3 messages passed
+                    if (messagesSinceLastExercise >= 3) {
+                        exerciseType = rawExercise.toLowerCase();
+                        messagesSinceLastExercise = 0;
+                    } else {
+                        messagesSinceLastExercise++;
+                    }
+                } else {
+                    messagesSinceLastExercise++;
+                }
+            }
+        } catch (Exception e) {
+            // Fallback
+        }
+
+        prefs.edit().putInt("msgs_since_exercise", messagesSinceLastExercise).apply();
+
+        ChatMessage botMsg = ChatMessage.bot(nextId(), text, now(), exerciseType);
         messages.add(botMsg);
         adapter.notifyItemInserted(messages.size() - 1);
         scrollToBottom();

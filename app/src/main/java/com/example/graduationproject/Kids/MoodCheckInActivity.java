@@ -3,10 +3,13 @@ package com.example.graduationproject.Kids;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -37,6 +40,16 @@ public class MoodCheckInActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Make task bar and status bar transparent
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            Window window = getWindow();
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);
+            window.getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            window.setStatusBarColor(Color.TRANSPARENT);
+            window.setNavigationBarColor(Color.TRANSPARENT);
+        }
 
         binding = ActivityMoodCheckInBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -98,7 +111,7 @@ public class MoodCheckInActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        binding.cardRoutine.setOnClickListener(v -> {
+        binding.cardDailyRoutine.setOnClickListener(v -> {
             Intent intent = new Intent(this, com.example.graduationproject.KidsRoutineMainActivity.class);
             intent.putExtra(EXTRA_CHILD_ID, currentChildId);
             startActivity(intent);

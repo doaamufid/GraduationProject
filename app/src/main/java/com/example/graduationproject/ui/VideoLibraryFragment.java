@@ -22,6 +22,9 @@ import com.example.graduationproject.data.AppState;
 import com.example.graduationproject.models.ContentItem;
 import com.example.graduationproject.models.ContentRepository;
 
+import com.example.graduationproject.data.ContentRecommendationManager;
+import com.example.graduationproject.data.SalamGeminiService;
+import com.example.graduationproject.models.CandidateItem;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,6 +64,16 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
         recyclerVideos = view.findViewById(R.id.recyclerVideos);
         EditText etSearch = view.findViewById(R.id.etSearch);
 
+        View topBar = view.findViewById(R.id.topBar);
+        if (topBar != null) {
+            androidx.core.view.ViewCompat.setOnApplyWindowInsetsListener(topBar, (v, insets) -> {
+                androidx.core.graphics.Insets systemBars = insets.getInsets(androidx.core.view.WindowInsetsCompat.Type.systemBars());
+                v.setPadding(v.getPaddingLeft(), systemBars.top + (int) (8 * v.getResources().getDisplayMetrics().density),
+                        v.getPaddingRight(), v.getPaddingBottom());
+                return insets;
+            });
+        }
+
         // Back button (top bar)
         view.findViewById(R.id.btnBack).setOnClickListener(v ->
                 requireActivity().onBackPressed());
@@ -72,11 +85,6 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
         buildChips();
         refreshList();
 
-        // Kids Cards Listeners
-        view.findViewById(R.id.cardRoutine).setOnClickListener(v ->
-                startActivity(new android.content.Intent(getActivity(), com.example.graduationproject.KidsRoutineMainActivity.class)));
-        view.findViewById(R.id.cardCalmCorner).setOnClickListener(v ->
-                startActivity(new android.content.Intent(getActivity(), com.example.graduationproject.KidsCalmCornerActivity.class)));
 
         // Header action buttons (like the articles library top bar)
         view.findViewById(R.id.btnFavContent).setOnClickListener(v ->
@@ -93,6 +101,38 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
             }
             @Override public void afterTextChanged(Editable s) {}
         });
+
+        fetchRecommendations();
+    }
+
+    private void fetchRecommendations() {
+        String moodId = requireContext().getSharedPreferences("AppPrefs", android.content.Context.MODE_PRIVATE)
+                .getString("today_mood_id", "neutral");
+
+        if (ContentRecommendationManager.shouldRefresh(requireContext(), moodId)) {
+            new SalamGeminiService(requireContext()).getSuggestedContent(
+                    ContentRecommendationManager.getShortlist(requireContext(), moodId),
+                    moodId,
+                    new SalamGeminiService.GeminiCallback() {
+                        @Override
+                        public void onSuccess(String json) {
+                            if (isAdded()) {
+                                List<ContentRecommendationManager.RecommendationResponse> recs =
+                                        ContentRecommendationManager.getCachedRecommendationsFromText(json);
+                                if (recs != null) {
+                                    ContentRecommendationManager.saveRecommendations(requireContext(), recs, moodId);
+                                    if (getActivity() != null) {
+                                        getActivity().runOnUiThread(() -> refreshList());
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onError(String errorMessage) {
+                        }
+                    });
+        }
     }
 
     /** Opens the favorites / bookmarks list screen (like ArticlesActivity.openFavoriteArticles). */
@@ -145,17 +185,36 @@ public class VideoLibraryFragment extends Fragment implements ContentAdapter.Lis
     /** Filter ContentRepository by active category + search query, then push to adapter. */
     private void refreshList() {
         List<ContentItem> base = ContentRepository.filterByCategory(activeCategory);
-        if (query.isEmpty()) {
-            adapter.submitList(base);
-            return;
-        }
-        List<ContentItem> filtered = new ArrayList<>();
+        List<ContentRecommendationManager.RecommendationResponse> recs = ContentRecommendationManager.getCachedRecommendations(requireContext());
+
+        List<ContentItem> processed = new ArrayList<>();
         for (ContentItem item : base) {
-            if (item.title.contains(query) || item.src.contains(query)) {
-                filtered.add(item);
+            String reason = null;
+            if (recs != null) {
+                for (ContentRecommendationManager.RecommendationResponse r : recs) {
+                    if ("video".equals(r.type) && r.id == item.id) {
+                        reason = r.reason;
+                        break;
+                    }
+                }
+            }
+
+            ContentItem processedItem = item;
+            if (reason != null) {
+                processedItem = new ContentItem(item.id, item.title, item.src, item.type, item.isVideo, item.duration,
+                        item.category, item.videoId, item.gradStart, item.gradEnd, "🤖 " + reason);
+            }
+
+            if (query.isEmpty()) {
+                if (reason != null) processed.add(0, processedItem);
+                else processed.add(processedItem);
+            } else {
+                if (item.title.contains(query) || item.src.contains(query)) {
+                    processed.add(processedItem);
+                }
             }
         }
-        adapter.submitList(filtered);
+        adapter.submitList(processed);
     }
 
     @Override
