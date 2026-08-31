@@ -44,8 +44,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
 
     // ---- state ----
     private boolean isArabic = true;
-    private boolean liked = false;
-    private boolean saved = false;
 
     // ---- views ----
     private ImageView bgImage;
@@ -54,8 +52,7 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
     private TextView greetLine, dayLine, dateLine, quoteText;
     private View breathGlow;
     private Button ctaBtn;
-    private FrameLayout likeBtn, shareBtn, saveBtn;
-    private ImageView likeIcon, saveIcon;
+    private FrameLayout shareBtn;
     private TextView toastView;
     private View phoneFrame;
 
@@ -112,9 +109,7 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
         scheduleCtaReveal();
         startBreathingGlow();
 
-        likeBtn.setOnClickListener(v -> onLikeClicked());
         shareBtn.setOnClickListener(v -> onShareClicked());
-        saveBtn.setOnClickListener(v -> onSaveClicked());
 
         ctaBtn.setOnClickListener(v -> {
             Intent intent = new Intent(QouteFeatureMainActivity.this, MainActivity.class);
@@ -134,11 +129,7 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
         quoteText = findViewById(R.id.quoteText);
         breathGlow = findViewById(R.id.breathGlow);
         ctaBtn = findViewById(R.id.ctaBtn);
-        likeBtn = findViewById(R.id.likeBtn);
         shareBtn = findViewById(R.id.shareBtn);
-        saveBtn = findViewById(R.id.saveBtn);
-        likeIcon = findViewById(R.id.likeIcon);
-        saveIcon = findViewById(R.id.saveIcon);
         toastView = findViewById(R.id.toastView);
     }
 
@@ -187,9 +178,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
     }
 
     private void onShuffleClicked() {
-        liked = false;
-        refreshLikeIcon();
-
         // fade the quote text out (420ms), matching the JS setTimeout(...,420)
         quoteText.animate()
                 .alpha(0f)
@@ -309,8 +297,8 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
 
     /** Mirrors @keyframes breathe — 4s ease-in-out infinite scale+opacity loop. */
     private void startBreathingGlow() {
-        breathGlow.setPivotX(dp(45));
-        breathGlow.setPivotY(dp(45));
+        breathGlow.setPivotX(dp(100));
+        breathGlow.setPivotY(dp(100));
         PropertyValuesHolder scaleX = PropertyValuesHolder.ofFloat(View.SCALE_X, 0.85f, 1.25f);
         PropertyValuesHolder scaleY = PropertyValuesHolder.ofFloat(View.SCALE_Y, 0.85f, 1.25f);
         PropertyValuesHolder alpha = PropertyValuesHolder.ofFloat(View.ALPHA, 0.5f, 0.95f);
@@ -324,19 +312,8 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
     }
 
     // =====================================================================
-    //  LIKE / SHARE / SAVE
+    //  SHARE
     // =====================================================================
-
-    private void onLikeClicked() {
-        liked = !liked;
-        refreshLikeIcon();
-        bounce(likeBtn);
-    }
-
-    private void refreshLikeIcon() {
-        likeIcon.setImageResource(liked ? R.drawable.qoute_feature_ic_heart_filled : R.drawable.qoute_feature_ic_heart);
-        likeBtn.setBackgroundResource(liked ? R.drawable.qoute_feature_bg_icon_btn_active : R.drawable.qoute_feature_bg_icon_btn);
-    }
 
     private void onShareClicked() {
         String text = isArabic ? currentEntry.ar : currentEntry.en;
@@ -344,14 +321,6 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
         clipboard.setPrimaryClip(ClipData.newPlainText("quote", text));
         bounce(shareBtn);
         showToast(QouteFeatureLangStrings.copiedMsg(isArabic));
-    }
-
-    private void onSaveClicked() {
-        saved = !saved;
-        saveIcon.setImageResource(saved ? R.drawable.qoute_feature_ic_bookmark_filled : R.drawable.qoute_feature_ic_bookmark);
-        saveBtn.setBackgroundResource(saved ? R.drawable.qoute_feature_bg_icon_btn_active : R.drawable.qoute_feature_bg_icon_btn);
-        bounce(saveBtn);
-        if (saved) showToast(QouteFeatureLangStrings.saveMsg(isArabic));
     }
 
     private void bounce(View v) {

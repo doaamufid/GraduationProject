@@ -79,7 +79,7 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.VH> {
         holder.tvRating.setText(a.rating + " ★");
 
         holder.btnFavorite.setImageResource(saved ? R.drawable.ic_heart : R.drawable.ic_heart_outline);
-        holder.btnBookmark.setImageResource(bookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark);
+        holder.btnBookmark.setImageResource(bookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
 
         holder.itemView.setOnClickListener(v -> {
             Animation press = AnimationUtils.loadAnimation(v.getContext(), R.anim.card_press);

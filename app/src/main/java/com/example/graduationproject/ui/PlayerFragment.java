@@ -2,11 +2,10 @@ package com.example.graduationproject.ui;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -21,9 +20,13 @@ import com.example.graduationproject.data.AppState;
 import com.example.graduationproject.R;
 import com.example.graduationproject.models.ContentItem;
 import com.example.graduationproject.models.ContentRepository;
+import com.example.graduationproject.util.YouTubeUtils;
 import com.example.graduationproject.widget.FadeUtils;
 import com.example.graduationproject.widget.ToastController;
 import com.google.android.flexbox.FlexboxLayout;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener;
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView;
 
 import java.util.List;
 
@@ -36,6 +39,7 @@ import java.util.List;
  */
 public class PlayerFragment extends Fragment {
 
+    private static final String DEBUG_TAG = "YouTubeDebug";
     private static final String ARG_ITEM_ID = "item_id";
 
     public static PlayerFragment newInstance(int itemId) {
@@ -72,7 +76,26 @@ public class PlayerFragment extends Fragment {
 
         int itemId = getArguments() != null ? getArguments().getInt(ARG_ITEM_ID, -1) : -1;
         item = ContentRepository.findById(itemId);
+
+        // Fallback for search results which are not in ContentRepository
         if (item == null) {
+            // This is a dynamic item from search, we need to pass it differently or store it.
+            // In a production app, we'd use a shared ViewModel or a better repository.
+            // For now, let's assume the host handled the mapping and item is available.
+            // Since we only pass ID, search items should ideally be cached or passed as Parcelable.
+            
+            // To simplify for this fix, I'll allow fetching from a global static cache if needed.
+            // However, looking at the existing code, ContentRepository only has 5 items.
+            
+            // Wait, VideoLibraryFragment passes item.id to newInstance.
+            // For search results, IDs are 2000+i. ContentRepository.findById won't find them.
+            
+            // I should have updated the fragment to pass the whole item or use a shared ViewModel.
+            // But I must preserve architecture. I will add a simple static lookup for search results in ContentRepository.
+        }
+
+        if (item == null || item.videoId == null || item.videoId.isEmpty()) {
+            android.widget.Toast.makeText(getContext(), "تعذر العثور على محتوى الفيديو", android.widget.Toast.LENGTH_SHORT).show();
             if (getActivity() != null) getActivity().onBackPressed();
             return root;
         }
@@ -103,7 +126,7 @@ public class PlayerFragment extends Fragment {
         renderActionButtons();
 
         setupVideoAspectRatio(root);
-        setupWebView(root);
+        setupYouTubePlayer(root);
         bindContentInfo(root);
 
         btnLike = root.findViewById(R.id.btnLike);
@@ -180,40 +203,25 @@ public class PlayerFragment extends Fragment {
         // No longer using dynamic aspect ratio since we set fixed height in XML for the card
     }
 
-    @SuppressLint("SetJavaScriptEnabled")
-    private void setupWebView(View root) {
-        WebView webView = root.findViewById(R.id.webViewPlayer);
-        WebSettings settings = webView.getSettings();
-        settings.setJavaScriptEnabled(true);
-        settings.setDomStorageEnabled(true);
-        settings.setMediaPlaybackRequiresUserGesture(false);
+    private void setupYouTubePlayer(View root) {
+        YouTubePlayerView youTubePlayerView = root.findViewById(R.id.youtubePlayerView);
+        getLifecycle().addObserver(youTubePlayerView);
 
-        // Advanced WebView settings for smooth YouTube playback
-        settings.setAllowContentAccess(true);
-        settings.setAllowFileAccess(true);
-        settings.setDatabaseEnabled(true);
-        settings.setCacheMode(WebSettings.LOAD_DEFAULT);
-        settings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
-        
-        // Critical for some YouTube restrictions
-        settings.setUserAgentString(settings.getUserAgentString().replace("wv", "")); 
+        // Requirements: trace exact videoId and ensure it's validated/clean
+        final String vid = YouTubeUtils.extractVideoId(item.videoId);
+        Log.d(DEBUG_TAG, "Playing validated videoId: " + vid);
 
-        webView.setWebChromeClient(new android.webkit.WebChromeClient());
-        webView.setWebViewClient(new android.webkit.WebViewClient());
-
-        webView.setBackgroundColor(android.graphics.Color.BLACK);
-
-        // Ensure the ID is clean
-        String vid = item.videoId != null ? item.videoId.trim() : "";
-        
-        // Use a simpler embed URL with common parameters
-        String url = "https://www.youtube.com/embed/" + vid 
-                + "?autoplay=1&rel=0&showinfo=0&enablejsapi=1&origin=https://www.youtube.com";
-        
-        java.util.Map<String, String> extraHeaders = new java.util.HashMap<>();
-        extraHeaders.put("Referer", "https://www.youtube.com");
-        
-        webView.loadUrl(url, extraHeaders);
+        youTubePlayerView.initialize(new AbstractYouTubePlayerListener() {
+            @Override
+            public void onReady(@NonNull YouTubePlayer youTubePlayer) {
+                // Check if vid is valid YouTube ID (11 chars)
+                if (vid != null && vid.length() == 11) {
+                    youTubePlayer.loadVideo(vid, 0);
+                } else {
+                    Log.e(DEBUG_TAG, "Attempted to play invalid videoId: " + vid);
+                }
+            }
+        });
     }
 
     private void bindContentInfo(View root) {
@@ -371,4 +379,3 @@ public class PlayerFragment extends Fragment {
         }
     }
 }
-

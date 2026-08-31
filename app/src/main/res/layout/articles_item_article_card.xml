@@ -40,9 +40,8 @@
 
             <TextView
                 android:id="@+id/tvSuggestionReason"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:background="@drawable/bg_pill_dark"
                 android:paddingHorizontal="10dp"
                 android:paddingVertical="4dp"
@@ -63,10 +62,12 @@
                 android:id="@+id/btnFavorite"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:layout_marginStart="6dp"
                 android:layout_marginEnd="6dp"
                 android:background="@drawable/bg_circle_white92"
-                android:padding="13dp"
-                android:src="@drawable/ic_heart"
+                android:padding="7dp"
+                android:src="@drawable/ic_heart_outline"
+                android:scaleType="fitCenter"
                 android:contentDescription="@string/fav_articles_title" />
 
             <ImageButton
@@ -74,8 +75,10 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:background="@drawable/bg_circle_white92"
-                android:padding="13dp"
-                android:src="@drawable/ic_bookmark"
+                android:padding="7dp"
+                android:src="@drawable/ic_bookmark_outline"
+                android:scaleType="fitCenter"
+                app:tint="@color/text_main"
                 android:contentDescription="@string/bookmark_articles_title" />
         </LinearLayout>
 
