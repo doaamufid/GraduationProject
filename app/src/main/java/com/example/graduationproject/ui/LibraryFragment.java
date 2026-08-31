@@ -23,6 +23,9 @@ import com.example.graduationproject.data.ArticleRepository;
 import com.example.graduationproject.models.Article;
 import com.example.graduationproject.models.ArticleCategory;
 
+import com.example.graduationproject.data.ContentRecommendationManager;
+import com.example.graduationproject.data.SalamGeminiService;
+import com.example.graduationproject.models.CandidateItem;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -87,6 +90,38 @@ public class LibraryFragment extends Fragment implements ArticleAdapter.Listener
             }
             @Override public void afterTextChanged(Editable s) {}
         });
+
+        fetchRecommendations();
+    }
+
+    private void fetchRecommendations() {
+        String moodId = requireContext().getSharedPreferences("AppPrefs", android.content.Context.MODE_PRIVATE)
+                .getString("today_mood_id", "neutral");
+
+        if (ContentRecommendationManager.shouldRefresh(requireContext(), moodId)) {
+            new SalamGeminiService().getSuggestedContent(
+                    ContentRecommendationManager.getShortlist(moodId),
+                    moodId,
+                    new SalamGeminiService.GeminiCallback() {
+                        @Override
+                        public void onSuccess(String json) {
+                            if (isAdded()) {
+                                List<ContentRecommendationManager.RecommendationResponse> recs =
+                                        ContentRecommendationManager.getCachedRecommendationsFromText(json);
+                                if (recs != null) {
+                                    ContentRecommendationManager.saveRecommendations(requireContext(), recs, moodId);
+                                    if (getActivity() != null) {
+                                        getActivity().runOnUiThread(() -> refreshList());
+                                    }
+                                }
+                            }
+                        }
+
+                        @Override
+                        public void onError(String errorMessage) {
+                        }
+                    });
+        }
     }
 
     private void buildChips() {
@@ -120,15 +155,35 @@ public class LibraryFragment extends Fragment implements ArticleAdapter.Listener
 
     private void refreshList() {
         List<Article> base = ArticleRepository.getByCategory(activeCategory);
-        if (query.isEmpty()) {
-            adapter.submitList(base);
-            return;
-        }
-        List<Article> filtered = new ArrayList<>();
+        List<ContentRecommendationManager.RecommendationResponse> recs = ContentRecommendationManager.getCachedRecommendations(requireContext());
+
+        List<Article> processed = new ArrayList<>();
         for (Article a : base) {
-            if (a.title.contains(query) || a.author.contains(query)) filtered.add(a);
+            String reason = null;
+            if (recs != null) {
+                for (ContentRecommendationManager.RecommendationResponse r : recs) {
+                    if ("article".equals(r.type) && r.id == a.id) {
+                        reason = r.reason;
+                        break;
+                    }
+                }
+            }
+
+            Article item = a;
+            if (reason != null) {
+                item = new Article(a.id, a.title, a.category, a.time, a.price, a.author, a.featured, "🤖 " + reason, a.relatedExercise, a.body);
+            }
+
+            if (query.isEmpty()) {
+                if (reason != null) processed.add(0, item);
+                else processed.add(item);
+            } else {
+                if (a.title.contains(query) || a.author.contains(query)) {
+                    processed.add(item);
+                }
+            }
         }
-        adapter.submitList(filtered);
+        adapter.submitList(processed);
     }
 
     @Override

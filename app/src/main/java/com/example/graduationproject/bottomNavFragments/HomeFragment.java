@@ -186,7 +186,7 @@ public class HomeFragment extends Fragment {
             HomeFeature feature = featureList.get(position);
             String title = feature.getTitle();
             if (title.equals(getString(R.string.ai_suggested_feature_title))) {
-                startActivity(new Intent(getActivity(), com.example.graduationproject.ui.ContentSuggestionsActivity.class));
+                startActivity(new Intent(getActivity(), com.example.graduationproject.ui.AISuggestionsActivity.class));
             } else if (title.equals(getString(R.string.home_feature_videos_title))) {
                 startActivity(new Intent(getActivity(), VideoLibraryActivity.class));
             } else if (title.equals(getString(R.string.home_feature_audio_title))) {

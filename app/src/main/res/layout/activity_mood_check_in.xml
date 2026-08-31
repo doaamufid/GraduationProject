@@ -424,14 +424,14 @@
 
             <!-- Card 5: Routine -->
             <com.google.android.material.card.MaterialCardView
-                android:id="@+id/cardRoutine"
+                android:id="@+id/cardDailyRoutine"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_columnWeight="1"
                 android:layout_margin="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardBackgroundColor="#E2F2D5"
+                app:cardBackgroundColor="#FFF3E0"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp">
 
@@ -445,7 +445,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📅"
+                        android:text="🔄"
                         android:textSize="44sp" />
 
                     <TextView
@@ -460,14 +460,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="90% تطابق"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="8k بطل"
+                        android:text="@string/home_feature_habits_desc"
                         android:textColor="#802B3350"
                         android:textSize="12sp" />
 
@@ -496,7 +489,7 @@
                 android:layout_margin="8dp"
                 android:clickable="true"
                 android:focusable="true"
-                app:cardBackgroundColor="#FFE0EA"
+                app:cardBackgroundColor="#FCE4EC"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="0dp">
 
@@ -510,7 +503,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🌟"
+                        android:text="😊"
                         android:textSize="44sp" />
 
                     <TextView
@@ -525,14 +518,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="85% تطابق"
-                        android:textColor="#802B3350"
-                        android:textSize="12sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="5k بطل"
+                        android:text="@string/home_feature_audio_desc"
                         android:textColor="#802B3350"
                         android:textSize="12sp" />
 

@@ -40,11 +40,9 @@ public class TopBarHelper {
         }
 
         FrameLayout containerRight = root.findViewById(R.id.topBarRight);
-        if (containerRight != null) {
+        if (containerRight != null && rightView != null) {
             containerRight.removeAllViews();
-            if (rightView != null) {
-                containerRight.addView(rightView);
-            }
+            containerRight.addView(rightView);
         }
     }
 }

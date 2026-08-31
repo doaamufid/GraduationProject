@@ -48,6 +48,25 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Recommendation Reason (Below Category Tag) -->
+            <TextView
+                android:id="@+id/tvSuggestionReason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="12dp"
+                android:background="@drawable/bg_pill_dark"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:textColor="@color/white"
+                android:textSize="10sp"
+                android:textStyle="bold"
+                android:visibility="gone"
+                tools:text="🤖 مقترح لك لأنك تشعر بالقلق"
+                tools:visibility="visible"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvBrandLogo" />
+
             <!-- Action Buttons (Top Left) -->
             <LinearLayout
                 android:layout_width="wrap_content"
