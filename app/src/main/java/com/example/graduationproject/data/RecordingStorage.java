@@ -72,6 +72,10 @@ public class RecordingStorage {
         List<Recording> list = new ArrayList<>();
         File file = new File(context.getFilesDir(), FILE_NAME);
         if (!file.exists()) {
+            // Add dummy data for demonstration if no file exists
+            list.add(new Recording("أنا بطل وشجاع! 💪", "", System.currentTimeMillis() - 86400000, 1L));
+            list.add(new Recording("يومي كان حلو كتير اليوم ☀️", "", System.currentTimeMillis() - 172800000, 1L));
+            list.add(new Recording("أنا بحب حالي وبحب أهلي ❤️", "", System.currentTimeMillis() - 259200000, 1L));
             return list;
         }
         try (InputStream is = context.openFileInput(FILE_NAME)) {

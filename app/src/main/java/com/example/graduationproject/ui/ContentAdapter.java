@@ -133,10 +133,20 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
         // 5. Favorite & Bookmark States (NEW)
         com.example.graduationproject.data.AppState state = com.example.graduationproject.data.AppState.get();
         boolean isFav = state.isContentSaved(item.id);
-        holder.btnFavorite.setImageResource(isFav ? R.drawable.ic_heart : R.drawable.ic_heart_outline);
+        holder.btnFavorite.setImageResource(isFav ? R.drawable.ic_heart_filled : R.drawable.ic_heart_outline);
+        if (isFav) {
+            holder.btnFavorite.setColorFilter(android.graphics.Color.RED);
+        } else {
+            holder.btnFavorite.setColorFilter(android.graphics.Color.WHITE);
+        }
         
         boolean isBookmarked = state.isContentBookmarked(item.id);
         holder.btnBookmark.setImageResource(isBookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
+        if (isBookmarked) {
+            holder.btnBookmark.setColorFilter(android.graphics.Color.parseColor("#3A74B8"));
+        } else {
+            holder.btnBookmark.setColorFilter(android.graphics.Color.BLACK);
+        }
 
         // 6. Pulse Animation
         startPulseAnimation(holder.vPulse1, 0);

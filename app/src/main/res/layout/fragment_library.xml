@@ -79,7 +79,7 @@
                 android:layout_height="32dp"
                 android:background="@drawable/bg_circle_surface"
                 android:padding="8dp"
-                android:src="@drawable/ic_bookmark"
+                android:src="@drawable/ic_bookmark_outline"
                 android:scaleType="fitCenter"
                 app:tint="@color/black"
                 android:contentDescription="@string/content_desc_bookmark" />

@@ -1,4 +1,5 @@
 package com.example.graduationproject.Kids;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
@@ -39,6 +40,14 @@ public class MyWordsActivity extends AppCompatActivity {
         adapter = new RecordingsAdapter(recordings);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
+
+        findViewById(R.id.btnRecordNew).setOnClickListener(v -> {
+            Intent intent = new Intent(this, WordOfWeekActivity.class);
+            // Pass the child ID if needed
+            long childId = getSharedPreferences("KidsApp", MODE_PRIVATE).getLong("current_child_id", -1L);
+            intent.putExtra("CHILD_ID", childId);
+            startActivity(intent);
+        });
     }
 
     @Override

@@ -64,6 +64,7 @@ public class MoodCheckInActivity extends AppCompatActivity {
 
         // 🌟 تحميل الأفاتار النصي الخاِص بكِ وتحديث الواجهة والفقاعة
         loadChildAvatar();
+        loadChildStats();
 
         // ربط عناصر المزاج
         moodViews = new TextView[]{
@@ -85,6 +86,18 @@ public class MoodCheckInActivity extends AppCompatActivity {
         binding.btnBack.setOnClickListener(v -> finish());
 
         // Navigation for top action buttons
+        binding.llStarsStats.setOnClickListener(v -> {
+            Intent intent = new Intent(this, FeaturedChildActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
+        binding.llStreakStats.setOnClickListener(v -> {
+            Intent intent = new Intent(this, KidsTreeActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
         binding.btnSwitchMode.setOnClickListener(v -> {
             Intent intent = new Intent(this, com.example.graduationproject.SplashSelectActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -151,9 +164,49 @@ public class MoodCheckInActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        binding.cardMyWords.setOnClickListener(v -> {
+            Intent intent = new Intent(this, MyWordsActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
+        binding.cardFeaturedChild.setOnClickListener(v -> {
+            Intent intent = new Intent(this, FeaturedChildActivity.class);
+            intent.putExtra(EXTRA_CHILD_ID, currentChildId);
+            startActivity(intent);
+        });
+
         // جدولة التذكيرات والإشعارات
         KidsReminderScheduler.scheduleReminder(this);
         requestNotificationPermissionIfNeeded();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadChildStats();
+    }
+
+    private void loadChildStats() {
+        if (childProfileStore == null || currentChildId == -1L) return;
+
+        try {
+            List<ChildProfile> profiles = childProfileStore.getProfiles();
+            for (ChildProfile profile : profiles) {
+                if (profile.getId() == currentChildId) {
+                    binding.tvStarsCount.setText(String.valueOf(profile.getStars()));
+                    break;
+                }
+            }
+
+            // Get Streak from SharedPreferences (same logic as KidsTreeActivity)
+            android.content.SharedPreferences streakPrefs = getSharedPreferences("KidsAppStreak_" + currentChildId, android.content.Context.MODE_PRIVATE);
+            int streak = streakPrefs.getInt("consecutive_days", 1);
+            binding.tvStreakCount.setText(String.valueOf(streak));
+
+        } catch (Exception e) {
+            Log.e("MoodCheckIn", "Error loading child stats: " + e.getMessage());
+        }
     }
 
     private void enlargeEmoji(TextView textView) {

@@ -533,7 +533,12 @@ public class ReaderFragment extends Fragment {
         boolean bookmarked = AppState.get().isBookmarked(article.id);
         btnFavorite.setImageResource(saved ? R.drawable.ic_heart : R.drawable.ic_heart_outline);
         btnFavorite.setBackgroundResource(saved ? R.drawable.bg_circle_rose : R.drawable.bg_circle_surface);
-        btnBookmark.setImageResource(bookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark);
+        btnBookmark.setImageResource(bookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
+        if (bookmarked) {
+            btnBookmark.setColorFilter(android.graphics.Color.parseColor("#3A74B8"));
+        } else {
+            btnBookmark.setColorFilter(android.graphics.Color.BLACK);
+        }
         btnBookmark.setBackgroundResource(bookmarked ? R.drawable.bg_circle_primary : R.drawable.bg_circle_surface);
     }
 

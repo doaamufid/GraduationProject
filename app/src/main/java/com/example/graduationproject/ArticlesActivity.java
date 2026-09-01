@@ -29,6 +29,11 @@ public class ArticlesActivity extends AppCompatActivity {
     public static final String OPEN_BOOKMARKS = "bookmarks";
 
     @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         androidx.activity.EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);

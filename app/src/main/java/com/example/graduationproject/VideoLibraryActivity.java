@@ -23,12 +23,14 @@ public class VideoLibraryActivity extends AppCompatActivity implements ContentIt
     public static final String OPEN_BOOKMARKS = "bookmarks";
 
     @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         androidx.activity.EdgeToEdge.enable(this);
         super.onCreate(savedInstanceState);
-
-        // Arabic + RTL by default; English + LTR when the saved app language is English
-        AppLanguageManager.applySavedLanguage(this);
 
         setContentView(R.layout.activity_video_library);
 

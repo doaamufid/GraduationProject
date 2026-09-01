@@ -18,6 +18,11 @@ import java.util.ArrayList;
 public class MoodTrackerActivity extends AppCompatActivity {
 ActivityMoodTrackerBinding binding;
     @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
      binding=   ActivityMoodTrackerBinding.inflate(getLayoutInflater());

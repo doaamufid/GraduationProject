@@ -98,6 +98,7 @@
     <string name="empty_photos">لا صور بعد — اضغطي + لإضافة أول صورة</string>
     <string name="empty_love">لا رسائل بعد — اضغطي + لإضافة أول رسالة</string>
     <string name="empty_dhikr">لا أذكار مفضلة بعد</string>
+    <string name="featured_child_title">الطفل المميز 🏆</string>
     <string name="delete_action">حذف</string>
     <string name="back_to_grid">رجوع للشبكة</string>
     <string name="tag_self">من نفسي</string>

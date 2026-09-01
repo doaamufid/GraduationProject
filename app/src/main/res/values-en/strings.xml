@@ -82,6 +82,7 @@
     <string name="empty_photos">No photos yet — tap + to add your first photo</string>
     <string name="empty_love">No messages yet — tap + to add your first message</string>
     <string name="empty_dhikr">No favorite dhikr yet</string>
+    <string name="featured_child_title">Featured Child 🏆</string>
     <string name="delete_action">Delete</string>
     <string name="back_to_grid">Back to Grid</string>
     <string name="tag_self">From Myself</string>

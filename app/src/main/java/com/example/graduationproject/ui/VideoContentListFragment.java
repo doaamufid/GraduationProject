@@ -62,10 +62,11 @@ public class VideoContentListFragment extends Fragment implements ContentAdapter
         // Top bar: title + back + matching action icon (mirrors ArticleListFragment)
         ImageButton rightIcon = new ImageButton(requireContext());
         rightIcon.setBackgroundResource(R.drawable.bg_icon_button);
-        rightIcon.setImageResource(isFav ? R.drawable.ic_heart : R.drawable.ic_bookmark);
-        if (!isFav) {
-            rightIcon.setImageTintList(android.content.res.ColorStateList.valueOf(
-                androidx.core.content.ContextCompat.getColor(requireContext(), R.color.text_main)));
+        if (isFav) {
+            rightIcon.setImageResource(R.drawable.ic_heart);
+        } else {
+            rightIcon.setImageResource(R.drawable.ic_bookmark_filled);
+            rightIcon.setColorFilter(android.graphics.Color.parseColor("#3A74B8"));
         }
         int pad = dp(8);
         rightIcon.setPadding(pad, pad, pad, pad);

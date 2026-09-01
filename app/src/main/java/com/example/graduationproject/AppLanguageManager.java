@@ -9,8 +9,6 @@ import android.content.res.Resources;
 import android.os.Build;
 import android.view.View;
 
-import androidx.core.view.ViewCompat;
-
 import java.util.Locale;
 
 public final class AppLanguageManager {
@@ -24,7 +22,7 @@ public final class AppLanguageManager {
 
     public static String getSavedLanguage(Context context) {
         SharedPreferences prefs = context.getSharedPreferences(PREFS_NAME, Context.MODE_PRIVATE);
-        String language = prefs.getString(KEY_LANGUAGE, LANGUAGE_ENGLISH);
+        String language = prefs.getString(KEY_LANGUAGE, LANGUAGE_ARABIC);
         return normalize(language);
     }
 
@@ -68,22 +66,25 @@ public final class AppLanguageManager {
         Locale.setDefault(locale);
 
         Resources resources = context.getResources();
-        Configuration config = new Configuration(resources.getConfiguration());
+        Configuration config = resources.getConfiguration();
+        
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
             config.setLocale(locale);
         } else {
             config.locale = locale;
         }
+        
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
             config.setLayoutDirection(locale);
         }
+        
         resources.updateConfiguration(config, resources.getDisplayMetrics());
 
         if (context instanceof Activity) {
             Activity activity = (Activity) context;
             View decorView = activity.getWindow().getDecorView();
-            decorView.setLayoutDirection(isRtl(normalized) ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR);
-            ViewCompat.setLayoutDirection(decorView, isRtl(normalized) ? ViewCompat.LAYOUT_DIRECTION_RTL : ViewCompat.LAYOUT_DIRECTION_LTR);
+            int direction = isRtl(normalized) ? View.LAYOUT_DIRECTION_RTL : View.LAYOUT_DIRECTION_LTR;
+            decorView.setLayoutDirection(direction);
         }
     }
 

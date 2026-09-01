@@ -61,7 +61,7 @@
         android:background="@drawable/bg_button_orange"
         android:text="@string/save_it"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="#3D291F"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -73,7 +73,7 @@
         android:background="@drawable/bg_button_outline"
         android:text="@string/record_again"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="#3D291F"
         android:textSize="15sp" />
 
 </LinearLayout>

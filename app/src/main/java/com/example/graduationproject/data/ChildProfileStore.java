@@ -408,6 +408,18 @@ public class ChildProfileStore extends SQLiteOpenHelper {
                         cursor.getInt(cursor.getColumnIndexOrThrow(COLUMN_POINTS))));
             }
         }
+        
+        // Add dummy data if empty for demonstration
+        if (profiles.isEmpty()) {
+            addProfile("ليان", 7, "بنت", "🦁");
+            updateChildPoints(getProfiles().get(0).getId(), 24);
+            addProfile("ياسين", 8, "ولد", "🐨");
+            updateChildPoints(getProfiles().get(1).getId(), 18);
+            addProfile("سارة", 6, "بنت", "🐼");
+            updateChildPoints(getProfiles().get(2).getId(), 15);
+            return getProfiles();
+        }
+
         return profiles;
     }
 

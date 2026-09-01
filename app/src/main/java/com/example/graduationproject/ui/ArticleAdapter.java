@@ -80,6 +80,11 @@ public class ArticleAdapter extends RecyclerView.Adapter<ArticleAdapter.VH> {
 
         holder.btnFavorite.setImageResource(saved ? R.drawable.ic_heart : R.drawable.ic_heart_outline);
         holder.btnBookmark.setImageResource(bookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
+        if (bookmarked) {
+            holder.btnBookmark.setColorFilter(android.graphics.Color.parseColor("#3A74B8"));
+        } else {
+            holder.btnBookmark.setColorFilter(android.graphics.Color.BLACK);
+        }
 
         holder.itemView.setOnClickListener(v -> {
             Animation press = AnimationUtils.loadAnimation(v.getContext(), R.anim.card_press);

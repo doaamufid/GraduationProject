@@ -260,9 +260,11 @@ public class WallFragment extends Fragment {
             pinnedBadge.setVisibility(View.VISIBLE);
             pinnedBadge.setText(String.valueOf(count));
             pinnedBtnIcon.setImageResource(R.drawable.ic_bookmark_filled);
+            pinnedBtnIcon.setColorFilter(android.graphics.Color.parseColor("#3A74B8"));
         } else {
             pinnedBadge.setVisibility(View.GONE);
             pinnedBtnIcon.setImageResource(R.drawable.ic_bookmark_outline);
+            pinnedBtnIcon.setColorFilter(android.graphics.Color.BLACK);
         }
     }
 

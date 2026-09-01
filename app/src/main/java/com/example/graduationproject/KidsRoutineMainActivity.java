@@ -42,12 +42,7 @@ public class KidsRoutineMainActivity extends AppCompatActivity {
 
     @Override
     protected void attachBaseContext(Context newBase) {
-        Locale locale = new Locale("ar");
-        Locale.setDefault(locale);
-        Configuration config = newBase.getResources().getConfiguration();
-        config.setLocale(locale);
-        config.setLayoutDirection(locale);
-        super.attachBaseContext(newBase.createConfigurationContext(config));
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
     }
 
     // ===== state (mirrors the useState hooks in the React component) =====

@@ -44,6 +44,11 @@ import com.example.graduationproject.util.KidsAdaptiveStages;
  */
 public class KidsAdaptiveMainActivity extends AppCompatActivity implements KidsAdaptiveOnboardingHost, KidsAdaptiveResumeDialogFragment.Listener {
 
+    @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
     private KidsAdaptiveOnboardingData data = new KidsAdaptiveOnboardingData();
     private int index = 0;
     private long childId = -1;

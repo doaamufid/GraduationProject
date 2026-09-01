@@ -243,6 +243,11 @@ public class PlayerFragment extends Fragment {
         
         boolean isBookmarked = AppState.get().isContentBookmarked(item.id);
         btnBookmarkTop.setImageResource(isBookmarked ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
+        if (isBookmarked) {
+            btnBookmarkTop.setColorFilter(android.graphics.Color.parseColor("#3A74B8"));
+        } else {
+            btnBookmarkTop.setColorFilter(android.graphics.Color.BLACK);
+        }
     }
 
     // ===================== FEEDBACK LOGIC =====================

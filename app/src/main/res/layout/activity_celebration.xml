@@ -31,7 +31,7 @@
         android:layout_marginTop="10dp"
         android:gravity="center"
         android:text="@string/saved_message"
-        android:textColor="@color/text_gray"
+        android:textColor="#3D291F"
         android:textSize="14sp" />
 
     <Button
@@ -42,7 +42,7 @@
         android:background="@drawable/bg_button_orange"
         android:text="@string/another_word"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="#3D291F"
         android:textSize="15sp"
         android:textStyle="bold" />
 
@@ -54,7 +54,7 @@
         android:background="@drawable/bg_button_outline"
         android:text="@string/see_my_words"
         android:textAllCaps="false"
-        android:textColor="@color/white"
+        android:textColor="#3D291F"
         android:textSize="15sp" />
 
 </LinearLayout>

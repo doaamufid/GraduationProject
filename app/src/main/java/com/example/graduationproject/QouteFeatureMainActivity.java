@@ -43,7 +43,7 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
     private QouteFeatureQuoteEntry currentEntry;
 
     // ---- state ----
-    private boolean isArabic = true;
+    private boolean isArabic;
 
     // ---- views ----
     private ImageView bgImage;
@@ -67,7 +67,13 @@ public class QouteFeatureMainActivity extends AppCompatActivity {
     private Runnable pendingToastHide;
 
     @Override
+    protected void attachBaseContext(Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
+        isArabic = AppLanguageManager.isArabic(AppLanguageManager.getSavedLanguage(this));
         super.onCreate(savedInstanceState);
 
         // Make status bar transparent and navigation bar match theme

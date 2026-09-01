@@ -67,6 +67,10 @@ public final class ArticleCardBinder {
 
     private static void updateBookmarkIcon(ImageView iv, boolean saved, int accentColor) {
         iv.setImageResource(saved ? R.drawable.ic_bookmark_filled : R.drawable.ic_bookmark_outline);
-        iv.setColorFilter(accentColor);
+        if (saved) {
+            iv.setColorFilter(android.graphics.Color.parseColor("#3A74B8"));
+        } else {
+            iv.setColorFilter(android.graphics.Color.BLACK);
+        }
     }
 }

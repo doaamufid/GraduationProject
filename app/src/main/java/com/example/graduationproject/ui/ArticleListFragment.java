@@ -60,7 +60,12 @@ public class ArticleListFragment extends Fragment implements ArticleAdapter.List
 
         boolean isFav = MODE_FAVORITES.equals(mode);
         title.setText(isFav ? R.string.fav_articles_title : R.string.bookmark_articles_title);
-        rightIcon.setImageResource(isFav ? R.drawable.ic_heart : R.drawable.ic_bookmark);
+        if (isFav) {
+            rightIcon.setImageResource(R.drawable.ic_heart);
+        } else {
+            rightIcon.setImageResource(R.drawable.ic_bookmark_filled);
+            rightIcon.setColorFilter(android.graphics.Color.parseColor("#3A74B8"));
+        }
         rightIcon.setPadding(8, 8, 8, 8);
 
         tvEmpty = view.findViewById(R.id.tvEmpty);

@@ -40,14 +40,12 @@ public class KidsCalmCornerActivity extends AppCompatActivity implements
     private kidsCalmAdventureFragment adventureFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        // Force Arabic Locale
-        java.util.Locale locale = new java.util.Locale("ar");
-        java.util.Locale.setDefault(locale);
-        android.content.res.Configuration config = new android.content.res.Configuration();
-        config.setLocale(locale);
-        getResources().updateConfiguration(config, getResources().getDisplayMetrics());
+    protected void attachBaseContext(android.content.Context newBase) {
+        super.attachBaseContext(AppLanguageManager.wrapContext(newBase));
+    }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
         getWindow().getDecorView().setSystemUiVisibility(
