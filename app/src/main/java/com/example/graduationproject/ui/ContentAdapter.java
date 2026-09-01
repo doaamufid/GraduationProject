@@ -154,26 +154,14 @@ public class ContentAdapter extends RecyclerView.Adapter<ContentAdapter.VH> {
         holder.btnFavorite.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onToggleFavorite(item);
-                notifyItemChanged(holder.getAdapterPosition());
             }
         });
 
         holder.btnBookmark.setOnClickListener(v -> {
             if (listener != null) {
                 listener.onToggleBookmark(item);
-                notifyItemChanged(holder.getAdapterPosition());
             }
         });
-
-        // Entrance animation
-        holder.itemView.setAlpha(0f);
-        holder.itemView.setTranslationY(50f);
-        holder.itemView.animate()
-                .alpha(1f)
-                .translationY(0f)
-                .setDuration(500)
-                .setStartDelay(100 + position * 80L)
-                .start();
     }
 
     private void startPulseAnimation(View view, long delay) {
